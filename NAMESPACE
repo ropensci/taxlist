@@ -1,0 +1,38 @@
+
+## Import of packages
+import(
+	foreign,
+	methods,
+	vegdata
+)
+
+## Export of classes
+exportClasses(
+	taxlist
+)
+
+## Export methods
+exportMethods(
+	first_name,
+	"first_name<-",
+	"change_concept<-",
+	subset,
+	summary,
+	taxonNames,
+	"taxonNames<-",
+	taxonRelations,
+	"taxonRelations<-",
+	taxonTraits,
+	"taxonTraits<-",
+	validName,
+	"validName<-"
+)
+
+# Export of regular function names
+export(
+	add_concept,
+	add_name,
+	backup_object,
+	df2taxlist,
+	tvsplist
+)

@@ -1,0 +1,23 @@
+Package: taxlist
+Version: 0.0.0.9004
+Encoding: UTF-8
+Date: 2016-03-23
+Title: Handling Taxonomic Lists
+Author: Miguel Alvarez <malvarez@uni-bonn.de>
+Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
+Depends: R(>= 3.2.1)
+Imports:
+    foreign,
+    methods,
+    vegdata,
+Suggests:
+    conosur,
+    devtools,
+    xlsx
+Description: Handling taxonomic lists through objects of class 'taxlist'. Many
+    of the concepts and functions implemented here are inspired by the package
+    'vegdata'. This package also provides functions to import species lists from
+    'Turboveg' and the possibility to create backups from resulting R-objects.
+    Also diverse displays are implemented as print-methods.
+License: GPL (>= 2)
+URL: http://www.ipe.uni-bonn.de/pflanzenernaehrung/mitarbeiter/m_alvarez
