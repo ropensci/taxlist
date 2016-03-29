@@ -25,3 +25,10 @@ neglected source of bias. \emph{Journal of Vegetation Science} 21: 1179--1186.
 \bold{Alvarez M, Luebert F (in preparation).} Some considerations for reference
 lists in vegetation-plot databases.
 }
+\examples{
+\dontrun{
+## How to install taxlist
+library(devtools)
+install_github("kamapu/taxlist")
+}
+}
