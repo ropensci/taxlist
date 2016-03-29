@@ -20,4 +20,5 @@ Description: Handling taxonomic lists through objects of class 'taxlist'. Many
     'Turboveg' and the possibility to create backups from resulting R-objects.
     Also diverse displays are implemented as print-methods.
 License: GPL (>= 2)
-URL: http://www.ipe.uni-bonn.de/pflanzenernaehrung/mitarbeiter/m_alvarez
+URL: https://github.com/kamapu/taxlist
+BugReports: https://github.com/kamapu/taxlist/issues
