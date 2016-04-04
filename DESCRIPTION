@@ -5,15 +5,15 @@ Date: 2016-03-23
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <malvarez@uni-bonn.de>
 Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
-Depends: R(>= 3.2.1)
+Depends:
+	R(>= 3.2.0),
+	vegdata
 Imports:
     foreign,
-    methods,
-    vegdata,
+    methods
 Suggests:
     conosur,
-    devtools,
-    xlsx
+    devtools
 Description: Handling taxonomic lists through objects of class 'taxlist'. Many
     of the concepts and functions implemented here are inspired by the package
     'vegdata'. This package also provides functions to import species lists from
