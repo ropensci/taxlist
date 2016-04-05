@@ -28,6 +28,6 @@ setMethod(f="subset", signature(x="taxlist"),
             x@taxonNames <- subset(x@taxonNames,
                     TaxonConceptID %in% as.integer(ConceptID))
             x@taxonRelations <- x@taxonRelations[ConceptID,]
-            x@taxonTraits <- x@taxonTraits[ConceptID,]
+            x@taxonTraits <- x@taxonTraits[ConceptID,,drop=FALSE]
             return(x)
 		})
