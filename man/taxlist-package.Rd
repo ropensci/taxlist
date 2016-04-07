@@ -11,7 +11,7 @@ For handling taxonomic lists an \emph{ad-hoc} object class is defined, namely
 the \code{\link[=taxlist-class]{taxlist}} class. In such lists there is a
 separation between names (taxon usages) and the taxa (taxon concepts), following
 the terminology of \bold{Jansen & Dengler (2010)}.
-Beside linking taxon concepts with respective valid names and synonyms, taxlist
+Beside linking taxon concepts with respective accepted names and synonyms, taxlist
 also offers the possibility to assign a first name (first combination) for the
 concept, as proposed by \bold{Alvarez & Luebert (in preparation)}.
 }

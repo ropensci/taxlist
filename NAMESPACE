@@ -24,8 +24,8 @@ exportMethods(
 	"taxonRelations<-",
 	taxonTraits,
 	"taxonTraits<-",
-	validName,
-	"validName<-"
+	acceptedName,
+	"acceptedName<-"
 )
 
 # Export of regular function names

@@ -14,7 +14,7 @@ add_concept <- function(taxlist, TaxonName, AuthorName, ...) {
     UsageID <- (UsageID + 1):(UsageID + length(TaxonName))
     # slot taxonRelations
     taxlist@taxonRelations <- do.call(rbind, list(taxlist@taxonRelations,
-                    data.frame(TaxonConceptID=ConceptID, ValidName=UsageID,
+                    data.frame(TaxonConceptID=ConceptID, AcceptedName=UsageID,
                             FirstName=NA)))
     rownames(taxlist@taxonRelations) <- paste(
             taxlist@taxonRelations$TaxonConceptID)

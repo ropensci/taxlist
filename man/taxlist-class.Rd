@@ -13,7 +13,7 @@ Objects can be created by calls of the form \code{new("taxlist")}.
 \section{Slots}{
   \describe{
     \item{\code{taxonNames}:}{Object of class \code{data.frame} containing
-    	alternative names (valid and synonym ones) for taxa.}
+    	alternative names (accepted and synonym ones) for taxa.}
     \item{\code{taxonRelations}:}{Object of class \code{data.frame} including
     	relations between names and taxon identity.}
     \item{\code{taxonTraits}:}{Object of class \code{"data.frame"} including

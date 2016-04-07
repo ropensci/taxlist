@@ -10,15 +10,15 @@ setClass("taxlist",
 						TaxonConceptID=integer(), TaxonName=character(),
 						AuthorName=character()),
 				taxonRelations=data.frame(TaxonConceptID=integer(),
-						ValidName=integer(), FirstName=integer()),
+						AcceptedName=integer(), FirstName=integer()),
 				taxonTraits=data.frame(TaxonConceptID=integer())),
 		validity=function(object) {
 			if(!all(c("TaxonUsageID","TaxonConceptID","TaxonName",
 							"AuthorName") %in% colnames(object@taxonNames)))
 				return("'TaxonUsageID', 'TaxonConceptID', 'TaxonName' and 'AuthorName' are mandatory columns in slot 'taxonNames'")
-			if(!all(c("TaxonConceptID","ValidName","FirstName") %in%
+			if(!all(c("TaxonConceptID","AcceptedName","FirstName") %in%
 							colnames(object@taxonRelations)))
-				return("'TaxonConceptID', 'ValidName' and 'FirstName' are mandatory columns in slot 'taxonRelations'")
+				return("'TaxonConceptID', 'AcceptedName' and 'FirstName' are mandatory columns in slot 'taxonRelations'")
 			if(any(rownames(object@taxonNames) !=
                             paste(object@taxonNames$TaxonUsageID)))
                 return("'TaxonUsageID' have to be set as row names for slot 'taxonNames'")
@@ -39,8 +39,8 @@ setClass("taxlist",
                 return("Some concepts are missing in slot 'taxonTraits'")
             
             if(!all(object@taxonNames$TaxonConceptID[match(
-                                    object@taxonRelations$ValidName,
+                                    object@taxonRelations$AcceptedName,
                                     object@taxonNames$TaxonUsageID)] ==
                     object@taxonRelations$TaxonConceptID))
-                return("Valid names must be included in their respective concepts!")
+                return("Accepted names must be included in their respective concepts!")
 		})

@@ -12,13 +12,13 @@ change_concept(taxlist, UsageID) <- value
 \arguments{
 	\item{taxlist}{An object of class \dQuote{taxlist}.}
 	\item{UsageID}{Corresponding usage ID to be changed from concept.}
-	\item{value}{Usage ID of the new valid name or first name, or new concept ID
+	\item{value}{Usage ID of the new accepted name or first name, or new concept ID
 		for a name.}
 }
 \details{
 With \code{change_concept<-} a name (usage) can be relocated in a different taxon
 concept. This function check previously that the name to be moved is neither a
-valid name nor a first name for the current taxon, otherwise an error message will
+accepted name nor a first name for the current taxon, otherwise an error message will
 be displayed.
 }
 \author{
@@ -39,7 +39,7 @@ summary(conosur_splist, c(75144,75147))
 change_concept(conosur_splist, 70903) <- 75144
 summary(conosur_splist, c(75144,75147))
 \donttest{
-## attempts using first name or valid names
+## attempts using first name or accepted names
 change_concept(conosur_splist, 75147) <- 75144
 change_concept(conosur_splist, 70899) <- 75144
 }

@@ -36,8 +36,8 @@ In the \code{taxlist} method a validation of the object will be carried out by
 In the \code{character} method the vector \code{x} should contain identifiers
 corresponding to the variable \code{TaxonUsageID} (see
 \code{"\link[=taxlist-class]{taxlist}"}).
-For each taxon a display of the valid name, first name (if set for the taxon) and
-synonyms (excluding valid name) will be shown in the console.
+For each taxon a display of the accepted name, first name (if set for the taxon) and
+synonyms (excluding accepted name) will be shown in the console.
 Every name will be preceded by its \code{TaxonUsageID}.
 The argument \code{display} indicates which fields are displayed in the console,
 either the field \code{TaxonName} (\code{display="name"}), \code{AuthorName}

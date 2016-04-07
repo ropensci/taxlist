@@ -1,33 +1,33 @@
 % multi-purpose template
-\name{validName}
-\alias{validName}
-\alias{validName,taxlist-method}
-\alias{validName<-}
-\alias{validName<-,taxlist-method}
+\name{acceptedName}
+\alias{acceptedName}
+\alias{acceptedName,taxlist-method}
+\alias{acceptedName<-}
+\alias{acceptedName<-,taxlist-method}
 
-\title{Set Valid Name for a Taxon Concept}
+\title{Set Accepted Name for a Taxon Concept}
 \description{
 This function is written for actualization of nomenclature in taxlist objects
 (i.e. species lists).
 }
 \usage{
-validName(taxlist, ConceptID) <- value
-\S4method{validName}{taxlist}(taxlist, ConceptID, ...)
+acceptedName(taxlist, ConceptID) <- value
+\S4method{acceptedName}{taxlist}(taxlist, ConceptID, ...)
 }
 \arguments{
 	\item{taxlist}{An object of class \dQuote{taxlist}.}
-	\item{ConceptID}{Corresponding concept ID where to set a new valid name or
+	\item{ConceptID}{Corresponding concept ID where to set a new accepted name or
 		first name.}
-	\item{value}{Usage ID of the new valid name or first name, or new concept ID
+	\item{value}{Usage ID of the new accepted name or first name, or new concept ID
 		for a name.}
 	\item{...}{Further arguments to pass from or to methods.}
 }
 \details{
-The function \code{validName<-} changes the information contained in the slot
+The function \code{acceptedName<-} changes the information contained in the slot
 \code{taxonRelations} assigning the new \code{value} in the column
-\code{ValidName}, which is supposed to be an usage ID.
+\code{AcceptedName}, which is supposed to be an usage ID.
 For such procedure it is required that the usage \code{value} belongs to the
-taxon concept for which it will be set as valid name, otherwise the function
+taxon concept for which it will be set as accepted name, otherwise the function
 returns an error message.
 }
 \author{
@@ -41,11 +41,11 @@ data(conosur_splist)
 first_name(conosur_splist, 75144) <- 70906
 summary(conosur_splist, 75144)
 
-## set a new valid name (the first name)
-validName(conosur_splist, 75144) <- 70906
+## set a new accepted name (the first name)
+acceptedName(conosur_splist, 75144) <- 70906
 summary(conosur_splist, 75144)
 \donttest{
 ## attempt to use a name from another concept
-validName(conosur_splist, 75144) <- 70903
+acceptedName(conosur_splist, 75144) <- 70903
 }
 }

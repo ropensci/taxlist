@@ -42,7 +42,7 @@ setMethod("taxonRelations", signature(taxlist="data.frame"),
 						call.=FALSE)
 			Relations <- unique(taxlist$TaxonConceptID)
 			Relations <- data.frame(TaxonConceptID=Relations,
-					ValidName=Relations, FirstName=NA, row.names=Relations,
+					AcceptedName=Relations, FirstName=NA, row.names=Relations,
 					stringsAsFactors=FALSE)
 			return(Relations)
 		}
@@ -104,25 +104,25 @@ setReplaceMethod("taxonTraits", signature(taxlist="taxlist",
             return(taxlist)
         })
 
-# validName --------------------------------------------------------------------
-setGeneric("validName",
+# acceptedName --------------------------------------------------------------------
+setGeneric("acceptedName",
 		function(taxlist, ConceptID, ...)
-			standardGeneric("validName")
+			standardGeneric("acceptedName")
 )
 
 # Set method for taxlist
-setMethod("validName", signature(taxlist="taxlist"),
+setMethod("acceptedName", signature(taxlist="taxlist"),
 		function(taxlist, ConceptID, ...) {
-			taxlist@taxonRelations[paste(ConceptID),"ValidName"]
+			taxlist@taxonRelations[paste(ConceptID),"AcceptedName"]
 		}
 )
 
 # Replacement methods
-setGeneric("validName<-", function(taxlist, ConceptID, value)
-			standardGeneric("validName<-"))
+setGeneric("acceptedName<-", function(taxlist, ConceptID, value)
+			standardGeneric("acceptedName<-"))
 
 # Replacement for taxlist
-setReplaceMethod("validName", signature(taxlist="taxlist"),
+setReplaceMethod("acceptedName", signature(taxlist="taxlist"),
 		function(taxlist, ConceptID, value) {
             if(class(ConceptID) != "integer") ConceptID <- as.integer(ConceptID)
             if(class(value) != "integer") value <- as.integer(value)
@@ -135,7 +135,7 @@ setReplaceMethod("validName", signature(taxlist="taxlist"),
 				stop("new value(s) is(are) not included in the respective taxon concept(s)",
 						call.=FALSE)
 			# now replace
-			taxlist@taxonRelations[paste(ConceptID),"ValidName"] <- value
+			taxlist@taxonRelations[paste(ConceptID),"AcceptedName"] <- value
 			return(taxlist)
 		})
 
@@ -190,8 +190,8 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
 			if(length(UsageID) != length(value))
 				stop("'UsageID' and 'value' should be of the same length",
 						call.=FALSE)
-			if(any(UsageID %in% taxlist@taxonRelations$ValidName))
-				stop("changes on concept are not allowed for valid names",
+			if(any(UsageID %in% taxlist@taxonRelations$AcceptedName))
+				stop("changes on concept are not allowed for accepted names",
 						call.=FALSE)
 			if(any(UsageID %in% taxlist@taxonRelations$FirstName))
 				stop("changes on concept are not allowed for first names",

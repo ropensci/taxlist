@@ -7,11 +7,11 @@
 Conversion of a data frame containing species lists into a taxlist object.
 }
 \usage{
-df2taxlist(x, ValidName, FirstName, Traits)
+df2taxlist(x, AcceptedName, FirstName, Traits)
 }
 \arguments{
 \item{x}{A data frame formatted for a taxlist object.}
-\item{ValidName}{A logical vector indicating valid names with value
+\item{AcceptedName}{A logical vector indicating accepted names with value
 	\code{TRUE}.}
 \item{FirstName}{A logical vector indicating first names with value
 	\code{TRUE}.}

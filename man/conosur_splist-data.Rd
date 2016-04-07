@@ -5,7 +5,7 @@
 
 \title{Species List for Argentina and Chile}
 \description{
-This list contains valid names and synonyms downloaded from the
+This list contains accepted names and synonyms downloaded from the
 \dQuote{Flora del Conosur}, which is available at
 \url{http://www2.darwin.edu.ar/Proyectos/FloraArgentina/fa.htm}.
 

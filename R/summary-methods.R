@@ -35,15 +35,15 @@ overview_taxon <- function(x, taxon, display, validate) {
     if(!display %in% c(1:3))
         stop("non-valid value for 'display'", call.=FALSE)
     # valid names as vector
-    ValidName <- paste(x@taxonRelations[taxon,"ValidName"])
-    ValidName <- x@taxonNames[ValidName,c("TaxonUsageID",
+    AcceptedName <- paste(x@taxonRelations[taxon,"AcceptedName"])
+    AcceptedName <- x@taxonNames[AcceptedName,c("TaxonUsageID",
                     "TaxonName","AuthorName")]
     if(display != 3) {
-        ValidName <- paste(ValidName[,1], ValidName[,display+1])
+        AcceptedName <- paste(AcceptedName[,1], AcceptedName[,display+1])
     } else {
-        ValidName <- paste(ValidName[,1], ValidName[,2], ValidName[,3])
+        AcceptedName <- paste(AcceptedName[,1], AcceptedName[,2], AcceptedName[,3])
     }
-    names(ValidName) <- taxon
+    names(AcceptedName) <- taxon
     # vector with first names
     FirstName <- paste(x@taxonRelations[taxon,"FirstName"])
     FirstName <- x@taxonNames[FirstName,c("TaxonUsageID",
@@ -60,7 +60,7 @@ overview_taxon <- function(x, taxon, display, validate) {
     for(i in taxon) {
         Synonyms[[i]] <- subset(x@taxonNames,
                 TaxonConceptID == as.integer(i) & TaxonUsageID !=
-                        x@taxonRelations[i,"ValidName"])[,
+                        x@taxonRelations[i,"AcceptedName"])[,
                 c("TaxonUsageID","TaxonName","AuthorName")]
         if(display != 3) {
             Synonyms[[i]] <- paste(Synonyms[[i]][,1],
@@ -74,7 +74,7 @@ overview_taxon <- function(x, taxon, display, validate) {
     for(i in taxon) {
         cat("------------------------------", "\n")
         cat("# Valid name for taxon concept '", i, "':", sep="", "\n")
-        cat(ValidName[i], "\n")
+        cat(AcceptedName[i], "\n")
         cat("\n")
         cat("# First name:", "\n")
         cat(FirstName[i], "\n")

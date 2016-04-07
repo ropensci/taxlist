@@ -5,7 +5,6 @@
 
 # Internal function TCS.replace2 modified from vegdata source
 TCS.replace2 <- function(x) {
-	## Turboveg
 	x <- replace(x, x == "SPECIES_NR", "TaxonUsageID")
 	x <- replace(x, x == "ABBREVIAT", "TaxonName")
 	x <- replace(x, x == "AUTHOR", "AuthorName")
