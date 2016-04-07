@@ -27,3 +27,21 @@ Then execute following commands in your R-session:
 library(devtools)
 install_github("kamapu/taxlist")
 ```
+
+## Some examples
+
+### Working with East African plants (on-going project)
+
+Our current vegetation database is connected to the species list **EA-Splist**.
+This list is uses as main reference the
+[African Plant Database](http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php)
+for nomenclature.
+You can use following code to load the last version of the species list:
+
+
+```r
+library(taxlist)
+load(url("https://www.wetlands-africa.de/publications/Easplist.rda"))
+
+## Code will be complemented
+```
