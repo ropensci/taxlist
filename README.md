@@ -80,6 +80,10 @@ summary(subset(Easplist, TaxonName == "Cyclosorus interruptus"), "all")
 ```
 
 ## Acknowledgements
-The aouthor thanks **Stephan Hennekens** for his patience and huge support
-finding a common language between **R** and **Turboveg** and for his advices
-in the formatting of **EA-Splist**.
+The author thanks **Stephan Hennekens**, the developer of
+[Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and huge
+support finding a common language between **R** and **Turboveg** and for his
+advices in the formatting of **EA-Splist**.
+
+Also thanks to **Federico Luebert** for the fruitful discussions regarding the
+terminology used in this project.

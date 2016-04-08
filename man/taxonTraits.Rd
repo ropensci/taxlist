@@ -24,4 +24,5 @@ to objects of the class \code{\link[=taxlist-class]{taxlist}}.
 Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
+## Add an example
 }
