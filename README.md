@@ -12,6 +12,9 @@ handle the flat format used by
 In a second attempt (the **_second weave_**, of course) we may try to insert a
 hierarchical structure to those objects.
 
+Objects and functions of `taxlist` will be implemented in an additional package,
+namely [vegtables](https://github.com/kamapu/vegtables).
+
 This package has been developed as a tool handling data stored in
 [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006).
 This activity is running in the context of the project
@@ -83,7 +86,7 @@ summary(subset(Easplist, TaxonName == "Cyclosorus interruptus"), "all")
 The author thanks **Stephan Hennekens**, the developer of
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and huge
 support finding a common language between **R** and **Turboveg** and for his
-advices in the formatting of **EA-Splist**.
+advices on formatting **EA-Splist**.
 
 Also thanks to **Federico Luebert** for the fruitful discussions regarding the
 terminology used in this project.
