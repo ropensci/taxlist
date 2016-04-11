@@ -73,7 +73,7 @@ overview_taxon <- function(x, taxon, display, validate) {
     # Now print
     for(i in taxon) {
         cat("------------------------------", "\n")
-        cat("# Valid name for taxon concept '", i, "':", sep="", "\n")
+        cat("# Accepted name for taxon concept '", i, "':", sep="", "\n")
         cat(AcceptedName[i], "\n")
         cat("\n")
         cat("# First name:", "\n")
