@@ -13,9 +13,12 @@ exportClasses(
 
 ## Export methods
 exportMethods(
+	acceptedName,
+	"acceptedName<-",
+	"change_concept<-",
 	first_name,
 	"first_name<-",
-	"change_concept<-",
+	merge_species,
 	subset,
 	summary,
 	taxonNames,
@@ -23,9 +26,7 @@ exportMethods(
 	taxonRelations,
 	"taxonRelations<-",
 	taxonTraits,
-	"taxonTraits<-",
-	acceptedName,
-	"acceptedName<-"
+	"taxonTraits<-"
 )
 
 # Export of regular function names
