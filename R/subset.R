@@ -22,11 +22,11 @@ setMethod(f="subset", signature(x="taxlist"),
 			# Get a list of included Concepts
             Names <- unique(paste(x@taxonNames[Names,"TaxonConceptID"]))
             Relations <- rownames(x@taxonRelations[Relations,])
-            Traits <- rownames(x@taxonTraits[Traits,])
+            Traits <- rownames(x@taxonTraits[Traits,,drop=FALSE])
             ConceptID <- intersect(intersect(Relations,Traits), Names)
             # re-assembling output object
-            x@taxonNames <- subset(x@taxonNames,
-                    TaxonConceptID %in% as.integer(ConceptID))
+            x@taxonNames <- x@taxonNames[paste(x@taxonNames$TaxonConceptID) %in%
+                            ConceptID,]
             x@taxonRelations <- x@taxonRelations[ConceptID,]
             x@taxonTraits <- x@taxonTraits[ConceptID,,drop=FALSE]
             return(x)
