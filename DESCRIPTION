@@ -6,11 +6,11 @@ Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <malvarez@uni-bonn.de>
 Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
 Depends:
-	R(>= 3.2.0),
-	vegdata
+	R(>= 3.2.0)
 Imports:
     foreign,
-    methods
+    methods,
+    vegdata
 Suggests:
     conosur,
     devtools
