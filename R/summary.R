@@ -26,14 +26,13 @@ overview_taxon <- function(x, taxon, display, validate) {
     if(class(taxon) != "character") taxon <- paste(taxon)
     # concept identities must occur in taxlist
     if(length(taxon) == 1 & !all(taxon %in% rownames(x@taxonRelations)))
-        stop("'x' is not included in the input 'taxlist'", call.=FALSE)
+        stop("'x' is not included in the input 'taxlist'")
     if(!all(taxon %in% rownames(x@taxonRelations)))
-        stop("some concepts are not included in input 'taxlist'",
-                call.=FALSE)
+        stop("some concepts are not included in input 'taxlist'")
     # display option
     display <- pmatch(display, c("name","author","both"))[1]
     if(!display %in% c(1:3))
-        stop("non-valid value for 'display'", call.=FALSE)
+        stop("non-valid value for 'display'")
     # valid names as vector
     AcceptedName <- paste(x@taxonRelations[taxon,"AcceptedName"])
     AcceptedName <- x@taxonNames[AcceptedName,c("TaxonUsageID",

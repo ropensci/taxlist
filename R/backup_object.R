@@ -6,7 +6,7 @@
 backup_object <- function(..., objects=character(), file, stamp=TRUE,
         overwrite=FALSE) {
     if(missing(file))
-        stop("Missing value for argument 'file'", call.=FALSE)
+        stop("Missing value for argument 'file'")
     inFolder <- list.files(pattern=".rda")
 	if(stamp) stamp <- paste0("_", Sys.Date()) else stamp <- ""
     if(paste0(file, stamp, ".rda") %in% inFolder & !overwrite) {

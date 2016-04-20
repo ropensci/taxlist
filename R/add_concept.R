@@ -5,7 +5,7 @@
 
 add_concept <- function(taxlist, TaxonName, AuthorName, ...) {
 	if(class(taxlist) != "taxlist")
-		stop("'taxlist' must be an object of class taxlist", call.=FALSE)
+		stop("'taxlist' must be an object of class taxlist")
     # New concept IDs
     ConceptID <- max(taxlist@taxonNames$TaxonConceptID)
     ConceptID <- (ConceptID + 1):(ConceptID + length(TaxonName))

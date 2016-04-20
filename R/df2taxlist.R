@@ -6,19 +6,18 @@
 df2taxlist <- function(x, AcceptedName, FirstName, Traits) {
     # Some tests previous to run the function
 	if(!is.data.frame(x))
-		stop("'x' must be of class 'data.frame'", call.=FALSE)
+		stop("'x' must be of class 'data.frame'")
     if(missing(AcceptedName))
-        stop("'AcceptedName' is a mandatory argument", call.=FALSE)
+        stop("'AcceptedName' is a mandatory argument")
     AcceptedName <- substitute(AcceptedName)
     AcceptedName <- eval(AcceptedName, x, parent.frame())
     if(length(AcceptedName) != nrow(x))
         stop("Argument 'AcceptedName' not matching the size of 'x'")
     Heads <- c("TaxonUsageID","TaxonConceptID","TaxonName","AuthorName")
 	if(!all(Heads %in% colnames(x)))
-		stop("'TaxonUsageID', 'TaxonConceptID', 'TaxonName', and 'AuthorName' are mandatory columns in 'x'",
-				call.=FALSE)
+		stop("'TaxonUsageID', 'TaxonConceptID', 'TaxonName', and 'AuthorName' are mandatory columns in 'x'")
     if(any(duplicated(x$TaxonUsageID)))
-        stop("Duplicated usage IDs are not allowed", call.=FALSE)
+        stop("Duplicated usage IDs are not allowed")
     # set classes
     if(!is.integer(x$TaxonUsageID)) x$TaxonUsageID <- as.integer(x$TaxonUsageID)
     if(!is.integer(x$TaxonConceptID))

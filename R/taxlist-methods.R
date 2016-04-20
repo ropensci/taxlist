@@ -23,7 +23,8 @@ setReplaceMethod("taxonNames", signature(taxlist="taxlist",
 				value="data.frame"), function(taxlist, value) {
 			taxlist@taxonNames <- value
 			return(taxlist)
-		})
+		}
+)
 
 # taxonRelations ---------------------------------------------------------------
 setGeneric("taxonRelations",
@@ -35,11 +36,9 @@ setGeneric("taxonRelations",
 setMethod("taxonRelations", signature(taxlist="data.frame"),
 		function(taxlist, ...) {
 			if(!all(c("TaxonUsageID","TaxonConceptID") %in% colnames(taxlist)))
-				stop("TaxonUsageID and TaxonConceptID are mandatory columns",
-						call.=FALSE)
+				stop("TaxonUsageID and TaxonConceptID are mandatory columns")
 			if(any(duplicated(taxlist$TaxonUsageID)))
-				stop("duplicates in TaxonUsageID are not allowed",
-						call.=FALSE)
+				stop("duplicates in TaxonUsageID are not allowed")
 			Relations <- unique(taxlist$TaxonConceptID)
 			Relations <- data.frame(TaxonConceptID=Relations,
 					AcceptedName=Relations, FirstName=NA, row.names=Relations,
@@ -62,9 +61,31 @@ setReplaceMethod("taxonRelations", signature(taxlist="taxlist",
 				value="data.frame"), function(taxlist, value) {
 			taxlist@taxonRelations <- value
 			return(taxlist)
-		})
+		}
+)
 
 # taxonTraits ------------------------------------------------------------------
+
+# 1: Access methods (as in data frames). Those adapted from package "sp"
+setMethod("$", signature(x="taxlist"), function(x, name) {
+            if(ncol(x@taxonTraits) == 0)
+                stop("no $ method for taxlist object without traits")
+            x@taxonTraits[[name]]
+        }
+)
+
+setReplaceMethod("$", signature(x="taxlist"), function(x, name, value) {
+            if(ncol(x@taxonTraits) == 0)
+                stop("no $<- method for taxlist object without traits")
+            x@taxonTraits[[name]] <- value 
+            return(x) 
+        }
+)
+
+# A method for "[" working as subset by traits
+# It is possible to write a method for "[<-" ?
+
+# 2: Methods dealing with the whole slot
 setGeneric("taxonTraits",
 		function(taxlist, ...)
 			standardGeneric("taxonTraits")
@@ -84,13 +105,11 @@ setReplaceMethod("taxonTraits", signature(taxlist="taxlist",
                 value="data.frame"),
         function(taxlist, value) {
             if(!"TaxonConceptID" %in% colnames(value))
-                stop("'TaxonConceptID' is a mandatory field in 'value'",
-                        call.=FALSE)
+                stop("'TaxonConceptID' is a mandatory field in 'value'")
             if(class(value$TaxonConceptID) != "integer")
                 value$TaxonConceptID <- as.integer(value$TaxonConceptID)
             if(any(duplicated(value$TaxonConceptID))) {
-                warning("duplicated concepts will be deleted from 'value'",
-                        call.=FALSE)
+                warning("duplicated concepts will be deleted from 'value'")
                 value <- value[unique(value$TaxonConceptID),]
             }
             rownames(value) <- paste(value$TaxonConceptID)
@@ -102,7 +121,8 @@ setReplaceMethod("taxonTraits", signature(taxlist="taxlist",
                                 value$TaxonConceptID),i]
             }
             return(taxlist)
-        })
+        }
+)
 
 # acceptedName --------------------------------------------------------------------
 setGeneric("acceptedName",
@@ -128,16 +148,15 @@ setReplaceMethod("acceptedName", signature(taxlist="taxlist"),
             if(class(value) != "integer") value <- as.integer(value)
 			# first test
 			if(length(ConceptID) != length(value))
-				stop("ConceptID and value should be of the same length",
-						call.=FALSE)
+				stop("ConceptID and value should be of the same length")
 			if(!all(taxlist@taxonNames[paste(value),
                             "TaxonConceptID"] == ConceptID))
-				stop("new value(s) is(are) not included in the respective taxon concept(s)",
-						call.=FALSE)
+				stop("new value(s) is(are) not included in the respective taxon concept(s)")
 			# now replace
 			taxlist@taxonRelations[paste(ConceptID),"AcceptedName"] <- value
 			return(taxlist)
-		})
+		}
+)
 
 # first_name -------------------------------------------------------------------
 setGeneric("first_name",
@@ -162,18 +181,17 @@ setReplaceMethod("first_name", signature(taxlist="taxlist"),
 		function(taxlist, ConceptID, value) {
 			# first test
 			if(length(ConceptID) != length(value))
-				stop("ConceptID and value should be of the same length",
-						call.=FALSE)
+				stop("ConceptID and value should be of the same length")
             if(class(value) != "integer") value <- as.integer(value)
             if(!all(taxlist@taxonNames[paste(value),
                             "TaxonConceptID"] == ConceptID))
-				stop("new value(s) is(are) not included in the respective taxon concept(s)",
-						call.=FALSE)
+				stop("new value(s) is(are) not included in the respective taxon concept(s)")
             if(class(ConceptID) != "character") ConceptID <- paste(ConceptID)
             # now replace
 			taxlist@taxonRelations[ConceptID,"FirstName"] <- value
 			return(taxlist)
-		})
+		}
+)
 
 # change_concept ---------------------------------------------------------------
 
@@ -188,15 +206,13 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
             if(class(value) != "integer") value <- as.integer(value)
 			# Test
 			if(length(UsageID) != length(value))
-				stop("'UsageID' and 'value' should be of the same length",
-						call.=FALSE)
+				stop("'UsageID' and 'value' should be of the same length")
 			if(any(UsageID %in% taxlist@taxonRelations$AcceptedName))
-				stop("changes on concept are not allowed for accepted names",
-						call.=FALSE)
+				stop("changes on concept are not allowed for accepted names")
 			if(any(UsageID %in% taxlist@taxonRelations$FirstName))
-				stop("changes on concept are not allowed for first names",
-						call.=FALSE)
+				stop("changes on concept are not allowed for first names")
 			# now replace
 			taxlist@taxonNames[paste(UsageID),"TaxonConceptID"] <- value
 			return(taxlist)
-		})
+		}
+)
