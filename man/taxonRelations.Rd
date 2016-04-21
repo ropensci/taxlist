@@ -25,7 +25,7 @@ The function \code{taxonRelations} retrieves or assigns the slot
 \code{\link[=taxlist-class]{taxlist}}.
 
 The \code{data.frame} method can be used to generate the \code{taxonRelations}
-slot from a data frame similar to \code{\link{conosur_splist}} or from a slot
+slot from a data frame similar to \code{\link{EAsplist}} or from a slot
 \code{taxonNames} in a \code{taxlist} object.
 }
 \author{

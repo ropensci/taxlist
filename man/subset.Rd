@@ -29,17 +29,17 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(conosur_splist)
+data(EAsplist)
 
-# subset by Names (all names associated to Weinmannia)
-Splist <- subset(conosur_splist, Names=grepl("Weinmannia", TaxonName))
+# subset by Names (all names associated to Pteris)
+Splist <- subset(EAsplist, Names=grepl("Pteris", TaxonName))
 summary(Splist, "all")
 
-# subset by Relations (Weinmannia trichosperma)
-Splist <- subset(conosur_splist, Relations=TaxonConceptID == 24798)
+# subset by Relations (Pteris muricella)
+Splist <- subset(EAsplist, Relations=TaxonConceptID == 50579)
 summary(Splist, "all")
 
 # subset by Traits (whole family Cunoniaceae)
-Splist <- subset(conosur_splist, Traits=family == "Cunoniaceae")
+Splist <- subset(EAsplist, Traits=FAMILY == "Pteridaceae")
 summary(Splist, "all")
 }

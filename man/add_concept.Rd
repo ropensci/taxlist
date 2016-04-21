@@ -29,17 +29,17 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(conosur_splist)
+data(EAsplist)
 
 ## Subset with Weinmannia species
-Weinmannia <- subset(conosur_splist, Traits=genus == "Weinmannia")
-summary(Weinmannia)
+Ebenaceae <- subset(EAsplist, Traits=FAMILY == "Ebenaceae")
+summary(Ebenaceae)
 
 ## Adding two new concepts
-Weinmannia <- add_concept(Weinmannia, TaxonName=c("tax1","tax2"),
-	AuthorName=c("aut1","aut2"), Link=c("link1","link2"))
+Ebenaceae <- add_concept(Ebenaceae, TaxonName="Euclea acutifolia",
+AuthorName="E. Mey. ex A. DC.", LETTERCODE="EUCLACU")
 
 ## A summary again  
-summary(Weinmannia)
-summary(Weinmannia, "all")
+summary(Ebenaceae)
+summary(Ebenaceae, "all")
 }

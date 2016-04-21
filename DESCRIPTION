@@ -12,7 +12,6 @@ Imports:
     methods,
     vegdata
 Suggests:
-    conosur,
     devtools
 Description: Handling taxonomic lists through objects of class 'taxlist'. Many
     of the concepts and functions implemented here are inspired by the package

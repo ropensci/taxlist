@@ -34,13 +34,13 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(conosur_splist)
+data(EAsplist)
 
-# Adding an hypothetical synonym for Pseudognaphalium cymatoides
-summary(conosur_splist, 75144)
-conosur_splist <- add_name(conosur_splist, ConceptID=75144,
-	TaxonName="Gnaphalium novum", AuthorName="X. Incognito")
+# Adding an hypothetical synonym for Pseudognaphalium luteoalbum
+summary(EAsplist, 462)
+EAsplist <- add_name(EAsplist, ConceptID=462, TaxonName="Gnaphalium novum",
+AuthorName="X. Incognito")
 
 # Display it again
-summary(conosur_splist, 75144)
+summary(EAsplist, 462)
 }

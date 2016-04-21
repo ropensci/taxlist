@@ -1,4 +1,3 @@
-% multi-purpose template
 \name{taxlist-package}
 \docType{package}
 

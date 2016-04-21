@@ -20,7 +20,7 @@ df2taxlist(x, AcceptedName, FirstName, Traits)
 \details{
 This function coerces a data frame containing a species list into an object of
 class \code{\link{taxlist}}. The input data frame \code{x} must have following
-columns (see also \code{\link{conosur_splist}}):
+columns:
 \describe{
 	\item{TaxonUsageID}{Code for the name.}
 	\item{TaxonConceptID}{Code for the taxon.}

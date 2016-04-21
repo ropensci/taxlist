@@ -46,15 +46,15 @@ The option \code{"both"} is included for lists with a field \code{AuthorName}
 combining taxon's and author's names in one string.
 }
 \author{
-Miguel Alvarez, \email{malvarez@uni-bonn.de}
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
 library(taxlist)
-data(conosur_splist)
+data(EAsplist)
 
 ## summary of the object
-summary(conosur_splist)
+summary(EAsplist)
 
 ## summary for two taxa
-summary(conosur_splist,c(193729,75144))
+summary(EAsplist, c(51128,51140))
 }

@@ -1,0 +1,25 @@
+\name{EAsplist-data}
+\docType{data}
+\alias{EAsplist-data}
+\alias{EAsplist}
+
+\title{Species List for East Africa}
+\description{
+This list contains accepted names and synonyms stored in the database
+\href{http://www.givd.info/ID/AF-00-006}{SWEA-Dataveg}.
+Such list is complemented meanwhile plots are imported in the database and may
+be therefore incomplete.
+For the nomenclature, EA-Splist uses as reference the
+\href{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}{African Plant
+Database}.
+}
+\usage{
+data(EAsplist)
+}
+\format{
+An object of class \code{\link[=taxlist-class]{taxlist}}.
+}
+\source{
+\url{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}
+}
+\keyword{datasets}

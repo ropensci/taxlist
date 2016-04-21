@@ -66,24 +66,46 @@ setReplaceMethod("taxonRelations", signature(taxlist="taxlist",
 
 # taxonTraits ------------------------------------------------------------------
 
-# 1: Access methods (as in data frames). Those adapted from package "sp"
+# 1: Access methods (as in data frames)
 setMethod("$", signature(x="taxlist"), function(x, name) {
             if(ncol(x@taxonTraits) == 0)
-                stop("no $ method for taxlist object without traits")
+                stop("no $ method for 'taxlist' object without traits")
             x@taxonTraits[[name]]
         }
 )
 
 setReplaceMethod("$", signature(x="taxlist"), function(x, name, value) {
             if(ncol(x@taxonTraits) == 0)
-                stop("no $<- method for taxlist object without traits")
+                stop("no $<- method for 'taxlist' object without traits")
             x@taxonTraits[[name]] <- value 
             return(x) 
         }
 )
 
-# A method for "[" working as subset by traits
-# It is possible to write a method for "[<-" ?
+setMethod("[", signature(x="taxlist"), function(x, i, j, ..., drop=FALSE) {
+            if(missing(i)) i <- TRUE
+            if(missing(j)) j <- TRUE
+            # Resolving problems with NAs
+            if(is.logical(i)) i[is.na(i)] <- FALSE else i <- na.omit(i)
+            if(is.logical(j)) i[is.na(j)] <- FALSE else j <- na.omit(j)
+            x@taxonTraits <- x@taxonTraits[i,j,drop]
+            x@taxonRelations <- x@taxonRelations[rownames(x@taxonTraits),]
+            x@taxonNames <- x@taxonNames[x@taxonNames$TaxonConceptID %in%
+                            rownames(x@taxonRelations),]
+            return(x)
+        }
+)
+
+setReplaceMethod("[", signature(x="taxlist"), function(x, i, j, value) {
+            if(missing(i)) i <- TRUE
+            if(missing(j)) j <- TRUE
+            # Resolving problems with NAs
+            if(is.logical(i)) i[is.na(i)] <- FALSE else i <- na.omit(i)
+            if(is.logical(j)) i[is.na(j)] <- FALSE else j <- na.omit(j)
+            x@taxonTraits[i,j] <- value
+            return(x)
+        }
+)
 
 # 2: Methods dealing with the whole slot
 setGeneric("taxonTraits",

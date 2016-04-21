@@ -26,21 +26,7 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(conosur_splist)
+data(EAsplist)
 
-## two close related species
-summary(conosur_splist, c(75144,75147))
-
-## assign first names
-first_name(conosur_splist, c(75144,75147)) <- c(70906,70899)
-summary(conosur_splist, c(75144,75147))
-
-## change Gnaphalium robustum to Pseudognaphalium cymatoides
-change_concept(conosur_splist, 70903) <- 75144
-summary(conosur_splist, c(75144,75147))
-\donttest{
-## attempts using first name or accepted names
-change_concept(conosur_splist, 75147) <- 75144
-change_concept(conosur_splist, 70899) <- 75144
-}
+## Add an example
 }
