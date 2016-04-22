@@ -50,11 +50,11 @@ Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
 library(taxlist)
-data(EAsplist)
+data(Easplist)
 
 ## summary of the object
-summary(EAsplist)
+summary(Easplist)
 
 ## summary for two taxa
-summary(EAsplist, c(51128,51140))
+summary(Easplist, c(51128,51140))
 }

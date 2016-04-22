@@ -39,8 +39,8 @@ A rda file inserted in the working directory.
 \examples{
 \dontrun{
 library(taxlist)
-data(EAsplist)
-Pseudognaphalium <- subset(EAsplist, Traits=genus == "Pseudognaphalium")
+data(Easplist)
+Pseudognaphalium <- subset(Easplist, Traits=genus == "Pseudognaphalium")
 
 ## Create a backup with date stamp
 backup_object(Pseudognaphalium, file="Pseudonaphalium")

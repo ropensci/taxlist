@@ -1,7 +1,7 @@
-\name{EAsplist-data}
+\name{Easplist-data}
 \docType{data}
-\alias{EAsplist-data}
-\alias{EAsplist}
+\alias{Easplist-data}
+\alias{Easplist}
 
 \title{Species List for East Africa}
 \description{
@@ -14,7 +14,7 @@ For the nomenclature, EA-Splist uses as reference the
 Database}.
 }
 \usage{
-data(EAsplist)
+data(Easplist)
 }
 \format{
 An object of class \code{\link[=taxlist-class]{taxlist}}.

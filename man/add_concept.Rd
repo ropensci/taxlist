@@ -29,10 +29,10 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(EAsplist)
+data(Easplist)
 
 ## Subset with Weinmannia species
-Ebenaceae <- subset(EAsplist, Traits=FAMILY == "Ebenaceae")
+Ebenaceae <- subset(Easplist, Traits=FAMILY == "Ebenaceae")
 summary(Ebenaceae)
 
 ## Adding two new concepts

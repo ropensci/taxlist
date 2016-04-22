@@ -34,13 +34,13 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(EAsplist)
+data(Easplist)
 
 # Adding an hypothetical synonym for Pseudognaphalium luteoalbum
-summary(EAsplist, 462)
-EAsplist <- add_name(EAsplist, ConceptID=462, TaxonName="Gnaphalium novum",
+summary(Easplist, 462)
+Easplist <- add_name(Easplist, ConceptID=462, TaxonName="Gnaphalium novum",
 AuthorName="X. Incognito")
 
 # Display it again
-summary(EAsplist, 462)
+summary(Easplist, 462)
 }

@@ -29,17 +29,17 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(EAsplist)
+data(Easplist)
 
 # subset by Names (all names associated to Pteris)
-Splist <- subset(EAsplist, Names=grepl("Pteris", TaxonName))
+Splist <- subset(Easplist, Names=grepl("Pteris", TaxonName))
 summary(Splist, "all")
 
 # subset by Relations (Pteris muricella)
-Splist <- subset(EAsplist, Relations=TaxonConceptID == 50579)
+Splist <- subset(Easplist, Relations=TaxonConceptID == 50579)
 summary(Splist, "all")
 
 # subset by Traits (whole family Cunoniaceae)
-Splist <- subset(EAsplist, Traits=FAMILY == "Pteridaceae")
+Splist <- subset(Easplist, Traits=FAMILY == "Pteridaceae")
 summary(Splist, "all")
 }

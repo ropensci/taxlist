@@ -5,25 +5,33 @@
 # taxlist
 
 The aim of `taxlist` is to provide an object structure for taxonomic lists
-and a set some methods to handle the contained information.
-In a first attempt (let us call it the **_first weave_**) this package will
-handle the flat format used by
-[Turboveg](http://www.synbiosys.alterra.nl/turboveg).
-In a second attempt (the **_second weave_**, of course) we may try to insert a
-hierarchical structure to those objects.
+and a set some methods to display and handle the contained information.
+This package should be considered as experimental but we welcome any interest
+to implement it or contribute to `taxlist`.
 
-Objects and functions of `taxlist` will be implemented in an additional package,
-namely [vegtables](https://github.com/kamapu/vegtables).
+**Task One:** The first task is to develop an object class (`taxlist`) for the
+import of taxonomic lists structured as _single database list_.
+In this step we will pay special attention to the format used by
+[Turboveg](http://www.synbiosys.alterra.nl/turboveg) databases.
+
+**Task Two:** While the first task is currently in an advanced stage, the next
+step will be the design of an object class implementing hierarchical structure
+but accessed in a similar way as for the class `taxlist`.
+
+Objects and functions of `taxlist` will be also implemented as part of objects
+containing information from vegetation-plot databases (look at
+[vegtables](https://github.com/kamapu/vegtables)).
 
 This package has been developed as a tool handling data stored in
-[SWEA-Dataveg](http://www.givd.info/ID/AF-00-006).
-This activity is running in the context of the project
-[GlobE-wetlands](https://www.wetlands-africa.de/).
+[SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), which is managed in the
+context of the project [GlobE-wetlands](https://www.wetlands-africa.de).
 
 ## Updating to the last version of taxlist
 You may have previously installed the R-package
-[devtools](https://github.com/hadley/devtools).
-Then execute following commands in your R-session:
+[devtools](https://github.com/hadley/devtools) (we recommend to use the command
+`install.packages("devtools", dependencies=TRUE)`).
+After that, you may be able to get the last uploaded version using following
+command lines in your **R-Console**:
 
 
 ```r
@@ -34,18 +42,20 @@ install_github("kamapu/taxlist")
 ## Some examples
 
 ### Working with East African plants (on-going project)
-Our current vegetation database is connected to the species list **EA-Splist**.
-This list is uses as main reference the
-[African Plant Database](http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php)
-for nomenclature.
-You can use following code to load the last version of the species list:
+The vegetation-plot database [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006)
+is connected to the species list **EA-Splist**.
+This list uses as main nomenclatorial reference the
+[African Plant Database](http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php).
+An actualized version of the list may be available in the homepage of the
+[GlobE-wetlands](https://www.wetlands-africa.de) project.
+You may be aware that `EA-Splist` is mainly including names and taxa occurring
+in `SWEA-Dataveg` and is not a complete list of the flora for East Africa.
 
 
 ```r
+# Load EA-Splist and test the validity of the taxlist-object
 library(taxlist)
 load(url("https://www.wetlands-africa.de/publications/Easplist.rda"))
-
-# Test for the validity of the object
 validObject(Easplist)
 #> [1] TRUE
 
@@ -56,10 +66,17 @@ summary(Easplist)
 #> 2 variables for taxon traits 
 #> validation for class 'taxlist': TRUE
 
-# You can also get a listing of stored names for a species
-summary(subset(Easplist, TaxonName == "Cyclosorus interruptus"), "all")
+# To know, how many genera and how many families are included in the list
+length(unique(Easplist$GENUS))
+#> [1] 991
+length(unique(Easplist$FAMILY))
+#> [1] 183
+
+# You can also get subsets and listing of all stored names for a species
+Cyclosorus <- subset(Easplist, TaxonName == "Cyclosorus interruptus")
+summary(Cyclosorus, "all")
 #> ------------------------------ 
-#> # Valid name for taxon concept '50074':
+#> # Accepted name for taxon concept '50074':
 #> 50074 Cyclosorus interruptus (Willd.) H. Itô 
 #> 
 #> # First name: 
@@ -83,9 +100,9 @@ summary(subset(Easplist, TaxonName == "Cyclosorus interruptus"), "all")
 ```
 
 ## Acknowledgements
-The author thanks **Stephan Hennekens**, the developer of
-[Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and huge
-support finding a common language between **R** and **Turboveg** as well as for
+The author thanks **Stephan Hennekens**, developer of
+[Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and great
+support finding a common language between **R** and **Turboveg**, as well as for
 his advices on formatting **EA-Splist**.
 
 Also thanks to **Federico Luebert** for the fruitful discussions regarding the

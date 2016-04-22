@@ -34,17 +34,17 @@ Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
 library(taxlist)
-data(EAsplist)
+data(Easplist)
 
 ## Assign first name to Cyclosorus interruptus
-first_name(EAsplist, 50074) <- 53097
-summary(EAsplist, 50074)
+first_name(Easplist, 50074) <- 53097
+summary(Easplist, 50074)
 
 ## set a new accepted name (the first name)
-acceptedName(EAsplist, 50074) <- 53097
-summary(EAsplist, 50074)
+acceptedName(Easplist, 50074) <- 53097
+summary(Easplist, 50074)
 \donttest{
 ## attempt to use a name from another concept
-acceptedName(EAsplist, 50074) <- 51129
+acceptedName(Easplist, 50074) <- 51129
 }
 }

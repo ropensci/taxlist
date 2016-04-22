@@ -37,15 +37,15 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(EAsplist)
+data(Easplist)
 
 ## Missing first name for Pseudognaphalium cymatoides
-summary(EAsplist, 50074)
+summary(Easplist, 50074)
 
 ## Assign first name
-first_name(EAsplist, 50074) <- 53097
-summary(EAsplist, 50074)
+first_name(Easplist, 50074) <- 53097
+summary(Easplist, 50074)
 
 ## Retrieve first name
-first_name(EAsplist, 50074)
+first_name(Easplist, 50074)
 }

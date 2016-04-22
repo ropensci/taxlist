@@ -26,7 +26,7 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
 library(taxlist)
-data(EAsplist)
+data(Easplist)
 
 ## Add an example
 }
