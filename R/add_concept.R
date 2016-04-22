@@ -23,7 +23,7 @@ add_concept <- function(taxlist, TaxonName, AuthorName, ...) {
         taxlist <- do.call(add_name, append(list(taxlist=taxlist,
                                 ConceptID=ConceptID[i], TaxonName=TaxonName[i],
                                 AuthorName=AuthorName[i]), sapply(list(...),
-                                "[", 2, simplify=FALSE)))
+                                "[", i, simplify=FALSE)))
     }
     # slot taxonTraits
     OldTraits <- taxonTraits(taxlist)

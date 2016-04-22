@@ -146,25 +146,25 @@ setReplaceMethod("taxonTraits", signature(taxlist="taxlist",
         }
 )
 
-# acceptedName --------------------------------------------------------------------
-setGeneric("acceptedName",
+# accepted_name --------------------------------------------------------------------
+setGeneric("accepted_name",
 		function(taxlist, ConceptID, ...)
-			standardGeneric("acceptedName")
+			standardGeneric("accepted_name")
 )
 
 # Set method for taxlist
-setMethod("acceptedName", signature(taxlist="taxlist"),
+setMethod("accepted_name", signature(taxlist="taxlist"),
 		function(taxlist, ConceptID, ...) {
 			taxlist@taxonRelations[paste(ConceptID),"AcceptedName"]
 		}
 )
 
 # Replacement methods
-setGeneric("acceptedName<-", function(taxlist, ConceptID, value)
-			standardGeneric("acceptedName<-"))
+setGeneric("accepted_name<-", function(taxlist, ConceptID, value)
+			standardGeneric("accepted_name<-"))
 
 # Replacement for taxlist
-setReplaceMethod("acceptedName", signature(taxlist="taxlist"),
+setReplaceMethod("accepted_name", signature(taxlist="taxlist"),
 		function(taxlist, ConceptID, value) {
             if(class(ConceptID) != "integer") ConceptID <- as.integer(ConceptID)
             if(class(value) != "integer") value <- as.integer(value)

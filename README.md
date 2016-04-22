@@ -72,8 +72,13 @@ length(unique(Easplist$GENUS))
 length(unique(Easplist$FAMILY))
 #> [1] 183
 
-# You can also get subsets and listing of all stored names for a species
+# You can also get subsets and listings of all stored names for a species
 Cyclosorus <- subset(Easplist, TaxonName == "Cyclosorus interruptus")
+summary(Cyclosorus)
+#> 14 names for 1 taxon 
+#> 0 (0%) taxa with first name entries
+#> 2 variables for taxon traits 
+#> validation for class 'taxlist': TRUE
 summary(Cyclosorus, "all")
 #> ------------------------------ 
 #> # Accepted name for taxon concept '50074':

@@ -17,7 +17,7 @@ Description: Handling taxonomic lists through objects of class 'taxlist'. Many
     of the concepts and functions implemented here are inspired by the package
     'vegdata'. This package also provides functions to import species lists from
     'Turboveg' and the possibility to create backups from resulting R-objects.
-    Also diverse displays are implemented as print-methods.
+    Also diverse displays are implemented as summary-methods.
 License: GPL (>= 2)
 URL: https://github.com/kamapu/taxlist
 BugReports: https://github.com/kamapu/taxlist/issues
