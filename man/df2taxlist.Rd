@@ -35,17 +35,15 @@ An object of class \code{\link[=taxlist-class]{taxlist}}.
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
-\donttest{
 ## Two files are included in the package installation
 library(taxlist)
-setwd(file.path(path.package("taxlits"), "cyperus"))
+setwd(file.path(path.package("taxlist"), "cyperus"))
 
 ## Read the table with names of Cyperus species
-Cyperus <- read.csv("names.csv")
+Cyperus <- read.csv("names.csv", stringsAsFactors=FALSE)
 head(Cyperus)
 
 ## Convert to 'taxlist' object
-Cyperus <- df2taxlist(Cyperus)
+Cyperus <- df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM)
 summary(Cyperus)
-}
 }
