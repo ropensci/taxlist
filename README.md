@@ -31,7 +31,7 @@ You may have previously installed the R-package
 [devtools](https://github.com/hadley/devtools) (we recommend to use the command
 `install.packages("devtools", dependencies=TRUE)`).
 After that, you may be able to get the last uploaded version using following
-command lines in your **R-Console**:
+command lines in your `R-Console`:
 
 
 ```r
@@ -43,7 +43,7 @@ install_github("kamapu/taxlist")
 
 ### Working with East African plants (on-going project)
 The vegetation-plot database [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006)
-is connected to the species list **EA-Splist**.
+is connected to the species list `EA-Splist`.
 This list uses as main nomenclatorial reference the
 [African Plant Database](http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php).
 An actualized version of the list may be available in the homepage of the
@@ -102,8 +102,8 @@ summary(Cyclosorus, "all")
 ## Acknowledgements
 The author thanks **Stephan Hennekens**, developer of
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and great
-support finding a common language between **R** and **Turboveg**, as well as for
-his advices on formatting **EA-Splist**.
+support finding a common language between `R` and `Turboveg`, as well as for
+his advices on formatting `EA-Splist`.
 
 Also thanks to **Federico Luebert** for the fruitful discussions regarding the
 terminology used in this project.
