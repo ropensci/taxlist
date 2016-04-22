@@ -12,20 +12,30 @@ by \code{taxonNames}, \code{taxonRelations} or \code{taxonTraits} slots.
 \S4method{subset}{taxlist}(x, Names, Relations, Traits, ...)
 }
 \arguments{
-	\item{x}{object of class \code{\link[=taxlist-class]{taxlist}}.}
-	\item{Names}{logical operation to be applied at the \code{taxonNames} slot.}
-	\item{Relations}{logical operation to be applied at the
-		\code{taxonRealtions} slot.}
-	\item{Traits}{logical operation to be applied at the \code{taxonTraits}
-		slot.}
-	\item{...}{further arguments to be passed to or from other methods.}
+\item{x}{Object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{Names}{Logical vector indicating selected elements in slot
+	\code{taxonNames}.}
+\item{Relations}{Logical vector indicating selected elements in slot
+	\code{taxonRealtions}.}
+\item{Traits}{Logical vector indicating selected elements in slot
+	\code{taxonTraits}.}
+\item{...}{further arguments to be passed to or from other methods.}
 }
 \details{
-Explain more!
+This method is applied to objects of class \code{\link[=taxlist-class]{taxlist}}
+in order to generate subsets of such objects.
+The criteria for subsets can be applied to any of the slots included in those
+objects (they can be applied simultaneously to all three slots).
+
+In the case of subset applied to the slot \code{taxonNames}, non-matching names
+belonging to the same concepts as the matching ones will be preserved in the
+subset.
 }
-\value{A S4 object of class \code{\link[=taxlist-class]{taxlist}}.}
+\value{
+A S4 object of class \code{\link[=taxlist-class]{taxlist}}.
+}
 \author{
-Miguel Alvarez, \email{malvarez@uni-bonn.de}
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
 library(taxlist)

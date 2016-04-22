@@ -1,7 +1,7 @@
 \name{taxlist-package}
 \docType{package}
-
 \alias{taxlist-package}
+
 \title{Handling Taxonomic Lists.}
 \description{
 This package offers some functions to handle taxonomic lists, focusing on

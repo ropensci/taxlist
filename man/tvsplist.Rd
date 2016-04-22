@@ -35,10 +35,11 @@ An object of class \code{\link[=taxlist-class]{taxlist}}.
 Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \examples{
-library(taxlist)
 \donttest{
-## Example using GermanSL 1.3, downloaded from following link:
-## http://www.botanik.uni-greifswald.de/2305.html
-Species <- tvsplist("GermanSL 1.3")
+library(taxlist)
+
+## Loading GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
+GermanSL <- tvsplist("GermanSL 1.3", path.package("taxlist"))
+summary(GermanSL)
 }
 }

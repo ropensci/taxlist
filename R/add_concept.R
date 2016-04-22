@@ -26,11 +26,11 @@ add_concept <- function(taxlist, TaxonName, AuthorName, ...) {
                                 "[", i, simplify=FALSE)))
     }
     # slot taxonTraits
-    OldTraits <- taxonTraits(taxlist)
+    OldTraits <- taxon_traits(taxlist)
     taxlist@taxonTraits <- data.frame(
             TaxonConceptID=taxlist@taxonRelations[,"TaxonConceptID"],
             row.names=paste(taxlist@taxonRelations[,"TaxonConceptID"]))
-    taxonTraits(taxlist) <- OldTraits
+    taxon_traits(taxlist) <- OldTraits
 	# return modified taxlist
 	return(taxlist)
 }

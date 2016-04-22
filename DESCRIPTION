@@ -1,7 +1,7 @@
 Package: taxlist
-Version: 0.0.0.9006
+Version: 0.0.0.9007
 Encoding: UTF-8
-Date: 2016-04-20
+Date: 2016-04-22
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <malvarez@uni-bonn.de>
 Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>

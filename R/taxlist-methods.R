@@ -3,37 +3,37 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-# taxonNames -------------------------------------------------------------------
-setGeneric("taxonNames",
+# taxon_names ------------------------------------------------------------------
+setGeneric("taxon_names",
 		function(taxlist, ...)
-			standardGeneric("taxonNames")
+			standardGeneric("taxon_names")
 )
 
 # Set method for taxlist
-setMethod("taxonNames", signature(taxlist="taxlist"),
+setMethod("taxon_names", signature(taxlist="taxlist"),
 		function(taxlist, ...) taxlist@taxonNames
 )
 
 # Replacement methods
-setGeneric("taxonNames<-", function(taxlist, value)
-			standardGeneric("taxonNames<-"))
+setGeneric("taxon_names<-", function(taxlist, value)
+			standardGeneric("taxon_names<-"))
 
 # Replacement for taxlist
-setReplaceMethod("taxonNames", signature(taxlist="taxlist",
+setReplaceMethod("taxon_names", signature(taxlist="taxlist",
 				value="data.frame"), function(taxlist, value) {
 			taxlist@taxonNames <- value
 			return(taxlist)
 		}
 )
 
-# taxonRelations ---------------------------------------------------------------
-setGeneric("taxonRelations",
+# taxon_relations --------------------------------------------------------------
+setGeneric("taxon_relations",
 		function(taxlist, ...)
-			standardGeneric("taxonRelations")
+			standardGeneric("taxon_relations")
 )
 
 # Method for data frames
-setMethod("taxonRelations", signature(taxlist="data.frame"),
+setMethod("taxon_relations", signature(taxlist="data.frame"),
 		function(taxlist, ...) {
 			if(!all(c("TaxonUsageID","TaxonConceptID") %in% colnames(taxlist)))
 				stop("TaxonUsageID and TaxonConceptID are mandatory columns")
@@ -48,23 +48,23 @@ setMethod("taxonRelations", signature(taxlist="data.frame"),
 )
 
 # Set method for taxlist
-setMethod("taxonRelations", signature(taxlist="taxlist"),
+setMethod("taxon_relations", signature(taxlist="taxlist"),
 		function(taxlist, ...) taxlist@taxonRelations
 )
 
 # Replacement methods
-setGeneric("taxonRelations<-", function(taxlist, value)
-			standardGeneric("taxonRelations<-"))
+setGeneric("taxon_relations<-", function(taxlist, value)
+			standardGeneric("taxon_relations<-"))
 
 # Replacement for taxlist
-setReplaceMethod("taxonRelations", signature(taxlist="taxlist",
+setReplaceMethod("taxon_relations", signature(taxlist="taxlist",
 				value="data.frame"), function(taxlist, value) {
 			taxlist@taxonRelations <- value
 			return(taxlist)
 		}
 )
 
-# taxonTraits ------------------------------------------------------------------
+# taxon_traits -----------------------------------------------------------------
 
 # 1: Access methods (as in data frames)
 setMethod("$", signature(x="taxlist"), function(x, name) {
@@ -108,22 +108,22 @@ setReplaceMethod("[", signature(x="taxlist"), function(x, i, j, value) {
 )
 
 # 2: Methods dealing with the whole slot
-setGeneric("taxonTraits",
+setGeneric("taxon_traits",
 		function(taxlist, ...)
-			standardGeneric("taxonTraits")
+			standardGeneric("taxon_traits")
 )
 
 # Set method for taxlist
-setMethod("taxonTraits", signature(taxlist="taxlist"),
+setMethod("taxon_traits", signature(taxlist="taxlist"),
 		function(taxlist, ...) taxlist@taxonTraits
 )
 
 # Generic for replacement method
-setGeneric("taxonTraits<-", function(taxlist, value)
-            standardGeneric("taxonTraits<-"))
+setGeneric("taxon_traits<-", function(taxlist, value)
+            standardGeneric("taxon_traits<-"))
 
 # Definition of method
-setReplaceMethod("taxonTraits", signature(taxlist="taxlist",
+setReplaceMethod("taxon_traits", signature(taxlist="taxlist",
                 value="data.frame"),
         function(taxlist, value) {
             if(!"TaxonConceptID" %in% colnames(value))

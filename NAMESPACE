@@ -22,12 +22,12 @@ exportMethods(
 	merge_taxa,
 	subset,
 	summary,
-	taxonNames,
-	"taxonNames<-",
-	taxonRelations,
-	"taxonRelations<-",
-	taxonTraits,
-	"taxonTraits<-"
+	taxon_names,
+	"taxon_names<-",
+	taxon_relations,
+	"taxon_relations<-",
+	taxon_traits,
+	"taxon_traits<-"
 )
 
 # Export of regular function names

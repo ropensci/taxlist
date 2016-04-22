@@ -33,7 +33,7 @@ Miguel Alvarez, \email{malvarez@uni-bonn.de}
 library(taxlist)
 data(Easplist)
 
-## Subset with Weinmannia species
+## Subset with Ebenaceae species
 Ebenaceae <- subset(Easplist, Traits=FAMILY == "Ebenaceae")
 summary(Ebenaceae)
 

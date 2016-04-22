@@ -21,7 +21,7 @@ tvsplist <- function(taxlist, tv_home=tv.home()) {
 		ecodbase <- read.dbf(file.path(tv_home, "ecodbase.dbf"), as.is=TRUE)
 		names(ecodbase) <- replace(names(ecodbase),
                 names(ecodbase) == "SPECIES_NR", "TaxonConceptID")
-        taxonTraits(species) <- ecodbase
+        taxon_traits(species) <- ecodbase
     }
 	return(species)
 }

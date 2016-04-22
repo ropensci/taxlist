@@ -44,6 +44,6 @@ df2taxlist <- function(x, AcceptedName, FirstName, Traits) {
             row.names=paste(taxonRelations[,"TaxonConceptID"]))
     x <- new("taxlist", taxonNames=x, taxonRelations=taxonRelations,
             taxonTraits=traitsTable)
-    if(!missing(Traits)) taxonTraits(x) <- Traits
+    if(!missing(Traits)) taxon_traits(x) <- Traits
     return(x)
 }
