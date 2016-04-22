@@ -39,7 +39,7 @@ summary(Splist, "all")
 Splist <- subset(Easplist, Relations=TaxonConceptID == 50579)
 summary(Splist, "all")
 
-# subset by Traits (whole family Cunoniaceae)
+# subset by Traits (whole family Pteridaceae)
 Splist <- subset(Easplist, Traits=FAMILY == "Pteridaceae")
 summary(Splist, "all")
 }

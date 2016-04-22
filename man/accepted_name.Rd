@@ -22,12 +22,18 @@ accepted_name(taxlist, ConceptID) <- value
 \item{...}{Further arguments to pass from or to methods.}
 }
 \details{
-The function \code{accepted_name<-} changes the information contained in the slot
+The method \code{accepted_name<-} changes the information contained in the slot
 \code{taxonRelations} assigning the new \code{value} in the column
 \code{AcceptedName}, which is supposed to be an usage ID.
-For such procedure it is required that the usage \code{value} belongs to the
-taxon concept for which it will be set as accepted name, otherwise the function
-returns an error message.
+For such procedure \code{value} must belong to the concept, where it will be
+set as new accepted name, otherwise the function will return an error message.
+
+The arguments \code{ConcpetID} and \code{value} can be also vectors, then of the
+same length.
+}
+\value{
+An integer vector with the retrieved IDs or an object of class
+\code{\link[=taxlist-class]{taxlist}} with modified entries.
 }
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).

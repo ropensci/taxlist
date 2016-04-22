@@ -1,9 +1,9 @@
 \name{add_concept}
 \alias{add_concept}
 
-\title{Insert a New Concept in a taxlist Object.}
+\title{Insert a New Concept in a \sQuote{taxlist} Object.}
 \description{
-New taxa (taxon concepts) can be inserted in an object of class
+New taxa (taxon concepts) can be added complementing objects of class
 \code{\link[=taxlist-class]{taxlist}}.
 }
 \usage{
@@ -17,12 +17,14 @@ add_concept(taxlist, TaxonName, AuthorName, ...)
 	\code{'taxonNames'}.}
 }
 \details{
-Concept and usage IDs will be generated automatically.
-Additional named vector will be included in the slot \code{taxonName}, when
-those variables already exist in \code{taxlist}.
+Concept and usage IDs will be generated automatically according to the highest
+existing IDs.
+Additional named vectors will be included in the slot \code{taxonName}, in the
+cases where those variables already exist, otherwise they will be ignored.
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}} with added names.
+An object of class \code{\link[=taxlist-class]{taxlist}} with added names and
+concepts.
 }
 \author{
 Miguel Alvarez, \email{malvarez@uni-bonn.de}

@@ -1,7 +1,7 @@
 \name{backup_object}
 \alias{backup_object}
 
-\title{Option to Produce backups of R Objects}
+\title{Option to Produce Backups of R Objects.}
 \description{
 This function is a wrapper for \code{\link{save}}.
 }
@@ -34,7 +34,7 @@ Saved backups can be imported to the session by using \code{\link{load}}.
 A rda file inserted in the working directory.
 }
 \seealso{
-	\code{\link{save}}
+\code{\link{save}}, \code{\link{load}}.
 }
 \examples{
 \dontrun{

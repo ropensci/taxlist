@@ -173,7 +173,7 @@ setReplaceMethod("accepted_name", signature(taxlist="taxlist"),
 				stop("ConceptID and value should be of the same length")
 			if(!all(taxlist@taxonNames[paste(value),
                             "TaxonConceptID"] == ConceptID))
-				stop("new value(s) is(are) not included in the respective taxon concept(s)")
+				stop("new value is not included in the respective taxon concept")
 			# now replace
 			taxlist@taxonRelations[paste(ConceptID),"AcceptedName"] <- value
 			return(taxlist)
@@ -207,7 +207,7 @@ setReplaceMethod("first_name", signature(taxlist="taxlist"),
             if(class(value) != "integer") value <- as.integer(value)
             if(!all(taxlist@taxonNames[paste(value),
                             "TaxonConceptID"] == ConceptID))
-				stop("new value(s) is(are) not included in the respective taxon concept(s)")
+				stop("new value is not included in the respective taxon concept")
             if(class(ConceptID) != "character") ConceptID <- paste(ConceptID)
             # now replace
 			taxlist@taxonRelations[ConceptID,"FirstName"] <- value
@@ -232,7 +232,7 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
 			if(any(UsageID %in% taxlist@taxonRelations$AcceptedName))
 				stop("changes on concept are not allowed for accepted names")
 			if(any(UsageID %in% taxlist@taxonRelations$FirstName))
-				stop("changes on concept are not allowed for first names")
+				stop("changes of concept are not allowed for first names")
 			# now replace
 			taxlist@taxonNames[paste(UsageID),"TaxonConceptID"] <- value
 			return(taxlist)

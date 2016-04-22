@@ -22,14 +22,30 @@ This function coerces a data frame containing a species list into an object of
 class \code{\link{taxlist}}. The input data frame \code{x} must have following
 columns:
 \describe{
-	\item{TaxonUsageID}{Code for the name.}
-	\item{TaxonConceptID}{Code for the taxon.}
-	\item{TaxonName}{Full name of taxon.}
+	\item{TaxonUsageID}{Numeric code for the name.}
+	\item{TaxonConceptID}{Numeric code for the concept.}
+	\item{TaxonName}{Full name (usage), excluding author name.}
 	\item{AuthorName}{Author of the combination (taxon name).}
 }
 }
+\value{
+An object of class \code{\link[=taxlist-class]{taxlist}}.
+}
 \author{
-Miguel Alvarez, \email{malvarez@uni-bonn.de}
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
+\donttest{
+## Two files are included in the package installation
+library(taxlist)
+setwd(file.path(path.package("taxlits"), "cyperus"))
+
+## Read the table with names of Cyperus species
+Cyperus <- read.csv("names.csv")
+head(Cyperus)
+
+## Convert to 'taxlist' object
+Cyperus <- df2taxlist(Cyperus)
+summary(Cyperus)
+}
 }

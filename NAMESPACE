@@ -19,7 +19,7 @@ exportMethods(
 	"change_concept<-",
 	first_name,
 	"first_name<-",
-	merge_species,
+	merge_taxa,
 	subset,
 	summary,
 	taxonNames,
