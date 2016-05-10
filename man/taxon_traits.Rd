@@ -13,6 +13,11 @@
 
 \title{Retrieve or Assign Slot \dQuote{taxonTraits} to a \dQuote{taxlist}
 Object.}
+\description{
+The function \code{taxon_traits} retrieves or assigns the slot
+\code{taxonTraits} to objects of the class
+\code{\link[=taxlist-class]{taxlist}}.
+}
 \usage{
 \S4method{taxon_traits}{taxlist}(taxlist, ...)
 \S4method{$}{taxlist}(x, name)
@@ -30,11 +35,6 @@ x[i,j] <- value
 \item{name}{A name to access.}
 \item{i,j}{Indices for access.}
 \item{drop}{A logical value passed to \code{\link{Extract}}.}
-}
-\description{
-The function \code{taxon_traits} retrieves or assigns the slot
-\code{taxonTraits} to objects of the class
-\code{\link[=taxlist-class]{taxlist}}.
 }
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).
