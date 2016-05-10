@@ -238,3 +238,40 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
 			return(taxlist)
 		}
 )
+
+# concept_views ----------------------------------------------------------------
+setGeneric("concept_views",
+        function(taxlist, ...)
+            standardGeneric("concept_views")
+)
+
+# Set method for taxlist
+setMethod("concept_views", signature(taxlist="taxlist"),
+        function(taxlist, ...) return(taxlist@conceptViews)
+)
+
+# Replacement methods
+setGeneric("concept_views<-", function(taxlist, value)
+            standardGeneric("concept_views<-"))
+
+# Replacement methods for the assignment to slot taxonRelations
+setReplaceMethod("concept_views", signature(taxlist="taxlist", value="integer"),
+        function(taxlist, value) {
+            if(length(value) != nrow(taxlist@taxonRelations))
+                stop("length of 'value' must be the same as number of concepts in 'taxlist'")
+            taxlist@taxonRelations$View <- value
+            if(nrow(taxlist@conceptViews) == 0) {
+                taxlist@conceptViews <- data.frame(View=unique(value),
+                        row.names=paste(unique(value)))
+            }
+            return(taxlist)
+        }
+)
+
+# Replacement methods for the assignment to slot conceptViews
+setReplaceMethod("concept_views", signature(taxlist="taxlist",
+                value="data.frame"), function(taxlist, value) {
+            taxlist@conceptViews <- value
+            return(taxlist)
+        }
+)

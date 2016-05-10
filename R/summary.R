@@ -12,6 +12,7 @@ overview_taxlist <- function(x) {
                             nrow(x@taxonRelations)*100),
             "%) taxa with first name entries", sep="", "\n")
     cat(ncol(x@taxonTraits) - 1, "variables for taxon traits", sep=" ", "\n")
+    cat(nrow(x@conceptViews), "concept view(s)", sep=" ", "\n")
     cat("validation for class 'taxlist':", validObject(x), "\n")
     cat("\n")
 }
@@ -72,7 +73,8 @@ overview_taxon <- function(x, taxon, display, validate) {
     # Now print
     for(i in taxon) {
         cat("------------------------------", "\n")
-        cat("# Accepted name for taxon concept '", i, "':", sep="", "\n")
+        cat("# Accepted name for taxon concept '", i, "' (concept view ",
+                paste(taxon_relations(x)[i,"View"]), "):", sep="", "\n")
         cat(AcceptedName[i], "\n")
         cat("\n")
         cat("# First name:", "\n")

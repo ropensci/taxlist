@@ -14,12 +14,14 @@ Objects can be created by calls of the form \code{new("taxlist")}.
 Objects of this class are composed of three slots, every one corresponding to
 a data frame:
 \describe{
-	\item{\code{taxonNames}:}{Alternative names (accepted and synonym ones) for
-		every concept.}
-    \item{\code{taxonRelations}:}{Relations between concepts, accepted and first
-    	 names.}
-    \item{\code{taxonTraits}:}{Traits of every concept (taxon).}
-  }
+\item{\code{taxonNames}:}{Alternative names (accepted and synonym ones) for
+	every concept.}
+\item{\code{taxonRelations}:}{Relations between concepts, accepted and first
+	names.}
+\item{\code{taxonTraits}:}{Traits of every concept (taxon).}
+\item{\code{conceptViews}:}{View used to determine the respective concepts
+	(relations between names).}
+}
 }
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).

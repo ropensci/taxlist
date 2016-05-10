@@ -39,6 +39,7 @@ df2taxlist <- function(x, AcceptedName, FirstName, Traits) {
                         taxonRelations$TaxonConceptID,
                         FirstName$TaxonConceptID)]
     } else taxonRelations$FirstName <- as.integer(rep(NA, nrow(taxonRelations)))
+    taxonRelations$View <- as.integer(rep(NA, nrow(taxonRelations)))
     # taxon traits
     traitsTable <- data.frame(TaxonConceptID=taxonRelations[,"TaxonConceptID"],
             row.names=paste(taxonRelations[,"TaxonConceptID"]))

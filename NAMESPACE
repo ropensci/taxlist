@@ -14,26 +14,23 @@ exportClasses(
 ## Export methods
 exportMethods(
 	"[", "[<-", "$", "$<-",
-	accepted_name,
-	"accepted_name<-",
+	accepted_name,"accepted_name<-",
 	"change_concept<-",
-	first_name,
-	"first_name<-",
+	concept_views,"concept_views<-",
+	first_name,"first_name<-",
 	merge_taxa,
 	subset,
 	summary,
-	taxon_names,
-	"taxon_names<-",
-	taxon_relations,
-	"taxon_relations<-",
-	taxon_traits,
-	"taxon_traits<-"
+	taxon_names,"taxon_names<-",
+	taxon_relations,"taxon_relations<-",
+	taxon_traits,"taxon_traits<-"
 )
 
 # Export of regular function names
 export(
 	add_concept,
 	add_name,
+	add_view,
 	backup_object,
 	df2taxlist,
 	tvsplist

@@ -23,5 +23,8 @@ tvsplist <- function(taxlist, tv_home=tv.home()) {
                 names(ecodbase) == "SPECIES_NR", "TaxonConceptID")
         taxon_traits(species) <- ecodbase
     }
+    concept_views(species) <- rep(as.integer(1), nrow(species@taxonRelations))
+    concept_views(species) <- data.frame(View=1, Author=taxlist, Year="",
+            Title="", Published="", row.names=paste(1), stringsAsFactors=FALSE)
 	return(species)
 }

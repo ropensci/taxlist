@@ -3,19 +3,20 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-add_concept <- function(taxlist, TaxonName, AuthorName, ...) {
+add_concept <- function(taxlist, View, TaxonName, AuthorName, ...) {
 	if(class(taxlist) != "taxlist")
 		stop("'taxlist' must be an object of class taxlist")
     # New concept IDs
     ConceptID <- max(taxlist@taxonNames$TaxonConceptID)
     ConceptID <- (ConceptID + 1):(ConceptID + length(TaxonName))
+    View <- rep_len(View, length(ConceptID))
     # New usage IDs
     UsageID <- max(taxlist@taxonNames$TaxonUsageID)
     UsageID <- (UsageID + 1):(UsageID + length(TaxonName))
     # slot taxonRelations
     taxlist@taxonRelations <- do.call(rbind, list(taxlist@taxonRelations,
                     data.frame(TaxonConceptID=ConceptID, AcceptedName=UsageID,
-                            FirstName=NA)))
+                            FirstName=NA, View=View)))
     rownames(taxlist@taxonRelations) <- paste(
             taxlist@taxonRelations$TaxonConceptID)
     # slot taxonNames
@@ -31,6 +32,6 @@ add_concept <- function(taxlist, TaxonName, AuthorName, ...) {
             TaxonConceptID=taxlist@taxonRelations[,"TaxonConceptID"],
             row.names=paste(taxlist@taxonRelations[,"TaxonConceptID"]))
     taxon_traits(taxlist) <- OldTraits
-	# return modified taxlist
+    # return modified taxlist
 	return(taxlist)
 }

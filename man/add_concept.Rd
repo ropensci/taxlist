@@ -38,7 +38,7 @@ Ebenaceae <- subset(Easplist, Traits=FAMILY == "Ebenaceae")
 summary(Ebenaceae)
 
 ## Adding two new concepts
-Ebenaceae <- add_concept(Ebenaceae, TaxonName="Euclea acutifolia",
+Ebenaceae <- add_concept(Ebenaceae, View=1, TaxonName="Euclea acutifolia",
 AuthorName="E. Mey. ex A. DC.", LETTERCODE="EUCLACU")
 
 ## A summary again  
