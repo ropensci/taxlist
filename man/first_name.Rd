@@ -22,8 +22,8 @@ first_name(taxlist, ConceptID) <- value
 \item{...}{Further arguments to pass from or to other methods.}
 }
 \details{
-Function \code{'first_name'} retrieves the usage ID for a requested concept.
-The application \code{'first_name<-'} will change the information contained in
+Function \code{first_name} retrieves the usage ID for a requested concept.
+The replacement method will change the information contained in
 the slot \code{taxonRelations} assigning the new \code{value} in the columns
 \code{first_name}, which is supposed to be a usage ID.
 For this change the \code{value} must be included as usage for the concept

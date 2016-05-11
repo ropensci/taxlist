@@ -3,7 +3,7 @@
 \alias{taxlist-class}
 \alias{taxlist}
 
-\title{Class \dQuote{taxlist}.}
+\title{Class taxlist.}
 \description{
 Class for species (taxon) lists including synonyms.
 }
@@ -19,12 +19,18 @@ a data frame:
 \item{\code{taxonRelations}:}{Relations between concepts, accepted and first
 	names.}
 \item{\code{taxonTraits}:}{Traits of every concept (taxon).}
-\item{\code{conceptViews}:}{View used to determine the respective concepts
+\item{\code{taxonViews}:}{View used to determine the respective concepts
 	(relations between names).}
 }
 }
+\details{
+An extended description may be inserted here!!!
+}
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+}
+\references{
+References may be inserted in attention to the description.
 }
 \examples{
 showClass("taxlist")

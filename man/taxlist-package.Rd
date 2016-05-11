@@ -26,7 +26,7 @@ lists in vegetation-plot databases.
 }
 \examples{
 \dontrun{
-## How to install taxlist
+## Installing the last version from GitHub
 library(devtools)
 install_github("kamapu/taxlist")
 }

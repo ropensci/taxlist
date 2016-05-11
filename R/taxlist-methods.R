@@ -239,39 +239,39 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
 		}
 )
 
-# concept_views ----------------------------------------------------------------
-setGeneric("concept_views",
+# taxon_views ----------------------------------------------------------------
+setGeneric("taxon_views",
         function(taxlist, ...)
-            standardGeneric("concept_views")
+            standardGeneric("taxon_views")
 )
 
 # Set method for taxlist
-setMethod("concept_views", signature(taxlist="taxlist"),
-        function(taxlist, ...) return(taxlist@conceptViews)
+setMethod("taxon_views", signature(taxlist="taxlist"),
+        function(taxlist, ...) return(taxlist@taxonViews)
 )
 
 # Replacement methods
-setGeneric("concept_views<-", function(taxlist, value)
-            standardGeneric("concept_views<-"))
+setGeneric("taxon_views<-", function(taxlist, value)
+            standardGeneric("taxon_views<-"))
 
 # Replacement methods for the assignment to slot taxonRelations
-setReplaceMethod("concept_views", signature(taxlist="taxlist", value="integer"),
+setReplaceMethod("taxon_views", signature(taxlist="taxlist", value="integer"),
         function(taxlist, value) {
             if(length(value) != nrow(taxlist@taxonRelations))
                 stop("length of 'value' must be the same as number of concepts in 'taxlist'")
             taxlist@taxonRelations$View <- value
-            if(nrow(taxlist@conceptViews) == 0) {
-                taxlist@conceptViews <- data.frame(View=unique(value),
+            if(nrow(taxlist@taxonViews) == 0) {
+                taxlist@taxonViews <- data.frame(View=unique(value),
                         row.names=paste(unique(value)))
             }
             return(taxlist)
         }
 )
 
-# Replacement methods for the assignment to slot conceptViews
-setReplaceMethod("concept_views", signature(taxlist="taxlist",
+# Replacement methods for the assignment to slot taxonViews
+setReplaceMethod("taxon_views", signature(taxlist="taxlist",
                 value="data.frame"), function(taxlist, value) {
-            taxlist@conceptViews <- value
+            taxlist@taxonViews <- value
             return(taxlist)
         }
 )

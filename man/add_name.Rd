@@ -1,7 +1,7 @@
 \name{add_name}
 \alias{add_name}
 
-\title{Insert a New Name in a \sQuote{taxlist} Object.}
+\title{Insert New Names in a Taxonomic List.}
 \description{
 New names (taxon usages) can be inserted for existing concepts in an object of
 class \code{\link[=taxlist-class]{taxlist}}.
@@ -23,10 +23,9 @@ add_name(taxlist, ConceptID, TaxonName, AuthorName, ...)
 An object of class \code{\link[=taxlist-class]{taxlist}} with added names.
 }
 \details{
-Usage IDs for the new names will be generated automatically according to the
-highest existing usage ID.
+Usage IDs for the new names will be generated automatically by this function.
 Names only for one concept can be added at time.
-For \code{'ConceptID'} longer than 1, an error message will be generated.
+For \code{ConceptID} longer than 1, an error message will be generated.
 
 Argument \code{'ConceptID'} should be provided as integer, but other classes
 suitable to be coerced to integer will be accepted.

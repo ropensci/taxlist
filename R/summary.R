@@ -12,7 +12,7 @@ overview_taxlist <- function(x) {
                             nrow(x@taxonRelations)*100),
             "%) taxa with first name entries", sep="", "\n")
     cat(ncol(x@taxonTraits) - 1, "variables for taxon traits", sep=" ", "\n")
-    cat(nrow(x@conceptViews), "concept view(s)", sep=" ", "\n")
+    cat(nrow(x@taxonViews), "taxon view(s)", sep=" ", "\n")
     cat("validation for class 'taxlist':", validObject(x), "\n")
     cat("\n")
 }
@@ -41,7 +41,8 @@ overview_taxon <- function(x, taxon, display, validate) {
     if(display != 3) {
         AcceptedName <- paste(AcceptedName[,1], AcceptedName[,display+1])
     } else {
-        AcceptedName <- paste(AcceptedName[,1], AcceptedName[,2], AcceptedName[,3])
+        AcceptedName <- paste(AcceptedName[,1], AcceptedName[,2],
+                AcceptedName[,3])
     }
     names(AcceptedName) <- taxon
     # vector with first names

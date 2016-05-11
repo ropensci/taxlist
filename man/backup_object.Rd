@@ -1,7 +1,7 @@
 \name{backup_object}
 \alias{backup_object}
 
-\title{Option to Produce Backups of R Objects.}
+\title{Alternative to Produce Backups of R Objects.}
 \description{
 This function is a wrapper for \code{\link{save}}.
 }

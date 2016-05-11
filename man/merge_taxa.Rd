@@ -3,7 +3,10 @@
 \alias{merge_taxa}
 \alias{merge_taxa,taxlist-method}
 
-\title{Merge Concepts to Species or  Corresponding Species}
+\title{Merge Concepts to Species or Corresponding Genera.}
+\description{
+Merge concepts to species or genus level.
+}
 \usage{
 \S4method{merge_taxa}{taxlist}(taxlist, level="species", ...)
 }
@@ -12,7 +15,7 @@
 \item{level}{Taxonomic level used for merging.}
 \item{...}{Further arguments passed to or from other methods.}
 }
-\description{
+\details{
 This function aggregate all sub-specific syntaxa in the respective species
 (\code{level="species"}) or all taxa to their respective genus
 (\code{level="genus"}).

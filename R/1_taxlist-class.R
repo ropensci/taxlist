@@ -5,7 +5,7 @@
 
 setClass("taxlist",
 		slots=c(taxonNames="data.frame", taxonRelations="data.frame",
-				taxonTraits="data.frame", conceptViews="data.frame"),
+				taxonTraits="data.frame", taxonViews="data.frame"),
 		prototype=list(taxonNames=data.frame(TaxonUsageID=integer(),
 						TaxonConceptID=integer(), TaxonName=character(),
 						AuthorName=character()),
@@ -13,7 +13,7 @@ setClass("taxlist",
 						AcceptedName=integer(), FirstName=integer(),
                         View=integer()),
 				taxonTraits=data.frame(TaxonConceptID=integer()),
-                conceptViews=data.frame(View=integer())),
+                taxonViews=data.frame(View=integer())),
 		validity=function(object) {
 			if(!all(c("TaxonUsageID","TaxonConceptID","TaxonName",
 							"AuthorName") %in% colnames(object@taxonNames)))
@@ -30,9 +30,9 @@ setClass("taxlist",
             if(any(rownames(object@taxonTraits) !=
                             paste(object@taxonTraits$TaxonConceptID)))
                 return("'TaxonConceotID' have to be set as row names for slot 'taxonTraits'")
-            if(any(rownames(object@conceptViews) !=
-                            paste(object@conceptViews$View)))
-                return("'View' have to be set as row names for slot 'conceptViews'")
+            if(any(rownames(object@taxonViews) !=
+                            paste(object@taxonViews$View)))
+                return("'View' have to be set as row names for slot 'taxonViews'")
             if(!all(object@taxonNames$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID))
                 return("Some concepts are missing in slot 'taxonRelations'")
@@ -42,10 +42,10 @@ setClass("taxlist",
             if(!all(object@taxonRelations$TaxonConceptID %in%
                             object@taxonTraits$TaxonConceptID))
                 return("Some concepts are missing in slot 'taxonTraits'")
-            if(nrow(object@conceptViews) > 0 &
+            if(nrow(object@taxonViews) > 0 &
                     !all(object@taxonRelations$View %in%
-                                    object@conceptViews$View))
-                return("Some concept views are missing in slot 'conceptViews'")
+                                    object@taxonViews$View))
+                return("Some concept views are missing in slot 'taxonViews'")
             if(!all(object@taxonNames$TaxonConceptID[match(
                                     object@taxonRelations$AcceptedName,
                                     object@taxonNames$TaxonUsageID)] ==

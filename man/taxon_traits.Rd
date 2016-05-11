@@ -39,6 +39,9 @@ x[i,j] <- value
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
+\seealso{
+\code{\link[=taxlist-class]{taxlist}}.
+}
 \examples{
 library(taxlist)
 data(Easplist)

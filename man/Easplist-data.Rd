@@ -23,4 +23,9 @@ An object of class \code{\link[=taxlist-class]{taxlist}}.
 \url{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php},
 \url{http://www.givd.info/ID/AF-00-006}.
 }
+\examples{
+library(taxlist)
+data(Easplist)
+summary(Easplist)
+}
 \keyword{datasets}

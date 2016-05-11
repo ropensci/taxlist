@@ -3,7 +3,7 @@
 \alias{subset}
 \alias{subset,taxlist-method}
 
-\title{Subset method for \dQuote{taxlist} Objects.}
+\title{Subset Method for taxlist Objects.}
 \description{
 A subset of \code{\link[=taxlist-class]{taxlist}} objects will be done either
 by \code{taxonNames}, \code{taxonRelations} or \code{taxonTraits} slots.
@@ -32,7 +32,7 @@ belonging to the same concepts as the matching ones will be preserved in the
 subset.
 }
 \value{
-A S4 object of class \code{\link[=taxlist-class]{taxlist}}.
+An object of class \code{\link[=taxlist-class]{taxlist}}.
 }
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).

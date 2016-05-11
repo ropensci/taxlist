@@ -5,7 +5,7 @@
 \alias{taxon_names<-}
 \alias{taxon_names<-,taxlist,data.frame-method}
 
-\title{Retrieve or Assign Slot \dQuote{taxonNames} to a \dQuote{taxlist} Object}
+\title{Retrieve or Assign Slot taxonNames to a taxlist Object.}
 \usage{
 \S4method{taxon_names}{taxlist}(taxlist, ...)
 
@@ -23,6 +23,9 @@ to objects of the class \code{\link[=taxlist-class]{taxlist}}.
 }
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+}
+\seealso{
+\code{\link[=taxlist-class]{taxlist}}.
 }
 \examples{
 library(taxlist)

@@ -27,6 +27,8 @@ columns:
 	\item{TaxonName}{Full name (usage), excluding author name.}
 	\item{AuthorName}{Author of the combination (taxon name).}
 }
+You may additionally insert taxon views to the resulting object
+(see \code{\link{taxon_views}}).
 }
 \value{
 An object of class \code{\link[=taxlist-class]{taxlist}}.

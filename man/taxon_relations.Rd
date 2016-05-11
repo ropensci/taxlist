@@ -31,6 +31,9 @@ slot from a data frame similar to \code{\link{Easplist}} or from a slot
 \author{
 Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
+\seealso{
+\code{\link[=taxlist-class]{taxlist}}.
+}
 \examples{
 library(taxlist)
 data(Easplist)

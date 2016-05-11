@@ -6,8 +6,7 @@
 
 \title{Retrieve or Set Accepted Name for a Taxon Concept.}
 \description{
-This function is written for actualization of nomenclature in
-\code{"\link[=taxlist-class]{taxlist}"} objects.
+Changes on accepted names for a concept.
 }
 \usage{
 \S4method{accepted_name}{taxlist}(taxlist, ConceptID, ...)
@@ -15,11 +14,11 @@ This function is written for actualization of nomenclature in
 accepted_name(taxlist, ConceptID) <- value
 }
 \arguments{
-\item{taxlist}{An object of class \code{"\link[=taxlist-class]{taxlist}"}.}
+\item{taxlist}{An object of class \code{\link[=taxlist-class]{taxlist}}.}
 \item{ConceptID}{Corresponding concept ID where to request or set an accepted
 	name.}
 \item{value}{Usage ID of the name to set as the accepted one.}
-\item{...}{Further arguments to pass from or to methods.}
+\item{...}{Further arguments to pass from or to other methods.}
 }
 \details{
 The method \code{accepted_name<-} changes the information contained in the slot
@@ -28,8 +27,8 @@ The method \code{accepted_name<-} changes the information contained in the slot
 For such procedure \code{value} must belong to the concept, where it will be
 set as new accepted name, otherwise the function will return an error message.
 
-The arguments \code{ConcpetID} and \code{value} can be also vectors, then of the
-same length.
+In the arguments \code{ConcpetID} and \code{value} also vectors can be used,
+then they may have of the same length.
 }
 \value{
 An integer vector with the retrieved IDs or an object of class

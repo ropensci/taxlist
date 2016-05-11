@@ -23,16 +23,22 @@ During import of \code{ecodbase.dbf} duplicated entries for a same concept will
 be discarded as well as entries for non-existing concepts.
 
 By default \code{tv_home} will be set by the function \code{\link{tv.home}} from
-the package \code{\link{vegdata}}. Current species lists are included as folders
-in the sub-folder \code{species}.
-
+the package \code{\link[=vegdata-package]{vegata}}.
 Part of the code is extracted from the function \code{\link{tax}}.
+
+Be default, the name of the database sill be set as concept view for all
+concepts included in the species list.
+If this is not correct, consider setting it manually by using the functions
+\code{\link{taxon_views}} and \code{\link{add_view}}.
 }
 \value{
 An object of class \code{\link[=taxlist-class]{taxlist}}.
 }
 \author{
 Miguel Alvarez, \email{malvarez@uni-bonn.de}
+}
+\seealso{
+\code{\link[=taxlist-class]{taxlist}}.
 }
 \examples{
 \donttest{
