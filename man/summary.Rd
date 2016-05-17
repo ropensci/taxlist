@@ -53,3 +53,4 @@ summary(Easplist)
 ## summary for two taxa
 summary(Easplist, c(51128,51140))
 }
+\keyword{methods}

@@ -1,4 +1,5 @@
 \name{first_name}
+\docType{methods}
 \alias{first_name}
 \alias{first_name,taxlist-method}
 \alias{first_name<-}
@@ -51,3 +52,4 @@ summary(Easplist, 50074)
 ## Retrieve first name
 first_name(Easplist, 50074)
 }
+\keyword{methods}

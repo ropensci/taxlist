@@ -59,3 +59,4 @@ summary(Cyperus)
 Cyperus$genus_name[1:3]
 summary(Cyperus[1:3,], "all")
 }
+\keyword{methods}

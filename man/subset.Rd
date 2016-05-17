@@ -53,3 +53,4 @@ summary(Splist, "all")
 Splist <- subset(Easplist, Traits=FAMILY == "Pteridaceae")
 summary(Splist, "all")
 }
+\keyword{methods}

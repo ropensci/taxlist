@@ -1,4 +1,5 @@
 \name{change_concept}
+\docType{methods}
 \alias{change_concept<-}
 \alias{change_concept<-,taxlist-method}
 
@@ -64,3 +65,4 @@ summary(Easplist, c(50105,573))
 change_concept(Easplist, 50105) <- 573
 }
 }
+\keyword{methods}

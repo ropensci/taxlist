@@ -24,7 +24,7 @@ The function \code{taxon_traits} retrieves or assigns the slot
 \S4method{[}{taxlist}(x, i, j, ..., drop=FALSE)
 
 taxon_traits(taxlist) <- value
-x$i <- value
+x$name <- value
 x[i,j] <- value
 }
 \arguments{

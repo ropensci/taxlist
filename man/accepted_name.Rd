@@ -1,4 +1,5 @@
 \name{accepted_name}
+\docType{methods}
 \alias{accepted_name}
 \alias{accepted_name,taxlist-method}
 \alias{accepted_name<-}
@@ -53,3 +54,4 @@ summary(Easplist, 50074)
 accepted_name(Easplist, 50074) <- 51129
 }
 }
+\keyword{methods}
