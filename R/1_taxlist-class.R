@@ -26,10 +26,10 @@ setClass("taxlist",
                 return("'TaxonUsageID' have to be set as row names for slot 'taxonNames'")
             if(any(rownames(object@taxonRelations) !=
                             paste(object@taxonRelations$TaxonConceptID)))
-                return("'TaxonConceotID' have to be set as row names for slot 'taxonRelations'")
+                return("'TaxonConceptID' have to be set as row names for slot 'taxonRelations'")
             if(any(rownames(object@taxonTraits) !=
                             paste(object@taxonTraits$TaxonConceptID)))
-                return("'TaxonConceotID' have to be set as row names for slot 'taxonTraits'")
+                return("'TaxonConceptID' have to be set as row names for slot 'taxonTraits'")
             if(any(rownames(object@taxonViews) !=
                             paste(object@taxonViews$View)))
                 return("'View' have to be set as row names for slot 'taxonViews'")
