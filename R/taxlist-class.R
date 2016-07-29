@@ -4,29 +4,32 @@
 ################################################################################
 
 setClass("taxlist",
-		slots=c(taxonNames="data.frame", taxonRelations="data.frame",
+		slots=c(taxonNames="data.frame", taxonRelations="ANY",
 				taxonTraits="data.frame", taxonViews="data.frame"),
 		prototype=list(taxonNames=data.frame(TaxonUsageID=integer(),
 						TaxonConceptID=integer(), TaxonName=character(),
 						AuthorName=character()),
 				taxonRelations=data.frame(TaxonConceptID=integer(),
-						AcceptedName=integer(), FirstName=integer(),
-                        View=integer()),
+						AcceptedName=integer(), View=integer()),
 				taxonTraits=data.frame(TaxonConceptID=integer()),
                 taxonViews=data.frame(View=integer())),
 		validity=function(object) {
 			if(!all(c("TaxonUsageID","TaxonConceptID","TaxonName",
 							"AuthorName") %in% colnames(object@taxonNames)))
 				return("'TaxonUsageID', 'TaxonConceptID', 'TaxonName' and 'AuthorName' are mandatory columns in slot 'taxonNames'")
-			if(!all(c("TaxonConceptID","AcceptedName","FirstName","View") %in%
-							colnames(object@taxonRelations)))
-				return("'TaxonConceptID', 'AcceptedName', 'FirstName', and 'View' are mandatory columns in slot 'taxonRelations'")
-			if(any(rownames(object@taxonNames) !=
+			# specific for taxonRelations as data.frame
+            if(class(object@taxonRelations) == "data.frame") {
+                if(!all(c("TaxonConceptID","AcceptedName","View") %in%
+                                colnames(object@taxonRelations)))
+                    return("'TaxonConceptID', 'AcceptedName', and 'View' are mandatory columns in slot 'taxonRelations'")
+                if(any(rownames(object@taxonRelations) !=
+                                paste(object@taxonRelations$TaxonConceptID)))
+                    return("'TaxonConceptID' have to be set as row names for slot 'taxonRelations'")
+                
+            }
+            if(any(rownames(object@taxonNames) !=
                             paste(object@taxonNames$TaxonUsageID)))
                 return("'TaxonUsageID' have to be set as row names for slot 'taxonNames'")
-            if(any(rownames(object@taxonRelations) !=
-                            paste(object@taxonRelations$TaxonConceptID)))
-                return("'TaxonConceptID' have to be set as row names for slot 'taxonRelations'")
             if(any(rownames(object@taxonTraits) !=
                             paste(object@taxonTraits$TaxonConceptID)))
                 return("'TaxonConceptID' have to be set as row names for slot 'taxonTraits'")

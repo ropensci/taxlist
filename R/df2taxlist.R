@@ -3,7 +3,7 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-df2taxlist <- function(x, AcceptedName, FirstName, Traits) {
+df2taxlist <- function(x, AcceptedName, Traits) {
     # Some tests previous to run the function
 	if(!is.data.frame(x))
 		stop("'x' must be of class 'data.frame'")
@@ -29,16 +29,6 @@ df2taxlist <- function(x, AcceptedName, FirstName, Traits) {
     taxonRelations <- x[AcceptedName,c("TaxonConceptID","TaxonUsageID")]
     colnames(taxonRelations)[2] <- "AcceptedName"
     rownames(taxonRelations) <- paste(taxonRelations$TaxonConceptID)
-    if(!missing(FirstName)) {
-        FirstName <- substitute(FirstName)
-        FirstName <- eval(FirstName, x, parent.frame())
-        if(length(FirstName) != nrow(x))
-            stop("Argument 'FirstName' not matching the size of 'x'")
-        FirstName <- x[FirstName,c("TaxonConceptID","TaxonUsageID")]
-        taxonRelations$FirstName <- FirstName$TaxonUsageID[match(
-                        taxonRelations$TaxonConceptID,
-                        FirstName$TaxonConceptID)]
-    } else taxonRelations$FirstName <- as.integer(rep(NA, nrow(taxonRelations)))
     taxonRelations$View <- as.integer(rep(NA, nrow(taxonRelations)))
     # taxon traits
     traitsTable <- data.frame(TaxonConceptID=taxonRelations[,"TaxonConceptID"],

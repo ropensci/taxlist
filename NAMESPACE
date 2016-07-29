@@ -18,7 +18,6 @@ exportMethods(
 	"[", "[<-", "$", "$<-",
 	accepted_name,"accepted_name<-",
 	"change_concept<-",
-	first_name,"first_name<-",
 	merge_taxa,
 	subset,
 	summary,

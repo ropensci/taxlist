@@ -16,7 +16,7 @@ add_concept <- function(taxlist, View, TaxonName, AuthorName, ...) {
     # slot taxonRelations
     taxlist@taxonRelations <- do.call(rbind, list(taxlist@taxonRelations,
                     data.frame(TaxonConceptID=ConceptID, AcceptedName=UsageID,
-                            FirstName=NA, View=View)))
+                            View=View)))
     rownames(taxlist@taxonRelations) <- paste(
             taxlist@taxonRelations$TaxonConceptID)
     # slot taxonNames

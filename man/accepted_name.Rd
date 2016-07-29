@@ -42,8 +42,7 @@ Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 library(taxlist)
 data(Easplist)
 
-## Assign first name to Cyclosorus interruptus
-first_name(Easplist, 50074) <- 53097
+## Overview of Cyclosorus interruptus
 summary(Easplist, 50074)
 
 ## set a new accepted name (the first name)

@@ -7,10 +7,6 @@
 overview_taxlist <- function(x) {
     if(nrow(x@taxonRelations) == 1) TAX <- "taxon" else TAX <- "taxa"
     cat(nrow(x@taxonNames), "names for", nrow(x@taxonRelations), TAX, "\n")
-    cat(sum(!is.na(x@taxonRelations$FirstName)), " (",
-            round(sum(!is.na(x@taxonRelations$FirstName))/
-                            nrow(x@taxonRelations)*100),
-            "%) taxa with first name entries", sep="", "\n")
     cat(ncol(x@taxonTraits) - 1, "variables for taxon traits", sep=" ", "\n")
     cat(nrow(x@taxonViews), "taxon view(s)", sep=" ", "\n")
     cat("validation for class 'taxlist':", validObject(x), "\n")
@@ -45,17 +41,6 @@ overview_taxon <- function(x, taxon, display, validate) {
                 AcceptedName[,3])
     }
     names(AcceptedName) <- taxon
-    # vector with first names
-    FirstName <- paste(x@taxonRelations[taxon,"FirstName"])
-    FirstName <- x@taxonNames[FirstName,c("TaxonUsageID",
-                    "TaxonName","AuthorName")]
-    if(display != 3) {
-        FirstName <- paste(FirstName[,1], FirstName[,display+1])
-    } else {
-        FirstName <- paste(FirstName[,1], FirstName[,2], FirstName[,3])
-    }
-    FirstName[grepl("NA", FirstName)] <- "none"
-    names(FirstName) <- taxon
     # list with synonyms
     Synonyms <- list()
     for(i in taxon) {
@@ -77,9 +62,6 @@ overview_taxon <- function(x, taxon, display, validate) {
         cat("# Accepted name for taxon concept '", i, "' (concept view ",
                 paste(taxon_relations(x)[i,"View"]), "):", sep="", "\n")
         cat(AcceptedName[i], "\n")
-        cat("\n")
-        cat("# First name:", "\n")
-        cat(FirstName[i], "\n")
         cat("\n")
         cat("# Synonyms:", "\n")
         if(length(Synonyms[[i]]) == 0) cat("none", "\n") else{

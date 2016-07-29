@@ -41,7 +41,7 @@ setMethod("taxon_relations", signature(taxlist="data.frame"),
 				stop("duplicates in TaxonUsageID are not allowed")
 			Relations <- unique(taxlist$TaxonConceptID)
 			Relations <- data.frame(TaxonConceptID=Relations,
-					AcceptedName=Relations, FirstName=NA, row.names=Relations,
+					AcceptedName=Relations, row.names=Relations,
 					stringsAsFactors=FALSE)
 			return(Relations)
 		}
@@ -180,40 +180,6 @@ setReplaceMethod("accepted_name", signature(taxlist="taxlist"),
 		}
 )
 
-# first_name -------------------------------------------------------------------
-setGeneric("first_name",
-		function(taxlist, ConceptID, ...)
-			standardGeneric("first_name")
-)
-
-# Set method for taxlist
-setMethod("first_name", signature(taxlist="taxlist"),
-		function(taxlist, ConceptID, ...) {
-            if(class(ConceptID) != "character") ConceptID <- paste(ConceptID)
-			taxlist@taxonRelations[ConceptID,"FirstName"]
-		}
-)
-
-# Replacement methods
-setGeneric("first_name<-", function(taxlist, ConceptID, value)
-			standardGeneric("first_name<-"))
-
-# Replacement for taxlist
-setReplaceMethod("first_name", signature(taxlist="taxlist"),
-		function(taxlist, ConceptID, value) {
-			# first test
-			if(length(ConceptID) != length(value))
-				stop("ConceptID and value should be of the same length")
-            if(class(value) != "integer") value <- as.integer(value)
-            if(!all(taxlist@taxonNames[paste(value),
-                            "TaxonConceptID"] == ConceptID))
-				stop("new value is not included in the respective taxon concept")
-            if(class(ConceptID) != "character") ConceptID <- paste(ConceptID)
-            # now replace
-			taxlist@taxonRelations[ConceptID,"FirstName"] <- value
-			return(taxlist)
-		}
-)
 
 # change_concept ---------------------------------------------------------------
 
@@ -231,8 +197,6 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
 				stop("'UsageID' and 'value' should be of the same length")
 			if(any(UsageID %in% taxlist@taxonRelations$AcceptedName))
 				stop("changes on concept are not allowed for accepted names")
-			if(any(UsageID %in% taxlist@taxonRelations$FirstName))
-				stop("changes of concept are not allowed for first names")
 			# now replace
 			taxlist@taxonNames[paste(UsageID),"TaxonConceptID"] <- value
 			return(taxlist)
