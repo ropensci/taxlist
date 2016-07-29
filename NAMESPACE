@@ -1,3 +1,5 @@
+## Import functions
+importFrom("stats", "na.omit")
 
 ## Import of packages
 import(
