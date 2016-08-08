@@ -1,0 +1,113 @@
+% Introduction to R and to the work with vectors
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{Sweave}
+\setkeys{Gin}{width=0.6\textwidth} % Set R-figure width
+
+\usepackage[left=2.5cm,top=1.5cm,right=2cm,bottom=2.5cm,
+  bindingoffset=0.5cm]{geometry}
+\usepackage[english]{babel}
+
+% Formatting text
+\usepackage[autostyle,english=american]{csquotes} % for quotations
+  \MakeOuterQuote{"}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\newcommand\upquote[1]{\textquotedbl#1\textquotedbl}
+
+% Citations
+\usepackage[sort&compress]{natbib}
+
+% Chunk formats
+\fvset{listparameters={\setlength{\topsep}{0pt}}}
+\renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
+
+%\usepackage[usenames,dvipsnames]{color} % colors
+%\usepackage[round]{natbib} % bibliographic references
+\usepackage{hyperref} % hyperlinks
+  \hypersetup{
+    colorlinks,
+    citecolor=DarkOliveGreen,
+    linkcolor=DarkOliveGreen,
+    urlcolor=DarkOliveGreen}
+%\usepackage[nottoc,numbib]{tocbibind} % bibliography in table of contents
+\usepackage{authblk} % layout authors and affiliations
+%\usepackage{bookmark} % for bookmarks
+
+\title{\textbf{Modelling taxonomic lists in R:} \\ The \texttt{taxlist}
+package.}
+\author[1]{Miguel Alvarez\thanks{malvarez@uni-bonn.de}}
+\author[2]{Federico Luebert\thanks{fluebert@uni-bonn.de}}
+\affil[1]{Vegetation Ecology, INRES, University of Bonn, Germany}
+\affil[2]{Nees Institute, University of Bonn, Germany}
+
+\renewcommand\Authands{ and }
+
+\newenvironment{reflist}{ % Command for reference list
+  \parskip6pt \parindent0pt \raggedright
+  \def\lititem{\hangindent=1cm \hangafter1}}{
+  \par\ignorespaces}
+
+\begin{document}
+
+\maketitle
+
+
+\tableofcontents
+
+\section{Introduction}
+
+The package \texttt{taxlist} implements an object class which is modelling the
+data structure of taxonomic lists (class \texttt{taxlist}).
+Such objects are designed as containers for information usually stored in
+\textbf{Turboveg 2} as "species lists" but can be also created by data contained
+in further spreadsheet formats or even created by command lines. 
+The main feature of \texttt{taxlist} objects is the separation of taxon concepts
+from their names.
+Names may be related to a common taxon concept according to a determined "taxon
+view".
+An additional feature is the possibility to connect properties (taxon traits)
+to the taxa included in an object.
+
+\section{Installing the Package and Accessing the Data}
+The current version of \texttt{taxlist} is being stored and developed in
+\href{https://github.com/}{GitHub}, at \url{https://github.com/kamapu/taxlist}.
+For a direct installation in \textbf{R} (assuming there is an Internet
+connection) a previous installation of the package \texttt{devtools} is
+required.
+To install it, we recommend to use the command
+\texttt{install.packages(\textquotedbl devtools\textquotedbl, dependencies=TRUE)}.
+Then, you may further use the following command lines:
+
+<<installing_taxlist,eval=FALSE>>=
+library(devtools)
+install_github("kamapu/taxlist")
+@
+
+\section{Example data set}
+
+This package contains three
+
+
+
+
+This section introduces to the access to example data sets and the work with it.
+
+\section{Creating a new object}
+How to create and backup new objects.
+
+\section{Manipulating objects}
+The manipulation of new objects.
+
+\section{Taxon traits slots}
+some calculations using the taxon traits slot.
+The example provides taxonomic data (genus and family).
+Eventually use of the GermanSL for calculations of indicator values.
+
+\section{Connecting to observations}
+Here a function to connect taxonomic lists to observations.
+
+\bibliographystyle{ecol_let}
+\bibliography{vegdata}
+
+\end{document}
