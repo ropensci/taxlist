@@ -17,6 +17,7 @@
 
 % Citations
 \usepackage[sort&compress]{natbib}
+\renewcommand*\familydefault{\sfdefault} % sheriff font
 
 % Chunk formats
 \fvset{listparameters={\setlength{\topsep}{0pt}}}
@@ -86,20 +87,119 @@ install_github("kamapu/taxlist")
 
 \section{Example data set}
 
-This package contains three
+Most of the examples included in the documentation of \texttt{taxlist} use the
+data set \texttt{Easplist}, which corresponds to the species list included in
+the database \textbf{SWEA-Dataveg} (\url{http://www.givd.info/ID/AF-00-006}).
+This species list is getting extended, while data is added to the database and
+uses as nomenclatorial reference the African Plant Database
+(\url{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}).
+To get \texttt{Easplist} loaded in your R-session, you may use following command
+lines:
+
+<<loading_easplist>>=
+library(taxlist)
+data(Easplist)
+summary(Easplist)
+@
+
+Additionally, two data sets are installed with your \texttt{taxlist} package.
+The one is composed by two spreadsheets as comma-delimited values including
+species of the genus \textit{Cyperus} and the respective traits, while the
+second one is a copy of \textbf{GermanSL 1.3} formatted for \textbf{Turboveg},
+which was loaded from \url{http://www.botanik.uni-greifswald.de/2305.html}.
+To now the path to installed files use following command lines.
+The first example will be contained in the subfolder \texttt{cyperus}, while the
+second is located in the sub-folder \texttt{tv\_data}.
+
+<<installation_path,eval=FALSE>>=
+path.package("taxlist")
+@
 
 
+\section{Creating new taxlist objects}
 
+Since taxlist objects are implemented as S4 objects in \textbf{R}, there is a
+way to create empty objects from the prototype and further assign elements
+to the slots:
 
-This section introduces to the access to example data sets and the work with it.
+<<from_prototype,eval=FALSE>>=
+new_list <- new("taxlist")
+@
 
-\section{Creating a new object}
-How to create and backup new objects.
+A second option is creating objects from data frames using the function
+\texttt{df2taxlist}:
+
+<<from_data_frame>>=
+Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus", "names.csv"),
+        stringsAsFactors=FALSE)
+head(Cyperus)
+Cyperus <- df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM)
+summary(Cyperus)
+@
+
+In the previous case you may note that the function requires two arguments, on
+the one side a data frame including the names inserted to the new object.
+In this table there are three mandatory columns required for the new taxlist
+object, namely "TaxonUsageID" (the identifier for the name), "TaxonName"
+(the name itself), "AuthorName" (the name of the author) and "TaxonConceptID"
+(the identifier for the respective taxon concept).
+While names sharing the same "TaxonConceptID" are recognized as belonging to the
+same taxon concept, a logical value is additionally required indicating which
+are the accepted names for each taxon concept (argument \texttt{AcceptedName}).
+
+For people working with \textbf{Turboveg}, there is the possibility to import
+species lists from Turboveg-databases using the function \texttt{tvsplist}:
+
+<<from_turboveg>>=
+GermanSL <- tvsplist("GermanSL_1.3", file.path(path.package("taxlist"),
+                "tv_data"))
+summary(GermanSL)
+@
+
 
 \section{Manipulating objects}
-The manipulation of new objects.
+
+New concepts can be added to an object with the function \texttt{add\_concept}.
+As an example of such procedure we will insert a new concept corresponding to
+\textit{Cyperus poecilus} C.B. Clarke.
+The respective check was firstly carried out in the African Plant Database
+(\url{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/Cyperus_poecilus.png}
+\caption{Output mask of \textit{Cyperus poecilus} in African Plant Database.}
+\label{fig:CYPEPOE}
+\end{figure}
+
+Thus following the output from the African Plant Database, we will insert the
+new concept as follows:
+
+<<add_concept>>=
+summary(Cyperus)
+Cyperus <- add_concept(Cyperus, TaxonName="Cyperus poecilus",
+        AuthorName="C.B. Clarke")
+summary(Cyperus)
+summary(subset(Cyperus, grepl("poecilus", TaxonName)))
+@
+
+
+
+
+Adding names.
+
+Adding concepts.
+
+Changing accepted names.
+
+Moving names from concepts.
+
+Splitting and merging concepts.
+
+Subset building.
 
 \section{Taxon traits slots}
+
 some calculations using the taxon traits slot.
 The example provides taxonomic data (genus and family).
 Eventually use of the GermanSL for calculations of indicator values.

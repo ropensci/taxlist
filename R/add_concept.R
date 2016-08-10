@@ -9,6 +9,7 @@ add_concept <- function(taxlist, View, TaxonName, AuthorName, ...) {
     # New concept IDs
     ConceptID <- max(taxlist@taxonNames$TaxonConceptID)
     ConceptID <- (ConceptID + 1):(ConceptID + length(TaxonName))
+    if(missing(View)) View <- NA
     View <- rep_len(View, length(ConceptID))
     # New usage IDs
     UsageID <- max(taxlist@taxonNames$TaxonUsageID)
