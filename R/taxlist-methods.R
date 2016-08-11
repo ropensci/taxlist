@@ -134,14 +134,16 @@ setReplaceMethod("taxon_traits", signature(taxlist="taxlist",
                 warning("duplicated concepts will be deleted from 'value'")
                 value <- value[unique(value$TaxonConceptID),]
             }
-            rownames(value) <- paste(value$TaxonConceptID)
-            # Add the columns one by one
+            taxlist@taxonTraits <- data.frame(
+                    TaxonConceptID=taxlist@taxonRelations$TaxonConceptID)
             Heads <- colnames(value)[colnames(value) != "TaxonConceptID"]
             for(i in Heads) {
                 taxlist@taxonTraits[,i] <- value[match(
                                 taxlist@taxonTraits$TaxonConceptID,
                                 value$TaxonConceptID),i]
             }
+            rownames(taxlist@taxonTraits) <- paste(
+                    taxlist@taxonTraits$TaxonConceptID)
             return(taxlist)
         }
 )

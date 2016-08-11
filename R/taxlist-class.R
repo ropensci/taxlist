@@ -46,8 +46,9 @@ setClass("taxlist",
                             object@taxonTraits$TaxonConceptID))
                 return("Some concepts are missing in slot 'taxonTraits'")
             if(nrow(object@taxonViews) > 0 &
-                    !all(object@taxonRelations$View %in%
-                                    object@taxonViews$View))
+                    !all(object@taxonRelations$View[
+                                            !is.na(object@taxonRelations$View
+                    )] %in% object@taxonViews$View))
                 return("Some concept views are missing in slot 'taxonViews'")
             if(!all(object@taxonNames$TaxonConceptID[match(
                                     object@taxonRelations$AcceptedName,

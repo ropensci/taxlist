@@ -115,6 +115,11 @@ second is located in the sub-folder \texttt{tv\_data}.
 path.package("taxlist")
 @
 
+\section{Basics on taxlist objects}
+
+
+
+
 
 \section{Creating new taxlist objects}
 
@@ -159,6 +164,12 @@ summary(GermanSL)
 
 \section{Manipulating objects}
 
+\subsection{The function summary}
+
+Blabla
+
+\subsection{Adding concepts and names}
+
 New concepts can be added to an object with the function \texttt{add\_concept}.
 As an example of such procedure we will insert a new concept corresponding to
 \textit{Cyperus poecilus} C.B. Clarke.
@@ -180,29 +191,67 @@ summary(Cyperus)
 Cyperus <- add_concept(Cyperus, TaxonName="Cyperus poecilus",
         AuthorName="C.B. Clarke")
 summary(Cyperus)
-summary(subset(Cyperus, grepl("poecilus", TaxonName)))
+summary(subset(Cyperus, grepl("poecilus", TaxonName)), "all")
+@
+
+In the last command of the example applied a subset to the object
+\texttt{Cyperus} and displayd the whole content of the subset (explanations
+below).
+By this output we get the ID of the concept (52341) and the ID of the new name
+(53193), which correspond to the fields \texttt{TaxonConceptID} and
+\texttt{TaxonUsageID}, respectively.
+
+As indicated by the African Plant Database, \textit{Cyperus poecilus} has two
+synonyms, which are not yet inserted in the taxlist object.
+A new name will be then inserted by the function \texttt{add\_name}.
+Note that this function is only working only for one concept, thus all names
+inserted will be added as synonyms of the indicated concept:
+
+<<add_name>>=
+Cyperus <- add_name(Cyperus, ConceptID=52341,
+        TaxonName=c("Cyperus benadirensis","Cyperus poecilus var. evolutus"),
+        AuthorName=c("Chiov.","Kük."))
+summary(Cyperus)
+summary(Cyperus, 52341)
+@
+
+Note that the function \texttt{summary} with the object alone produce a
+summarizing statistic of the object, while an indication of the concept ID (as
+\texttt{integer}) will provide the full overview of the respective concept.
+You also have the option to use the keyword \texttt{\textquotedbl
+all\textquotedbl} instead of the concept ID and then you will get the overview
+of all concepts included in the object.
+
+\subsection{Subset building}
+
+As in the case of the function \texttt{summary}, there are specific methods
+implemented for the function \texttt{subset} to \texttt{taxlist} objects.
+To get the documentation of the function use the command
+\texttt{?taxlist::subset} in the R console.
+Previous to use the function subset, we will recommend a detailed review on
+logical and pattern matching functions.
+There are three ways to produce subsets that are using information from three
+different slots in the taxlist objects.
+We just insert an example by using the slot \texttt{taxonNames}, namely we will
+produce a subset of the object \texttt{Cyperus} including \textit{Cyperus
+papyrus}:
+
+<<subset_papyrus>>=
+Papyrus <- subset(Cyperus, Names=grepl("papyrus", TaxonName))
+summary(Papyrus)
+summary(Papyrus, "all")
 @
 
 
 
 
-Adding names.
-
-Adding concepts.
-
-Changing accepted names.
-
-Moving names from concepts.
-
-Splitting and merging concepts.
-
-Subset building.
-
-\section{Taxon traits slots}
+\section{Taxon traits slot}
 
 some calculations using the taxon traits slot.
 The example provides taxonomic data (genus and family).
 Eventually use of the GermanSL for calculations of indicator values.
+
+\section{Merging and splitting concepts}
 
 \section{Connecting to observations}
 Here a function to connect taxonomic lists to observations.

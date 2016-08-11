@@ -1,33 +1,26 @@
 \name{merge_taxa}
 \docType{methods}
 \alias{merge_taxa}
-\alias{merge_taxa,taxlist-method}
+\alias{merge_taxa,taxlist,numeric-method}
 
-\title{Merge Concepts to Species or Corresponding Genera.}
+\title{Merge Concepts and split concepts.}
 \description{
 Merge concepts to species or genus level.
 }
 \usage{
-\S4method{merge_taxa}{taxlist}(taxlist, level="species", ...)
+\S4method{merge_taxa}{taxlist,integer}(object, ConceptID, AcceptedName,
+	overwrite_old=FALSE)
 }
 \arguments{
-\item{taxlist}{Object of class \code{taxlist}.}
-\item{level}{Taxonomic level used for merging.}
-\item{...}{Further arguments passed to or from other methods.}
+\item{object}{Object of class \code{taxlist}.}
+\item{ConceptID}{Integer vector with IDs of concepts to be merged.}
+\item{AcceptedName}{ID of the name to be used as accepted name for the new
+	concept.}
+\item{overwrite_old}{Logical value indicating if column
+	\code{".TaxonConceptID_old"} should be overwritten or not.}
 }
 \details{
-This function aggregate all sub-specific syntaxa in the respective species
-(\code{level="species"}) or all taxa to their respective genus
-(\code{level="genus"}).
-Argument \code{level} allows partial matchings and is case insensitive.
-
-This function inserts a new column in the slot \code{taxonNames} called
-\code{'TaxonConceptID_old'} with original concept IDs.
-If this column is already existing, the step will be skipped with a warning
-message.
-
-An additional column will be added to the slot \code{taxonTraits}, which will
-indicate the name of the species or genus, depending on \code{level} value.
+All Concepts will be included in one
 }
 \value{
 An object of class \code{\link[=taxlist-class]{taxlist}} with merged concepts.
