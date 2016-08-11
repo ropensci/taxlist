@@ -5,3 +5,4 @@
 ^tests/extras/format_data\.R$
 ^README\.Rmd$
 ^README-.*\.png$
+^M:/WorkspaceEclipse/taxlist/vignettes/\.gitignore$

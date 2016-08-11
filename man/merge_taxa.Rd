@@ -9,7 +9,7 @@
 Merge concepts to species or genus level.
 }
 \usage{
-\S4method{merge_taxa}{taxlist,integer}(object, ConceptID, AcceptedName,
+\S4method{merge_taxa}{taxlist,numeric}(object, ConceptID, AcceptedName,
 	overwrite_old=FALSE)
 	
 \S4method{merge_taxa}{taxlist,list}(object, ConceptID, AcceptedName,
