@@ -2,6 +2,7 @@
 \docType{methods}
 \alias{merge_taxa}
 \alias{merge_taxa,taxlist,numeric-method}
+\alias{merge_taxa,taxlist,list-method}
 
 \title{Merge Concepts and split concepts.}
 \description{
@@ -9,6 +10,9 @@ Merge concepts to species or genus level.
 }
 \usage{
 \S4method{merge_taxa}{taxlist,integer}(object, ConceptID, AcceptedName,
+	overwrite_old=FALSE)
+	
+\S4method{merge_taxa}{taxlist,list}(object, ConceptID, AcceptedName,
 	overwrite_old=FALSE)
 }
 \arguments{
@@ -32,24 +36,12 @@ Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 library(taxlist)
 data(Easplist)
 
-## Subset with Cyperus species
-Cyperus <- subset(Easplist, Traits=GENUS == "Cyperus")
-summary(Cyperus)
+## Subset first four concepts
+Splist <- Easplist[1:4,]
+summary(Splist, "all")
 
-## Merge to species level
-Cyperus <- merge_taxa(Cyperus)
-summary(Cyperus)
-
-## Merge Cyperaceae to genus level
-Cyperus <- subset(Easplist, Traits=FAMILY == "Cyperaceae")
-summary(Cyperus)
-
-## Merge to species level
-Cyperus <- merge_taxa(Cyperus, level="genus")
-summary(Cyperus)
-
-## Display 3 first genera
-Cyperus$genus_name[1:3]
-summary(Cyperus[1:3,], "all")
+## Merge concepts 1 and 3
+Splist <- merge_taxa(Splist, c(1,3))
+summary(Splist, "all")
 }
 \keyword{methods}

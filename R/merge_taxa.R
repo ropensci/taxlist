@@ -26,7 +26,7 @@ setGeneric("merge_taxa",
             standardGeneric("merge_taxa")
 )
 
-# Method for taxlist -----------------------------------------------------------
+# Method for taxlist and vector ------------------------------------------------
 setMethod("merge_taxa", signature(object="taxlist", ConceptID="numeric"),
         function(object, ConceptID, AcceptedName, overwrite_old=FALSE) {
             # Save the old concept IDs
@@ -44,16 +44,65 @@ setMethod("merge_taxa", signature(object="taxlist", ConceptID="numeric"),
                 warning("Only the first element of 'AccetedName' will be used.")
             }
             # Concept in taxonRelations
-            object@taxonRelations[paste(new_concept),] <- c(new_concept,
-                    AcceptedName, NA)
-            # Clean object
+            object@taxonRelations[paste(new_concept),] <- c(new_concept, NA, NA)
             object@taxonRelations <- object@taxonRelations[
                     object@taxonRelations$TaxonConceptID %in%
                             object@taxonNames$TaxonConceptID,]
+            accepted_name(object, new_concept) <- AcceptedName
+            # Clean traits
             taxon_traits(object) <- object@taxonTraits
             return(object)
         }
 )
+
+# Method for taxlist and list --------------------------------------------------
+setMethod("merge_taxa", signature(object="taxlist", ConceptID="list"),
+        function(object, ConceptID, AcceptedName, overwrite_old=FALSE) {
+            # Save the old concept IDs
+            object <- save_old_concept(object, overwrite_old)
+            # Accepted name
+            if(missing(AcceptedName)) {
+                old_concepts <- sapply(ConceptID, "[", 1)
+                AcceptedName <- object@taxonNames[
+                        object@taxonNames$TaxonConceptID %in% old_concepts,
+                        c("TaxonUsageID","TaxonConceptID")]
+                AcceptedName <- AcceptedName[!duplicated(
+                                AcceptedName$TaxonConceptID),]
+                AcceptedName <- AcceptedName$TaxonUsageID[match(old_concepts,
+                                AcceptedName$TaxonConceptID)]
+            }
+            # Create new concepts
+            new_concept <- max(object@taxonNames$TaxonConceptID) +
+                    1:length(ConceptID)
+            for(i in 1:length(ConceptID)) {
+                ConceptID[[i]] <- data.frame(concept=ConceptID[[i]],
+                        new_concept=new_concept[i])
+            }
+            ConceptID <- do.call(rbind, ConceptID)
+            object@taxonNames[object@taxonNames$TaxonConceptID %in%
+                            ConceptID$concept,"TaxonConceptID"] <-
+                    ConceptID$new_concept[match(object@taxonNames[
+                                            object@taxonNames$TaxonConceptID %in%
+                                                    ConceptID$concept,
+                                            "TaxonConceptID"],
+                                    ConceptID$concept)]
+            # Concept in taxonRelations
+            object@taxonRelations <- do.call(rbind, list(object@taxonRelations,
+                            data.frame(TaxonConceptID=new_concept,
+                                    AcceptedName=NA, View=NA,
+                                    row.names=paste(new_concept),
+                                    stringsAsFactors=FALSE)))
+            object@taxonRelations <- object@taxonRelations[
+                    object@taxonRelations$TaxonConceptID %in%
+                            object@taxonNames$TaxonConceptID,]
+            accepted_name(object, new_concept) <- AcceptedName
+            # Clean taxon traits
+            taxon_traits(object) <- object@taxonTraits
+            return(object)
+        }
+)
+
+
 
 
 
