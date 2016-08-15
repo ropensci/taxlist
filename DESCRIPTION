@@ -1,7 +1,7 @@
 Package: taxlist
 Version: 0.0.0.9010
 Encoding: UTF-8
-Date: 2016-07-29
+Date: 2016-08-15
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <malvarez@uni-bonn.de>
 Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
@@ -12,7 +12,11 @@ Imports:
     methods,
     vegdata
 Suggests:
-    devtools
+    devtools,
+    knitr,
+    rmarkdown
+VignetteBuilder:
+    knitr
 Description: Handling taxonomic lists through objects of class 'taxlist'. Many
     of the concepts and functions implemented here are inspired by the package
     'vegdata'. This package also provides functions to import species lists from
