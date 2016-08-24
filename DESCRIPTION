@@ -13,8 +13,7 @@ Imports:
     vegdata
 Suggests:
     devtools,
-    knitr,
-    rmarkdown
+    knitr
 VignetteBuilder:
     knitr
 Description: Handling taxonomic lists through objects of class 'taxlist'. Many
