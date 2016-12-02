@@ -1,0 +1,403 @@
+\documentclass[10pt,a4paper]{article}
+
+%\VignetteIndexEntry{Modelling taxonomic lists in R}
+%\VignetteDepends{devtools,taxlist}
+%\VignetteKeyword{vegetation}
+%\VignetteKeyword{taxonomy}
+%\VignetteKeyword{Turboveg}
+%\VignetteEngine{knitr::knitr}
+\usepackage[utf8]{inputenc}
+
+% Layout
+\usepackage[left=25mm,right=20mm,top=15mm,bottom=25mm,
+  bindingoffset=0.5cm]{geometry}
+\usepackage{selinput}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage[english]{babel}
+\renewcommand*\familydefault{\sfdefault} % sheriff font
+\usepackage{authblk} % layout authors and affiliations
+
+% For quotations
+\usepackage[autostyle,english=american]{csquotes} % for quotations
+  \MakeOuterQuote{"}
+\newcommand\upquote[1]{\textquotedbl#1\textquotedbl}
+
+% Citations
+\usepackage[sort&compress]{natbib}
+\bibliographystyle{ecol_let}
+\usepackage{hyperref}
+  \hypersetup{
+    colorlinks,
+    citecolor=DarkOliveGreen,
+    linkcolor=DarkOliveGreen,
+    urlcolor=DarkOliveGreen}
+
+% Figures and colours
+\usepackage{graphicx} 
+\usepackage{xcolor}
+  \definecolor{MidnightBlue}{rgb}{0.1,0.1,0.44}
+  \definecolor{RoyalBlue2}{rgb}{0.26,0.43,0.93}
+  \definecolor{DarkOliveGreen}{rgb}{0.33,0.42,0.18}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes}
+
+\title{\textbf{Modelling taxonomic lists in R:} \\ \texttt{taxlist version}
+\Sexpr{packageDescription("taxlist", field="Version")}.}
+\author[1]{Miguel Alvarez\thanks{malvarez@uni-bonn.de}}
+\author[2]{Federico Luebert\thanks{fluebert@uni-bonn.de}}
+\affil[1]{Vegetation Ecology, INRES, University of Bonn, Germany}
+\affil[2]{Nees Institute for Plant Biodiversity, University of Bonn, Germany}
+
+\renewcommand\Authands{ and }
+
+\newenvironment{reflist}{ % Command for reference list
+  \parskip6pt \parindent0pt \raggedright
+  \def\lititem{\hangindent=1cm \hangafter1}}{
+  \par\ignorespaces}
+
+\begin{document}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance = TRUE,
+results = "tex")
+options(results = 'tex') # for pqR
+@
+
+\maketitle
+
+
+\tableofcontents
+
+\section{Introduction}
+
+The package \texttt{taxlist} implements an object class for taxonomic lists
+(class \texttt{taxlist}).
+%Such objects are programmed as containers for information stored as species
+%lists in \textbf{Turboveg 2} (\url{http://www.synbiosys.alterra.nl/turboveg/},
+%see also \citealt{Hennekens2001}).
+These objects are programmed as containers of information stored as species
+lists in \textbf{Turboveg 2} (\url{http://www.synbiosys.alterra.nl/turboveg/},
+see \citealt{Hennekens2001}).
+%Furthermore, such objects can be created in R from data frames.
+%The main feature of \texttt{taxlist} objects is the separation of taxon concepts
+%and names, applying the concepts of "taxon views" \citep{Zhong1996} and
+%"potential taxa" \citep{Berendsohn1995} or "taxonym" \citep{Koperski2000}.
+Furthermore, the objects can be created in R out of data frames.
+The main feature of \texttt{taxlist} objects is the separation of taxon concepts
+from taxon names, applying the concepts of "taxon views" \citep{Zhong1996} and
+"potential taxa" \citep{Berendsohn1995} or "taxonym" \citep{Koperski2000}.
+An additional feature is the possibility to connect properties (taxon traits)
+to the respective taxon concepts.
+
+%The current version of \texttt{taxlist} is developed and stored in
+%\href{https://github.com/}{GitHub}, at \url{https://github.com/kamapu/taxlist}.
+%Prior to its installation you need to install the package \texttt{devtools}.
+%For it we recommend to use the command
+%\texttt{install.packages(\textquotedbl devtools\textquotedbl, dependencies=TRUE)}.
+%In each session, you should install the last version of the package:
+The current version of \texttt{taxlist} is developed and stored in
+\href{https://github.com/}{GitHub}, at \url{https://github.com/kamapu/taxlist}.
+Prior to its installation, you need to install the package \texttt{devtools}.
+For that we recommend to use the command
+\texttt{install.packages(\textquotedbl devtools\textquotedbl, dependencies=TRUE)}.
+In each session, you should install the last version of the package:
+
+<<installing_taxlist,eval=FALSE>>=
+library(devtools)
+install_github("kamapu/taxlist")
+@
+
+\section{Example dataset}
+%Most of the examples included in the documentation of \texttt{taxlist} use the
+%data set \texttt{Easplist}, which corresponds to the species list of the
+%database \textbf{SWEA-Dataveg} (\url{http://www.givd.info/ID/AF-00-006}, see
+%also \citealt{Alvarez2012b}).
+Most of the examples included in the documentation of \texttt{taxlist} use the
+dataset \texttt{Easplist}, which corresponds to the species list of the
+database \textbf{SWEA-Dataveg} (\url{http://www.givd.info/ID/AF-00-006}, see
+also \citealt{Alvarez2012b}).
+%This species list is getting extended, while data is added to the database and
+%uses as nomenclatorial reference the \textbf{African Plant Database}
+%(\url{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}).
+This species list is being countinuously extended as data is added to the
+database.
+It uses the \textbf{African Plant Database}
+(\url{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}) as
+nomenclatorial reference.
+To get \texttt{Easplist} loaded in your session, use following commands:
+
+<<loading_easplist>>=
+library(taxlist)
+data(Easplist)
+@
+
+Additionally, two data sets are installed with your \texttt{taxlist} package.
+%The one is composed by two spreadsheets as comma-delimited values including
+The first is composed of two spreadsheets as comma-delimited values including
+species of the genus \textit{Cyperus} and the respective traits, while the
+second one is a copy of \textbf{GermanSL 1.3} \citep{Jansen2008} formatted for
+\textbf{Turboveg 2}, which was loaded from
+\url{http://www.botanik.uni-greifswald.de/2305.html}.
+You can get the path to the installed files by
+\texttt{path.package(\textquotedbl taxlist\textquotedbl)}.
+The first example is stored in the subfolder \texttt{cyperus}, while the second
+one is located in the sub-folder \texttt{tv\_data}.
+
+
+\section{Basics on taxlist objects}
+Objects of the class \texttt{taxlist} are programmed as \textbf{S4} objects
+\citep{Genolini2008}.
+%Such objects are composed by slots, which contain different elements of the
+These objects are composed by slots, which contain different elements of the
+%object, most of them as \textbf{data frames}.
+object, most of them \textbf{data frames}.
+In the following command we will apply the functions \texttt{validObject} to get
+a validation test on the object, \texttt{summary} for an overview on the content
+of the object, and \texttt{slotNames} to get the name of the slots:
+
+<<overview>>=
+validObject(Easplist)
+summary(Easplist)
+slotNames(Easplist)
+@
+
+%In the first line a series of validation test written to keep consistency of the
+In the first line a series of validation test, written to keep consistency of the
+%information contained in \texttt{taxlist} objects is carried out.
+information contained in \texttt{taxlist} objects, is carried out.
+%So far you do not get any warning message, you passed the test.
+As long as you do not get any warning message, you passed the test.
+%The second line provides an overview of the content the objects in term of
+The second line provides an overview of the content of the objects in term of
+names, taxa, taxon traits and taxon views included in the object, while the
+third line indicates the names of the slots, which are fixed for this class of
+objects.
+
+
+\subsection{Taxon names}
+The slot \texttt{taxonNames} is a data frame containing all names included in
+%the objects either accepted names or synonyms.
+the objects, either accepted names or synonyms.
+%As for all other slot, you can access to the content of the slot by using the
+As for all other slots, you can access to their content by using the
+index \texttt{$@$} or the function \texttt{slot}.
+Additionally, the function \texttt{taxon\_names} is implemented for this
+purpose:
+
+<<taxon_names>>=
+dim(Easplist@taxonNames)
+nrow(slot(Easplist, "taxonNames"))
+head(taxon_names(Easplist))
+@
+
+%As shown by \texttt{head}, the content of this table is not much different than
+As shown by \texttt{head}, the content of this table is not very different from
+a species list in \textbf{Turboveg}.
+It is important to know that the columns \texttt{TaxonUsageID} (identifier for
+the name), \texttt{TaxonConceptID} (identifier for the taxon concept),
+\texttt{TaxonName} (the name itself), and \texttt{AuthorName} (authors of each
+name) are mandatory here.
+
+
+\subsection{Taxon relations}
+While the previous slot usually contains taxon names without any indication of
+%status (accepted name or synonymous), the slot \texttt{taxonRelations} includes
+status (accepted name or synonym), the slot \texttt{taxonRelations} includes
+a list of all taxon concepts of the object and points to the valid names and the
+%taxon view defining the circumscription of them.
+taxon view.
+%For the moment this slot is implemented as data frame but a more complex
+For the moment this slot is implemented as data frame, but a more complex
+%structure including parent-child relations and alternative views is intended.
+structure, including parent-child relations and alternative views, is intended.
+%You can access to this slot by using the function \texttt{taxon\_relations}.
+You can access this slot using the function \texttt{taxon\_relations}.
+
+<<taxon_relations>>=
+dim(taxon_relations(Easplist))
+head(taxon_relations(Easplist))
+@
+
+\subsection{Taxon views}
+The slot \texttt{taxonViews} contains the references used for the
+circumscriptions of taxon concepts (taxon views according to
+\citealt{Zhong1996}). The only mandatory column in this slot is \texttt{View}:
+
+<<taxon_views>>=
+head(taxon_views(Easplist))
+@
+
+\subsection{Taxon traits}
+Last but not least, there is a slot \texttt{taxonTraits} including attributes of
+the taxon concepts.
+This slot was implemented for taxon information such as life forms, chorological
+classifications, etc.
+This slot will usually include the information contained in the
+\texttt{ecodbase} file of Turboveg species lists.
+For instance, \texttt{Easplist} includes, as taxon traits, the genera and
+families, which were downloaded from \textbf{The Plant List}
+(\url{http://www.theplantlist.org}):
+
+<<taxon_traits>>=
+head(taxon_traits(Easplist))
+@
+
+Since this slot is considered as one of the most important for further statical
+processes of \texttt{taxlist} objects, indexing with the operators \texttt{[]}
+or \texttt{\$} is implemented.
+%In the help documentation (\texttt{?taxon\_traits}) you will see that such
+In the help documentation (\texttt{?taxon\_traits}) you will see that these
+indexes can be also used to overwrite information.
+
+<<quick_access>>=
+summary(Easplist[100:105,])
+head(Easplist$GENUS)
+tail(Easplist$GENUS)
+# How many families in the list?
+length(unique(Easplist$FAMILY))
+# How many genera?
+length(unique(Easplist$GENUS))
+@
+
+
+\section{Creating new taxlist objects}
+A straightforward approach to create \texttt{taxlist} objects is from data
+frames by using the function \texttt{df2taxlist}.
+The ingredients required for this recipe are a table including the mandatory
+columns (\texttt{TaxonUsageID}, \texttt{TaxonConceptID}, \texttt{TaxonName}, and
+%\texttt{AuthorName}) and a logical vector indicating with the value
+\texttt{AuthorName}) and a logical vector, with the value
+%\texttt{TRUE} the accepted names and \texttt{FALSE} for synonyms.
+\texttt{TRUE} for accepted names and \texttt{FALSE} for synonyms.
+%In fact, the Cyperus data set inherits the column \texttt{SYNONYM} from
+In fact, the \textit{Cyperus} data set inherits the column \texttt{SYNONYM} from
+Turboveg just with the opposite values:
+
+<<from_data_frame>>=
+Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus", "names.csv"),
+        stringsAsFactors=FALSE)
+head(Cyperus)
+Cyperus <- df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM)
+summary(Cyperus)
+@
+
+For people working with \textbf{Turboveg 2}, there is the possibility to import
+species lists from the respective databases using the function
+\texttt{tvsplist}:
+
+<<from_turboveg>>=
+GermanSL <- tvsplist("GermanSL_1.3", file.path(path.package("taxlist"),
+                "tv_data"))
+summary(GermanSL)
+@
+
+\section{Manipulating objects}
+
+\subsection{The function summary}
+%Up to now we used the function \texttt{summary} to get a general overview of a
+Until now we have used the function \texttt{summary} to get a general overview of a
+\texttt{taxlist} object.
+This function can be optionally applied to get an overview of one or more taxon
+%concepts, for example if we look for the concept ID \textbf{204}:
+concepts. For example if we look for the concept ID \textbf{204}:
+
+<<summary_ID>>=
+summary(Easplist, 204)
+@
+
+The second argument can be replaced by the keyword \texttt{\textquotedbl
+all\textquotedbl}, but this will be only recommended once you produce a small
+subset.%FL: esto no lo entiendo, cuan pequeño?
+
+
+\subsection{Subset building}
+As in the case of the function \texttt{summary}, there are methods implemented
+for the function \texttt{subset} applied to \texttt{taxlist} objects.
+To get the documentation of the function use the command
+\texttt{?taxlist::subset} in the R console.
+%Previous to use it, we will recommend a detailed review on logical operations
+Before using it, we recommend a detailed review on logical operations
+and pattern matching functions.
+%There are three ways to produce subsets that are using information from three
+There are three ways to produce subsets that use information from three
+different slots in \texttt{taxlist} objects.
+%We just insert an example by using the slot \texttt{taxonNames}, namely we will
+We provide an example using the slot \texttt{taxonNames}. We will
+produce a subset of the object \texttt{Cyperus} including \textit{Cyperus
+papyrus}:
+
+<<subset_papyrus>>=
+Papyrus <- subset(Cyperus, Names=grepl("papyrus", TaxonName))
+summary(Papyrus)
+summary(Papyrus, "all")
+@
+
+
+\subsection{Adding concepts and names}
+New concepts can be added to an object with the function \texttt{add\_concept}.
+%As an example of such procedure we will insert a new concept corresponding to
+As an example of this procedure, we will insert a new concept corresponding to
+\textit{Cyperus poecilus} C.B. Clarke.
+The respective check was firstly carried out in the African Plant Database
+(\url{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{Cyperus_poecilus.png}
+\caption{Output mask of \textit{Cyperus poecilus} in African Plant Database.}
+\label{fig:CYPEPOE}
+\end{figure}
+
+Thus following the output from the African Plant Database, we will insert the
+new concept as follows:
+
+<<add_concept>>=
+summary(Cyperus)
+Cyperus <- add_concept(Cyperus, TaxonName="Cyperus poecilus",
+        AuthorName="C.B. Clarke")
+summary(Cyperus)
+summary(subset(Cyperus, grepl("poecilus", TaxonName)), "all")
+@
+
+%In the last command of the example applied a subset to the object
+The last command of the example applied a subset to the object
+\texttt{Cyperus} and displayd the whole content of the subset (explanations
+below).
+By this output we get the ID of the concept (\textbf{52341}) and the ID of the
+new name (\textbf{53193}), which correspond to the fields
+\texttt{TaxonConceptID} and \texttt{TaxonUsageID}, respectively.
+
+%As indicated by the African Plant Database, \textit{Cyperus poecilus} has two
+As indicated in the African Plant Database, \textit{Cyperus poecilus} has two
+%synonyms, which are not yet inserted in the taxlist object.
+synonyms, which are not yet added to the taxlist object.
+%A new name will be then inserted by the function \texttt{add\_name}.
+A new name will be then added using the function \texttt{add\_name}.
+%Note that this function is only working for one concept at the moment, thus all
+Note that this function only works for one concept at the moment, thus all
+%names inserted will be added as synonyms of the indicated concept:
+names inserted will be added as synonyms only of the indicated concept:
+
+<<add_name>>=
+Cyperus <- add_name(Cyperus, ConceptID=52341,
+        TaxonName=c("Cyperus benadirensis","Cyperus poecilus var. evolutus"),
+        AuthorName=c("Chiov.","Kük."))
+summary(Cyperus)
+summary(Cyperus, 52341)
+@
+
+%So far this first tutorial provides a quick start in the work with
+So far this first tutorial provided a quick start in the work with
+%\texttt{taxlist}.
+\texttt{taxlist} and the most commonly used functions.
+Further functions are available in this package (try \texttt{?taxlist}) and some
+%others may be developed in a medium term.
+others will be developed soon.
+
+
+\bibliography{taxlist}
+
+\end{document}
