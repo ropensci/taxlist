@@ -1,96 +1,96 @@
-"TaxonUsageID","LETTERCODE","SHORTNAME","TaxonName","NATIVENAME","AuthorName","SYNONYM","TaxonConceptID"
-192,"CYPEAUR","Cyperus auriculatus","Cyperus auriculatus",NA,"(Nees & Meyen ex Kunth) K¸k.",FALSE,192
-193,"CYPECOR","Cyperus corymbosus","Cyperus corymbosus",NA,"Rottb.",FALSE,193
-194,"CYPEDIF","Cyperus difformis","Cyperus difformis",NA,"L.",FALSE,194
-195,"CYPEDIG","Cyperus digitatus","Cyperus digitatus",NA,"Roxb.",FALSE,195
-196,"CYPEDIS","Cyperus distans","Cyperus distans",NA,"L. f.",FALSE,196
-197,"CYPEDIV","Cyperus dives","Cyperus dives",NA,"Delile",FALSE,197
-52000,"CYPEDIV","Cyperus immensus","Cyperus immensus",NA,"C.B. Clarke",TRUE,197
-198,"CYPEELE","Cyperus elegans","Cyperus elegans",NA,"L.",FALSE,198
-199,"CYPEESC","Cyperus esculentus","Cyperus esculentus",NA,"L.",FALSE,199
-200,"CYPEEXA","Cyperus exaltatus","Cyperus exaltatus",NA,"Retz.",FALSE,200
-201,"CYPEHAL","Cyperus haspan","Cyperus haspan",NA,"L.",FALSE,201
-202,"CYPEJAV","Cyperus javanicus","Cyperus javanicus",NA,"Houtt.",FALSE,202
-203,"CYPELAE","Cyperus laevigatus","Cyperus laevigatus",NA,"L.",FALSE,203
-204,"CYPELAT","Cyperus latifolius","Cyperus latifolius",NA,"Poir.",FALSE,204
-205,"CYPEL.L","Cyperus laxus s. laxus","Cyperus laxus s. laxus",NA,"Lam.",FALSE,205
-50017,"CYPEL.L","Cyperus diffusus","Cyperus diffusus",NA,"Vahl",TRUE,205
-206,"CYPEPAP","Cyperus papyrus","Cyperus papyrus",NA,"L.",FALSE,206
-207,"CYPEPRO","Cyperus procerus","Cyperus procerus",NA,"Rottb.",FALSE,207
-208,"CYPEREN","Cyperus renschii","Cyperus renschii",NA,"Boeckeler",FALSE,208
-209,"CYPEROT","Cyperus rotundus","Cyperus rotundus",NA,"L.",FALSE,209
-210,"CYPE.SP","Cyperus species","Cyperus species",NA,"NA",FALSE,210
-211,"CYPETEX","Cyperus textilis","Cyperus textilis",NA,"Thunb.",FALSE,211
-212,"CYPEUND","Cyperus undulatus","Cyperus undulatus",NA,"K¸k.",FALSE,212
-50073,"CYPEART","Cyperus articulatus","Cyperus articulatus",NA,"L.",FALSE,50073
-50092,"CYPESPH","Cyperus sphacelatus","Cyperus sphacelatus",NA,"Rottb.",FALSE,50092
-50116,"CYPEAFR","Cyperus afroalpinus","Cyperus afroalpinus",NA,"Lye",FALSE,50116
-50117,"CYPEDIC","Cyperus dichrostachyus","Cyperus dichrostachyus",NA,"Hochst. ex A. Rich.",FALSE,50117
-50151,"CYPEDEN","Cyperus denudatus","Cyperus denudatus",NA,"L. f.",FALSE,50151
-50221,"CYPEAFS","Cyperus afrosylvestris","Cyperus afrosylvestris",NA,"Lye",FALSE,50221
-50222,"CYPEAFS","Cyperus sesquiflorus s","Cyperus sesquiflorus ssp. appendiculatus",NA,"(K. Schum.) Lye",TRUE,50221
-50569,"CYPEDER","Cyperus derreilema","Cyperus derreilema",NA,"Steud.",FALSE,50569
-50721,"CYPED.L","Cyperus denudatus var.","Cyperus denudatus var. lucenti-nigricans",NA,"(K. Schum.) K¸k.",FALSE,50721
-50814,"CYPER.M","Cyperus rotundus ssp.","Cyperus rotundus ssp. merkeri",NA,"(C.B. Clarke) K¸k.",FALSE,50814
-50816,"CYPERIG","Cyperus rigidifolius","Cyperus rigidifolius",NA,"Steud.",FALSE,50816
-50835,"CYPED.D","Cyperus denudatus var.","Cyperus denudatus var. denudatus",NA,"C.B. Clarke",FALSE,50835
-51331,"CYPEB.S","Cyperus bulbosus var.","Cyperus bulbosus var. spicatus",NA,"Boeckeler",FALSE,51331
-51332,"CYPEB.S","Cyperus blysmoides","Cyperus blysmoides",NA,"Hochst.",TRUE,51331
-51418,"CYPESTE","Cyperus steudneri","Cyperus steudneri",NA,"(Boeckeler) Larridon",FALSE,51418
-51419,"CYPESTE","Kyllingiella polyphyll","Kyllingiella polyphylla",NA,"(A. Rich.) Lye",TRUE,51418
-51514,"CYPEKAE","Cyperus kaessneri","Cyperus kaessneri",NA,"C.B. Clarke",FALSE,51514
-51672,"CYPEPSE","Cyperus pseudoleptocla","Cyperus pseudoleptocladus",NA,"K¸k.",FALSE,51672
-51679,"CYPEFIS","Cyperus fischerianus","Cyperus fischerianus",NA,"G. W. Schimp. ex A. Rich.",FALSE,51679
-51757,"CYPEINV","Cyperus involucratus","Cyperus involucratus",NA,"Rottb.",FALSE,51757
-51884,"CYPEN.L","Cyperus niveus var. le","Cyperus niveus var. leucocephalus",NA,"(Kunth) Fosberg",FALSE,51884
-52116,"CYPED.U","Cyperus dubius var. du","Cyperus dubius var. dubius",NA,"Rottb.",FALSE,52116
-52117,"CYPED.U","Mariscus dubius ssp. c","Mariscus dubius ssp. coloratus",NA,"(Vahl) Lye",TRUE,52116
-52118,"CYPED.U","Mariscus coloratus","Mariscus coloratus",NA,"(Vahl) Nees",TRUE,52116
-52160,"CYPECYL","Cyperus cylindrostachy","Cyperus cylindrostachys",NA,"Boeckeler",FALSE,52160
-52161,"CYPECYL","Mariscus umbellatus","Mariscus umbellatus",NA,"(Rottb.) Vahl",TRUE,52160
-52340,"CYPECOM","Cyperus compressus","Cyperus compressus",NA,"L.",FALSE,52340
-52586,"CYPED.S","Cyperus difformis var.","Cyperus difformis var. subdecompositus",NA,"KÅk.",TRUE,194
-52587,"CYPED.L","Cyperus distans subsp.","Cyperus distans subsp. longibracteatus",NA,"(Cherm.) Lye",TRUE,196
-52588,"MARILON","Mariscus longibracteat","Mariscus longibracteatus",NA,"Cherm.",TRUE,196
-52589,"CYPELON","Cyperus longibracteatu","Cyperus longibracteatus",NA,"(Cherm.) KÅk.",TRUE,196
-52590,"CYPED.R","Cyperus distans var. r","Cyperus distans var. rubrotinctus",NA,"(Cherm.) Lye",TRUE,196
-52591,"CYPEL.R","Cyperus longibracteatu","Cyperus longibracteatus var. rubrotinctus",NA,"(Cherm.) KÅk.",TRUE,196
-52592,"MARIRUB","Mariscus rubrotinctus","Mariscus rubrotinctus",NA,"Cherm.",TRUE,196
-52593,"MARIBOJ","Mariscus bojeri","Mariscus bojeri",NA,"C.B. Clarke",TRUE,196
-52594,"MARIKEN","Mariscus keniensis","Mariscus keniensis",NA,"(KÅk.) S.S. Hooper",TRUE,196
-52595,"CYPEKEN","Cyperus keniensis","Cyperus keniensis",NA,"KÅk.",TRUE,196
-52596,"MARIL.K","Mariscus longibracteat","Mariscus longibracteatus var. keniensis",NA,"(KÅk.) Maquet",TRUE,196
-52597,"CYPEL.N","Cyperus longibracteatu","Cyperus longibracteatus var. niger",NA,"(C.B. Clarke) Lye",TRUE,196
-52598,"CYPED.N","Cyperus distans var. n","Cyperus distans var. niger",NA,"C.B. Clarke",TRUE,196
-52599,"CYPEF.D","Cyperus ferrugineoviri","Cyperus ferrugineoviridis var. distantiformis",NA,"KÅk.",TRUE,196
-52600,"CYPEE.D","Cyperus exaltatus var.","Cyperus exaltatus var. dives",NA,"(Delile) C.B. Clarke",TRUE,197
-52601,"CYPEA.D","Cyperus alopecuroides","Cyperus alopecuroides var. dives",NA,"Boeckeler",TRUE,197
-52602,"CYPEI.P","Cyperus immensus var.","Cyperus immensus var. petherickii",NA,"(C.B. Clarke) KÅk.",TRUE,197
-52603,"CYPEPET","Cyperus petherickii","Cyperus petherickii",NA,"C.B. Clarke",TRUE,197
-52604,"CYPEI.T","Cyperus immensus var.","Cyperus immensus var. taylorii",NA,"C.B. Clarke",TRUE,200
-52605,"CYPEL.A","Cyperus latifolius var","Cyperus latifolius var. angustifolius",NA,"Hochst.",TRUE,204
-52606,"CYPEL.A","Cyperus latifolius var","Cyperus latifolius var. austro-africanus",NA,"KÅk.",TRUE,204
-52607,"CYPELAB","Cyperus labiatus","Cyperus labiatus",NA,"Peter",TRUE,204
-52608,"CYPESOL","Cyperus solidifolius","Cyperus solidifolius",NA,"Boeckeler",TRUE,204
-52609,"CYPEHER","Cyperus herana","Cyperus herana",NA,"Cherm.",TRUE,204
-52610,"CYPEL.H","Cyperus latifolius var","Cyperus latifolius var. herana",NA,"(Cherm.) Cherm.",TRUE,204
-52611,"CYPEL.S","Cyperus latifolius var","Cyperus latifolius var. solidifolius",NA,"(Boeckeler) Cherm.",TRUE,204
-52612,"CYPEP.A","Cyperus papyrus subsp.","Cyperus papyrus subsp. antiquorum",NA,"(Willd.) Chiov.",TRUE,206
-52613,"CYPEP.N","Cyperus papyrus subsp.","Cyperus papyrus subsp. nyassicus",NA,"Chiov.",TRUE,206
-53096,"CHLOART","Chlorocyperus articula","Chlorocyperus articulatus",NA,"Rikli",TRUE,50073
-53177,"CYPEADO","Cyperus adoensis","Cyperus adoensis",NA,"Hochst. ex A. Rich.",TRUE,50816
-53178,"CYPEATR","Cyperus atrosanguineus","Cyperus atrosanguineus",NA,"Hochst. ex Steud.",TRUE,50816
-53179,"CYPEL.A","Cyperus longus var. ad","Cyperus longus var. adoensis",NA,"Boeckeler",TRUE,50816
-53180,"CYPERHI","Cyperus rhigiophyllus","Cyperus rhigiophyllus",NA,"Hochst.",TRUE,50816
-53181,"CYPESPH","Cyperus sphaerospermoi","Cyperus sphaerospermoides",NA,"Cherm.",TRUE,50835
-53182,"CYPEH.S","Cyperus haspan var. sp","Cyperus haspan var. sphaerospermoides",NA,"(Cherm.) Cherm.",TRUE,50835
-53183,"CYPEH.T","Cyperus haspan var. tr","Cyperus haspan var. transiens",NA,"(Cherm.) Cherm.",TRUE,50835
-53184,"CYPES.T","Cyperus sphaerospermoi","Cyperus sphaerospermoides var. transiens",NA,"Cherm.",TRUE,50835
-53185,"CYPED.S","Cyperus denudatus f. s","Cyperus denudatus f. subdelicatulus",NA,"KÅk.",TRUE,50835
-53186,"CYPED.D","Cyperus denudatus var.","Cyperus denudatus var. delicatulus",NA,"C.B. Clarke",TRUE,50835
-53187,"CYPEPHA","Cyperus phaeorrhizus","Cyperus phaeorrhizus",NA,"K. Schum.",TRUE,50835
-53188,"CYPEP.P","Cyperus phaeorrhizus v","Cyperus phaeorrhizus var. pallidus",NA,"Gilli",TRUE,50835
-53189,"CYPEP.P","Cyperus phaeorrhizus v","Cyperus phaeorrhizus var. princeae",NA,"(C.B. Clarke) KÅk.",TRUE,50835
-53190,"CYPEPRI","Cyperus princeae","Cyperus princeae",NA,"C.B. Clarke",TRUE,50835
-53191,"CYPEVER","Cyperus verrucinux","Cyperus verrucinux",NA,"C.B. Clarke",TRUE,50835
-53192,"CYPEHAS","Cyperus haspanoides","Cyperus haspanoides",NA,"C.B. Clarke",TRUE,50835
+TaxonUsageID,LETTERCODE,SHORTNAME,TaxonName,NATIVENAME,AuthorName,SYNONYM,TaxonConceptID
+192,CYPEAUR,Cyperus auriculatus,Cyperus auriculatus,NA,(Nees & Meyen ex Kunth) K¸k.,FALSE,192
+193,CYPECOR,Cyperus corymbosus,Cyperus corymbosus,NA,Rottb.,FALSE,193
+194,CYPEDIF,Cyperus difformis,Cyperus difformis,NA,L.,FALSE,194
+195,CYPEDIG,Cyperus digitatus,Cyperus digitatus,NA,Roxb.,FALSE,195
+196,CYPEDIS,Cyperus distans,Cyperus distans,NA,L. f.,FALSE,196
+197,CYPEDIV,Cyperus dives,Cyperus dives,NA,Delile,FALSE,197
+52000,CYPEDIV,Cyperus immensus,Cyperus immensus,NA,C.B. Clarke,TRUE,197
+198,CYPEELE,Cyperus elegans,Cyperus elegans,NA,L.,FALSE,198
+199,CYPEESC,Cyperus esculentus,Cyperus esculentus,NA,L.,FALSE,199
+200,CYPEEXA,Cyperus exaltatus,Cyperus exaltatus,NA,Retz.,FALSE,200
+201,CYPEHAL,Cyperus haspan,Cyperus haspan,NA,L.,FALSE,201
+202,CYPEJAV,Cyperus javanicus,Cyperus javanicus,NA,Houtt.,FALSE,202
+203,CYPELAE,Cyperus laevigatus,Cyperus laevigatus,NA,L.,FALSE,203
+204,CYPELAT,Cyperus latifolius,Cyperus latifolius,NA,Poir.,FALSE,204
+205,CYPEL.L,Cyperus laxus s. laxus,Cyperus laxus s. laxus,NA,Lam.,FALSE,205
+50017,CYPEL.L,Cyperus diffusus,Cyperus diffusus,NA,Vahl,TRUE,205
+206,CYPEPAP,Cyperus papyrus,Cyperus papyrus,NA,L.,FALSE,206
+207,CYPEPRO,Cyperus procerus,Cyperus procerus,NA,Rottb.,FALSE,207
+208,CYPEREN,Cyperus renschii,Cyperus renschii,NA,Boeckeler,FALSE,208
+209,CYPEROT,Cyperus rotundus,Cyperus rotundus,NA,L.,FALSE,209
+210,CYPE.SP,Cyperus species,Cyperus species,NA,NA,FALSE,210
+211,CYPETEX,Cyperus textilis,Cyperus textilis,NA,Thunb.,FALSE,211
+212,CYPEUND,Cyperus undulatus,Cyperus undulatus,NA,K¸k.,FALSE,212
+50073,CYPEART,Cyperus articulatus,Cyperus articulatus,NA,L.,FALSE,50073
+50092,CYPESPH,Cyperus sphacelatus,Cyperus sphacelatus,NA,Rottb.,FALSE,50092
+50116,CYPEAFR,Cyperus afroalpinus,Cyperus afroalpinus,NA,Lye,FALSE,50116
+50117,CYPEDIC,Cyperus dichrostachyus,Cyperus dichrostachyus,NA,Hochst. ex A. Rich.,FALSE,50117
+50151,CYPEDEN,Cyperus denudatus,Cyperus denudatus,NA,L. f.,FALSE,50151
+50221,CYPEAFS,Cyperus afrosylvestris,Cyperus afrosylvestris,NA,Lye,FALSE,50221
+50222,CYPEAFS,Cyperus sesquiflorus s,Cyperus sesquiflorus ssp. appendiculatus,NA,(K. Schum.) Lye,TRUE,50221
+50569,CYPEDER,Cyperus derreilema,Cyperus derreilema,NA,Steud.,FALSE,50569
+50721,CYPED.L,Cyperus denudatus var.,Cyperus denudatus var. lucenti-nigricans,NA,(K. Schum.) K¸k.,FALSE,50721
+50814,CYPER.M,Cyperus rotundus ssp.,Cyperus rotundus ssp. merkeri,NA,(C.B. Clarke) K¸k.,FALSE,50814
+50816,CYPERIG,Cyperus rigidifolius,Cyperus rigidifolius,NA,Steud.,FALSE,50816
+50835,CYPED.D,Cyperus denudatus var.,Cyperus denudatus var. denudatus,NA,C.B. Clarke,FALSE,50835
+51331,CYPEB.S,Cyperus bulbosus var.,Cyperus bulbosus var. spicatus,NA,Boeckeler,FALSE,51331
+51332,CYPEB.S,Cyperus blysmoides,Cyperus blysmoides,NA,Hochst.,TRUE,51331
+51418,CYPESTE,Cyperus steudneri,Cyperus steudneri,NA,(Boeckeler) Larridon,FALSE,51418
+51419,CYPESTE,Kyllingiella polyphyll,Kyllingiella polyphylla,NA,(A. Rich.) Lye,TRUE,51418
+51514,CYPEKAE,Cyperus kaessneri,Cyperus kaessneri,NA,C.B. Clarke,FALSE,51514
+51672,CYPEPSE,Cyperus pseudoleptocla,Cyperus pseudoleptocladus,NA,K¸k.,FALSE,51672
+51679,CYPEFIS,Cyperus fischerianus,Cyperus fischerianus,NA,G. W. Schimp. ex A. Rich.,FALSE,51679
+51757,CYPEINV,Cyperus involucratus,Cyperus involucratus,NA,Rottb.,FALSE,51757
+51884,CYPEN.L,Cyperus niveus var. le,Cyperus niveus var. leucocephalus,NA,(Kunth) Fosberg,FALSE,51884
+52116,CYPED.U,Cyperus dubius var. du,Cyperus dubius var. dubius,NA,Rottb.,FALSE,52116
+52117,CYPED.U,Mariscus dubius ssp. c,Mariscus dubius ssp. coloratus,NA,(Vahl) Lye,TRUE,52116
+52118,CYPED.U,Mariscus coloratus,Mariscus coloratus,NA,(Vahl) Nees,TRUE,52116
+52160,CYPECYL,Cyperus cylindrostachy,Cyperus cylindrostachys,NA,Boeckeler,FALSE,52160
+52161,CYPECYL,Mariscus umbellatus,Mariscus umbellatus,NA,(Rottb.) Vahl,TRUE,52160
+52340,CYPECOM,Cyperus compressus,Cyperus compressus,NA,L.,FALSE,52340
+52586,CYPED.S,Cyperus difformis var.,Cyperus difformis var. subdecompositus,NA,KÅ¸k.,TRUE,194
+52587,CYPED.L,Cyperus distans subsp.,Cyperus distans subsp. longibracteatus,NA,(Cherm.) Lye,TRUE,196
+52588,MARILON,Mariscus longibracteat,Mariscus longibracteatus,NA,Cherm.,TRUE,196
+52589,CYPELON,Cyperus longibracteatu,Cyperus longibracteatus,NA,(Cherm.) K¸Åk.,TRUE,196
+52590,CYPED.R,Cyperus distans var. r,Cyperus distans var. rubrotinctus,NA,(Cherm.) Lye,TRUE,196
+52591,CYPEL.R,Cyperus longibracteatu,Cyperus longibracteatus var. rubrotinctus,NA,(Cherm.) KÅ¸k.,TRUE,196
+52592,MARIRUB,Mariscus rubrotinctus,Mariscus rubrotinctus,NA,Cherm.,TRUE,196
+52593,MARIBOJ,Mariscus bojeri,Mariscus bojeri,NA,C.B. Clarke,TRUE,196
+52594,MARIKEN,Mariscus keniensis,Mariscus keniensis,NA,(KÅ¸k.) S.S. Hooper,TRUE,196
+52595,CYPEKEN,Cyperus keniensis,Cyperus keniensis,NA,K¸Åk.,TRUE,196
+52596,MARIL.K,Mariscus longibracteat,Mariscus longibracteatus var. keniensis,NA,(K¸Åk.) Maquet,TRUE,196
+52597,CYPEL.N,Cyperus longibracteatu,Cyperus longibracteatus var. niger,NA,(C.B. Clarke) Lye,TRUE,196
+52598,CYPED.N,Cyperus distans var. n,Cyperus distans var. niger,NA,C.B. Clarke,TRUE,196
+52599,CYPEF.D,Cyperus ferrugineoviri,Cyperus ferrugineoviridis var. distantiformis,NA,K¸Åk.,TRUE,196
+52600,CYPEE.D,Cyperus exaltatus var.,Cyperus exaltatus var. dives,NA,(Delile) C.B. Clarke,TRUE,197
+52601,CYPEA.D,Cyperus alopecuroides,Cyperus alopecuroides var. dives,NA,Boeckeler,TRUE,197
+52602,CYPEI.P,Cyperus immensus var.,Cyperus immensus var. petherickii,NA,(C.B. Clarke) KÅ¸k.,TRUE,197
+52603,CYPEPET,Cyperus petherickii,Cyperus petherickii,NA,C.B. Clarke,TRUE,197
+52604,CYPEI.T,Cyperus immensus var.,Cyperus immensus var. taylorii,NA,C.B. Clarke,TRUE,200
+52605,CYPEL.A,Cyperus latifolius var,Cyperus latifolius var. angustifolius,NA,Hochst.,TRUE,204
+52606,CYPEL.A,Cyperus latifolius var,Cyperus latifolius var. austro-africanus,NA,K¸Åk.,TRUE,204
+52607,CYPELAB,Cyperus labiatus,Cyperus labiatus,NA,Peter,TRUE,204
+52608,CYPESOL,Cyperus solidifolius,Cyperus solidifolius,NA,Boeckeler,TRUE,204
+52609,CYPEHER,Cyperus herana,Cyperus herana,NA,Cherm.,TRUE,204
+52610,CYPEL.H,Cyperus latifolius var,Cyperus latifolius var. herana,NA,(Cherm.) Cherm.,TRUE,204
+52611,CYPEL.S,Cyperus latifolius var,Cyperus latifolius var. solidifolius,NA,(Boeckeler) Cherm.,TRUE,204
+52612,CYPEP.A,Cyperus papyrus subsp.,Cyperus papyrus subsp. antiquorum,NA,(Willd.) Chiov.,TRUE,206
+52613,CYPEP.N,Cyperus papyrus subsp.,Cyperus papyrus subsp. nyassicus,NA,Chiov.,TRUE,206
+53096,CHLOART,Chlorocyperus articula,Chlorocyperus articulatus,NA,Rikli,TRUE,50073
+53177,CYPEADO,Cyperus adoensis,Cyperus adoensis,NA,Hochst. ex A. Rich.,TRUE,50816
+53178,CYPEATR,Cyperus atrosanguineus,Cyperus atrosanguineus,NA,Hochst. ex Steud.,TRUE,50816
+53179,CYPEL.A,Cyperus longus var. ad,Cyperus longus var. adoensis,NA,Boeckeler,TRUE,50816
+53180,CYPERHI,Cyperus rhigiophyllus,Cyperus rhigiophyllus,NA,Hochst.,TRUE,50816
+53181,CYPESPH,Cyperus sphaerospermoi,Cyperus sphaerospermoides,NA,Cherm.,TRUE,50835
+53182,CYPEH.S,Cyperus haspan var. sp,Cyperus haspan var. sphaerospermoides,NA,(Cherm.) Cherm.,TRUE,50835
+53183,CYPEH.T,Cyperus haspan var. tr,Cyperus haspan var. transiens,NA,(Cherm.) Cherm.,TRUE,50835
+53184,CYPES.T,Cyperus sphaerospermoi,Cyperus sphaerospermoides var. transiens,NA,Cherm.,TRUE,50835
+53185,CYPED.S,Cyperus denudatus f. s,Cyperus denudatus f. subdelicatulus,NA,KÅ¸k.,TRUE,50835
+53186,CYPED.D,Cyperus denudatus var.,Cyperus denudatus var. delicatulus,NA,C.B. Clarke,TRUE,50835
+53187,CYPEPHA,Cyperus phaeorrhizus,Cyperus phaeorrhizus,NA,K. Schum.,TRUE,50835
+53188,CYPEP.P,Cyperus phaeorrhizus v,Cyperus phaeorrhizus var. pallidus,NA,Gilli,TRUE,50835
+53189,CYPEP.P,Cyperus phaeorrhizus v,Cyperus phaeorrhizus var. princeae,NA,(C.B. Clarke) K¸Åk.,TRUE,50835
+53190,CYPEPRI,Cyperus princeae,Cyperus princeae,NA,C.B. Clarke,TRUE,50835
+53191,CYPEVER,Cyperus verrucinux,Cyperus verrucinux,NA,C.B. Clarke,TRUE,50835
+53192,CYPEHAS,Cyperus haspanoides,Cyperus haspanoides,NA,C.B. Clarke,TRUE,50835
