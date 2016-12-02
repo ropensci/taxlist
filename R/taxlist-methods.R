@@ -32,21 +32,6 @@ setGeneric("taxon_relations",
 			standardGeneric("taxon_relations")
 )
 
-# Method for data frames
-setMethod("taxon_relations", signature(taxlist="data.frame"),
-		function(taxlist, ...) {
-			if(!all(c("TaxonUsageID","TaxonConceptID") %in% colnames(taxlist)))
-				stop("TaxonUsageID and TaxonConceptID are mandatory columns")
-			if(any(duplicated(taxlist$TaxonUsageID)))
-				stop("duplicates in TaxonUsageID are not allowed")
-			Relations <- unique(taxlist$TaxonConceptID)
-			Relations <- data.frame(TaxonConceptID=Relations,
-					AcceptedName=Relations, row.names=Relations,
-					stringsAsFactors=FALSE)
-			return(Relations)
-		}
-)
-
 # Set method for taxlist
 setMethod("taxon_relations", signature(taxlist="taxlist"),
 		function(taxlist, ...) taxlist@taxonRelations
@@ -142,8 +127,6 @@ setReplaceMethod("taxon_traits", signature(taxlist="taxlist",
                                 taxlist@taxonTraits$TaxonConceptID,
                                 value$TaxonConceptID),i]
             }
-            rownames(taxlist@taxonTraits) <- paste(
-                    taxlist@taxonTraits$TaxonConceptID)
             return(taxlist)
         }
 )
@@ -157,7 +140,11 @@ setGeneric("accepted_name",
 # Set method for taxlist
 setMethod("accepted_name", signature(taxlist="taxlist"),
 		function(taxlist, ConceptID, ...) {
-			taxlist@taxonRelations[paste(ConceptID),"AcceptedName"]
+            AcceptedName <- taxlist@taxonRelations[
+                    taxlist@taxonRelations$TaxonConceptID ==
+                            ConceptID,"AcceptedName"]
+			return(taxlist@taxonNames[taxlist@taxonNames$TaxonUsageID ==
+                                    AcceptedName,])
 		}
 )
 
@@ -173,11 +160,14 @@ setReplaceMethod("accepted_name", signature(taxlist="taxlist"),
 			# first test
 			if(length(ConceptID) != length(value))
 				stop("ConceptID and value should be of the same length")
-			if(!all(taxlist@taxonNames[paste(value),
+            if(!all(taxlist@taxonNames[match(value,
+                                    taxlist@taxonNames$TaxonUsageID),
                             "TaxonConceptID"] == ConceptID))
 				stop("new value is not included in the respective taxon concept")
 			# now replace
-			taxlist@taxonRelations[paste(ConceptID),"AcceptedName"] <- value
+            taxlist@taxonRelations[match(ConceptID,
+                            taxlist@taxonRelations$TaxonConceptID),
+                    "AcceptedName"] <- value
 			return(taxlist)
 		}
 )
@@ -200,7 +190,8 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
 			if(any(UsageID %in% taxlist@taxonRelations$AcceptedName))
 				stop("changes on concept are not allowed for accepted names")
 			# now replace
-			taxlist@taxonNames[paste(UsageID),"TaxonConceptID"] <- value
+			taxlist@taxonNames[match(UsageID,taxlist@taxonNames$TaxonUsageID),
+                    "TaxonConceptID"] <- value
 			return(taxlist)
 		}
 )
@@ -221,10 +212,9 @@ setGeneric("taxon_views<-", function(taxlist, value)
             standardGeneric("taxon_views<-"))
 
 # Replacement methods for the assignment to slot taxonRelations
-setReplaceMethod("taxon_views", signature(taxlist="taxlist", value="integer"),
+setReplaceMethod("taxon_views", signature(taxlist="taxlist", value="numeric"),
         function(taxlist, value) {
-            if(length(value) != nrow(taxlist@taxonRelations))
-                stop("length of 'value' must be the same as number of concepts in 'taxlist'")
+            value <- rep_len(value, nrow(taxlist@taxonRelations))
             taxlist@taxonRelations$View <- value
             if(nrow(taxlist@taxonViews) == 0) {
                 taxlist@taxonViews <- data.frame(View=unique(value),

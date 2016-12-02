@@ -3,7 +3,7 @@
 \alias{taxon_views}
 \alias{taxon_views,taxlist-method}
 \alias{taxon_views<-}
-\alias{taxon_views<-,taxlist,integer-method}
+\alias{taxon_views<-,taxlist,numeric-method}
 \alias{taxon_views<-,taxlist,data.frame-method}
 
 \title{Management of Concept Views in Taxonomic Lists.}
@@ -18,7 +18,7 @@ taxon_views(taxlist) <- value
 }
 \arguments{
 \item{taxlist}{Object of class \code{data.frame} or \code{taxlist}.}
-\item{value}{Object of class \code{integer} or \code{data.frame} containing
+\item{value}{Object of class \code{numeric} or \code{data.frame} containing
 	information about concept views implemented.}
 \item{...}{Further arguments passed to or from other methods.}
 }

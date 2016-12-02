@@ -22,7 +22,6 @@ add_name <- function(taxlist, ConceptID, TaxonName, AuthorName, ...) {
 	newName <- as.data.frame(newName, stringsAsFactors=FALSE)[,
 			colnames(taxlist@taxonNames)]
 	newName <- do.call(rbind, list(taxlist@taxonNames, newName))
-	rownames(newName) <- paste(newName$TaxonUsageID)
 	taxon_names(taxlist) <- newName
 	return(taxlist)
 }

@@ -4,16 +4,14 @@
 \alias{merge_taxa,taxlist,numeric-method}
 \alias{merge_taxa,taxlist,list-method}
 
-\title{Merge Concepts and split concepts.}
+\title{Merge Concepts.}
 \description{
-Merge concepts to species or genus level.
+Merge optional concepts into one.
 }
 \usage{
-\S4method{merge_taxa}{taxlist,numeric}(object, ConceptID, AcceptedName,
-	overwrite_old=FALSE)
+\S4method{merge_taxa}{taxlist,numeric}(object, ConceptID, AcceptedName, overwrite_old=FALSE)
 	
-\S4method{merge_taxa}{taxlist,list}(object, ConceptID, AcceptedName,
-	overwrite_old=FALSE)
+\S4method{merge_taxa}{taxlist,list}(object, ConceptID, AcceptedName, overwrite_old=FALSE)
 }
 \arguments{
 \item{object}{Object of class \code{taxlist}.}
@@ -24,7 +22,9 @@ Merge concepts to species or genus level.
 	\code{".TaxonConceptID_old"} should be overwritten or not.}
 }
 \details{
-All Concepts will be included in one
+All concepts will be included into one.
+For definition of a proper accepted name for the new concept, use
+\code{\link{accepted_name}}.
 }
 \value{
 An object of class \code{\link[=taxlist-class]{taxlist}} with merged concepts.

@@ -5,7 +5,7 @@
 # taxlist
 
 The aim of `taxlist` is to provide an object structure for taxonomic lists
-and a set some methods to display and handle the contained information.
+and methods to display and handle the contained information.
 This package should be considered as experimental but we welcome any interest
 to implement it or contribute to `taxlist`.
 
@@ -55,37 +55,34 @@ in `SWEA-Dataveg` and is not a complete list of the flora for East Africa.
 ```r
 # Load EA-Splist and test the validity of the taxlist-object
 library(taxlist)
-load(url("https://www.wetlands-africa.de/publications/Easplist.rda"))
+data(Easplist)
 validObject(Easplist)
 #> [1] TRUE
 
 # A summary of the species list
 summary(Easplist)
-#> 3924 names for 2580 taxa 
-#> 0 (0%) taxa with first name entries
+#> 4125 names for 2723 taxa 
 #> 2 variables for taxon traits 
+#> 1 taxon view(s) 
 #> validation for class 'taxlist': TRUE
 
 # To know, how many genera and how many families are included in the list
 length(unique(Easplist$GENUS))
-#> [1] 991
+#> [1] 1026
 length(unique(Easplist$FAMILY))
-#> [1] 183
+#> [1] 190
 
 # You can also get subsets and listings of all stored names for a species
 Cyclosorus <- subset(Easplist, TaxonName == "Cyclosorus interruptus")
 summary(Cyclosorus)
 #> 14 names for 1 taxon 
-#> 0 (0%) taxa with first name entries
 #> 2 variables for taxon traits 
+#> 1 taxon view(s) 
 #> validation for class 'taxlist': TRUE
 summary(Cyclosorus, "all")
 #> ------------------------------ 
-#> # Accepted name for taxon concept '50074':
+#> # Accepted name for taxon concept '50074' (concept view 1):
 #> 50074 Cyclosorus interruptus (Willd.) H. Itô 
-#> 
-#> # First name: 
-#> none 
 #> 
 #> # Synonyms: 
 #> 52002 Dryopteris gongylodes (Schkuhr) Kuntze 

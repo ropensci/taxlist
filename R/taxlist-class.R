@@ -8,7 +8,7 @@ setClass("taxlist",
 				taxonTraits="data.frame", taxonViews="data.frame"),
 		prototype=list(taxonNames=data.frame(TaxonUsageID=integer(),
 						TaxonConceptID=integer(), TaxonName=character(),
-						AuthorName=character()),
+						AuthorName=character(), stringsAsFactors=FALSE),
 				taxonRelations=data.frame(TaxonConceptID=integer(),
 						AcceptedName=integer(), View=integer()),
 				taxonTraits=data.frame(TaxonConceptID=integer()),
@@ -22,20 +22,7 @@ setClass("taxlist",
                 if(!all(c("TaxonConceptID","AcceptedName","View") %in%
                                 colnames(object@taxonRelations)))
                     return("'TaxonConceptID', 'AcceptedName', and 'View' are mandatory columns in slot 'taxonRelations'")
-                if(any(rownames(object@taxonRelations) !=
-                                paste(object@taxonRelations$TaxonConceptID)))
-                    return("'TaxonConceptID' have to be set as row names for slot 'taxonRelations'")
-                
             }
-            if(any(rownames(object@taxonNames) !=
-                            paste(object@taxonNames$TaxonUsageID)))
-                return("'TaxonUsageID' have to be set as row names for slot 'taxonNames'")
-            if(any(rownames(object@taxonTraits) !=
-                            paste(object@taxonTraits$TaxonConceptID)))
-                return("'TaxonConceptID' have to be set as row names for slot 'taxonTraits'")
-            if(any(rownames(object@taxonViews) !=
-                            paste(object@taxonViews$View)))
-                return("'View' have to be set as row names for slot 'taxonViews'")
             if(!all(object@taxonNames$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID))
                 return("Some concepts are missing in slot 'taxonRelations'")

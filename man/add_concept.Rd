@@ -46,7 +46,7 @@ summary(Ebenaceae)
 
 ## Adding two new concepts
 Ebenaceae <- add_concept(Ebenaceae, View=1, TaxonName="Euclea acutifolia",
-AuthorName="E. Mey. ex A. DC.", LETTERCODE="EUCLACU")
+AuthorName="E. Mey. ex A. DC.")
 
 ## A summary again  
 summary(Ebenaceae)

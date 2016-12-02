@@ -22,13 +22,11 @@ df2taxlist <- function(x, AcceptedName, Traits) {
     if(!is.integer(x$TaxonUsageID)) x$TaxonUsageID <- as.integer(x$TaxonUsageID)
     if(!is.integer(x$TaxonConceptID))
         x$TaxonConceptID <- as.integer(x$TaxonConceptID)
-    rownames(x) <- paste(x$TaxonUsageID)
     if(!is.character(x$TaxonName)) x$TaxonName <- paste(x$TaxonName)
     if(!is.character(x$AuthorName)) x$AuthorName <- paste(x$AuthorName)
     # taxon relations
     taxonRelations <- x[AcceptedName,c("TaxonConceptID","TaxonUsageID")]
     colnames(taxonRelations)[2] <- "AcceptedName"
-    rownames(taxonRelations) <- paste(taxonRelations$TaxonConceptID)
     taxonRelations$View <- as.integer(rep(NA, nrow(taxonRelations)))
     # taxon traits
     traitsTable <- data.frame(TaxonConceptID=taxonRelations[,"TaxonConceptID"],

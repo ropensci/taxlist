@@ -25,6 +25,6 @@ tvsplist <- function(taxlist, tv_home=tv.home()) {
     }
     taxon_views(species) <- rep(as.integer(1), nrow(species@taxonRelations))
     taxon_views(species) <- data.frame(View=1, Author=taxlist, Year="",
-            Title="", Published="", row.names=paste(1), stringsAsFactors=FALSE)
+            Title="", Published="", stringsAsFactors=FALSE)
 	return(species)
 }

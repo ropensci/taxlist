@@ -1,19 +1,20 @@
 Package: taxlist
-Version: 0.0.0.9010
+Version: 0.0.0.9011
 Encoding: UTF-8
-Date: 2016-08-15
+Date: 2016-11-30
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <malvarez@uni-bonn.de>
 Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
 Depends:
-	R(>= 3.2.0)
+	R(>= 3.3.0)
 Imports:
     foreign,
     methods,
     vegdata
 Suggests:
     devtools,
-    knitr
+    knitr,
+    stringi
 VignetteBuilder:
     knitr
 Description: Handling taxonomic lists through objects of class 'taxlist'. Many

@@ -1,5 +1,6 @@
 \name{change_concept}
 \docType{methods}
+\alias{change_cocept}
 \alias{change_concept<-}
 \alias{change_concept<-,taxlist-method}
 

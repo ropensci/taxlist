@@ -1,7 +1,6 @@
 \name{taxon_relations}
 \docType{methods}
 \alias{taxon_relations}
-\alias{taxon_relations,data.frame-method}
 \alias{taxon_relations,taxlist-method}
 \alias{taxon_relations<-}
 \alias{taxon_relations<-,taxlist,data.frame-method}
@@ -9,8 +8,8 @@
 \title{Retrieve or Assign Slot \dQuote{taxonRelations} to a \dQuote{taxlist}
 Object}
 \usage{
-\S4method{taxon_relations}{data.frame}(taxlist, ...)
 \S4method{taxon_relations}{taxlist}(taxlist, ...)
+
 taxon_relations(taxlist) <- value
 }
 \arguments{
@@ -23,13 +22,9 @@ taxon_relations(taxlist) <- value
 The function \code{taxon_relations} retrieves or assigns the slot
 \code{taxonRelations} to objects of the class
 \code{\link[=taxlist-class]{taxlist}}.
-
-The \code{data.frame} method can be used to generate the \code{taxonRelations}
-slot from a data frame similar to \code{\link{Easplist}} or from a slot
-\code{taxonNames} in a \code{taxlist} object.
 }
 \author{
-Miguel Alvarez, \email{malvarez@uni-bonn.de}
+Miguel Alvarez, \email{malvarez@uni-bonn.de}.
 }
 \seealso{
 \code{\link[=taxlist-class]{taxlist}}.
