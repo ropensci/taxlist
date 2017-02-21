@@ -4,15 +4,40 @@
 ################################################################################
 
 setClass("taxlist",
-		slots=c(taxonNames="data.frame", taxonRelations="ANY",
-				taxonTraits="data.frame", taxonViews="data.frame"),
-		prototype=list(taxonNames=data.frame(TaxonUsageID=integer(),
-						TaxonConceptID=integer(), TaxonName=character(),
-						AuthorName=character(), stringsAsFactors=FALSE),
-				taxonRelations=data.frame(TaxonConceptID=integer(),
-						AcceptedName=integer(), View=integer()),
-				taxonTraits=data.frame(TaxonConceptID=integer()),
-                taxonViews=data.frame(View=integer())),
+        # Definition of slots
+		slots=c(
+                taxonNames="data.frame",
+                taxonRelations="data.frame",
+                hierarchies="factor",
+                taxonViews="data.frame",
+				taxonTraits="data.frame"
+        ),
+        # Prototype
+		prototype=list(
+                taxonNames=data.frame(
+                        TaxonUsageID=integer(),
+						TaxonConceptID=integer(),
+                        TaxonName=character(),
+						AuthorName=character(),
+                        stringsAsFactors=FALSE
+                ),
+                taxonRelations=data.frame(
+                        TaxonConceptID=integer(),
+						AcceptedName=integer(),
+                        Basionym=integer(),
+                        Parent=integer(),
+                        Level=factor(),
+                        ViewID=integer()
+                ),
+                hierarchies=factor(),
+                taxonViews=data.frame(
+                        ViewID=integer()
+                ),
+				taxonTraits=data.frame(
+                        TaxonConceptID=integer()
+                )
+        ),
+        # Validity procedures
 		validity=function(object) {
 			if(!all(c("TaxonUsageID","TaxonConceptID","TaxonName",
 							"AuthorName") %in% colnames(object@taxonNames)))
@@ -42,4 +67,5 @@ setClass("taxlist",
                                     object@taxonNames$TaxonUsageID)] ==
                     object@taxonRelations$TaxonConceptID))
                 return("Accepted names must be included in their respective concepts!")
-		})
+		}
+)
