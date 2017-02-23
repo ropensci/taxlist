@@ -1,5 +1,7 @@
 \name{add_concept}
+\docType{methods}
 \alias{add_concept}
+\alias{add_concept,taxlist-method}
 
 \title{Insert a New Concept in a Taxonomic List.}
 \description{
@@ -7,13 +9,16 @@ New taxon concepts will be added complementing objects of class
 \code{\link[=taxlist-class]{taxlist}}.
 }
 \usage{
-add_concept(taxlist, View, TaxonName, AuthorName, ...)
+\S4method{add_concept}{taxlist}(taxlist, TaxonName, AuthorName, Parent, Level, ViewID, ...)
 }
 \arguments{
-\item{taxlist}{A object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{View}{An integer vector with the ID of the respective taxon view.}
-\item{TaxonName}{A character vector with the new names.}
-\item{AuthorName}{A character vector with the names of the respective authors.}
+\item{taxlist}{An object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{TaxonName}{Character vector with the accepted name for the new taxon
+	concepts.}
+\item{AuthorName}{Character vector with the names of the respective authors.}
+\item{Parent}{Integer vector with the IDs of the respective parent taxa.}
+\item{Level}{Character vector with the ID of the respective taxon levels.}
+\item{ViewID}{Integer vector with the ID of the respective taxon view.}
 \item{...}{Additional named vectors to be included in the slot 
 	\code{taxonNames}.}
 }

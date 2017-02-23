@@ -1,0 +1,29 @@
+# TODO:   Add a new name to a taxlist object
+# 
+# Author: Miguel Alvarez
+################################################################################
+
+# Set generic method
+setGeneric("add_synonym",
+        function(taxlist, ConceptID, ...)
+            standardGeneric("add_synonym")
+)
+
+# Method for taxlist
+setMethod("add_synonym", signature(taxlist="taxlist", ConceptID="integer"),
+        function(taxlist, ConceptID, TaxonName, AuthorName, ...) {
+            if(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID)
+                stop("'ConceptID' is not included as concept in 'taxlist'")
+            TaxonConceptID <- ConceptID
+            TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID)
+            TaxonUsageID <- TaxonUsageID:(TaxonUsageID + length(TaxonName) - 1)
+            new_name <- nlist(TaxonConceptID, TaxonUsageID, TaxonName,
+                    AuthorName, ...)
+            taxlist@taxonNames <- do.call(rbind,
+                    list(taxlist@taxonNames,
+                            new_name[names(new_name) %in%
+                                            colnames(taxlist@taxonNames)],
+                            stringsAsFactors=FALSE))
+            return(taxlist)
+        }
+)

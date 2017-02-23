@@ -53,52 +53,7 @@ in `SWEA-Dataveg` and is not a complete list of the flora for East Africa.
 
 
 ```r
-# Load EA-Splist and test the validity of the taxlist-object
-library(taxlist)
-data(Easplist)
-validObject(Easplist)
-#> [1] TRUE
-
-# A summary of the species list
-summary(Easplist)
-#> 4125 names for 2723 taxa 
-#> 2 variables for taxon traits 
-#> 1 taxon view(s) 
-#> validation for class 'taxlist': TRUE
-
-# To know, how many genera and how many families are included in the list
-length(unique(Easplist$GENUS))
-#> [1] 1026
-length(unique(Easplist$FAMILY))
-#> [1] 190
-
-# You can also get subsets and listings of all stored names for a species
-Cyclosorus <- subset(Easplist, TaxonName == "Cyclosorus interruptus")
-summary(Cyclosorus)
-#> 14 names for 1 taxon 
-#> 2 variables for taxon traits 
-#> 1 taxon view(s) 
-#> validation for class 'taxlist': TRUE
-summary(Cyclosorus, "all")
-#> ------------------------------ 
-#> # Accepted name for taxon concept '50074' (concept view 1):
-#> 50074 Cyclosorus interruptus (Willd.) H. Itô 
-#> 
-#> # Synonyms: 
-#> 52002 Dryopteris gongylodes (Schkuhr) Kuntze 
-#> 52008 Thelypteris interrupta (Willd.) K. Iwats. 
-#> 52009 Cyclosorus striatus Ching 
-#> 53097 Pteris interrupta Willd. 
-#> 53098 Aspidium continuum Desv. 
-#> 53099 Aspidium ecklonii Kunze 
-#> 53100 Aspidium gongylodes Schkuhr 
-#> 53101 Aspidium obtusatum Sw. 
-#> 53102 Aspidium pteroides (Retz.) Sw. 
-#> 53103 Aspidium serra (Sw.) Sw. 
-#> 53104 Aspidium serratum Sw. 
-#> 53105 Aspidium unitum (L.) Sw. 
-#> 53106 Nephrodium propinquum R. Br. 
-#> ------------------------------
+# Some examples will be included
 ```
 
 ## Acknowledgements

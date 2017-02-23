@@ -6,27 +6,26 @@
 # set function as generic
 if(!isGeneric("levels"))
     setGeneric("levels",
-            function(taxlist, levels, ...)
+            function(x, ...)
                 standardGeneric("levels")
 )
 
 # method for taxlist objects
-setMethod("levels", signature(taxlist="taxlist", levels="character"),
-        function(taxlist, levels, ...) {
-            if(!all(paste(taxlist@taxonRelations$Level[
-                                    !is.na(taxlist@taxonRelations$Level)]) %in%
-                    levels))
-                stop("Some levels are not matching those indicated in slot 'taxonRelations'")
-            taxlist@taxonRelations$Level <- factor(
-                    paste(taxlist@taxonRelations$Level), levels=levels)
-            return(taxlist)
+setMethod("levels", signature(x="taxlist"),
+        function(x, ...) {
+            levels(x@taxonRelations$Level)
         }
 )
 
 # Replacement for taxlist
 setReplaceMethod("levels", signature(x="taxlist", value="character"),
         function(x, value) {
-            x <- levels(taxlist=x, levels=value)
+            if(!all(paste(x@taxonRelations$Level[
+                                            !is.na(x@taxonRelations$Level)
+                    ]) %in% value))
+                stop("Some levels are not matching those indicated in slot 'taxonRelations'")
+            x@taxonRelations$Level <- factor(
+                    paste(x@taxonRelations$Level), levels=value)
             return(x)
         }
 )

@@ -16,7 +16,11 @@ exportClasses(
 ## Export methods
 exportMethods(
 	add_concept,
+	add_synonym,
 	levels,"levels<-"
 )
 
 # Export of regular function names
+export(
+	backup_object
+)
