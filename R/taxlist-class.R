@@ -8,7 +8,6 @@ setClass("taxlist",
 		slots=c(
                 taxonNames="data.frame",
                 taxonRelations="data.frame",
-                hierarchy="factor",
                 taxonViews="data.frame",
 				taxonTraits="data.frame"
         ),
@@ -29,7 +28,7 @@ setClass("taxlist",
                         Level=factor(),
                         ViewID=integer()
                 ),
-                hierarchy=factor(),
+                hierarchy=character(),
                 taxonViews=data.frame(
                         ViewID=integer()
                 ),
@@ -57,9 +56,6 @@ setClass("taxlist",
             if(!all(object@taxonNames$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID))
                 return("Some concepts are missing in slot 'taxonRelations'")
-            # hierarchy
-            if(levels(object@hierarchy) != levels(object@taxonRelations$Level))
-                return("hierarchical levels in slot 'taxonRelations' have to match those in slot 'hierarchy'")
             # taxonView
             if(!"ViewID" %in% colnames(object@taxonViews))
                 return("'ViewID' is a mandatory column in slot 'taxonViews'")
