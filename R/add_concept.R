@@ -23,7 +23,7 @@ setMethod("add_concept", signature(taxlist="taxlist"),
             if(missing(Parent)) Parent <- rep(NA, length(TaxonName))
             if(missing(Level)) Level <- rep(NA, length(TaxonName))
             if(missing(ViewID)) ViewID <- rep(NA, length(TaxonName))
-            new_concept <- list(TaxonConceptID, TaxonUsageID, TaxonName,
+            new_concept <- nlist(TaxonConceptID, TaxonUsageID, TaxonName,
                     AuthorName, Parent, Level, ViewID, ...)
             # Add missing variables
             for(i in colnames(taxlist@taxonNames)[
@@ -37,7 +37,8 @@ setMethod("add_concept", signature(taxlist="taxlist"),
             taxlist@taxonNames <- do.call(rbind,
                     list(taxlist@taxonNames,
                             new_concept[names(new_concept) %in%
-                                            colnames(taxlist@taxonNames)]))
+                                            colnames(taxlist@taxonNames)],
+                            stringsAsFactors=FALSE))
             return(taxlist)
         }
 )
