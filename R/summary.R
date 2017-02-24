@@ -13,6 +13,22 @@ overview_taxlist <- function(x) {
     cat("\n")
 }
 
+# Now set the method
+setMethod("summary", signature(object="taxlist"),
+        function(object, taxon, display="both", validate=TRUE) {
+            if(missing(taxon)) overview_taxlist(object) else {
+                overview_taxon(object, taxon, display, validate)
+            }
+        }
+)
+
+
+
+
+
+
+
+
 # Module for single taxa
 overview_taxon <- function(x, taxon, display, validate) {
     # pre-check
