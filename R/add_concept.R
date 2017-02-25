@@ -11,33 +11,36 @@ setGeneric("add_concept",
 
 # Method for taxlist
 setMethod("add_concept", signature(taxlist="taxlist"),
-        function(taxlist, TaxonName, AuthorName, Parent, Level, ViewID, ...) {
+        function(taxlist, TaxonName, ...) {
             # Generating vectors
             if(nrow(taxlist@taxonRelations) == 0) TaxonConceptID <- 1 else
-                TaxonConceptID <- max(taxlist@taxonRelations$TaxonConceptID)
+                TaxonConceptID <- max(taxlist@taxonRelations$TaxonConceptID) + 1
             TaxonConceptID <- TaxonConceptID:(TaxonConceptID + length(TaxonName) - 1)
             if(nrow(taxlist@taxonNames) == 0) TaxonUsageID <- 1 else
-                TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID)
+                TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID) + 1
             TaxonUsageID <- TaxonUsageID:(TaxonUsageID + length(TaxonName) - 1)
-            if(missing(AuthorName)) AuthorName <- rep(NA, length(TaxonName))
-            if(missing(Parent)) Parent <- rep(NA, length(TaxonName))
-            if(missing(Level)) Level <- rep(NA, length(TaxonName))
-            if(missing(ViewID)) ViewID <- rep(NA, length(TaxonName))
-            new_concept <- nlist(TaxonConceptID, TaxonUsageID, TaxonName,
-                    AuthorName, Parent, Level, ViewID, ...)
+            new_concept <- list(TaxonConceptID=TaxonConceptID,
+                    TaxonUsageID=TaxonUsageID, TaxonName=TaxonName, ...)
+            new_concept[["AcceptedName"]] <- TaxonConceptID
             # Add missing variables
             for(i in colnames(taxlist@taxonNames)[
                     !colnames(taxlist@taxonNames) %in% names(new_concept)]) {
                 new_concept[[i]] <- rep(NA, length(TaxonName))
             }
+            for(i in colnames(taxlist@taxonRelations)[
+                    !colnames(taxlist@taxonRelations) %in%
+                            names(new_concept)]) {
+                new_concept[[i]] <- rep(NA, length(TaxonName))
+            }
+            # Merge old and new information
             taxlist@taxonRelations <- do.call(rbind,
                     list(taxlist@taxonRelations,
-                            new_concept[names(new_concept) %in%
-                                            colnames(taxlist@taxonRelations)]))
+                            new_concept[match(colnames(taxlist@taxonRelations),
+                                            names(new_concept))]))
             taxlist@taxonNames <- do.call(rbind,
                     list(taxlist@taxonNames,
-                            new_concept[names(new_concept) %in%
-                                            colnames(taxlist@taxonNames)],
+                            new_concept[match(colnames(taxlist@taxonNames),
+                                            names(new_concept))],
                             stringsAsFactors=FALSE))
             return(taxlist)
         }

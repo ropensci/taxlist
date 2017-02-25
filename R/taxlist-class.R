@@ -71,9 +71,6 @@ setClass("taxlist",
                 return("'TaxonConceptID' is a mandatory column in slot 'taxonTraits'")
             if(any(duplicated(object@taxonTraits$TaxonConceptID)))
                 return("Duplicated concepts are not allowed in slot 'taxonTraits'")
-            if(nrow(object@taxonTraits) > 0 & !all(object@taxonRelations$TaxonConceptID %in%
-                            object@taxonTraits$TaxonConceptID))
-                return("Some concepts are missing in slot 'taxonTraits'")
             ## if(!all(object@taxonNames$TaxonConceptID[match(
             ##                         object@taxonRelations$AcceptedName,
             ##                         object@taxonNames$TaxonUsageID)] ==

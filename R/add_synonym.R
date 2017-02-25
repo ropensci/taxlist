@@ -15,14 +15,14 @@ setMethod("add_synonym", signature(taxlist="taxlist", ConceptID="integer"),
             if(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID)
                 stop("'ConceptID' is not included as concept in 'taxlist'")
             TaxonConceptID <- ConceptID
-            TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID)
+            TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID) + 1
             TaxonUsageID <- TaxonUsageID:(TaxonUsageID + length(TaxonName) - 1)
             new_name <- nlist(TaxonConceptID, TaxonUsageID, TaxonName,
                     AuthorName, ...)
             taxlist@taxonNames <- do.call(rbind,
                     list(taxlist@taxonNames,
-                            new_name[names(new_name) %in%
-                                            colnames(taxlist@taxonNames)],
+                            new_name[match(colnames(taxlist@taxonNames),
+                                            names(new_name))],
                             stringsAsFactors=FALSE))
             return(taxlist)
         }

@@ -1,11 +1,12 @@
 ## Import functions
 importFrom("stats", "na.omit")
+importFrom("utils", "object.size")
+importFrom("vegdata", "tv.home")
 
 ## Import of packages
 import(
 	foreign,
-	methods,
-	vegdata
+	methods
 )
 
 ## Export of classes
@@ -17,7 +18,13 @@ exportClasses(
 exportMethods(
 	add_concept,
 	add_synonym,
-	levels,"levels<-"
+	add_view,
+	levels,"levels<-",
+	taxon_names,"taxon_names<-",
+	taxon_relations,"taxon_relations<-",
+	taxon_traits,"taxon_traits<-",
+	taxon_views,"taxon_views<-",
+	summary
 )
 
 # Export of regular function names

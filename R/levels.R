@@ -13,7 +13,9 @@ if(!isGeneric("levels"))
 # method for taxlist objects
 setMethod("levels", signature(x="taxlist"),
         function(x, ...) {
-            levels(x@taxonRelations$Level)
+            if(class(x@taxonRelations$Level) != "factor")
+                base::levels(as.factor(x@taxonRelations$Level)) else
+                base::levels(x@taxonRelations$Level)
         }
 )
 

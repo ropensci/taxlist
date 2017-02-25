@@ -3,7 +3,7 @@
 \alias{levels}
 \alias{levels,taxlist-method}
 \alias{levels<-}
-\alias{levels,taxlist,character-method}
+\alias{levels<-,taxlist,character-method}
 
 \title{Set Hierarchical Levels in 'taxlist' Objects}
 \description{
@@ -12,7 +12,7 @@ Names of levels and its hierarchical sequence (upwards).
 \usage{
 \S4method{levels}{taxlist}(x, ...)
 
-levels(taxlist) <- value
+levels(x) <- value
 }
 \arguments{
 \item{x}{An object of class \code{\link[=taxlist-class]{taxlist}}.}
@@ -21,7 +21,6 @@ levels(taxlist) <- value
 }
 \details{
 Taxonomic levels will be handled as factors in the taxlist object.
-}
 }
 \examples{
 ## Add example for this function

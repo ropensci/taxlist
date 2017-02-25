@@ -9,18 +9,14 @@ New taxon concepts will be added complementing objects of class
 \code{\link[=taxlist-class]{taxlist}}.
 }
 \usage{
-\S4method{add_concept}{taxlist}(taxlist, TaxonName, AuthorName, Parent, Level, ViewID, ...)
+\S4method{add_concept}{taxlist}(taxlist, TaxonName, ...)
 }
 \arguments{
 \item{taxlist}{An object of class \code{\link[=taxlist-class]{taxlist}}.}
 \item{TaxonName}{Character vector with the accepted name for the new taxon
 	concepts.}
-\item{AuthorName}{Character vector with the names of the respective authors.}
-\item{Parent}{Integer vector with the IDs of the respective parent taxa.}
-\item{Level}{Character vector with the ID of the respective taxon levels.}
-\item{ViewID}{Integer vector with the ID of the respective taxon view.}
-\item{...}{Additional named vectors to be included in the slot 
-	\code{taxonNames}.}
+\item{...}{Additional named vectors to be included in the slots 
+	\code{taxonNames} or \code{taxonRelations}.}
 }
 \details{
 Concept and usage IDs will be generated automatically according to the highest
