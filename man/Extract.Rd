@@ -1,9 +1,13 @@
-\name{taxon_traits}
+\name{Extract}
 \docType{methods}
-\alias{taxon_traits}
-\alias{taxon_traits,taxlist-method}
-\alias{taxon_traits<-}
-\alias{taxon_traits<-,taxlist,data.frame-method}
+\alias{Extract}
+\alias{[}
+\alias{[,taxlist-method}
+\alias{[<-}
+\alias{[<-,taxlist-method}
+\alias{$,taxlist-method}
+\alias{$<-}
+\alias{$<-,taxlist-method}
 
 \title{Retrieve or Assign Slot \dQuote{taxonTraits} to a \dQuote{taxlist}
 Object.}
@@ -13,15 +17,21 @@ The function \code{taxon_traits} retrieves or assigns the slot
 \code{\link[=taxlist-class]{taxlist}}.
 }
 \usage{
-\S4method{taxon_traits}{taxlist}(taxlist, ...)
+\S4method{$}{taxlist}(x, name)
+\S4method{[}{taxlist}(x, i, j, ..., slot="relations", drop=FALSE)
 
-taxon_traits(taxlist) <- value
+x$name <- value
+x[i,j] <- value
 }
 \arguments{
-\item{taxlist}{Object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{x}{object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{slot}{to which slot will be applied the extraction or replacement.}
 \item{value}{Data frame or vector with replacement values (depending on the
 	method).}
 \item{...}{Further arguments passed to or from other methods.}
+\item{name}{A name to access.}
+\item{i,j}{Indices for access.}
+\item{drop}{A logical value passed to \code{\link{Extract}}.}
 }
 \author{
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).

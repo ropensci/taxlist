@@ -16,14 +16,19 @@ exportClasses(
 
 ## Export methods
 exportMethods(
+	"[", "[<-", "$", "$<-",
+	accepted_name,"accepted_name<-",
 	add_concept,
 	add_synonym,
 	add_view,
+	"change_concept<-",
+	clean,
 	levels,"levels<-",
 	taxon_names,"taxon_names<-",
 	taxon_relations,"taxon_relations<-",
 	taxon_traits,"taxon_traits<-",
 	taxon_views,"taxon_views<-",
+	subset,
 	summary
 )
 

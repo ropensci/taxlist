@@ -17,8 +17,9 @@ setMethod("add_synonym", signature(taxlist="taxlist", ConceptID="integer"),
             TaxonConceptID <- ConceptID
             TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID) + 1
             TaxonUsageID <- TaxonUsageID:(TaxonUsageID + length(TaxonName) - 1)
-            new_name <- nlist(TaxonConceptID, TaxonUsageID, TaxonName,
-                    AuthorName, ...)
+            new_name <- list(TaxonConceptID=TaxonConceptID,
+                    TaxonUsageID=TaxonUsageID, TaxonName=TaxonName,
+                    AuthorName=AuthorName, ...)
             taxlist@taxonNames <- do.call(rbind,
                     list(taxlist@taxonNames,
                             new_name[match(colnames(taxlist@taxonNames),

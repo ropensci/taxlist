@@ -53,3 +53,4 @@ AuthorName="E. Mey. ex A. DC.")
 summary(Ebenaceae)
 summary(Ebenaceae, "all")
 }
+\keyword{methods}
