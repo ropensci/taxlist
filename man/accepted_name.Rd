@@ -5,7 +5,7 @@
 \alias{accepted_name<-}
 \alias{accepted_name<-,taxlist-method}
 
-\title{Retrieve or Set Accepted Name for a Taxon Concept.}
+\title{Retrieve or Set Accepted Name for a Taxon Concepts.}
 \description{
 Changes on accepted names for a concept.
 }
@@ -36,7 +36,7 @@ An integer vector with the retrieved IDs or an object of class
 \code{\link[=taxlist-class]{taxlist}} with modified entries.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(taxlist)

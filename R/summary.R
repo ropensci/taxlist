@@ -4,92 +4,109 @@
 ################################################################################
 
 # Module for a general summary
-overview_taxlist <- function(x, units, validate) {
-    cat("object size:", format(object.size(x), units=units), sep=" ", "\n")
+overview_taxlist <- function(object, units, validate) {
+    cat("object size:", format(object.size(object), units=units), sep=" ", "\n")
     if(validate)
-        cat("validation of 'taxlist' object:", validObject(x), sep=" ", "\n")
+        cat("validation of 'taxlist' object:", validObject(object), sep=" ",
+                "\n")
     cat("\n")
-    cat("number of names:", nrow(x@taxonNames), sep=" ", "\n")
-    cat("number of concepts:", nrow(x@taxonRelations), sep=" ", "\n")
-    cat("trait entries:", nrow(x@taxonTraits), sep=" ", "\n")
-    cat("reference entries:", nrow(x@taxonViews), sep=" ", "\n")
-    if(any(!is.na(x@taxonRelations$Parent))) {
+    cat("number of names:", nrow(object@taxonNames), sep=" ", "\n")
+    cat("number of concepts:", nrow(object@taxonRelations), sep=" ", "\n")
+    cat("trait entries:", nrow(object@taxonTraits), sep=" ", "\n")
+    cat("reference entries:", nrow(object@taxonViews), sep=" ", "\n")
+    if(any(!is.na(object@taxonRelations$Parent))) {
         cat("\n")
         cat("concepts with parents:",
-                length(x@taxonRelations$Parent[
-                                !is.na(x@taxonRelations$Parent)]), sep=" ",
+                length(object@taxonRelations$Parent[
+                                !is.na(object@taxonRelations$Parent)]), sep=" ",
                 "\n")
         cat("concepts with children:",
-                length(unique(x@taxonRelations$Parent[
-                                        !is.na(x@taxonRelations$Parent)])),
+                length(unique(object@taxonRelations$Parent[
+                                        !is.na(object@taxonRelations$Parent)])),
                 sep=" ", "\n")
     }
-    if(any(!is.na(x@taxonRelations$Level))) {
+    if(any(!is.na(object@taxonRelations$Level))) {
         cat("\n")
-        cat("hierarchical levels:", paste(levels(x), collapse=" < "), sep=" ",
-                "\n")
-        for(i in base::levels(x@taxonRelations$Level)) {
+        cat("hierarchical levels:", paste(levels(object), collapse=" < "),
+                sep=" ", "\n")
+        for(i in base::levels(object@taxonRelations$Level)) {
             cat("number of concepts in level ", i, ": ",
-                    sum(paste(x@taxonRelations$Level) == i), sep="", "\n")
+                    sum(paste(object@taxonRelations$Level) == i), sep="", "\n")
         }
     }
     cat("\n")
 }
 
 # Module for single taxa
-overview_taxon <- function(object, taxon, display, maxsum) {
-    # option for all taxa in taxlist
-    if(taxon[1] == "all") taxon <- object@taxonRelations$TaxonConceptID[
-                1:maxsum]
-    taxon <- taxon[!is.na(taxon)]
-    if(!all(taxon %in% object@taxonRelations$TaxonConceptID))
-        stop("Some requested consepts are not included in 'object'")
+overview_taxon <- function(object, ConceptID, display, maxsum) {
+    if(ConceptID[1] == "all")
+        ConceptID <- object@taxonRelations$TaxonConceptID[1:maxsum] else
+    ConceptID <- na.omit(ConceptID)
+    ConceptID <- unique(ConceptID) # Just in case of duplicates
+    if(!all(ConceptID %in% object@taxonRelations$TaxonConceptID))
+        stop("Some requested concepts are not included in 'object'")
+    object@taxonRelations <- object@taxonRelations[object@taxonRelations$TaxonConceptID %in% ConceptID,]
+    object <- clean(object)
+    # Create index for synonyms
+    Synonym <- list()
+    for(i in ConceptID) {
+        temp_names <- object@taxonNames[object@taxonNames$TaxonConceptID == i,
+                "TaxonUsageID"]
+        temp_names <- temp_names[!temp_names %in%
+                        object@taxonRelations[
+                                object@taxonRelations$TaxonConceptID == i,
+                                "AcceptedName"]]
+        if(length(temp_names) > 0) Synonym[[paste(i)]] <- temp_names
+    }
     # display option
-    display <- pmatch(display, c("name","author","both"))[1]
+    display <- pmatch(display[1], c("name","author","both"))
     if(!display %in% c(1:3))
         stop("non-valid value for 'display'")
-    # valid names as vector
-    AcceptedName_num <- object@taxonRelations[match(taxon,
-                    object@taxonRelations$TaxonConceptID),"AcceptedName"]
-    AcceptedName <- object@taxonNames[match(
-                    AcceptedName_num,object@taxonNames$TaxonUsageID),
-            c("TaxonUsageID","TaxonName","AuthorName")]
-    if(display != 3) {
-        AcceptedName <- paste(AcceptedName[,1], AcceptedName[,display + 1])
-    } else {
-        AcceptedName <- paste(AcceptedName[,1], AcceptedName[,2],
-                AcceptedName[,3])
-    }
-    names(AcceptedName_num) <- names(AcceptedName) <- paste(taxon)
-    # list with synonyms
-    Synonyms <- list()
-    for(i in names(AcceptedName)) {
-        Synonyms[[i]] <- subset(object@taxonNames,
-                TaxonConceptID == as.integer(i))[,
-                c("TaxonUsageID","TaxonName","AuthorName")]
-        Synonyms[[i]] <- subset(Synonyms[[i]],
-                TaxonUsageID != AcceptedName_num[i])
-        if(display != 3) {
-            Synonyms[[i]] <- paste(Synonyms[[i]][,1],
-                    Synonyms[[i]][,display+1])
-        } else {
-            Synonyms[[i]] <- paste(Synonyms[[i]][,1], Synonyms[[i]][,2],
-                    Synonyms[[i]][,3])
-        }
-    }
+    if(display == 1) display <- c("TaxonUsageID", "TaxonName")
+    if(display == 2) display <- c("TaxonUsageID", "AuthorName")
+    if(display == 3) display <- c("TaxonUsageID", "TaxonName", "AuthorName")
     # Now print
-    for(i in paste(taxon)) {
+    for(i in ConceptID) {
         cat("------------------------------", "\n")
-        cat("# Accepted name for taxon concept '", i, "' (concept view ",
-                paste(taxon_relations(object)[
-                                object@taxonRelations$TaxonConceptID ==
-                                        as.integer(i),"View"]), "):", sep="",
-                "\n")
-        cat(AcceptedName[i], "\n")
+        # Head
+        cat("concept ID:", i, sep=" ", "\n")
+        temp_name <- object@taxonRelations[
+                object@taxonRelations$TaxonConceptID == i,"ViewID"]
+        if(is.na(temp_name)) temp_name <- "none"
+        cat("view ID:", temp_name, sep=" ", "\n")
+        temp_name <- paste(object@taxonRelations[
+                        object@taxonRelations$TaxonConceptID == i,"Level"])
+        if(is.na(temp_name)) temp_name <- "none"
+        cat("level:", temp_name, sep=" ", "\n")
         cat("\n")
-        cat("# Synonyms:", "\n")
-        if(length(Synonyms[[i]]) == 0) cat("none", "\n") else{
-            for(j in Synonyms[[i]]) cat(j, "\n")
+        # Accepted name
+        temp_name <- object@taxonRelations[
+                object@taxonRelations$TaxonConceptID == i,"AcceptedName"]
+        temp_name <- object@taxonNames[
+                object@taxonNames$TaxonUsageID == temp_name, display]
+        cat("# accepted name:", "\n")
+        cat(paste(temp_name, collapse=" "), "\n")
+        # Basionym
+        temp_name <- object@taxonRelations[
+                object@taxonRelations$TaxonConceptID == i,"Basionym"]
+        if(!is.na(temp_name)) {
+            temp_name <- object@taxonNames[
+                    object@taxonNames$TaxonUsageID == temp_name, display]
+            cat("\n")
+            cat("# basionym:", "\n")
+            cat(paste(temp_name, collapse=" "), "\n")
+        }
+        # Synonyms
+        if(paste(i) %in% names(Synonym)) {
+            cat("\n")
+            cat("# synonyms (", length(Synonym[[paste(i)]]), "): ", sep="",
+                    "\n")
+            for(j in 1:length(Synonym[[paste(i)]])) {
+                temp_name <- object@taxonNames[
+                        object@taxonNames$TaxonUsageID ==
+                                Synonym[[paste(i)]][j], display]
+                cat(paste(temp_name, collapse=" "), "\n")
+            }
         }
     }
     cat("------------------------------", "\n")
@@ -97,10 +114,10 @@ overview_taxon <- function(object, taxon, display, maxsum) {
 
 # Now set the method
 setMethod("summary", signature(object="taxlist"),
-        function(object, taxon, units="Mb", validate=TRUE, display="both",
+        function(object, ConceptID, units="Mb", validate=TRUE, display="both",
                 maxsum=5, ...) {
-            if(!missing(taxon))
-                overview_taxon(object, taxon, display, maxsum) else 
-                overview_taxlist(object, units, validate)
+            if(missing(ConceptID))
+                overview_taxlist(object, units, validate) else
+                overview_taxon(object, ConceptID, display, maxsum)
         }
 )

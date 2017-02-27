@@ -9,7 +9,7 @@ A subset of \code{\link[=taxlist-class]{taxlist}} objects will be done either
 by \code{taxonNames}, \code{taxonRelations} or \code{taxonTraits} slots.
 }
 \usage{
-\S4method{subset}{taxlist}(x, subset, slot, ...)
+\S4method{subset}{taxlist}(x, subset, slot="names", ...)
 }
 \arguments{
 \item{x}{object of class \code{\link[=taxlist-class]{taxlist}}.}

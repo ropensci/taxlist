@@ -10,6 +10,13 @@ if(!isGeneric("levels"))
                 standardGeneric("levels")
 )
 
+# method for factor objects (to left levels accessible for factors)
+setMethod("levels", signature(x="factor"),
+        function(x, ...) {
+            base::levels(x)
+        }
+)
+
 # method for taxlist objects
 setMethod("levels", signature(x="taxlist"),
         function(x, ...) {

@@ -9,11 +9,11 @@ A method to display either an overview of the content of
 \code{\link[=taxlist-class]{taxlist}} objects or an overview of specific taxa
 in such objects.}
 \usage{
-\S4method{summary}{taxlist}(object, taxon, units="Mb", validate=TRUE, display="both", maxsum=5, ...)
+\S4method{summary}{taxlist}(object, ConceptID, units="Mb", validate=TRUE, display="both", maxsum=5, ...)
 }
 \arguments{
 \item{object}{a taxlist object.}
-\item{taxon}{character or integer value or vector with optional concept IDs
+\item{ConceptID}{character or integer value or vector with optional concept IDs
 	for the summary.}
 \item{units}{character value indicating the units used for the allocated space
 	for object (see \code{\link{object.size}}).}
