@@ -57,8 +57,9 @@ setMethod("get_parents", signature(taxlist="taxlist", ConceptID="numeric"),
             }
             ConceptID <- do.call(c, ConceptID)
             ConceptID <- na.omit(ConceptID)
-            return(subset(taxlist, TaxonConceptID %in% ConceptID,
-                            slot="taxonRelations"))
+            taxlist@taxonRelations <- taxlist@taxonRelations[
+                    taxlist@taxonRelations$TaxonConceptID %in% ConceptID,]
+            return(clean(taxlist))
         }
 )
 

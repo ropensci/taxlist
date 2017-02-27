@@ -26,6 +26,15 @@ A clean \code{\link[=taxlist-class]{taxlist}} object.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add an example
+library(taxlist)
+data(Easplist)
+\donttest{
+## Direct manipulation of slot taxonRelations generates an invalid object
+Easplist@taxonRelations <- Easplist@taxonRelations[1:5,]
+summary(Easplist)
+}
+## Now apply cleaning
+Easplist <- clean(Easplist)
+summary(Easplist)
 }
 \keyword{methods}

@@ -3,7 +3,7 @@
 \alias{add_concept}
 \alias{add_concept,taxlist-method}
 
-\title{Insert a New Concept in a Taxonomic List.}
+\title{Insert a new concept in a taxlist object.}
 \description{
 New taxon concepts will be added complementing objects of class
 \code{\link[=taxlist-class]{taxlist}}.
@@ -19,8 +19,7 @@ New taxon concepts will be added complementing objects of class
 	\code{taxonNames} or \code{taxonRelations}.}
 }
 \details{
-Concept and usage IDs will be generated automatically according to the highest
-existing IDs.
+Concept and usage IDs will be generated automatically as serial numbers.
 Additional named vectors will be included in the slot \code{taxonNames}, in the
 cases where those variables already exist, otherwise they will be ignored.
 

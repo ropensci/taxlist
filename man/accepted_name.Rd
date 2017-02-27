@@ -5,7 +5,7 @@
 \alias{accepted_name<-}
 \alias{accepted_name<-,taxlist-method}
 
-\title{Retrieve or Set Accepted Name for a Taxon Concepts.}
+\title{Retrieve or set accepted name for determined taxon concepts.}
 \description{
 Changes on accepted names for a concept.
 }

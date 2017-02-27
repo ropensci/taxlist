@@ -3,11 +3,11 @@
 \alias{add_synonym}
 \alias{add_synonym,taxlist-method}
 
-\title{Insert Synonyms in a Taxonomic List.}
+\title{Insert synonyms in a \sQuote{taxlist} object.}
 \description{
 New names (taxon usages) assigned as synonyms of existing taxon concepts can be
-inserted for existing concepts in an object of
-class \code{\link[=taxlist-class]{taxlist}}.
+inserted for existing concepts in an object of class
+\code{\link[=taxlist-class]{taxlist}}.
 }
 \usage{
 \S4method{add_synonym}{taxlist}(taxlist, ConceptID, TaxonName, AuthorName, ...)
@@ -32,5 +32,14 @@ Detail later
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add an example
+library(taxlist)
+data(Easplist)
+
+## Display Diospyros scabra
+summary(Easplist, 51793)
+
+## Add Maba scabra as synonym
+Easplist <- add_synonym(Easplist, 51793, TaxonName="Maba scabra", AuthorName="Chiov.")
+summary(Easplist, 51793)
 }
+\keyword{methods}

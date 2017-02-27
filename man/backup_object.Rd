@@ -40,7 +40,11 @@ A rda file inserted in the working directory.
 \dontrun{
 library(taxlist)
 data(Easplist)
-Pseudognaphalium <- subset(Easplist, Traits=GENUS == "Pseudognaphalium")
+
+## A subset with Pseudognaphalium and relatives
+Pseudognaphalium <- subset(Easplist, grepl("Pseudognaphalium", TaxonName),
+	slot="names")
+Pseudognaphalium <- get_parents(Easplist, Pseudognaphalium)
 
 ## Create a backup with date stamp
 backup_object(Pseudognaphalium, file="Pseudonaphalium")

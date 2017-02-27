@@ -41,27 +41,15 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(taxlist)
-data(Easplist)
 
-## How many genera are in the list?
-length(unique(Easplist$GENUS))
+## Loading GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
+GermanSL <- tvsplist("GermanSL_1.3", file.path(path.package("taxlist"),
+	"tv_data"))
 
-## How many families?
-length(unique(Easplist$FAMILY))
+## Statistics on life forms
+summary(as.factor(GermanSL$LF_LEB))
 
-## Subset for the genus Euclea and display of slot 'taxonTraits'
-Euclea <- subset(Easplist, Traits=GENUS == "Euclea")
-summary(Euclea, "all")
-taxon_traits(Euclea)
-
-## Example from 'df2taxlist'
-setwd(file.path(path.package("taxlist"), "cyperus"))
-Cyperus <- read.csv("names.csv", stringsAsFactors=FALSE)
-Cyperus <- df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM)
-summary(Cyperus)
-
-## Assigning traits to Cyperus object
-taxon_traits(Cyperus) <- read.csv("traits.csv", stringsAsFactors=FALSE)
-summary(Cyperus)
+## First five concepts in this list
+summary(GermanSL[1:10,], "all")
 }
 \keyword{methods}

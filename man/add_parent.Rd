@@ -7,7 +7,8 @@
 
 \title{Add or modify parent entries in single concepts.}
 \description{
-Description.
+Add information of parent for single or multiple concepts in a
+\code{\link[=taxlist-class]{taxlist}} object.
 }
 \usage{
 \S4method{add_parent}{taxlist}(taxlist, ConceptID, Parent, ...)
@@ -21,7 +22,15 @@ add_parent(taxlist, ConceptID) <- value
 \item{...}{further arguments to pass from or to other methods.}
 }
 \details{
-Details
+The occurrence of the new parent value among the concept IDs will be checked by
+the function.
+If the new parent value is not occurring as concept ID, the function retrieves
+an error message.
+
+A single value for new parent entry can be provided for multiple concepts.
+
+It is strongly recommended to check validiy of the resulting
+\code{\link[=taxlist-class]{taxlist}} object after any modification.
 }
 \value{
 An object of class \code{\link[=taxlist-class]{taxlist}} with modified entries.
@@ -30,6 +39,23 @@ An object of class \code{\link[=taxlist-class]{taxlist}} with modified entries.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add example
+library(taxlist)
+data(Easplist)
+
+## Subset with family Ebenaceae and children (see also get_children)
+Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
+Ebenaceae <- get_children(Easplist, Ebenaceae)
+
+## Add a new level in the resulting object
+levels(Ebenaceae) <- c(levels(Ebenaceae), "order")
+
+## Add the order Ericales as new concept
+Ebenaceae <- add_concept(Ebenaceae, TaxonName="Ericales", Level="order")
+summary(Ebenaceae, "all", maxsum=100)
+
+## Now set the order Ericales as parent of Ebenaceae
+taxon_relations(Ebenaceae)
+add_parent(Ebenaceae, 54636) <- 54637
+taxon_relations(Ebenaceae)
 }
 \keyword{methods}
