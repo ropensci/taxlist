@@ -9,16 +9,12 @@ A subset of \code{\link[=taxlist-class]{taxlist}} objects will be done either
 by \code{taxonNames}, \code{taxonRelations} or \code{taxonTraits} slots.
 }
 \usage{
-\S4method{subset}{taxlist}(x, Names, Relations, Traits, ...)
+\S4method{subset}{taxlist}(x, subset, slot, ...)
 }
 \arguments{
-\item{x}{Object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{Names}{Logical vector indicating selected elements in slot
-	\code{taxonNames}.}
-\item{Relations}{Logical vector indicating selected elements in slot
-	\code{taxonRealtions}.}
-\item{Traits}{Logical vector indicating selected elements in slot
-	\code{taxonTraits}.}
+\item{x}{object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{subset}{logical vector or logical operation to apply as subset.}
+\item{slot}{character value indicating the slot to be used for the subset.}
 \item{...}{further arguments to be passed to or from other methods.}
 }
 \details{
@@ -38,19 +34,6 @@ An object of class \code{\link[=taxlist-class]{taxlist}}.
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
-library(taxlist)
-data(Easplist)
-
-# subset by Names (all names associated to Pteris)
-Splist <- subset(Easplist, Names=grepl("Pteris", TaxonName))
-summary(Splist, "all")
-
-# subset by Relations (Pteris muricella)
-Splist <- subset(Easplist, Relations=TaxonConceptID == 50579)
-summary(Splist, "all")
-
-# subset by Traits (whole family Pteridaceae)
-Splist <- subset(Easplist, Traits=FAMILY == "Pteridaceae")
-summary(Splist, "all")
+## Add example
 }
 \keyword{methods}

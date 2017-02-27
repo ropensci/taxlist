@@ -2,7 +2,7 @@
 \docType{methods}
 \alias{change_cocept}
 \alias{change_concept<-}
-\alias{change_concept<-,taxlist,integer,integer-method}
+\alias{change_concept<-,taxlist-method}
 
 \title{Move a Name to a Different Concept.}
 \description{

@@ -23,6 +23,9 @@ setMethod("clean", signature(object="taxlist"),
             object@taxonTraits <- object@taxonTraits[
                     object@taxonTraits$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID,]
+            # clean parents (deleted parents)
+            object@taxonRelations$Parent[!object@taxonRelations$Parent %in%
+                            object@taxonRelations$TaxonConceptID] <- NA
             return(object)
         }
 )

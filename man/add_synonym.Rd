@@ -1,7 +1,7 @@
 \name{add_synonym}
 \docType{methods}
 \alias{add_synonym}
-\alias{add_synonym,taxlist,integer-method}
+\alias{add_synonym,taxlist-method}
 
 \title{Insert Synonyms in a Taxonomic List.}
 \description{
@@ -10,7 +10,7 @@ inserted for existing concepts in an object of
 class \code{\link[=taxlist-class]{taxlist}}.
 }
 \usage{
-\S4method{add_synonym}{taxlist,integer}(taxlist, ConceptID, TaxonName, AuthorName, ...)
+\S4method{add_synonym}{taxlist}(taxlist, ConceptID, TaxonName, AuthorName, ...)
 }
 \arguments{
 \item{taxlist}{A \code{\link[=taxlist-class]{taxlist}} object including the

@@ -3,7 +3,6 @@
 \alias{taxon_views}
 \alias{taxon_views,taxlist-method}
 \alias{taxon_views<-}
-\alias{taxon_views<-,taxlist,numeric-method}
 \alias{taxon_views<-,taxlist,data.frame-method}
 
 \title{Management of Concept Views in Taxonomic Lists.}
@@ -17,9 +16,9 @@ Retrieve or replace slot \code{taxonViews} in an object of class
 taxon_views(taxlist) <- value
 }
 \arguments{
-\item{taxlist}{Object of class \code{data.frame} or \code{taxlist}.}
-\item{value}{Object of class \code{numeric} or \code{data.frame} containing
-	information about concept views implemented.}
+\item{taxlist}{object of class \code{data.frame} or \code{taxlist}.}
+\item{value}{a \code{data.frame} containing information about concept views
+	implemented.}
 \item{...}{Further arguments passed to or from other methods.}
 }
 \details{

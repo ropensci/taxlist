@@ -10,7 +10,7 @@ setGeneric("accepted_name",
 )
 
 # Set method for taxlist
-setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="integer"),
+setMethod("accepted_name", signature(taxlist="taxlist"),
         function(taxlist, ConceptID, ...) {
             AcceptedName <- taxlist@taxonRelations[
                     taxlist@taxonRelations$TaxonConceptID ==
@@ -25,8 +25,7 @@ setGeneric("accepted_name<-", function(taxlist, ConceptID, value)
             standardGeneric("accepted_name<-"))
 
 # Replacement for taxlist
-setReplaceMethod("accepted_name", signature(taxlist="taxlist",
-                ConceptID="integer", value="integer"),
+setReplaceMethod("accepted_name", signature(taxlist="taxlist"),
         function(taxlist, ConceptID, value) {
             # first test
             if(length(ConceptID) != length(value))

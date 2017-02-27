@@ -10,7 +10,7 @@ setGeneric("add_synonym",
 )
 
 # Method for taxlist
-setMethod("add_synonym", signature(taxlist="taxlist", ConceptID="integer"),
+setMethod("add_synonym", signature(taxlist="taxlist"),
         function(taxlist, ConceptID, TaxonName, AuthorName, ...) {
             if(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID)
                 stop("'ConceptID' is not included as concept in 'taxlist'")

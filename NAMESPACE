@@ -23,6 +23,9 @@ exportMethods(
 	add_view,
 	"change_concept<-",
 	clean,
+	df2taxlist,
+	get_children,
+	get_parents,
 	levels,"levels<-",
 	taxon_names,"taxon_names<-",
 	taxon_relations,"taxon_relations<-",
@@ -34,5 +37,6 @@ exportMethods(
 
 # Export of regular function names
 export(
-	backup_object
+	backup_object,
+	tvsplist
 )

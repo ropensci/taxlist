@@ -1,16 +1,16 @@
 \name{accepted_name}
 \docType{methods}
 \alias{accepted_name}
-\alias{accepted_name,taxlist,integer-method}
+\alias{accepted_name,taxlist-method}
 \alias{accepted_name<-}
-\alias{accepted_name<-,taxlist,integer,integer-method}
+\alias{accepted_name<-,taxlist-method}
 
 \title{Retrieve or Set Accepted Name for a Taxon Concept.}
 \description{
 Changes on accepted names for a concept.
 }
 \usage{
-\S4method{accepted_name}{taxlist,integer}(taxlist, ConceptID, ...)
+\S4method{accepted_name}{taxlist}(taxlist, ConceptID, ...)
 
 accepted_name(taxlist, ConceptID) <- value
 }

@@ -8,8 +8,7 @@ setGeneric("change_concept<-", function(taxlist, UsageID, value)
             standardGeneric("change_concept<-"))
 
 # Replacement for taxlist
-setReplaceMethod("change_concept", signature(taxlist="taxlist",
-                UsageID="integer", value="integer"),
+setReplaceMethod("change_concept", signature(taxlist="taxlist"),
         function(taxlist, UsageID, value) {
             # Test
             if(length(UsageID) != length(value))
