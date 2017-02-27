@@ -19,6 +19,8 @@ exportMethods(
 	"[", "[<-", "$", "$<-",
 	accepted_name,"accepted_name<-",
 	add_concept,
+	add_level,"add_level<-",
+	add_parent,"add_parent<-",
 	add_synonym,
 	add_view,
 	"change_concept<-",

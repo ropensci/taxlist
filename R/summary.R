@@ -13,18 +13,25 @@ overview_taxlist <- function(x, units, validate) {
     cat("number of concepts:", nrow(x@taxonRelations), sep=" ", "\n")
     cat("trait entries:", nrow(x@taxonTraits), sep=" ", "\n")
     cat("reference entries:", nrow(x@taxonViews), sep=" ", "\n")
-    if(any(!is.na(x@taxonRelations$Level))) {
+    if(any(!is.na(x@taxonRelations$Parent))) {
         cat("\n")
-        cat("hierarchical levels:", paste(levels(x), collapse=" < "), sep=" ",
-                "\n")
         cat("concepts with parents:",
                 length(x@taxonRelations$Parent[
                                 !is.na(x@taxonRelations$Parent)]), sep=" ",
                 "\n")
-        cat("concepts with childs:",
+        cat("concepts with children:",
                 length(unique(x@taxonRelations$Parent[
                                         !is.na(x@taxonRelations$Parent)])),
                 sep=" ", "\n")
+    }
+    if(any(!is.na(x@taxonRelations$Level))) {
+        cat("\n")
+        cat("hierarchical levels:", paste(levels(x), collapse=" < "), sep=" ",
+                "\n")
+        for(i in base::levels(x@taxonRelations$Level)) {
+            cat("number of concepts in level ", i, ": ",
+                    sum(paste(x@taxonRelations$Level) == i), sep="", "\n")
+        }
     }
     cat("\n")
 }
