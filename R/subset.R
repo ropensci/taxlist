@@ -5,9 +5,11 @@
 
 # subset method for taxlist ----------------------------------------------------
 setMethod("subset", signature(x="taxlist"),
-        function(x, subset, slot="taxonNames", ...) {
-            if(!slot %in% slotNames(x))
+        function(x, subset, slot="names", ...) {
+            slot <- grep(slot[1], slotNames(x), ignore.case=TRUE)
+            if(length(slot) == 0)
                 stop("Invalid value for argument 'slot'")
+            slot <- slotNames(x)[slot]
             subset <- substitute(subset)
             subset <- eval(subset, slot(x, slot), parent.frame())
             if(slot %in% c("taxonNames","taxonRelations","taxonTraits"))

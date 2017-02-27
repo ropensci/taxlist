@@ -23,7 +23,8 @@ setMethod("[", signature(x="taxlist"),
         function(x, i, j, ..., slot="relations", drop=FALSE) {
             if(missing(i)) i <- TRUE
             if(missing(j)) j <- TRUE
-            slot <- pmatch(slot, c("relations","traits"))[1]
+            slot <- grep(slot, c("taxonRelations","taxonTraits"),
+                    ignore.case=TRUE)[1]
             if(!slot %in% c(1:2))
                 stop("Invalid value for 'slot'")
             # Resolving problems with NAs
@@ -44,7 +45,8 @@ setReplaceMethod("[", signature(x="taxlist"),
         function(x, i, j, slot="relations", value) {
             if(missing(i)) i <- TRUE
             if(missing(j)) j <- TRUE
-            slot <- pmatch(slot, c("relations","traits"))[1]
+            slot <- grep(slot, c("taxonRelations","taxonTraits"),
+                    ignore.case=TRUE)[1]
             if(!slot %in% c(1:2))
                 stop("Invalid value for 'slot'")
             # Resolving problems with NAs

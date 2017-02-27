@@ -74,6 +74,19 @@ setClass("taxlist",
                 return("Some concepts in 'taxonTraits' are not included in slot 'taxonRelations'")
             if(any(duplicated(object@taxonTraits$TaxonConceptID)))
                 return("Duplicated concepts are not allowed in slot 'taxonTraits'")
+            # parent-child relationships
+            if(!all(is.na(object@taxonRelations$Parent)) &
+                    !all(is.na(object@taxonRelations$Level))) {
+                Children <- object@taxonRelations[
+                        !is.na(object@taxonRelations$Parent),
+                        c("TaxonConceptID","Parent","Level")]
+                Parents <- object@taxonRelations[match(Children$Parent,
+                                object@taxonRelations$TaxonConceptID),
+                        c("TaxonConceptID","Level")]
+                if(any(as.numeric(Children$Level) >= as.numeric(Parents$Level)))
+                    return("Some parent-child relationships are inconsistent with hierarchical levels")
+                rm(Children,Parents)
+            }
             ## if(!all(object@taxonNames$TaxonConceptID[match(
             ##                         object@taxonRelations$AcceptedName,
             ##                         object@taxonNames$TaxonUsageID)] ==
