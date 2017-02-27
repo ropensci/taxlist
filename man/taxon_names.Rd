@@ -22,7 +22,7 @@ The function \code{taxon_names} retrieves or assigns the slot \code{taxonNames}
 to objects of the class \code{\link[=taxlist-class]{taxlist}}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
 \code{\link[=taxlist-class]{taxlist}}.

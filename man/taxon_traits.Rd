@@ -24,7 +24,7 @@ taxon_traits(taxlist) <- value
 \item{...}{Further arguments passed to or from other methods.}
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
 \code{\link[=taxlist-class]{taxlist}}.

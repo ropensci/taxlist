@@ -41,7 +41,7 @@ Objects of class \code{\link[=taxlist-class]{taxlist}} use only a
 \sQuote{parent-child taxon views}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \references{
 \bold{Zhong Y, Jung S, Pramanik S, Beaman JH (1996).} Data model and comparison

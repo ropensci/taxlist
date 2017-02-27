@@ -9,7 +9,7 @@ A method to display either an overview of the content of
 \code{\link[=taxlist-class]{taxlist}} objects or an overview of specific taxa
 in such objects.}
 \usage{
-\S4method{summary}{taxlist}(object, ConceptID, units="Mb", validate=TRUE, display="both", maxsum=5, ...)
+\S4method{summary}{taxlist}(object, ConceptID, units="Kb", validate=TRUE, display="both", maxsum=5, ...)
 }
 \arguments{
 \item{object}{a taxlist object.}
@@ -42,7 +42,7 @@ Use \code{display="name"} to show the value \code{TaxonName},
 Such values are taken from slot \code{taxonNames}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
 \code{\link[=taxlist-class]{taxlist}}.

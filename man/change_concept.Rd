@@ -35,7 +35,7 @@ This terminology is also adopted by \bold{Jansen & Dengler (2010)} and
 An object of class \code{\link[=taxlist-class]{taxlist}} with replaced names.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \references{
 \bold{Berendsohn WG (1995).} The concept of \dQuote{potential taxa} in

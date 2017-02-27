@@ -27,7 +27,7 @@ a data frame:
 An extended description may be inserted here!!!
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \references{
 References may be inserted in attention to the description.

@@ -34,7 +34,7 @@ If this is not correct, consider setting it manually by using the functions
 An object of class \code{\link[=taxlist-class]{taxlist}}.
 }
 \author{
-Miguel Alvarez, \email{malvarez@uni-bonn.de}
+Miguel Alvarez, \email{kamapu78@gmail.com}
 }
 \seealso{
 \code{\link[=taxlist-class]{taxlist}}.

@@ -20,7 +20,7 @@ The applications of this packages are discussed by \bold{Alvarez & Luebert
 (in preparation)}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \references{
 \bold{Jansen F, Dengler J (2010).} Plant names in vegetation databases -- a

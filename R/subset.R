@@ -3,7 +3,7 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-# subset method for taxlist ----------------------------------------------------
+# subset method for taxlist objects
 setMethod("subset", signature(x="taxlist"),
         function(x, subset, slot="names", ...) {
             slot <- grep(slot[1], slotNames(x), ignore.case=TRUE)

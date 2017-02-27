@@ -23,7 +23,7 @@ Details.
 A clean \code{\link[=taxlist-class]{taxlist}} object.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 ## Add an example

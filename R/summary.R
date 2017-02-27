@@ -40,7 +40,7 @@ overview_taxlist <- function(object, units, validate) {
 # Module for single taxa
 overview_taxon <- function(object, ConceptID, display, maxsum) {
     if(ConceptID[1] == "all")
-        ConceptID <- object@taxonRelations$TaxonConceptID[1:maxsum] else
+        ConceptID <- object@taxonRelations$TaxonConceptID[1:maxsum]
     ConceptID <- na.omit(ConceptID)
     ConceptID <- unique(ConceptID) # Just in case of duplicates
     if(!all(ConceptID %in% object@taxonRelations$TaxonConceptID))
@@ -84,6 +84,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
                 object@taxonRelations$TaxonConceptID == i,"AcceptedName"]
         temp_name <- object@taxonNames[
                 object@taxonNames$TaxonUsageID == temp_name, display]
+        temp_name[is.na(temp_name)] <- ""
         cat("# accepted name:", "\n")
         cat(paste(temp_name, collapse=" "), "\n")
         # Basionym
@@ -92,6 +93,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
         if(!is.na(temp_name)) {
             temp_name <- object@taxonNames[
                     object@taxonNames$TaxonUsageID == temp_name, display]
+            temp_name[is.na(temp_name)] <- ""
             cat("\n")
             cat("# basionym:", "\n")
             cat(paste(temp_name, collapse=" "), "\n")
@@ -105,6 +107,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
                 temp_name <- object@taxonNames[
                         object@taxonNames$TaxonUsageID ==
                                 Synonym[[paste(i)]][j], display]
+                temp_name[is.na(temp_name)] <- ""
                 cat(paste(temp_name, collapse=" "), "\n")
             }
         }
@@ -114,7 +117,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
 
 # Now set the method
 setMethod("summary", signature(object="taxlist"),
-        function(object, ConceptID, units="Mb", validate=TRUE, display="both",
+        function(object, ConceptID, units="Kb", validate=TRUE, display="both",
                 maxsum=5, ...) {
             if(missing(ConceptID))
                 overview_taxlist(object, units, validate) else

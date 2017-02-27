@@ -32,7 +32,7 @@ An object of class \code{\link[=taxlist-class]{taxlist}} with added names and
 concepts.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
 \code{\link{add_view}}, \code{\link{taxon_views}}.
@@ -41,16 +41,19 @@ Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 library(taxlist)
 data(Easplist)
 
-## Subset with Ebenaceae species
-Ebenaceae <- subset(Easplist, Traits=FAMILY == "Ebenaceae")
-summary(Ebenaceae)
+## Subset with family Ebenaceae and children (see also get_children)
+Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
+Ebenaceae <- get_children(Easplist, Ebenaceae)
 
-## Adding two new concepts
-Ebenaceae <- add_concept(Ebenaceae, View=1, TaxonName="Euclea acutifolia",
-AuthorName="E. Mey. ex A. DC.")
+summary(Ebenaceae)
+summary(Ebenaceae, "all", maxsum=100)
+
+## Adding a new concept
+Ebenaceae <- add_concept(Ebenaceae, TaxonName="Euclea acutifolia",
+AuthorName="E. Mey. ex A. DC.", Level="species", Parent=53689, View=1)
 
 ## A summary again  
 summary(Ebenaceae)
-summary(Ebenaceae, "all")
+summary(Ebenaceae, "all", maxsum=100)
 }
 \keyword{methods}

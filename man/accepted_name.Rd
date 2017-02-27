@@ -15,11 +15,11 @@ Changes on accepted names for a concept.
 accepted_name(taxlist, ConceptID) <- value
 }
 \arguments{
-\item{taxlist}{An object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{ConceptID}{Corresponding concept ID where to request or set an accepted
-	name.}
-\item{value}{Usage ID of the name to set as the accepted one.}
-\item{...}{Further arguments to pass from or to other methods.}
+\item{taxlist}{an object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{ConceptID}{integer vector containing concept IDs where to request or set
+	an accepted name.}
+\item{value}{integer vector containing usage IDs to be set as accepted names.}
+\item{...}{further arguments passed from or to other methods.}
 }
 \details{
 The method \code{accepted_name<-} changes the information contained in the slot
@@ -32,8 +32,10 @@ In the arguments \code{ConcpetID} and \code{value} also vectors can be used,
 then they may have of the same length.
 }
 \value{
-An integer vector with the retrieved IDs or an object of class
-\code{\link[=taxlist-class]{taxlist}} with modified entries.
+The method \code{accepted_name} retrieves a subset of the slot \code{taxonNames}
+as \code{data.frame} object, while the replacement method \code{accepted_name<-}
+results in a \code{\link[=taxlist-class]{taxlist}} object with modified
+\sQuote{accepted name} information.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

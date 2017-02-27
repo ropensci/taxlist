@@ -33,7 +33,7 @@ You may additionally insert taxon views to the resulting object
 An object of class \code{\link[=taxlist-class]{taxlist}}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 ## Two files are included in the package installation
