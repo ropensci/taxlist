@@ -33,6 +33,8 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 References may be inserted in attention to the description.
 }
 \examples{
+library(taxlist)
+
 showClass("taxlist")
 }
 \keyword{classes}

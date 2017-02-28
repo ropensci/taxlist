@@ -33,9 +33,11 @@ Miguel Alvarez, \email{kamapu78@gmail.com}.
 library(taxlist)
 data(Easplist)
 
-## Subset for the genus Euclea and display of slot 'taxonRelations'
-Euclea <- subset(Easplist, Traits=GENUS == "Euclea")
-summary(Euclea, "all")
+## Subset for the genus Euclea and display of slot 'taxonNames'
+Euclea <- subset(Easplist, charmatch("Euclea", TaxonName), slot="names")
+Euclea <- get_children(Easplist, Euclea)
+
+summary(Euclea)
 taxon_relations(Euclea)
 }
 \keyword{methods}

@@ -54,9 +54,6 @@ and query methods for interacting classifications in a taxonomic database.
 library(taxlist)
 data(Easplist)
 
-## Subset for the genus Euclea and display of slot 'taxonRelations'
-Euclea <- subset(Easplist, Traits=GENUS == "Euclea")
-summary(Euclea, "all")
-taxon_views(Euclea)
+taxon_views(Easplist)
 }
 \keyword{methods}

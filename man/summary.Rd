@@ -52,9 +52,12 @@ library(taxlist)
 data(Easplist)
 
 ## summary of the object
-summary(Easplist)
+summary(Easplist, units="Mb")
 
 ## summary for two taxa
 summary(Easplist, c(51128,51140))
+
+## summary for the first 10 taxa
+summary(Easplist, "all", maxsum=10)
 }
 \keyword{methods}

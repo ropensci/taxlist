@@ -32,7 +32,9 @@ library(taxlist)
 data(Easplist)
 
 ## Subset for the genus Euclea and display of slot 'taxonNames'
-Euclea <- subset(Easplist, Traits=GENUS == "Euclea")
+Euclea <- subset(Easplist, charmatch("Euclea", TaxonName), slot="names")
+Euclea <- get_children(Easplist, Euclea)
+
 summary(Euclea)
 taxon_names(Euclea)
 }

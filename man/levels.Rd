@@ -26,5 +26,15 @@ levels(x) <- value
 Taxonomic levels will be handled as factors in the taxlist object.
 }
 \examples{
-## Add example for this function
+library(taxlist)
+data(Easplist)
+summary(Easplist)
+
+## Get levels of species list
+levels(Easplist)
+
+## Add aggregate as new taxonomic level
+levels(Easplist) <- c("form","variety","subspecies","species","aggregate",
+	"genus","family")
+summary(Easplist)
 }
