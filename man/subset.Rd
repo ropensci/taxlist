@@ -5,7 +5,7 @@
 
 \title{Subset Method for taxlist Objects.}
 \description{
-A subset of \code{\link[=taxlist-class]{taxlist}} objects will be done either
+A subset of \code{\linkS4class{taxlist}} objects will be done either
 by \code{taxonNames}, \code{taxonRelations} or \code{taxonTraits} slots.
 }
 \usage{
@@ -18,22 +18,31 @@ by \code{taxonNames}, \code{taxonRelations} or \code{taxonTraits} slots.
 \item{...}{further arguments to be passed to or from other methods.}
 }
 \details{
-This method is applied to objects of class \code{\link[=taxlist-class]{taxlist}}
+This method is applied to objects of class \code{\linkS4class{taxlist}}
 in order to generate subsets of such objects.
-The criteria for subsets can be applied to any of the slots included in those
-objects (they can be applied simultaneously to all three slots).
+The argument \code{subset} will be applied to the slot specified in argument
+\code{slot}.
+In the later you can use either the textual name of the slot or an alias. 
 
-In the case of subset applied to the slot \code{taxonNames}, non-matching names
-belonging to the same concepts as the matching ones will be preserved in the
-subset.
+Be aware that \code{subset} won't work properly inside of function definitions.
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}}.
+An object of class \code{\linkS4class{taxlist}}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add example
+library(taxlist)
+
+## Loading GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
+GermanSL <- tvsplist("GermanSL_1.3", file.path(path.package("taxlist"),
+	"tv_data"))
+
+## Subset of annual plants
+GermanSL <- subset(GermanSL, grepl("T", LF_LEB, fixed=TRUE), slot="traits")
+summary(GermanSL)
+
+summary(as.factor(GermanSL$LF_LEB))
 }
 \keyword{methods}

@@ -7,9 +7,9 @@
 \alias{get_parents,taxlist,numeric-method}
 \alias{get_parents,taxlist,taxlist-method}
 
-\title{Retrieve children or parents of requested concepts.}
+\title{Retrieve children or parents of determined concepts.}
 \description{
-Describe.
+Retrieve all children or all parents of a queried taxon concept.
 }
 \usage{
 \S4method{get_children}{taxlist,numeric}(taxlist, ConceptID, ...)
@@ -19,16 +19,20 @@ Describe.
 \S4method{get_parents}{taxlist,taxlist}(taxlist, ConceptID, ...)
 }
 \arguments{
-\item{taxlist}{a\code{\link[=taxlist-class]{taxlist}} object.}
+\item{taxlist}{a \code{\linkS4class{taxlist}} object.}
 \item{ConceptID}{concept IDs for selecting parents or children or a subset of
 	\sQuote{taxlist}.}
 \item{...}{Further arguments to pass from or to other methods.}
 }
 \details{
-Details
+This function produces subsets of \code{\linkS4class{taxlist}} objects including
+all children or parents of queried taxon concepts.
+Multiple concepts can be queried in this function.
+The argument \code{ConceptID} can be a vector of concept IDs or a subset of the
+input \code{taxlist} object.
 }
 \value{
-A \code{\link[=taxlist-class]{taxlist}} object with a subset including requested
+A \code{\linkS4class{taxlist}} object with a subset including requested
 concepts with children or parents.
 }
 \author{

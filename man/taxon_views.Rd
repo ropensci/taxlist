@@ -8,7 +8,7 @@
 \title{Management of Concept Views in Taxonomic Lists.}
 \description{
 Retrieve or replace slot \code{taxonViews} in an object of class
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \usage{
 \S4method{taxon_views}{taxlist}(taxlist, ...)
@@ -23,7 +23,7 @@ taxon_views(taxlist) <- value
 }
 \details{
 The function \code{taxon_views} retrieves the slot \code{taxonViews} from
-objects of the class \code{\link[=taxlist-class]{taxlist}}.
+objects of the class \code{\linkS4class{taxlist}}.
 
 Two replacement methods are implemented.
 If \code{value} is an integer vector, it is assumed to indicate the respective
@@ -36,7 +36,7 @@ columns in slot \code{taxonViews}.
 
 The term \sQuote{taxon view} was introduced by \bold{Zhong et al. (1996)} and
 corresponds to the reference used for the definition of a concept.
-Objects of class \code{\link[=taxlist-class]{taxlist}} use only a
+Objects of class \code{\linkS4class{taxlist}} use only a
 \sQuote{primary taxon views} and do not allow \sQuote{secondary} or
 \sQuote{parent-child taxon views}.
 }

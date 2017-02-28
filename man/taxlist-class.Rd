@@ -16,21 +16,15 @@ a data frame:
 \describe{
 \item{\code{taxonNames}:}{Alternative names (accepted and synonym ones) for
 	every concept.}
-\item{\code{taxonRelations}:}{Relations between concepts, accepted and first
-	names.}
+\item{\code{taxonRelations}:}{Relations between concepts, accepted names,
+	basionyms, parents and hierarchical level.}
 \item{\code{taxonTraits}:}{Traits of every concept (taxon).}
 \item{\code{taxonViews}:}{View used to determine the respective concepts
 	(relations between names).}
 }
 }
-\details{
-An extended description may be inserted here!!!
-}
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
-}
-\references{
-References may be inserted in attention to the description.
 }
 \examples{
 library(taxlist)

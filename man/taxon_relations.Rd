@@ -21,13 +21,13 @@ taxon_relations(taxlist) <- value
 \description{
 The function \code{taxon_relations} retrieves or assigns the slot
 \code{taxonRelations} to objects of the class
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \author{
 Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \examples{
 library(taxlist)

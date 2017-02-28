@@ -26,11 +26,13 @@ columns:
 	\item{TaxonName}{Full name (usage), excluding author name.}
 	\item{AuthorName}{Author of the combination (taxon name).}
 }
-You may additionally insert taxon views to the resulting object
-(see \code{\link{taxon_views}}).
+Be aware that the resulting object misses any information on taxon views,
+basionyms, parent concepts, hierarchical levels and taxon traits.
+All those elements can be added \emph{a posteriori} by using further functions
+provided in this package.
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}}.
+A \code{\linkS4class{taxlist} object}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

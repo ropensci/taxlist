@@ -6,9 +6,9 @@
 \alias{levels<-}
 \alias{levels<-,taxlist,character-method}
 
-\title{Set Hierarchical Levels in 'taxlist' Objects}
+\title{Set hierarchical levels in \sQuote{taxlist} objects}
 \description{
-Names of levels and its hierarchical sequence (upwards).
+Names of levels and its hierarchical upward sequence.
 }
 \usage{
 \S4method{levels}{factor}(x, ...)
@@ -25,6 +25,13 @@ levels(x) <- value
 \details{
 Taxonomic levels will be handled as factors in the taxlist object.
 }
+\value{
+A \code{\linkS4class{taxlist}} object with a subset including requested
+concepts with children or parents.
+}
+\author{
+Miguel Alvarez (\email{kamapu78@gmail.com}).
+}
 \examples{
 library(taxlist)
 data(Easplist)
@@ -38,3 +45,4 @@ levels(Easplist) <- c("form","variety","subspecies","species","aggregate",
 	"genus","family")
 summary(Easplist)
 }
+\keyword{methods}

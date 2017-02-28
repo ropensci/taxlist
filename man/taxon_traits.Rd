@@ -5,12 +5,12 @@
 \alias{taxon_traits<-}
 \alias{taxon_traits<-,taxlist,data.frame-method}
 
-\title{Retrieve or Assign Slot \dQuote{taxonTraits} to a \dQuote{taxlist}
-Object.}
+\title{Retrieve or assign slot \sQuote{taxonTraits} to a \dQuote{taxlist}
+object.}
 \description{
 The function \code{taxon_traits} retrieves or assigns the slot
 \code{taxonTraits} to objects of the class
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \usage{
 \S4method{taxon_traits}{taxlist}(taxlist, ...)
@@ -18,7 +18,7 @@ The function \code{taxon_traits} retrieves or assigns the slot
 taxon_traits(taxlist) <- value
 }
 \arguments{
-\item{taxlist}{Object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{taxlist}{Object of class \code{\linkS4class{taxlist}}.}
 \item{value}{Data frame or vector with replacement values (depending on the
 	method).}
 \item{...}{Further arguments passed to or from other methods.}
@@ -27,7 +27,7 @@ taxon_traits(taxlist) <- value
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \examples{
 \donttest{

@@ -1,10 +1,10 @@
 \name{tvsplist}
 \alias{tvsplist}
 
-\title{Import Species Lists from Turboveg Databases.}
+\title{Import species lists from Turboveg databases.}
 \description{
 Importing species lists from Turboveg databases into an object of class
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \usage{
 tvsplist(taxlist, tv_home=tv.home())
@@ -31,13 +31,13 @@ If this is not correct, consider setting it manually by using the functions
 \code{\link{taxon_views}} and \code{\link{add_view}}.
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}}.
+An object of class \code{\linkS4class{taxlist}}.
 }
 \author{
 Miguel Alvarez, \email{kamapu78@gmail.com}
 }
 \seealso{
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \examples{
 \donttest{
