@@ -11,7 +11,9 @@ setGeneric("add_concept",
 
 # Method for taxlist
 setMethod("add_concept", signature(taxlist="taxlist"),
-        function(taxlist, TaxonName, ...) {
+        function(taxlist, TaxonName, Level, ...) {
+            if(length(levels(taxlist)) > 0)
+                orig_levels <- base::levels(taxlist@taxonRelations$Level)
             # Generating vectors
             if(nrow(taxlist@taxonRelations) == 0) TaxonConceptID <- 1 else
                 TaxonConceptID <- max(taxlist@taxonRelations$TaxonConceptID) + 1
@@ -19,8 +21,12 @@ setMethod("add_concept", signature(taxlist="taxlist"),
             if(nrow(taxlist@taxonNames) == 0) TaxonUsageID <- 1 else
                 TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID) + 1
             TaxonUsageID <- TaxonUsageID:(TaxonUsageID + length(TaxonName) - 1)
+            if(!missing(Level)) {
+                if(length(Level) == 1) Level <- rep(Level, length(TaxonName))
+            }
             new_concept <- list(TaxonConceptID=TaxonConceptID,
-                    TaxonUsageID=TaxonUsageID, TaxonName=TaxonName, ...)
+                    TaxonUsageID=TaxonUsageID, TaxonName=TaxonName, Level=Level,
+                    ...)
             new_concept[["AcceptedName"]] <- TaxonConceptID
             # Add missing variables
             for(i in colnames(taxlist@taxonNames)[
@@ -42,6 +48,8 @@ setMethod("add_concept", signature(taxlist="taxlist"),
                             new_concept[match(colnames(taxlist@taxonNames),
                                             names(new_concept))],
                             stringsAsFactors=FALSE))
+            taxlist@taxonRelations$Level <- factor(
+                    paste(taxlist@taxonRelations$Level), levels=orig_levels)
             return(taxlist)
         }
 )

@@ -17,12 +17,15 @@ setMethod("clean", signature(object="taxlist"),
                     object@taxonNames$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID,]
             # clean slot taxonViews
-            object@taxonViews <- object@taxonViews[
-                    object@taxonViews$ViewID %in% object@taxonRelations$ViewID,]
+            if(nrow(object@taxonViews) > 0)
+                object@taxonViews <- object@taxonViews[
+                        object@taxonViews$ViewID %in%
+                                object@taxonRelations$ViewID,]
             # clean slot taxonTraits
-            object@taxonTraits <- object@taxonTraits[
-                    object@taxonTraits$TaxonConceptID %in%
-                            object@taxonRelations$TaxonConceptID,]
+            if(nrow(object@taxonViews) > 0)
+                object@taxonTraits <- object@taxonTraits[
+                        object@taxonTraits$TaxonConceptID %in%
+                                object@taxonRelations$TaxonConceptID,]
             # clean parents (deleted parents)
             object@taxonRelations$Parent[!object@taxonRelations$Parent %in%
                             object@taxonRelations$TaxonConceptID] <- NA

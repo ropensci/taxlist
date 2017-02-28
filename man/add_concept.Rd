@@ -9,13 +9,14 @@ New taxon concepts will be added complementing objects of class
 \code{\link[=taxlist-class]{taxlist}}.
 }
 \usage{
-\S4method{add_concept}{taxlist}(taxlist, TaxonName, ...)
+\S4method{add_concept}{taxlist}(taxlist, TaxonName, Level, ...)
 }
 \arguments{
-\item{taxlist}{An object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{TaxonName}{Character vector with the accepted name for the new taxon
+\item{taxlist}{an object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{TaxonName}{character vector with the accepted name for the new taxon
 	concepts.}
-\item{...}{Additional named vectors to be included in the slots 
+\item{Level}{character vector indicating the level of the concept in the list.}
+\item{...}{additional named vectors to be included in the slots 
 	\code{taxonNames} or \code{taxonRelations}.}
 }
 \details{
