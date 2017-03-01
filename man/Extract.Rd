@@ -52,7 +52,7 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 library(taxlist)
 
 ## Loading GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
-GermanSL <- tvsplist("GermanSL_1.3", file.path(path.package("taxlist"),
+GermanSL <- tv2taxlist("GermanSL_1.3", file.path(path.package("taxlist"),
 	"tv_data"))
 
 ## Statistics on life forms

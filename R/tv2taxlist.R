@@ -12,7 +12,7 @@ TCS_replace2 <- function(x) {
 }
 
 # The exported function
-tvsplist <- function(taxlist, tv_home=tv.home()) {
+tv2taxlist <- function(taxlist, tv_home=tv.home()) {
 	tv_home <- file.path(tv_home, "species", taxlist)
 	species <- read.dbf(file.path(tv_home, "species.dbf"), as.is=TRUE)
 	names(species) <- TCS_replace2(names(species))

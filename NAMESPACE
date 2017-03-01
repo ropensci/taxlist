@@ -40,5 +40,5 @@ exportMethods(
 # Export of regular function names
 export(
 	backup_object,
-	tvsplist
+	tv2taxlist
 )
