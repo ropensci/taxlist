@@ -20,7 +20,7 @@ but accessed in a similar way as for the class `taxlist`.
 
 Objects and functions of `taxlist` will be also implemented as part of objects
 containing information from vegetation-plot databases (look at
-[vegtables](https://github.com/kamapu/vegtables)).
+[vegtables](https://github.com/kamapu/vegtable)).
 
 This package has been developed as a tool handling data stored in
 [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), which is managed in the

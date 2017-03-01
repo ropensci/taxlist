@@ -12,7 +12,7 @@ Delete entries in slots \code{taxonNames}, \code{taxonTraits} and
 \S4method{clean}{taxlist}(object, ...)
 }
 \arguments{
-\item{object}{a\code{\link[=taxlist-class]{taxlist}} object.}
+\item{object}{a \code{\linkS4class{taxlist}} object.}
 \item{...}{further arguments passed from or to other methods.}
 }
 \details{
@@ -28,15 +28,17 @@ A clean \code{\link[=taxlist-class]{taxlist}} object.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
+\donttest{
 library(taxlist)
 data(Easplist)
-\donttest{
+
 ## Direct manipulation of slot taxonRelations generates an invalid object
 Easplist@taxonRelations <- Easplist@taxonRelations[1:5,]
 summary(Easplist)
-}
+
 ## Now apply cleaning
 Easplist <- clean(Easplist)
 summary(Easplist)
+}
 }
 \keyword{methods}
