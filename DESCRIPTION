@@ -21,6 +21,7 @@ Suggests:
 VignetteBuilder:
     knitr
 BuildVignettes: true
+LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'. Many
     of the concepts and functions implemented here are inspired by the package
     'vegdata'. This package also provides functions to import species lists from

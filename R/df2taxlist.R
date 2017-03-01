@@ -15,6 +15,8 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
             # Some tests previous to run the function
             AcceptedName <- substitute(AcceptedName)
             AcceptedName <- eval(AcceptedName, x, parent.frame())
+            if(length(AcceptedName) == 1) AcceptedName <- rep(AcceptedName,
+                        nrow(x))
             if(length(AcceptedName) != nrow(x))
                 stop("Argument 'AcceptedName' not matching the size of 'x'")
             Heads <- c("TaxonUsageID","TaxonConceptID","TaxonName")
