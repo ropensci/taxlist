@@ -76,8 +76,12 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
         cat("view ID:", temp_name, sep=" ", "\n")
         temp_name <- paste(object@taxonRelations[
                         object@taxonRelations$TaxonConceptID == i,"Level"])
-        if(is.na(temp_name)) temp_name <- "none"
+        if(is.na(temp_name) | temp_name == "NA") temp_name <- "none"
         cat("level:", temp_name, sep=" ", "\n")
+        temp_name <- object@taxonRelations[
+                        object@taxonRelations$TaxonConceptID == i,"Parent"]
+        if(is.na(temp_name)) temp_name <- "none"
+        cat("parent:", temp_name, sep=" ", "\n")
         cat("\n")
         # Accepted name
         temp_name <- object@taxonRelations[
