@@ -45,8 +45,9 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
     ConceptID <- unique(ConceptID) # Just in case of duplicates
     if(!all(ConceptID %in% object@taxonRelations$TaxonConceptID))
         stop("Some requested concepts are not included in 'object'")
-    object@taxonRelations <- object@taxonRelations[object@taxonRelations$TaxonConceptID %in% ConceptID,]
-    object <- clean(object)
+    object@taxonRelations <- object@taxonRelations[
+            object@taxonRelations$TaxonConceptID %in% ConceptID,]
+    ## object <- clean(object)
     # Create index for synonyms
     Synonym <- list()
     for(i in ConceptID) {
@@ -79,7 +80,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
         if(is.na(temp_name) | temp_name == "NA") temp_name <- "none"
         cat("level:", temp_name, sep=" ", "\n")
         temp_name <- object@taxonRelations[
-                        object@taxonRelations$TaxonConceptID == i,"Parent"]
+                object@taxonRelations$TaxonConceptID == i,"Parent"]
         if(is.na(temp_name)) temp_name <- "none"
         cat("parent:", temp_name, sep=" ", "\n")
         cat("\n")
