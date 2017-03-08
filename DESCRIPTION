@@ -6,7 +6,7 @@ Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
 Depends:
-	R(>= 3.3.0),
+	R(>= 3.0.0),
 	stats,
 	utils,
 	vegdata
