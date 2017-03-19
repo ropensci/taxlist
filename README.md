@@ -60,15 +60,6 @@ The first step will be to generate an empty `taxlist` object:
 
 ```r
 library(taxlist)
-#> Loading required package: vegdata
-#> Loading required package: foreign
-#> This is vegdata 0.9
-#> This is taxlist 0.0.0.9012
-#> 
-#> Attaching package: 'taxlist'
-#> The following object is masked from 'package:base':
-#> 
-#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
