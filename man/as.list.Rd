@@ -1,5 +1,6 @@
 \name{as.list}
 \docType{methods}
+\alias{S4_to_list}
 \alias{as.list}
 \alias{as.list,taxlist-method}
 
@@ -8,6 +9,8 @@
 Coercion used to explore inconsistencies in S4 objects.
 }
 \usage{
+S4_to_list(x)
+
 as.list(x, ...)
 }
 \arguments{
