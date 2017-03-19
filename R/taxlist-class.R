@@ -47,6 +47,9 @@ setClass("taxlist",
             if(!all(object@taxonRelations$TaxonConceptID %in%
                             object@taxonNames$TaxonConceptID))
                 return("Some concepts are missing in slot 'taxonNames'")
+            if(any(duplicated(paste(object@taxonNames$TaxonName,
+                                    object@taxonNames$AuthorName))))
+                return("Some combinations of name and name's author are duplicated")
             # slot taxonRelations
             if(!all(c("TaxonConceptID","AcceptedName","Basionym","Parent",
                             "Level") %in% colnames(object@taxonRelations)))

@@ -1,0 +1,9 @@
+version 0.0.0.9013 2017-03-16
+  * new object class 'coverconvet'
+  * methods for 'coverconvert'
+  * function 'transform' to convert cover codes into percentage
+
+version 0.0.0.9014 2017-03-19
+  * new validation rule: duplicated combinations 'name + author' are not allowed
+  * data 'Easplist' modified to fulfil the last rule
+  * new method 'as.list'

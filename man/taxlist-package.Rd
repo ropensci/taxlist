@@ -9,12 +9,12 @@ species lists including synonyms.
 For handling taxonomic lists an \emph{ad-hoc} object class is defined, namely
 \code{\link[=taxlist-class]{taxlist}}.
 Such lists separate names (taxon usages) from taxa (taxon concepts), following
-the terminology of \bold{Jansen & Dengler (2010)}.
+recommendations from \bold{Jansen & Dengler (2010)}.
 
-This package attempts to handle taxonomic data keeping the taxonomic consistency
-of the information included in the taxonomic lists but at the same time
-providing some flexibility for linking such lists with several data sets based
-on diversity records.
+This package attempts to handle taxonomic data keeping the consistency of the
+information contained in taxonomic lists but at the same time provides some
+flexibility for linking such lists with several data sets based on diversity
+records.
 
 The applications of this packages are discussed by \bold{Alvarez & Luebert
 (in preparation)}.

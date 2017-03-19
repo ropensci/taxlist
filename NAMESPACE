@@ -23,6 +23,7 @@ exportMethods(
 	add_parent,"add_parent<-",
 	add_synonym,
 	add_view,
+	as.list,
 	"change_concept<-",
 	clean,
 	df2taxlist,

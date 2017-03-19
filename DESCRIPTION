@@ -1,7 +1,7 @@
 Package: taxlist
-Version: 0.0.0.9012
+Version: 0.0.0.9014
 Encoding: UTF-8
-Date: 2017-02-28
+Date: 2017-03-19
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
@@ -22,15 +22,14 @@ VignetteBuilder:
     knitr
 BuildVignettes: true
 LazyData: true
-Description: Handling taxonomic lists through objects of class 'taxlist'. Many
-    of the concepts and functions implemented here are inspired by the package
-    'vegdata'. This package also provides functions to import species lists from
-    'Turboveg' and the possibility to create backups from resulting R-objects.
-    Also diverse displays are implemented as summary-methods.
+Description: Handling taxonomic lists through objects of class 'taxlist'.
+	This package provides functions to import species lists from 'Turboveg' and
+	the possibility to create backups from resulting R-objects.
+    Also quick displays are implemented in the summary-methods.
 License: GPL (>= 2)
 URL: https://github.com/kamapu/taxlist
 BugReports: https://github.com/kamapu/taxlist/issues
-Collate: 'NULLing.R''taxlist-class.R''clean.R'
+Collate: 'NULLing.R''taxlist-class.R''clean.R''as.list.R'
 	'taxon_names.R''taxon_relations.R''taxon_traits.R''taxon_views.R'
 	'levels.R''add_concept.R''add_synonym.R''add_view.R''accepted_name.R'
 	'add_level.R''add_parent.R'
