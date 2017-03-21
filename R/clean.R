@@ -22,7 +22,7 @@ setMethod("clean", signature(object="taxlist"),
                         object@taxonViews$ViewID %in%
                                 object@taxonRelations$ViewID,]
             # clean slot taxonTraits
-            if(nrow(object@taxonViews) > 0)
+            if(nrow(object@taxonTraits) > 0)
                 object@taxonTraits <- object@taxonTraits[
                         object@taxonTraits$TaxonConceptID %in%
                                 object@taxonRelations$TaxonConceptID,]
