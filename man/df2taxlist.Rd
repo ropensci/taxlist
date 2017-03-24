@@ -1,6 +1,7 @@
 \name{df2taxlist}
 \docType{methods}
 \alias{df2taxlist}
+\alias{df2taxlist,character,missing-method}
 \alias{df2taxlist,data.frame,logical-method}
 
 \title{Convert a Data Frame into a taxlist Object}
@@ -8,17 +9,20 @@
 Conversion of a data frame containing species lists into a taxlist object.
 }
 \usage{
-df2taxlist(x, AcceptedName, ...)
+\S4method{df2taxlist}{character,missing}(x, AcceptedName, ...)
+
+\S4method{df2taxlist}{data.frame,logical}(x, AcceptedName, ...)
 }
 \arguments{
 \item{x}{A data frame formatted for a taxlist object.}
 \item{AcceptedName}{A logical vector indicating accepted names with value
 	\code{TRUE}.}
-\item{...}{Further arguments to be passed from or to other methods.}
+\item{...}{Named vectors to be added as columns in slot \code{'taxonNames'}.}
 }
 \details{
 This function coerces a data frame containing a species list into an object of
-class \code{\link{taxlist}}. The input data frame \code{x} must have following
+class \code{\linkS4class{taxlist}}.
+In the method \code{'data.frame'}, the input data frame must have following
 columns:
 \describe{
 	\item{TaxonUsageID}{Numeric code for the name.}
@@ -26,10 +30,14 @@ columns:
 	\item{TaxonName}{Full name (usage), excluding author name.}
 	\item{AuthorName}{Author of the combination (taxon name).}
 }
+
 Be aware that the resulting object misses any information on taxon views,
 basionyms, parent concepts, hierarchical levels and taxon traits.
-All those elements can be added \emph{a posteriori} by using further functions
+All those elements can be added \emph{a posteriori} by further functions
 provided in this package.
+
+By using the \code{'character'} method, all provided names will be assumed as
+accepted ones.
 }
 \value{
 A \code{\linkS4class{taxlist} object}.
@@ -49,5 +57,9 @@ head(Cyperus)
 ## Convert to 'taxlist' object
 Cyperus <- df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM)
 summary(Cyperus)
+
+## Create a 'taxlist' object from character vectors
+Plants <- df2taxlist(c("Triticum aestivum","Zea mays"), AuthorName="L.")
+summary(Plants, "all")
 }
 \keyword{methods}

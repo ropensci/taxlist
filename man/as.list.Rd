@@ -10,9 +10,9 @@ Coercion of S4 objects to lists can be applied to explore their content avoiding
 errors caused by their validation.
 }
 \usage{
-S4_to_list(x)
+\S4method{as.list}{taxlist}(x, ...)
 
-as.list(x, ...)
+S4_to_list(x)
 }
 \arguments{
 \item{x}{An object of class \code{\linkS4class{taxlist}} or any S4 class (see

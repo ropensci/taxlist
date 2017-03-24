@@ -15,8 +15,12 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
             # Some tests previous to run the function
             AcceptedName <- substitute(AcceptedName)
             AcceptedName <- eval(AcceptedName, x, parent.frame())
-            if(length(AcceptedName) == 1) AcceptedName <- rep(AcceptedName,
-                        nrow(x))
+            # When all accepted names
+            if(length(AcceptedName) == 1) {
+                if(!AcceptedName)
+                    stop("for 'AcceptedName' of length 1 only value 'TRUE' is allowed")
+                AcceptedName <- rep(AcceptedName, nrow(x))
+            }
             if(length(AcceptedName) != nrow(x))
                 stop("Argument 'AcceptedName' not matching the size of 'x'")
             Heads <- c("TaxonUsageID","TaxonConceptID","TaxonName")
@@ -29,10 +33,17 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
                 x$TaxonUsageID <- as.integer(x$TaxonUsageID)
             if(!is.integer(x$TaxonConceptID))
                 x$TaxonConceptID <- as.integer(x$TaxonConceptID)
+            if(!"AuthorName" %in% colnames(x)) x$AuthorName <- NA
             # taxonRelations
             taxonRelations <- x[AcceptedName,c("TaxonConceptID","TaxonUsageID")]
             colnames(taxonRelations)[2] <- "AcceptedName"
             # taxonNames
+            extra_cols <- list(...)
+            suppressWarnings({
+                        if(length(extra_cols > 0))
+                            for(i in names(extra_cols)) x[,i] <- extra_cols[[i]]
+                    }
+            )
             taxlist <- new("taxlist")
             for(i in colnames(taxlist@taxonNames))
                 if(!i %in% colnames(x)) x[,i] <- NA
@@ -41,5 +52,15 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
             taxlist@taxonNames <- x
             taxlist@taxonRelations <- taxonRelations
             return(taxlist)
+        }
+)
+
+# Method for character vectors
+setMethod("df2taxlist", signature(x="character", AcceptedName="missing"),
+        function(x, ...) {
+            x <- list(TaxonUsageID=1:length(x), TaxonConceptID=1:length(x),
+                    TaxonName=x, ...)
+            x <- as.data.frame(x, stringsAsFactors=FALSE)
+            return(df2taxlist(x, TRUE))
         }
 )
