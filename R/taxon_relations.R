@@ -24,4 +24,3 @@ setReplaceMethod("taxon_relations", signature(taxlist="taxlist",
             return(taxlist)
         }
 )
-

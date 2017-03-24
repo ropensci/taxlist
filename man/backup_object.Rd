@@ -1,8 +1,9 @@
 \name{backup_object}
 \alias{backup_object}
 
-\title{Alternative to Produce Backups of R Objects.}
+\title{Backups R objects.}
 \description{
+Make security copies of R objects during processing its information.
 This function is a wrapper for \code{\link{save}}.
 }
 \usage{
@@ -21,17 +22,18 @@ backup_object(..., objects, file, stamp=TRUE, overwrite=FALSE)
 }
 \details{
 The \code{backup_object} function create a rda file in the working directory
-using \code{\link{save}}. The argument \code{file} should include the name of
-the backup file without extension.
+using \code{\link{save}}.
+The argument \code{'file'} should include the name of the backup file without
+extension.
 
-For \code{'overwrite=FALSE'} (the default) a numeric suffix will be added to the
-provided file names, which will avoid to overwrite existing backups with same
-name and stamp.
+For \code{'overwrite=FALSE'} (the default) a numeric suffix will be
+automatically added to the file names, when previous backups sharing the same
+name already exist.
 
 Saved backups can be imported to the session by using \code{\link{load}}.
 }
 \value{
-A rda file inserted in the working directory.
+A rda file in the working directory.
 }
 \seealso{
 \code{\link{save}}, \code{\link{load}}.

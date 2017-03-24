@@ -4,9 +4,9 @@
 ################################################################################
 
 # Module for a general summary
-overview_taxlist <- function(object, units, validate) {
+overview_taxlist <- function(object, units, check_validity) {
     cat("object size:", format(object.size(object), units=units), sep=" ", "\n")
-    if(validate)
+    if(check_validity)
         cat("validation of 'taxlist' object:", validObject(object), sep=" ",
                 "\n")
     cat("\n")
@@ -122,10 +122,10 @@ overview_taxon <- function(object, ConceptID, display, maxsum) {
 
 # Now set the method
 setMethod("summary", signature(object="taxlist"),
-        function(object, ConceptID, units="Kb", validate=TRUE, display="both",
-                maxsum=5, ...) {
+        function(object, ConceptID, units="Kb", check_validity=TRUE,
+                display="both", maxsum=5, ...) {
             if(missing(ConceptID))
-                overview_taxlist(object, units, validate) else
+                overview_taxlist(object, units, check_validity) else
                 overview_taxon(object, ConceptID, display, maxsum)
         }
 )

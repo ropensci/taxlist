@@ -5,9 +5,13 @@
 \alias{accepted_name<-}
 \alias{accepted_name<-,taxlist-method}
 
-\title{Retrieve or set accepted name for determined taxon concepts.}
+\title{Retrieve or set accepted name for taxon concepts.}
 \description{
-Changes on accepted names for a concept.
+Changes on accepted names for a taxon concept may in some cases not affect the
+circumscription of the taxon.
+In such cases the current accepted name will be set as synonym, while as
+accepted name either an existing synonym or a new name should be set as new
+accepted name.
 }
 \usage{
 \S4method{accepted_name}{taxlist}(taxlist, ConceptID, ...)
@@ -15,30 +19,34 @@ Changes on accepted names for a concept.
 accepted_name(taxlist, ConceptID) <- value
 }
 \arguments{
-\item{taxlist}{an object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{ConceptID}{integer vector containing concept IDs where to request or set
-	an accepted name.}
-\item{value}{integer vector containing usage IDs to be set as accepted names.}
-\item{...}{further arguments passed from or to other methods.}
+\item{taxlist}{An object of class \code{\linkS4class{taxlist}}.}
+\item{ConceptID}{Integer containing concept IDs where to request or set
+	accepted names.}
+\item{value}{Integer containing usage IDs to be set as new accepted names.}
+\item{...}{Further arguments passed from or to other methods.}
 }
 \details{
-The method \code{accepted_name<-} changes the information contained in the slot
-\code{taxonRelations} assigning the new \code{value} in the column
-\code{AcceptedName}, which is supposed to be an usage ID.
-For such procedure \code{value} must belong to the concept, where it will be
-set as new accepted name, otherwise the function will return an error message.
+This function retrieves or replace the usage ID indicating the accepted name for
+a taxon concept.
+With the method \code{'accepted_name<-'} a new accepted name for the respective
+taxon concept will be set, provided that this name is already considered as
+synonym for the taxon, otherwise an error message will be retrieved.
 
-In the arguments \code{ConcpetID} and \code{value} also vectors can be used,
-then they may have of the same length.
+The vectors used in the arguments \code{'ConceptID'} and \code{'value'} can be
+either of class \code{'numeric'} or \code{'integer'} and both vectors have to be
+of the same length for multiple replacements.
 }
 \value{
-The method \code{accepted_name} retrieves a subset of the slot \code{taxonNames}
-as \code{data.frame} object, while the replacement method \code{accepted_name<-}
-results in a \code{\link[=taxlist-class]{taxlist}} object with modified
-\sQuote{accepted name} information.
+The method \code{'accepted_name'} retrieves a subset of the slot
+\code{'taxonNames'} as \code{'data.frame'} object, while the replacement method
+\code{'accepted_name<-'} results in a \code{\linkS4class{taxlist}} object with
+modified entries for accepted names.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
+}
+\seealso{
+\code{\link{add_synonym}}.
 }
 \examples{
 library(taxlist)
@@ -47,9 +55,20 @@ data(Easplist)
 ## Overview of Cyclosorus interruptus
 summary(Easplist, 50074)
 
-## set a new accepted name (the first name)
+## Set a new accepted name (the oldest name)
 accepted_name(Easplist, 50074) <- 53097
 summary(Easplist, 50074)
+
+## When a name is not in the list
+## It should be added first as synonym
+summary(subset(Easplist, charmatch("Basella alba", TaxonName)), "all")
+
+Easplist <- add_synonym(Easplist, 68, TaxonName="Basella cordifolia",
+	AuthorName="Lam.")
+summary(Easplist, 68)
+accepted_name(Easplist, 68) <- 54768
+summary(Easplist, 68)
+
 \donttest{
 ## attempt to use a name from another concept
 accepted_name(Easplist, 50074) <- 51129

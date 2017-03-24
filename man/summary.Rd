@@ -9,30 +9,30 @@ A method to display either an overview of the content of
 \code{\linkS4class{taxlist}} objects or an overview of specific taxa
 in such objects.}
 \usage{
-\S4method{summary}{taxlist}(object, ConceptID, units="Kb", validate=TRUE, display="both", maxsum=5, ...)
+\S4method{summary}{taxlist}(object, ConceptID, units="Kb", check_validity=TRUE,
+	display="both", maxsum=5, ...)
 }
 \arguments{
-\item{object}{a taxlist object.}
-\item{ConceptID}{character or integer value or vector with optional concept IDs
-	for the summary.}
-\item{units}{character value indicating the units shown in the object's
+\item{object}{A \code{\linkS4class{taxlist}} object.}
+\item{ConceptID}{IDs of concepts to be displayed in the summary.}
+\item{units}{Character value indicating the units shown in the object's
 	allocated space.}
-\item{validate}{logical value indicating whether 'object' should be validated
-	or not}
-\item{display}{character value indicating the field to be displayed (see
+\item{check_validity}{Logical value indicating whether the validity of
+	\code{'object'} should be checked or not}
+\item{display}{Character value indicating the field to be displayed (see
 	details).}
-\item{maxsum}{integer indicating the maximum number of displayed taxa.}
-\item{...}{further arguments passed to or from another methods.}
+\item{maxsum}{Integer indicating the maximum number of displayed taxa.}
+\item{...}{Further arguments passed to or from another methods.}
 }
 \details{
 A general overview indicating number of names, concepts and taxon views included
-in a \code{\linkS4class{taxlist}} object.
+in \code{\linkS4class{taxlist}} objects.
 
-If argument \code{taxon} is a vector with concept IDs, then a display
+If argument \code{'ConceptID'} is a vector with concept IDs, then a display
 of all names included in each concept will be produced.
 Alternative you can use \code{taxon="all"} in order to get the listing of
 names for all concepts included in the object (truncated to the input number of
-\code{maxsum}).
+\code{'maxsum'}).
 
 For summaries applied to concepts, there are three alternative displays of names
 (argument \code{display}).
@@ -48,7 +48,7 @@ For big objects it will be recommendet to set \code{units="Mb"} (see also
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 }
 \examples{
 library(taxlist)

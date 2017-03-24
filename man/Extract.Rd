@@ -11,25 +11,27 @@
 
 \title{Extract or replace parts of a \sQuote{taxlist} object.}
 \description{
-Quick access to slots \sQuote{taxonTraits} and \sQuote{taxonRelations} in
-a \code{\linkS4class{taxlist} object} object.
+Quick access to slots \code{'taxonTraits'} and \code{'taxonRelations'} in
+a \code{\linkS4class{taxlist}} object.
 }
 \usage{
 \S4method{$}{taxlist}(x, name)
+
 \S4method{[}{taxlist}(x, i, j, ..., slot="relations", drop=FALSE)
 
 x$name <- value
+
 x[i,j] <- value
 }
 \arguments{
-\item{x}{object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{slot}{to which slot will be applied the extraction or replacement.}
-\item{value}{data frame or vector with replacement values (depending on the
+\item{x}{Object of class \code{\linkS4class{taxlist}}.}
+\item{slot}{To which slot will be applied the extraction or replacement.}
+\item{value}{Data frame or vector with replacement values (depending on the
 	method).}
-\item{...}{further arguments passed to or from other methods.}
-\item{name}{a name to access.}
-\item{i,j}{indices for access.}
-\item{drop}{a logical value passed to \code{\link[base]{Extract}}.}
+\item{...}{Further arguments passed to or from other methods.}
+\item{name}{A name to access.}
+\item{i,j}{Indices for access.}
+\item{drop}{A logical value passed to \code{\link[base]{Extract}}.}
 }
 \details{
 These methods provide a quick way to retrieve or replace information contained

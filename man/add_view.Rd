@@ -3,9 +3,9 @@
 \alias{add_view}
 \alias{add_view,taxlist-method}
 
-\title{Insert a New Concept View in a Taxonomic List.}
+\title{Add a new reference in a taxonomic list.}
 \description{
-Add a new reference for taxonomic views.
+Add a new reference for taxon concept views.
 }
 \usage{
 \S4method{add_view}{taxlist}(taxlist, ...)
@@ -16,14 +16,13 @@ Add a new reference for taxonomic views.
 	the slot \code{taxonViews}.}
 }
 \details{
-When planning to add new concepts according to a new reference, not yet included
-in the \code{taxlist} object, the new view have to be previously inserted using
-this function.
-
-View ID will be automatically generated as serial number.
+Taxon views indicate in \code{\linkS4class{taxlist}} objects the references
+determining the circumscription of the respective taxon concepts.
+When adding a new concept (see \code{\link{add_concept}}), the respective
+reference may not yet occur in the input \code{\linkS4class{taxlist}} object.
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}} with added views.
+An object of class \code{\linkS4class{taxlist}} with added views.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

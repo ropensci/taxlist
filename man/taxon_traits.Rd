@@ -5,12 +5,11 @@
 \alias{taxon_traits<-}
 \alias{taxon_traits<-,taxlist,data.frame-method}
 
-\title{Retrieve or assign slot \sQuote{taxonTraits} to a \dQuote{taxlist}
-object.}
+\title{Retrieve or replace slot \sQuote{taxonTraits} in \dQuote{taxlist}
+objects.}
 \description{
-The function \code{taxon_traits} retrieves or assigns the slot
-\code{taxonTraits} to objects of the class
-\code{\linkS4class{taxlist}}.
+The slot \code{'taxonTraits'} in \code{\linkS4class{taxlist}} objects contains
+attributes of taxon concepts (e.g. functional traits, etc.).
 }
 \usage{
 \S4method{taxon_traits}{taxlist}(taxlist, ...)
@@ -18,10 +17,13 @@ The function \code{taxon_traits} retrieves or assigns the slot
 taxon_traits(taxlist) <- value
 }
 \arguments{
-\item{taxlist}{Object of class \code{\linkS4class{taxlist}}.}
-\item{value}{Data frame or vector with replacement values (depending on the
-	method).}
+\item{taxlist}{A \code{\linkS4class{taxlist}} object.}
+\item{value}{Data frame to be set as slot \code{'taxonTraits'}.}
 \item{...}{Further arguments passed to or from other methods.}
+}
+\details{
+The replacement method \code{'taxon_traits<-'} should be only used when
+constructing \code{\linkS4class{taxlist}} objects from an empty one.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

@@ -8,7 +8,8 @@
 
 \title{Set hierarchical levels in \sQuote{taxlist} objects}
 \description{
-Names of levels and its hierarchical upward sequence.
+Taxonomic hierarchies are set as levels in \code{\linkS4class{taxlist}} objects,
+ordered from lower to higher levels.
 }
 \usage{
 \S4method{levels}{factor}(x, ...)
@@ -18,16 +19,25 @@ Names of levels and its hierarchical upward sequence.
 levels(x) <- value
 }
 \arguments{
-\item{x}{Either a factor or a \code{\link[=taxlist-class]{taxlist}} object.}
+\item{x}{Either a factor or a \code{\linkS4class{taxlist}} object.}
 \item{value}{Character vector with the name and the upwards sequence of levels.}
 \item{...}{Additional arguments passed from or to other methods.}
 }
 \details{
-Taxonomic levels will be handled as factors in the taxlist object.
+Taxonomic levels will be handled as factors in the \code{\linkS4class{taxlist}}
+objects.
+Those levels are useful for creating subsets of related groups (e.g. by
+functions \code{\link{get_children}} or \code{\link{get_parents}}).
+Levels in combination to parent-child relationships will be used for testing
+consistency on the information of taxonomic lists.
+
+Since this function is set as generic and masks the original
+\code{\link[base]{levels}} a method for \code{'factor'} vectors is provided, as
+well.
 }
 \value{
-A \code{\linkS4class{taxlist}} object with a subset including requested
-concepts with children or parents.
+A \code{'character'} vector or a \code{\linkS4class{taxlist}} object with
+added or modified taxonomic levels.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

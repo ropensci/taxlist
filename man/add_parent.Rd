@@ -5,10 +5,10 @@
 \alias{add_parent<-}
 \alias{add_parent<-,taxlist-method}
 
-\title{Add or modify parent entries in single concepts.}
+\title{Add or modify parent entries in taxon concepts.}
 \description{
-Add information of parent for single or multiple concepts in a
-\code{\link[=taxlist-class]{taxlist}} object.
+Add information of parent for determined concepts in a
+\code{\linkS4class{taxlist}} object.
 }
 \usage{
 \S4method{add_parent}{taxlist}(taxlist, ConceptID, Parent, ...)
@@ -16,27 +16,32 @@ Add information of parent for single or multiple concepts in a
 add_parent(taxlist, ConceptID) <- value
 }
 \arguments{
-\item{taxlist}{a \code{\link[=taxlist-class]{taxlist}} object.}
-\item{ConceptID}{concept IDs where to add level information.}
-\item{Parent,value}{new value of level for the respective concepts.}
-\item{...}{further arguments to pass from or to other methods.}
+\item{taxlist}{A \code{\linkS4class{taxlist}} object.}
+\item{ConceptID}{Concept IDs where to add level information.}
+\item{Parent,value}{New value of level for the respective concepts.}
+\item{...}{Further arguments to pass from or to other methods.}
 }
 \details{
-The occurrence of the new parent value among the concept IDs will be checked by
-the function.
-If the new parent value is not occurring as concept ID, the function retrieves
-an error message.
+Previous to add a parent information, this function will check the occurrence of
+the assigned concept within the input \code{\linkS4class{taxlist}} object.
+If the new parent value is not occurring, this function retrieves an error
+message.
 
 A single value for new parent entry can be provided for multiple concepts.
 
-It is strongly recommended to check validiy of the resulting
-\code{\link[=taxlist-class]{taxlist}} object after any modification.
+When the input \code{\linkS4class{taxlist}} object also contains information on
+taxonomic levels, it is strongly recommended to check validity of the resulting
+object (see \code{\link{validObject}}).
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}} with modified entries.
+An object of class \code{\linkS4class{taxlist}} with modified parent entries.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
+}
+\seealso{
+\code{\link{validObject}}, \code{\link[taxlist]{levels}},
+\code{\link{taxon_relations}}.
 }
 \examples{
 library(taxlist)

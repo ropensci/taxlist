@@ -3,26 +3,27 @@
 \alias{subset}
 \alias{subset,taxlist-method}
 
-\title{Subset Method for taxlist Objects.}
+\title{Subset method for \sQuote{taxlist} objects.}
 \description{
-A subset of \code{\linkS4class{taxlist}} objects will be done either
-by \code{taxonNames}, \code{taxonRelations} or \code{taxonTraits} slots.
+Subset of \code{\linkS4class{taxlist}} objects will be done applying either
+logical operations or pattern matchings.
+Subsets can be referred to information contained either in the slot
+\code{taxonNames}, \code{taxonRelations} or \code{taxonTraits}.
 }
 \usage{
 \S4method{subset}{taxlist}(x, subset, slot="names", ...)
 }
 \arguments{
-\item{x}{object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{subset}{logical vector or logical operation to apply as subset.}
-\item{slot}{character value indicating the slot to be used for the subset.}
-\item{...}{further arguments to be passed to or from other methods.}
+\item{x}{Object of class \code{\linkS4class{taxlist}}.}
+\item{subset}{Logical vector or logical operation to apply as subset.}
+\item{slot}{Character value indicating the slot to be used for the subset.}
+\item{...}{Further arguments to be passed to or from other methods.}
 }
 \details{
-This method is applied to objects of class \code{\linkS4class{taxlist}}
-in order to generate subsets of such objects.
 The argument \code{subset} will be applied to the slot specified in argument
-\code{slot}.
-In the later you can use either the textual name of the slot or an alias. 
+\code{'slot'}.
+This argument can be referred either by the full name of the respective slot or
+an alias.
 
 Be aware that \code{subset} won't work properly inside of function definitions.
 }

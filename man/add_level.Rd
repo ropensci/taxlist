@@ -7,7 +7,9 @@
 
 \title{Add or modify level entries in single concepts.}
 \description{
-Changes in concept identity can also implicate changes in their taxonomic
+Add taxonomic levels for specific taxon concepts in a
+\code{\linkS4class{taxlist}} object.
+Also changes in concept circumscription may implicate changes in its taxonomic
 hierarchy.
 }
 \usage{
@@ -16,29 +18,24 @@ hierarchy.
 add_level(taxlist, ConceptID) <- value
 }
 \arguments{
-\item{taxlist}{a \code{\link[=taxlist-class]{taxlist}} object.}
-\item{ConceptID}{concept IDs where to add level information.}
-\item{Level,value}{new value of level for the respective concepts.}
-\item{...}{further arguments to pass from or to other methods.}
+\item{taxlist}{A \code{\linkS4class{taxlist}} object.}
+\item{ConceptID}{Concept IDs where to add level information.}
+\item{Level,value}{New value of level for the respective concepts.}
+\item{...}{Further arguments to pass from or to other methods.}
 }
 \details{
-Previous to a modification in the taxonomic level of a concept, the occurrence
-of the new value will be checked among the levels that are set for the
-\code{\link[=taxlist-class]{taxlist}} object.
+Taxonomic levels to add in concepts have to be previously declared for the
+\code{\linkS4class{taxlist}} object in the input (see
+\code{\link[taxlist]{levels}}).
 If the level is not previously set for the object, an error message will be
 retrieved.
-
-A single value for new level can be provided for multiple concepts.
-
-It is strongly recommended to check validiy of the resulting
-\code{\link[=taxlist-class]{taxlist}} object after any modification.
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}} with modified level
+An object of class \code{\linkS4class{taxlist}} with modified level
 entries.
 }
 \seealso{
-\code{\link{levels}}.
+\code{\link[taxlist]{levels}}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

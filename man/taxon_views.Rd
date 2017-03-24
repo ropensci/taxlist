@@ -5,7 +5,7 @@
 \alias{taxon_views<-}
 \alias{taxon_views<-,taxlist,data.frame-method}
 
-\title{Management of Concept Views in Taxonomic Lists.}
+\title{Management of concept views in taxonomic lists.}
 \description{
 Retrieve or replace slot \code{taxonViews} in an object of class
 \code{\linkS4class{taxlist}}.
@@ -16,29 +16,22 @@ Retrieve or replace slot \code{taxonViews} in an object of class
 taxon_views(taxlist) <- value
 }
 \arguments{
-\item{taxlist}{object of class \code{data.frame} or \code{taxlist}.}
-\item{value}{a \code{data.frame} containing information about concept views
-	implemented.}
+\item{taxlist}{A \code{\linkS4class{taxlist}} object.}
+\item{value}{An object of class \code{'data.frame'} containing the references
+	used to define the circumscription of taxon concepts included in
+	\code{'taxlist'}.}
 \item{...}{Further arguments passed to or from other methods.}
 }
 \details{
-The function \code{taxon_views} retrieves the slot \code{taxonViews} from
-objects of the class \code{\linkS4class{taxlist}}.
-
-Two replacement methods are implemented.
-If \code{value} is an integer vector, it is assumed to indicate the respective
-view for each concept included in the slot \code{taxonRelations}.
-If \code{value} is a data frame, then it will be used to replace the slot
-\code{taxonViews}.
-
-In \code{add_view}, \code{...} represent additional variables to be inserted as
-columns in slot \code{taxonViews}.
-
 The term \sQuote{taxon view} was introduced by \bold{Zhong et al. (1996)} and
 corresponds to the reference used for the definition of a concept.
-Objects of class \code{\linkS4class{taxlist}} use only a
-\sQuote{primary taxon views} and do not allow \sQuote{secondary} or
-\sQuote{parent-child taxon views}.
+
+This function retrieves the slot \code{'taxonViews'} from objects of the class
+\code{\linkS4class{taxlist}}.
+
+The replacement method \code{'taxon_views<-'} replaces the whole content of slot
+\code{'taxonViews'} and it is only recommended to use when constructing a new
+\code{\linkS4class{taxlist}} object from an empty prototype.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
@@ -48,8 +41,9 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 and query methods for interacting classifications in a taxonomic database.
 \emph{Taxon} 45: 223--241.
 }
-
-
+\seealso{
+\code{\link{add_view}}.
+}
 \examples{
 library(taxlist)
 data(Easplist)

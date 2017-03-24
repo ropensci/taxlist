@@ -14,7 +14,7 @@ setReplaceMethod("change_concept", signature(taxlist="taxlist"),
             if(length(UsageID) != length(value))
                 stop("'UsageID' and 'value' should be of the same length")
             if(any(UsageID %in% taxlist@taxonRelations$AcceptedName))
-                stop("changes on concept are not allowed for accepted names")
+                stop("Changes on concept are not allowed for accepted names")
             # now replace
             taxlist@taxonNames[match(UsageID,taxlist@taxonNames$TaxonUsageID),
                     "TaxonConceptID"] <- value

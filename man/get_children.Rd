@@ -13,23 +13,25 @@ Retrieve all children or all parents of a queried taxon concept.
 }
 \usage{
 \S4method{get_children}{taxlist,numeric}(taxlist, ConceptID, ...)
+
 \S4method{get_children}{taxlist,taxlist}(taxlist, ConceptID, ...)
 
 \S4method{get_parents}{taxlist,numeric}(taxlist, ConceptID, ...)
+
 \S4method{get_parents}{taxlist,taxlist}(taxlist, ConceptID, ...)
 }
 \arguments{
-\item{taxlist}{a \code{\linkS4class{taxlist}} object.}
-\item{ConceptID}{concept IDs for selecting parents or children or a subset of
-	\sQuote{taxlist}.}
+\item{taxlist}{A \code{\linkS4class{taxlist}} object.}
+\item{ConceptID}{Concept IDs for selecting parents or children or a subset of
+	\sQuote{'taxlist'}.}
 \item{...}{Further arguments to pass from or to other methods.}
 }
 \details{
 This function produces subsets of \code{\linkS4class{taxlist}} objects including
 all children or parents of queried taxon concepts.
 Multiple concepts can be queried in this function.
-The argument \code{ConceptID} can be a vector of concept IDs or a subset of the
-input \code{taxlist} object.
+The argument \code{'ConceptID'} can be a vector of concept IDs or a subset of the
+input \code{'taxlist'} object.
 }
 \value{
 A \code{\linkS4class{taxlist}} object with a subset including requested

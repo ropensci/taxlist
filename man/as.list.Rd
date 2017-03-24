@@ -6,7 +6,8 @@
 
 \title{Coerce an S4 object to a list.}
 \description{
-Coercion used to explore inconsistencies in S4 objects.
+Coercion of S4 objects to lists can be applied to explore their content avoiding
+errors caused by their validation.
 }
 \usage{
 S4_to_list(x)
@@ -14,15 +15,18 @@ S4_to_list(x)
 as.list(x, ...)
 }
 \arguments{
-\item{x}{an object of class \code{\linkS4class{taxlist}}.}
+\item{x}{An object of class \code{\linkS4class{taxlist}} or any S4 class (see
+	details).}
 \item{...}{further arguments passed to or from other methods.}
 }
 \details{
-Details.
+While the function \code{'S4_to_list'} can be applied to any S4 object,
+\code{'as.list'} is a method specifically defined for
+\code{\linkS4class{taxlist}} class.
 }
 \value{
-An object of class \code{list}, whose elements correspond to slots from input
-object.
+An object of class \code{\link[base]{list}}, whose elements correspond to slots
+from input object.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

@@ -2,22 +2,17 @@
 \docType{package}
 \alias{taxlist-package}
 
-\title{Handling Taxonomic Lists.}
+\title{Handling taxonomic lists.}
 \description{
-This package offers some functions to handle taxonomic lists, focusing on
-species lists including synonyms.
-For handling taxonomic lists an \emph{ad-hoc} object class is defined, namely
-\code{\link[=taxlist-class]{taxlist}}.
-Such lists separate names (taxon usages) from taxa (taxon concepts), following
-recommendations from \bold{Jansen & Dengler (2010)}.
+This package defines an S4 object class for handling taxonomic lists, namely the
+\code{\linkS4class{taxlist}} class.
+The main task of such objects is to keep the taxonomic coherence in the
+information included in taxonomic lists and to implement functions (methods) for
+the those data handling procedures that are common in the work with taxonomic
+lists and its integration in biodiversity information.
 
-This package attempts to handle taxonomic data keeping the consistency of the
-information contained in taxonomic lists but at the same time provides some
-flexibility for linking such lists with several data sets based on diversity
-records.
-
-The applications of this packages are discussed by \bold{Alvarez & Luebert
-(in preparation)}.
+More detailed examples on the applications of this package will be discussed by
+\bold{Alvarez & Luebert (in preparation)}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

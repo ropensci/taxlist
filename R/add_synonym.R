@@ -13,7 +13,9 @@ setGeneric("add_synonym",
 setMethod("add_synonym", signature(taxlist="taxlist"),
         function(taxlist, ConceptID, TaxonName, AuthorName, ...) {
             if(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID)
-                stop("'ConceptID' is not included as concept in 'taxlist'")
+                stop("Some values in 'ConceptID' are not included as concepts in 'taxlist'")
+            # For addition of multiple synonyms to multiple concepts
+            if(length(ConceptID) == 1) rep(ConceptID, length(TaxonName))
             TaxonConceptID <- ConceptID
             TaxonUsageID <- max(taxlist@taxonNames$TaxonUsageID) + 1
             TaxonUsageID <- TaxonUsageID:(TaxonUsageID + length(TaxonName) - 1)

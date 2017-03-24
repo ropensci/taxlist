@@ -6,25 +6,26 @@
 
 \title{Move a name to a different concept.}
 \description{
-Move a name in its respective taxon concept in case of changes in
-circumscription or misplacement.
+Replacement method for moving a name to another taxon concept in case of changes
+in taxon circumscription or misplacement of synonyms.
 }
 \usage{
 change_concept(taxlist, UsageID) <- value
 }
 \arguments{
-\item{taxlist}{an object of class \code{\link[=taxlist-class]{taxlist}}.}
-\item{UsageID}{usage IDs to be moved from one concept to another.}
-\item{value}{concept ID, where the usage should be moved to.}
+\item{taxlist}{A \code{\linkS4class{taxlist}}.}
+\item{UsageID}{Usage IDs to be moved from one concept to another.}
+\item{value}{Destination concept ID for the moved name.}
 }
 \details{
-With \code{change_concept} a name (usage) can be relocated in a different
-taxon concept.
-This function check previously that the name to be moved is not an accepted
-for the current taxon, otherwise an error message will be retrieved.
+Existing names will be moved from one concept to another in the case that a
+concept changes its circumscription or when a synonym was assigned to a wrong
+concept.
+This action is not allowed for accepted names and in such cases an error message
+will be retrieved by this function.
 }
 \value{
-An object of class \code{\link[=taxlist-class]{taxlist}} with replaced names.
+An object of class \code{\linkS4class{taxlist}} with modified entries.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
