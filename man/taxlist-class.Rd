@@ -7,20 +7,30 @@
 \description{
 Class for species (taxon) lists including synonyms.
 }
-\section{Objects from the Class}{
-Objects can be created by calls of the form \code{new("taxlist")}.
-}
 \section{Slots}{
 Objects of this class are composed of three slots, every one corresponding to
 a data frame:
 \describe{
-\item{\code{taxonNames}:}{Alternative names (accepted and synonym ones) for
-	every concept.}
-\item{\code{taxonRelations}:}{Relations between concepts, accepted names,
-	basionyms, parents and hierarchical level.}
-\item{\code{taxonTraits}:}{Traits of every concept (taxon).}
-\item{\code{taxonViews}:}{View used to determine the respective concepts
-	(relations between names).}
+	\item{taxonNames}{Table of names (accepted names and synonyms).}
+	\item{taxonRelations}{Relations between concepts, accepted names,
+		basionyms, parents and hierarchical level.}
+	\item{taxonTraits}{Table of taxon traits.}
+	\item{taxonViews}{References used to determine the respective concept
+		circumscription.}
+}
+}
+\section{Check of validity}{
+Using the function \code{\link{validObject}} it is possible to get a check on
+the consistency of information contained in \code{\linkS4class{taxlist}}
+objects.
+Former issues, among others, will be tested in the validity check:
+\itemize{
+	\item Mandatory column names in all slots.
+	\item Not duplicated IDs.
+	\item Not duplicated name combinations (name and author).
+	\item Not orphaned records.
+	\item Parents have to be of higher hierarchy than children, when this
+		information is available.
 }
 }
 \author{
@@ -30,5 +40,8 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 library(taxlist)
 
 showClass("taxlist")
+
+## Create an empty object
+Splist <- new("taxlist")
 }
 \keyword{classes}

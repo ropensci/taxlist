@@ -14,18 +14,18 @@ tv2taxlist(taxlist, tv_home=tv.home())
 \item{tv_home}{Character value indicating the path to the main Turboveg	folder.}
 }
 \details{
-This function imports species lists using the function \code{\link{read.dbf}}
-from the package \code{foreign}.
-If present, also the taxon traits will be imported into the output object
-(usually the file \code{ecodbase.dbf} in the respective folder).
-During import of \code{ecodbase.dbf} duplicated entries for a same concept will
+This function imports species lists using the function
+\code{\link[foreign]{read.dbf}}.
+When available, also taxon traits will be imported into the output object
+(usually the file \code{'ecodbase.dbf'}).
+During import of taxon traits, duplicated entries for a same concept will
 be discarded as well as entries for non-existing concepts.
 
-By default \code{tv_home} will be set by the function \code{\link{tv.home}} from
-the package \code{\link[=vegdata-package]{vegata}}.
-Part of the code is extracted from the function \code{\link{tax}}.
+By default \code{tv_home} will be set by the function
+\code{\link[vegdata]{tv.home}} from the package
+\code{\link[=vegdata-package]{vegata}}.
 
-Be default, the name of the database sill be set as concept view for all
+By default, the name of the database will be set as concept view for all
 concepts included in the species list.
 If this is not correct, consider setting it manually by using the functions
 \code{\link{taxon_views}} and \code{\link{add_view}}.
