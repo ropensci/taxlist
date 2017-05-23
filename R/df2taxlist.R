@@ -57,7 +57,13 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
 
 # Method for missing accepted names in input data frame
 setMethod("df2taxlist", signature(x="data.frame", AcceptedName="missing"),
-        function(x, ...) return(df2taxlist(x, TRUE))
+        function(x, ...) {
+            if(!"TaxonConceptID" %in% colnames(x))
+                x$TaxonConceptID <- c(1:nrow(x))
+            if(!"TaxonUsageID" %in% colnames(x))
+                x$TaxonUsageID <- c(1:nrow(x))
+            return(df2taxlist(x, TRUE))
+        }
 )
 
 # Method for character vectors
