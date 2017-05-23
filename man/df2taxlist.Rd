@@ -1,17 +1,21 @@
 \name{df2taxlist}
 \docType{methods}
 \alias{df2taxlist}
-\alias{df2taxlist,character,missing-method}
 \alias{df2taxlist,data.frame,logical-method}
+\alias{df2taxlist,data.frame,missing-method}
+\alias{df2taxlist,character,missing-method}
 
 \title{Convert a Data Frame into a taxlist Object}
 \description{
 Conversion of a data frame containing species lists into a taxlist object.
 }
 \usage{
+\S4method{df2taxlist}{data.frame,logical}(x, AcceptedName, ...)
+
+\S4method{df2taxlist}{data.frame,missing}(x, AcceptedName, ...)
+
 \S4method{df2taxlist}{character,missing}(x, AcceptedName, ...)
 
-\S4method{df2taxlist}{data.frame,logical}(x, AcceptedName, ...)
 }
 \arguments{
 \item{x}{A data frame formatted for a taxlist object.}

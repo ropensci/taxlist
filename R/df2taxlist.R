@@ -55,6 +55,11 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
         }
 )
 
+# Method for missing accepted names in input data frame
+setMethod("df2taxlist", signature(x="data.frame", AcceptedName="missing"),
+        function(x, ...) return(df2taxlist(x, TRUE))
+)
+
 # Method for character vectors
 setMethod("df2taxlist", signature(x="character", AcceptedName="missing"),
         function(x, ...) {
