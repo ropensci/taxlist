@@ -9,14 +9,26 @@ setGeneric("accepted_name",
             standardGeneric("accepted_name")
 )
 
-# Set method for taxlist
-setMethod("accepted_name", signature(taxlist="taxlist"),
+# Provide accepted names in a data frame
+setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="numeric"),
         function(taxlist, ConceptID, ...) {
             AcceptedName <- taxlist@taxonRelations[
-                    taxlist@taxonRelations$TaxonConceptID ==
-                            ConceptID,"AcceptedName"]
-            return(taxlist@taxonNames[taxlist@taxonNames$TaxonUsageID ==
-                                    AcceptedName,])
+                    taxlist@taxonRelations$TaxonConceptID %in%
+                            ConceptID,c("TaxonConceptID","AcceptedName")]
+            for(i in c("TaxonName","AuthorName"))
+                AcceptedName[,i] <- taxlist@taxonNames[
+                        match(AcceptedName$AcceptedName,
+                                taxlist@taxonNames$TaxonUsageID),i]
+            colnames(AcceptedName)[2] <- "TaxonUsageID"
+            return(AcceptedName)
+        }
+)
+
+# Method for the whole object
+setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="missing"),
+        function(taxlist, ConceptID, ...) {
+            ConceptID <- taxlist@taxonRelations$TaxonConceptID
+            return(accepted_name(taxlist, ConceptID, ...))
         }
 )
 
@@ -25,7 +37,8 @@ setGeneric("accepted_name<-", function(taxlist, ConceptID, value)
             standardGeneric("accepted_name<-"))
 
 # Replacement for taxlist
-setReplaceMethod("accepted_name", signature(taxlist="taxlist"),
+setReplaceMethod("accepted_name", signature(taxlist="taxlist",
+                ConceptID="numeric", value="numeric"),
         function(taxlist, ConceptID, value) {
             # first test
             if(length(ConceptID) != length(value))
