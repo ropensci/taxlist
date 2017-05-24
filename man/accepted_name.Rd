@@ -1,9 +1,10 @@
 \name{accepted_name}
 \docType{methods}
 \alias{accepted_name}
-\alias{accepted_name,taxlist-method}
+\alias{accepted_name,taxlist,numeric-method}
+\alias{accepted_name,taxlist,missing-method}
 \alias{accepted_name<-}
-\alias{accepted_name<-,taxlist-method}
+\alias{accepted_name<-,taxlist,numeric,numeric-method}
 
 \title{Retrieve or set accepted name for taxon concepts.}
 \description{
@@ -14,7 +15,9 @@ accepted name either an existing synonym or a new name should be set as new
 accepted name.
 }
 \usage{
-\S4method{accepted_name}{taxlist}(taxlist, ConceptID, ...)
+\S4method{accepted_name}{taxlist,numeric}(taxlist, ConceptID, ...)
+
+\S4method{accepted_name}{taxlist,missing}(taxlist, ConceptID, ...)
 
 accepted_name(taxlist, ConceptID) <- value
 }
@@ -37,10 +40,12 @@ either of class \code{'numeric'} or \code{'integer'} and both vectors have to be
 of the same length for multiple replacements.
 }
 \value{
-The method \code{'accepted_name'} retrieves a subset of the slot
-\code{'taxonNames'} as \code{'data.frame'} object, while the replacement method
-\code{'accepted_name<-'} results in a \code{\linkS4class{taxlist}} object with
-modified entries for accepted names.
+The method \code{'accepted_name'} retrieves a \code{'data.frame'} object
+indicating the identity of the concept and the name and including the accepted
+taxon name and the respective author.
+
+The replacement method \code{'accepted_name<-'} results in a
+\code{\linkS4class{taxlist}} object with modified entries for accepted names.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

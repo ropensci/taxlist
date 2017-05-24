@@ -6,3 +6,5 @@
 # NULLing to override check errors
 TaxonConceptID <- NULL
 TaxonUsageID <- NULL
+score <- NULL
+acceptedname <- NULL
