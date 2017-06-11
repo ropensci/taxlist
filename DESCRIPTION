@@ -18,7 +18,8 @@ Suggests:
     devtools,
     knitr,
     stringi,
-    rmarkdown
+    rmarkdown,
+    thisdataismine
 VignetteBuilder:
     knitr
 BuildVignettes: true
