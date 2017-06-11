@@ -1,8 +1,15 @@
+---
+output: github_document
+---
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
 
 # taxlist
+
+
+[![Travis Build Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 
 The aim of `taxlist` is to provide an object structure for taxonomic lists
 and methods to display and handle the contained information.
@@ -60,6 +67,15 @@ The first step will be to generate an empty `taxlist` object:
 
 ```r
 library(taxlist)
+#> Loading required package: vegdata
+#> Loading required package: foreign
+#> This is vegdata 0.9
+#> This is taxlist 0.0.0.9015
+#> 
+#> Attaching package: 'taxlist'
+#> The following object is masked from 'package:base':
+#> 
+#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
