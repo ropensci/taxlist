@@ -17,7 +17,7 @@ tv2taxlist <- function(taxlist, tv_home=tv.home()) {
 	species <- read.dbf(file.path(tv_home, "species.dbf"), as.is=TRUE)
 	names(species) <- TCS_replace2(names(species))
 	species <- df2taxlist(species, !species$SYNONYM)
-    if("ecodbase.dbf" %in% list.files(tv_home, pattern=".dbf")) {
+    if(any(grepl("ecodbase.dbf", list.files(tv_home), ignore.case=TRUE))) {
 		ecodbase <- read.dbf(file.path(tv_home, "ecodbase.dbf"), as.is=TRUE)
 		names(ecodbase) <- replace(names(ecodbase),
                 names(ecodbase) == "SPECIES_NR", "TaxonConceptID")
