@@ -18,8 +18,8 @@ Suggests:
     devtools,
     knitr,
     stringi,
-    rmarkdown,
-    thisdataismine
+    rmarkdown
+Remotes: github::kamapu/thisdataismine
 VignetteBuilder:
     knitr
 BuildVignettes: true
