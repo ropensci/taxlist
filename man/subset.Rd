@@ -34,19 +34,12 @@ An object of class \code{\linkS4class{taxlist}}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-\donttest{
 library(taxlist)
-library(thisdataismine)
 
-## Loading GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
-GermanSL <- tv2taxlist("GermanSL_1.3", file.path(path.package("thisdataismine"),
-	"tv_data"))
+data(Easplist)
+Easplist <- subset(Easplist, LifeForm == "T", slot="traits")
+summary(Easplist)
 
-## Subset of annual plants
-GermanSL <- subset(GermanSL, grepl("T", LF_LEB, fixed=TRUE), slot="traits")
-summary(GermanSL)
-
-summary(as.factor(GermanSL$LF_LEB))
-}
+summary(as.factor(Easplist$LifeForm))
 }
 \keyword{methods}

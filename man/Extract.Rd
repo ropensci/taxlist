@@ -53,19 +53,14 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \seealso{
 \code{\linkS4class{taxlist}}, \code{\link[taxlist]{subset}}.}
 \examples{
-\donttest{
 library(taxlist)
-library(thisdataismine)
 
-## Loaded GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
-GermanSL <- tv2taxlist("GermanSL_1.3", file.path(path.package("thisdataismine"),
-	"tv_data"))
+data(Easplist)
 
 ## Statistics on life forms
-summary(as.factor(GermanSL$LF_LEB))
+summary(as.factor(Easplist$LifeForm))
 
-## First five concepts in this list
-summary(GermanSL[1:10,], "all")
-}
+## First ten concepts in this list
+summary(Easplist[1:10,], "all")
 }
 \keyword{methods}

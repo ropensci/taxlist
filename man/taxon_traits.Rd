@@ -32,17 +32,12 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \code{\linkS4class{taxlist}}.
 }
 \examples{
-\donttest{
 library(taxlist)
-library(thisdataismine)
 
-## Loading GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
-GermanSL <- tv2taxlist("GermanSL_1.3", file.path(path.package("thisdataismine"),
-	"tv_data"))
-summary(GermanSL, units="Mb")
+data(Easplist)
+summary(Easplist, units="Mb")
 
-## Get first 5 columns of traits
-head(taxon_traits(GermanSL)[,c(1:5)])
-}
+## Get the head of slot "taxonTraits"
+head(taxon_traits(Easplist))
 }
 \keyword{methods}

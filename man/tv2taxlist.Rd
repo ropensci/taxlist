@@ -40,13 +40,10 @@ Miguel Alvarez, \email{kamapu78@gmail.com}
 \code{\linkS4class{taxlist}}.
 }
 \examples{
-\donttest{
 library(taxlist)
-library(thisdataismine)
 
-## Loading GermanSL 1.3 (http://www.botanik.uni-greifswald.de/2305.html)
-GermanSL <- tv2taxlist("GermanSL_1.3", file.path(path.package("thisdataismine"),
-	"tv_data"))
-summary(GermanSL, units="Mb")
-}
+## Cyperus data set installed as Turboveg species list
+Cyperus <- tv2taxlist("cyperus", file.path(path.package("taxlist"), "tv_data"))
+
+summary(Cyperus)
 }
