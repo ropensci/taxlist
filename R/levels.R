@@ -27,7 +27,7 @@ setMethod("levels", signature(x="taxlist"),
 )
 
 # Replacement for taxlist
-setReplaceMethod("levels", signature(x="taxlist", value="character"),
+setReplaceMethod("levels", signature(x="taxlist"),
         function(x, value) {
             if(!all(paste(x@taxonRelations$Level[
                                             !is.na(x@taxonRelations$Level)

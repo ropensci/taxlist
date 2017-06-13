@@ -4,7 +4,8 @@
 \alias{levels,factor-method}
 \alias{levels,taxlist-method}
 \alias{levels<-}
-\alias{levels<-,taxlist,character-method}
+\alias{levels<-,taxlist-method}
+\alias{levels<-.taxlist}
 
 \title{Set hierarchical levels in \sQuote{taxlist} objects}
 \description{
@@ -16,7 +17,7 @@ ordered from lower to higher levels.
 
 \S4method{levels}{taxlist}(x, ...)
 
-levels(x) <- value
+\method{levels}{taxlist}(x, value) <- value
 }
 \arguments{
 \item{x}{Either a factor or a \code{\linkS4class{taxlist}} object.}

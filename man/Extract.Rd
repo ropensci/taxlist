@@ -4,9 +4,11 @@
 \alias{[}
 \alias{[,taxlist-method}
 \alias{[<-}
+\alias{[<-.taxlist}
 \alias{[<-,taxlist-method}
 \alias{$,taxlist-method}
 \alias{$<-}
+\alias{$<-.taxlist}
 \alias{$<-,taxlist-method}
 
 \title{Extract or replace parts of a \sQuote{taxlist} object.}
@@ -19,9 +21,9 @@ a \code{\linkS4class{taxlist}} objects.
 
 \S4method{[}{taxlist}(x, i, j, ..., slot="relations", drop=FALSE)
 
-x$name <- value
+\method{$}{taxlist}(x, name, value) <- value
 
-x[i,j] <- value
+\method{[}{taxlist}(x, i, j, slot="relations", value) <- value
 }
 \arguments{
 \item{x}{Object of class \code{\linkS4class{taxlist}}.}
