@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -70,7 +72,7 @@ library(taxlist)
 #> Loading required package: vegdata
 #> Loading required package: foreign
 #> This is vegdata 0.9
-#> This is taxlist 0.0.0.9015
+#> This is taxlist 0.1.0.9001
 #> 
 #> Attaching package: 'taxlist'
 #> The following object is masked from 'package:base':
