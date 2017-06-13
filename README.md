@@ -1,83 +1,43 @@
----
-output:
-  md_document:
-    variant: markdown_github
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
-
-# taxlist
-
+taxlist
+=======
 
 [![Travis Build Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 
-The aim of `taxlist` is to provide an object structure for taxonomic lists
-and methods to display and handle the contained information.
-This package should be considered as experimental but we welcome any interest
-to implement it or contribute to `taxlist`.
+The aim of `taxlist` is to provide an object structure for taxonomic lists and methods to display and handle the contained information. This package should be considered as experimental but we welcome any interest to implement it or contribute to `taxlist`.
 
-**Task One:** The first task is to develop an object class (`taxlist`) for the
-import of taxonomic lists structured as _single database list_.
-In this step we will pay special attention to the format used by
-[Turboveg](http://www.synbiosys.alterra.nl/turboveg) databases.
+**Task One:** The first task is to develop an object class (`taxlist`) for the import of taxonomic lists structured as *single database list*. In this step we will pay special attention to the format used by [Turboveg](http://www.synbiosys.alterra.nl/turboveg) databases.
 
-**Task Two:** While the first task is currently in an advanced stage, the next
-step will be the design of an object class implementing hierarchical structure
-but accessed in a similar way as for the class `taxlist`.
+**Task Two:** While the first task is currently in an advanced stage, the next step will be the design of an object class implementing hierarchical structure but accessed in a similar way as for the class `taxlist`.
 
-Objects and functions of `taxlist` will be also implemented as part of objects
-containing information from vegetation-plot databases (look at
-[vegtables](https://github.com/kamapu/vegtable)).
+Objects and functions of `taxlist` will be also implemented as part of objects containing information from vegetation-plot databases (look at [vegtables](https://github.com/kamapu/vegtable)).
 
-This package has been developed as a tool handling data stored in
-[SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), which is managed in the
-context of the project [GlobE-wetlands](https://www.wetlands-africa.de).
+This package has been developed as a tool handling data stored in [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), which is managed in the context of the project [GlobE-wetlands](https://www.wetlands-africa.de).
 
-## Updating to the last version of taxlist
-You may have previously installed the R-package
-[devtools](https://github.com/hadley/devtools) (we recommend to use the command
-`install.packages("devtools", dependencies=TRUE)`).
-After that, you may be able to get the last uploaded version using following
-command lines in your `R-Console`:
+Updating to the last version of taxlist
+---------------------------------------
 
+You may have previously installed the R-package [devtools](https://github.com/hadley/devtools) (we recommend to use the command `install.packages("devtools", dependencies=TRUE)`). After that, you may be able to get the last uploaded version using following command lines in your `R-Console`:
 
-```r
+``` r
 library(devtools)
 install_github("kamapu/taxlist")
 ```
 
-## Some examples
+Some examples
+-------------
 
 ### Working with East African plants (on-going project)
-The vegetation-plot database [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006)
-is connected to the species list `EA-Splist`.
-This list uses as main nomenclatorial reference the
-[African Plant Database](http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php).
-An actualized version of the list may be available in the homepage of the
-[GlobE-wetlands](https://www.wetlands-africa.de) project.
-You may be aware that `EA-Splist` is mainly including names and taxa occurring
-in `SWEA-Dataveg` and is not a complete list of the flora for East Africa.
+
+The vegetation-plot database [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006) is connected to the species list `EA-Splist`. This list uses as main nomenclatorial reference the [African Plant Database](http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php). An actualized version of the list may be available in the homepage of the [GlobE-wetlands](https://www.wetlands-africa.de) project. You may be aware that `EA-Splist` is mainly including names and taxa occurring in `SWEA-Dataveg` and is not a complete list of the flora for East Africa.
 
 ### Starting with building blocks
 
-I will take an example from "Helechos de Chile" **(Gunkel 1984)** to demonstrate
-how to construct a `taxlist` object from its building blocks.
-The first step will be to generate an empty `taxlist` object:
+I will take an example from "Helechos de Chile" **(Gunkel 1984)** to demonstrate how to construct a `taxlist` object from its building blocks. The first step will be to generate an empty `taxlist` object:
 
-
-```r
+``` r
 library(taxlist)
-#> Loading required package: vegdata
-#> Loading required package: foreign
-#> This is vegdata 0.9
-#> This is taxlist 0.1.0.9001
-#> 
-#> Attaching package: 'taxlist'
-#> The following object is masked from 'package:base':
-#> 
-#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
@@ -90,39 +50,33 @@ summary(Fern)
 #> reference entries: 0
 ```
 
-As you can see, there is nothing in there.
-We start including taxonomic levels, we like to insert in the list.
-Remember, the levels have to be provided in an upward sequence, that is to say
-from lower to higher levels:
+As you can see, there is nothing in there. We start including taxonomic levels, we like to insert in the list. Remember, the levels have to be provided in an upward sequence, that is to say from lower to higher levels:
 
-
-```r
+``` r
 levels(Fern) <- c("variety","species","genus")
 ```
+
 Then you can add a species:
 
-
-```r
+``` r
 Fern <- add_concept(Fern, TaxonName="Asplenium obliquum", AuthorName="Forster",
-	Level="species")
+    Level="species")
 ```
 
 Then add varieties:
 
-
-```r
+``` r
 Fern <- add_concept(Fern,
-	TaxonName=c("Asplenium obliquum var. sphenoides",
-		"Asplenium obliquum var. chondrophyllum"),
-	AuthorName=c("(Kunze) Espinosa",
-		"(Bertero apud Colla) C. Christense & C. Skottsberg"),
-	Level="variety")
+    TaxonName=c("Asplenium obliquum var. sphenoides",
+        "Asplenium obliquum var. chondrophyllum"),
+    AuthorName=c("(Kunze) Espinosa",
+        "(Bertero apud Colla) C. Christense & C. Skottsberg"),
+    Level="variety")
 ```
 
 Finally add the genus and check the object:
 
-
-```r
+``` r
 Fern <- add_concept(Fern, TaxonName="Asplenium", AuthorName="L.", Level="genus")
 summary(Fern)
 #> object size: 5.8 Kb 
@@ -176,14 +130,9 @@ summary(Fern, "all")
 
 ### Set parent-child relationships and synonyms
 
-Now set the parent-child relations.
-Relating to the previous display, you know that the species (concept ID **1**)
-is the parent of the varieties (IDs **2** and **3**), and the genus (ID **4**)
-is the parent of the species (ID **1**).
-Thus the relationships are set as:
+Now set the parent-child relations. Relating to the previous display, you know that the species (concept ID **1**) is the parent of the varieties (IDs **2** and **3**), and the genus (ID **4**) is the parent of the species (ID **1**). Thus the relationships are set as:
 
-
-```r
+``` r
 add_parent(Fern, c(2,3)) <- 1
 add_parent(Fern, 1) <- 4
 summary(Fern)
@@ -206,10 +155,9 @@ summary(Fern)
 
 Similarly to the addition of concepts, you can also add synonyms:
 
-
-```r
+``` r
 Fern <- add_synonym(Fern, ConceptID=2, TaxonName=c("Asplenium sphenoides"),
-	AuthorName="Kunze")
+    AuthorName="Kunze")
 summary(Fern, "all")
 #> ------------------------------ 
 #> concept ID: 1 
@@ -249,15 +197,11 @@ summary(Fern, "all")
 #> ------------------------------
 ```
 
-Hierarchical levels, parent-child relationships and synonyms are included in the
-exemplary data `Easplist`.
-For further functions, look to the package's manual.
+Hierarchical levels, parent-child relationships and synonyms are included in the exemplary data `Easplist`. For further functions, look to the package's manual.
 
-## Acknowledgements
-The author thanks **Stephan Hennekens**, developer of
-[Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and great
-support finding a common language between `R` and `Turboveg`, as well as for
-his advices on formatting `EA-Splist`.
+Acknowledgements
+----------------
 
-Also thanks to **Federico Luebert** for the fruitful discussions regarding the
-terminology used in this project.
+The author thanks **Stephan Hennekens**, developer of [Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and great support finding a common language between `R` and `Turboveg`, as well as for his advices on formatting `EA-Splist`.
+
+Also thanks to **Federico Luebert** for the fruitful discussions regarding the terminology used in this project.
