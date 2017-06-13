@@ -1,20 +1,15 @@
 ## Import functions
-importFrom("stats", "na.omit")
-importFrom("utils", "object.size")
-importFrom("vegdata", "tv.home")
-importFrom("taxize", "tnrs")
+importFrom(stats,na.omit)
+importFrom(utils,object.size)
+importFrom(vegdata,tv.home)
+importFrom(taxize,tnrs)
+importFrom(foreign,read.dbf)
 
 ## Import of packages
-import(
-	foreign,
-	methods,
-	taxize
-)
+import(methods)
 
 ## Export of classes
-exportClasses(
-	taxlist
-)
+exportClasses(taxlist)
 
 ## Export methods
 exportMethods(
