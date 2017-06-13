@@ -6,5 +6,7 @@
 ^tests/extras/buildignore\.R$
 ^tests/extras/format_data\.R$
 ^README\.Rmd$
+^README\.md$
+^README\.html$
 ^README-.*\.png$
 ^vignettes$
