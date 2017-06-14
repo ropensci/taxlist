@@ -5,7 +5,6 @@
 \alias{levels,taxlist-method}
 \alias{levels<-}
 \alias{levels<-,taxlist-method}
-\alias{levels<-.taxlist}
 
 \title{Set hierarchical levels in \sQuote{taxlist} objects}
 \description{
@@ -16,12 +15,9 @@ ordered from lower to higher levels.
 \S4method{levels}{factor}(x, ...)
 
 \S4method{levels}{taxlist}(x, ...)
-
-\method{levels}{taxlist}(x, value) <- value
 }
 \arguments{
 \item{x}{Either a factor or a \code{\linkS4class{taxlist}} object.}
-\item{value}{Character vector with the name and the upwards sequence of levels.}
 \item{...}{Additional arguments passed from or to other methods.}
 }
 \details{
