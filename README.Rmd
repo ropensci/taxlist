@@ -15,14 +15,9 @@ knitr::opts_chunk$set(
 # taxlist
 
 <!-- Budges -->
-[![Travis Build Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)]
-(https://travis-ci.org/kamapu/taxlist)
-
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)]
-(https://cran.r-project.org/package=taxlist)
-
-[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)]
-(http://cran.rstudio.com/web/packages/taxlist/index.html)
+[![Travis Build Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
+[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](http://cran.rstudio.com/web/packages/taxlist/index.html)
 
 
 The aim of `taxlist` is to provide an object structure for taxonomic lists
