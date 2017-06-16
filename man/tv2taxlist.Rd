@@ -3,8 +3,9 @@
 
 \title{Import species lists from Turboveg databases.}
 \description{
-Importing species lists from Turboveg databases into an object of class
-\code{\linkS4class{taxlist}}.
+Importing species lists from Turboveg
+\url{https://www.synbiosys.alterra.nl/turboveg/} databases into an object of
+class \code{\linkS4class{taxlist}}.
 }
 \usage{
 tv2taxlist(taxlist, tv_home=tv.home())

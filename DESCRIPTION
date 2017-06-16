@@ -1,7 +1,7 @@
 Package: taxlist
-Version: 0.1.0.9001
+Version: 0.1.0
 Encoding: UTF-8
-Date: 2017-06-12
+Date: 2017-06-14
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
@@ -21,8 +21,9 @@ Suggests:
     rmarkdown
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
-    This package provides functions to import species lists from 'Turboveg' and
-    the possibility to create backups from resulting R-objects.
+    This package provides functions to import species lists from 'Turboveg'
+    (<https://www.synbiosys.alterra.nl/turboveg>) and the possibility to create
+    backups from resulting R-objects.
     Also quick displays are implemented in the summary-methods.
 License: GPL (>= 2)
 URL: https://github.com/kamapu/taxlist
@@ -36,4 +37,3 @@ Collate:
     'backup_object.R''summary.R''get_children.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R'
     'StartMessage.R'
-RoxygenNote: 5.0.1
