@@ -15,4 +15,5 @@ version 0.1.1 2017-06-29
   * vignette 'taxlist-intro'
   * package 'vegdata' moved from Depends to Imports
   * function 'df2taxlist' adapted to species lists with duplicated names
+  * arguments 'keep_parents' and 'keep_children' implemented in 'subset'
   

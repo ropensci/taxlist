@@ -5,7 +5,8 @@
 
 # subset method for taxlist objects
 setMethod("subset", signature(x="taxlist"),
-        function(x, subset, slot="names", ...) {
+        function(x, subset, slot="names", keep_children=FALSE,
+                keep_parents=FALSE, ...) {
             slot <- grep(slot[1], slotNames(x), ignore.case=TRUE)
             if(length(slot) == 0)
                 stop("Invalid value for argument 'slot'")
@@ -19,8 +20,14 @@ setMethod("subset", signature(x="taxlist"),
                 subset <- x@taxonRelations[x@taxonRelations$ViewID %in% subset,
                         "TaxonConceptID"]
             }
-            x@taxonRelations <- x@taxonRelations[
+            z <- x
+            z@taxonRelations <- x@taxonRelations[
                     x@taxonRelations$TaxonConceptID %in% subset,]
-            return(clean(x))
+            z <- clean(z)
+            if(keep_children)
+                z <- get_children(x, z)
+            if(keep_parents)
+                z <- get_parents(x, z)
+            return(z)
         }
 )
