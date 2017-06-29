@@ -7,3 +7,12 @@ version 0.0.0.9014 2017-03-19
   * new validation rule: duplicated combinations 'name + author' are not allowed
   * data 'Easplist' modified to fulfil the last rule
   * new method 'as.list'
+
+version 0.1.0 2017-06-14
+  * version prepared for CRAN
+
+version 0.1.1 2017-06-29
+  * vignette 'taxlist-intro'
+  * package 'vegdata' moved from Depends to Imports
+  * function 'df2taxlist' adapted to species lists with duplicated names
+  

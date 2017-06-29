@@ -1,19 +1,19 @@
 Package: taxlist
-Version: 0.1.0
+Version: 0.1.1
 Encoding: UTF-8
-Date: 2017-06-14
+Date: 2017-06-28
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
 Depends:
     R(>= 3.0.0),
     stats,
-    utils,
-    vegdata
+    utils
 Imports:
     foreign,
     methods,
-    taxize
+    taxize,
+    vegdata
 Suggests:
     devtools,
     knitr,
@@ -26,7 +26,9 @@ Description: Handling taxonomic lists through objects of class 'taxlist'.
     backups from resulting R-objects.
     Also quick displays are implemented in the summary-methods.
 License: GPL (>= 2)
-URL: https://github.com/kamapu/taxlist
+URL:
+	https://cran.r-project.org/package=taxlist,
+	https://github.com/kamapu/taxlist
 BugReports: https://github.com/kamapu/taxlist/issues
 Collate:
     'NULLing.R''taxlist-class.R''clean.R''as.list.R'
@@ -37,3 +39,4 @@ Collate:
     'backup_object.R''summary.R''get_children.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R'
     'StartMessage.R'
+VignetteBuilder: knitr

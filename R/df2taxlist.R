@@ -12,6 +12,13 @@ setGeneric("df2taxlist",
 # Set method for data frame
 setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
         function(x, AcceptedName, ...) {
+            # If author names missing
+            if(!"AuthorName" %in% colnames(x))
+                x$AuthorName <- NA
+            if(any(duplicated(x[,c("TaxonName","AuthorName")]))) {
+                warning("Some duplicated combinations will be deleted")
+                x <- x[!duplicated(x[,c("TaxonName","AuthorName")]),]
+            }
             # Some tests previous to run the function
             AcceptedName <- substitute(AcceptedName)
             AcceptedName <- eval(AcceptedName, x, parent.frame())
@@ -23,9 +30,9 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
             }
             if(length(AcceptedName) != nrow(x))
                 stop("Argument 'AcceptedName' not matching the size of 'x'")
-            Heads <- c("TaxonUsageID","TaxonConceptID","TaxonName")
+            Heads <- c("TaxonUsageID","TaxonConceptID","TaxonName","AuthorName")
             if(!all(Heads %in% colnames(x)))
-                stop("'TaxonUsageID', 'TaxonConceptID', and 'TaxonName' are mandatory columns in 'x'")
+                stop("'TaxonUsageID', 'TaxonConceptID', 'TaxonName', and 'AuthorName' are mandatory columns in 'x'")
             if(any(duplicated(x$TaxonUsageID)))
                 stop("Duplicated usage IDs are not allowed")
             # set classes
@@ -33,7 +40,6 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
                 x$TaxonUsageID <- as.integer(x$TaxonUsageID)
             if(!is.integer(x$TaxonConceptID))
                 x$TaxonConceptID <- as.integer(x$TaxonConceptID)
-            if(!"AuthorName" %in% colnames(x)) x$AuthorName <- NA
             # taxonRelations
             taxonRelations <- x[AcceptedName,c("TaxonConceptID","TaxonUsageID")]
             colnames(taxonRelations)[2] <- "AcceptedName"
@@ -63,6 +69,10 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="missing"),
 # Method for character vectors
 setMethod("df2taxlist", signature(x="character", AcceptedName="missing"),
         function(x, ...) {
+            if(any(duplicated(x))) {
+                warning("Some duplicated names will be deleted")
+                x <- x[!duplicated(x)]
+            }
             x <- list(TaxonUsageID=1:length(x), TaxonConceptID=1:length(x),
                     TaxonName=x, ...)
             x <- as.data.frame(x, stringsAsFactors=FALSE)

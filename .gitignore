@@ -2,3 +2,5 @@
 /.project
 /tests/
 /README.html
+inst/doc
+/Building_vignettes.R

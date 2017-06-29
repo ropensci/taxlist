@@ -1,0 +1,299 @@
+---
+title: "Applying taxlist to species lists on diversity records"
+author: "Miguel Alvarez"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Applying taxlist to species lists on diversity records}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Getting started
+
+**Taxlist** is a package writen in `S4` language, providing an object class
+specific for handling taxonomic lists in **R**.
+The homonymous object class (`taxlist`) also implements functions (methods)
+to carry out processes thar are common for taxonomic lists.
+
+The `taxlist` package is still on development and can be installed from
+**GitHub** using the package `devtools` in your R-Session.
+
+```{r install_github, eval=FALSE}
+library(devtools)
+install_github("kamapu/taxlist")
+```
+
+Since this package is already available in the Comprehensive R Archive Network
+(CRAN), it is also possible to install it using the function
+`install.packages`:
+
+```{r install_cran, eval=FALSE}
+install.packages("taxlist", dependencies=TRUE)
+```
+
+Of course, you have to load `taxlist` into your R-session.
+
+```{r load_taxlist, message=FALSE}
+library(taxlist)
+```
+
+For accessing to this vignette, use following command:
+
+```{r call_vignette, eval=FALSE}
+vignette("taxlist-intro")
+```
+
+# Species list from a vegetation table
+
+## Source of data
+
+One of the main tasks of `taxlist` is to implement an consistent object
+containing species lists from diversity records.
+The structure of the information in such object have to be on the one side
+consistent with taxonomic issues (e.g. synonyms, hierarchies, etc.), on the
+other side have to be flexible enough to contain different depth of information
+availability (from plain species lists to hierarchical structures).
+
+In this guide, we will work with a species list from phytosociological
+relev&eacute;s collected at the borderline between the
+**Democratic Republic of the Congo** and **Rwanda** (Mullenders 1953
+*Vegetatio* 4(2): 73--83).
+
+![](Siegesbeckia_orientalis.png)
+
+The digitized data can be loaded by following command:
+
+```{r}
+load(url("https://github.com/kamapu/thisdataismine/raw/master/data/Cross.rda"))
+```
+
+Digitized data looks like (note a different sorting of species and samples in
+the cross table):
+
+```{r}
+head(Cross[,1:8])
+```
+
+
+## From plain list to taxlist
+For this task we prepare a list of unique names:
+
+```{r}
+Names <- Cross[,"TaxonName"]
+```
+
+Then we create an empty object using the function `df2taxlist` and add the
+previous names as taxon concepts.
+
+```{r}
+Splist <- df2taxlist(Names)
+summary(Splist)
+```
+
+## Resolving taxonomic names with taxize
+Since one of the main concerns, especially working with historical data (a
+frequent situation in vegetation-plot databases) is to resolve nomenclatorial
+issues, especially when combining data from different sources.
+For this purpose, `taxlist` implements a method for the funcion `tnrs` from the
+package `taxize`:
+
+```{r,message=FALSE}
+summary(Splist)
+Splist <- taxlist::tnrs(Splist)
+summary(Splist)
+```
+
+While after this procedure, the number of taxa remained as 35, the number of
+taxon names increased, indicating that some of the names included in the first
+version of the list were assigned as synonyms for the respective taxa.
+
+```{r}
+summary(Splist, "all")
+```
+
+At this point it is important to mention that while most resolvers are offering
+ways to replace names by accepted ones, in taxlist objects boht, accepted names
+and synonyms are preserved.
+Only typographical errors and names of authors will be changed in the object.
+This is important in the compilation of diversity records (i.e. vegetation plot
+databases), where the stored data have to be faithful to the source.
+Thus data connected to a taxon name can be automatically assigned to the
+correspondent taxon concept without to modify the record's entry.
+An overview to the accepted names and possible changes can be displayed as
+follows:
+
+```{r}
+accepted_name(Splist)[1:15,]
+```
+
+# Built-in data set
+
+
+## Example data set
+
+The installation of `taxlist` includes the data `Easplist`, which is formatted
+as a `taxlist` object.
+This data is a subset of the species list used by the database **SWEA-Dataveg**
+([GIVD ID AF-006](http://www.givd.info/ID/AF-00-006 "SWEA-Dataveg")):
+
+
+```{r load_easplist, results="hide"}
+data(Easplist)
+summary(Easplist)
+```
+
+
+## Access to slots
+
+The common ways to access to the content of slots in `S4` objects are either
+using the function `slot(object, name)` or the symbol `@` (i.e. `object@name`).
+Additional functions, which are specific for `taxlist` objects are
+`taxon_names`, `taxon_relations`, `taxon_traits` and `taxon_views` (see the help
+documentation).
+
+Additionally, it is possible to use the methods `$` and `[` , the first for
+access to information in the slot `taxonTraits`, while the second can be also
+used for other slots in the object.
+
+```{r}
+summary(as.factor(Easplist$LifeForm))
+```
+
+
+## Subsets
+
+Methods for the function `subset` are implemented in order to generate subsets
+of the content of `taxlist` objects.
+Such subsets usually apply pattern matching (for character vectors) or logical
+operations and are analogous to query building in relational databases.
+The `subset` method can be apply to any slot by setting the value of the
+argument `slot`. 
+
+
+```{r papyrus_otp1, results="hide"}
+Papyrus <- subset(Easplist, grepl("papyrus", TaxonName), slot="names")
+summary(Papyrus, "all")
+```
+
+Or the very same results:
+
+```{r papyrus_opt2, results="hide"}
+Papyrus <- subset(Easplist, TaxonConceptID == 206, slot="relations")
+summary(Papyrus, "all")
+```
+
+Similarly, you can look for a specific name.
+
+```{r phragmites, results="hide"}
+Phraaus <- subset(Easplist, charmatch("Phragmites australis", TaxonName),
+	slot="names")
+summary(Phraaus, "all")
+```
+
+
+## Parent-child relationships
+
+Objects belonging to the class `taxlist` can optionally content parent-child
+relationships and taxonomic levels.
+Such information is also included in the data `Easplist`, as shown in the
+summary output.
+
+```{r summary_again}
+summary(Easplist)
+```
+
+Note that such information can get lost once applied `subset`, since the
+respective parents or children from the original data set are not anymore in
+the subset.
+May you like to recover parents and children, you can use the functions
+`get_paretns` or `get_children`, respectively.
+
+```{r recover_parents}
+summary(Papyrus, "all")
+Papyrus <- get_parents(Easplist, Papyrus)
+summary(Papyrus, "all")
+```
+
+# Applying taxlist to syntaxonomic schemes
+
+## Example syntaxonomic scheme
+
+For this guide it will be used as example an scheme proposed by the author for
+aquatic and semi-aquatic vegetation in Tanzania (**Alvarez 2017**).
+The scheme includes 10 associations classified into 4 classes:
+
+![](wetlands_syntax.png)
+
+
+## Building the taxlist object
+
+The previous example is stored in a data frame and can be downloaded by
+following command:
+
+```{r}
+load(url("https://github.com/kamapu/Guides/raw/master/data/wetlands_syntax.rda"))
+```
+
+The data frame `Concepts` contains the list of syntaxon names that are
+considered as accepted in the previous scheme.
+This list will be used to insert the new concepts in the `taxlist` object.
+
+```{r}
+head(Concepts)
+
+Syntax <- new("taxlist")
+
+levels(Syntax) <- c("association","alliance","order","class")
+
+taxon_views(Syntax) <- data.frame(ViewID=1, Author="Alvarez M", Year=2017,
+        Title="Classification of aquatic and semi-aquatic vegetation in East Africa",
+        stringsAsFactors=FALSE)
+
+Syntax <- with(Concepts, add_concept(Syntax, TaxonName=TaxonName,
+                AuthorName=AuthorName, Parent=Parent, Level=Level,
+                ViewID=rep(1, nrow(Concepts))))
+
+summary(Syntax)
+```
+
+Note that the function `new` created an empty object, while with `levels` the
+default levels (syntaxonomical hierarchies) will be inserted.
+For the later function, the levels have to be inserted from the lower to the
+higher ranks.
+Furthermore the reference defining the concepts included in the syntaxonomic
+scheme was inserted in the object using the function `taxon_views` and finally
+the concepts were inserted by the function `add_concept`.
+
+The next step will be inserting those names that are considered as synonyms for
+the respective syntaxa.
+Synonyms are included in the data frame `Synonyms`.
+
+```{r}
+head(Synonyms)
+Syntax <- with(Synonyms, add_synonym(Syntax, ConceptID=TaxonConceptID,
+                TaxonName=TaxonName, AuthorName=AuthorName))
+```
+
+Finally, the codes provided for the associations will be inserted as traits
+properties) of them in the slot `taxonTraits`.
+
+```{r}
+head(Codes)
+taxon_traits(Syntax) <- Codes
+summary(Syntax)
+```
+
+For instance, you may like to get the parental chain from an association (let us
+say *Nymphaeetum loti*).
+
+```{r}
+Nymplot <- subset(Syntax, charmatch("Nymphaeetum", TaxonName), slot="names")
+Nymplot <- get_parents(Syntax, Nymplot)
+summary(Nymplot, "all")
+```
+
+By using the function `subset` we just created a new object containing only the
+association *Nymphaeetum loti*.
+This subset was then used to extract the parental chain from `Syntax`.
