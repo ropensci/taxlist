@@ -10,7 +10,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Getting started
+# 1. Getting started
 
 The package `taxlist` aims to implement an object class and functions (methods)
 for handling taxonomic data i **R**.
@@ -46,9 +46,9 @@ For accessing to this vignette, use following command:
 vignette("taxlist-intro")
 ```
 
-# Extracting a species list from a vegetation table
+# 2. Extracting a species list from a vegetation table
 
-## Example data
+## 2.1 Example data
 
 One of the main tasks of `taxlist` is to structure taxonomic information for a
 further linkage to biodiversity records.
@@ -77,7 +77,7 @@ species in the first column:
 head(Cross[,1:8])
 ```
 
-## From plain list to taxlist
+## 2.2 From plain list to taxlist
 
 As already mentioned, the first column in the cross table contains the names
 of the species occurring in the observed plots.
@@ -93,7 +93,7 @@ summary(Splist)
 Note that the function `summary` provides a quick overview in the content of the
 resulting object.
 
-## Resolving taxonomic names with taxize
+## 2.3 Resolving taxonomic names with taxize
 
 One of the main concerns is to resolve nomenclatorial
 issues, especially when working with historical data or combining data from
@@ -131,9 +131,9 @@ follows:
 accepted_name(Splist)[1:5,]
 ```
 
-# Built-in data set
+# 3. Built-in data set
 
-## Easplist
+## 3.1 Easplist
 
 The installation of `taxlist` includes the data `Easplist`, which is formatted
 as a `taxlist` object.
@@ -147,7 +147,7 @@ summary(Easplist)
 ```
 
 
-## Access to slots
+## 3.2 Access to slots
 
 The common ways to access to the content of slots in `S4` objects are either
 using the function `slot(object, name)` or the symbol `@` (i.e. `object@name`).
@@ -164,7 +164,7 @@ summary(as.factor(Easplist$LifeForm))
 ```
 
 
-## Subsets
+## 3.3 Subsets
 
 Methods for the function `subset` are also implemented in this package.
 Such subsets usually apply pattern matching (for character vectors) or logical
@@ -194,7 +194,7 @@ summary(Phraaus, "all")
 ```
 
 
-## Hierarchical structure
+## 3.4 Hierarchical structure
 
 Objects belonging to the class `taxlist` can optionally content parent-child
 relationships and taxonomic levels.
@@ -217,9 +217,9 @@ Papyrus <- get_parents(Easplist, Papyrus)
 summary(Papyrus, "all")
 ```
 
-# Applying taxlist to syntaxonomic schemes
+# 4. Applying taxlist to syntaxonomic schemes
 
-## Example of a phytosociological classification
+## 4.1 Example of a phytosociological classification
 
 To illustrate the flexibility of the `taxlist` objects, the next example will
 handle a syntaxonomical scheme.
@@ -230,7 +230,7 @@ The scheme includes 10 associations classified into 4 classes:
 
 ![](wetlands_syntax.png)
 
-## Building the taxlist object
+## 4.2 Building the taxlist object
 
 The content for the taxonomic list is included in a data frame and can be
 downloaded by following command:
