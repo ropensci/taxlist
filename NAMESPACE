@@ -27,6 +27,7 @@ exportMethods(
 	get_children,
 	get_parents,
 	levels,"levels<-",
+	merge_taxa,
 	taxon_names,"taxon_names<-",
 	taxon_relations,"taxon_relations<-",
 	taxon_traits,"taxon_traits<-",

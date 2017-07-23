@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.1.1
+Version: 0.1.2
 Encoding: UTF-8
 Date: 2017-07-23
 Title: Handling Taxonomic Lists
@@ -36,6 +36,7 @@ Collate:
     'levels.R''add_concept.R''add_synonym.R''add_view.R''accepted_name.R'
     'add_level.R''add_parent.R''get_children.R'
     'change_concept.R''Extract.R''subset.R'
+    'merge_taxa.R'
     'backup_object.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R'
     'StartMessage.R'

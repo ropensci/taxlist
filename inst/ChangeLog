@@ -1,19 +1,21 @@
-version 0.0.0.9013 2017-03-16
-  * new object class 'coverconvet'
-  * methods for 'coverconvert'
-  * function 'transform' to convert cover codes into percentage
+taxlist 0.1.2 (Release date: )
+  * function 'merge_taxa'
 
-version 0.0.0.9014 2017-03-19
-  * new validation rule: duplicated combinations 'name + author' are not allowed
-  * data 'Easplist' modified to fulfil the last rule
-  * new method 'as.list'
-
-version 0.1.0 2017-06-14
-  * version prepared for CRAN
-
-version 0.1.1 2017-06-29
+taxlist 0.1.1 (Release date: 2017-07-23)
   * vignette 'taxlist-intro'
   * package 'vegdata' moved from Depends to Imports
   * function 'df2taxlist' adapted to species lists with duplicated names
   * arguments 'keep_parents' and 'keep_children' implemented in 'subset'
-  
+
+taxlist 0.1.0 (Release date: 2017-06-15)
+  * version prepared for CRAN
+
+taxlist 0.0.0.9014 (Committed on: 2017-03-19)
+  * new validation rule: duplicated combinations 'name + author' are not allowed
+  * data 'Easplist' modified to fulfil the last rule
+  * new method 'as.list'
+
+taxlist 0.0.0.9013 (Committed on: 2017-03-16)
+  * new object class 'coverconvet'
+  * methods for 'coverconvert'
+  * function 'transform' to convert cover codes into percentage

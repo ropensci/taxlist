@@ -23,7 +23,7 @@ Subsets can be referred to information contained either in the slot
 \item{...}{Further arguments to be passed to or from other methods.}
 }
 \details{
-The argument \code{subset} will be applied to the slot specified in argument
+The argument \code{'subset'} will be applied to the slot specified in argument
 \code{'slot'}.
 This argument can be referred either by the full name of the respective slot or
 an alias.
