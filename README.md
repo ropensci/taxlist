@@ -16,15 +16,23 @@ Objects and functions of `taxlist` will be also implemented as part of objects c
 
 This package has been developed as a tool handling data stored in [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), which is managed in the context of the project [GlobE-wetlands](https://www.wetlands-africa.de).
 
-Updating to the last version of taxlist
----------------------------------------
+Installing taxlist
+------------------
 
-You may have previously installed the R-package [devtools](https://github.com/hadley/devtools) (we recommend to use the command `install.packages("devtools", dependencies=TRUE)`). After that, you may be able to get the last uploaded version using following command lines in your `R-Console`:
+Two alternative options are available for the installation of taxlist. The first one is installing from the repository at the **Comprehensive R Archive Network**:
+
+``` r
+install.packages("taxlist", dependencies=TRUE)
+```
+
+Since `taxlist` is developed on **GitHub**, it is also possible to install last version from this repository using the package `devtools`:
 
 ``` r
 library(devtools)
-install_github("kamapu/taxlist")
+install_github("kamapu/taxlist", build_vignettes=TRUE)
 ```
+
+Note that the versions in those repositories may not match completely.
 
 Some examples
 -------------
