@@ -9,4 +9,3 @@
 ^README\.md$
 ^README\.html$
 ^README-.*\.png$
-^Building_vignettes\.R$
