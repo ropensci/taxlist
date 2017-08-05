@@ -39,9 +39,15 @@ overview_taxlist <- function(object, units, check_validity) {
 
 # Module for single taxa
 overview_taxon <- function(object, ConceptID, display, maxsum) {
-    if(ConceptID[1] == "all")
-        ConceptID <- object@taxonRelations$TaxonConceptID[1:maxsum]
-    ConceptID <- na.omit(ConceptID)
+	if(is.character(ConceptID)) {
+		if(ConceptID[1] == "all")
+			ConceptID <- object@taxonRelations$TaxonConceptID[1:maxsum] else {
+			ConceptID <- unique(object@taxonNames[grepl(ConceptID,
+									object@taxonNames$TaxonName, fixed=TRUE),
+							"TaxonConceptID"])
+		}
+	}
+	ConceptID <- na.omit(ConceptID)
     ConceptID <- unique(ConceptID) # Just in case of duplicates
     if(!all(ConceptID %in% object@taxonRelations$TaxonConceptID))
         stop("Some requested concepts are not included in 'object'")

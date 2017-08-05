@@ -1,5 +1,7 @@
-taxlist 0.1.2 (Release date: )
-  * function 'merge_taxa'
+taxlist 0.1.2 (Release date: 2017-08-06)
+  * new function 'merge_taxa'
+  * summary (taxlist-method): argument 'ConceptID' can be a character vector to
+    match
 
 taxlist 0.1.1 (Release date: 2017-07-23)
   * vignette 'taxlist-intro'

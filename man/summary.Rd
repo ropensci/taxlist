@@ -28,7 +28,8 @@ in such objects.}
 A general overview indicating number of names, concepts and taxon views included
 in \code{\linkS4class{taxlist}} objects.
 
-If argument \code{'ConceptID'} is a vector with concept IDs, then a display
+If argument \code{'ConceptID'} is a vector with concept IDs or names to be
+matched (using \code{\link{grepl}}), then a display
 of all names included in each concept will be produced.
 Alternative you can use \code{taxon="all"} in order to get the listing of
 names for all concepts included in the object (truncated to the input number of
@@ -59,6 +60,9 @@ summary(Easplist, units="Mb")
 
 ## summary for two taxa
 summary(Easplist, c(51128,51140))
+
+## summary for a name
+summary(Easplist, "Acmella")
 
 ## summary for the first 10 taxa
 summary(Easplist, "all", maxsum=10)
