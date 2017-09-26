@@ -16,6 +16,10 @@ setMethod("add_trait", signature(taxlist="taxlist", Trait="data.frame",
 			# Tests
 			if(!"TaxonConceptID" %in% colnames(Trait))
 				stop("'TaxonConceptID' is a mandatory column in 'Trait'")
+			if(any(duplicated(Trait$TaxonConceptID))) {
+				warning("Some concepts were duplicated in 'Trait'")
+				Trait <- Trait[!duplicated(Trait$TaxonConceptID),]
+			}
 			if(!all(Trait$TaxonConceptID %in%
 							taxlist@taxonRelations$TaxonConceptID))
 				warning("Some concepts are not included in 'taxlist'")
@@ -31,7 +35,7 @@ setMethod("add_trait", signature(taxlist="taxlist", Trait="data.frame",
 				Names1 <- colnames(Trait)[colnames(Trait) != "TaxonConceptID"]
 				Names2 <- colnames(taxlist@taxonTraits)[
 						colnames(taxlist@taxonTraits) != "TaxonConceptID"]
-				for(i in 1:length(Names1)) Names1 <- add_suffix(Names1[i],
+				for(i in 1:length(Names1)) Names1[i] <- add_suffix(Names1[i],
 							Names2)
 				colnames(Trait)[colnames(Trait) != "TaxonConceptID"] <- Names1
 				taxlist@taxonTraits <- merge(taxlist@taxonTraits, Trait,
@@ -52,5 +56,3 @@ setMethod("add_trait", signature(taxlist="taxlist", Trait="vector",
 			return(taxlist)
 		}
 )
-
-
