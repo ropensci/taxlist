@@ -11,7 +11,7 @@ Add a new reference for taxon concept views.
 \S4method{add_view}{taxlist}(taxlist, ...)
 }
 \arguments{
-\item{taxlist}{An object of class \code{\link[=taxlist-class]{taxlist}}.}
+\item{taxlist}{An object of class \code{\linkS4class{taxlist}}.}
 \item{...}{Further character vectors to be inserted in the existing columns of
 	the slot \code{taxonViews}.}
 }

@@ -23,7 +23,7 @@ be installed in your R-session using the package `devtools`:
 
 ```{r install_github, eval=FALSE}
 library(devtools)
-install_github("kamapu/taxlist")
+install_github("kamapu/taxlist", build_vignettes=TRUE)
 ```
 
 Since this package is already available in the Comprehensive R Archive Network
@@ -90,8 +90,14 @@ Splist <- df2taxlist(Splist)
 summary(Splist)
 ```
 
-Note that the function `summary` provides a quick overview in the content of the
-resulting object.
+Note that the function `summary` provides a quick overview in the content of
+the resulting object.
+This function can be also applied to a specific taxon:
+
+```{r summary_character}
+summary(Splist, "Erigeron floribundus")
+```
+
 
 ## 2.3 Resolving taxonomic names with taxize
 
@@ -110,10 +116,10 @@ summary(Splist)
 While after this procedure, the number of taxa remained as 35, the number of
 taxon names increased, indicating that some of the names in the original source
 are currently considered as synonyms.
-Check at the first entries in `Splist`:
+This is for example the case of *Erigeron floribundus*:
 
 ```{r summary_all}
-summary(Splist, "all")
+summary(Splist, "Erigeron floribundus")
 ```
 
 At this point it is important to mention that while most resolvers are offering
@@ -299,7 +305,7 @@ summary(Nymplot, "all")
 Note that there is the logical arguments `keep_parents` and `keep_children` to
 preserve hierarchical information in the subset:
 
-```{r get_nymplot"}
+```{r get_nymplot_2"}
 Nymplot <- subset(Syntax, charmatch("Nymphaeetum", TaxonName), slot="names",
 	keep_parents=TRUE)
 summary(Nymplot, "all")

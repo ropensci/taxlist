@@ -13,8 +13,7 @@ backup_object <- function(..., objects=character(), file, stamp=TRUE,
         i <- 0
         repeat{
             i <- i + 1
-            if(paste0(file, i, stamp, ".rda") %in% inFolder) next
-            if(!paste0(file, i, stamp, ".rda") %in% inFolder) break
+            if(paste0(file, i, stamp, ".rda") %in% inFolder) next else break
         }
         file <- paste0(file, i)
     }

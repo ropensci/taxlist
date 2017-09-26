@@ -19,6 +19,7 @@ exportMethods(
 	add_level,"add_level<-",
 	add_parent,"add_parent<-",
 	add_synonym,
+	add_trait,
 	add_view,
 	as.list,
 	"change_concept<-",

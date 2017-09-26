@@ -29,7 +29,7 @@ constructing \code{\linkS4class{taxlist}} objects from an empty one.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\linkS4class{taxlist}}.
+\code{\linkS4class{taxlist}}, \code{\link{add_trait}}.
 }
 \examples{
 library(taxlist)
