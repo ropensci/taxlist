@@ -3,17 +3,18 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-# Merging taxa -----------------------------------------------------------------
+# Merging taxa
 
 # Generic function
 setGeneric("merge_taxa",
-		function(object, concepts, ...)
+		function(object, concepts, level, ...)
 			standardGeneric("merge_taxa")
 )
 
-# Method for 'taxlist' object
-setMethod("merge_taxa", signature(object="taxlist", concepts="numeric"),
-		function(object, concepts, print_output=FALSE, ...) {
+# Method merging a list of taxon concepts
+setMethod("merge_taxa", signature(object="taxlist", concepts="numeric",
+				level="missing"),
+		function(object, concepts, level, print_output=FALSE, ...) {
 			# Tests previous running function
 			if(!length(concepts) > 1)
 				stop("Argument 'concepts' must have a length > 1")
@@ -30,6 +31,32 @@ setMethod("merge_taxa", signature(object="taxlist", concepts="numeric"),
 			}
 			# Return modified object
 			return(object)
+		}
+)
+
+# Method merging up to an indicated taxonomic level
+setMethod("merge_taxa", signature(object="taxlist", concepts="missing",
+				level="character"),
+		function(object, concepts, level, ...) {
+			if(!level %in% paste(levels(object)))
+				stop("The requested 'level' is not included in 'object'")
+			for(i in paste(levels(object))[1:(which(paste(levels(object)) ==
+									level) - 1)]) {
+				DEL <- object@taxonRelations[
+						paste(object@taxonRelations$Level) == i,
+						"TaxonConceptID"]
+				REPL <- object@taxonRelations[
+						paste(object@taxonRelations$Level) == i, "Parent"]
+				object@taxonNames[object@taxonNames$TaxonConceptID %in% DEL,
+						"TaxonConceptID"] <- REPL[
+								match(object@taxonNames[
+												object@taxonNames$TaxonConceptID %in%
+														DEL, "TaxonConceptID"],
+										DEL)]
+				object@taxonRelations <- object@taxonRelations[
+						!object@taxonRelations$TaxonConceptID %in% DEL,]
+			}
+		return(clean(object))
 		}
 )
 

@@ -40,5 +40,6 @@ Collate:
     'merge_taxa.R'
     'backup_object.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R'
+    'tax2traits.R'
     'StartMessage.R'
 VignetteBuilder: knitr

@@ -1,5 +1,7 @@
 taxlist 0.1.3 (in preparation)
   * new function 'add_trait'
+  * argument 'level' in 'merge_taxa'
+  * new function 'tax2traits'
 
 taxlist 0.1.2 (Release date: 2017-08-06)
   * new function 'merge_taxa'
