@@ -28,7 +28,7 @@ setMethod("add_concept", signature(taxlist="taxlist"),
             new_concept <- list(TaxonConceptID=TaxonConceptID,
                     TaxonUsageID=TaxonUsageID, TaxonName=TaxonName, Level=Level,
                     ...)
-            new_concept[["AcceptedName"]] <- TaxonConceptID
+            new_concept[["AcceptedName"]] <- TaxonUsageID
             # Add missing variables
             for(i in colnames(taxlist@taxonNames)[
                     !colnames(taxlist@taxonNames) %in% names(new_concept)]) {
