@@ -4,7 +4,7 @@ taxlist
 =======
 
 <!-- Budges -->
-[![Travis Build Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist) [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](http://cran.rstudio.com/web/packages/taxlist/index.html)
+[![Travis Build Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist) [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](http://cran.rstudio.com/web/packages/taxlist/index.html) [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)
 
 The aim of `taxlist` is to provide an object structure for taxonomic lists and methods to display and handle the contained information. This package should be considered as experimental but we welcome any interest to implement it or contribute to `taxlist`.
 
@@ -47,6 +47,12 @@ I will take an example from "Helechos de Chile" **(Gunkel 1984)** to demonstrate
 
 ``` r
 library(taxlist)
+#> This is taxlist 0.1.3
+#> 
+#> Attaching package: 'taxlist'
+#> The following object is masked from 'package:base':
+#> 
+#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
@@ -56,6 +62,7 @@ summary(Fern)
 #> number of names: 0 
 #> number of concepts: 0 
 #> trait entries: 0 
+#> number of trait variables: 0 
 #> reference entries: 0
 ```
 
@@ -94,6 +101,7 @@ summary(Fern)
 #> number of names: 4 
 #> number of concepts: 4 
 #> trait entries: 0 
+#> number of trait variables: 0 
 #> reference entries: 0 
 #> 
 #> hierarchical levels: variety < species < genus 
@@ -151,6 +159,7 @@ summary(Fern)
 #> number of names: 4 
 #> number of concepts: 4 
 #> trait entries: 0 
+#> number of trait variables: 0 
 #> reference entries: 0 
 #> 
 #> concepts with parents: 3 

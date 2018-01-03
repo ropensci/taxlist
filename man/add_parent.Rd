@@ -18,7 +18,7 @@ add_parent(taxlist, ConceptID) <- value
 \arguments{
 \item{taxlist}{A \code{\linkS4class{taxlist}} object.}
 \item{ConceptID}{Concept IDs where to add level information.}
-\item{Parent,value}{New value of level for the respective concepts.}
+\item{Parent,value}{Concept IDs of the respective parent taxa.}
 \item{...}{Further arguments to pass from or to other methods.}
 }
 \details{

@@ -50,12 +50,11 @@ A \code{\linkS4class{taxlist} object}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Two files are included in the package installation
 library(taxlist)
-setwd(file.path(path.package("taxlist"), "cyperus"))
 
 ## Read the table with names of Cyperus species
-Cyperus <- read.csv("names.csv", stringsAsFactors=FALSE)
+Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus", "names.csv"),
+	stringsAsFactors=FALSE)
 head(Cyperus)
 
 ## Convert to 'taxlist' object
