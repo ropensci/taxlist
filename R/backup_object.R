@@ -7,15 +7,26 @@ backup_object <- function(..., objects=character(), file, stamp=TRUE,
         overwrite=FALSE) {
     if(missing(file))
         stop("Missing value for argument 'file'")
-    inFolder <- list.files(pattern=".rda")
+	if(length(file) > 1) {
+		file <- file[1]
+		warning("Only the first element of argument 'file' will be used")
+	}
+	path <- "."
+	if(grepl("/", file, fixed=TRUE))
+		path <- strsplit(file, "/", fixed=TRUE)[[1]]
+	if(grepl("\\", file, fixed=TRUE))
+		path <- strsplit(file, "/", fixed=TRUE)[[1]]
+	file2 <- path[length(path)]
+	path <- file.path(path[-length(path)])
+	inFolder <- list.files(path=path, pattern=".rda")
 	if(stamp) stamp <- paste0("_", Sys.Date()) else stamp <- ""
-    if(paste0(file, stamp, ".rda") %in% inFolder & !overwrite) {
+    if(paste0(file2, stamp, ".rda") %in% inFolder & !overwrite) {
         i <- 0
         repeat{
             i <- i + 1
-            if(paste0(file, i, stamp, ".rda") %in% inFolder) next else break
+            if(paste0(file2, stamp, "_", i, ".rda") %in% inFolder) next else break
         }
-        file <- paste0(file, i)
+        stamp <- paste(stamp, i, sep="_")
     }
     save(..., list=objects, file=paste0(file, stamp, ".rda"))
 }
