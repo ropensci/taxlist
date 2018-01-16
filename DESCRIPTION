@@ -38,7 +38,7 @@ Collate:
     'add_level.R''add_parent.R''get_children.R'
     'change_concept.R''Extract.R''subset.R'
     'merge_taxa.R'
-    'backup_object.R''summary.R'
+    'backup_object.R''load_last.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R'
     'tax2traits.R'
     'StartMessage.R'

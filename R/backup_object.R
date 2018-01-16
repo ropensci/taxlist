@@ -30,3 +30,5 @@ backup_object <- function(..., objects=character(), file, stamp=TRUE,
     }
     save(..., list=objects, file=paste0(file, stamp, ".rda"))
 }
+
+

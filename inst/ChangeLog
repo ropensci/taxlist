@@ -1,5 +1,6 @@
 taxlist 0.1.4 (In preparation)
   * function 'backup_object' working with partial paths
+  * new function 'load_last' to load last backup in an R-session
 
 taxlist 0.1.3 (Release date: 2018-01-05)
   * new function 'add_trait'

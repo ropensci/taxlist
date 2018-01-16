@@ -1,5 +1,6 @@
 \name{backup_object}
 \alias{backup_object}
+\alias{load_last}
 
 \title{Backups R objects.}
 \description{
@@ -8,6 +9,8 @@ This function is a wrapper for \code{\link{save}}.
 }
 \usage{
 backup_object(..., objects, file, stamp=TRUE, overwrite=FALSE)
+
+load_last(file)
 }
 \arguments{
 \item{...}{Names of the objects to be saved (either symbols or character
@@ -31,6 +34,11 @@ automatically added to the file names, when previous backups sharing the same
 name already exist.
 
 Saved backups can be imported to the session by using \code{\link{load}}.
+The function \code{'load_last'} recognizes the last backup according to time
+stamp and suffix.
+
+The argument \code{'file'} can also include a sub-folder of the working
+directory.
 }
 \value{
 A rda file in the working directory.
@@ -53,5 +61,8 @@ backup_object(Pseudognaphalium, file="Pseudonaphalium")
 
 ## The same
 backup_object(objects="Pseudognaphalium", file="Pseudonaphalium")
+
+## To load the last backup into a session
+load_last("Pseudognaphalium")
 }
 }
