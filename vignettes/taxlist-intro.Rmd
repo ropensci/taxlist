@@ -256,7 +256,8 @@ Syntax <- new("taxlist")
 
 levels(Syntax) <- c("association","alliance","order","class")
 
-taxon_views(Syntax) <- data.frame(ViewID=1, Author="Alvarez M", Year=2017,
+taxon_views(Syntax) <- data.frame(ViewID=1, Secundum="Alvarez (2017)",
+		Author="Alvarez M", Year=2017,
         Title="Classification of aquatic and semi-aquatic vegetation in East Africa",
         stringsAsFactors=FALSE)
 
@@ -305,7 +306,7 @@ summary(Nymplot, "all")
 Note that there is the logical arguments `keep_parents` and `keep_children` to
 preserve hierarchical information in the subset:
 
-```{r get_nymplot_2"}
+```{r get_nymplot_2}
 Nymplot <- subset(Syntax, charmatch("Nymphaeetum", TaxonName), slot="names",
 	keep_parents=TRUE)
 summary(Nymplot, "all")
