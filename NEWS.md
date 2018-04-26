@@ -16,6 +16,7 @@ Current
 
 * Function `add_view` was not adding new columns in the respective slot.
 * Function `tv2taxlist` does not modify slot `taxonViews` in prototype.
+* Function `load_last` was not working with multiple underscores in `filename`.
 
 taxlist 0.1.3
 =============
