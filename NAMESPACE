@@ -42,6 +42,7 @@ exportMethods(
 # Export of regular function names
 export(
 	backup_object,
+	dissect_name,
 	load_last,
 	S4_to_list,
 	tv2taxlist

@@ -23,8 +23,5 @@ tv2taxlist <- function(taxlist, tv_home=tv.home()) {
                 names(ecodbase) == "SPECIES_NR", "TaxonConceptID")
         taxon_traits(species) <- ecodbase
     }
-    species@taxonRelations$ViewID <- 1
-    taxon_views(species) <- data.frame(ViewID=1, Author=taxlist, Year=NA,
-            Title=NA, Published=NA, stringsAsFactors=FALSE)
 	return(species)
 }

@@ -6,6 +6,7 @@ Current
 * New function `load_last` to load last backup in an R-session.
 * File **inst/ChangeLog** replaced by **NEWS.md**.
 * New column `Secundum` as mandatory field in slot `taxonViews`.
+* New function `dissect_name` for splitting names into their parts.
 
 ### Improvements
 
@@ -14,6 +15,7 @@ Current
 ### Bugs Fixes
 
 * Function `add_view` was not adding new columns in the respective slot.
+* Function `tv2taxlist` does not modify slot `taxonViews` in prototype.
 
 taxlist 0.1.3
 =============
