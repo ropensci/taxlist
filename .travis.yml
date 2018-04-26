@@ -1,3 +1,6 @@
 language: R
 cache: packages
 sudo: true
+
+r_github_packages:
+  - hadley/devtools
