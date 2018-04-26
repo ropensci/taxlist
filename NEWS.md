@@ -11,6 +11,10 @@ Current
 
 * Function `backup_object` is also working with relative paths.
 
+### Bugs Fixes
+
+* Function `add_view` was not adding new columns in the respective slot.
+
 taxlist 0.1.3
 =============
 
