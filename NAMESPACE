@@ -4,6 +4,7 @@ importFrom(utils,object.size)
 importFrom(vegdata,tv.home)
 importFrom(taxize,tnrs)
 importFrom(foreign,read.dbf)
+importFrom(stringdist,stringsim)
 
 ## Import of packages
 import(methods)
@@ -28,6 +29,7 @@ exportMethods(
 	get_children,
 	get_parents,
 	levels,"levels<-",
+	match_names,
 	merge_taxa,
 	tax2traits,
 	taxon_names,"taxon_names<-",

@@ -7,6 +7,7 @@ Current
 * File **inst/ChangeLog** replaced by **NEWS.md**.
 * New column `Secundum` as mandatory field in slot `taxonViews`.
 * New function `dissect_name` for splitting names into their parts.
+* New function `match_names` matching character vectors with names of a `taxlist` object.
 
 ### Improvements
 
@@ -16,7 +17,7 @@ Current
 
 * Function `add_view` was not adding new columns in the respective slot.
 * Function `tv2taxlist` does not modify slot `taxonViews` in prototype.
-* Function `load_last` was not working with multiple underscores in `filename`.
+* Function `load_last` was not working with values of `filename` having underscores.
 
 taxlist 0.1.3
 =============

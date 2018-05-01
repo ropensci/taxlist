@@ -21,16 +21,17 @@ load_last <-function(file) {
 		stop("The requested backup is missing in the working directory.")
 	Name <- sub(".rda", "", inFolder, fixed=TRUE)
 	Name <- strsplit(Name, "_", fixed=TRUE)
-	step_back <- function(x) {
-		if(length(x) > 2) x <- c(paste(x[1:(length(x) - 1)], collapse="_"),
-					x[length(x)])
-		return(x)
-	}
-	Name <- lapply(Name, step_back)
-	Name[sapply(Name, function(x) length(x) == 2)] <- lapply(Name[sapply(Name,
-							function(x) length(x) == 2)], function(x) c(x, "0"))
-	Name <- as.data.frame(do.call(rbind, Name), stringsAsFactors=FALSE)
-	colnames(Name) <- c("file","date","suffix")
+	underscores <- gsub("_", "", file)
+	underscores <- nchar(file) - nchar(underscores)
+	N <- min(sapply(Name, length))
+	Name <- lapply(Name, function(x, y) {
+				if(length(x) == y)
+					x <- c(x, "0")
+				return(x)
+			}, y=N)
+	Name <- as.data.frame(do.call(rbind, Name),
+			stringsAsFactors=FALSE)[,c(N,N + 1)]
+	colnames(Name) <- c("date","suffix")
 	Name$order <- c(1:nrow(Name))
 	Name$date <- as.Date(Name$date)
 	Name$suffix <- as.integer(Name$suffix)

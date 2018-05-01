@@ -1,7 +1,7 @@
 Package: taxlist
 Version: 0.1.4
 Encoding: UTF-8
-Date: 2018-04-13
+Date: 2018-05-01
 Title: Handling Taxonomic Lists
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
@@ -13,6 +13,7 @@ Imports:
     foreign,
     methods,
     taxize,
+    stringdist,
     vegdata
 Suggests:
     devtools,
@@ -41,6 +42,6 @@ Collate:
     'merge_taxa.R'
     'backup_object.R''load_last.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R'
-    'tax2traits.R'
+    'tax2traits.R''match_names.R'
     'StartMessage.R'
 VignetteBuilder: knitr
