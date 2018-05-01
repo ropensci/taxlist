@@ -5,15 +5,15 @@
 
 # Generic function
 setGeneric("match_names",
-		function(x, taxlist, ...)
+		function(x, object, ...)
 			standardGeneric("match_names")
 )
 
 # Compare character vector with taxon names of taxlist
-setMethod("match_names", signature(x="character", taxlist="taxlist"),
-		function(x, taxlist, output="data.frame", best=5, method="lcs", ...) {
+setMethod("match_names", signature(x="character", object="taxlist"),
+		function(x, object, output="data.frame", best=5, method="lcs", ...) {
 			SIM <- lapply(split(x, 1:length(x)), stringsim,
-					b=taxlist@taxonNames$TaxonName, method=method, ...)
+					b=object@taxonNames$TaxonName, method=method, ...)
 			output <- pmatch(output[1], c("data.frame","list"))
 			if(!output %in% c(1,2))
 				stop("non-valid value for 'output'")
@@ -24,9 +24,9 @@ setMethod("match_names", signature(x="character", taxlist="taxlist"),
 					x <- y@taxonNames[x, z]
 					return(x)
 				}
-				new_names$TaxonUsageID <- sapply(SIM, get_best, y=taxlist,
+				new_names$TaxonUsageID <- sapply(SIM, get_best, y=object,
 						z="TaxonUsageID")
-				new_names$TaxonName <- sapply(SIM, get_best, y=taxlist,
+				new_names$TaxonName <- sapply(SIM, get_best, y=object,
 						z="TaxonName")
 				new_names$similarity <- sapply(SIM, function(x) x[which.max(x)])
 				
@@ -36,7 +36,7 @@ setMethod("match_names", signature(x="character", taxlist="taxlist"),
 							SIM <- list(similarity=SIM[order(SIM, decreasing=TRUE)][1:best],
 									TaxonUsageID=taxlist@taxonNames$TaxonUsageID[order(SIM, decreasing=TRUE)][1:best])
 							return(SIM)
-						}, taxlist=taxlist, best=best)
+						}, taxlist=object, best=best)
 				names(new_names) <- x
 			}
 			return(new_names)

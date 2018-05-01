@@ -10,12 +10,12 @@ Names provided in a character vector will be compared with names stored in slot
 the function \code{\link[stringdist]{stringsim}}.
 }
 \usage{
-\S4method{match_names}{character,taxlist}(x, taxlist, output="data.frame",
+\S4method{match_names}{character,taxlist}(x, object, output="data.frame",
 	best=5, method="lcs", ...)
 }
 \arguments{
 \item{x}{A character vector with names to be compared.}
-\item{taxlist}{An object of class \code{\linkS4class{taxlist}} to be compared
+\item{object}{An object of class \code{\linkS4class{taxlist}} to be compared
 	with.}
 \item{output}{Character value indicating the type of output (see details).}
 \item{best}{Integer value indicating how many from the best matches have to be
