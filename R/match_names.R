@@ -11,7 +11,12 @@ setGeneric("match_names",
 
 # Compare character vector with taxon names of taxlist
 setMethod("match_names", signature(x="character", object="taxlist"),
-		function(x, object, output="data.frame", best=5, method="lcs", ...) {
+		function(x, object, clean=TRUE, output="data.frame", best=5,
+				method="lcs", ...) {
+			if(clean) {
+				x <- trimws(x, "both")
+				x <- gsub("\\s+", " ", x)
+			}
 			SIM <- lapply(split(x, 1:length(x)), stringsim,
 					b=object@taxonNames$TaxonName, method=method, ...)
 			output <- pmatch(output[1], c("data.frame","list"))

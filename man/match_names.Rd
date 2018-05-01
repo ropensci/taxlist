@@ -10,17 +10,20 @@ Names provided in a character vector will be compared with names stored in slot
 the function \code{\link[stringdist]{stringsim}}.
 }
 \usage{
-\S4method{match_names}{character,taxlist}(x, object, output="data.frame",
-	best=5, method="lcs", ...)
+\S4method{match_names}{character,taxlist}(x, object, clean=TRUE,
+	output="data.frame", best=5, method="lcs", ...)
 }
 \arguments{
 \item{x}{A character vector with names to be compared.}
 \item{object}{An object of class \code{\linkS4class{taxlist}} to be compared
 	with.}
+\item{clean}{Logical value, whether leading, tailing and double blanks should be
+	deleted from \code{'x'}.}
 \item{output}{Character value indicating the type of output (see details).}
 \item{best}{Integer value indicating how many from the best matches have to be
 	displayed (only working for \code{output="list"}).}
-\item{method,...}{Further arguments passed to \code{\link[stringdist]{stringsim}}.}
+\item{method,...}{Further arguments passed to
+	\code{\link[stringdist]{stringsim}}.}
 }
 \details{
 For \code{output="list"} a list with the best matches (taxon usage name ID and
