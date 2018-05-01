@@ -10,6 +10,7 @@
 Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](http://cran.rstudio.com/web/packages/taxlist/index.html)
+[![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)
 
 The aim of `taxlist` is to provide an object structure for taxonomic
 lists and methods to display and handle the contained information. This
