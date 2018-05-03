@@ -5,7 +5,6 @@ taxlist 0.1.4
 
 * New function `load_last` to load last backup in an R-session.
 * File **inst/ChangeLog** replaced by **NEWS.md**.
-* New column `Secundum` as mandatory field in slot `taxonViews`.
 * New function `dissect_name` for splitting names into their parts.
 * New function `match_names` matching character vectors with names of a `taxlist` object.
 

@@ -31,7 +31,7 @@ setClass("taxlist",
                 hierarchy=character(),
                 taxonViews=data.frame(
                         ViewID=integer(),
-						Secundum=character(),
+						## Secundum=character(),
 						stringsAsFactors=FALSE
                 ),
 				taxonTraits=data.frame(
@@ -62,8 +62,10 @@ setClass("taxlist",
                             object@taxonRelations$TaxonConceptID))
                 return("Some concepts are missing in slot 'taxonRelations'")
 			# taxonView
-			if(!all(c("ViewID","Secundum") %in% colnames(object@taxonViews)))
-	            return("'ViewID' and 'Secundum' are a mandatory columns in slot 'taxonViews'")
+			## if(!all(c("ViewID","Secundum") %in% colnames(object@taxonViews)))
+			##     return("'ViewID' and 'Secundum' are a mandatory columns in slot 'taxonViews'")
+			if(!"ViewID" %in% colnames(object@taxonViews))
+				return("'ViewID' is a mandatory column in slot 'taxonViews'")
             if(any(duplicated(object@taxonViews$ViewID)))
                 return("Duplicated views are not allowed in slot 'taxonViews'")
             if(nrow(object@taxonViews) > 0 &
