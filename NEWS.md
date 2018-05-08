@@ -1,3 +1,16 @@
+taxlist 0.1.5
+=============
+
+### New Features
+
+* A **CITATION** file is included in the installation.
+
+### Improvements
+
+* Function `accepted_name` retrieves also information on `Level` (taxonomic rank) and traits (optional in argument `get_traits`).
+
+### Bugs Fixes
+
 taxlist 0.1.4
 =============
 

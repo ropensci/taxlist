@@ -11,7 +11,7 @@ setGeneric("accepted_name",
 
 # Provide accepted names in a data frame
 setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="numeric"),
-        function(taxlist, ConceptID, ...) {
+        function(taxlist, ConceptID, get_traits=FALSE, ...) {
             AcceptedName <- taxlist@taxonRelations[
                     taxlist@taxonRelations$TaxonConceptID %in%
                             ConceptID,c("TaxonConceptID","AcceptedName")]
@@ -20,7 +20,12 @@ setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="numeric"),
                         match(AcceptedName$AcceptedName,
                                 taxlist@taxonNames$TaxonUsageID),i]
             colnames(AcceptedName)[2] <- "TaxonUsageID"
-            return(AcceptedName)
+			AcceptedName <- merge(AcceptedName, taxlist@taxonRelations[,
+							c("TaxonConceptID","ViewID","Level")], sort=FALSE)
+			if(get_traits)
+				AcceptedName <- merge(AcceptedName, taxlist@taxonTraits,
+						sort=FALSE)
+			return(AcceptedName)
         }
 )
 
