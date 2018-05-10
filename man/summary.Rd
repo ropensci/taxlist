@@ -10,7 +10,7 @@ A method to display either an overview of the content of
 in such objects.}
 \usage{
 \S4method{summary}{taxlist}(object, ConceptID, units="Kb", check_validity=TRUE,
-	display="both", maxsum=5, ...)
+	display="both", maxsum=5, secundum=NULL, ...)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{taxlist}} object.}
@@ -22,6 +22,8 @@ in such objects.}
 \item{display}{Character value indicating the field to be displayed (see
 	details).}
 \item{maxsum}{Integer indicating the maximum number of displayed taxa.}
+\item{secundum}{A character value indicating the column from slot
+	\code{'taxonViews'}} to be displayed in the summary.
 \item{...}{Further arguments passed to or from another methods.}
 }
 \details{

@@ -8,6 +8,7 @@ taxlist 0.1.5
 ### Improvements
 
 * Function `accepted_name` retrieves also information on `Level` (taxonomic rank) and traits (optional in argument `get_traits`).
+* Function `summary` for single taxon is displaying the name of the parent taxon (accepted name) and optional a string for the taxon view.
 
 ### Bugs Fixes
 
