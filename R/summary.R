@@ -113,7 +113,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
             cat(paste(temp_name, collapse=" "), "\n")
         }
         # Synonyms
-        if(paste(i) %in% names(Synonym)) {
+        if(nrow(Synonym[[paste(i)]]) > 0) {
             cat("\n")
             cat("# synonyms (", nrow(Synonym[[paste(i)]]), "): ", sep="",
                     "\n")

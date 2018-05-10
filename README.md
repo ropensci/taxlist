@@ -79,10 +79,16 @@ blocks. The first step will be to generate an empty `taxlist` object:
 
 ``` r
 library(taxlist)
+#> This is taxlist 0.1.5
+#> 
+#> Attaching package: 'taxlist'
+#> The following object is masked from 'package:base':
+#> 
+#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
-#> object size: 5 Kb 
+#> object size: 4.9 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
 #> number of names: 0 
@@ -126,7 +132,7 @@ object:
 ``` r
 Fern <- add_concept(Fern, TaxonName="Asplenium", AuthorName="L.", Level="genus")
 summary(Fern)
-#> object size: 5.9 Kb 
+#> object size: 5.8 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
 #> number of names: 4 
@@ -187,7 +193,7 @@ of the species (ID **1**). Thus the relationships are set as:
 add_parent(Fern, c(2,3)) <- 1
 add_parent(Fern, 1) <- 4
 summary(Fern)
-#> object size: 5.9 Kb 
+#> object size: 5.8 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
 #> number of names: 4 
@@ -216,7 +222,7 @@ summary(Fern, "all")
 #> concept ID: 1 
 #> view ID: none 
 #> level: species 
-#> parent: 4 
+#> parent: 4 Asplenium L. 
 #> 
 #> # accepted name: 
 #> 1 Asplenium obliquum Forster 
@@ -224,7 +230,7 @@ summary(Fern, "all")
 #> concept ID: 2 
 #> view ID: none 
 #> level: variety 
-#> parent: 1 
+#> parent: 1 Asplenium obliquum Forster 
 #> 
 #> # accepted name: 
 #> 2 Asplenium obliquum var. sphenoides (Kunze) Espinosa 
@@ -235,7 +241,7 @@ summary(Fern, "all")
 #> concept ID: 3 
 #> view ID: none 
 #> level: variety 
-#> parent: 1 
+#> parent: 1 Asplenium obliquum Forster 
 #> 
 #> # accepted name: 
 #> 3 Asplenium obliquum var. chondrophyllum (Bertero apud Colla) C. Christense & C. Skottsberg 
