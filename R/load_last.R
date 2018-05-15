@@ -23,21 +23,25 @@ load_last <-function(file) {
 	Name <- strsplit(Name, "_", fixed=TRUE)
 	underscores <- gsub("_", "", file)
 	underscores <- nchar(file) - nchar(underscores)
-	N <- min(sapply(Name, length))
 	Name <- lapply(Name, function(x, y) {
-				if(length(x) == y)
+				if(length(x) == (y + 2))
 					x <- c(x, "0")
 				return(x)
-			}, y=N)
-	Name <- as.data.frame(do.call(rbind, Name),
-			stringsAsFactors=FALSE)[,c(N,N + 1)]
-	colnames(Name) <- c("date","suffix")
-	Name$order <- c(1:nrow(Name))
-	Name$date <- as.Date(Name$date)
-	Name$suffix <- as.integer(Name$suffix)
-	Name <- Name[with(Name, order(date, suffix)),]
-	message(paste0("Loading file '", inFolder[Name[nrow(Name),"order"]],
+			}, y=underscores)
+	if(length(Name) == 1)
+		OUT <- as.data.frame(rbind(Name[[1]]), stringsAsFactors=FALSE)[,
+				c((underscores + 2):(underscores + 3))]
+	if(length(Name) > 1)
+		OUT <- as.data.frame(do.call(rbind, Name), stringsAsFactors=FALSE)[,
+				c((underscores + 2):(underscores + 3))]
+	colnames(OUT) <- c("date","suffix")
+	OUT$order <- c(1:nrow(OUT))
+	OUT$date <- as.Date(OUT$date)
+	OUT$suffix <- as.integer(OUT$suffix)
+	OUT <- OUT[with(OUT, order(date, suffix)),]
+	message(paste0("Loading file '", inFolder[OUT[nrow(OUT),"order"]],
 					"' to session."))
-	if(path == ".") load(inFolder[Name[nrow(Name),"order"]]) else
-		load(file.path(path, inFolder[Name[nrow(Name),"order"]]), envir=.GlobalEnv)
+	if(path == ".") load(inFolder[OUT[nrow(OUT),"order"]]) else
+		load(file.path(path, inFolder[OUT[nrow(OUT),"order"]]),
+				envir=.GlobalEnv)
 }
