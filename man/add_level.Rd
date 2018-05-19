@@ -41,20 +41,6 @@ entries.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-library(taxlist)
-data(Easplist)
-
-## Subset with family Ebenaceae and children
-Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
-Ebenaceae <- get_children(Easplist, Ebenaceae)
-
-summary(Ebenaceae)
-summary(Ebenaceae, 50475)
-
-## Euclea racemosa ssp. schimperi will be elevated to species level
-add_level(Ebenaceae, 50475) <- "species"
-
-summary(Ebenaceae)
-summary(Ebenaceae, 50475)
+## No example at the moment
 }
 \keyword{methods}

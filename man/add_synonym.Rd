@@ -36,11 +36,11 @@ library(taxlist)
 data(Easplist)
 
 ## Display Diospyros scabra
-summary(Easplist, 51793)
+summary(Easplist, "Diospyros scabra")
 
 ## Add Maba scabra as synonym
 Easplist <- add_synonym(Easplist, 51793, TaxonName="Maba scabra",
 	AuthorName="Chiov.")
-summary(Easplist, 51793)
+summary(Easplist, "Diospyros scabra")
 }
 \keyword{methods}

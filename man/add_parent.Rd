@@ -47,20 +47,21 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 library(taxlist)
 data(Easplist)
 
-## Subset with family Ebenaceae and children (see also get_children)
-Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
-Ebenaceae <- get_children(Easplist, Ebenaceae)
+## Subset with family Ebenaceae and children
+Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName),
+	keep_children=TRUE)
 
 ## Add a new level in the resulting object
 levels(Ebenaceae) <- c(levels(Ebenaceae), "order")
 
 ## Add the order Ericales as new concept
-Ebenaceae <- add_concept(Ebenaceae, TaxonName="Ericales", Level="order")
+Ebenaceae <- add_concept(Ebenaceae, TaxonName="Ericales",
+	AuthorName="Bercht. & J.Presl", Level="order")
 summary(Ebenaceae, "all", maxsum=100)
 
 ## Now set the order Ericales as parent of Ebenaceae
 taxon_relations(Ebenaceae)
-add_parent(Ebenaceae, 54636) <- 54637
+add_parent(Ebenaceae, 56051) <- 56052
 taxon_relations(Ebenaceae)
 }
 \keyword{methods}

@@ -31,14 +31,15 @@ exportMethods(
 	levels,"levels<-",
 	match_names,
 	merge_taxa,
+	replace_view,
+	subset,
+	summary,
 	tax2traits,
 	taxon_names,"taxon_names<-",
 	taxon_relations,"taxon_relations<-",
 	taxon_traits,"taxon_traits<-",
 	taxon_views,"taxon_views<-",
-	tnrs,
-	subset,
-	summary
+	tnrs
 )
 
 # Export of regular function names

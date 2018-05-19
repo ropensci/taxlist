@@ -17,3 +17,25 @@ add_suffix <- function(x, y, sep="_") {
 	}
 	return(x)
 }
+
+# Filling missed columns with NAs
+# x is a data frame
+# y is a character vector to be compared with names of columns in x
+add_nacolumn <- function(x, y) {
+	for(i in y[!y %in% colnames(x)])
+		x[,i] <- NA
+	return(x)
+}
+
+# Inserting new rows and columns by merging two data frames
+# x is a data frame
+# y is a data frame
+two2one_df <- function(x, y) {
+	x <- add_nacolumn(x, colnames(y))
+	y <- add_nacolumn(y, colnames(x))
+	x <- do.call(rbind, list(x, y[, colnames(x)]))
+	return(x)
+}
+
+
+

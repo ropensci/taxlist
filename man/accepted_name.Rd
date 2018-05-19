@@ -61,7 +61,7 @@ library(taxlist)
 data(Easplist)
 
 ## Overview of Cyclosorus interruptus
-summary(Easplist, 50074)
+summary(Easplist, "Cyclosorus interruptus")
 
 ## Set a new accepted name (the oldest name)
 accepted_name(Easplist, 50074) <- 53097
@@ -69,12 +69,12 @@ summary(Easplist, 50074)
 
 ## When a name is not in the list
 ## It should be added first as synonym
-summary(subset(Easplist, charmatch("Basella alba", TaxonName)), "all")
+summary(Easplist, "Basella alba")
 
 Easplist <- add_synonym(Easplist, 68, TaxonName="Basella cordifolia",
 	AuthorName="Lam.")
 summary(Easplist, 68)
-accepted_name(Easplist, 68) <- 54768
+accepted_name(Easplist, 68) <- 56139
 summary(Easplist, 68)
 
 \donttest{

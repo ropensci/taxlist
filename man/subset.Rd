@@ -45,9 +45,9 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 library(taxlist)
 
 data(Easplist)
-Easplist <- subset(Easplist, LifeForm == "T", slot="traits")
+Easplist <- subset(Easplist, lf_behn_2018 == "reed_plant", slot="traits")
 summary(Easplist)
 
-summary(as.factor(Easplist$LifeForm))
+summary(as.factor(Easplist$lf_behn_2018))
 }
 \keyword{methods}

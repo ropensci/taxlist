@@ -1,7 +1,8 @@
 \name{add_concept}
 \docType{methods}
 \alias{add_concept}
-\alias{add_concept,taxlist-method}
+\alias{add_concept,taxlist,character-method}
+\alias{add_concept,taxlist,taxlist-method}
 
 \title{Insert a new taxon concept in a \sQuote{taxlist} object.}
 \description{
@@ -9,13 +10,18 @@ New taxon concepts will be added, complementing taxonomic lists formatted as
 \code{\linkS4class{taxlist}} objects.
 }
 \usage{
-\S4method{add_concept}{taxlist}(taxlist, TaxonName, Level, ...)
+\S4method{add_concept}{taxlist,character}(taxlist, TaxonName, Level, ...)
+
+\S4method{add_concept}{taxlist,taxlist}(taxlist, TaxonName, insert_view, ...)
 }
 \arguments{
 \item{taxlist}{An object of class \code{\linkS4class{taxlist}}.}
 \item{TaxonName}{Character vector with the accepted name for the new taxon
 	concepts.}
 \item{Level}{Character vector indicating the level of the concept in the list.}
+\item{insert_view}{A numeric (integer) vectors, indicating the views of
+	\code{'TaxonName'} to be inserted in \code{'taxlist'} or the value
+	\code{'TRUE'} (see details).}
 \item{...}{Additional named vectors to be included in the slots 
 	\code{'taxonNames'} or \code{'taxonRelations'}.}
 }
@@ -54,7 +60,7 @@ summary(Ebenaceae, "all", maxsum=100)
 
 ## Adding a new concept
 Ebenaceae <- add_concept(Ebenaceae, TaxonName="Euclea acutifolia",
-AuthorName="E. Mey. ex A. DC.", Level="species", Parent=53689, ViewID=1)
+AuthorName="E. Mey. ex A. DC.", Level="species", Parent=55707, ViewID=1)
 
 ## A summary again  
 summary(Ebenaceae)

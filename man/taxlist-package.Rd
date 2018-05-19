@@ -18,16 +18,21 @@ More detailed examples on the applications of this package will be discussed by
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \references{
+\bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant
+taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
+\url{https://doi.org/10.3897/bdj.6.e23635}
+
 \bold{Jansen F, Dengler J (2010).} Plant names in vegetation databases -- a
 neglected source of bias. \emph{Journal of Vegetation Science} 21: 1179--1186.
-
-\bold{Alvarez M, Luebert F (in preparation).} Applying object-oriented models to
-taxonomic lists from Turboveg databases.
+\url{https://doi.org/10.1111/j.1654-1103.2010.01209.x}
 }
 \examples{
 \dontrun{
-## Installing the last version from GitHub
+## Install last release from CRAN
+install.packages("taxlist", dependencies=TRUE)
+
+## Installing last version from GitHub
 library(devtools)
-install_github("kamapu/taxlist")
+install_github("kamapu/taxlist", build_vignette=TRUE)
 }
 }
