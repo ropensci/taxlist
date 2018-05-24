@@ -31,6 +31,7 @@ exportMethods(
 	levels,"levels<-",
 	match_names,
 	merge_taxa,
+	print_name,
 	replace_view,
 	subset,
 	summary,

@@ -5,6 +5,7 @@ taxlist 0.1.5
 
 * A **CITATION** file is included in the installation.
 * New method `replace_view`.
+* New method `print_name` for formatting taxon names to italic style.
 
 ### Improvements
 

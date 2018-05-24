@@ -11,14 +11,17 @@ Depends:
     utils
 Imports:
     foreign,
+    grDevices,
     methods,
     taxize,
     stringdist,
     vegdata
 Suggests:
+	ape,
     devtools,
     knitr,
     stringi,
+    taxa,
     rmarkdown
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
@@ -44,5 +47,6 @@ Collate:
     'backup_object.R''load_last.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R'
     'tax2traits.R''match_names.R'
+    'print_name.R'
     'StartMessage.R'
 VignetteBuilder: knitr
