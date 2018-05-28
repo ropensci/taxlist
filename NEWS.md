@@ -14,6 +14,7 @@ taxlist 0.1.5
 * Function `backup_object` prints a message in the console.
 * Related functions will join documentation files.
 * Data set `Easplist` adapted to new state of database **SWEA-Dataveg**.
+* Function `match_names` counts multiple best matchings.
 
 ### Bugs Fixes
 * Function `load_last` was not working for single files with suffix

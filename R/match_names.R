@@ -25,16 +25,18 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 			if(output == 1) {
 				new_names <- data.frame(submittedname=x, stringsAsFactors=FALSE)
 				get_best <- function(x, y, z) {
-					x <- which.max(x)
-					x <- y@taxonNames[x, z]
-					return(x)
+					x_out <- which.max(x)
+					x_out <- y@taxonNames[x_out, z]
+					return(list(best=x_out, matches=sum(x == max(x))))
 				}
-				new_names$TaxonUsageID <- sapply(SIM, get_best, y=object,
-						z="TaxonUsageID")
-				new_names$TaxonName <- sapply(SIM, get_best, y=object,
-						z="TaxonName")
+				new_names$TaxonName <- sapply(lapply(SIM, get_best, y=object,
+								z="TaxonName"), "[[", "best")
+				new_names$TaxonUsageID <- sapply(lapply(SIM, get_best, y=object,
+								z="TaxonUsageID"), "[[", "best")
+				new_names$matches <- sapply(lapply(SIM, get_best, y=object,
+								z="TaxonName"), "[[", "matches")
 				new_names$similarity <- sapply(SIM, function(x) x[which.max(x)])
-				
+				new_names$TaxonUsageID[new_names$matches > 1] <- NA
 			}
 			if(output == 2) {
 				new_names <- lapply(SIM, function(SIM, taxlist, best) {
