@@ -11,7 +11,7 @@ the function \code{\link[stringdist]{stringsim}}.
 }
 \usage{
 \S4method{match_names}{character,taxlist}(x, object, clean=TRUE,
-	output="data.frame", best=5, method="lcs", ...)
+	output="data.frame", best=5, show_concepts=FALSE, method="lcs", ...)
 }
 \arguments{
 \item{x}{A character vector with names to be compared.}
@@ -22,6 +22,8 @@ the function \code{\link[stringdist]{stringsim}}.
 \item{output}{Character value indicating the type of output (see details).}
 \item{best}{Integer value indicating how many from the best matches have to be
 	displayed (only working for \code{output="list"}).}
+\item{show_concepts}{Logical value, whether respective concepts should be
+	displayed in output or not.}
 \item{method,...}{Further arguments passed to
 	\code{\link[stringdist]{stringsim}}.}
 }
@@ -37,6 +39,16 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \code{\link[stringdist]{stringsim}}.
 }
 \examples{
-## No example at the moment
+library(taxlist)
+data(Easplist)
+
+## Names to be compared
+species <- c("Cperus papyrus","Typha australis","Luke skywalker")
+
+## Retrieve taxon usage names
+match_names(species, Easplist)
+
+## Display accepted names in output
+match_names(species, Easplist, show_concepts=TRUE)
 }
 \keyword{methods}

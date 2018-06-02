@@ -6,6 +6,7 @@ taxlist 0.1.5
 * A **CITATION** file is included in the installation.
 * New method `replace_view`.
 * New method `print_name` for formatting taxon names to italic style.
+* New method `add_releves`, adding releves from data frames into `vegtable` objects.
 
 ### Improvements
 
@@ -14,7 +15,7 @@ taxlist 0.1.5
 * Function `backup_object` prints a message in the console.
 * Related functions will join documentation files.
 * Data set `Easplist` adapted to new state of database **SWEA-Dataveg**.
-* Function `match_names` counts multiple best matchings.
+* Function `match_names` counts multiple best matchings and includes a new argument `show_concepts` for displaying the respective accepted names and taxon concept ID.
 
 ### Bugs Fixes
 * Function `load_last` was not working for single files with suffix

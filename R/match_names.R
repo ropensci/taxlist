@@ -12,7 +12,7 @@ setGeneric("match_names",
 # Compare character vector with taxon names of taxlist
 setMethod("match_names", signature(x="character", object="taxlist"),
 		function(x, object, clean=TRUE, output="data.frame", best=5,
-				method="lcs", ...) {
+				show_concepts=FALSE, method="lcs", ...) {
 			if(clean) {
 				x <- trimws(x, "both")
 				x <- gsub("\\s+", " ", x)
@@ -33,6 +33,13 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 								z="TaxonName"), "[[", "best")
 				new_names$TaxonUsageID <- sapply(lapply(SIM, get_best, y=object,
 								z="TaxonUsageID"), "[[", "best")
+				if(show_concepts) {
+					new_names$TaxonConceptID <- sapply(lapply(SIM, get_best,
+									y=object, z="TaxonConceptID"), "[[", "best")
+					new_names$AcceptedName <- with(accepted_name(object),
+							TaxonName[match(new_names$TaxonConceptID,
+											TaxonConceptID)])
+				}
 				new_names$matches <- sapply(lapply(SIM, get_best, y=object,
 								z="TaxonName"), "[[", "matches")
 				new_names$similarity <- sapply(SIM, function(x) x[which.max(x)])
@@ -40,8 +47,10 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 			}
 			if(output == 2) {
 				new_names <- lapply(SIM, function(SIM, taxlist, best) {
-							SIM <- list(similarity=SIM[order(SIM, decreasing=TRUE)][1:best],
-									TaxonUsageID=taxlist@taxonNames$TaxonUsageID[order(SIM, decreasing=TRUE)][1:best])
+							SIM <- list(similarity=SIM[order(SIM,
+													decreasing=TRUE)][1:best],
+									TaxonUsageID=taxlist@taxonNames$TaxonUsageID[order(SIM,
+													decreasing=TRUE)][1:best])
 							return(SIM)
 						}, taxlist=object, best=best)
 				names(new_names) <- x
