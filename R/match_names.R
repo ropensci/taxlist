@@ -44,6 +44,10 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 								z="TaxonName"), "[[", "matches")
 				new_names$similarity <- sapply(SIM, function(x) x[which.max(x)])
 				new_names$TaxonUsageID[new_names$matches > 1] <- NA
+				if(show_concepts) {
+					new_names$TaxonConceptID[new_names$matches > 1] <- NA
+					new_names$AcceptedName[new_names$matches > 1] <- NA
+				}
 			}
 			if(output == 2) {
 				new_names <- lapply(SIM, function(SIM, taxlist, best) {

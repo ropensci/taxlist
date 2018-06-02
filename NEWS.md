@@ -19,6 +19,7 @@ taxlist 0.1.5
 
 ### Bugs Fixes
 * Function `load_last` was not working for single files with suffix
+* Function `summary` for single taxa was not displaying names that are homonyms to the accepted name.
 
 taxlist 0.1.4
 =============
