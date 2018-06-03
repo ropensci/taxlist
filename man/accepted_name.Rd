@@ -15,7 +15,7 @@ accepted name either an existing synonym or a new name should be set as new
 accepted name.
 }
 \usage{
-\S4method{accepted_name}{taxlist,numeric}(taxlist, ConceptID, get_traits=FALSE,
+\S4method{accepted_name}{taxlist,numeric}(taxlist, ConceptID, show_traits=FALSE,
 	...)
 
 \S4method{accepted_name}{taxlist,missing}(taxlist, ConceptID, ...)
@@ -26,7 +26,7 @@ accepted_name(taxlist, ConceptID) <- value
 \item{taxlist}{An object of class \code{\linkS4class{taxlist}}.}
 \item{ConceptID}{Integer containing concept IDs where to request or set
 	accepted names.}
-\item{get_traits}{Logical value, whether traits should be included in output or
+\item{show_traits}{Logical value, whether traits should be included in output or
 	not.}
 \item{value}{Integer containing usage IDs to be set as new accepted names.}
 \item{...}{Further arguments passed from or to other methods.}
