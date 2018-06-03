@@ -4,6 +4,8 @@
 \alias{taxon_names,taxlist-method}
 \alias{taxon_names<-}
 \alias{taxon_names<-,taxlist,data.frame-method}
+\alias{update_name}
+\alias{update_name,taxlist,numeric-method}
 
 \title{Retrieve or replace slot \sQuote{taxonNames} in \sQuote{taxlist}
 objects.}
@@ -17,12 +19,17 @@ This function offers a quick access to the content in the mentioned slot.
 \S4method{taxon_names}{taxlist}(taxlist, ...)
 
 taxon_names(taxlist) <- value
+
+\S4method{update_name}{taxlist,numeric}(object, UsageID, ...)
 }
 \arguments{
-\item{taxlist}{A \code{\linkS4class{taxlist}} object.}
+\item{taxlist,object}{A \code{\linkS4class{taxlist}} object.}
 \item{value}{Object of class \code{'data.frame'} to set as slot
 	\code{taxonNames}.}
-\item{...}{Further arguments passed to or from other methods.}
+\item{UsageID}{Numeric vector indicating the taxon usage IDs to be updated.}
+\item{...}{Further arguments passed among methods. In \code{'update_name'} are
+	vectors including the variables to be updated for the respective taxon usage
+	ID.}
 }
 \details{
 The replacement method \code{'taxon_names<-'} is a fast way to include names in

@@ -40,7 +40,7 @@ Collate:
     'taxon_views.R''add_view.R'
     'taxon_names.R''taxon_relations.R''taxon_traits.R'
     'levels.R''add_concept.R''add_synonym.R''add_trait.R'
-    'accepted_name.R''replace_view.R'
+    'accepted_name.R''update_name.R''replace_view.R'
     'add_level.R''add_parent.R''get_children.R'
     'change_concept.R''Extract.R''subset.R'
     'merge_taxa.R'

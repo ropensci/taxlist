@@ -6,7 +6,7 @@ taxlist 0.1.5
 * A **CITATION** file is included in the installation.
 * New method `replace_view`.
 * New method `print_name` for formatting taxon names to italic style.
-* New method `add_releves`, adding releves from data frames into `vegtable` objects.
+* New method `update_name`, for updating information in slot `taxonNames`.
 
 ### Improvements
 

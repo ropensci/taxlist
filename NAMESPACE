@@ -40,7 +40,8 @@ exportMethods(
 	taxon_relations,"taxon_relations<-",
 	taxon_traits,"taxon_traits<-",
 	taxon_views,"taxon_views<-",
-	tnrs
+	tnrs,
+	update_name
 )
 
 # Export of regular function names
