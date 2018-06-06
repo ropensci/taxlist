@@ -35,6 +35,7 @@ exportMethods(
 	replace_view,
 	subset,
 	summary,
+	synonyms,
 	tax2traits,
 	taxon_names,"taxon_names<-",
 	taxon_relations,"taxon_relations<-",

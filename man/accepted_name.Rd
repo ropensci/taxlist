@@ -5,6 +5,9 @@
 \alias{accepted_name,taxlist,missing-method}
 \alias{accepted_name<-}
 \alias{accepted_name<-,taxlist,numeric,numeric-method}
+\alias{synonyms}
+\alias{synonyms,taxlist,numeric-method}
+\alias{synonyms,taxlist,missing-method}
 
 \title{Retrieve or set accepted name for taxon concepts.}
 \description{
@@ -21,6 +24,10 @@ accepted name.
 \S4method{accepted_name}{taxlist,missing}(taxlist, ConceptID, ...)
 
 accepted_name(taxlist, ConceptID) <- value
+
+\S4method{synonyms}{taxlist,numeric}(taxlist, ConceptID, ...)
+
+\S4method{synonyms}{taxlist,missing}(taxlist, ConceptID, ...)
 }
 \arguments{
 \item{taxlist}{An object of class \code{\linkS4class{taxlist}}.}

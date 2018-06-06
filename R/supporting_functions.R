@@ -36,6 +36,3 @@ two2one_df <- function(x, y) {
 	x <- do.call(rbind, list(x, y[, colnames(x)]))
 	return(x)
 }
-
-
-

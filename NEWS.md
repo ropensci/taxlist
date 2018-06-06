@@ -7,6 +7,7 @@ taxlist 0.1.5
 * New method `replace_view`.
 * New method `print_name` for formatting taxon names to italic style.
 * New method `update_name`, for updating information in slot `taxonNames`.
+* New method `synonyms` retrieving synonyms for indicated concepts.
 
 ### Improvements
 
