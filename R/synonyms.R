@@ -9,7 +9,7 @@ setGeneric("synonyms",
 			standardGeneric("synonyms")
 )
 
-# Provide accepted names in a data frame
+# Provide synonyms in a data frame
 setMethod("synonyms", signature(taxlist="taxlist", ConceptID="numeric"),
 		function(taxlist, ConceptID, ...) {
 			Syn <- taxlist@taxonNames[taxlist@taxonNames$TaxonConceptID %in%

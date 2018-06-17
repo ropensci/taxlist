@@ -8,8 +8,13 @@
 \alias{synonyms}
 \alias{synonyms,taxlist,numeric-method}
 \alias{synonyms,taxlist,missing-method}
+\alias{basionym}
+\alias{basionym,taxlist,numeric-method}
+\alias{basionym,taxlist,missing-method}
+\alias{basionym<-}
+\alias{basionym<-,taxlist,numeric,numeric-method}
 
-\title{Retrieve or set accepted name for taxon concepts.}
+\title{Manage Accepted Names, Synonyms and Basionyms}
 \description{
 Changes on accepted names for a taxon concept may in some cases not affect the
 circumscription of the taxon.
@@ -28,6 +33,11 @@ accepted_name(taxlist, ConceptID) <- value
 \S4method{synonyms}{taxlist,numeric}(taxlist, ConceptID, ...)
 
 \S4method{synonyms}{taxlist,missing}(taxlist, ConceptID, ...)
+
+\S4method{basionym}{taxlist,missing}(taxlist, ConceptID, ...)
+
+## Replacement method
+basionym(taxlist, ConceptID) <- value
 }
 \arguments{
 \item{taxlist}{An object of class \code{\linkS4class{taxlist}}.}

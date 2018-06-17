@@ -21,6 +21,7 @@ exportMethods(
 	add_synonym,
 	add_view,
 	as.list,
+	basionym,"basionym<-",
 	"change_concept<-",
 	clean,
 	delete_name,

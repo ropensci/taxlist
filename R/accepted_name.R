@@ -47,11 +47,11 @@ setReplaceMethod("accepted_name", signature(taxlist="taxlist",
         function(taxlist, ConceptID, value) {
             # first test
             if(length(ConceptID) != length(value))
-                stop("ConceptID and value should be of the same length")
+                stop("'ConceptID' and 'value' should be of the same length.")
             if(!all(taxlist@taxonNames[match(value,
                                     taxlist@taxonNames$TaxonUsageID),
                             "TaxonConceptID"] == ConceptID))
-                stop("new value is not included in the respective taxon concept")
+                stop("Some concepts in 'value' are not included in the respective taxon concept.")
             # now replace
             taxlist@taxonRelations[match(ConceptID,
                             taxlist@taxonRelations$TaxonConceptID),

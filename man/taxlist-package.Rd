@@ -2,17 +2,18 @@
 \docType{package}
 \alias{taxlist-package}
 
-\title{Handling taxonomic lists.}
+\title{Handling Taxonomic Lists}
 \description{
-This package defines an S4 object class for handling taxonomic lists, namely the
-\code{\linkS4class{taxlist}} class.
-The main task of such objects is to keep the taxonomic coherence in the
+The class \code{\linkS4class{taxlist}} is defined in this package using the S4
+language.
+The main task of \code{taxlist} objects is to keep the taxonomic coherence of
 information included in taxonomic lists and to implement functions (methods) for
-the those data handling procedures that are common in the work with taxonomic
-lists and its integration in biodiversity information.
-
+a proper data handling.
+Objects of class \code{\linkS4class{taxlist}} can be included in further
+objects, for instance in biodiversity records as done in the package
+\href{https://cran.r-project.org/package=vegtable}{vegtable}.
 More detailed examples on the applications of this package will be discussed by
-\bold{Alvarez & Luebert (in preparation)}.
+\href{https://doi.org/10.1111/j.1654-1103.2010.01209.x}{Alvarez & Luebert (2018)}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

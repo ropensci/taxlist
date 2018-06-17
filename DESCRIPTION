@@ -28,7 +28,7 @@ Description: Handling taxonomic lists through objects of class 'taxlist'.
     This package provides functions to import species lists from 'Turboveg'
     (<https://www.synbiosys.alterra.nl/turboveg>) and the possibility to create
     backups from resulting R-objects.
-    Also quick displays are implemented in the summary-methods.
+    Also quick displays are implemented as summary-methods.
 License: GPL (>= 2)
 URL:
 	https://cran.r-project.org/package=taxlist,
@@ -36,18 +36,13 @@ URL:
 BugReports: https://github.com/kamapu/taxlist/issues
 Collate:
     'NULLing.R''auxiliary_functions.R''deprecated-functions.R''dissect_name.R'
-    'taxlist-class.R''clean.R''as.list.R'
-    'taxon_views.R''add_view.R'
+    'taxlist-class.R''clean.R''as.list.R''taxon_views.R''add_view.R'
     'taxon_names.R''taxon_relations.R''taxon_traits.R'
     'levels.R''add_concept.R''update_concept.R''add_synonym.R'
-    'accepted_name.R''synonyms.R''update_name.R''delete_name.R'
-    'replace_view.R'
-    'add_level.R''get_children.R'
+    'accepted_name.R''synonyms.R''basionym.R''update_name.R''delete_name.R'
+    'replace_view.R''add_level.R''get_children.R'
     'change_concept.R''Extract.R''subset.R'
-    'merge_taxa.R'
-    'backup_object.R''load_last.R''summary.R'
-    'df2taxlist.R''tv2taxlist.R''tnrs.R'
-    'tax2traits.R''match_names.R'
-    'print_name.R'
+    'merge_taxa.R''backup_object.R''load_last.R''summary.R'
+    'df2taxlist.R''tv2taxlist.R''tnrs.R''tax2traits.R''match_names.R''print_name.R'
     'StartMessage.R'
 VignetteBuilder: knitr
