@@ -24,12 +24,12 @@ taxon_names(taxlist) <- value
 
 \S4method{add_synonym}{taxlist}(taxlist, ConceptID, TaxonName, AuthorName, ...)
 
-\S4method{update_name}{taxlist,numeric}(object, UsageID, ...)
+\S4method{update_name}{taxlist,numeric}(taxlist, UsageID, ...)
 
-\S4method{delete_name}{taxlist,numeric}(object, UsageID, ...)
+\S4method{delete_name}{taxlist,numeric}(taxlist, UsageID, ...)
 }
 \arguments{
-\item{taxlist,object}{A \code{\linkS4class{taxlist}} object to be modified.}
+\item{taxlist}{A \code{\linkS4class{taxlist}} object to be modified.}
 \item{value}{A data frame used as new slot \code{'taxonNames'} in
 	\code{'taxlist'}.}
 \item{ConceptID}{Numeric vector indicating the concept ID to which the synonyms

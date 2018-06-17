@@ -60,7 +60,9 @@ setMethod("tax2traits", signature(object="taxlist"),
 					}
 				}
 			}
-			object <- add_trait(object, TAX)
+			colnames(TAX)[colnames(TAX) == "TaxonConceptID"] <- "ConceptID"
+			object <- do.call(update_trait, c(list(taxlist=object),
+							as.list(TAX)))
 			if(get_names) {
 				Names <- accepted_name(object)
 				for(i in paste(levels(object))) {

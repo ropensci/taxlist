@@ -7,9 +7,8 @@
 \alias{add_concept}
 \alias{add_concept,taxlist,character-method}
 \alias{add_concept,taxlist,taxlist-method}
-\alias{change_cocept}
-\alias{change_concept<-}
-\alias{change_concept<-,taxlist-method}
+\alias{update_concept}
+\alias{update_concept,taxlist,numeric-method}
 
 \title{Retrieve or replace slot taxonRelations in taxlist objects}
 \description{
@@ -25,7 +24,7 @@ taxon_relations(taxlist) <- value
 
 \S4method{add_concept}{taxlist,taxlist}(taxlist, TaxonName, insert_view, ...)
 
-change_concept(taxlist, UsageID) <- value
+\S4method{update_concept}{taxlist,numeric}(taxlist, ConceptID, ...)
 }
 \arguments{
 \item{taxlist}{A \code{\linkS4class{taxlist}} object.}
@@ -37,7 +36,7 @@ change_concept(taxlist, UsageID) <- value
 \item{insert_view}{A numeric (integer) vectors, indicating the views of
 	\code{'TaxonName'} to be inserted in \code{'taxlist'} or the value
 	\code{'TRUE'} (see details).}
-\item{UsageID}{Usage IDs to be moved from one concept to another.}
+\item{ConceptID}{Concept IDs to be updated.}
 \item{...}{Further arguments passed among methods.}
 }
 \details{
@@ -94,12 +93,9 @@ summary(Ebenaceae, "all", maxsum=100)
 ## Display two Typha species
 summary(Easplist, c("Typha domingensis","Typha latifolia"))
 
-## Move the name Typha aethiopica to concept 573 (T. latifolia)
-change_concept(Easplist, 53130) <- 573
-summary(Easplist, c(50105,573))
-\donttest{
-## Attempting to move an accepted name
-change_concept(Easplist, 50105) <- 573
-}
+## Update a concept
+summary(Easplist, "Corchorus olitorius")
+Easplist <- update_concept(Easplist, 155, Level="subspecies")
+summary(Easplist, "Corchorus olitorius")
 }
 \keyword{methods}

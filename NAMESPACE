@@ -18,9 +18,7 @@ exportMethods(
 	accepted_name,"accepted_name<-",
 	add_concept,
 	add_level,"add_level<-",
-	add_parent,"add_parent<-",
 	add_synonym,
-	add_trait,
 	add_view,
 	as.list,
 	"change_concept<-",
@@ -43,11 +41,15 @@ exportMethods(
 	taxon_traits,"taxon_traits<-",
 	taxon_views,"taxon_views<-",
 	tnrs,
-	update_name
+	update_concept,
+	update_name,
+	update_trait
 )
 
 # Export of regular function names
 export(
+	add_parent,
+    add_trait,
 	backup_object,
 	dissect_name,
 	load_last,

@@ -1,12 +1,11 @@
 \name{taxon_traits}
 \docType{methods}
-\alias{add_trait}
-\alias{add_trait,taxlist,vector,numeric-method}
-\alias{add_trait,taxlist,data.frame,missing-method}
 \alias{taxon_traits}
 \alias{taxon_traits,taxlist-method}
 \alias{taxon_traits<-}
 \alias{taxon_traits<-,taxlist,data.frame-method}
+\alias{update_trait}
+\alias{update_trait,taxlist,numeric-method}
 
 \title{Manipulation of taxon traits in taxlist objects.}
 \description{
@@ -16,18 +15,14 @@ These functions are suitable for replacing, retrieving and appending trait
 information in taxonomic lists.
 }
 \usage{
-\S4method{add_trait}{taxlist,vector,numeric}(taxlist, Trait, ConceptID, ...)
-
-\S4method{add_trait}{taxlist,data.frame,missing}(taxlist, Trait, ConceptID, ...)
-
 \S4method{taxon_traits}{taxlist}(taxlist, ...)
 
 taxon_traits(taxlist) <- value
+
+\S4method{update_trait}{taxlist,numeric}(taxlist, ConceptID, ...)
 }
 \arguments{
 \item{taxlist}{A \code{\linkS4class{taxlist}} object.}
-\item{Trait}{A single vector or a data frame to be appended in slot
-	\code{taxonTraits}.}
 \item{ConceptID}{A numeric vector with the respective taxon concept IDs.}
 \item{value}{Data frame to be set as slot \code{'taxonTraits'}.}
 \item{...}{Further arguments to be passed among methods.}
