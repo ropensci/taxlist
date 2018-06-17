@@ -25,6 +25,7 @@ exportMethods(
 	as.list,
 	"change_concept<-",
 	clean,
+	delete_name,
 	df2taxlist,
 	get_children,
 	get_parents,

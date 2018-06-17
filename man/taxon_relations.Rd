@@ -92,7 +92,7 @@ summary(Ebenaceae)
 summary(Ebenaceae, "all", maxsum=100)
 
 ## Display two Typha species
-summary(Easplist, c(50105,573))
+summary(Easplist, c("Typha domingensis","Typha latifolia"))
 
 ## Move the name Typha aethiopica to concept 573 (T. latifolia)
 change_concept(Easplist, 53130) <- 573
