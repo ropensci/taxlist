@@ -20,9 +20,9 @@ S4_to_list(x)
 \item{...}{further arguments passed to or from other methods.}
 }
 \details{
-The function \code{S4_to_list()} transforms any S4 object to list setting slots
-to elements of the list and it is running internally in the method for
-\code{as.list()} and \code{\linkS4class{taxlist}} class.
+The function \code{S4_to_list()} transforms any S4 object to a list setting
+slots to elements of the list and it is running internally in the method
+\code{as.list()} for \code{\linkS4class{taxlist}} objects.
 }
 \value{
 An object of class \code{\link[base]{list}}.
@@ -36,3 +36,4 @@ data(Easplist)
 Easplist <- as.list(Easplist)
 class(Easplist)
 }
+\keyword{methods}
