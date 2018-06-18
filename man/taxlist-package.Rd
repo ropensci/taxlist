@@ -12,7 +12,8 @@ a proper data handling.
 Objects of class \code{\linkS4class{taxlist}} can be included in further
 objects, for instance in biodiversity records as done in the package
 \href{https://cran.r-project.org/package=vegtable}{vegtable}.
-More detailed examples on the applications of this package will be discussed by
+
+For a more detailed description of this package, see
 \href{https://doi.org/10.1111/j.1654-1103.2010.01209.x}{Alvarez & Luebert (2018)}.
 }
 \author{
