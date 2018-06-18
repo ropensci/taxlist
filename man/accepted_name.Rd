@@ -78,7 +78,7 @@ Most of the methods return information in data frames, while replacement methods
 do it as \code{\linkS4class{taxlist}} objects.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
 \code{\link{add_synonym}}, \code{\link{add_synonym}}.
