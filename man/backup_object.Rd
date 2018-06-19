@@ -2,10 +2,14 @@
 \alias{backup_object}
 \alias{load_last}
 
-\title{Backups R objects.}
+\title{Make and load Backups of R objects}
 \description{
-Make security copies of R objects during processing its information.
-This function is a wrapper for \code{\link{save}}.
+When work with data becomes risky, the best practice is to produce backup files.
+The function of \code{backup_object()} is a wrapper of
+\code{\link[=save]{save()}}, adding a time stamp and a suffix to the name of the
+resulting file (an R image file with extension \bold{*.rda}).
+The function \code{load_last()} is adapted to this style, loading the newest
+version to the session.
 }
 \usage{
 backup_object(..., objects, file, stamp=TRUE, overwrite=FALSE)
@@ -17,31 +21,27 @@ load_last(file)
 	strings).}
 \item{objects}{A character vector indicating the names of objects to be included
 	in the backup file.}
-\item{file}{A character value indicating the name of the backup (rda) file.}
+\item{file}{A character value indicating the name of the backup file, without
+	the extension.}
 \item{stamp}{A logical value indicating whether time should be stamped in the
 	backup name or not.}
 \item{overwrite}{A logical value indicating whether existing files must be
 	overwritten or not.}
 }
 \details{
-The \code{backup_object} function create a rda file in the working directory
-using \code{\link{save}}.
-The argument \code{'file'} should include the name of the backup file without
-extension.
+In both functions the argument \code{'file'} may include either the path
+relative to the working directory or the absolute path to the file, excluding
+stamps and extension.
+For \code{'overwrite=FALSE'} (the default), a numeric suffix will be added to
+the backup's name, if another backup was produced at the same day.
+For \code{'overwrite=TRUE'} no suffix will be included in the file and existing
+files will be overwritten.
 
-For \code{'overwrite=FALSE'} (the default) a numeric suffix will be
-automatically added to the file names, when previous backups sharing the same
-name already exist.
-
-Saved backups can be imported to the session by using \code{\link{load}}.
-The function \code{'load_last'} recognizes the last backup according to time
-stamp and suffix.
-
-The argument \code{'file'} can also include a sub-folder of the working
-directory.
+The function \code{load_last()} will load the newest version among backups
+stored in the same folder, provided that the backup name includes a time stamp.
 }
 \value{
-A rda file in the working directory.
+An R image with extension \bold{*.rda}.
 }
 \seealso{
 \code{\link{save}}, \code{\link{load}}.
