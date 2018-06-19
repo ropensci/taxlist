@@ -10,54 +10,50 @@
 Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
-
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
 
 The aim of `taxlist` is to provide an object structure for taxonomic
-lists and methods to display and handle the contained information. This
-package should be considered as experimental but we welcome any interest
-to implement it or contribute to `taxlist`.
+lists and methods to display and handle the contained information. We
+welcome any interest to implement it or to contribute in the development
+of `taxlist`.
 
-**Task One:** The first task is to develop an object class (`taxlist`)
-for the import of taxonomic lists structured as *single database list*.
-In this step we will pay special attention to the format used by
-[Turboveg](http://www.synbiosys.alterra.nl/turboveg) databases.
-
-**Task Two:** While the first task is currently in an advanced stage,
-the next step will be the design of an object class implementing
-hierarchical structure but accessed in a similar way as for the class
-`taxlist`.
-
-Objects and functions of `taxlist` will be also implemented as part of
+Objects and functions of `taxlist` are also implemented as part of
 objects containing information from vegetation-plot databases (look at
-[vegtables](https://github.com/kamapu/vegtable)).
+[vegtable](https://github.com/kamapu/vegtable)). The structure of
+`taxlist` objects is strongly inspired on data handled by
+[Turboveg](https://www.synbiosys.alterra.nl/turboveg) and on relational
+database models.
 
-This package has been developed as a tool handling data stored in
-[SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), which is managed in
-the context of the project
-[GlobE-wetlands](https://www.wetlands-africa.de).
+![](README-figures/taxlist_model.png) **Figure:** Relational model for
+taxlist objects. Source: [Alvarez & Luebert
+2018](https://doi.org/10.3897/BDJ.6.e23635).
+
+The functions in this package has being used to structure and clean data
+stored in [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), a
+vegetation-plot database managed in the context of the project
+[GlobE-wetlands](https://www.wetlands-africa.de) and currently exported
+to a [PostgreSQL](https://www.postgresql.org) format.
 
 ## Installing taxlist
 
 Two alternative options are available for the installation of taxlist.
-The first one is installing from the repository at the **Comprehensive R
-Archive Network**:
+The first one is installing from the repository at
+[CRAN](https://cran.r-project.org/package=taxlist):
 
 ``` r
 install.packages("taxlist", dependencies=TRUE)
 ```
 
-Since `taxlist` is developed on **GitHub**, it is also possible to
-install last version from this repository using the package `devtools`:
+The second alternative is to install the developing version from
+[GitHub](https://github.com/kamapu/taxlist). For this you will require
+the package `devtools`:
 
 ``` r
 library(devtools)
-install_github("kamapu/taxlist", build_vignettes=TRUE)
+install_github("kamapu/taxlist", build_vignette=TRUE)
 ```
-
-Note that the versions in those repositories may not match completely.
 
 ## Some examples
 
