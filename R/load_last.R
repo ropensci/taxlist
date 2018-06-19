@@ -21,27 +21,25 @@ load_last <-function(file) {
 		stop("The requested backup is missing in the working directory.")
 	Name <- sub(".rda", "", inFolder, fixed=TRUE)
 	Name <- strsplit(Name, "_", fixed=TRUE)
-	underscores <- gsub("_", "", file)
-	underscores <- nchar(file) - nchar(underscores)
+	underscores <- gsub("_", "", file2)
+	underscores <- nchar(file2) - nchar(underscores)
 	Name <- lapply(Name, function(x, y) {
-				if(length(x) == (y + 2))
-					x <- c(x, "0")
+				if(length(x) < (y + 3))
+					x <- c(x, rep_len("0", y - length(x) + 3))
 				return(x)
 			}, y=underscores)
-	if(length(Name) == 1)
-		OUT <- as.data.frame(rbind(Name[[1]]), stringsAsFactors=FALSE)[,
-				c((underscores + 2):(underscores + 3))]
-	if(length(Name) > 1)
-		OUT <- as.data.frame(do.call(rbind, Name), stringsAsFactors=FALSE)[,
-				c((underscores + 2):(underscores + 3))]
+	OUT <- as.data.frame(do.call(rbind, Name), stringsAsFactors=FALSE)[,
+			c((underscores + 2):(underscores + 3))]
 	colnames(OUT) <- c("date","suffix")
+	OUT$filename <- inFolder
+	OUT <- OUT[nchar(OUT$date) == 10,]
 	OUT$order <- c(1:nrow(OUT))
 	OUT$date <- as.Date(OUT$date)
 	OUT$suffix <- as.integer(OUT$suffix)
 	OUT <- OUT[with(OUT, order(date, suffix)),]
-	message(paste0("Loading file '", inFolder[OUT[nrow(OUT),"order"]],
-					"' to session."))
-	if(path == ".") load(inFolder[OUT[nrow(OUT),"order"]]) else
-		load(file.path(path, inFolder[OUT[nrow(OUT),"order"]]),
+	message(paste0("Loading file '", OUT$filename[nrow(OUT)], "' to session."))
+	if(length(path) == 1 & path[1] == ".") load(OUT$filename[nrow(OUT)],
+				envir=.GlobalEnv) else
+		load(file.path(paste(path, collapse="/"), OUT$filename[nrow(OUT)]),
 				envir=.GlobalEnv)
 }

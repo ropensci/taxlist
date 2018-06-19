@@ -66,8 +66,9 @@ The function \code{synonyms()} is working in a similar way as
 \code{accepted_name()}, but this function does not include taxon traits in the
 output and there is no replacing method for \code{synonyms()}.
 Alternatives for inserting new synonyms into a taxon concept are either moving
-synonyms from other taxa by using \code{\link{change_concept()}} or inserting
-new names in the object by using \code{\link{add_synonym()}}.
+synonyms from other taxa by using
+\code{\link{change_concept<-}} or inserting
+new names in the object by using \code{\link[=add_synonym]{add_synonym()}}.
 
 The function \code{basionym()} is retrieving and setting basionyms in the
 respective taxon concepts similarly to \code{accepted_name()}, but this function
@@ -81,7 +82,7 @@ do it as \code{\linkS4class{taxlist}} objects.
 Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
-\code{\link{add_synonym}}, \code{\link{add_synonym}}.
+\code{\link{add_synonym}}, \code{\link{change_concept<-}}.
 }
 \examples{
 library(taxlist)
