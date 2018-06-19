@@ -9,6 +9,8 @@
 [![Travis Build
 Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
+[![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
+
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
@@ -79,16 +81,10 @@ blocks. The first step will be to generate an empty `taxlist` object:
 
 ``` r
 library(taxlist)
-#> This is taxlist 0.1.5
-#> 
-#> Attaching package: 'taxlist'
-#> The following object is masked from 'package:base':
-#> 
-#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
-#> object size: 4.9 Kb 
+#> object size: 5.3 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
 #> number of names: 0 
@@ -132,7 +128,7 @@ object:
 ``` r
 Fern <- add_concept(Fern, TaxonName="Asplenium", AuthorName="L.", Level="genus")
 summary(Fern)
-#> object size: 5.8 Kb 
+#> object size: 6.3 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
 #> number of names: 4 
@@ -190,10 +186,10 @@ varieties (IDs **2** and **3**), and the genus (ID **4**) is the parent
 of the species (ID **1**). Thus the relationships are set as:
 
 ``` r
-add_parent(Fern, c(2,3)) <- 1
-add_parent(Fern, 1) <- 4
+Fern <- update_concept(Fern, ConceptID=c(2,3), Parent=1)
+Fern <- update_concept(Fern, ConceptID=1, Parent=4)
 summary(Fern)
-#> object size: 5.8 Kb 
+#> object size: 6.3 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
 #> number of names: 4 

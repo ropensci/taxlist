@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 [![Travis Build Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
+[![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
+
 [![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
 
@@ -131,8 +133,8 @@ is the parent of the species (ID **1**).
 Thus the relationships are set as:
 
 ```{r}
-add_parent(Fern, c(2,3)) <- 1
-add_parent(Fern, 1) <- 4
+Fern <- update_concept(Fern, ConceptID=c(2,3), Parent=1)
+Fern <- update_concept(Fern, ConceptID=1, Parent=4)
 summary(Fern)
 ```
 
