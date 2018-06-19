@@ -26,8 +26,8 @@ objects containing information from vegetation-plot databases (look at
 [Turboveg](https://www.synbiosys.alterra.nl/turboveg) and on relational
 database models.
 
-![](README-figures/taxlist_model.png) **Figure:** Relational model for
-taxlist objects. Source: [Alvarez & Luebert
+![](README-figures/taxlist_model.png)<br/> **Figure:** Relational model
+for taxlist objects. Source: [Alvarez & Luebert
 2018](https://doi.org/10.3897/BDJ.6.e23635).
 
 The functions in this package has being used to structure and clean data
