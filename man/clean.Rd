@@ -3,9 +3,12 @@
 \alias{clean}
 \alias{clean,taxlist-method}
 
-\title{Clean orphaned records.}
+\title{Clean Orphaned Records}
 \description{
-Direct deletions in slot \code{'taxonRelations'} may generate orphaned entries.
+Manipulation of slots may generate orphaned entries in
+\code{\linkS4class{taxlist}} objects.
+The function \code{clean()} deletes such entries and restores the consistency
+of the objects.
 }
 \usage{
 \S4method{clean}{taxlist}(object, ...)
@@ -15,22 +18,19 @@ Direct deletions in slot \code{'taxonRelations'} may generate orphaned entries.
 \item{...}{Further arguments passed from or to other methods.}
 }
 \details{
-This function should be applied to optimize the allocated size of a
-\code{\linkS4class{taxlist}} object and to assure its validity.
-
-The steps followed for the cleaning process are:
+Cleaning of objects will follow the deletion of:
 \itemize{
-	\item Orphaned names.
-	\item Non cited references.
-	\item Orphaned taxon trait entries.
-	\item Orphaned parent entries.
+\item orphaned names.
+\item non cited references.
+\item orphaned taxon trait entries.
+\item orphaned parent entries.
 }
 }
 \value{
 A clean \code{\linkS4class{taxlist}} object.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
 \donttest{

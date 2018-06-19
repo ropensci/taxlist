@@ -17,7 +17,7 @@ For a more detailed description of this package, see
 \href{https://doi.org/10.1111/j.1654-1103.2010.01209.x}{Alvarez & Luebert (2018)}.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \references{
 \bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant

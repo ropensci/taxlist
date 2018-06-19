@@ -2,7 +2,7 @@
 \alias{backup_object}
 \alias{load_last}
 
-\title{Make and load Backups of R objects}
+\title{Make and load Backups of R Objects}
 \description{
 When work with data becomes risky, the best practice is to produce backup files.
 The function of \code{backup_object()} is a wrapper of
@@ -42,6 +42,9 @@ stored in the same folder, provided that the backup name includes a time stamp.
 }
 \value{
 An R image with extension \bold{*.rda}.
+}
+\author{
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
 \code{\link{save}}, \code{\link{load}}.

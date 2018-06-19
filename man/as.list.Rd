@@ -4,7 +4,7 @@
 \alias{as.list}
 \alias{as.list,taxlist-method}
 
-\title{Coerce an S4 object to a list}
+\title{Coerce an S4 Object to a List}
 \description{
 Coercion of S4 objects to lists can be applied to explore their content,
 avoiding errors caused by their validation.
