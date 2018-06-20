@@ -1,10 +1,10 @@
 ## Import functions
-importFrom(stats,na.omit)
-importFrom(utils,object.size)
-importFrom(vegdata,tv.home)
-importFrom(taxize,tnrs)
-importFrom(foreign,read.dbf)
-importFrom(stringdist,stringsim)
+importFrom(stats, aggregate, na.omit, sd)
+importFrom(utils, object.size)
+importFrom(vegdata, tv.home)
+importFrom(taxize, tnrs)
+importFrom(foreign, read.dbf)
+importFrom(stringdist, stringsim)
 
 ## Import of packages
 import(methods)
@@ -17,7 +17,6 @@ exportMethods(
 	"[", "[<-", "$", "$<-",
 	accepted_name,"accepted_name<-",
 	add_concept,
-	add_level,"add_level<-",
 	add_synonym,
 	add_view,
 	as.list,
@@ -51,6 +50,7 @@ exportMethods(
 export(
 	add_parent,
     add_trait,
+    add_level,
 	backup_object,
 	dissect_name,
 	load_last,

@@ -27,8 +27,8 @@ objects containing information from vegetation-plot databases (look at
 database models.
 
 ![](README-figures/taxlist_model.png)<br/> **Figure:** Relational model
-for taxlist objects. Source: [Alvarez & Luebert
-2018](https://doi.org/10.3897/BDJ.6.e23635).
+for taxlist objects (See [Alvarez & Luebert
+2018](https://doi.org/10.3897/BDJ.6.e23635)).
 
 The functions in this package has being used to structure and clean data
 stored in [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006), a
@@ -203,21 +203,12 @@ summary(Fern)
 #> number of concepts in level genus: 1
 ```
 
-Similarly to the addition of concepts, you can also add
-synonyms:
+Similarly to the addition of concepts, you can also add synonyms:
 
 ``` r
-Fern <- add_synonym(Fern, ConceptID=2, TaxonName=c("Asplenium sphenoides"),
+Fern <- add_synonym(Fern, ConceptID=2, TaxonName="Asplenium sphenoides",
     AuthorName="Kunze")
-summary(Fern, "all")
-#> ------------------------------ 
-#> concept ID: 1 
-#> view ID: none 
-#> level: species 
-#> parent: 4 Asplenium L. 
-#> 
-#> # accepted name: 
-#> 1 Asplenium obliquum Forster 
+summary(Fern, "Asplenium sphenoides")
 #> ------------------------------ 
 #> concept ID: 2 
 #> view ID: none 
@@ -229,22 +220,6 @@ summary(Fern, "all")
 #> 
 #> # synonyms (1): 
 #> 5 Asplenium sphenoides Kunze 
-#> ------------------------------ 
-#> concept ID: 3 
-#> view ID: none 
-#> level: variety 
-#> parent: 1 Asplenium obliquum Forster 
-#> 
-#> # accepted name: 
-#> 3 Asplenium obliquum var. chondrophyllum (Bertero apud Colla) C. Christense & C. Skottsberg 
-#> ------------------------------ 
-#> concept ID: 4 
-#> view ID: none 
-#> level: genus 
-#> parent: none 
-#> 
-#> # accepted name: 
-#> 4 Asplenium L. 
 #> ------------------------------
 ```
 

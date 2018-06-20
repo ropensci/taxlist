@@ -6,7 +6,7 @@
 Depending the degree of resolution and specific roles of nomenclature, strings
 containing taxon usage names (scientific names) are constructed with different
 parts.
-A string with names can be consequently split into those elements,while the
+A string with names can be consequently split into those elements, meanwhile the
 number of elements will suggest the taxonomic ranks.
 }
 \usage{

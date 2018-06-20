@@ -7,7 +7,7 @@
 \alias{change_concept<-}
 \alias{change_concept<-,taxlist-method}
 
-\title{Merge concepts.}
+\title{Merge Concepts}
 \description{
 Merge taxon concepts form a \code{\linkS4class{taxlist}} object into single
 ones.
@@ -32,13 +32,13 @@ change_concept(taxlist, UsageID) <- value
 }
 \details{
 Taxon concepts indicated in argument \code{'concepts'} will be merged into a
-single one.
-The new concept inherites the ID and respective attributes from slots
+single concept.
+The new concept inherits the ID and respective attributes from slots
 \code{'taxonRelations'} and \code{'taxonTraits'} from the first taxon concept
 indicated in argument \code{'concepts'}.
 
 For convenience the resulting concept can be displayed by setting
-\code{print_output=TRUE} but only when using argument \code{concepts}.
+\code{'print_output=TRUE'} but only when using argument \code{'concepts'}.
 
 An alternative application of this function is implemented through the argument
 \code{'level'}, where all lower rank taxa will be merged to the indicated level
@@ -48,11 +48,10 @@ or higher (if parent of merged taxa are at a higher rank).
 An object of class \code{\linkS4class{taxlist}}.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
 library(taxlist)
-
 data(Easplist)
 
 ## Merge Cyperus papyrus and Cyperus dives

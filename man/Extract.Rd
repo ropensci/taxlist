@@ -9,10 +9,10 @@
 \alias{$<-}
 \alias{$<-,taxlist-method}
 
-\title{Extract or replace parts of a \sQuote{taxlist} object.}
+\title{Extract or Replace Parts of taxlist Objects}
 \description{
-Quick access to slots \code{'taxonTraits'} and \code{'taxonRelations'} in
-a \code{\linkS4class{taxlist}} objects.
+Quick access to slots \code{'taxonTraits'} and \code{'taxonRelations'} within
+\code{\linkS4class{taxlist}} objects.
 }
 \usage{
 \S4method{$}{taxlist}(x, name)
@@ -31,28 +31,31 @@ a \code{\linkS4class{taxlist}} objects.
 While the method \code{'$'} automatically recognizes the slot queried, provided
 that there is no shared column names, in the method \code{'['} you may specify
 it by the argument \code{'slot'} (default for \code{'taxonRelations'}).
-In the later argument you can either use the full name of slots or an alias.
+The argument \code{'slot'} allows partial matchings.
 
 In the method \code{'['}, the first index is referred to the rows in slot
 \code{'taxonRelations'}, while the second index indicate the columns in either
 \code{'taxonRelations'} or \code{'taxonTraits'}.
+
+The respective replacement methods \code{'$<-'} and \code{'[<-'} are also
+implemented.
 }
 \value{
 The method \code{'$'} retrieves a vector, while \code{'['} retrieves a subset
-of input \code{'taxlist'} as a \code{\linkS4class{taxlist}} object.
+of the input \code{\linkS4class{taxlist}} object.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
-\code{\linkS4class{taxlist}}, \code{\link[taxlist]{subset}}.}
+\code{\linkS4class{taxlist}}, \code{\link[taxlist]{subset}}.
+}
 \examples{
 library(taxlist)
-
 data(Easplist)
 
 ## Statistics on life forms
-summary(as.factor(Easplist$LifeForm))
+summary(as.factor(Easplist$lf_behn_2018))
 
 ## First ten concepts in this list
 summary(Easplist[1:10,], "all")
