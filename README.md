@@ -27,7 +27,7 @@ objects containing information from vegetation-plot databases (look at
 database models.
 
 ![](README-figures/taxlist_model.png)<br/> **Figure:** Relational model
-for taxlist objects (See [Alvarez & Luebert
+for taxlist objects (see [Alvarez & Luebert
 2018](https://doi.org/10.3897/BDJ.6.e23635)).
 
 The functions in this package has being used to structure and clean data
@@ -55,21 +55,7 @@ library(devtools)
 install_github("kamapu/taxlist", build_vignette=TRUE)
 ```
 
-## Some examples
-
-### Working with East African plants (on-going project)
-
-The vegetation-plot database
-[SWEA-Dataveg](http://www.givd.info/ID/AF-00-006) is connected to the
-species list `EA-Splist`. This list uses as main nomenclatorial
-reference the [African Plant
-Database](http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php).
-An actualized version of the list may be available in the homepage of
-the [GlobE-wetlands](https://www.wetlands-africa.de) project. You may be
-aware that `EA-Splist` is mainly including names and taxa occurring in
-`SWEA-Dataveg` and is not a complete list of the flora for East Africa.
-
-### Starting with building blocks
+## Building taxlist objects
 
 I will take an example from “Helechos de Chile” **(Gunkel 1984)** to
 demonstrate how to construct a `taxlist` object from its building
@@ -173,8 +159,6 @@ summary(Fern, "all")
 #> 4 Asplenium L. 
 #> ------------------------------
 ```
-
-### Set parent-child relationships and synonyms
 
 Now set the parent-child relations. Relating to the previous display,
 you know that the species (concept ID **1**) is the parent of the
