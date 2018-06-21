@@ -1,6 +1,7 @@
 \name{deprecated-functions}
 \alias{add_parent}
 \alias{add_trait}
+\alias{add_level)
 
 \title{Deprecated Functions}
 \description{
