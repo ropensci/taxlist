@@ -17,7 +17,7 @@ setMethod("update_trait", signature(taxlist="taxlist", ConceptID="numeric"),
 			new_entries <- list(...)
 			for(i in names(new_entries)[!names(new_entries) %in%
 							colnames(taxlist@taxonTraits)])
-				taxlist@taxonTraits[,i] <- NA
+				taxlist@taxonTraits[,i] <- rep(NA, nrow(taxlist@taxonTraits))
 			if(any(!ConceptID %in% taxlist@taxonTraits$TaxonConceptID)) {
 				df2 <-data.frame(TaxonConceptID=ConceptID[!ConceptID %in%
 										taxlist@taxonTraits$TaxonConceptID],

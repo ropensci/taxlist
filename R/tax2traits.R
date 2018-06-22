@@ -17,14 +17,14 @@ setMethod("tax2traits", signature(object="taxlist"),
 					TaxonConceptID=object@taxonRelations$TaxonConceptID,
 					stringsAsFactors=FALSE)
 			# first entry with concepts at level
-			for(i in paste(levels(object))) {
+			for(i in levels(object)) {
 				ID <- object@taxonRelations[
 						paste(object@taxonRelations$Level) == i,
 						"TaxonConceptID"]
 				TAX[,i] <- ID[match(object@taxonRelations$TaxonConceptID, ID)]
 			}
 			# second entry parents
-			for(i in paste(levels(object))[-length(levels(object))]) {
+			for(i in levels(object)[-length(levels(object))]) {
 				if(!all(is.na(TAX[,i])) & !all(!is.na(TAX[,i]))) {
 					TAX <- split(TAX, is.na(TAX[,i]))
 					ID <- TAX[["FALSE"]][,i]
