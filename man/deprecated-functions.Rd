@@ -1,7 +1,7 @@
 \name{deprecated-functions}
 \alias{add_parent}
 \alias{add_trait}
-\alias{add_level)
+\alias{add_level}
 
 \title{Deprecated Functions}
 \description{
@@ -12,6 +12,8 @@ version, some functions were deprecated.
 add_parent()
 
 add_trait()
+
+add_level()
 }
 \seealso{
 \code{\link{update_concept}}.

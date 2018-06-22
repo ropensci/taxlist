@@ -29,26 +29,25 @@ in such objects.}
 \details{
 A general overview indicating number of names, concepts and taxon views included
 in \code{\linkS4class{taxlist}} objects.
-
 If argument \code{'ConceptID'} is a vector with concept IDs or names to be
-matched (using \code{\link{grepl}}), then a display
+matched by \code{\link[=grepl]{grepl()}}, then a display
 of all names included in each concept will be produced.
 Alternative you can use \code{taxon="all"} in order to get the listing of
 names for all concepts included in the object (truncated to the input number of
 \code{'maxsum'}).
 
 For summaries applied to concepts, there are three alternative displays of names
-(argument \code{display}).
-Use \code{display="name"} to show the value \code{TaxonName},
-\code{display="author"} to show the value \code{AuthorName} or
+using the argument \code{'display'}.
+Use \code{display="name"} to show the value \code{'TaxonName'},
+\code{display="author"} to show the value \code{'AuthorName'} or
 \code{display="both"} to show both values.
-Such values are taken from slot \code{taxonNames}.
+Such values are taken from slot \code{'taxonNames'}.
 
 For big objects it will be recommendet to set \code{units="Mb"} (see also
-\code{\link{object.size}} for further alternatives).
+\code{\link[=object.size]{object.size()}} for further alternatives).
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
 \code{\linkS4class{taxlist}}.

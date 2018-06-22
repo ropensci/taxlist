@@ -5,13 +5,14 @@
 
 \title{Retrieve a formated accepted name or a taxon usage name.}
 \description{
-When writing on biodiversity information, formatted names could be
-automatically inserted in documents (e.g. markdown documents) by just mentioning
-the ID of a taxon concept or a taxon usage name. 
+When writing on biodiversity, names could be automatically inserted in documents
+including the typical italic format for different elements of the name.
+The function \code{print_name()} can be applied either in markdown documents or
+for graphics.
 }
 \usage{
-\S4method{print_name}{taxlist,numeric}(object, id, concept=TRUE,
-	second_mention=FALSE, include_author=TRUE, secundum, style="markdown", ...)
+\S4method{print_name}{taxlist,numeric}(object, id, concept=TRUE, second_mention=FALSE,
+	include_author=TRUE, secundum, style="markdown", ...)
 }
 \arguments{
 \item{object}{An object of class \code{\linkS4class{taxlist}}.}
@@ -29,9 +30,8 @@ the ID of a taxon concept or a taxon usage name.
 \item{...}{Further arguments passed among methods.}
 }
 \details{
-Some details.
-In Rmarkdown documents use \code{`r I(print_name(Easplist, 206))`} for including
-a species name.
+In \bold{Rmarkdown} documents use \code{`r I(print_name(Easplist, 206))`} for
+inserting a formatted a species name.
 }
 \value{
 A character value including format to italic font.

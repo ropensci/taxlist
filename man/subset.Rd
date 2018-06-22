@@ -39,7 +39,7 @@ Be aware that \code{subset} won't work properly inside of function definitions.
 An object of class \code{\linkS4class{taxlist}}.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
 library(taxlist)
