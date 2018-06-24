@@ -3,10 +3,11 @@
 \alias{print_name}
 \alias{print_name,taxlist,numeric-method}
 
-\title{Retrieve a formated accepted name or a taxon usage name.}
+\title{Format Usage Names for Publications}
 \description{
-When writing on biodiversity, names could be automatically inserted in documents
-including the typical italic format for different elements of the name.
+When writing on bio-diversity, usage names could be automatically inserted in
+documents including the typical italic format for different elements of a
+scientific name.
 The function \code{print_name()} can be applied either in markdown documents or
 for graphics.
 }
@@ -17,7 +18,8 @@ for graphics.
 \arguments{
 \item{object}{An object of class \code{\linkS4class{taxlist}}.}
 \item{id}{Integer containing either a concept or a name ID.}
-\item{concept}{Logical value, whether \code{'id'} corresponds to a concept ID.}
+\item{concept}{Logical value, whether \code{'id'} corresponds to a concept ID or
+	a taxon usage name ID.}
 \item{second_mention}{Logical value, whether the genus name should be
 	abbreviated or not.}
 \item{include_author}{Logical value, whether authors of the name should be

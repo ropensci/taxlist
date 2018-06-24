@@ -3,11 +3,11 @@
 \alias{tax2traits}
 \alias{tax2traits,taxlist-method}
 
-\title{Add taxonomic information to slot 'taxonTraits'.}
+\title{Set Taxonomic Information as Taxon Traits}
 \description{
 Taxonomic classification can be included in \code{\linkS4class{taxlist}}
-objects.
-Nevertheless for some analyses it may be more convenient to insert such
+objects within the information provided at slot \code{'taxonRelations'}.
+Nevertheless, for statistical analyses it may be more convenient to insert such
 information in the slot \code{'taxonTraits'}.
 }
 \usage{
@@ -28,9 +28,6 @@ An object of class \code{\linkS4class{taxlist}} with taxonomy added as traits.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
-}
-\seealso{
-\code{\link{add_trait}}.
 }
 \examples{
 library(taxlist)

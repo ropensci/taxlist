@@ -3,9 +3,10 @@
 \alias{taxlist-class}
 \alias{taxlist}
 
-\title{Class taxlist.}
+\title{Class taxlist}
 \description{
-Class for species (taxon) lists including synonyms.
+Class for species (taxon) lists including synonyms, hierarchical ranks,
+parent-child relationships, taxon views and taxon traits.
 }
 \section{Slots}{
 Objects of this class are composed of three slots, every one corresponding to

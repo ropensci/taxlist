@@ -3,11 +3,11 @@
 \alias{summary}
 \alias{summary,taxlist-method}
 
-\title{Print overview for \sQuote{taxlist} objects.}
+\title{Print Overviews for taxlist Objects and their Content}
 \description{
 A method to display either an overview of the content of
-\code{\linkS4class{taxlist}} objects or an overview of specific taxa
-in such objects.}
+\code{\linkS4class{taxlist}} objects or an overview of selected taxa.
+}
 \usage{
 \S4method{summary}{taxlist}(object, ConceptID, units="Kb", check_validity=TRUE,
 	display="both", maxsum=5, secundum=NULL, ...)
