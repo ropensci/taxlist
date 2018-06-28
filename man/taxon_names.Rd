@@ -46,15 +46,15 @@ names in empty \code{\linkS4class{taxlist}} objects.
 
 The function \code{'add_synonym'} works only for adding names to existing taxon
 concepts.
-For adding new taxon concepts as well you should use \code{\link{add_concept}}.
+For adding new taxon concepts as well you should use
+\code{\link{add_concept}}.
 }
 \value{
-An object of class \code{'data.frame'} or, in the case of the replacement
-method, a \code{\linkS4class{taxlist}} object with modified slot
-\code{'taxonNames'}.
+A data frame or, in the case of the replacement method, a
+\code{\linkS4class{taxlist}} object with modified slot \code{'taxonNames'}.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
 \code{\linkS4class{taxlist}}.

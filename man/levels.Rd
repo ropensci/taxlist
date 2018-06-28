@@ -1,7 +1,6 @@
 \name{levels}
 \docType{methods}
 \alias{levels}
-\alias{levels,factor-method}
 \alias{levels,taxlist-method}
 \alias{levels<-}
 \alias{levels<-,taxlist-method}
@@ -17,8 +16,6 @@ Also changes in concept circumscription may implicate changes in its taxonomic
 hierarchy.
 }
 \usage{
-\S4method{levels}{factor}(x, ...)
-
 \S4method{levels}{taxlist}(x, ...)
 }
 \arguments{
@@ -29,8 +26,8 @@ hierarchy.
 Taxonomic levels will be handled as factors in the \code{\linkS4class{taxlist}}
 objects.
 Those levels are useful for creating subsets of related groups (e.g. by
-functions \code{\link[=get_children]{get_children()}} or
-\code{\link[=get_parents]{get_parents()}}).
+functions \code{\link{get_children}} or
+\code{\link{get_parents}}).
 Levels in combination to parent-child relationships will be further used for
 checking consistency of taxonomic lists.
 

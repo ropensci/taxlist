@@ -5,10 +5,10 @@
 \title{Make and load Backups of R Objects}
 \description{
 When work with data becomes risky, the best practice is to produce backup files.
-The function of \code{backup_object()} is a wrapper of
-\code{\link[=save]{save()}}, adding a time stamp and a suffix to the name of the
+The function of \code{'backup_object'} is a wrapper of
+\code{\link{save}}, adding a time stamp and a suffix to the name of the
 resulting file (an R image file with extension \bold{*.rda}).
-The function \code{load_last()} is adapted to this style, loading the newest
+The function \code{'load_last'} is adapted to this style, loading the newest
 version to the session.
 }
 \usage{

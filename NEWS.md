@@ -21,8 +21,9 @@ taxlist 0.1.5
 * Function `match_names` counts multiple best matchings and includes a new argument `show_concepts` for displaying the respective accepted names and taxon concept ID.
 
 ### Bugs Fixes
-* Function `load_last` was not working for single files with suffix
+* Function `load_last` was not working for single files with suffix, neither for absolute path or paths with underscores.
 * Function `summary` for single taxa was not displaying names that are homonyms to the accepted name.
+* Re-organized documentation.
 
 taxlist 0.1.4
 =============

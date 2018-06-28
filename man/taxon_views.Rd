@@ -61,7 +61,7 @@ and query methods for interacting classifications in a taxonomic database.
 \emph{Taxon} 45: 223--241. \url{https://doi.org/10.1093/bioinformatics/15.2.149}
 }
 \seealso{
-\code{\link{add_view}}.
+\code{\linkS4class{taxlist}}.
 }
 \examples{
 library(taxlist)

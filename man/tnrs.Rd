@@ -38,6 +38,3 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \seealso{
 \code{\link[taxize]{tnrs}}.
 }
-\examples{
-## Add example for this function
-}

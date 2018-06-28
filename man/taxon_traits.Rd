@@ -39,7 +39,7 @@ The replacement method \code{'taxon_traits<-'} should be only used when
 constructing \code{\linkS4class{taxlist}} objects from an empty one.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \seealso{
 \code{\linkS4class{taxlist}}.

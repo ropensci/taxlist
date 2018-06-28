@@ -3,8 +3,8 @@ Version: 0.1.5
 Encoding: UTF-8
 Date: 2018-06-18
 Title: Handling Taxonomic Lists
-Author: Miguel Alvarez <kamapu78@gmail.com>
-Maintainer: Miguel Alvarez <kamapu78@gmail.com>
+Authors@R:
+	person("Miguel", "Alvarez", email="kamapu78@gmail.com", role=c("aut", "cre"))
 Depends:
     R(>= 3.0.0),
     stats,

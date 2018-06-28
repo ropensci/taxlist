@@ -7,7 +7,7 @@
 \description{
 Manipulation of slots may generate orphaned entries in
 \code{\linkS4class{taxlist}} objects.
-The function \code{clean()} deletes such entries and restores the consistency
+The function \code{'clean'} deletes such entries and restores the consistency
 of the objects.
 }
 \usage{

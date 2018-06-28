@@ -12,30 +12,24 @@ parent-child relationships, taxon views and taxon traits.
 Objects of this class are composed of three slots, every one corresponding to
 a data frame:
 \describe{
-	\item{taxonNames}{Table of names (accepted names and synonyms).}
-	\item{taxonRelations}{Relations between concepts, accepted names,
-		basionyms, parents and hierarchical level.}
-	\item{taxonTraits}{Table of taxon traits.}
-	\item{taxonViews}{References used to determine the respective concept
-		circumscription.}
+\item{taxonNames}{Table of taxon usage names (accepted names and synonyms).}
+\item{taxonRelations}{Relations between concepts, accepted names, basionyms,
+	parents and hierarchical level.}
+\item{taxonTraits}{Table of taxon traits.}
+\item{taxonViews}{References used to determine the respective concept
+	circumscription.}
 }
-}
-\section{Check of validity}{
-Using the function \code{\link{validObject}} it is possible to get a check on
-the consistency of information contained in \code{\linkS4class{taxlist}}
-objects.
-Former issues, among others, will be tested in the validity check:
-\itemize{
-	\item Mandatory column names in all slots.
-	\item Not duplicated IDs.
-	\item Not duplicated name combinations (name and author).
-	\item Not orphaned records.
-	\item Parents have to be of higher hierarchy than children, when this
-		information is available.
-}
+An additional property of \code{taxlist} objects are the taxonomic ranks, which
+can be set and retrieved using the function
+\code{\link[taxlist]{levels}}.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
+}
+\references{
+\bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant
+taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
+\url{https://doi.org/10.3897/bdj.6.e23635}
 }
 \examples{
 library(taxlist)

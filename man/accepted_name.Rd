@@ -20,7 +20,7 @@ Taxon usage names for a taxon concept can be divided into three categories:
 accepted names, basionyms and synonyms.
 Each single taxon concept may at least have an accepted name, while basionym
 and synonyms are optional.
-The functions \code{accepted_name()}, \code{basionym()} and \code{synonyms()}
+The functions \code{'accepted_name'}, \code{'basionym'} and \code{'synonyms'}
 can be used either to display the respective usage names or to set usage names
 in one of those categories.
 }
@@ -48,13 +48,13 @@ basionym(taxlist, ConceptID) <- value
 \item{ConceptID}{Integer containing concept IDs where to request or set
 	names for one category.}
 \item{show_traits}{Logical value, whether traits should be included in the
-	output of \code{accepted_name()} or not.}
+	output of \code{'accepted_name'} or not.}
 \item{value}{Integer containing usage IDs to be set to the respective category
 	in the respective taxon concept.}
 \item{...}{Further arguments passed among methods.}
 }
 \details{
-The function \code{accepted_name()} retrieves the accepted names for the
+The function \code{'accepted_name'} retrieves the accepted names for the
 indicated taxon concepts or for the whole \code{\linkS4class{taxlist}} object.
 By using \code{'show_traits=TRUE'}, the respective taxon traits will be
 displayed as well, providing an overview of taxa included in the object.
@@ -62,16 +62,16 @@ The replacement method for this function will set the respective usage name IDs
 as accepted names for the respective taxon concept, provided that these names
 are already set as synonyms in the respective concepts.
 
-The function \code{synonyms()} is working in a similar way as
-\code{accepted_name()}, but this function does not include taxon traits in the
-output and there is no replacing method for \code{synonyms()}.
+The function \code{'synonyms'} is working in a similar way as
+\code{'accepted_name'}, but this function does not include taxon traits in the
+output and there is no replacing method for \code{'synonyms'}.
 Alternatives for inserting new synonyms into a taxon concept are either moving
 synonyms from other taxa by using
 \code{\link{change_concept<-}} or inserting
-new names in the object by using \code{\link[=add_synonym]{add_synonym()}}.
+new names in the object by using \code{\link{add_synonym}}.
 
-The function \code{basionym()} is retrieving and setting basionyms in the
-respective taxon concepts similarly to \code{accepted_name()}, but this function
+The function \code{'basionym'} is retrieving and setting basionyms in the
+respective taxon concepts similarly to \code{'accepted_name'}, but this function
 does not retrieve any information on taxon traits, either.
 }
 \value{

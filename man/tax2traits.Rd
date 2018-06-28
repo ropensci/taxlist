@@ -27,7 +27,7 @@ relationships and information on taxonomic levels.
 An object of class \code{\linkS4class{taxlist}} with taxonomy added as traits.
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
 library(taxlist)

@@ -8,7 +8,7 @@
 When writing on bio-diversity, usage names could be automatically inserted in
 documents including the typical italic format for different elements of a
 scientific name.
-The function \code{print_name()} can be applied either in markdown documents or
+The function \code{'print_name'} can be applied either in markdown documents or
 for graphics.
 }
 \usage{

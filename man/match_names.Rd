@@ -7,7 +7,7 @@
 \description{
 Names provided in a character vector will be compared with names stored in slot
 \code{'taxonNames'} within an object of class \code{\linkS4class{taxlist}} by
-using the function \code{\link[=stringsim]{stringsim()}}.
+using the function \code{\link{stringsim}}.
 }
 \usage{
 \S4method{match_names}{character,taxlist}(x, object, clean=TRUE,
