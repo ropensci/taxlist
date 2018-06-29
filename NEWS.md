@@ -1,3 +1,9 @@
+taxlist 0.1.6
+=============
+
+### Improvements
+* A new option `style="knitr"` for function `print_name()`
+
 taxlist 0.1.5
 =============
 

@@ -1,7 +1,7 @@
 Package: taxlist
-Version: 0.1.5
+Version: 0.1.6
 Encoding: UTF-8
-Date: 2018-06-18
+Date: 2018-06-30
 Title: Handling Taxonomic Lists
 Authors@R:
 	person("Miguel", "Alvarez", email="kamapu78@gmail.com", role=c("aut", "cre"))

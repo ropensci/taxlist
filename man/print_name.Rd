@@ -51,7 +51,7 @@ data(Easplist)
 summary(Easplist, 363, secundum="secundum")
 
 ## Empty plot
-plot(NA, xlim=c(0,5), ylim=c(6,1), bty="n", xaxt="n", xlab="", ylab="options")
+plot(NA, xlim=c(0,5), ylim=c(7,1), bty="n", xaxt="n", xlab="", ylab="options")
 
 ## Accepted name with author
 text(0, 1, labels=print_name(Easplist, 363, style="expression"), pos=4)
@@ -73,5 +73,8 @@ text(0, 5, labels=print_name(Easplist, 363, style="markdown"), pos=4)
 
 ## HTML style
 text(0, 6, labels=print_name(Easplist, 363, style="html"), pos=4)
+
+## LaTeX style for knitr
+text(0, 7, labels=print_name(Easplist, 363, style="knitr"), pos=4)
 }
 \keyword{methods}

@@ -38,8 +38,9 @@ setMethod("print_name", signature(object="taxlist", id="numeric"),
 			if(second_mention)
 				Name[1] <- paste0(substring(Name[1], 1, 1), ".")
 			# Output style
-			style <- pmatch(tolower(style), c("markdown","html","expression"))
-			if(!style %in% c(1:3))
+			style <- pmatch(tolower(style), c("markdown","html","expression",
+							"knitr"))
+			if(!style %in% c(1:4))
 				stop("Non-valid value for 'style'")
 			if(style == 1) {
 				Start <- "*"
@@ -55,13 +56,10 @@ setMethod("print_name", signature(object="taxlist", id="numeric"),
 				for(i in 1:length(Name))
 					Name[i] <- paste0("\"", Name[i], "\"")
 			}
-			## style <- pmatch(tolower(style), c("markdown","html","latex"))
-			## if(!style %in% c(1:3))
-			##     stop("Non-valid value for 'style'")
-			## if(style == 3) {
-			##     Start <- "\\textit{"
-			##     End <- "}"
-			## }
+			if(style == 4) {
+				Start <- "\\textit{"
+				End <- "}"
+			}
 			# Construct string
 			for(i in 1:length(Name))
 				if(Italic[i])
