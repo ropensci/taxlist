@@ -33,6 +33,6 @@ backup_object <- function(..., objects=character(), file, stamp=TRUE,
         }
         stamp <- paste(stamp, i, sep="_")
     }
+	save(..., list=objects, file=paste0(file, stamp, ".rda"))
 	message(paste0("Saving backup as '", file, stamp, ".rda'"))
-    save(..., list=objects, file=paste0(file, stamp, ".rda"))
 }

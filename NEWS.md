@@ -2,7 +2,8 @@ taxlist 0.1.6
 =============
 
 ### Improvements
-* A new option `style="knitr"` for function `print_name()`
+* A new option `style="knitr"` for function `print_name()`.
+* In function `backup_object`, the message will be done after successful saving and not before.
 
 taxlist 0.1.5
 =============
