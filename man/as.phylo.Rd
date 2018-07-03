@@ -47,7 +47,7 @@ sedges <- subset(sedges, Level == "variety", slot="relations",
 sedges <- as.phylo(sedges)
 plot(sedges)
 
-sedges2 <- subset(Easplist, TaxonName %in% c("Kyllinga","Isolepis"), slot="names",
+sedges2 <- subset(Easplist, TaxonName \%in\% c("Kyllinga","Isolepis"), slot="names",
 	keep_children=TRUE, keep_parents=TRUE)
 sedges2 <- as.phylo(sedges2)
 plot(sedges2)
