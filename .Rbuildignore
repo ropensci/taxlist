@@ -10,3 +10,4 @@
 ^README\.md$
 ^README\.html$
 ^README-.*\.png$
+^TODO\.md$

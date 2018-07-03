@@ -11,8 +11,12 @@ setGeneric("print_name",
 
 # Set method
 setMethod("print_name", signature(object="taxlist", id="numeric"),
-		print_taxa <- function(object, id, concept=TRUE, second_mention=FALSE,
+		function(object, id, concept=TRUE, second_mention=FALSE,
 				include_author=TRUE, secundum, style="markdown", ...) {
+			if(length(id) > 1) {
+				warning("'print_taxa' will format only the first value in 'id'.")
+				id <- id[1]
+			}
 			if(concept) {
 				id_name <- object@taxonRelations$AcceptedName[
 						object@taxonRelations$TaxonConceptID == id]

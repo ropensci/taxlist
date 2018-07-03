@@ -8,6 +8,7 @@ importFrom(stringdist, stringsim)
 
 ## Import of packages
 import(methods)
+import(ape)
 
 ## Export of classes
 exportClasses(taxlist)
@@ -20,6 +21,7 @@ exportMethods(
 	add_synonym,
 	add_view,
 	as.list,
+	as.phylo,as.multiPhylo,
 	basionym,"basionym<-",
 	"change_concept<-",
 	clean,

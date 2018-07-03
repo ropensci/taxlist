@@ -7,6 +7,7 @@ Authors@R:
 	person("Miguel", "Alvarez", email="kamapu78@gmail.com", role=c("aut", "cre"))
 Depends:
     R(>= 3.0.0),
+    ape,
     stats,
     utils
 Imports:
@@ -17,8 +18,7 @@ Imports:
     stringdist,
     vegdata
 Suggests:
-	ape,
-    devtools,
+	devtools,
     knitr,
     stringi,
     taxa,
@@ -44,5 +44,6 @@ Collate:
     'change_concept.R''Extract.R''subset.R'
     'merge_taxa.R''backup_object.R''load_last.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R''tax2traits.R''match_names.R''print_name.R'
+    'as.phylo.R''as.multiPhylo.R'
     'StartMessage.R'
 VignetteBuilder: knitr
