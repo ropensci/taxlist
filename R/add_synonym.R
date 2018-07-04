@@ -22,6 +22,12 @@ setMethod("add_synonym", signature(taxlist="taxlist"),
             new_name <- list(TaxonConceptID=TaxonConceptID,
                     TaxonUsageID=TaxonUsageID, TaxonName=TaxonName,
                     AuthorName=AuthorName, ...)
+			for(i in colnames(taxlist@taxonNames)[
+					!colnames(taxlist@taxonNames) %in% names(new_name)])
+				new_name[[i]] <- rep(NA, length(new_name$TaxonConceptID))
+			for(i in names(new_name)[!names(new_name) %in%
+							colnames(taxlist@taxonNames)])
+				taxlist@taxonNames[,i] <- NA
             taxlist@taxonNames <- do.call(rbind,
                     list(taxlist@taxonNames,
                             new_name[match(colnames(taxlist@taxonNames),
