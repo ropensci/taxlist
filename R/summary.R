@@ -10,8 +10,8 @@ overview_taxlist <- function(object, units, check_validity) {
         cat("validation of 'taxlist' object:", validObject(object), sep=" ",
                 "\n")
     cat("\n")
-    cat("number of names:", nrow(object@taxonNames), sep=" ", "\n")
-    cat("number of concepts:", nrow(object@taxonRelations), sep=" ", "\n")
+    cat("number of taxon usage names:", nrow(object@taxonNames), sep=" ", "\n")
+    cat("number of taxon concepts:", nrow(object@taxonRelations), sep=" ", "\n")
     cat("trait entries:", nrow(object@taxonTraits), sep=" ", "\n")
 	cat("number of trait variables:", ncol(object@taxonTraits) - 1, sep=" ",
 			"\n")
