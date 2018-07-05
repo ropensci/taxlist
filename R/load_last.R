@@ -9,12 +9,11 @@ load_last <-function(file) {
 		path <- strsplit(file, "/", fixed=TRUE)[[1]]
 		file2 <- path[length(path)]
 		path <- file.path(path[-length(path)])
-	}
-	if(grepl("\\", file, fixed=TRUE)) {
+	} else if(grepl("\\", file, fixed=TRUE)) {
 		path <- strsplit(file, "/", fixed=TRUE)[[1]]
 		file2 <- path[length(path)]
 		path <- file.path(path[-length(path)])
-	}
+	} else file2 <- ""
 	inFolder <- list.files(path=path, pattern=".rda")
 	inFolder <- inFolder[grepl(file2, inFolder, fixed=TRUE)]
 	if(length(inFolder) == 0)

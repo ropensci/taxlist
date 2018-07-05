@@ -11,6 +11,7 @@ taxlist 0.1.6
 
 ### Bugs Fixes
 * Function `add_synonym` was not properly working for incomplete entries (missing variables in the replacement values.)
+* Function `load_last` was not properly working for values of `file` without mention of subfolder.
 
 taxlist 0.1.5
 =============
