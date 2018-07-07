@@ -98,45 +98,6 @@ This function can be also applied to a specific taxon:
 summary(Splist, "Erigeron floribundus")
 ```
 
-
-## 2.3 Resolving taxonomic names with taxize
-
-One of the main concerns is to resolve nomenclatorial
-issues, especially when working with historical data or combining data from
-different sources.
-For this purpose, `taxlist` implements a method for the function `tnrs` (package
-`taxize`):
-
-```{r resolving_nomenclature, message=FALSE}
-summary(Splist)
-Splist <- taxlist::tnrs(Splist)
-summary(Splist)
-```
-
-While after this procedure, the number of taxa remained as 35, the number of
-taxon names increased, indicating that some of the names in the original source
-are currently considered as synonyms.
-This is for example the case of *Erigeron floribundus*:
-
-```{r summary_all}
-summary(Splist, "Erigeron floribundus")
-```
-
-At this point it is important to mention that while most resolvers are offering
-ways to replace names by accepted ones, in `taxlist` objects both, accepted
-names and synonyms are preserved.
-Only typographical errors and names of authors will be changed in the object.
-This is important in the compilation of diversity records (i.e. vegetation plot
-databases), where the stored data have to be faithful to the source.
-Thus data connected to a taxon name can be automatically assigned to the
-correspondent taxon concept without to modify the record's entry.
-An overview to the accepted names and possible changes can be displayed as
-follows:
-
-```{r}
-accepted_name(Splist)[1:5,]
-```
-
 # 3. Built-in data set
 
 ## 3.1 Easplist
