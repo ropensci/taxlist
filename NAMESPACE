@@ -25,6 +25,7 @@ exportMethods(
 	basionym,"basionym<-",
 	"change_concept<-",
 	clean,
+	clean_strings,
 	delete_name,
 	df2taxlist,
 	get_children,
