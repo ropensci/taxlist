@@ -33,9 +33,6 @@ The same as input \code{'x'}.
 \author{
 Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
-\seealso{
-\code{\link[ape]{clean_strings}}.
-}
 \examples{
 library(taxlist)
 clean_strings(" Cyperus    papyrus L.     ")
