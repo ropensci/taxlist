@@ -21,7 +21,7 @@ setMethod("clean_strings", signature(x="character"),
 # Method for factor
 setMethod("clean_strings", signature(x="factor"),
 		function(x, from="utf8", to="utf8") {
-			levels(x) <- clean_strings(levels(x), from, to)
+			base::levels(x) <- clean_strings(base::levels(x), from, to)
 			return(x)
 		}
 )
