@@ -24,7 +24,7 @@ setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="numeric"),
 							c("TaxonConceptID","ViewID","Level")], sort=FALSE)
 			if(show_traits)
 				AcceptedName <- merge(AcceptedName, taxlist@taxonTraits,
-						sort=FALSE)
+						sort=FALSE, all.x=TRUE)
 			return(AcceptedName)
         }
 )

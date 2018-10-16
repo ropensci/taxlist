@@ -48,7 +48,7 @@ setClass("taxlist",
                 return("Duplicated names are not allowed in slot 'taxonNames'")
             if(!all(object@taxonRelations$TaxonConceptID %in%
                             object@taxonNames$TaxonConceptID))
-                return("Some concepts are missing in slot 'taxonNames'")
+                return("Some concepts from slot 'taxonRelations' are missing in slot 'taxonNames'")
             if(any(duplicated(paste(object@taxonNames$TaxonName,
                                     object@taxonNames$AuthorName))))
                 return("Some combinations of name and name's author are duplicated")
@@ -60,7 +60,7 @@ setClass("taxlist",
                 return("Duplicated concepts are not allowed in slot 'taxonRelations'")
             if(!all(object@taxonNames$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID))
-                return("Some concepts are missing in slot 'taxonRelations'")
+                return("Some concepts from slot 'taxonNames' are missing in slot 'taxonRelations'")
 			# taxonView
 			## if(!all(c("ViewID","Secundum") %in% colnames(object@taxonViews)))
 			##     return("'ViewID' and 'Secundum' are a mandatory columns in slot 'taxonViews'")
