@@ -1,8 +1,11 @@
 ---
-output: rmarkdown::github_document
+output:
+  github_document:
+    html_preview: false
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- Use snippet 'render_markdown' for it -->
 
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(

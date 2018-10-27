@@ -10,8 +10,8 @@ Names provided in a character vector will be compared with names stored in slot
 using the function \code{\link{stringsim}}.
 }
 \usage{
-\S4method{match_names}{character,taxlist}(x, object, clean=TRUE,
-	output="data.frame", best=5, show_concepts=FALSE, method="lcs", ...)
+\S4method{match_names}{character,taxlist}(x, object, clean=TRUE, output="data.frame",
+	best=5, show_concepts=FALSE, accepted_only=FALSE, method="lcs", ...)
 }
 \arguments{
 \item{x}{A character vector with names to be compared.}
@@ -24,6 +24,8 @@ using the function \code{\link{stringsim}}.
 	displayed (only working for \code{output="list"}).}
 \item{show_concepts}{Logical value, whether respective concepts should be
 	displayed in output or not.}
+\item{accepted_only}{Logical value, whether only accepted names should be
+	matched or all.}
 \item{method,...}{Further arguments passed to
 	\code{\link[stringdist]{stringsim}}.}
 }

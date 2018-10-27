@@ -12,13 +12,19 @@ setGeneric("match_names",
 # Compare character vector with taxon names of taxlist
 setMethod("match_names", signature(x="character", object="taxlist"),
 		function(x, object, clean=TRUE, output="data.frame", best=5,
-				show_concepts=FALSE, method="lcs", ...) {
+				show_concepts=FALSE, accepted_only=FALSE, method="lcs", ...) {
 			if(clean) {
 				x <- trimws(x, "both")
 				x <- gsub("\\s+", " ", x)
 			}
+			if(accepted_only) {
+				ref_name <- with(object@taxonNames,
+						TaxonName[TaxonUsageID %in%
+										object@taxonRelations$AcceptedName])
+			} else ref_name <- object@taxonNames$TaxonName
+			
 			SIM <- lapply(split(x, 1:length(x)), stringsim,
-					b=object@taxonNames$TaxonName, method=method, ...)
+					b=ref_name, method=method, ...)
 			output <- pmatch(output[1], c("data.frame","list"))
 			if(!output %in% c(1,2))
 				stop("non-valid value for 'output'")
