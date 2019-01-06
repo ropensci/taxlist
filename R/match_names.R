@@ -13,6 +13,8 @@ setGeneric("match_names",
 setMethod("match_names", signature(x="character", object="taxlist"),
 		function(x, object, clean=TRUE, output="data.frame", best=5,
 				show_concepts=FALSE, accepted_only=FALSE, method="lcs", ...) {
+			if(any(is.na(x)))
+				stop("NAs are not allowed in argument 'x'")
 			if(clean) {
 				x <- trimws(x, "both")
 				x <- gsub("\\s+", " ", x)
@@ -22,7 +24,6 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 						TaxonName[TaxonUsageID %in%
 										object@taxonRelations$AcceptedName])
 			} else ref_name <- object@taxonNames$TaxonName
-			
 			SIM <- lapply(split(x, 1:length(x)), stringsim,
 					b=ref_name, method=method, ...)
 			output <- pmatch(output[1], c("data.frame","list"))
