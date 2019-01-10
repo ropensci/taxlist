@@ -13,7 +13,7 @@ load_last <-function(file) {
 		path <- strsplit(file, "\\", fixed=TRUE)[[1]]
 		file2 <- path[length(path)]
 		path <- paste(path[-length(path)], collapse="/")
-	} else file2 <- ""
+	} else file2 <- file
 	inFolder <- list.files(path=path, pattern=".rda")
 	inFolder <- inFolder[grepl(file2, inFolder, fixed=TRUE)]
 	if(length(inFolder) == 0)
