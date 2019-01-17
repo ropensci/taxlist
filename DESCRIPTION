@@ -7,7 +7,6 @@ Authors@R:
 		role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834"))
 Depends:
     R(>= 3.0.0),
-    ape,
     stats,
     utils
 Imports:
@@ -45,6 +44,6 @@ Collate:
     'change_concept.R''Extract.R''subset.R'
     'merge_taxa.R''backup_object.R''load_last.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R''tax2traits.R''match_names.R''print_name.R'
-    'as.phylo.R''as.multiPhylo.R'
+    'as.multiPhylo.R'
     'StartMessage.R'
 VignetteBuilder: knitr

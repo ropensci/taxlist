@@ -21,7 +21,6 @@ exportMethods(
 	add_synonym,
 	add_view,
 	as.list,
-	as.phylo,as.multiPhylo,
 	basionym,"basionym<-",
 	"change_concept<-",
 	clean,
