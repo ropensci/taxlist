@@ -3,7 +3,7 @@ taxlist 0.1.6
 
 ### New Features
 
-* New methods `as.phylo` and `as.multiPhylo` for plotting parent-child relations in dendrograms
+* New function `count_taxa()`
 
 ### Improvements
 * A new option `style="knitr"` for function `print_name()` (See [this issue](https://stackoverflow.com/questions/51092103/formatted-scientific-names-from-r-to-latex-using-sweave-or-knitr)) at **Stack Overflow**.

@@ -8,7 +8,6 @@ importFrom(stringdist, stringsim)
 
 ## Import of packages
 import(methods)
-import(ape)
 
 ## Export of classes
 exportClasses(taxlist)
@@ -25,6 +24,7 @@ exportMethods(
 	"change_concept<-",
 	clean,
 	clean_strings,
+	count_taxa,
 	delete_name,
 	df2taxlist,
 	get_children,
