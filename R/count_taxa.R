@@ -29,9 +29,12 @@ setMethod("count_taxa", signature(object="factor"),
 setMethod("count_taxa", signature(object="taxlist"),
 		function(object, level, ...) {
 			if(missing(level))
-				n_taxa <- nrow(object@taxonRelations) else
+				n_taxa <- nrow(object@taxonRelations) else {
+				if(!level %in% levels(object))
+					stop("Value of argument 'level' is not a level in 'object'.")
 				n_taxa <- nrow(object@taxonRelations[
 								paste(object@taxonRelations$Level) == level,])
+			}
 			return(n_taxa)
 		}
 )
