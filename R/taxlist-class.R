@@ -28,7 +28,6 @@ setClass("taxlist",
                         Level=factor(),
                         ViewID=integer()
                 ),
-                hierarchy=character(),
                 taxonViews=data.frame(
                         ViewID=integer(),
 						## Secundum=character(),

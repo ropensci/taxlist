@@ -15,6 +15,7 @@ taxlist 0.1.6
 * Function `add_synonym()` was not properly working for incomplete entries (missing variables in the replacement values.)
 * Function `load_last()` was not properly working for values of `file` without mention of subfolder.
 * Function `accepted_name()` with option `show_traits=TRUE` was not displaying taxa with no entries for taxon traits.
+* Prototype for object `taxlist` wrongly included a slot **hierarchy.**
 
 taxlist 0.1.5
 =============
