@@ -58,7 +58,7 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 											stringsAsFactors=FALSE))
 						}, b=object)
 				new_names <- do.call(rbind, new_names)
-				new_names <- data.frame(submittename=x,
+				new_names <- data.frame(submittedname=x,
 				        TaxonName=with(object@taxonNames,
 				                TaxonName[match(new_names$TaxonUsageID,
 				                                TaxonUsageID)]),
