@@ -1,0 +1,41 @@
+# TODO:   Add comment
+# 
+# Author: Miguel Alvarez
+################################################################################
+
+library(vegtable2)
+library(xlsx)
+
+# Download taxonomic list
+conn <- dbConnect("PostgreSQL", dbname="veg_databases", host="localhost",
+		port=5432, user="miguel")
+sam_spp <- postgres2taxlist(conn, "sudamerica")
+
+# Changes ----------------------------------------------------------------------
+pg_insert_concept(conn, "sudamerica", data.frame(
+				TaxonName="Marchantiaceae",
+				AuthorName="Lindl.",
+				ViewID=7,
+				Level="family",
+				Parent=200880,
+				stringsAsFactors=FALSE))
+
+pg_insert_concept(conn, "sudamerica", data.frame(
+				TaxonName="Marchantia",
+				AuthorName="L.",
+				ViewID=7,
+				Level="genus",
+				Parent=200897,
+				stringsAsFactors=FALSE))
+
+pg_insert_concept(conn, "sudamerica", data.frame(
+				TaxonName="Marchantia polymorpha",
+				AuthorName="L.",
+				ViewID=7,
+				Level="species",
+				Parent=200898,
+				stringsAsFactors=FALSE))
+
+pg_insert_synonym(conn, "sudamerica", data.frame(
+				TaxonConceptID=3638,
+				TaxonName="D
