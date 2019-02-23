@@ -55,7 +55,11 @@ export(
     add_level,
 	backup_object,
 	dissect_name,
+	insert_rows,
 	load_last,
+	replace_idx,
+	replace_na,
+	replace_x,
 	S4_to_list,
 	tv2taxlist
 )

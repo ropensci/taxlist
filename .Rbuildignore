@@ -1,3 +1,4 @@
+^tests/taxa$
 ^\.project$
 ^\.gitignore$
 ^\.travis.yml$
@@ -11,3 +12,4 @@
 ^README\.html$
 ^README-.*\.png$
 ^TODO\.md$
+^R/taxlist2taxmap\.R$
