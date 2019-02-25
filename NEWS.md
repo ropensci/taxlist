@@ -1,6 +1,10 @@
 taxlist 0.1.7
 =============
 
+### New Features
+
+* Set of functions for data manipulation, namely `replace_x()`, `replace_idx()`, `replace_na()`, and `insert_rows()`.
+
 ### Bug Fixes
 
 * Function `match_names()` was not properly working for the option `accepted_only=TRUE`.

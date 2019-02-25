@@ -15,7 +15,7 @@ overview_taxlist <- function(object, units, check_validity) {
     cat("trait entries:", nrow(object@taxonTraits), sep=" ", "\n")
 	cat("number of trait variables:", ncol(object@taxonTraits) - 1, sep=" ",
 			"\n")
-	cat("reference entries:", nrow(object@taxonViews), sep=" ", "\n")
+	cat("taxon views:", nrow(object@taxonViews), sep=" ", "\n")
     if(any(!is.na(object@taxonRelations$Parent))) {
         cat("\n")
         cat("concepts with parents:",
