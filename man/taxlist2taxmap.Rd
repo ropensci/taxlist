@@ -2,7 +2,7 @@
 \docType{methods}
 \alias{taxlist2taxmap}
 \alias{taxlist2taxmap,taxlist-method}
-\alias{taxmap2taxlist,data.frame,missing-method}
+\alias{taxmap2taxlist}
 
 \title{Conversion among taxlist and taxmap objects}
 \description{
@@ -27,11 +27,11 @@ taxmap2taxlist(taxmap, relations, traits, synonyms, views, reindex=FALSE)
 }
 \details{
 This function should be used for the exchange of data between the packages
-\code{\link[=taxlist-package]{taxlist}} and \code{\link[=taxa-package]{taxa}}.
+\code{\link[=taxlist-package]{taxlist}} and \code{'taxa'}.
 }
 \value{
 Depending on the applied function, either a \code{\linkS4class{taxlist}} or a
-\code{\link{taxmap}} object.
+\code{'Taxmap'} object.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}) and Zachary Foster

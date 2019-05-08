@@ -16,7 +16,7 @@ setMethod("taxlist2taxmap", signature(taxlist="taxlist"),
 			taxlist_df$Parent <- with(taxlist@taxonRelations,
 					Parent[match(taxlist_df$TaxonConceptID, TaxonConceptID)])
 			taxlist_df$Level <- as.character(taxlist_df$Level)
-			obj <- taxa:::parse_edge_list(taxlist_df, taxon_id="TaxonConceptID",
+			obj <- taxa::parse_edge_list(taxlist_df, taxon_id="TaxonConceptID",
 					supertaxon_id="Parent", taxon_name="TaxonName",
 					taxon_rank="Level")
 			names(obj$data) <- c("relations")

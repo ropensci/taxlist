@@ -5,6 +5,7 @@ importFrom(vegdata, tv.home)
 importFrom(taxize, tnrs)
 importFrom(foreign, read.dbf)
 importFrom(stringdist, stringsim)
+importFrom(taxa, taxon_ids, taxon_ranks)
 
 ## Import of packages
 import(methods)
