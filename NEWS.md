@@ -1,6 +1,10 @@
 taxlist 0.1.7
 =============
 
+### New Features
+
+* Exchange of data with the package **taxa** through the functions `taxlist2taxmap()` and `taxmap2taxlist()`.
+
 ### Bug Fixes
 
 * Function `match_names()` was not properly working for the option `accepted_only=TRUE`.

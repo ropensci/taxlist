@@ -2,9 +2,12 @@ Package: taxlist
 Version: 0.1.7
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
-Authors@R:
-	person("Miguel", "Alvarez", email="kamapu78@gmail.com",
-		role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834"))
+Authors@R: c(
+    person("Miguel", "Alvarez", email="kamapu78@gmail.com",
+        role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834")),
+    person("Zachary", "Foster", email="zacharyfoster1989@gmail.com",
+        role="ctb", comment=c(ORCID = "0000-0002-5075-0948"))
+    )
 Depends:
     R(>= 3.0.0),
     stats,
@@ -17,7 +20,7 @@ Imports:
     stringdist,
     vegdata
 Suggests:
-	devtools,
+    devtools,
     knitr,
     stringi,
     taxa,
@@ -30,8 +33,8 @@ Description: Handling taxonomic lists through objects of class 'taxlist'.
     Also quick displays are implemented as summary-methods.
 License: GPL (>= 2)
 URL:
-	https://cran.r-project.org/package=taxlist,
-	https://github.com/kamapu/taxlist
+    https://cran.r-project.org/package=taxlist,
+    https://github.com/kamapu/taxlist
 BugReports: https://github.com/kamapu/taxlist/issues
 Collate:
     'NULLing.R''auxiliary_functions.R''deprecated-functions.R'
@@ -44,5 +47,6 @@ Collate:
     'change_concept.R''Extract.R''subset.R'
     'merge_taxa.R''backup_object.R''load_last.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R''tax2traits.R''match_names.R''print_name.R'
+    'taxlist2taxmap.R''taxmap2taxlist.R'
     'StartMessage.R'
 VignetteBuilder: knitr

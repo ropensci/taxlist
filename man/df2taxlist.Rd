@@ -46,7 +46,7 @@ All those elements can be added \emph{a posteriori} by further functions
 provided in this package.
 }
 \value{
-A \code{\linkS4class{taxlist} object}.
+A \code{\linkS4class{taxlist}} object.
 }
 \author{
 Miguel Alvarez, \email{kamapu78@gmail.com}.
