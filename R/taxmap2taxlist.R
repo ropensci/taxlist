@@ -17,7 +17,7 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 	if(missing(relations)) {
 		taxonRelations <- data.frame(
 				TaxonConceptID=TaxonConceptID,
-				TaxonName=taxon_names(taxmap),
+				TaxonName=taxa::taxon_names(taxmap),
 				stringsAsFactors=FALSE)
 	} else {
 		taxonRelations <- taxmap$data[[relations]]
@@ -31,7 +31,7 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 	if(!"TaxonUsageID" %in% colnames(taxonRelations))
 		taxonRelations$TaxonUsageID <- as.integer(1:nrow(taxonRelations))
 	if(!"TaxonName" %in% colnames(taxonRelations))
-		taxonRelations$TaxonName <- taxon_names(taxmap)
+		taxonRelations$TaxonName <- taxa::taxon_names(taxmap)
 	if(!"AuthorName" %in% colnames(taxonRelations) &
 			!is.null(taxmap$authorities))
 		taxonRelations$AuthorName <- taxmap$authorities

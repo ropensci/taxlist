@@ -8,7 +8,7 @@ taxlist 0.1.7
 ### Bug Fixes
 
 * Function `match_names()` was not properly working for the option `accepted_only=TRUE`.
-
+* Function `merge_taxa()` caused orphaned children of replaced taxon concepts.
 
 taxlist 0.1.6
 =============

@@ -16,6 +16,7 @@ Imports:
     foreign,
     grDevices,
     methods,
+    taxa,
     taxize,
     stringdist,
     vegdata
@@ -23,7 +24,6 @@ Suggests:
     devtools,
     knitr,
     stringi,
-    taxa,
     rmarkdown
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
