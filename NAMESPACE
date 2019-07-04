@@ -5,6 +5,7 @@ importFrom(vegdata, tv.home)
 importFrom(taxize, tnrs)
 importFrom(foreign, read.dbf)
 importFrom(stringdist, stringsim)
+importFrom(taxa, taxon_ids, taxon_ranks)
 
 ## Import of packages
 import(methods)
@@ -38,6 +39,7 @@ exportMethods(
 	summary,
 	synonyms,
 	tax2traits,
+	taxlist2taxmap,
 	taxon_names,"taxon_names<-",
 	taxon_relations,"taxon_relations<-",
 	taxon_traits,"taxon_traits<-",
@@ -61,5 +63,6 @@ export(
 	replace_na,
 	replace_x,
 	S4_to_list,
+	taxmap2taxlist,
 	tv2taxlist
 )
