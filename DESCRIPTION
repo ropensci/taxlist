@@ -24,6 +24,7 @@ Suggests:
     devtools,
     knitr,
     stringi,
+    testthat,
     rmarkdown
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
