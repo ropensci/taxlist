@@ -25,7 +25,8 @@ Suggests:
     knitr,
     stringi,
     testthat,
-    rmarkdown
+    rmarkdown,
+    covr
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
     This package provides functions to import species lists from 'Turboveg'

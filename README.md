@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- Use snippet 'render_markdown' for it -->
+
 # taxlist
 
 <!-- Budges -->
@@ -8,6 +10,8 @@
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 [![Travis Build
 Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
+[![Codecov test
+coverage](https://codecov.io/gh/kamapu/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/taxlist?branch=master)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
@@ -63,17 +67,23 @@ blocks. The first step will be to generate an empty `taxlist` object:
 
 ``` r
 library(taxlist)
+#> This is taxlist 0.1.7
+#> 
+#> Attaching package: 'taxlist'
+#> The following object is masked from 'package:base':
+#> 
+#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
-#> object size: 5.3 Kb 
+#> object size: 5.1 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
-#> number of names: 0 
-#> number of concepts: 0 
+#> number of taxon usage names: 0 
+#> number of taxon concepts: 0 
 #> trait entries: 0 
 #> number of trait variables: 0 
-#> reference entries: 0
+#> taxon views: 0
 ```
 
 As you can see, there is nothing in there. We start including taxonomic
@@ -85,8 +95,7 @@ levels:
 levels(Fern) <- c("variety","species","genus")
 ```
 
-Then you can add a
-species:
+Then you can add a species:
 
 ``` r
 Fern <- add_concept(Fern, TaxonName="Asplenium obliquum", AuthorName="Forster",
@@ -104,20 +113,19 @@ Fern <- add_concept(Fern,
     Level="variety")
 ```
 
-Finally add the genus and check the
-object:
+Finally add the genus and check the object:
 
 ``` r
 Fern <- add_concept(Fern, TaxonName="Asplenium", AuthorName="L.", Level="genus")
 summary(Fern)
-#> object size: 6.3 Kb 
+#> object size: 6.1 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
-#> number of names: 4 
-#> number of concepts: 4 
+#> number of taxon usage names: 4 
+#> number of taxon concepts: 4 
 #> trait entries: 0 
 #> number of trait variables: 0 
-#> reference entries: 0 
+#> taxon views: 0 
 #> 
 #> hierarchical levels: variety < species < genus 
 #> number of concepts in level variety: 2
@@ -169,14 +177,14 @@ of the species (ID **1**). Thus the relationships are set as:
 Fern <- update_concept(Fern, ConceptID=c(2,3), Parent=1)
 Fern <- update_concept(Fern, ConceptID=1, Parent=4)
 summary(Fern)
-#> object size: 6.3 Kb 
+#> object size: 6.2 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
-#> number of names: 4 
-#> number of concepts: 4 
+#> number of taxon usage names: 4 
+#> number of taxon concepts: 4 
 #> trait entries: 0 
 #> number of trait variables: 0 
-#> reference entries: 0 
+#> taxon views: 0 
 #> 
 #> concepts with parents: 3 
 #> concepts with children: 2 

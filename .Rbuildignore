@@ -12,3 +12,4 @@
 ^README\.html$
 ^README-.*\.png$
 ^TODO\.md$
+^codecov\.yml$
