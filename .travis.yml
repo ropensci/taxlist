@@ -1,4 +1,9 @@
 language: r
 cache: packages
 sudo: true
-env: CODECOV_TOKEN="61b4bc87-9f95-4b70-b0ad-0bf8bce07df1"
+
+r_github_packages:
+  - r-lib/covr
+
+after_success:
+  - Rscript -e 'covr::codecov()'
