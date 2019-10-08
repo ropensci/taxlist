@@ -13,8 +13,3 @@ r_check_args: "--as-cran"
 
 after_success:
   - Rscript -e 'covr::codecov()'
-
-notifications:
-  email:
-    on_sucess: change
-    on_failure: change
