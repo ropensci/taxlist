@@ -5,6 +5,7 @@ taxlist 0.1.7
 
 * Set of functions for data manipulation, namely `replace_x()`, `replace_idx()`, `replace_na()`, and `insert_rows()`.
 * Exchange of data with the package **taxa** through the functions `taxlist2taxmap()` and `taxmap2taxlist()`.
+* Function `clean()` with new argument **times** for repeat cleaning of `taxlist` objects.
 
 ### Improvements
 
@@ -14,6 +15,7 @@ taxlist 0.1.7
 
 * Function `match_names()` was not properly working for the option `accepted_only=TRUE`.
 * Function `merge_taxa()` caused orphaned children of replaced taxon concepts.
+* Function `clean()` not working for deleted names.
 
 
 taxlist 0.1.6

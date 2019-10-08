@@ -9,26 +9,36 @@ setGeneric("clean",
             standardGeneric("clean")
 )
 
+# Write a function used one time
+clean_once_taxlist <- function(object) {
+	# clean slot taxonRelations (lost accepted names)
+	object@taxonRelations <- object@taxonRelations[
+			object@taxonRelations$AcceptedName %in%
+					object@taxonNames$TaxonUsageID,]
+	# clean parents (deleted parents)
+	object@taxonRelations$Parent[!object@taxonRelations$Parent %in%
+					object@taxonRelations$TaxonConceptID] <- NA
+	# clean slot taxonNames (skip orphaned names)
+	object@taxonNames <- object@taxonNames[
+			object@taxonNames$TaxonConceptID %in%
+					object@taxonRelations$TaxonConceptID,]
+	# clean slot taxonTraits
+	if(nrow(object@taxonTraits) > 0)
+		object@taxonTraits <- object@taxonTraits[
+				object@taxonTraits$TaxonConceptID %in%
+						object@taxonRelations$TaxonConceptID,,drop=FALSE]
+	return(object)
+}
+
 # Method for 'taxlist' object
 setMethod("clean", signature(object="taxlist"),
-        function(object, ...) {
-            # clean slot taxonNames
-            object@taxonNames <- object@taxonNames[
-                    object@taxonNames$TaxonConceptID %in%
-                            object@taxonRelations$TaxonConceptID,]
-            # clean slot taxonViews
-            if(nrow(object@taxonViews) > 0)
-                object@taxonViews <- object@taxonViews[
-                        object@taxonViews$ViewID %in%
-                                object@taxonRelations$ViewID,,drop=FALSE]
-            # clean slot taxonTraits
-            if(nrow(object@taxonTraits) > 0)
-                object@taxonTraits <- object@taxonTraits[
-                        object@taxonTraits$TaxonConceptID %in%
-                                object@taxonRelations$TaxonConceptID,,drop=FALSE]
-            # clean parents (deleted parents)
-            object@taxonRelations$Parent[!object@taxonRelations$Parent %in%
-                            object@taxonRelations$TaxonConceptID] <- NA
+        function(object, times=2, ...) {
+			count <- 0
+			repeat {
+				count <- count + 1
+				object <- clean_once_taxlist(object)
+				if(count == times) break
+			}
 			# clean classes of key fields
 			object@taxonNames$TaxonConceptID <- as.integer(object@taxonNames$TaxonConceptID)
 			object@taxonNames$TaxonUsageID <- as.integer(object@taxonNames$TaxonUsageID)

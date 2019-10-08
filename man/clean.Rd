@@ -11,17 +11,18 @@ The function \code{'clean'} deletes such entries and restores the consistency
 of the objects.
 }
 \usage{
-\S4method{clean}{taxlist}(object, ...)
+\S4method{clean}{taxlist}(object, times=2, ...)
 }
 \arguments{
 \item{object}{A \code{\linkS4class{taxlist}} object.}
+\item{times}{An integer indicating how many times the cleaning should be
+	repeated.}
 \item{...}{Further arguments passed from or to other methods.}
 }
 \details{
 Cleaning of objects will follow the deletion of:
 \itemize{
 \item orphaned names.
-\item non cited references.
 \item orphaned taxon trait entries.
 \item orphaned parent entries.
 }
