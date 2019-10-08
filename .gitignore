@@ -1,6 +1,7 @@
 /.settings/
 /.project
-/tests/
+/tests/extras/
+/tests/hidden_data/
 /README.html
 inst/doc
 /Building_vignettes.R
