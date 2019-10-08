@@ -3,7 +3,18 @@ cache: packages
 sudo: true
 
 r_github_packages:
-  - r-lib/covr
+  - jimhester/covr
+
+r:
+  - release
+  - devel
+
+r_check_args: "--as-cran"
 
 after_success:
   - Rscript -e 'covr::codecov()'
+
+notifications:
+  email:
+    on_sucess: change
+    on_failure: change
