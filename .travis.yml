@@ -1,9 +1,13 @@
 language: r
 cache: packages
-sudo: true
+os:
+  - linux
+  - osx
+  - windows
 
 r_github_packages:
   - jimhester/covr
+  - ropensci/taxa
 
 r:
   - release
