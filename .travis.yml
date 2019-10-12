@@ -2,14 +2,15 @@ language: r
 cache: packages
 os:
   - linux
-  - osx
-  - windows
+  #- osx
+  #- windows
 
 r_github_packages:
   - jimhester/covr
   - ropensci/taxa
 
 r:
+  - oldrel
   - release
   - devel
 
