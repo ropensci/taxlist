@@ -18,6 +18,15 @@ test_that("function add_concept is working", {
 											Level="species", Parent=55707,
 											ViewID=1)@taxonRelations),
 					TRUE)
+			Euclea <- subset(Easplist, grepl("Euclea", TaxonName),
+					slot="names", keep_parents=TRUE)
+			Diospyros <- subset(Easplist, grepl("Diospyros", TaxonName),
+					slot="names")
+			expect_is(add_concept(Diospyros, Euclea), "taxlist")
+			# Same family in both taxlist objects retrieves error
+			Diospyros <- subset(Easplist, grepl("Diospyros", TaxonName),
+					slot="names", keep_parents=TRUE)
+			expect_error(add_concept(Diospyros, Euclea))
 		}
 )
 

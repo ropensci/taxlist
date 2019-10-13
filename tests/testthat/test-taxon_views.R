@@ -11,6 +11,13 @@ test_that("function taxon_views is working", {
 )
 
 test_that("function add_view is working", {
-			expect_is(taxon_views(Easplist), "data.frame")
+			expect_is(add_view(Easplist, secundum="Beentje et al. (1952)",
+							Title="Flora of Tropical East Africa",
+							URL="http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"),
+					"taxlist")
+			expect_equal(nrow(Easplist@taxonViews) < nrow(add_view(Easplist,
+									secundum="Beentje et al. (1952)",
+									Title="Flora of Tropical East Africa")@taxonViews),
+					TRUE)
 		}
 )
