@@ -13,6 +13,8 @@ taxlist 0.1.7
 * Second argument in function `[` applies only to slot **taxonTraits**.
 * Replacement method for functions `[` and `$` deprecated.
 * Method for function `$` matches all taxon concepts when retrieving information from slot **taxonTraits**.
+* Missing argument **idx2** will be set as **idx1** in functions `replace_idx()` and `replace_na()`.
+* Function `replace_view()` deprecated.
 
 ### Bug Fixes
 

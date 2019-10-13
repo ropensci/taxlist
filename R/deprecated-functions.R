@@ -14,3 +14,7 @@ add_trait <- function() {
 add_level <- function() {
 	.Deprecated(msg="'add_level' is deprecated. Use 'levels' or 'update_concept' instead.")
 }
+
+replace_view <- function() {
+	.Deprecated(msg="'replace_view' is deprecated. Use 'update_concept' instead.")
+}

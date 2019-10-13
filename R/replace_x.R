@@ -15,6 +15,7 @@ replace_x <- function(x, old, new) {
 replace_idx <- function(x, idx1, idx2, new) {
 	if(length(x) != length(idx1))
 		stop("Arguments 'x' and 'idx1' have to be of the same length.")
+	if(missing(idx2)) idx2 <- idx1
 	if(length(idx2) != length(new))
 		stop("Arguments 'idx2' and 'new' have to be of the same length.")
 	x[idx1 %in% idx2] <- new[match(idx1[idx1 %in% idx2], idx2)]
@@ -25,6 +26,7 @@ replace_idx <- function(x, idx1, idx2, new) {
 replace_na <- function(x, idx1, idx2, new) {
 	if(length(x) != length(idx1))
 		stop("Arguments 'x' and 'idx1' have to be of the same length.")
+	if(missing(idx2)) idx2 <- idx1
 	if(length(idx2) != length(new))
 		stop("Arguments 'idx2' and 'new' have to be of the same length.")
 	x[idx1 %in% idx2 & is.na(x)] <- new[match(idx1[idx1 %in% idx2 & is.na(x)],
@@ -41,4 +43,3 @@ insert_rows <- function(x, y) {
 	x <- do.call(rbind, list(x, y[,colnames(x)]))
 	return(x)
 }
-

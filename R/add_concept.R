@@ -68,13 +68,14 @@ setMethod("add_concept", signature(taxlist="taxlist", TaxonName="taxlist"),
 			# Change taxon views, if necessary
 			if(!missing(insert_view)) {
 				if(insert_view)
-					insert_view <- TaxonName@taxonViews$ViewID
-				new_view <- max(taxlist@taxonViews$ViewID)
-				new_view <- (new_view + 1):(new_view + length(insert_view))
-				taxlist <- add_view(TaxonName@taxonViews[
-								TaxonName@taxonViews$ViewID %in% insert_view,])
-				TaxonName@taxonViews <- taxlist@taxonViews
-				TaxonName <- replace_view(TaxonName, insert_view, new_view)
+					old_view <- TaxonName@taxonViews$ViewID
+				TaxonName@taxonViews$ViewID <- new_view <-
+						max(taxlist@taxonViews$ViewID) + c(1:length(old_view))
+				TaxonName@taxonRelations$ViewID <-
+						with(TaxonName@taxonRelations, replace_x(ViewID,
+										old_view, new_view))
+				taxlist@taxonViews <- insert_rows(taxlist@taxonViews,
+						TaxonName@taxonViews)
 			}
 			# Change names
 			old_names <- TaxonName@taxonNames$TaxonUsageID

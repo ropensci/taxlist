@@ -2,6 +2,7 @@
 \alias{add_parent}
 \alias{add_trait}
 \alias{add_level}
+\alias{replace_view}
 
 \title{Deprecated Functions}
 \description{
@@ -14,6 +15,8 @@ add_parent()
 add_trait()
 
 add_level()
+
+replace_view()
 }
 \seealso{
 \code{\link{update_concept}}.

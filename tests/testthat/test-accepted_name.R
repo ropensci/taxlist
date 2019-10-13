@@ -27,6 +27,9 @@ test_that("accepted_name replacement is working", {
 )
 
 test_that("basionym is working", {
+			expect_is(basionym(Easplist), "data.frame")
+			expect_equal(nrow(basionym(Easplist)),
+					nrow(Easplist@taxonRelations))
 			expect_equal({basionym(Easplist, 50074) <- 53097
 						with(Easplist@taxonRelations,
 								Basionym[TaxonConceptID == 50074])}, 53097)
@@ -36,5 +39,7 @@ test_that("basionym is working", {
 						basionym(Easplist, 50074)$Basionym},
 					with(Easplist@taxonRelations,
 							Basionym[TaxonConceptID == 50074]))
+			expect_error(basionym(Easplist, 50074) <- 51756)
+			expect_error(basionym(Easplist, 50074) <- c(53097, 53100))
 		}
 )

@@ -21,3 +21,14 @@ test_that("replacing NAs is working", {
 					letters[1:3])
 		}
 )
+
+test_that("inserting new rows and columns simultaneously", {
+			tmp <- iris
+			tmp$Species <- paste(iris$Species)
+			tmp2 <- data.frame(Species=rep("humilis", 2), Height=c(15,20),
+					stringsAsFactors=FALSE)
+			expect_is(insert_rows(tmp, tmp2), "data.frame")
+			expect_equal(nrow(tmp) < nrow(insert_rows(tmp, tmp2)), TRUE)
+			expect_equal(ncol(tmp) < ncol(insert_rows(tmp, tmp2)), TRUE)			
+		}
+)

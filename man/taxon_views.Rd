@@ -6,8 +6,6 @@
 \alias{taxon_views<-,taxlist,data.frame-method}
 \alias{add_view}
 \alias{add_view,taxlist-method}
-\alias{replace_view}
-\alias{replace_view,taxlist,numeric,numeric-method}
 
 \title{Management of concept views in taxonomic lists.}
 \description{
@@ -20,17 +18,12 @@ Retrieve or replace slot \code{taxonViews} in an object of class
 taxon_views(taxlist) <- value
 
 \S4method{add_view}{taxlist}(taxlist, ...)
-
-\S4method{replace_view}{taxlist,numeric,numeric}(taxlist, old_view, new_view,
-	...)
 }
 \arguments{
 \item{taxlist}{A \code{\linkS4class{taxlist}} object.}
 \item{value}{An object of class \code{'data.frame'} containing the references
 	used to define the circumscription of taxon concepts included in
 	\code{'taxlist'}.}
-\item{old_view,new_view}{View IDs (numeric vector) to be replaced in slot
-	\code{'taxonRelations'} (new in exchange to old).}
 \item{...}{Further arguments to be passed among methods.}
 }
 \details{
