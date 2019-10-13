@@ -10,6 +10,9 @@ taxlist 0.1.7
 ### Improvements
 
 * Warning in function `tax2traits()` for objects without taxonomic ranks.
+* Second argument in function `[` applies only to slot **taxonTraits**.
+* Replacement method for functions `[` and `$` deprecated.
+* Method for function `$` matches all taxon concepts when retrieving information from slot **taxonTraits**.
 
 ### Bug Fixes
 

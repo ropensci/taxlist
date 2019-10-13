@@ -15,7 +15,7 @@ exportClasses(taxlist)
 
 ## Export methods
 exportMethods(
-	"[", "[<-", "$", "$<-",
+	"[", "$",
 	accepted_name,"accepted_name<-",
 	add_concept,
 	add_synonym,

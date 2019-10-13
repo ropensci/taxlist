@@ -3,11 +3,7 @@
 \alias{Extract}
 \alias{[}
 \alias{[,taxlist-method}
-\alias{[<-}
-\alias{[<-,taxlist-method}
 \alias{$,taxlist-method}
-\alias{$<-}
-\alias{$<-,taxlist-method}
 
 \title{Extract or Replace Parts of taxlist Objects}
 \description{
@@ -17,28 +13,23 @@ Quick access to slots \code{'taxonTraits'} and \code{'taxonRelations'} within
 \usage{
 \S4method{$}{taxlist}(x, name)
 
-\S4method{[}{taxlist}(x, i, j, ..., slot="relations", drop=FALSE)
+\S4method{[}{taxlist}(x, i, j, drop=FALSE)
 }
 \arguments{
 \item{x}{Object of class \code{\linkS4class{taxlist}}.}
-\item{slot}{To which slot will be applied the extraction or replacement.}
-\item{...}{Further arguments passed to or from other methods.}
 \item{name}{A name to access.}
 \item{i,j}{Indices for access.}
 \item{drop}{A logical value passed to \code{\link[base]{Extract}}.}
 }
 \details{
 While the method \code{'$'} automatically recognizes the slot queried, provided
-that there is no shared column names, in the method \code{'['} you may specify
-it by the argument \code{'slot'} (default for \code{'taxonRelations'}).
-The argument \code{'slot'} allows partial matchings.
+that there is no shared column names.
 
 In the method \code{'['}, the first index is referred to the rows in slot
-\code{'taxonRelations'}, while the second index indicate the columns in either
-\code{'taxonRelations'} or \code{'taxonTraits'}.
+\code{'taxonRelations'}, while the second index indicate the columns in slot
+\code{'taxonTraits'}.
 
-The respective replacement methods \code{'$<-'} and \code{'[<-'} are also
-implemented.
+A replacement method \code{'$<-'} is also implemented.
 }
 \value{
 The method \code{'$'} retrieves a vector, while \code{'['} retrieves a subset

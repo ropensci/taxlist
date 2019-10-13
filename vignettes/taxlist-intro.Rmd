@@ -127,7 +127,7 @@ access to information in the slot `taxonTraits`, while the second can be also
 used for other slots in the object.
 
 ```{r summary_life_forms}
-summary(as.factor(Easplist$LifeForm))
+summary(as.factor(Easplist$lf_behn_2018))
 ```
 
 
