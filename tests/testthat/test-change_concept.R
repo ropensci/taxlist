@@ -16,5 +16,6 @@ test_that("assigning different concepts works", {
 										length(TaxonName[TaxonConceptID == 573]))
 							}, TRUE)
 			expect_error(change_concept(tmp, 50105) <- 573)
+			expect_error(change_concept(tmp, 50105) <- c(573, 50105))
 		}
 )

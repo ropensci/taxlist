@@ -19,5 +19,15 @@ test_that("function add_view is working", {
 									secundum="Beentje et al. (1952)",
 									Title="Flora of Tropical East Africa")@taxonViews),
 					TRUE)
+			tmp <- Easplist
+			tmp@taxonRelations$ViewID <- NA
+			tmp@taxonViews <- data.frame()
+			expect_is(add_view(tmp, secundum="Beentje et al. (1952)",
+							Title="Flora of Tropical East Africa",
+							URL="http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"),
+					"taxlist")
+			expect_equal(nrow(add_view(tmp, secundum="Beentje et al. (1952)",
+									Title="Flora of Tropical East Africa")@taxonViews),
+					1)
 		}
 )
