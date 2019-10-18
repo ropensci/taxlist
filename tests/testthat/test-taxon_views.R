@@ -7,6 +7,10 @@ context("manipulating taxon views")
 
 test_that("function taxon_views is working", {
 			expect_is(taxon_views(Easplist), "data.frame")
+			tmp <- Easplist
+			tmp@taxonRelations$ViewID <- NA
+			expect_equal(nrow({taxon_views(tmp) <- data.frame()
+							tmp@taxonViews}), 0)
 		}
 )
 

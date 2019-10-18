@@ -7,6 +7,13 @@ context("manipulating taxon usage names")
 
 test_that("function taxon_names is working", {
 			expect_is(taxon_names(Easplist), "data.frame")
+			Euclea <- subset(Easplist, charmatch("Euclea", TaxonName),
+					keep_children=TRUE)
+			Names_Euclea <- taxon_names(Euclea)
+			Names_Euclea$AuthorName <- "me"
+			expect_equal(all(({taxon_names(Euclea) <- Names_Euclea
+										Euclea@taxonNames$AuthorName}) == "me"),
+				TRUE)
 		}
 )
 

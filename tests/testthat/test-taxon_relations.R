@@ -5,8 +5,14 @@
 
 context("manipulating taxon concepts")
 
-test_that("function taxon_names is working", {
+test_that("function taxon_relations is working", {
 			expect_is(taxon_relations(Easplist), "data.frame")
+			tmp <- Easplist
+			tmp_rel <- Easplist@taxonRelations
+			tmp_rel$ViewID <- NA
+			expect_equal(all(is.na(({taxon_relations(tmp) <- tmp_rel
+													tmp@taxonRelations$ViewID}))),
+					TRUE)
 		}
 )
 
