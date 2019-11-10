@@ -9,19 +9,19 @@ Authors@R: c(
         role="ctb", comment=c(ORCID = "0000-0002-5075-0948"))
     )
 Depends:
-    R(>= 3.0.0),
-    stats,
-    utils
+    R(>= 3.0.0)
 Imports:
     foreign,
-    grDevices,
     methods,
+    stats,
     taxa,
     taxize,
     stringdist,
+    utils,
     vegdata
 Suggests:
     devtools,
+    goodpractice,
     knitr,
     stringi,
     testthat,

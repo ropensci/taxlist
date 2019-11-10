@@ -70,7 +70,7 @@ setMethod("add_concept", signature(taxlist="taxlist", TaxonName="taxlist"),
 				if(insert_view)
 					old_view <- TaxonName@taxonViews$ViewID
 				TaxonName@taxonViews$ViewID <- new_view <-
-						max(taxlist@taxonViews$ViewID) + c(1:length(old_view))
+						max(taxlist@taxonViews$ViewID) + seq_along(old_view)
 				TaxonName@taxonRelations$ViewID <-
 						with(TaxonName@taxonRelations, replace_x(ViewID,
 										old_view, new_view))

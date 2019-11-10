@@ -2,10 +2,8 @@
 ^\.project$
 ^\.gitignore$
 ^\.travis.yml$
-^\.settings/de\.walware\.r\.core\.prefs$
-^\.settings/org\.eclipse\.core\.resources\.prefs$
-^tests/extras/buildignore\.R$
-^tests/extras/format_data\.R$
+^\.settings$
+^\.dbeaver$
 ^README-figures$
 ^README\.Rmd$
 ^README\.md$

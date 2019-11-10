@@ -57,7 +57,7 @@ setMethod("print_name", signature(object="taxlist", id="numeric"),
 			if(style == 3) {
 				Start <- "italic("
 				End <- ")"
-				for(i in 1:length(Name))
+				for(i in seq_along(Name))
 					Name[i] <- paste0("\"", Name[i], "\"")
 			}
 			if(style == 4) {
@@ -65,7 +65,7 @@ setMethod("print_name", signature(object="taxlist", id="numeric"),
 				End <- "}"
 			}
 			# Construct string
-			for(i in 1:length(Name))
+			for(i in seq_along(Name))
 				if(Italic[i])
 					Name[i] <- paste0(Start, Name[i], End)
 			if(style == 3) {

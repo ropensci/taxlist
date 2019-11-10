@@ -73,7 +73,7 @@ setMethod("df2taxlist", signature(x="character", AcceptedName="missing"),
                 warning("Some duplicated names will be deleted")
                 x <- x[!duplicated(x)]
             }
-            x <- list(TaxonUsageID=1:length(x), TaxonConceptID=1:length(x),
+            x <- list(TaxonUsageID=seq_along(x), TaxonConceptID=seq_along(x),
                     TaxonName=x, ...)
             x <- as.data.frame(x, stringsAsFactors=FALSE)
             return(df2taxlist(x, TRUE))

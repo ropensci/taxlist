@@ -17,7 +17,7 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 				stop("NAs are not allowed in argument 'x'")
 			if(clean)
 				x <- clean_strings(x)
-			SIM <- lapply(split(x, 1:length(x)), function(a, b, method) {
+			SIM <- lapply(split(x, seq_along(x)), function(a, b, method) {
 						similarity <- stringsim(a, b@taxonNames$TaxonName, method)
 						return(list(TaxonUsageID=b@taxonNames$TaxonUsageID[
 												order(similarity, decreasing=TRUE)],

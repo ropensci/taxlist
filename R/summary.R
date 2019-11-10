@@ -45,7 +45,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
 		if(ConceptID[1] == "all")
 			ConceptID <- object@taxonRelations$TaxonConceptID[1:maxsum] else {
 			Names <- list()
-			for(i in 1:length(ConceptID)) {
+			for(i in seq_along(ConceptID)) {
 				Names[[i]] <- object@taxonNames$TaxonConceptID[grepl(ConceptID[i],
 								object@taxonNames$TaxonName, fixed=TRUE)]
 			}
@@ -117,7 +117,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
             cat("\n")
             cat("# synonyms (", nrow(Synonym[[paste(i)]]), "): ", sep="",
                     "\n")
-            for(j in 1:nrow(Synonym[[paste(i)]])) {
+            for(j in seq_len(nrow(Synonym[[paste(i)]]))) {
 				temp_name <- Synonym[[paste(i)]][j, display]
                 cat(paste(temp_name, collapse=" "), "\n")
             }

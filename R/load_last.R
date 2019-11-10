@@ -32,7 +32,7 @@ load_last <-function(file) {
 	colnames(OUT) <- c("date","suffix")
 	OUT$filename <- inFolder
 	OUT <- OUT[nchar(OUT$date) == 10,]
-	OUT$order <- c(1:nrow(OUT))
+	OUT$order <- c(seq_len(nrow(OUT)))
 	OUT$date <- as.Date(OUT$date)
 	OUT$suffix <- as.integer(OUT$suffix)
 	OUT <- OUT[with(OUT, order(date, suffix)),]

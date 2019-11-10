@@ -8,7 +8,7 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 	# Extract concept IDs
 	old_ids <- taxon_ids(taxmap)
 	if(reindex)
-		TaxonConceptID <- as.integer(1:length(old_ids)) else
+		TaxonConceptID <- as.integer(seq_along(old_ids)) else
 		TaxonConceptID <- as.integer(old_ids)
 	if(any(is.na(TaxonConceptID)))
 		stop("Some values of 'taxon_id' cannot be coerced to integers. Try 'reindex=TRUE'")
@@ -29,7 +29,7 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 	
 	# Extract names IDs and respective information
 	if(!"TaxonUsageID" %in% colnames(taxonRelations))
-		taxonRelations$TaxonUsageID <- as.integer(1:nrow(taxonRelations))
+		taxonRelations$TaxonUsageID <- as.integer(seq_len(nrow(taxonRelations)))
 	if(!"TaxonName" %in% colnames(taxonRelations))
 		taxonRelations$TaxonName <- taxa::taxon_names(taxmap)
 	if(!"AuthorName" %in% colnames(taxonRelations) &
@@ -63,7 +63,7 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 				c("TaxonConceptID", "TaxonName", "AuthorName"))
 		if(!"TaxonUsageID" %in% colnames(Synonyms))
 			Synonyms$TaxonUsageID <- as.integer(max(taxonNames$TaxonUsageID) +
-							1:nrow(Synonyms))
+							seq_len(nrow(Synonyms)))
 		taxonNames <- do.call(rbind, list(taxonNames,
 						Synonyms[,colnames(taxonNames)]))
 	}
