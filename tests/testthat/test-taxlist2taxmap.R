@@ -6,8 +6,7 @@
 context("conversion to taxa")
 
 # Loading installed examples
-## load(file.path(path.package("taxlist"), "taxlist_examples/examples.Rda"))
-load("examples.rda")
+load(file.path(path.package("taxlist"), "taxlist_examples/examples.Rda"))
 data1 <- taxlist2taxmap(data1)
 
 test_that("conversion to taxa is working", {
