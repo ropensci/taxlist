@@ -140,6 +140,28 @@ Hierarchical levels, parent-child relationships and synonyms are included in the
 exemplary data `Easplist`.
 For further functions, look to the package's manual.
 
+## Similar packages
+
+The package `taxlist` follows similar tasks than
+[`taxa`](https://github.com/ropensci/taxa), but both packages focus on the
+implementation of different approaches for object oriented programming in **R**,
+namely S4 and R6, respectively.
+
+
+
+
+
+The aim of `taxlist` is to provide an object class for its implementation on
+vegetation-plot data sets imported from [**Turboveg
+2**](http://www.synbiosys.alterra.nl/turboveg) in a similar way as done by
+[`vegdata`]( https://CRAN.R-project.org/package=vegdata) but including all
+information in a single object.
+ 
+
+
+[here](https://github.com/ropensci/software-review/issues/233#issuecomment-427814756)
+
+
 ## Acknowledgements
 The author thanks **Stephan Hennekens**, developer of
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and great

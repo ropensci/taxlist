@@ -1,9 +1,9 @@
-^tests/taxa$
-^\.project$
-^\.gitignore$
-^\.travis.yml$
-^\.settings$
 ^\.dbeaver$
+^\.git$
+^\.settings$
+^\.gitignore$
+^\.project$
+^\.travis.yml$
 ^README-figures$
 ^README\.Rmd$
 ^README\.md$
