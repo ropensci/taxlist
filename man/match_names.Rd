@@ -1,6 +1,7 @@
 \name{match_names}
 \docType{methods}
 \alias{match_names}
+\alias{match_names,character,character-method}
 \alias{match_names,character,taxlist-method}
 
 \title{Search Matchings between Character and taxlist Objects}
@@ -10,6 +11,8 @@ Names provided in a character vector will be compared with names stored in slot
 using the function \code{\link{stringsim}}.
 }
 \usage{
+\S4method{match_names}{character,character}(x, object, best=5, clean=TRUE, ...)
+
 \S4method{match_names}{character,taxlist}(x, object, clean=TRUE, output="data.frame",
 	best=5, show_concepts=FALSE, accepted_only=FALSE, method="lcs", ...)
 }

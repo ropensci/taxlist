@@ -9,6 +9,23 @@ setGeneric("match_names",
 			standardGeneric("match_names")
 )
 
+# Method for character values
+setMethod("match_names", signature(x="character", object="character"),
+		function(x, object, best=5, clean=TRUE, ...) {
+			if(length(x) > 1) {
+				warning("Only the first element in 'x' will be compared.")
+				x <- x[1]
+			}
+			if(clean) {
+				x <- clean_strings(x)
+				object <- clean_strings(object)
+			}
+			c_sim <- stringsim(x, object, ...)
+			object <- object[order(c_sim, decreasing=TRUE)]
+			return(object[seq_len(best)])
+		}
+)
+
 # Compare character vector with taxon names of taxlist
 setMethod("match_names", signature(x="character", object="taxlist"),
 		function(x, object, clean=TRUE, output="data.frame", best=5,
