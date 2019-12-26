@@ -9,7 +9,7 @@ Authors@R: c(
         role="ctb", comment=c(ORCID = "0000-0002-5075-0948"))
     )
 Depends:
-    R(>= 3.0.0)
+    R(>= 3.5.0)
 Imports:
     foreign,
     methods,
@@ -49,6 +49,5 @@ Collate:
     'change_concept.R''Extract.R''subset.R'
     'merge_taxa.R''backup_object.R''load_last.R''summary.R'
     'df2taxlist.R''tv2taxlist.R''tnrs.R''tax2traits.R''match_names.R''print_name.R'
-    'taxlist2taxmap.R''taxmap2taxlist.R'
     'StartMessage.R'
 VignetteBuilder: knitr
