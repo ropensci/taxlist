@@ -36,7 +36,6 @@ exportMethods(
 	summary,
 	synonyms,
 	tax2traits,
-	taxlist2taxmap,
 	taxon_names,"taxon_names<-",
 	taxon_relations,"taxon_relations<-",
 	taxon_traits,"taxon_traits<-",
@@ -61,6 +60,5 @@ export(
 	replace_view,
 	replace_x,
 	S4_to_list,
-	taxmap2taxlist,
 	tv2taxlist
 )

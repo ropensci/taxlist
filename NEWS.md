@@ -5,7 +5,6 @@ taxlist 0.1.7
 
 * Method for character values in function `match_names()`.
 * Set of functions for data manipulation, namely `replace_x()`, `replace_idx()`, `replace_na()`, and `insert_rows()`.
-* Exchange of data with the package **taxa** through the functions `taxlist2taxmap()` and `taxmap2taxlist()`.
 * Function `clean()` with new argument **times** for repeat cleaning of `taxlist` objects.
 
 ### Improvements
