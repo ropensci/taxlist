@@ -198,7 +198,7 @@ summary(Easplist, "Cyperus papyrus")
 ```
 ````
 
-You can than insert insert in your document inline codes, such as <code>*Cyperus papyrus* L.</code>, which will insert *Cyperus papyrus* L. in your document (note that the number is the ID of the taxon concept in `Easplist`). Fort a second mention of the same species, you can then use <code>*C. papyrus*</code>, which will insert *C. papyrus* in your text.
+You can than insert insert in your document inline codes, such as `r print_name(Easplist, 206)`, which will insert *Cyperus papyrus* L. in your document (note that the number is the ID of the taxon concept in `Easplist`). Fort a second mention of the same species, you can then use <code>*C. papyrus*</code>, which will insert *C. papyrus* in your text.
 
 Acknowledgements
 ----------------
