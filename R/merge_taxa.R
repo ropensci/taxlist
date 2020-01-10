@@ -19,7 +19,8 @@ setMethod("merge_taxa", signature(object="taxlist", concepts="numeric",
 			if(!length(concepts) > 1)
 				stop("Argument 'concepts' must have a length > 1")
 			if(any(!concepts %in% object@taxonRelations$TaxonConceptID))
-				stop("All values in 'concepts' should be included as concepts in 'object'")
+				stop(paste("All values in 'concepts' should be included as",
+								"concepts in 'object'"))
 			# Merging concepts
 			object@taxonNames[object@taxonNames$TaxonConceptID %in% concepts,
 					"TaxonConceptID"] <- concepts[1]

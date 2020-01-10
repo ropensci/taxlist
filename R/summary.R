@@ -46,7 +46,8 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
 			ConceptID <- object@taxonRelations$TaxonConceptID[1:maxsum] else {
 			Names <- list()
 			for(i in seq_along(ConceptID)) {
-				Names[[i]] <- object@taxonNames$TaxonConceptID[grepl(ConceptID[i],
+				Names[[i]] <- object@taxonNames$TaxonConceptID[
+						grepl(ConceptID[i],
 								object@taxonNames$TaxonName, fixed=TRUE)]
 			}
 			ConceptID <- do.call(c, Names)
@@ -85,7 +86,8 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
         if(is.na(temp_name)) temp_name <- "none" else {
 			if(!is.null(secundum))
 				if(!secundum %in% colnames(object@taxonViews)) {
-					stop("Value of 'secundum' is not included as column in slot 'taxonViews'")
+					stop(paste("Value of 'secundum' is not included as",
+									"column in slot 'taxonViews'"))
 				} else temp_name <- paste(temp_name, "-",
 							object@taxonViews[object@taxonViews$ViewID ==
 											temp_name, secundum])

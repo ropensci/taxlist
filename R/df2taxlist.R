@@ -25,14 +25,17 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
             # When all accepted names
             if(length(AcceptedName) == 1) {
                 if(!AcceptedName)
-                    stop("for 'AcceptedName' of length 1 only value 'TRUE' is allowed")
+                    stop(paste("for 'AcceptedName' of length 1 only value",
+									"'TRUE' is allowed"))
                 AcceptedName <- rep(AcceptedName, nrow(x))
             }
             if(length(AcceptedName) != nrow(x))
                 stop("Argument 'AcceptedName' not matching the size of 'x'")
             Heads <- c("TaxonUsageID","TaxonConceptID","TaxonName","AuthorName")
             if(!all(Heads %in% colnames(x)))
-                stop("'TaxonUsageID', 'TaxonConceptID', 'TaxonName', and 'AuthorName' are mandatory columns in 'x'")
+                stop(paste("'TaxonUsageID', 'TaxonConceptID', 'TaxonName',",
+								"and 'AuthorName' are mandatory columns",
+								"in 'x'"))
             if(any(duplicated(x$TaxonUsageID)))
                 stop("Duplicated usage IDs are not allowed")
             # set classes

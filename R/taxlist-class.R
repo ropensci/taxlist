@@ -42,27 +42,36 @@ setClass("taxlist",
             # slot taxonNames
 			if(!all(c("TaxonUsageID","TaxonConceptID","TaxonName",
 							"AuthorName") %in% colnames(object@taxonNames)))
-				return("'TaxonUsageID', 'TaxonConceptID', 'TaxonName' and 'AuthorName' are mandatory columns in slot 'taxonNames'")
+				return(paste("'TaxonUsageID', 'TaxonConceptID', 'TaxonName'",
+								"and 'AuthorName' are mandatory columns in",
+								"slot 'taxonNames'"))
             if(any(duplicated(object@taxonNames$TaxonUsageID)))
                 return("Duplicated names are not allowed in slot 'taxonNames'")
             if(!all(object@taxonRelations$TaxonConceptID %in%
                             object@taxonNames$TaxonConceptID))
-                return("Some concepts from slot 'taxonRelations' are missing in slot 'taxonNames'")
+                return(paste("Some concepts from slot 'taxonRelations' are",
+								"missing in slot 'taxonNames'"))
             if(any(duplicated(paste(object@taxonNames$TaxonName,
                                     object@taxonNames$AuthorName))))
-                return("Some combinations of name and name's author are duplicated")
+                return(paste("Some combinations of name and name's author",
+								"are duplicated"))
             # slot taxonRelations
             if(!all(c("TaxonConceptID","AcceptedName","Basionym","Parent",
                             "Level") %in% colnames(object@taxonRelations)))
-                return("'TaxonConceptID', 'AcceptedName', 'Basionym', 'Parent', 'Level' are mandatory columns in slot 'taxonRelations'")
+                return(paste("'TaxonConceptID', 'AcceptedName', 'Basionym',",
+								"'Parent', 'Level' are mandatory columns in",
+								"slot 'taxonRelations'"))
             if(any(duplicated(object@taxonRelations$TaxonConceptID)))
-                return("Duplicated concepts are not allowed in slot 'taxonRelations'")
+                return(paste("Duplicated concepts are not allowed in slot",
+								"'taxonRelations'"))
             if(!all(object@taxonNames$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID))
-                return("Some concepts from slot 'taxonNames' are missing in slot 'taxonRelations'")
+                return(paste("Some concepts from slot 'taxonNames' are",
+								"missing in slot 'taxonRelations'"))
 			# taxonView
 			## if(!all(c("ViewID","Secundum") %in% colnames(object@taxonViews)))
-			##     return("'ViewID' and 'Secundum' are a mandatory columns in slot 'taxonViews'")
+			##     return(paste("'ViewID' and 'Secundum' are a mandatory",
+			##                     "columns in slot 'taxonViews'"))
 			if(!"ViewID" %in% colnames(object@taxonViews))
 				return("'ViewID' is a mandatory column in slot 'taxonViews'")
             if(any(duplicated(object@taxonViews$ViewID)))
@@ -74,12 +83,15 @@ setClass("taxlist",
                 return("Some concept views are missing in slot 'taxonViews'")
             # taxonTraits
             if(!"TaxonConceptID" %in% colnames(object@taxonTraits))
-                return("'TaxonConceptID' is a mandatory column in slot 'taxonTraits'")
+                return(paste("'TaxonConceptID' is a mandatory column in",
+								"slot 'taxonTraits'"))
             if(any(!object@taxonTraits$TaxonConceptID %in%
                             object@taxonRelations$TaxonConceptID))
-                return("Some concepts in 'taxonTraits' are not included in slot 'taxonRelations'")
+                return(paste("Some concepts in 'taxonTraits' are not",
+								"included in slot 'taxonRelations'"))
             if(any(duplicated(object@taxonTraits$TaxonConceptID)))
-                return("Duplicated concepts are not allowed in slot 'taxonTraits'")
+                return(paste("Duplicated concepts are not allowed in",
+								"slot 'taxonTraits'"))
             # parent-child relationships
             if(!all(is.na(object@taxonRelations$Parent)) &
                     !all(is.na(object@taxonRelations$Level))) {
@@ -90,32 +102,44 @@ setClass("taxlist",
                                 object@taxonRelations$TaxonConceptID),
                         c("TaxonConceptID","Level")]
                 if(any(as.numeric(Children$Level) >= as.numeric(Parents$Level)))
-                    return("Some parent-child relationships are inconsistent with hierarchical levels")
+                    return(paste("Some parent-child relationships are",
+									"inconsistent with hierarchical levels"))
                 rm(Children,Parents)
             }
 			# Accepted Names
 			if(!all(is.na(object@taxonRelations$AcceptedName))) {
 				if(any(!object@taxonRelations$AcceptedName %in%
 								object@taxonNames$TaxonUsageID))
-					return("Some 'AcceptedName' entries in slot 'taxonRelations' do not exist in slot 'taxonNames'")
-				temp <- object@taxonNames[match(object@taxonRelations$AcceptedName,
+					return(paste("Some 'AcceptedName' entries in slot",
+									"'taxonRelations' do not exist in",
+									"slot 'taxonNames'"))
+				temp <- object@taxonNames[
+						match(object@taxonRelations$AcceptedName,
 								object@taxonNames$TaxonUsageID),
 						c("TaxonConceptID","TaxonUsageID")]
 				if(any(temp$TaxonConceptID !=
 								object@taxonRelations$TaxonConceptID))
-					return("Some 'AcceptedName' entries in slot 'taxonRelations' are not matching the respective 'TaxonConceptID' in slot 'taxonNames'")
+					return(paste("Some 'AcceptedName' entries in slot",
+									"'taxonRelations' are not matching the",
+									"respective 'TaxonConceptID' in slot",
+									"'taxonNames'"))
 			}
 			# The same for basionyms
 			if(!all(is.na(object@taxonRelations$Basionym))) {
 				if(any(!object@taxonRelations$Basionym %in%
 								object@taxonNames$TaxonUsageID))
-					return("Some 'Basionym' entries in slot 'taxonRelations' do not exist in slot 'taxonNames'")
+					return(paste("Some 'Basionym' entries in slot",
+									"'taxonRelations' do not exist in",
+									"slot 'taxonNames'"))
 				temp <- object@taxonNames[match(object@taxonRelations$Basionym,
 								object@taxonNames$TaxonUsageID),
 						c("TaxonConceptID","TaxonUsageID")]
 				if(any(temp$TaxonConceptID !=
 								object@taxonRelations$TaxonConceptID))
-					return("Some 'Basionym' entries in slot 'taxonRelations' are not matching the respective 'TaxonConceptID' in slot 'taxonNames'")
+					return(paste("Some 'Basionym' entries in slot",
+									"'taxonRelations' are not matching the",
+									"respective 'TaxonConceptID' in",
+									"slot 'taxonNames'"))
 			}
 		}
 )

@@ -31,7 +31,8 @@ setMethod("count_taxa", signature(object="taxlist"),
 			if(missing(level))
 				n_taxa <- nrow(object@taxonRelations) else {
 				if(!level %in% levels(object))
-					stop("Value of argument 'level' is not a level in 'object'.")
+					stop(paste("Value of argument 'level' is not a level in",
+									"'object'."))
 				n_taxa <- nrow(object@taxonRelations[
 								paste(object@taxonRelations$Level) == level,])
 			}

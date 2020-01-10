@@ -13,7 +13,8 @@ setGeneric("update_trait",
 setMethod("update_trait", signature(taxlist="taxlist", ConceptID="numeric"),
 		function(taxlist, ConceptID, ...) {
 			if(any(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID))
-				stop("Some values of 'ConceptID' are not included as taxon concept IDs in 'taxlist'.")
+				stop(paste("Some values of 'ConceptID' are not included as",
+								"taxon concept IDs in 'taxlist'."))
 			new_entries <- list(...)
 			for(i in names(new_entries)[!names(new_entries) %in%
 							colnames(taxlist@taxonTraits)])
@@ -46,7 +47,8 @@ setGeneric("update_concept",
 setMethod("update_concept", signature(taxlist="taxlist", ConceptID="numeric"),
 		function(taxlist, ConceptID, ...) {
 			if(any(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID))
-				stop("Some values of 'ConceptID' are not included as taxon concept IDs in 'taxlist'.")
+				stop(paste("Some values of 'ConceptID' are not included as",
+								"taxon concept IDs in 'taxlist'."))
 			new_entries <- list(...)
 			for(i in names(new_entries)[names(new_entries) %in%
 							colnames(taxlist@taxonRelations)])

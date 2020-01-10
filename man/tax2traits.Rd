@@ -34,11 +34,11 @@ library(taxlist)
 data(Easplist)
 
 ## Family Acanthaceae with children
-Easplist <- subset(Easplist, TaxonName == "Acanthaceae", slot="names",
+Acanthaceae <- subset(Easplist, TaxonName == "Acanthaceae", slot="names",
 	keep_children=TRUE)
-summary(Easplist)
+summary(Acanthaceae)
 
 ## Insert taxonomy to taxon traits
-Easplist <- tax2traits(Easplist, get_names=TRUE)
-head(taxon_traits(Easplist))
+Acanthaceae <- tax2traits(Acanthaceae, get_names=TRUE)
+head(taxon_traits(Acanthaceae))
 }

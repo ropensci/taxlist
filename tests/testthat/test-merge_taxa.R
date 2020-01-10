@@ -10,9 +10,9 @@ test_that("taxa are merged", {
 							nrow(merge_taxa(Easplist,
 											c(206, 197))@taxonRelations),
 					TRUE)
-			expect_is(merge_taxa(Easplist, level="species"), "taxlist")
-			## expect_equal(summary(merge_taxa(Easplist,
-			##                         level="species")@taxonRelations$Level)["subspecies"],
-			##         0)
+			expect_is(merge_taxa(Easplist, level="species"),
+					"taxlist")
+			## expect_is(merge_taxa(Easplist, c(206, 197), print_output=TRUE),
+			##         "taxlist")
 		}
 )

@@ -48,7 +48,7 @@ setMethod("get_parents", signature(taxlist="taxlist", ConceptID="numeric"),
             ConceptID <- list(ConceptID)
             repeat {
                 if(all(is.na(taxlist@taxonRelations[
-                                        taxlist@taxonRelations$TaxonConceptID %in%
+                                     taxlist@taxonRelations$TaxonConceptID %in%
                                                 ConceptID[[length(ConceptID)]],
                                         "Parent"]))) break
                 ConceptID[[length(ConceptID) + 1]] <- taxlist@taxonRelations[

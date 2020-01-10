@@ -23,7 +23,8 @@ test_that("function add_synonym is working", {
 											TaxonName="Maba scabra",
 											AuthorName="Chiov.")@taxonNames),
 					TRUE)
-			expect_error(add_synonym(Easplist, max(Easplist$TaxonConceptID) + 10,
+			expect_error(add_synonym(Easplist, max(Easplist$TaxonConceptID) +
+									10,
 							TaxonName="new name", AuthorName="NN."))
 		}
 )

@@ -35,9 +35,11 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 			if(clean)
 				x <- clean_strings(x)
 			SIM <- lapply(split(x, seq_along(x)), function(a, b, method) {
-						similarity <- stringsim(a, b@taxonNames$TaxonName, method)
+						similarity <- stringsim(a, b@taxonNames$TaxonName,
+								method)
 						return(list(TaxonUsageID=b@taxonNames$TaxonUsageID[
-												order(similarity, decreasing=TRUE)],
+												order(similarity,
+														decreasing=TRUE)],
 										similarity=similarity[order(similarity,
 														decreasing=TRUE)]))
 					},
@@ -48,7 +50,9 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 			if(output == 2) {
 				new_names <- lapply(SIM, function(a, b, best) {
 							return(list(TaxonName=with(b@taxonNames,
-													TaxonName[match(a$TaxonUsageID[1:best], TaxonUsageID)]),
+													TaxonName[
+															match(a$TaxonUsageID[1:best],
+																	TaxonUsageID)]),
 											TaxonUsageID=a$TaxonUsageID[1:best],
 											similarity=a$similarity[1:best]))
 						}, b=object, best=best)
@@ -56,8 +60,10 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 			}
 			if(output == 1) {
 				new_names <- lapply(SIM, function(a, b) {
-							similarity <- a$similarity[a$similarity == max(a$similarity)]
-							TaxonUsageID <- a$TaxonUsageID[a$similarity == max(a$similarity)]
+							similarity <- a$similarity[a$similarity ==
+											max(a$similarity)]
+							TaxonUsageID <- a$TaxonUsageID[a$similarity ==
+											max(a$similarity)]
 							matches <- length(similarity)
 							if(accepted_only) {
 								TaxonUsageID <- TaxonUsageID[TaxonUsageID %in%

@@ -51,7 +51,8 @@ setReplaceMethod("accepted_name", signature(taxlist="taxlist",
             if(!all(taxlist@taxonNames[match(value,
                                     taxlist@taxonNames$TaxonUsageID),
                             "TaxonConceptID"] == ConceptID))
-                stop("Some concepts in 'value' are not included in the respective taxon concept.")
+                stop(paste("Some concepts in 'value' are not included in the",
+								"respective taxon concept."))
             # now replace
             taxlist@taxonRelations[match(ConceptID,
                             taxlist@taxonRelations$TaxonConceptID),

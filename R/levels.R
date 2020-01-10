@@ -25,7 +25,8 @@ setReplaceMethod("levels", signature(x="taxlist"),
 			if(!all(paste(x@taxonRelations$Level[
 									!is.na(x@taxonRelations$Level)
 							]) %in% value))
-				stop("Some levels are not matching those indicated in slot 'taxonRelations'")
+				stop(paste("Some levels are not matching those indicated in",
+								"slot 'taxonRelations'"))
 			x@taxonRelations$Level <- factor(
 					paste(x@taxonRelations$Level), levels=value)
 			return(x)

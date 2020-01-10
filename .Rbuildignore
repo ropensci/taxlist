@@ -4,10 +4,11 @@
 ^\.gitignore$
 ^\.project$
 ^\.travis.yml$
+^codecov\.yml$
+^data-raw$
 ^README-figures$
 ^README\.Rmd$
 ^README\.md$
 ^README\.html$
 ^README-.*\.png$
 ^TODO\.md$
-^codecov\.yml$

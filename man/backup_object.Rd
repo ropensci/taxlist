@@ -68,4 +68,7 @@ backup_object(objects="Pseudognaphalium", file="Pseudonaphalium")
 ## To load the last backup into a session
 load_last("Pseudognaphalium")
 }
+
+## Load pre-installed backup
+load_last(file.path(path.package("taxlist"), "extdata", "Podocarpus"))
 }

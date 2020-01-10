@@ -14,7 +14,8 @@ setMethod("print_name", signature(object="taxlist", id="numeric"),
 		function(object, id, concept=TRUE, second_mention=FALSE,
 				include_author=TRUE, secundum, style="markdown", ...) {
 			if(length(id) > 1) {
-				warning("'print_taxa' will format only the first value in 'id'.")
+				warning(paste("'print_taxa' will format only the first value",
+								"in 'id'."))
 				id <- id[1]
 			}
 			if(concept) {
