@@ -174,12 +174,12 @@ summary(Easplist, "Cyperus papyrus")
 ````
 
 You can than insert insert in your document inline codes, such as
-`` `r print_name(Easplist, 206)` ``, which will insert
+<code>`r print_name(Easplist, 206)`</code>, which will insert
 `r print_name(Easplist, 206)` in your document (note that the number is the ID
 of the taxon concept in `Easplist`).
 Fort a second mention of the same species, you can then use
-`` `r print_name(Easplist, 206, second_mention=TRUE)` ``, which will insert
-`r print_name(Easplist, 206, second_mention=TRUE)` in your text.
+<code>`r print_name(Easplist, 206, second_mention=TRUE)`</code>, which will
+insert `r print_name(Easplist, 206, second_mention=TRUE)` in your text.
 
 
 ## Acknowledgements
