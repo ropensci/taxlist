@@ -194,11 +194,10 @@ For instance you can insert at the beginning of the document with a hidden chunk
 ```{r  echo=FALSE, message=FALSE, warning=FALSE}
 library(taxlist)
 data(Easplist)
-summary(Easplist, "Cyperus papyrus")
 ```
 ````
 
-You can than insert insert in your document inline codes, such as <code>'\`r print\_name(Easplist, 206)\`'</code>, which will insert *Cyperus papyrus* L. in your document (note that the number is the ID of the taxon concept in `Easplist`). Fort a second mention of the same species, you can then use <code>*C. papyrus*</code>, which will insert *C. papyrus* in your text.
+You can than insert insert in your document inline codes, such as <code>\`r print\_name(Easplist, 206)\`</code>, which will insert *Cyperus papyrus* L. in your document (note that the number is the ID of the taxon concept in `Easplist`). Fort a second mention of the same species, you can then use <code>\`r print\_name(Easplist, 206, second\_mention=TRUE)\`</code>, which will insert *C. papyrus* in your text.
 
 Acknowledgements
 ----------------
