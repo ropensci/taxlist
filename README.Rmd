@@ -146,27 +146,48 @@ The package `taxlist` follows similar tasks than
 [`taxa`](https://github.com/ropensci/taxa), but both packages focus on the
 implementation of different approaches for object oriented programming in **R**,
 namely S4 and R6, respectively.
+Additionally, `taxa` is rather developer-oriented, while `taxlist` attempts to
+address people managing and analysing taxonomic and vegetation-plots
+databases.
 
-
-
-
-
-The aim of `taxlist` is to provide an object class for its implementation on
-vegetation-plot data sets imported from [**Turboveg
-2**](http://www.synbiosys.alterra.nl/turboveg) in a similar way as done by
+Another task of `taxlist` is to access to species lists stored [**Turboveg
+2**](http://www.synbiosys.alterra.nl/turboveg), in a similar way as done by
 [`vegdata`]( https://CRAN.R-project.org/package=vegdata) but including all
 information in a single object.
  
+## Rmarkdown integration
 
+Another special area of application is the use of `taxlist` objects for writing
+documens (reports, checklists, floras, see also at
+[10.13140/RG.2.2.36713.90728](https://dx.doi.org/10.13140/RG.2.2.36713.90728)),
+which is mainly provided by the function `print_name()`.
 
-[here](https://github.com/ropensci/software-review/issues/233#issuecomment-427814756)
+For instance you can insert at the beginning of the document with a hidden
+chunk:
+
+````markdown
+`r ''````{r  echo=FALSE, message=FALSE, warning=FALSE}
+library(taxlist)
+data(Easplist)
+summary(Easplist, "Cyperus papyrus")
+```
+````
+
+You can than insert insert in your document inline codes, such as
+`` `r print_name(Easplist, 206)` ``, which will insert
+`r print_name(Easplist, 206)` in your document (note that the number is the ID
+of the taxon concept in `Easplist`).
+Fort a second mention of the same species, you can then use
+`` `r print_name(Easplist, 206, second_mention=TRUE)` ``, which will insert
+`r print_name(Easplist, 206, second_mention=TRUE)` in your text.
 
 
 ## Acknowledgements
+
 The author thanks **Stephan Hennekens**, developer of
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and great
 support finding a common language between `R` and `Turboveg`, as well as for
-his advices on formatting `EA-Splist`.
+his advices on formatting our taxonomic list `EA-Splist`.
 
 Also thanks to **Federico Luebert** for the fruitful discussions regarding the
 terminology used in this project.
