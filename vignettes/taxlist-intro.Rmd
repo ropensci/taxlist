@@ -176,7 +176,7 @@ Note that such information can get lost once applied `subset`, since the
 respective parents or children from the original data set are not anymore in
 the subset.
 May you like to recover parents and children, you can use the functions
-`get_paretns` or `get_children`, respectively.
+`get_parents` or `get_children`, respectively.
 
 ```{r recover_parents}
 summary(Papyrus, "all")
