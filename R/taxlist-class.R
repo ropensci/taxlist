@@ -1,8 +1,31 @@
-# TODO:   Setting S4 class 'taxlist'
-# 
-# Author: Miguel Alvarez
-################################################################################
-
+#' An S4 class to represent taxonomic lists.
+#' 
+#' @description
+#' Class for taxonomic lists including synonyms, hierarchical ranks,
+#' parent-child relationships, taxon views and taxon traits.
+#' 
+#' @slot taxonNames (`data.frame`) Table of taxon usage names (accepted names
+#'     and synonyms).
+#' @slot taxonRelations (`data.frame`) Relations between concepts, accepted
+#'     names, basionyms, parents and hierarchical level.
+#' @slot taxonTraits Table of taxon traits.
+#' @slot taxonViews References used to determine the respective concept
+#'     circumscription.
+#' 
+#' @author Miguel Alvarez
+#' 
+#' @references
+#' \bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant
+#'     taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
+#'     \url{https://doi.org/10.3897/bdj.6.e23635}
+#' 
+#' @examples 
+#' library(taxlist)
+#' 
+#' showClass("taxlist")
+#' 
+#' ## Create an empty object
+#' Splist <- new("taxlist")
 setClass("taxlist",
         # Definition of slots
 		slots=c(
