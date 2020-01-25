@@ -1,13 +1,9 @@
 #' @name taxon_names
 #' @aliases taxon_names,taxlist-method
-#' @aliases taxon_names<-
-#' @aliases taxon_names<-,taxlist,data.frame-method
-#' @aliases add_synonym
-#' @aliases add_synonym,taxlist-method
-#' @aliases update_name
-#' @aliases update_name,taxlist,numeric-method
-#' @aliases delete_name
-#' @aliases delete_name,taxlist,numeric-method
+#'     taxon_names<- taxon_names<-,taxlist,data.frame-method
+#'     add_synonym add_synonym,taxlist-method
+#'     update_name update_name,taxlist,numeric-method
+#'     delete_name delete_name,taxlist,numeric-method
 #' 
 #' @title Handle information on taxon usage names.
 #' 

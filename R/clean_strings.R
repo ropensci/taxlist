@@ -1,7 +1,6 @@
 #' @name clean_strings
-#' @aliases clean_strings,character-method
-#' @aliases clean_strings,factor-method
-#' @aliases clean_strings,data.frame-method
+#' @aliases clean_strings,character-method clean_strings,factor-method
+#'     clean_strings,data.frame-method
 #' 
 #' @title Cleaning character strings.
 #' 

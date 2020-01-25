@@ -1,15 +1,63 @@
-# TODO:   Match character vectors with names in a taxlist object
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Generic function
+#' @name match_names
+#' @aliases match_names,character,character-method
+#'     match_names,character,taxlist-method
+#' 
+#' @title Search matchings between character and taxlist objects
+#' 
+#' @description 
+#' Names provided in a character vector will be compared with names stored in
+#' slot `taxonNames` within an object of class \code{\linkS4class{taxlist}} by
+#' using the function \code{\link{stringsim}}.
+#' 
+#' @param x A character vector with names to be compared.
+#' @param object An object of class \code{\linkS4class{taxlist}} to be compared
+#'     with.
+#' @param clean Logical value, whether leading, tailing and double blanks should
+#'     be deleted from `x`.
+#' @param output Character value indicating the type of output (see details).
+#' @param best Integer value indicating how many from the best matches have to
+#'     be displayed (only working for `output="list"`).}
+#' @param show_concepts Logical value, whether respective concepts should be
+#'     displayed in output or not.
+#' @param accepted_only Logical value, whether only accepted names should be
+#'     matched or all.
+#' @param method,... Further arguments passed to
+#'     \code{\link[stringdist]{stringsim}}.
+#' 
+#' @details 
+#' For `output="list"` a list with the best matches (taxon usage name ID and
+#' similarity) for each queried name will be retrieved, where the number is set
+#' by argument `best`.
+#' Option `accepted_only=TRUE` will only work with`output="data.frame"`.
+#' This will be applied especially in those cases were the requested names have
+#' more than one match in the reference \code{\linkS4class{taxlist}} object
+#' (matching homonyms) and will retrieve the one name, that has the status of
+#' accepted name, otherwise no matchings will be retrieved.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' 
+#' @seealso \code{\link[stringdist]{stringsim}}
+#' 
+#' @examples 
+#' ## Names to be compared
+#' species <- c("Cperus papyrus", "Typha australis", "Luke skywalker")
+#' 
+#' ## Retrieve taxon usage names
+#' match_names(species, Easplist)
+#' 
+#' ## Display accepted names in output
+#' match_names(species, Easplist, show_concepts=TRUE)
+#' 
+#' @rdname match_names
+#' @export 
 setGeneric("match_names",
 		function(x, object, ...)
 			standardGeneric("match_names")
 )
 
-# Method for character values
+#' @rdname match_names
+#' 
+#' @export 
 setMethod("match_names", signature(x="character", object="character"),
 		function(x, object, best=5, clean=TRUE, ...) {
 			if(length(x) > 1) {
@@ -26,7 +74,9 @@ setMethod("match_names", signature(x="character", object="character"),
 		}
 )
 
-# Compare character vector with taxon names of taxlist
+#' @rdname match_names
+#' 
+#' @export 
 setMethod("match_names", signature(x="character", object="taxlist"),
 		function(x, object, clean=TRUE, output="data.frame", best=5,
 				show_concepts=FALSE, accepted_only=FALSE, method="lcs", ...) {

@@ -1,5 +1,6 @@
-#' taxlist: Handling taxonomic lists.
+#' @title taxlist: Handling taxonomic lists.
 #' 
+#' @details 
 #' The class \code{\linkS4class{taxlist}} is defined in this package using the
 #' S4 language.
 #' The main task of `taxlist` objects is to keep the taxonomic coherence of

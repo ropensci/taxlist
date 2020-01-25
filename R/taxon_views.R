@@ -1,9 +1,7 @@
 #' @name taxon_views
 #' @aliases taxon_views,taxlist-method
-#' @aliases taxon_views<-
-#' @aliases taxon_views<-,taxlist,data.frame-method
-#' @aliases add_view
-#' @aliases add_view,taxlist-method
+#'     taxon_views<- taxon_views<-,taxlist,data.frame-method
+#'     add_view add_view,taxlist-method
 #' 
 #' @title Management of concept views in taxonomic lists.
 #' 

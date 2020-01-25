@@ -1,15 +1,56 @@
-# TODO:   Methods to get children or parents of a concept
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Generic function
+#' @name get_children
+#' @aliases get_children,taxlist,numeric-method
+#'     get_children,taxlist,taxlist-method
+#'     get_parents get_parents,taxlist,numeric-method
+#'     get_parents,taxlist,taxlist-method
+#' 
+#' @title Retrieve children or parents of taxon concepts
+#' 
+#' @description 
+#' Retrieve all children or all parents of a queried taxon concept.
+#' 
+#' @param taxlist A \code{\linkS4class{taxlist}} object.
+#' @param ConceptID Concept IDs for selecting parents or children or a subset of
+#'     `taxlist`.
+#' @param ... Further arguments passed among methods.
+#' 
+#' @details 
+#' This function produces subsets of \code{\linkS4class{taxlist}} objects
+#' including all children or parents of queried taxon concepts.
+#' Multiple concepts can be queried in these function.
+#' The argument `ConceptID` can be a vector of concept IDs or a subset of
+#' the input `taxlist` object.
+#' 
+#' @return A \code{\linkS4class{taxlist}} object with a subset including
+#' requested concepts with children or parents.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' 
+#' @examples 
+#' ## Subset with family Ebenaceae and children
+#' Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
+#' Ebenaceae <- get_children(Easplist, Ebenaceae)
+#' 
+#' summary(Ebenaceae)
+#' summary(Ebenaceae, "all", maxsum=100)
+#' 
+#' ## Get parents of Diospyros tricolor
+#' Diostri <- subset(Easplist, TaxonConceptID == 52403, slot="relations")
+#' Diostri <- get_parents(Easplist, Diostri)
+#' 
+#' summary(Diostri)
+#' summary(Diostri, "all")
+#' 
+#' @rdname get_children
+#' @export 
 setGeneric("get_children",
         function(taxlist, ConceptID, ...)
             standardGeneric("get_children")
 )
 
-# Set method for taxlist
+#' @rdname get_children
+#' 
+#' @export 
 setMethod("get_children", signature(taxlist="taxlist", ConceptID="numeric"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- list(ConceptID)
@@ -28,7 +69,9 @@ setMethod("get_children", signature(taxlist="taxlist", ConceptID="numeric"),
         }
 )
 
-# Set method for taxlist,taxlist method (e.g using subsets)
+#' @rdname get_children
+#' 
+#' @export 
 setMethod("get_children", signature(taxlist="taxlist", ConceptID="taxlist"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- ConceptID@taxonRelations$TaxonConceptID
@@ -36,13 +79,17 @@ setMethod("get_children", signature(taxlist="taxlist", ConceptID="taxlist"),
         }
 )
 
-# Generic function to get parents
+#' @rdname get_children
+#' 
+#' @export 
 setGeneric("get_parents",
         function(taxlist, ConceptID, ...)
             standardGeneric("get_parents")
 )
 
-# Set method for taxlist
+#' @rdname get_children
+#' 
+#' @export 
 setMethod("get_parents", signature(taxlist="taxlist", ConceptID="numeric"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- list(ConceptID)
@@ -63,7 +110,9 @@ setMethod("get_parents", signature(taxlist="taxlist", ConceptID="numeric"),
         }
 )
 
-# Set method for taxlist,taxlist method (e.g using subsets)
+#' @rdname get_children
+#' 
+#' @export 
 setMethod("get_parents", signature(taxlist="taxlist", ConceptID="taxlist"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- ConceptID@taxonRelations$TaxonConceptID

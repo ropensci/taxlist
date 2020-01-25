@@ -1,15 +1,65 @@
-# TODO:   Convert a data fram3e into a taxlist object
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Generic function
+#' @name df2taxlist
+#' @aliases df2taxlist,data.frame,logical-method
+#'     df2taxlist,data.frame,missing-method df2taxlist,character,missing-method
+#' 
+#' @title Convert data frames into taxlist objects
+#' 
+#' @description
+#' Taxon lists may be provided in data frame format, which will be converted to
+#' a \code{\linkS4class{taxlist}} object.
+#' 
+#' @param x A data frame or a character vector with taxon names.
+#' @param AcceptedName A logical vector indicating accepted names with value
+#'     `TRUE`.
+#' @param ... Additional vectors to be added as columns in slot`taxonNames`.
+#' 
+#' @details 
+#' In the method `data.frame`, the input data frame must have following columns:
+#' \describe{
+#'     \item{TaxonUsageID}{Numeric code for the name.}
+#'     \item{TaxonConceptID}{Numeric code for the concept.}
+#'     \item{TaxonName}{Full name (usage), excluding author name.}
+#'     \item{AuthorName}{Author of the combination (taxon name).}
+#' }
+#' 
+#' If the argument `AcceptedName` is missing, all names will be assumed as
+#' accepted names.
+#' In the alternative `character` method, author names have to be added as
+#' additional vectors.
+#' 
+#' Be aware that the resulting object misses any information on taxon views,
+#' basionyms, parent concepts, hierarchical levels and taxon traits.
+#' All those elements can be added \emph{a posteriori} by further functions
+#' provided in this package.
+#' 
+#' @return A \code{\linkS4class{taxlist}} object.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' 
+#' @examples 
+#' ## Read the table with names of Cyperus species
+#' Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus", "names.csv"),
+#' #' #' stringsAsFactors=FALSE)
+#' head(Cyperus)
+#' 
+#' ## Convert to 'taxlist' object
+#' Cyperus <- df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM)
+#' summary(Cyperus)
+#' 
+#' ## Create a 'taxlist' object from character vectors
+#' Plants <- df2taxlist(c("Triticum aestivum","Zea mays"), AuthorName="L.")
+#' summary(Plants, "all")
+#' 
+#' @rdname df2taxlist
+#' @export 
 setGeneric("df2taxlist",
         function(x, AcceptedName, ...)
             standardGeneric("df2taxlist")
 )
 
-# Set method for data frame
+#' @rdname df2taxlist
+#' 
+#' @export 
 setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
         function(x, AcceptedName, ...) {
             # If author names missing
@@ -64,12 +114,16 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
         }
 )
 
-# Method for missing accepted names in input data frame
+#' @rdname df2taxlist
+#' 
+#' @export 
 setMethod("df2taxlist", signature(x="data.frame", AcceptedName="missing"),
         function(x, ...) return(df2taxlist(x, TRUE))
 )
 
-# Method for character vectors
+#' @rdname df2taxlist
+#' 
+#' @export 
 setMethod("df2taxlist", signature(x="character", AcceptedName="missing"),
         function(x, ...) {
             if(any(duplicated(x))) {

@@ -1,6 +1,5 @@
 #' @name as.list
-#' @aliases as.list,taxlist-method
-#' @aliases S4_to_list
+#' @aliases as.list,taxlist-method S4_to_list
 #' 
 #' @title Coerce an S4 object to a list.
 #' 

@@ -1,7 +1,5 @@
 #' @name replace_x
-#' @aliases replace_idx
-#' @aliases replace_na
-#' @aliases insert_rows
+#' @aliases replace_idx replace_na insert_rows
 #' 
 #' @title Data manipulation.
 #' 

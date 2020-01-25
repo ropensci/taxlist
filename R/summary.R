@@ -1,9 +1,63 @@
-# TODO:   Print methods specific for taxlist objects
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Module for a general summary
+#' @name summary
+#' @aliases summary,taxlist-method
+#' 
+#' @title Print overviews for taxlist Objects and their content
+#' 
+#' @description 
+#' A method to display either an overview of the content of
+#' \code{\linkS4class{taxlist}} objects or an overview of selected taxa.
+#' 
+#' @param object A \code{\linkS4class{taxlist}} object.
+#' @param ConceptID IDs of concepts to be displayed in the summary.
+#' @param units Character value indicating the units shown in the object's
+#'     allocated space.
+#' @param check_validity Logical value indicating whether the validity of
+#'     `object` should be checked or not.
+#' @param display Character value indicating the field to be displayed (see
+#'     details).
+#' @param maxsum Integer indicating the maximum number of displayed taxa.
+#' @param secundum A character value indicating the column from slot`taxonViews`
+#'     to be displayed in the summary.
+#' @param ... Further arguments passed to or from another methods.
+#' 
+#' @details 
+#' A general overview indicating number of names, concepts and taxon views
+#' included in \code{\linkS4class{taxlist}} objects.
+#' If argument `ConceptID` is a vector with concept IDs or names to be matched
+#' by \code{\link{grepl}}, then a display of all names included in each concept
+#' will be produced.
+#' Alternative you can use `taxon="all"` in order to get the listing of names
+#' for all concepts included in the object (truncated to the input number of
+#' `maxsum`).
+#' 
+#' For summaries applied to concepts, there are three alternative displays of
+#' names using the argument `display`.
+#' Use `display="name"` to show the value `TaxonName`, `display="author"` to
+#' show the value `AuthorName` or `display="both"` to show both values.
+#' Such values are taken from slot `taxonNames`.
+#' 
+#' For big objects it will be recommended to set `units="Mb"` (see also
+#' \code{\link{object.size}} for further alternatives).
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' 
+#' @seealso \code{\linkS4class{taxlist}}.
+#' 
+#' @examples 
+#' ## summary of the object
+#' summary(Easplist, units="Mb")
+#' 
+#' ## summary for two taxa
+#' summary(Easplist, c(51128,51140))
+#' 
+#' ## summary for a name
+#' summary(Easplist, "Acmella")
+#' 
+#' ## summary for the first 10 taxa
+#' summary(Easplist, "all", maxsum=10)
+#' 
+#' @rdname summary
+#' @export 
 overview_taxlist <- function(object, units, check_validity) {
     cat("object size:", format(object.size(object), units=units), sep=" ", "\n")
     if(check_validity)
@@ -39,7 +93,9 @@ overview_taxlist <- function(object, units, check_validity) {
     cat("\n")
 }
 
-# Module for single taxa
+#' @rdname summary
+#' 
+#' @export 
 overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
 	if(is.character(ConceptID)) {
 		if(ConceptID[1] == "all")
@@ -128,7 +184,9 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
     cat("------------------------------", "\n")
 }
 
-# Now set the method
+#' @rdname summary
+#' 
+#' @export 
 setMethod("summary", signature(object="taxlist"),
         function(object, ConceptID, units="Kb", check_validity=TRUE,
                 display="both", maxsum=5, secundum=NULL, ...) {

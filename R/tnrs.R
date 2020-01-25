@@ -1,20 +1,51 @@
-# TODO:   A method for tnrs (taxize) applied to taxlist objects
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Generic function
+#' @name tnrs
+#' @aliases tnrs,character-method tnrs,taxlist-method
+#' 
+#' @title hylotastic Taxonomic Name Resolution Service.
+#' 
+#' @description 
+#' Methods of \code{\link[taxize]{tnrs}} for \code{\linkS4class{taxlist}}
+#' objects.
+#' 
+#' @param query Either a character vector or a taxlist object with names to
+#'     search.
+#' @param min_score Minimum value of score for considering accepted names as
+#'     suggested by the output.
+#' @param source Source database.
+#' @param ... Further arguments passed to \code{\link[taxize]{tnrs}}.
+#' 
+#' @details 
+#' This function checks for matching of taxon names in
+#' \code{\linkS4class{taxlist}} objects with the Taxonomic Name Resolution
+#' Service (TNRS).
+#' Misspelled names as well as author names will be replaced in the the new
+#' object and new accepted names will be inserted.
+#' 
+#' A method for character vectors is defined for the original function.
+#' 
+#' @return A data frame or an object of class \code{\linkS4class{taxlist}}.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' 
+#' @seealso \code{\link[taxize]{tnrs}}
+#' 
+#' @rdname tnrs
+#' @export 
 setGeneric("tnrs",
         function(query, ...)
             standardGeneric("tnrs")
 )
 
-# Method for the original function
+#' @rdname tnrs
+#' 
+#' @export 
 setMethod("tnrs", signature(query="character"),
         function(query, ...) taxize::tnrs(query, ...)
 )
 
-# Method for 'taxlist' objects
+#' @rdname tnrs
+#' 
+#' @export 
 setMethod("tnrs", signature(query="taxlist"),
         function(query, min_score=0.8, source="iPlant_TNRS", ...) {
             spp_out <- taxize::tnrs(query@taxonNames$TaxonName, source=source,

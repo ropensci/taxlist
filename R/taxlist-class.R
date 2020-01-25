@@ -1,4 +1,4 @@
-#' An S4 class to represent taxonomic lists.
+#' @title An S4 class to represent taxonomic lists.
 #' 
 #' @description
 #' Class for taxonomic lists including synonyms, hierarchical ranks,

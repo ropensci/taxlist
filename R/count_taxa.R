@@ -1,7 +1,6 @@
 #' @name count_taxa
-#' @aliases count_taxa,character-method
-#' @aliases count_taxa,factor-method
-#' @aliases count_taxa,taxlist-method
+#' @aliases count_taxa,character-method count_taxa,factor-method
+#'     count_taxa,taxlist-method
 #' 
 #' @title Count taxa within a taxlist object.
 #' 
