@@ -158,8 +158,8 @@ information in a single object.
 ## Rmarkdown integration
 
 Another special area of application is the use of `taxlist` objects for writing
-documens (reports, checklists, floras, see also at
-[10.13140/RG.2.2.36713.90728](https://dx.doi.org/10.13140/RG.2.2.36713.90728)),
+documens (reports, checklists, floras, see also 
+[this poster](https://dx.doi.org/10.13140/RG.2.2.36713.90728)),
 which is mainly provided by the function `print_name()`.
 
 For instance you can insert at the beginning of the document with a hidden
@@ -182,12 +182,50 @@ which will insert `r print_name(Easplist, 206, second_mention=TRUE)` in your
 text.
 
 
+## Statistical Assessment
+
+Information located in the slot **taxonTraits** are suitable for statistical
+assessments.
+Furthermore, taxonomic information can be also transferred to this slot using
+the function `tax2traits()`.
+
+```{r}
+Easplist <- tax2traits(Easplist, get_names=TRUE)
+head(Easplist@taxonTraits)
+```
+
+Note that the respective parental ranks are inserted in the table
+**taxonTraits**, which contains the attributes of the taxa.
+In the two next command lines, we will produce a subset with only members of
+the family Cyperaceae and then extract only species.
+
+```{r}
+Cype <- subset(Easplist, family == "Cyperaceae", slot="taxonTraits")
+Cype <- subset(Cype, Level == "species", slot="taxonRelations")
+```
+
+Now, we can count the number of species in each genus of the family Cyperaceae
+and display them in a bar plot:
+
+```{r}
+Cype_stat <- summary(as.factor(Cype@taxonTraits$genus))
+Cype_stat <- Cype_stat[order(Cype_stat, decreasing=TRUE)]
+
+par(las=2, mar=c(10,3,1,1))
+barplot(Cype_stat)
+```
+
+Such kind of calculations can be also implemented in functions once working
+with biodiversity records, for instance in the functions `trait_stats()` and
+`trait_proportion()` of the package
+`[vegtable](https://github.com/kamapu/vegtable)`.
+
 ## Acknowledgements
 
 The author thanks **Stephan Hennekens**, developer of
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience and great
-support finding a common language between `R` and `Turboveg`, as well as for
-his advices on formatting our taxonomic list `EA-Splist`.
+support finding a common language between **R** and **Turboveg**, as well as for
+his advices on formatting our taxonomic list **EA-Splist**.
 
 Also thanks to **Federico Luebert** for the fruitful discussions regarding the
 terminology used in this project.
