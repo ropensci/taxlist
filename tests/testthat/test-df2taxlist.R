@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("coerce objects to taxlist")
 
 Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus", "names.csv"),

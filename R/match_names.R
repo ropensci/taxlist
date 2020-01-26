@@ -16,7 +16,7 @@
 #'     be deleted from `x`.
 #' @param output Character value indicating the type of output (see details).
 #' @param best Integer value indicating how many from the best matches have to
-#'     be displayed (only working for `output="list"`).}
+#'     be displayed (only working for `output="list"`).
 #' @param show_concepts Logical value, whether respective concepts should be
 #'     displayed in output or not.
 #' @param accepted_only Logical value, whether only accepted names should be

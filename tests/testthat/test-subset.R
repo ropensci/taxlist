@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("producing subsets")
 
 test_that("function subset", {

@@ -38,8 +38,8 @@
 #' 
 #' @examples 
 #' ## Read the table with names of Cyperus species
-#' Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus", "names.csv"),
-#' #' #' stringsAsFactors=FALSE)
+#' Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus",
+#'     "names.csv"), stringsAsFactors=FALSE)
 #' head(Cyperus)
 #' 
 #' ## Convert to 'taxlist' object

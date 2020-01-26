@@ -65,7 +65,7 @@
 #' 
 #' ## Adding a new concept
 #' Ebenaceae <- add_concept(Ebenaceae, TaxonName="Euclea acutifolia",
-#' #' #' AuthorName="E. Mey. ex A. DC.", Level="species", Parent=55707, ViewID=1)
+#'     AuthorName="E. Mey. ex A. DC.", Level="species", Parent=55707, ViewID=1)
 #' 
 #' ## A summary again  
 #' summary(Ebenaceae)

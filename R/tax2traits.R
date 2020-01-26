@@ -26,7 +26,7 @@
 #' @examples 
 #' ## Family Acanthaceae with children
 #' Acanthaceae <- subset(Easplist, TaxonName == "Acanthaceae", slot="names",
-#' #' #' keep_children=TRUE)
+#'     keep_children=TRUE)
 #' summary(Acanthaceae)
 #' 
 #' ## Insert taxonomy to taxon traits

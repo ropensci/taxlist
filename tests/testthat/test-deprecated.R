@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("deprecated functions")
 
 test_that("deprecated functions produce messages", {

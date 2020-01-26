@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("extract rows or columns")
 
 test_that("square brackets work", {

@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("manipulating taxon traits")
 
 test_that("function taxon_traits is working", {

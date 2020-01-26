@@ -129,7 +129,8 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
     # display option
     display <- pmatch(display[1], c("name","author","both"))
     if(!display %in% c(1:3))
-        stop("non-valid value for 'display'")
+        stop(paste("Invalid value for 'display', use \"name\", \"author\"",
+						"or \"both\""))
     if(display == 1) display <- c("TaxonUsageID", "TaxonName")
     if(display == 2) display <- c("TaxonUsageID", "AuthorName")
     if(display == 3) display <- c("TaxonUsageID", "TaxonName", "AuthorName")

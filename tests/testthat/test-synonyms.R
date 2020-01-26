@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("synonyms addition")
 
 spp <- df2taxlist("Poa annua", AuthorName="L.")

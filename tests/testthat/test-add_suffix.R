@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("adding suffix to a list")
 
 test_that("suffix addition is working", {

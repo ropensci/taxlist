@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("merge taxon concepts")
 
 test_that("taxa are merged", {

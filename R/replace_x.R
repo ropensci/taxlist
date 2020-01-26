@@ -86,7 +86,7 @@ replace_na <- function(x, idx1, idx2, new) {
 	return(x)
 }
 
-#' @rdname 
+#' @rdname replace_x
 #' 
 #' @export 
 insert_rows <- function(x, y) {

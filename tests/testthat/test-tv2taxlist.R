@@ -1,7 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
 
 context("importing Turboveg data sets")
 

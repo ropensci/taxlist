@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("inserting taxonomic information in slot taxonTraits")
 
 test_that("function tax2traits", {

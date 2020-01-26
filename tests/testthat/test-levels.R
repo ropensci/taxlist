@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("retrieving levels")
 
 test_that("levels in taxlist object", {

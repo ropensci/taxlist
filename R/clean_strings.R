@@ -11,6 +11,7 @@
 #' 
 #' @param x Object to be cleaned.
 #' @param from,to Arguments passed to \code{\link{iconv}}.
+#' @param ... Further arguments passed among methods (not yet in use).
 #' 
 #' @details 
 #' This function automatically deletes leading, trailing and multiple white
@@ -35,7 +36,7 @@ setGeneric("clean_strings",
 #' 
 #' @export
 setMethod("clean_strings", signature(x="character"),
-		function(x, from="utf8", to="utf8") {
+		function(x, from="utf8", to="utf8", ...) {
 			x <- iconv(x, from, to)
 			x <- trimws(x, "both")
 			x <- gsub("\\s+", " ", x)
@@ -47,8 +48,8 @@ setMethod("clean_strings", signature(x="character"),
 #' 
 #' @export
 setMethod("clean_strings", signature(x="factor"),
-		function(x, from="utf8", to="utf8") {
-			base::levels(x) <- clean_strings(base::levels(x), from, to)
+		function(x, from="utf8", to="utf8", ...) {
+			base::levels(x) <- clean_strings(base::levels(x), from, to, ...)
 			return(x)
 		}
 )
@@ -57,7 +58,7 @@ setMethod("clean_strings", signature(x="factor"),
 #' 
 #' @export
 setMethod("clean_strings", signature(x="data.frame"),
-		function(x, from="utf8", to="utf8") {
+		function(x, from="utf8", to="utf8", ...) {
 			for(i in colnames(x)) {
 				if(is.character(x[,i]) | is.factor(x[,i]))
 					x[,i] <- clean_strings(x[,i], from, to)

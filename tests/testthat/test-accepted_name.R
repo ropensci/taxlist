@@ -1,8 +1,3 @@
-# TODO:   Test function accepted_name
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("accepted name manipulation")
 
 test_that("accepted_name is working", {

@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("replacing values in vectors")
 
 test_that("replacing values is working", {

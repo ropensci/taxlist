@@ -38,22 +38,23 @@
 #' summary(Easplist, 363, secundum="secundum")
 #' 
 #' ## Empty plot
-#' plot(NA, xlim=c(0,5), ylim=c(7,1), bty="n", xaxt="n", xlab="", ylab="options")
+#' plot(NA, xlim=c(0,5), ylim=c(7,1), bty="n", xaxt="n", xlab="",
+#'     ylab="options")
 #' 
 #' ## Accepted name with author
 #' text(0, 1, labels=print_name(Easplist, 363, style="expression"), pos=4)
 #' 
 #' ## Including taxon view
 #' text(0, 2, labels=print_name(Easplist, 363, style="expression",
-#' #' #' #' #' secundum="secundum"), pos=4)
+#'     secundum="secundum"), pos=4)
 #' 
 #' ## Second mention in text
 #' text(0, 3, labels=print_name(Easplist, 363, style="expression",
-#' #' #' #' #' second_mention=TRUE), pos=4)
+#'     second_mention=TRUE), pos=4)
 #' 
 #' ## Using synonym
 #' text(0, 4, labels=print_name(Easplist, 50037, style="expression",
-#' #' #' #' #' concept=FALSE), pos=4)
+#'     concept=FALSE), pos=4)
 #' 
 #' ## Markdown style
 #' text(0, 5, labels=print_name(Easplist, 363, style="markdown"), pos=4)

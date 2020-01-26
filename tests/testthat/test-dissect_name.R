@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("dissecting names")
 
 tmp <- Easplist@taxonNames[1:15,"TaxonName"]

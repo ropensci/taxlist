@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("manipulating taxon usage names")
 
 test_that("function taxon_names is working", {

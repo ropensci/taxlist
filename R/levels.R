@@ -13,6 +13,7 @@
 #' taxonomic hierarchy.
 #' 
 #' @param x A \code{\linkS4class{taxlist}} object.
+#' @param value A character vector with replacement values for levels o `x`.
 #' @param ... Additional arguments passed among methods.
 #' 
 #' @details 
@@ -36,7 +37,8 @@
 #' taxlist::levels(Easplist)
 #' 
 #' ## Add aggregate as new taxonomic level
-#' taxlist::levels(Easplist) <- c("form","variety","subspecies","species","complex", "aggregate","genus","family")
+#' levels(Easplist) <- c("form","variety","subspecies","species",
+#'     "complex", "aggregate","genus","family")
 #' summary(Easplist)
 #' 
 #' @rdname levels

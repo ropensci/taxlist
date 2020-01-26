@@ -1,8 +1,3 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
 context("change a name to a different concept")
 
 tmp <- subset(Easplist, TaxonConceptID %in% c(50105, 573), slot="relations")

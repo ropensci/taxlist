@@ -1,3 +1,7 @@
+#' @name taxlist
+#' 
+#' @docType package
+#' 
 #' @title taxlist: Handling taxonomic lists.
 #' 
 #' @details 
@@ -28,8 +32,5 @@
 #' taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
 #' \url{https://doi.org/10.3897/bdj.6.e23635}
 #' 
-#' @author Miguel Alvarez.
-#' 
-#' @docType package
-#' @name vegtable
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 NULL
