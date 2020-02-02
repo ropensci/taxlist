@@ -67,6 +67,12 @@ blocks. The first step will be to generate an empty `taxlist` object:
 
 ``` r
 library(taxlist)
+#> This is taxlist 0.1.8
+#> 
+#> Attaching package: 'taxlist'
+#> The following object is masked from 'package:base':
+#> 
+#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
@@ -252,11 +258,37 @@ species, you can then use <code>\`r print\_name(Easplist, 206,
 second\_mention=TRUE)\`</code>, which will insert *C. papyrus* in your
 text.
 
-## Statistical Assessment
+## Descriptive Statistics
 
 Information located in the slot **taxonTraits** are suitable for
-statistical assessments. Furthermore, taxonomic information can be also
-transferred to this slot using the function `tax2traits()`.
+statistical assessments. For instance, in the installed object
+`Easplist` a column called **lf\_behn\_2018** includes a classification
+of macrophytes into different life forms. To know the frequency of these
+life forms in the `Easplist`, we can use the function `count_taxa()`:
+
+``` r
+# how man taxa in 'Easplist'
+count_taxa(Easplist)
+#> [1] 3887
+
+# frequency of life forms
+count_taxa(~ lf_behn_2018, Easplist)
+#>          lf_behn_2018 taxa_count
+#> 1    acropleustophyte          8
+#> 2         chamaephyte         25
+#> 3      climbing_plant         25
+#> 4  facultative_annual         20
+#> 5     obligate_annual        114
+#> 6        phanerophyte         26
+#> 7    pleustohelophyte          8
+#> 8          reed_plant         14
+#> 9       reptant_plant         19
+#> 10      tussock_plant         52
+```
+
+Furthermore, taxonomic information can be also transferred to this slot
+using the function `tax2traits()`. By this way we will make taxonomic
+ranks suitable for frequency calculations.
 
 ``` r
 Easplist <- tax2traits(Easplist, get_names=TRUE)
@@ -280,30 +312,24 @@ head(Easplist@taxonTraits)
 Note that the respective parental ranks are inserted in the table
 **taxonTraits**, which contains the attributes of the taxa. In the two
 next command lines, we will produce a subset with only members of the
-family Cyperaceae and then extract only species.
+family Cyperaceae and then calculate the frequency of species per
+genera.
 
 ``` r
 Cype <- subset(Easplist, family == "Cyperaceae", slot="taxonTraits")
-Cype <- subset(Cype, Level == "species", slot="taxonRelations")
+Cype_stat <- count_taxa(species ~ genus, Cype)
 ```
 
-Now, we can count the number of species in each genus of the family
-Cyperaceae and display them in a bar plot:
+Now, we can sort them to produce a nice bar plot.
 
 ``` r
-Cype_stat <- summary(as.factor(Cype@taxonTraits$genus))
-Cype_stat <- Cype_stat[order(Cype_stat, decreasing=TRUE)]
+Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE),]
 
 par(las=2, mar=c(10,3,1,1))
-barplot(Cype_stat)
+with(Cype_stat, barplot(species_count, names.arg=genus))
 ```
 
-![](README-unnamed-chunk-13-1.png)<!-- -->
-
-Such kind of calculations can be also implemented in functions once
-working with biodiversity records, for instance in the functions
-`trait_stats()` and `trait_proportion()` of the package
-`[vegtable](https://github.com/kamapu/vegtable)`.
+![](README-figures/genera_bar-1.png)<!-- -->
 
 ## Acknowledgements
 

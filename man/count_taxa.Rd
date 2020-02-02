@@ -3,21 +3,28 @@
 \docType{methods}
 \name{count_taxa}
 \alias{count_taxa}
-\alias{count_taxa,character-method}
-\alias{count_taxa,factor-method}
-\alias{count_taxa,taxlist-method}
+\alias{count_taxa,character,missing-method}
+\alias{count_taxa,factor,missing-method}
+\alias{count_taxa,taxlist,missing-method}
+\alias{count_taxa,formula,taxlist-method}
 \title{Count taxa within a taxlist object.}
 \usage{
-count_taxa(object, ...)
+count_taxa(object, data, ...)
 
-\S4method{count_taxa}{character}(object, rm.na = TRUE, ...)
+\S4method{count_taxa}{character,missing}(object, data, rm.na = TRUE, ...)
 
-\S4method{count_taxa}{factor}(object, rm.na = TRUE, ...)
+\S4method{count_taxa}{factor,missing}(object, data, rm.na = TRUE, ...)
 
-\S4method{count_taxa}{taxlist}(object, level, ...)
+\S4method{count_taxa}{taxlist,missing}(object, data, level, ...)
+
+\S4method{count_taxa}{formula,taxlist}(object, data, include_na = FALSE,
+  suffix = "_count", ...)
 }
 \arguments{
-\item{object}{An object of class \code{\linkS4class{taxlist}}.}
+\item{object}{An object containing a taxonomic list or a formula.}
+
+\item{data}{An object of class \code{\linkS4class{taxlist}} in the `formula`
+method.}
 
 \item{...}{further arguments passed among methods.}
 
@@ -25,6 +32,13 @@ count_taxa(object, ...)
 vector or not.}
 
 \item{level}{Character value indicating the taxonomic rank of counted taxa.}
+
+\item{include_na}{Logical value indicating whether `NA` values in a taxon
+trait should be considered for counting taxa or just ignored (only
+used in `formula` method).}
+
+\item{suffix}{Character value used as suffix for the counted rank in the
+output data frame (only used in `formula` method).}
 }
 \value{
 An integer with the number of taxa.
@@ -47,6 +61,9 @@ count_taxa(iris$Species)
 ## taxlist method
 count_taxa(Easplist)
 count_taxa(Easplist, level="species")
+
+## using a formula
+count_taxa(~ lf_behn_2018, Easplist)
 
 }
 \author{

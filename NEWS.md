@@ -1,3 +1,12 @@
+taxlist 0.1.8
+=============
+
+### Improvements
+
+* Roxygenized version.
+* Method `formula` for function `count_taxa()`.
+
+
 taxlist 0.1.7
 =============
 

@@ -104,8 +104,8 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
                     }
             )
             taxlist <- new("taxlist")
-            for(i in colnames(taxlist@taxonNames))
-                if(!i %in% colnames(x)) x[,i] <- NA
+			## for(i in colnames(taxlist@taxonNames))
+			##     if(!i %in% colnames(x)) x[,i] <- NA
             for(i in colnames(taxlist@taxonRelations))
                 if(!i %in% colnames(taxonRelations)) taxonRelations[,i] <- NA
             taxlist@taxonNames <- x
