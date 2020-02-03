@@ -68,7 +68,7 @@ library(devtools)
 install_github("kamapu/taxlist", build_vignette=TRUE)
 ```
 
-## Building taxlist objects
+## Building taxlist Objects
 
 I will take an example from "Helechos de Chile" **(Gunkel 1984)** to demonstrate
 how to construct a `taxlist` object from its building blocks.
@@ -140,7 +140,7 @@ Hierarchical levels, parent-child relationships and synonyms are included in the
 exemplary data `Easplist`.
 For further functions, look to the package's manual.
 
-## Similar packages
+## Similar Packages
 
 The package `taxlist` follows similar tasks than
 [`taxa`](https://github.com/ropensci/taxa), but both packages focus on the
@@ -149,13 +149,17 @@ namely S4 and R6, respectively.
 Additionally, `taxa` is rather developer-oriented, while `taxlist` attempts to
 address people managing and analysing taxonomic and vegetation-plots
 databases.
+For a more extended comparison on the differences between both packages, you
+can visit [this discussion](https://github.com/ropensci/taxa/issues/130).
 
-Another task of `taxlist` is to access to species lists stored [**Turboveg
-2**](http://www.synbiosys.alterra.nl/turboveg), in a similar way as done by
-[`vegdata`]( https://CRAN.R-project.org/package=vegdata) but including all
-information in a single object.
+Another task of `taxlist` is the access to species lists stored in [**Turboveg
+2**](http://www.synbiosys.alterra.nl/turboveg), in a similar way as done by the
+package [`vegdata`]( https://CRAN.R-project.org/package=vegdata).
+The later package used to import single tables from a database into respective
+data frames in **R**, while `taxlist` defines an class (also called `taxlist`)
+able to contain all the information in one single object.
  
-## Rmarkdown integration
+## Rmarkdown Integration
 
 Another special area of application is the use of `taxlist` objects for writing
 documens (reports, checklists, floras, see also 
