@@ -1,10 +1,4 @@
 #' @name accepted_name
-#' @aliases accepted_name,taxlist,numeric-method
-#'     accepted_name,taxlist,missing-method
-#'     accepted_name<- accepted_name<-,taxlist,numeric,numeric-method
-#'     synonyms synonyms,taxlist,numeric-method synonyms,taxlist,missing-method
-#'     basionym basionym,taxlist,numeric-method basionym,taxlist,missing-method
-#'     basionym<- basionym<-,taxlist,numeric,numeric-method
 #' 
 #' @title Manage accepted names, synonyms and basionyms
 #' 
@@ -17,18 +11,18 @@
 #' to display the respective usage names or to set usage names in one of those
 #' categories.
 #' 
-#' @param taxlist An object of class \code{\linkS4class{taxlist}}.
+#' @param taxlist An object of class [taxlist-class].
 #' @param ConceptID Integer containing concept IDs where to request or set names
 #'     for one category.
 #' @param show_traits Logical value, whether traits should be included in the
-#'     output of \code{'accepted_name'} or not.
+#'     output of `accepted_name` or not.
 #' @param value Integer containing usage IDs to be set to the respective
 #'     category in the respective taxon concept.
 #' @param ... Further arguments passed among methods.
 #' 
 #' @details 
 #' The function `accepted_name` retrieves the accepted names for the indicated
-#' taxon concepts or for the whole \code{\linkS4class{taxlist}} object.
+#' taxon concepts or for the whole [taxlist-class] object.
 #' By using `show_traits=TRUE`, the respective taxon traits will be
 #' displayed as well, providing an overview of taxa included in the object.
 #' The replacement method for this function will set the respective usage name
@@ -39,19 +33,20 @@
 #' this function does not include taxon traits in the output and there is no
 #' replacing method for `synonyms`.
 #' Alternatives for inserting new synonyms into a taxon concept are either
-#' moving synonyms from other taxa by using \code{\link{change_concept<-}} or
-#' inserting new names in the object by using \code{\link{add_synonym}}.
+#' moving synonyms from other taxa by using [change_concept<-] or
+#' inserting new names in the object by using [add_synonym()].
 #' 
 #' The function `basionym` is retrieving and setting basionyms in the
 #' respective taxon concepts similarly to `accepted_name`, but this function
 #' does not retrieve any information on taxon traits, either.
 #' 
-#' @return Most of the methods return information in data frames, while
-#' replacement methods do it as \code{\linkS4class{taxlist}} objects.
+#' @return
+#' Most of the methods return information in data frames, while
+#' replacement methods do it as [taxlist-class] objects.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
-#' @seealso \code{\link{add_synonym}} \code{\link{change_concept<-}}
+#' @seealso [add_synonym()] [change_concept<-]
 #' 
 #' @examples 
 #' ## Set a different accepted name for Cyclosorus interruptus
@@ -68,7 +63,9 @@
 #' summary(Easplist, 68)
 #' 
 #' @rdname accepted_name
-#' @export 
+#' 
+#' @exportMethod accepted_name
+#' 
 setGeneric("accepted_name",
         function(taxlist, ConceptID, ...)
             standardGeneric("accepted_name")
@@ -76,7 +73,8 @@ setGeneric("accepted_name",
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases accepted_name,taxlist,numeric-method
+#' 
 setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="numeric"),
         function(taxlist, ConceptID, show_traits=FALSE, ...) {
             AcceptedName <- taxlist@taxonRelations[
@@ -98,9 +96,10 @@ setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="numeric"),
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases accepted_name,taxlist,missing-method
+#' 
 setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="missing"),
-        function(taxlist, ConceptID, ...) {
+        function(taxlist, ...) {
             ConceptID <- taxlist@taxonRelations$TaxonConceptID
             return(accepted_name(taxlist, ConceptID, ...))
         }
@@ -108,13 +107,17 @@ setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="missing"),
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases accepted_name<-
+#' 
+#' @exportMethod accepted_name<-
+#' 
 setGeneric("accepted_name<-", function(taxlist, ConceptID, value)
             standardGeneric("accepted_name<-"))
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases accepted_name<-,taxlist,numeric,numeric-method
+#' 
 setReplaceMethod("accepted_name", signature(taxlist="taxlist",
                 ConceptID="numeric", value="numeric"),
         function(taxlist, ConceptID, value) {
@@ -136,7 +139,10 @@ setReplaceMethod("accepted_name", signature(taxlist="taxlist",
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases synonyms
+#' 
+#' @exportMethod synonyms
+#' 
 setGeneric("synonyms",
 		function(taxlist, ConceptID, ...)
 			standardGeneric("synonyms")
@@ -144,7 +150,8 @@ setGeneric("synonyms",
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases synonyms,taxlist,numeric-method
+#' 
 setMethod("synonyms", signature(taxlist="taxlist", ConceptID="numeric"),
 		function(taxlist, ConceptID, ...) {
 			Syn <- taxlist@taxonNames[taxlist@taxonNames$TaxonConceptID %in%
@@ -164,9 +171,10 @@ setMethod("synonyms", signature(taxlist="taxlist", ConceptID="numeric"),
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases synonyms,taxlist,missing-method
+#' 
 setMethod("synonyms", signature(taxlist="taxlist", ConceptID="missing"),
-		function(taxlist, ConceptID, ...) {
+		function(taxlist, ...) {
 			ConceptID <- taxlist@taxonRelations$TaxonConceptID
 			return(synonyms(taxlist, ConceptID, ...))
 		}
@@ -174,7 +182,10 @@ setMethod("synonyms", signature(taxlist="taxlist", ConceptID="missing"),
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases basionym
+#' 
+#' @exportMethod basionym
+#' 
 setGeneric("basionym",
 		function(taxlist, ConceptID, ...)
 			standardGeneric("basionym")
@@ -182,7 +193,8 @@ setGeneric("basionym",
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases basionym,taxlist,numeric-method
+#' 
 setMethod("basionym", signature(taxlist="taxlist", ConceptID="numeric"),
 		function(taxlist, ConceptID, ...) {
 			Basionym <- taxlist@taxonRelations[match(ConceptID,
@@ -198,9 +210,10 @@ setMethod("basionym", signature(taxlist="taxlist", ConceptID="numeric"),
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases basionym,taxlist,missing-method
+#' 
 setMethod("basionym", signature(taxlist="taxlist", ConceptID="missing"),
-		function(taxlist, ConceptID, ...) {
+		function(taxlist, ...) {
 			ConceptID <- taxlist@taxonRelations$TaxonConceptID
 			return(basionym(taxlist, ConceptID, ...))
 		}
@@ -208,15 +221,19 @@ setMethod("basionym", signature(taxlist="taxlist", ConceptID="missing"),
 
 #' @rdname accepted_name
 #' 
-#' @export 
+#' @aliases basionym<-
+#' 
+#' @exportMethod basionym<-
+#' 
 setGeneric("basionym<-", function(taxlist, ConceptID, value)
 			standardGeneric("basionym<-"))
 
 #' @rdname accepted_name
 #' 
-#' @export 
-setReplaceMethod("basionym", signature(taxlist="taxlist",
-				ConceptID="numeric", value="numeric"),
+#' @aliases basionym<-,taxlist,numeric,numeric-method
+#' 
+setReplaceMethod("basionym", signature(taxlist="taxlist", ConceptID="numeric",
+				value="numeric"),
 		function(taxlist, ConceptID, value) {
 			# first test
 			if(length(ConceptID) != length(value))

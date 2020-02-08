@@ -1,33 +1,32 @@
 #' @name levels
-#' @aliases levels,taxlist-method levels<- levels<-,taxlist-method
 #' 
 #' @title Set and retrieves hierarchical levels
 #' 
 #' @description 
-#' Taxonomic hierarchies can be set as levels in \code{\linkS4class{taxlist}}
+#' Taxonomic hierarchies can be set as levels in [taxlist-class]
 #' objects, ordered from lower to higher levels.
 #' 
 #' Add taxonomic levels for specific taxon concepts in a
-#' \code{\linkS4class{taxlist}} object.
+#' [taxlist-class] object.
 #' Also changes in concept circumscription may implicate changes in its
 #' taxonomic hierarchy.
 #' 
-#' @param x A \code{\linkS4class{taxlist}} object.
+#' @param x A [taxlist-class] object.
 #' @param value A character vector with replacement values for levels o `x`.
 #' @param ... Additional arguments passed among methods.
 #' 
 #' @details 
 #' Taxonomic levels will be handled as factors in the
-#' \code{\linkS4class{taxlist}} objects.
+#' [taxlist-class] objects.
 #' Those levels are useful for creating subsets of related groups (e.g. by
-#' functions \code{\link{get_children}} or \code{\link{get_parents}}).
+#' functions [get_children()] or [get_parents()]).
 #' 
 #' Levels in combination to parent-child relationships will be further used for
 #' checking consistency of taxonomic lists.
 #' 
 #' A replacement method of the form `levels(x) <- value` it is also implemented.
 #' 
-#' @return A `character` vector or a \code{\linkS4class{taxlist}} object with
+#' @return A `character` vector or a [taxlist-class] object with
 #' added or modified taxonomic levels.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
@@ -42,7 +41,9 @@
 #' summary(Easplist)
 #' 
 #' @rdname levels
-#' @export 
+#' 
+#' @exportMethod levels
+#' 
 if(!isGeneric("levels"))
     setGeneric("levels",
             function(x, ...)
@@ -51,7 +52,8 @@ if(!isGeneric("levels"))
 
 #' @rdname levels
 #' 
-#' @export 
+#' @aliases levels,taxlist-method
+#' 
 setMethod("levels", signature(x="taxlist"),
         function(x, ...) {
             if(class(x@taxonRelations$Level) != "factor")
@@ -62,7 +64,10 @@ setMethod("levels", signature(x="taxlist"),
 
 #' @rdname levels
 #' 
-#' @export 
+#' @aliases levels<- levels<-,taxlist-method
+#' 
+#' @exportMethod levels<-
+#' 
 setReplaceMethod("levels", signature(x="taxlist"),
 		function(x, value) {
 			if(!all(paste(x@taxonRelations$Level[

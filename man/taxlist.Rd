@@ -3,25 +3,24 @@
 \docType{package}
 \name{taxlist}
 \alias{taxlist}
-\alias{taxlist-package}
 \title{taxlist: Handling taxonomic lists.}
 \description{
-The class \code{\linkS4class{taxlist}} is defined in this package using the
+The class \linkS4class{taxlist} is defined in this package using the
 S4 language.
-The main task of `taxlist` objects is to keep the taxonomic coherence of
+The main task of \code{taxlist} objects is to keep the taxonomic coherence of
 information included in taxonomic lists and to implement functions (methods) for
 a proper data handling.
-Objects of class \code{\linkS4class{taxlist}} can be included in further
+Objects of class \linkS4class{taxlist} can be included in further
 objects, for instance in biodiversity records as done in the package
 \href{https://cran.r-project.org/package=vegtable}{vegtable}.
 }
 \details{
-The class \code{\linkS4class{taxlist}} is defined in this package using the
+The class \linkS4class{taxlist} is defined in this package using the
 S4 language.
-The main task of `taxlist` objects is to keep the taxonomic coherence of
+The main task of \code{taxlist} objects is to keep the taxonomic coherence of
 information included in taxonomic lists and to implement functions (methods)
 for a proper data handling.
-Objects of class \code{\linkS4class{taxlist}} can be included in further
+Objects of class \linkS4class{taxlist} can be included in further
 objects, for instance in biodiversity records as done in the package
 \href{https://cran.r-project.org/package=vegtable}{vegtable}.
 

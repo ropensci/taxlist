@@ -11,10 +11,10 @@ parent-child relationships, taxon views and taxon traits.
 \section{Slots}{
 
 \describe{
-\item{\code{taxonNames}}{(`data.frame`) Table of taxon usage names (accepted names
+\item{\code{taxonNames}}{(\code{data.frame}) Table of taxon usage names (accepted names
 and synonyms).}
 
-\item{\code{taxonRelations}}{(`data.frame`) Relations between concepts, accepted
+\item{\code{taxonRelations}}{(\code{data.frame}) Relations between concepts, accepted
 names, basionyms, parents and hierarchical level.}
 
 \item{\code{taxonTraits}}{Table of taxon traits.}
@@ -30,11 +30,12 @@ showClass("taxlist")
 
 ## Create an empty object
 Splist <- new("taxlist")
+
 }
 \references{
 \bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant
-    taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
-    \url{https://doi.org/10.3897/bdj.6.e23635}
+taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
+\url{https://doi.org/10.3897/bdj.6.e23635}
 }
 \author{
 Miguel Alvarez

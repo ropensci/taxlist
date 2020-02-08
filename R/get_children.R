@@ -1,30 +1,26 @@
 #' @name get_children
-#' @aliases get_children,taxlist,numeric-method
-#'     get_children,taxlist,taxlist-method
-#'     get_parents get_parents,taxlist,numeric-method
-#'     get_parents,taxlist,taxlist-method
 #' 
 #' @title Retrieve children or parents of taxon concepts
 #' 
 #' @description 
 #' Retrieve all children or all parents of a queried taxon concept.
 #' 
-#' @param taxlist A \code{\linkS4class{taxlist}} object.
+#' @param taxlist A [taxlist-class] object.
 #' @param ConceptID Concept IDs for selecting parents or children or a subset of
 #'     `taxlist`.
 #' @param ... Further arguments passed among methods.
 #' 
 #' @details 
-#' This function produces subsets of \code{\linkS4class{taxlist}} objects
+#' This function produces subsets of [taxlist-class] objects
 #' including all children or parents of queried taxon concepts.
 #' Multiple concepts can be queried in these function.
 #' The argument `ConceptID` can be a vector of concept IDs or a subset of
 #' the input `taxlist` object.
 #' 
-#' @return A \code{\linkS4class{taxlist}} object with a subset including
+#' @return A [taxlist-class] object with a subset including
 #' requested concepts with children or parents.
 #' 
-#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
 #' @examples 
 #' ## Subset with family Ebenaceae and children
@@ -42,7 +38,9 @@
 #' summary(Diostri, "all")
 #' 
 #' @rdname get_children
-#' @export 
+#' 
+#' @exportMethod get_children
+#' 
 setGeneric("get_children",
         function(taxlist, ConceptID, ...)
             standardGeneric("get_children")
@@ -50,7 +48,8 @@ setGeneric("get_children",
 
 #' @rdname get_children
 #' 
-#' @export 
+#' @aliases get_children,taxlist,numeric-method
+#' 
 setMethod("get_children", signature(taxlist="taxlist", ConceptID="numeric"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- list(ConceptID)
@@ -71,7 +70,8 @@ setMethod("get_children", signature(taxlist="taxlist", ConceptID="numeric"),
 
 #' @rdname get_children
 #' 
-#' @export 
+#' @aliases get_children,taxlist,taxlist-method
+#' 
 setMethod("get_children", signature(taxlist="taxlist", ConceptID="taxlist"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- ConceptID@taxonRelations$TaxonConceptID
@@ -81,7 +81,10 @@ setMethod("get_children", signature(taxlist="taxlist", ConceptID="taxlist"),
 
 #' @rdname get_children
 #' 
-#' @export 
+#' @aliases get_parents
+#' 
+#' @exportMethod get_parents
+#' 
 setGeneric("get_parents",
         function(taxlist, ConceptID, ...)
             standardGeneric("get_parents")
@@ -89,7 +92,8 @@ setGeneric("get_parents",
 
 #' @rdname get_children
 #' 
-#' @export 
+#' @aliases get_parents,taxlist,numeric-method
+#' 
 setMethod("get_parents", signature(taxlist="taxlist", ConceptID="numeric"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- list(ConceptID)
@@ -112,7 +116,8 @@ setMethod("get_parents", signature(taxlist="taxlist", ConceptID="numeric"),
 
 #' @rdname get_children
 #' 
-#' @export 
+#' @aliases get_parents,taxlist,taxlist-method
+#' 
 setMethod("get_parents", signature(taxlist="taxlist", ConceptID="taxlist"),
         function(taxlist, ConceptID, ...) {
             ConceptID <- ConceptID@taxonRelations$TaxonConceptID

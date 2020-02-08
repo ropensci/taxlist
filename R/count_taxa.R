@@ -1,16 +1,13 @@
 #' @name count_taxa
-#' @aliases count_taxa,character,missing-method count_taxa,factor,missing-method
-#'     count_taxa,taxlist,missing-method count_taxa,formula,taxlist-method
 #' 
 #' @title Count taxa within a taxlist object.
 #' 
 #' @description 
-#' Counting number of taxa within \code{\linkS4class{taxlist}} objects or
+#' Counting number of taxa within [taxlist-class] objects or
 #' character vectors containing taxon names.
 #' 
 #' @param object An object containing a taxonomic list or a formula.
-#' @param data An object of class \code{\linkS4class{taxlist}} in the `formula`
-#'     method.
+#' @param data An object of class [taxlist-class] in the `formula` method.
 #' @param rm.na Logical value, whether NAs have to be removed from the input
 #'     vector or not.
 #' @param level Character value indicating the taxonomic rank of counted taxa.
@@ -18,16 +15,13 @@
 #' 
 #' @details 
 #' This function is written by convenience in order to reduce code for counting
-#' taxa within \code{\linkS4class{taxlist}} objects and it is just a wrapper of
-#' \code{\link{length}}.
+#' taxa within [taxlist-class] objects and it is just a wrapper of [length()].
 #' 
 #' @return An integer with the number of taxa.
 #' 
-#' @author Miguel Alvarez.
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
 #' @examples 
-#' library(taxlist)
-#' 
 #' ## factor method
 #' count_taxa(iris$Species)
 #' 
@@ -39,7 +33,9 @@
 #' count_taxa(~ lf_behn_2018, Easplist)
 #' 
 #' @rdname count_taxa
-#' @export 
+#' 
+#' @exportMethod count_taxa
+#' 
 setGeneric("count_taxa",
 		function(object, data, ...)
 			standardGeneric("count_taxa")
@@ -47,9 +43,10 @@ setGeneric("count_taxa",
 
 #' @rdname count_taxa
 #' 
-#' @export 
+#' @aliases count_taxa,character,missing-method
+#' 
 setMethod("count_taxa", signature(object="character", data="missing"),
-		function(object, data, rm.na=TRUE, ...) {
+		function(object, rm.na=TRUE, ...) {
 			if(rm.na) object <- object[!is.na(object)]
 			return(length(unique(object)))
 		}
@@ -57,9 +54,10 @@ setMethod("count_taxa", signature(object="character", data="missing"),
 
 #' @rdname count_taxa
 #' 
-#' @export 
+#' @aliases count_taxa,factor,missing-method
+#' 
 setMethod("count_taxa", signature(object="factor", data="missing"),
-		function(object, data, rm.na=TRUE, ...) {
+		function(object, rm.na=TRUE, ...) {
 			if(rm.na) object <- object[!is.na(object)]
 			return(count_taxa(paste(object)))
 		}
@@ -67,9 +65,10 @@ setMethod("count_taxa", signature(object="factor", data="missing"),
 
 #' @rdname count_taxa
 #' 
-#' @export 
+#' @aliases count_taxa,taxlist,missing-method
+#' 
 setMethod("count_taxa", signature(object="taxlist", data="missing"),
-		function(object, data, level, ...) {
+		function(object, level, ...) {
 			if(missing(level))
 				n_taxa <- nrow(object@taxonRelations) else {
 				if(!level %in% levels(object))
@@ -90,7 +89,8 @@ setMethod("count_taxa", signature(object="taxlist", data="missing"),
 #' @param suffix Character value used as suffix for the counted rank in the
 #'     output data frame (only used in `formula` method).
 #' 
-#' @export 
+#' @aliases count_taxa,formula,taxlist-method
+#' 
 setMethod("count_taxa", signature(object="formula", data="taxlist"),
 		function(object, data, include_na=FALSE, suffix="_count", ...) {
 			# Some checks

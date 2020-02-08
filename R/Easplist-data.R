@@ -7,7 +7,7 @@
 #' Example of an incomplete taxonomic list including taxa recorded in East
 #' Africa.
 #' 
-#' @format An object of class \code{\linkS4class{taxlist}}.
+#' @format An object of class [taxlist-class].
 #' 
 #' @details 
 #' This list is a subset of the taxonomic list implemented in the database
@@ -22,4 +22,5 @@
 #' 
 #' @examples 
 #' summary(Easplist)
+#' 
 "Easplist"

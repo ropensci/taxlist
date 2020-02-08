@@ -10,6 +10,4 @@
 ^README-figures$
 ^README\.Rmd$
 ^README\.md$
-^README\.html$
-^README-.*\.png$
 ^TODO\.md$

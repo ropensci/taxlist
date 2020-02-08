@@ -1,4 +1,4 @@
-#' @importFrom  methods new slot slotNames validObject
+#' @importFrom methods new slot slotNames validObject
 #' @importFrom utils object.size
 #' @importFrom stats aggregate na.omit sd as.formula terms
 #' @importFrom vegdata tv.home

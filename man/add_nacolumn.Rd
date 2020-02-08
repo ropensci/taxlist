@@ -7,15 +7,15 @@
 add_nacolumn(x, y)
 }
 \arguments{
-\item{x}{(`data.frame`) The data frame to be compared.}
+\item{x}{(\code{data.frame}) The data frame to be compared.}
 
-\item{y}{(`data.frame`) The data frame used as reference.}
+\item{y}{(\code{data.frame}) The data frame used as reference.}
 }
 \value{
-A `data.frame`.
+A \code{data.frame}.
 }
 \description{
-If columns of `y` are missed in `x`, the later gets these columns filled with
-`NA` values.
+If columns of \code{y} are missed in \code{x}, the later gets these columns filled with
+\code{NA} values.
 }
 \keyword{internal}

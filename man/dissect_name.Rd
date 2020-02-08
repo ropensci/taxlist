@@ -9,7 +9,7 @@ dissect_name(x, split = " ", fixed = TRUE, ...)
 \arguments{
 \item{x}{A character vector containing taxon names.}
 
-\item{split, fixed, ...}{Arguments passed to \code{\link[base]{strsplit}}.}
+\item{split, fixed, ...}{Arguments passed to \code{\link[=strsplit]{strsplit()}}.}
 }
 \value{
 A character matrix with as many rows as names in the input vector.
@@ -22,16 +22,13 @@ A string with names can be consequently split into those elements, meanwhile
 the number of elements will suggest the taxonomic ranks.
 }
 \details{
-This function is using \code{\link[base]{strsplit}} for splitting names.
+This function is using \code{\link[=strsplit]{strsplit()}} for splitting names.
 Single spaces will be used to dissect names but it can be changed in the
-value of argument `split`.
+value of argument \code{split}.
 The number of columns in the resulting matrix will depend on the longest
 polynomial string.
 }
 \examples{
-library(taxlist)
-data(Easplist)
-
 Easplist <- subset(Easplist, Level == "variety", slot="relations")
 Easplist <- accepted_name(Easplist)[c(1:10),"TaxonName"]
 
@@ -39,8 +36,8 @@ dissect_name(Easplist)
 
 }
 \seealso{
-\code{\link[base]{strsplit}}.
+\code{\link[=strsplit]{strsplit()}}
 }
 \author{
-Miguel Alvarez.
+Miguel Alvarez \email{kamapu78@gmail.com}
 }

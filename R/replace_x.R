@@ -1,5 +1,4 @@
 #' @name replace_x
-#' @aliases replace_idx replace_na insert_rows
 #' 
 #' @title Data manipulation.
 #' 
@@ -61,7 +60,10 @@ replace_x <- function(x, old, new) {
 
 #' @rdname replace_x
 #' 
+#' @aliases replace_idx
+#' 
 #' @export
+#' 
 replace_idx <- function(x, idx1, idx2, new) {
 	if(length(x) != length(idx1))
 		stop("Arguments 'x' and 'idx1' have to be of the same length.")
@@ -74,7 +76,10 @@ replace_idx <- function(x, idx1, idx2, new) {
 
 #' @rdname replace_x
 #' 
-#' @export 
+#' @aliases replace_na
+#' 
+#' @export
+#' 
 replace_na <- function(x, idx1, idx2, new) {
 	if(length(x) != length(idx1))
 		stop("Arguments 'x' and 'idx1' have to be of the same length.")
@@ -88,7 +93,10 @@ replace_na <- function(x, idx1, idx2, new) {
 
 #' @rdname replace_x
 #' 
+#' @aliases insert_rows
+#' 
 #' @export 
+#' 
 insert_rows <- function(x, y) {
 	for(i in colnames(y)[!colnames(y) %in% colnames(x)])
 		x[,i] <- NA

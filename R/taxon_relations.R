@@ -1,17 +1,12 @@
 #' @name taxon_relations
 #' 
-#' @aliases taxon_relations,taxlist-method taxon_relations<-
-#'     taxon_relations<-,taxlist,data.frame-method add_concept
-#'     add_concept,taxlist,character-method add_concept,taxlist,taxlist-method
-#'     update_concept update_concept,taxlist,numeric-method
-#' 
 #' @title Retrieve or replace slot taxonRelations in taxlist objects
 #' 
 #' @description 
-#' Retrieve the content of slot \code{'taxonRelations'} from a
-#' \code{\linkS4class{taxlist}} object or replace it by a new data frame.
+#' Retrieve the content of slot `taxonRelations` from a
+#' [taxlist-class] object or replace it by a new data frame.
 #' 
-#' @param taxlist A \code{\linkS4class{taxlist}} object.
+#' @param taxlist A [taxlist-class] object.
 #' @param value A `data.frame` object to be set as slot `taxonRelations`.
 #' @param TaxonName Character vector with the accepted name for the new taxon
 #'     concepts.
@@ -24,29 +19,28 @@
 #' 
 #' @details 
 #' The replacement method `taxon_relatiions<-` should be only used when
-#' constructing \code{\linkS4class{taxlist}} objects from an empty one
+#' constructing [taxlist-class] objects from an empty one
 #' (prototype).
 #' 
-#' New concepts should be first added to a \code{\linkS4class{taxlist}} object
+#' New concepts should be first added to a [taxlist-class] object
 #' using their respective accepted names.
-#' Synonyms can be further provided using the function
-#' \code{\link{add_synonym}}.
+#' Synonyms can be further provided using the function [add_synonym()].
 #' 
 #' Additional named vectors can be provided to be included in slot `taxonNames`,
 #' in the cases where those variables already exist, otherwise they will be
 #' ignored.
 #' 
-#' It is recommended also to provide a concept view as \code{'ViewID'} (see
-#' \code{\link{taxon_views}}).
-#' For adding a new view, use \code{\link{add_view}}.
+#' It is recommended also to provide a concept view as `ViewID` (see
+#' [taxon_views()]).
+#' For adding a new view, use [add_view()].
 #' 
 #' @return 
-#' An object of class \code{\linkS4class{taxlist}} with added names and
+#' An object of class [taxlist-class] with added names and
 #' concepts.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
-#' @seealso \code{\linkS4class{taxlist}}, \code{\link{add_synonym}}
+#' @seealso [taxlist-class]
 #' 
 #' @examples 
 #' ## Subset for the genus Euclea and display of slot 'taxonNames'
@@ -80,7 +74,9 @@
 #' summary(Easplist, "Corchorus olitorius")
 #' 
 #' @rdname taxon_relations
-#' @export 
+#' 
+#' @exportMethod taxon_relations
+#' 
 setGeneric("taxon_relations",
         function(taxlist, ...)
             standardGeneric("taxon_relations")
@@ -88,20 +84,25 @@ setGeneric("taxon_relations",
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases taxon_relations,taxlist-method
+#' 
 setMethod("taxon_relations", signature(taxlist="taxlist"),
         function(taxlist, ...) taxlist@taxonRelations
 )
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases taxon_relations<-
+#' 
+#' @exportMethod taxon_relations<-
+#' 
 setGeneric("taxon_relations<-", function(taxlist, value)
             standardGeneric("taxon_relations<-"))
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases taxon_relations<-,taxlist,data.frame-method
+#' 
 setReplaceMethod("taxon_relations", signature(taxlist="taxlist",
                 value="data.frame"), function(taxlist, value) {
             taxlist@taxonRelations <- value
@@ -111,7 +112,10 @@ setReplaceMethod("taxon_relations", signature(taxlist="taxlist",
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases add_concept
+#' 
+#' @exportMethod add_concept
+#' 
 setGeneric("add_concept",
 		function(taxlist, TaxonName, ...)
 			standardGeneric("add_concept")
@@ -119,7 +123,8 @@ setGeneric("add_concept",
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases add_concept,taxlist,character-method
+#' 
 setMethod("add_concept", signature(taxlist="taxlist", TaxonName="character"),
 		function(taxlist, TaxonName, Level, ...) {
 			if(length(levels(taxlist)) > 0)
@@ -169,7 +174,8 @@ setMethod("add_concept", signature(taxlist="taxlist", TaxonName="character"),
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases add_concept,taxlist,taxlist-method
+#' 
 setMethod("add_concept", signature(taxlist="taxlist", TaxonName="taxlist"),
 		function(taxlist, TaxonName, insert_view, ...) {
 			# First check
@@ -229,7 +235,10 @@ setMethod("add_concept", signature(taxlist="taxlist", TaxonName="taxlist"),
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases update_concept
+#' 
+#' @exportMethod update_concept
+#' 
 setGeneric("update_concept",
 		function(taxlist, ConceptID, ...)
 			standardGeneric("update_concept")
@@ -237,7 +246,8 @@ setGeneric("update_concept",
 
 #' @rdname taxon_relations
 #' 
-#' @export 
+#' @aliases update_concept,taxlist,numeric-method
+#' 
 setMethod("update_concept", signature(taxlist="taxlist", ConceptID="numeric"),
 		function(taxlist, ConceptID, ...) {
 			if(any(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID))

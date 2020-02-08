@@ -1,5 +1,4 @@
 #' @name print_name
-#' @aliases print_name,taxlist,numeric-method
 #' 
 #' @title Format usage names for publications
 #' 
@@ -10,29 +9,29 @@
 #' The function `print_name` can be applied either in markdown documents or
 #' for graphics.
 #' 
-#' @param object An object of class \code{\linkS4class{taxlist}}.
+#' @param object An object of class [taxlist-class].
 #' @param id Integer containing either a concept or a name ID.
-#' @param concept Logical value, whether \code{'id'} corresponds to a concept ID
+#' @param concept Logical value, whether `id` corresponds to a concept ID
 #'     or a taxon usage name ID.
 #' @param second_mention Logical value, whether the genus name should be
 #'     abbreviated or not.
 #' @param include_author Logical value, whether authors of the name should be
 #'     mentioned or not.
 #' @param secundum Character value indicating the column in slot `taxonViews`
-#'     that will be mentioned as \emph{secundum} (according to).
+#'     that will be mentioned as *secundum* (according to).
 #' @param style Character value indicating the alternative format for italics
 #'     (at the moment only markdown and html implemented).
 #' @param ... Further arguments passed among methods.
 #' 
 #' @details 
-#' In \bold{Rmarkdown} documents use \code{`r I(print_name(Easplist, 206))`} for
+#' In **Rmarkdown** documents use \code{`r I(print_name(Easplist, 206))`} for
 #' inserting a formatted a species name.
 #' 
 #' @return A character value including format to italic font.
 #' 
-#' @seealso \code{\link[ape]{mixedFontLabel}}.
+#' @seealso [ape::mixedFontLabel()].
 #' 
-#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
 #' @examples 
 #' summary(Easplist, 363, secundum="secundum")
@@ -66,7 +65,9 @@
 #' text(0, 7, labels=print_name(Easplist, 363, style="knitr"), pos=4)
 #' 
 #' @rdname print_name
-#' @export 
+#' 
+#' @exportMethod print_name
+#' 
 setGeneric("print_name",
 		function(object, id, ...)
 			standardGeneric("print_name")
@@ -74,7 +75,8 @@ setGeneric("print_name",
 
 #' @rdname print_name
 #' 
-#' @export 
+#' @aliases print_name,taxlist,numeric-method
+#' 
 setMethod("print_name", signature(object="taxlist", id="numeric"),
 		function(object, id, concept=TRUE, second_mention=FALSE,
 				include_author=TRUE, secundum, style="markdown", ...) {

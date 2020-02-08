@@ -1,15 +1,14 @@
 #' @name subset
-#' @aliases subset,taxlist-method
 #' 
 #' @title Subset method for taxlist objects
 #' 
 #' @description 
-#' Subset of \code{\linkS4class{taxlist}} objects will be done applying either
+#' Subset of [taxlist-class] objects will be done applying either
 #' logical operations or pattern matchings.
 #' Subsets can be referred to information contained either in the slot
 #' `taxonNames`, `taxonRelations` or `taxonTraits`.
 #' 
-#' @param x Object of class \code{\linkS4class{taxlist}}.
+#' @param x Object of class [taxlist-class].
 #' @param subset Logical vector or logical operation to apply as subset.
 #' @param slot Character value indicating the slot to be used for the subset.
 #' @param keep_children Logical value applied to hierarchical structures.
@@ -26,12 +25,11 @@
 #' When those arguments are set as `FALSE` (the default), children or parents
 #' of selected taxon concepts will not be included in the subset.
 #' 
-#' Be aware that \code{subset} won't work properly inside of function
-#' definitions.
+#' Be aware that [subset()] won't work properly inside of function definitions.
 #' 
-#' @return An object of class \code{\linkS4class{taxlist}}.
+#' @return An object of class [taxlist-class].
 #' 
-#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
 #' @examples 
 #' Easplist <- subset(Easplist, lf_behn_2018 == "reed_plant", slot="traits")
@@ -39,7 +37,10 @@
 #' 
 #' summary(as.factor(Easplist$lf_behn_2018))
 #' 
-#' @export
+#' @aliases subset,taxlist-method
+#' 
+#' @exportMethod subset
+#' 
 setMethod("subset", signature(x="taxlist"),
         function(x, subset, slot="names", keep_children=FALSE,
                 keep_parents=FALSE, ...) {

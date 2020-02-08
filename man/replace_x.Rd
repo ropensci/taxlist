@@ -17,7 +17,7 @@ insert_rows(x, y)
 }
 \arguments{
 \item{x}{A vector to be modified or a data frame in the case of
-`insert_rows`.}
+\code{insert_rows}.}
 
 \item{old, new}{Vectors containing the values to be replaced and the updated
 values, respectively.}
@@ -25,7 +25,7 @@ values, respectively.}
 \item{idx1, idx2}{Indices applied for the values in 'x' and the values to be
 replaced, respectively.}
 
-\item{y}{Data frame including rows to be inserted in `x`.}
+\item{y}{Data frame including rows to be inserted in \code{x}.}
 }
 \value{
 A vector or data frame with the modified values.
@@ -37,14 +37,14 @@ Functions provided for fast replacement and update of data.
 These are functions implemented for efficient coding of insert and replace
 routines.
 
-The functions `replace_x` and `replace_idx` replace values in vectors,
+The functions \code{replace_x} and \code{replace_idx} replace values in vectors,
 in the first case comparing values in the vector and in the second one by
 using indices.
-The function `replace_na` works in the same way as `replace_idx`, but
-carries out the replacement only if the previous value is a `NA`.
+The function \code{replace_na} works in the same way as \code{replace_idx}, but
+carries out the replacement only if the previous value is a \code{NA}.
 
-The function `insert_rows` inserts `y` as new rows in `x`. If `y` contains
-columns absent in `x`, they will be added to the output data frame.
+The function \code{insert_rows} inserts \code{y} as new rows in \code{x}. If \code{y} contains
+columns absent in \code{x}, they will be added to the output data frame.
 }
 \examples{
 library(taxlist)

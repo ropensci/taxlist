@@ -26,6 +26,9 @@
 #' 
 #' ## Create an empty object
 #' Splist <- new("taxlist")
+#' 
+#' @exportClass taxlist
+#' 
 setClass("taxlist",
         # Definition of slots
 		slots=c(

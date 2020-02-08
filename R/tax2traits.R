@@ -1,15 +1,14 @@
 #' @name tax2traits
-#' @aliases tax2traits,taxlist-method
 #' 
 #' @title Set taxonomic information as taxon traits
 #' 
 #' @description 
-#' Taxonomic classification can be included in \code{\linkS4class{taxlist}}
+#' Taxonomic classification can be included in [taxlist-class]
 #' objects within the information provided at slot `taxonRelations`.
 #' Nevertheless, for statistical analyses it may be more convenient to insert
 #' such information in the slot `taxonTraits`.
 #' 
-#' @param object An object of class \code{\linkS4class{taxlist}}.
+#' @param object An object of class [taxlist-class].
 #' @param get_names Logical value indicating whether taxon names should be
 #'     retrieved instead of taxon IDs.
 #' @param ... Further arguments to be passed among methods.
@@ -18,7 +17,7 @@
 #' This function can only be applied to objects containing parent-child
 #' relationships and information on taxonomic levels.
 #' 
-#' @return An object of class \code{\linkS4class{taxlist}} with taxonomy added
+#' @return An object of class [taxlist-class] with taxonomy added
 #' as traits.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
@@ -34,7 +33,9 @@
 #' head(taxon_traits(Acanthaceae))
 #' 
 #' @rdname tax2traits
-#' @export 
+#' 
+#' @exportMethod tax2traits
+#' 
 setGeneric("tax2traits",
 		function(object, ...)
 			standardGeneric("tax2traits")
@@ -42,7 +43,8 @@ setGeneric("tax2traits",
 
 #' @rdname tax2traits
 #' 
-#' @export 
+#' @aliases tax2traits,taxlist-method
+#' 
 setMethod("tax2traits", signature(object="taxlist"),
 		function(object, get_names=FALSE, ...) {
 			# taxonomic table

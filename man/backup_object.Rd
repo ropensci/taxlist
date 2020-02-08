@@ -5,8 +5,13 @@
 \alias{load_last}
 \title{Make and load backups of R objects}
 \usage{
-backup_object(..., objects = character(), file, stamp = TRUE,
-  overwrite = FALSE)
+backup_object(
+  ...,
+  objects = character(),
+  file,
+  stamp = TRUE,
+  overwrite = FALSE
+)
 
 load_last(file)
 }
@@ -32,22 +37,22 @@ An R image with extension \bold{*.rda}.
 \description{
 When work with data becomes risky, the best practice is to produce backup
 files.
-The function of `backup_object` is a wrapper of \code{\link{save}}, adding a
+The function of \code{backup_object} is a wrapper of \code{\link[=save]{save()}}, adding a
 time stamp and a suffix to the name of the resulting file (an R image file
 with extension \bold{*.rda}).
-The function `load_last` is adapted to this style, loading the newest
+The function \code{load_last} is adapted to this style, loading the newest
 version to the session.
 }
 \details{
-In both functions the argument `file` may include either the path
+In both functions the argument \code{file} may include either the path
 relative to the working directory or the absolute path to the file, excluding
 stamps and extension.
-For `overwrite=FALSE` (the default), a numeric suffix will be added to
+For \code{overwrite=FALSE} (the default), a numeric suffix will be added to
 the backup's name, if another backup was produced at the same day.
-For `overwrite=TRUE` no suffix will be included in the file and existing
+For \code{overwrite=TRUE} no suffix will be included in the file and existing
 files will be overwritten.
 
-The function `load_last()` will load the newest version among backups
+The function \code{load_last()} will load the newest version among backups
 stored in the same folder, provided that the backup name includes a time
 stamp.
 }
@@ -76,5 +81,5 @@ load_last(file.path(path.package("taxlist"), "extdata", "Podocarpus"))
 \code{\link{save}} \code{\link{load}}.
 }
 \author{
-Miguel Alvarez \email{kamapu78@gmail.com}.
+Miguel Alvarez \email{kamapu78@gmail.com}
 }

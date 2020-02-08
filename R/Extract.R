@@ -1,13 +1,12 @@
 #' @name Extract
-#' @aliases [ [,taxlist-method $,taxlist-method
 #' 
 #' @title Extract or Replace Parts of taxlist Objects
 #' 
 #' @description 
 #' Quick access to slots `taxonTraits` and `taxonRelations` within
-#' \code{\linkS4class{taxlist}} objects.
+#' [taxlist-class] objects.
 #' 
-#' @param x Object of class \code{\linkS4class{taxlist}}.
+#' @param x Object of class [taxlist-class].
 #' @param name A name to access.
 #' @param i,j Indices for access.
 #' @param drop A logical value passed to \code{\link[base]{Extract}}.
@@ -23,11 +22,11 @@
 #' A replacement method `$<-` is also implemented.
 #' 
 #' @return The method `$` retrieves a vector, while `[` retrieves a subset
-#' of the input \code{\linkS4class{taxlist}} object.
+#' of the input [taxlist-class] object.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
 #' 
-#' @seealso \code{\linkS4class{taxlist}} \code{\link[taxlist]{subset}}
+#' @seealso [taxlist-class] \code{\link[taxlist]{subset}}
 #' 
 #' @examples 
 #' ## Statistics on life forms
@@ -37,7 +36,11 @@
 #' summary(Easplist[1:10,], "all")
 #' 
 #' @rdname Extract
-#' @export 
+#' 
+#' @aliases [ [,taxlist-method
+#' 
+#' @exportMethod [
+#' 
 setMethod("[", signature(x="taxlist"),
 		function(x, i, j, drop=FALSE) {
 			if(missing(i)) i <- TRUE
@@ -57,7 +60,10 @@ setMethod("[", signature(x="taxlist"),
 
 #' @rdname Extract
 #' 
-#' @export 
+#' @aliases $ $,taxlist-method
+#' 
+#' @exportMethod $
+#' 
 setMethod("$", signature(x="taxlist"), function(x, name) {
 			if(!paste(substitute(name)) %in% colnames(x@taxonRelations))
 				x@taxonRelations[[name]] <- with(x@taxonTraits,

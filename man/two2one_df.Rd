@@ -7,7 +7,7 @@
 two2one_df(x, y)
 }
 \arguments{
-\item{x, y}{(`data.frame`) The data frames to be merged.}
+\item{x, y}{(\code{data.frame}) The data frames to be merged.}
 }
 \description{
 Two data frames sharing partially columns will be merged including the sum

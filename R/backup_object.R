@@ -1,12 +1,11 @@
 #' @name backup_object
-#' @aliases load_last
 #' 
 #' @title Make and load backups of R objects
 #' 
 #' @description 
 #' When work with data becomes risky, the best practice is to produce backup
 #' files.
-#' The function of `backup_object` is a wrapper of \code{\link{save}}, adding a
+#' The function of `backup_object` is a wrapper of [save()], adding a
 #' time stamp and a suffix to the name of the resulting file (an R image file
 #' with extension \bold{*.rda}).
 #' The function `load_last` is adapted to this style, loading the newest
@@ -38,7 +37,7 @@
 #' 
 #' @return An R image with extension \bold{*.rda}.
 #' 
-#' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
 #' @seealso \code{\link{save}} \code{\link{load}}.
 #' 
@@ -63,7 +62,9 @@
 #' load_last(file.path(path.package("taxlist"), "extdata", "Podocarpus"))
 #' 
 #' @rdname backup_object
-#' @export 
+#' 
+#' @export
+#'  
 backup_object <- function(..., objects=character(), file, stamp=TRUE,
         overwrite=FALSE) {
     if(missing(file))
@@ -102,6 +103,7 @@ backup_object <- function(..., objects=character(), file, stamp=TRUE,
 #' @rdname backup_object
 #' 
 #' @export 
+#' 
 load_last <-function(file) {
 	path <- "."
 	if(grepl("/", file, fixed=TRUE)) {

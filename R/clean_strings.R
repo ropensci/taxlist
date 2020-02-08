@@ -1,6 +1,4 @@
 #' @name clean_strings
-#' @aliases clean_strings,character-method clean_strings,factor-method
-#'     clean_strings,data.frame-method
 #' 
 #' @title Cleaning character strings.
 #' 
@@ -10,7 +8,7 @@
 #' The function `clean_strings` get rid of them.
 #' 
 #' @param x Object to be cleaned.
-#' @param from,to Arguments passed to \code{\link{iconv}}.
+#' @param from,to Arguments passed to [iconv()].
 #' @param ... Further arguments passed among methods (not yet in use).
 #' 
 #' @details 
@@ -27,14 +25,17 @@
 #' clean_strings(" Cyperus    papyrus L.     ")
 #' 
 #' @rdname clean_strings
-#' @export 
+#' 
+#' @exportMethod clean_strings
+#' 
 setGeneric("clean_strings",
 		function(x, ...)
 			standardGeneric("clean_strings"))
 
 #' @rdname clean_strings
 #' 
-#' @export
+#' @aliases clean_strings,character-method
+#' 
 setMethod("clean_strings", signature(x="character"),
 		function(x, from="utf8", to="utf8", ...) {
 			x <- iconv(x, from, to)
@@ -46,7 +47,8 @@ setMethod("clean_strings", signature(x="character"),
 
 #' @rdname clean_strings
 #' 
-#' @export
+#' @aliases clean_strings,factor-method
+#' 
 setMethod("clean_strings", signature(x="factor"),
 		function(x, from="utf8", to="utf8", ...) {
 			base::levels(x) <- clean_strings(base::levels(x), from, to, ...)
@@ -56,7 +58,8 @@ setMethod("clean_strings", signature(x="factor"),
 
 #' @rdname clean_strings
 #' 
-#' @export
+#' @aliases clean_strings,data.frame-method
+#' 
 setMethod("clean_strings", signature(x="data.frame"),
 		function(x, from="utf8", to="utf8", ...) {
 			for(i in colnames(x)) {

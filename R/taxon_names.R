@@ -1,18 +1,13 @@
 #' @name taxon_names
-#' @aliases taxon_names,taxlist-method
-#'     taxon_names<- taxon_names<-,taxlist,data.frame-method
-#'     add_synonym add_synonym,taxlist-method
-#'     update_name update_name,taxlist,numeric-method
-#'     delete_name delete_name,taxlist,numeric-method
 #' 
 #' @title Handle information on taxon usage names.
 #' 
 #' @description 
-#' The slot `taxonNames` in \code{\linkS4class{taxlist}} objects contains
+#' The slot `taxonNames` in [taxlist-class] objects contains
 #' taxon usage names for the respective taxon.
 #' These functions assist on the access and modification of entries for names.
 #' 
-#' @param taxlist A \code{\linkS4class{taxlist}} object to be modified.
+#' @param taxlist A [taxlist-class] object to be modified.
 #' @param value A data frame used as new slot `taxonNames` in `taxlist`.
 #' @param ConceptID Numeric vector indicating the concept ID to which the
 #'     synonyms will be added.
@@ -25,19 +20,18 @@
 #' 
 #' @details 
 #' The replacement method `taxon_names<-` is a quick alternative to include
-#' names in empty \code{\linkS4class{taxlist}} objects.
+#' names in empty [taxlist-class] objects.
 #' 
-#' The function \code{'add_synonym'} works only for adding names to existing
+#' The function `add_synonym()` works only for adding names to existing
 #' taxon concepts.
-#' For adding new taxon concepts as well you should use
-#' \code{\link{add_concept}}.
+#' For adding new taxon concepts as well you should use [add_concept()].
 #' 
 #' @return A data frame or, in the case of the replacement method, a
-#' \code{\linkS4class{taxlist}} object with modified slot \code{'taxonNames'}.
+#' [taxlist-class] object with modified slot `taxonNames`.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
-#' @seealso \code{\linkS4class{taxlist}}.
+#' @seealso [taxlist-class]
 #' 
 #' @examples 
 #' ## Display of slot 'taxonNames'
@@ -58,7 +52,9 @@
 #' summary(Easplist, "Launaea cornuta")
 #' 
 #' @rdname taxon_names
-#' @export 
+#' 
+#' @exportMethod taxon_names
+#' 
 setGeneric("taxon_names",
         function(taxlist, ...)
             standardGeneric("taxon_names")
@@ -66,20 +62,25 @@ setGeneric("taxon_names",
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases taxon_names,taxlist-method
+#' 
 setMethod("taxon_names", signature(taxlist="taxlist"),
         function(taxlist, ...) taxlist@taxonNames
 )
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases taxon_names<-
+#' 
+#' @exportMethod taxon_names<-
+#' 
 setGeneric("taxon_names<-", function(taxlist, value)
             standardGeneric("taxon_names<-"))
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases taxon_names<-,taxlist,data.frame-method
+#' 
 setReplaceMethod("taxon_names", signature(taxlist="taxlist",
                 value="data.frame"), function(taxlist, value) {
             taxlist@taxonNames <- value
@@ -89,7 +90,10 @@ setReplaceMethod("taxon_names", signature(taxlist="taxlist",
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases add_synonym
+#' 
+#' @exportMethod add_synonym
+#' 
 setGeneric("add_synonym",
 		function(taxlist, ConceptID, ...)
 			standardGeneric("add_synonym")
@@ -97,7 +101,8 @@ setGeneric("add_synonym",
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases add_synonym,taxlist-method
+#' 
 setMethod("add_synonym", signature(taxlist="taxlist"),
 		function(taxlist, ConceptID, TaxonName, AuthorName, ...) {
 			if(!all(ConceptID %in% taxlist@taxonRelations$TaxonConceptID))
@@ -128,7 +133,10 @@ setMethod("add_synonym", signature(taxlist="taxlist"),
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases update_name
+#' 
+#' @exportMethod update_name
+#' 
 setGeneric("update_name",
 		function(taxlist, UsageID, ...)
 			standardGeneric("update_name")
@@ -136,7 +144,8 @@ setGeneric("update_name",
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases update_name,taxlist,numeric-method
+#' 
 setMethod("update_name", signature(taxlist="taxlist", UsageID="numeric"),
 		function(taxlist, UsageID, ...) {
 			new_entries <- as.data.frame(list(...), stringsAsFactors=FALSE)
@@ -159,7 +168,10 @@ setMethod("update_name", signature(taxlist="taxlist", UsageID="numeric"),
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases delete_name
+#' 
+#' @exportMethod delete_name
+#' 
 setGeneric("delete_name",
 		function(taxlist, UsageID, ...)
 			standardGeneric("delete_name")
@@ -167,7 +179,8 @@ setGeneric("delete_name",
 
 #' @rdname taxon_names
 #' 
-#' @export 
+#' @aliases delete_name,taxlist,numeric-method
+#' 
 setMethod("delete_name", signature(taxlist="taxlist", UsageID="numeric"),
 		function(taxlist, UsageID, ...) {
 			if(any(UsageID %in% taxlist@taxonRelations$AcceptedName))

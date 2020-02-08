@@ -26,6 +26,7 @@ Suggests:
     stringi,
     testthat,
     rmarkdown,
+    roxygen2,
     covr
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
@@ -34,6 +35,7 @@ Description: Handling taxonomic lists through objects of class 'taxlist'.
     backups from resulting R-objects.
     Also quick displays are implemented as summary-methods.
 License: GPL (>= 2)
+Roxygen: list(markdown = TRUE)
 URL:
     https://cran.r-project.org/package=taxlist,
     https://github.com/kamapu/taxlist
@@ -72,4 +74,4 @@ Collate:
     'taxlist-package.R'
     'StartMessage.R'
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

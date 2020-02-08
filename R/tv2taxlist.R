@@ -1,38 +1,36 @@
 #' @name tv2taxlist
 #' 
-#' @title Import species lists from Turboveg databases.
+#' @title Import species lists from Turboveg databases
 #' 
 #' @description 
 #' Importing species lists from Turboveg
 #' \url{https://www.synbiosys.alterra.nl/turboveg/} databases into an object of
-#' class \code{\linkS4class{taxlist}}.
+#' class [taxlist-class].
 #' 
 #' @param taxlist The name of a species list in Turboveg as character value.
 #' @param tv_home Character value indicating the path to the main Turboveg
 #'     folder.
 #' 
 #' @details 
-#' This function imports species lists using the function
-#' \code{\link[foreign]{read.dbf}}.
+#' This function imports species lists using the function [read.dbf()].
 #' When available, also taxon traits will be imported into the output object
-#' (usually the file \bold{ecodbase.dbf}).
+#' (usually the file **ecodbase.dbf**).
 #' During import of taxon traits, duplicated entries for a same concept will
 #' be discarded as well as entries for non-existing concepts.
 #' 
-#' By default `tv_home` will be set by the function
-#' \code{\link[vegdata]{tv.home}} from the package
-#' \code{\link[=vegdata-package]{vegata}}.
+#' By default `tv_home` will be set by the function [tv.home()] from the
+#' package [vegdata-package].
 #' 
 #' By default, the name of the database will be set as concept view for all
 #' concepts included in the species list.
 #' If this is not correct, consider setting it manually by using the functions
-#' \code{\link{taxon_views}} and \code{\link{add_view}}.
+#' [taxon_views()] and [add_view()].
 #' 
-#' @return An object of class \code{\linkS4class{taxlist}}.
+#' @return An object of class [taxlist-class].
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
-#' @seealso \code{\linkS4class{taxlist}}.
+#' @seealso [taxlist-class]
 #' 
 #' @examples 
 #' ## Cyperus data set installed as Turboveg species list
@@ -41,6 +39,7 @@
 #' summary(Cyperus)
 #' 
 #' @export 
+#' 
 tv2taxlist <- function(taxlist, tv_home=tv.home()) {
 	tv_home <- file.path(tv_home, "species", taxlist)
 	species <- read.dbf(file.path(tv_home, "species.dbf"), as.is=TRUE)

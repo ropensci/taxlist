@@ -1,15 +1,14 @@
 #' @name clean
-#' @aliases clean,taxlist-method
 #' 
-#' @title Delete orphaned records.
+#' @title Delete orphaned records
 #' 
 #' @description 
 #' Manipulation of slots may generate orphaned entries in
-#' \code{\linkS4class{taxlist}} objects.
+#' [taxlist-class] objects.
 #' The function `clean` deletes such entries and restores the consistency
 #' of the objects.
 #' 
-#' @param object A \code{\linkS4class{taxlist}} object.
+#' @param object A [taxlist-class] object.
 #' @param times An integer indicating how many times the cleaning should be
 #'     repeated.
 #' @param ... Further arguments passed from or to other methods.
@@ -18,7 +17,7 @@
 #' Cleaning of objects will follow the deletion of orphaned names, orphaned
 #' taxon trait entries, and orphaned parent entries.
 #' 
-#' @return A clean \code{\linkS4class{taxlist}} object.
+#' @return A clean [taxlist-class] object.
 #' 
 #' @author Miguel Alvarez.
 #' 
@@ -34,15 +33,18 @@
 #' summary(Easplist)
 #' 
 #' @rdname clean
-#' @export 
+#' 
+#' @exportMethod clean
+#' 
 setGeneric("clean",
         function(object, ...)
             standardGeneric("clean")
 )
 
-#' @rdname clean
+#' One run clean function
 #' 
-#' @export
+#' @keywords internal
+#' 
 clean_once_taxlist <- function(object) {
 	# clean slot taxonRelations (lost accepted names)
 	object@taxonRelations <- object@taxonRelations[
@@ -65,7 +67,8 @@ clean_once_taxlist <- function(object) {
 
 #' @rdname clean
 #' 
-#' @export
+#' @aliases clean,taxlist-method
+#' 
 setMethod("clean", signature(object="taxlist"),
         function(object, times=2, ...) {
 			count <- 0

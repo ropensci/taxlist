@@ -1,12 +1,10 @@
 #' @name df2taxlist
-#' @aliases df2taxlist,data.frame,logical-method
-#'     df2taxlist,data.frame,missing-method df2taxlist,character,missing-method
 #' 
 #' @title Convert data frames into taxlist objects
 #' 
 #' @description
 #' Taxon lists may be provided in data frame format, which will be converted to
-#' a \code{\linkS4class{taxlist}} object.
+#' a [taxlist-class] object.
 #' 
 #' @param x A data frame or a character vector with taxon names.
 #' @param AcceptedName A logical vector indicating accepted names with value
@@ -29,10 +27,10 @@
 #' 
 #' Be aware that the resulting object misses any information on taxon views,
 #' basionyms, parent concepts, hierarchical levels and taxon traits.
-#' All those elements can be added \emph{a posteriori} by further functions
+#' All those elements can be added *a posteriori* by further functions
 #' provided in this package.
 #' 
-#' @return A \code{\linkS4class{taxlist}} object.
+#' @return A [taxlist-class] object.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
 #' 
@@ -51,7 +49,9 @@
 #' summary(Plants, "all")
 #' 
 #' @rdname df2taxlist
-#' @export 
+#' 
+#' @exportMethod df2taxlist
+#' 
 setGeneric("df2taxlist",
         function(x, AcceptedName, ...)
             standardGeneric("df2taxlist")
@@ -59,7 +59,8 @@ setGeneric("df2taxlist",
 
 #' @rdname df2taxlist
 #' 
-#' @export 
+#' @aliases df2taxlist,data.frame,logical-method
+#' 
 setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
         function(x, AcceptedName, ...) {
             # If author names missing
@@ -116,14 +117,16 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
 
 #' @rdname df2taxlist
 #' 
-#' @export 
+#' @aliases df2taxlist,data.frame,missing-method
+#' 
 setMethod("df2taxlist", signature(x="data.frame", AcceptedName="missing"),
         function(x, ...) return(df2taxlist(x, TRUE))
 )
 
 #' @rdname df2taxlist
 #' 
-#' @export 
+#' @aliases df2taxlist,character,missing-method
+#' 
 setMethod("df2taxlist", signature(x="character", AcceptedName="missing"),
         function(x, ...) {
             if(any(duplicated(x))) {
