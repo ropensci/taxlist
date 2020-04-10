@@ -5,7 +5,9 @@
 \alias{Easplist-data}
 \alias{Easplist}
 \title{List of vascular plants from East Africa}
-\format{An object of class \linkS4class{taxlist}.}
+\format{
+An object of class \linkS4class{taxlist}.
+}
 \source{
 \href{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}{African
 Plant Database},

@@ -13,7 +13,7 @@ backup_object(
   overwrite = FALSE
 )
 
-load_last(file)
+load_last(file, fext = ".rda")
 }
 \arguments{
 \item{...}{Names of the objects to be saved (either symbols or character
@@ -30,6 +30,9 @@ backup name or not.}
 
 \item{overwrite}{A logical value indicating whether existing files must be
 overwritten or not.}
+
+\item{fext}{A character value indicating the file extension (including the
+dot symbol).}
 }
 \value{
 An R image with extension \bold{*.rda}.
