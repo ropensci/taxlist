@@ -19,6 +19,8 @@
 #'     the extension.
 #' @param stamp A logical value indicating whether time should be stamped in the
 #'     backup name or not.
+#' @param fext A character value indicating the file extension (including the
+#'     dot symbol).
 #' @param overwrite A logical value indicating whether existing files must be
 #'     overwritten or not.
 #' 
@@ -104,40 +106,10 @@ backup_object <- function(..., objects=character(), file, stamp=TRUE,
 #' 
 #' @export 
 #' 
-load_last <-function(file) {
-	path <- "."
-	if(grepl("/", file, fixed=TRUE)) {
-		path <- strsplit(file, "/", fixed=TRUE)[[1]]
-		file2 <- path[length(path)]
-		path <- paste(path[-length(path)], collapse="/")
-	} else if(grepl("\\", file, fixed=TRUE)) {
-		path <- strsplit(file, "\\", fixed=TRUE)[[1]]
-		file2 <- path[length(path)]
-		path <- paste(path[-length(path)], collapse="/")
-	} else file2 <- file
-	inFolder <- list.files(path=path, pattern=".rda")
-	inFolder <- inFolder[grepl(file2, inFolder, fixed=TRUE)]
-	if(length(inFolder) == 0)
-		stop("The requested backup is missing in the working directory.")
-	Name <- sub(".rda", "", inFolder, fixed=TRUE)
-	Name <- strsplit(Name, "_", fixed=TRUE)
-	underscores <- gsub("_", "", file2)
-	underscores <- nchar(file2) - nchar(underscores)
-	Name <- lapply(Name, function(x, y) {
-				if(length(x) < (y + 3))
-					x <- c(x, rep_len("0", y - length(x) + 3))
-				return(x)
-			}, y=underscores)
-	OUT <- as.data.frame(do.call(rbind, Name), stringsAsFactors=FALSE)[,
-			c((underscores + 2):(underscores + 3))]
-	colnames(OUT) <- c("date","suffix")
-	OUT$filename <- inFolder
-	OUT <- OUT[nchar(OUT$date) == 10,]
-	OUT$order <- c(seq_len(nrow(OUT)))
-	OUT$date <- as.Date(OUT$date)
-	OUT$suffix <- as.integer(OUT$suffix)
-	OUT <- OUT[with(OUT, order(date, suffix)),]
+load_last <-function(file, fext=".rda") {
+	OUT <- sort_backups(file=file, fext=fext)
 	message(paste0("Loading file '", OUT$filename[nrow(OUT)], "' to session."))
+	path <- OUT$path[nrow(OUT)]
 	if(length(path) == 1 & path[1] == ".") load(OUT$filename[nrow(OUT)],
 				envir=.GlobalEnv) else
 		load(file.path(paste(path, collapse="/"), OUT$filename[nrow(OUT)]),

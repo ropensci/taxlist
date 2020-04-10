@@ -5,7 +5,7 @@ taxlist 0.1.8
 
 * Roxygenized version.
 * Method `formula` for function `count_taxa()`.
-
+* New argument `fext` in function `backup_object()` setting the extension of the backup file.
 
 taxlist 0.1.7
 =============
