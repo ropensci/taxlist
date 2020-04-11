@@ -4,7 +4,7 @@
 \alias{sort_backups}
 \title{Sorting files with time stamp and suffix}
 \usage{
-sort_backups(file, fext = ".rda")
+sort_backups(file, f_timestamp = "\%Y-\%m-\%d", fext = ".rda")
 }
 \arguments{
 \item{file}{A character value indicating the root of the backup's name. It

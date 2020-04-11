@@ -39,7 +39,7 @@ add_suffix <- function(x, y, sep="_") {
 #' oldest to the newest.
 #' 
 #' @keywords internal
-sort_backups <- function(file, fext=".rda") {
+sort_backups <- function(file, f_timestamp="%Y-%m-%d", fext=".rda") {
 	path <- "."
 	if(grepl("/", file, fixed=TRUE)) {
 		path <- strsplit(file, "/", fixed=TRUE)[[1]]
@@ -68,8 +68,8 @@ sort_backups <- function(file, fext=".rda") {
 	colnames(OUT) <- c("date","suffix")
 	OUT$path <- path
 	OUT$filename <- inFolder
-	OUT <- OUT[nchar(OUT$date) == 8,]
-	OUT$date <- as.Date(strptime(OUT$date, "%Y%m%d"))
+	OUT$date <- as.Date(strptime(OUT$date, f_timestamp))
+	OUT <- OUT[!is.na(OUT$date),]
 	OUT$suffix <- as.integer(OUT$suffix)
 	OUT <- OUT[with(OUT, order(date, suffix)),]
 	OUT$order <- c(seq_len(nrow(OUT)))
