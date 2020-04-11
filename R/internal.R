@@ -68,8 +68,8 @@ sort_backups <- function(file, fext=".rda") {
 	colnames(OUT) <- c("date","suffix")
 	OUT$path <- path
 	OUT$filename <- inFolder
-	OUT <- OUT[nchar(OUT$date) == 10,]
-	OUT$date <- as.Date(OUT$date)
+	OUT <- OUT[nchar(OUT$date) == 8,]
+	OUT$date <- as.Date(strptime(OUT$date, "%Y%m%d"))
 	OUT$suffix <- as.integer(OUT$suffix)
 	OUT <- OUT[with(OUT, order(date, suffix)),]
 	OUT$order <- c(seq_len(nrow(OUT)))
