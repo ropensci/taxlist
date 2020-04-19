@@ -1,6 +1,11 @@
 taxlist 0.1.8
 =============
 
+### New Features
+
+* Function `taxlist2taxmap()` for the interaction between packages `taxlist` and `taxmap`.
+* Function `taxmap2taxlist()` for the conversion of `Taxmap` objects into `taxlist` ones.
+
 ### Improvements
 
 * Roxygenized version.

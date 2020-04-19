@@ -1,3 +1,5 @@
+#' @name taxlist-class
+#' 
 #' @title An S4 class to represent taxonomic lists.
 #' 
 #' @description

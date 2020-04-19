@@ -1,4 +1,4 @@
-#' @name taxlist
+#' @name taxlist-package
 #' 
 #' @docType package
 #' 

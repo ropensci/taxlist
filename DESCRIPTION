@@ -70,6 +70,7 @@ Collate:
     'tax2traits.R'
     'match_names.R'
     'print_name.R'
+    'taxlist2taxmap.R'
     'Easplist-data.R'
     'taxlist-package.R'
     'StartMessage.R'
