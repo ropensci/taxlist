@@ -38,7 +38,18 @@ This function should be used for the exchange of data between the packages
 \link{taxlist-package} and \code{taxa}.
 }
 \examples{
-library(taxa)
+## Subset Easplist
+Cyperus <- subset(Easplist, grepl("Cyperus", TaxonName))
+
+## Convert to taxmap 
+Cyperus2 <- taxlist2taxmap(Cyperus)
+Cyperus2
+
+## Convert it back to taxlist
+\donttest{
+Cyperus2 <- taxmap2taxlist(Cyperus2)
+summary(Cyperus2)
+}
 
 }
 \author{

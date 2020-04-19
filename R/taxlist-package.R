@@ -15,14 +15,15 @@
 #' \href{https://cran.r-project.org/package=vegtable}{vegtable}.
 #' 
 #' For a more detailed description of this package, see
-#' \href{https://doi.org/10.1111/j.1654-1103.2010.01209.x}{Alvarez & Luebert (2018)}.
+#' \href{https://doi.org/10.1111/j.1654-1103.2010.01209.x}{Alvarez & Luebert
+#' (2018)}.
 #' 
 #' @description
 #' The class [taxlist-class] is defined in this package using the
 #' S4 language.
 #' The main task of `taxlist` objects is to keep the taxonomic coherence of
-#' information included in taxonomic lists and to implement functions (methods) for
-#' a proper data handling.
+#' information included in taxonomic lists and to implement functions (methods)
+#' for a proper data handling.
 #' Objects of class [taxlist-class] can be included in further
 #' objects, for instance in biodiversity records as done in the package
 #' \href{https://cran.r-project.org/package=vegtable}{vegtable}.

@@ -53,7 +53,8 @@ library(taxlist)
 replace_x(letters, c("b", "p", "f"), c("bee", "pork", "fungus"))
 
 ## Replace values using indices
-replace_idx(letters, 1:length(letters), c(2,7,17), c("second", "seven", "seventeenth"))
+replace_idx(letters, 1:length(letters), c(2,7,17), c("second", "seven",
+    "seventeenth"))
 
 ## Replace values if they are NAs
 letters[2] <- NA
@@ -62,7 +63,8 @@ replace_na(letters, 1:length(letters), c(1:3), c("alpha", "beta", "zeta"))
 ## Merge data frames including new columns
 data(iris)
 iris$Species <- paste(iris$Species)
-new_iris <- data.frame(Species=rep("humilis", 2), Height=c(15,20), stringsAsFactors=FALSE)
+new_iris <- data.frame(Species=rep("humilis", 2), Height=c(15,20),
+    stringsAsFactors=FALSE)
 insert_rows(iris, new_iris)
 
 }

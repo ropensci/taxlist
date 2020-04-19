@@ -7,5 +7,10 @@ test_that("count_taxa is working", {
 					with(Easplist@taxonRelations,
 							length(Level[paste(Level) == "species"])))
 			expect_error(count_taxa(Easplist, level="superspecies"))
+			Easplist <- tax2traits(Easplist, get_names=TRUE)
+			expect_is(count_taxa(~ lf_behn_2018 + family, Easplist),
+					"data.frame")
+			expect_is(count_taxa(~ lf_behn_2018 + family, Easplist,
+							include_na=TRUE), "data.frame")
 		}
 )

@@ -5,7 +5,7 @@
 ^\.project$
 ^\.travis.yml$
 ^codecov\.yml$
-^R2$
+^cran-comments\.md$
 ^data-raw$
 ^README-figures$
 ^README\.Rmd$

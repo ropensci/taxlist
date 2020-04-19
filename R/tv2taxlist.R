@@ -34,7 +34,8 @@
 #' 
 #' @examples 
 #' ## Cyperus data set installed as Turboveg species list
-#' Cyperus <- tv2taxlist("cyperus", file.path(path.package("taxlist"), "tv_data"))
+#' Cyperus <- tv2taxlist("cyperus", file.path(path.package("taxlist"),
+#'     "tv_data"))
 #' 
 #' summary(Cyperus)
 #' 

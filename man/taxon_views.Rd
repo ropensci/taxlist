@@ -58,16 +58,18 @@ taxon_views(Easplist)
 
 ## Add a new view
 Easplist <- add_view(Easplist, secundum="Beentje et al. (1952)",
-    Title="Flora of Tropical East Africa",
-    URL="http://www.kew.org/science/directory/projects/FloraTropEAfrica.html")
+  Title="Flora of Tropical East Africa",
+  URL="http://www.kew.org/science/directory/projects/FloraTropEAfrica.html")
 
 taxon_views(Easplist)
 
 }
 \references{
-\bold{Zhong Y, Jung S, Pramanik S, Beaman JH (1996).} Data model and comparison
-and query methods for interacting classifications in a taxonomic database.
-\emph{Taxon} 45: 223--241. \url{https://doi.org/10.1093/bioinformatics/15.2.149}
+\bold{Zhong Y, Jung S, Pramanik S, Beaman JH (1996).} Data model and
+comparison and query methods for interacting classifications in a taxonomic
+database.
+\emph{Taxon} 45: 223--241.
+\url{https://doi.org/10.1093/bioinformatics/15.2.149}
 }
 \seealso{
 \linkS4class{taxlist}

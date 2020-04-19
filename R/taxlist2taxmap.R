@@ -28,7 +28,18 @@
 #' (\email{zacharyfoster1989@@gmail.com}).
 #' 
 #' @examples 
-#' library(taxa)
+#' ## Subset Easplist
+#' Cyperus <- subset(Easplist, grepl("Cyperus", TaxonName))
+#' 
+#' ## Convert to taxmap 
+#' Cyperus2 <- taxlist2taxmap(Cyperus)
+#' Cyperus2
+#' 
+#' ## Convert it back to taxlist
+#' \donttest{
+#' Cyperus2 <- taxmap2taxlist(Cyperus2)
+#' summary(Cyperus2)
+#' }
 #' 
 #' @exportMethod taxlist2taxmap
 #' 
