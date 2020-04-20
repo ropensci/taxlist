@@ -36,10 +36,9 @@
 #' Cyperus2
 #' 
 #' ## Convert it back to taxlist
-#' \donttest{
-#' Cyperus2 <- taxmap2taxlist(Cyperus2)
+#' Cyperus2 <- taxmap2taxlist(Cyperus2, traits="traits", views="views",
+#'     synonyms="synonyms")
 #' summary(Cyperus2)
-#' }
 #' 
 #' @exportMethod taxlist2taxmap
 #' 
@@ -119,12 +118,9 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 		taxonRelations$TaxonUsageID <- as.integer(seq_len(nrow(taxonRelations)))
 	if(!"TaxonName" %in% colnames(taxonRelations))
 		taxonRelations$TaxonName <- taxa::taxon_names(taxmap)
-	if(!"AuthorName" %in% colnames(taxonRelations) &
-			!is.null(taxmap$authorities))
-		taxonRelations$AuthorName <- taxmap$authorities
-	if(!"AuthorName" %in% colnames(taxonRelations) &
-			is.null(taxmap$authorities))
-		taxonRelations$AuthorName <- as.character(NA)
+	if(!"AuthorName" %in% colnames(taxonRelations))
+		taxonRelations$AuthorName <- vapply(taxmap$taxa, "[[", c(AuthorName=""),
+				i="authority")
 	taxonNames <- taxonRelations[,c("TaxonUsageID", "TaxonConceptID",
 					"TaxonName", "AuthorName")]
 	taxonNames$AuthorName[taxonNames$AuthorName == "NA"] <- NA
@@ -166,15 +162,8 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 		Level[,i] <- replace_x(Level[,i], old_ids, taxonRelations$Level)
 	Level <- unique(Level)
 	Level <- Level[!is.na(Level[,2]),]
-	Ranks <- list()
-	i <- 1
-	repeat{
-		Ranks[[i]] <- Level[!Level[,2] %in% Level[,1],2]
-		Level <- Level[Level[,2] != Ranks[[i]],]
-		i <- i + 1
-		if(nrow(Level) == 0) break
-	}
-	Level <- unique(unlist(Ranks))
+	Level <- Level[!is.na(Level[,1]),]
+	Level <- rev(unique(unlist(Level)))
 	taxonRelations$Level <- factor(taxonRelations$Level, levels=Level)
 	# assembling taxlist
 	obj <- new("taxlist", taxonRelations=taxonRelations, taxonNames=taxonNames)

@@ -46,10 +46,9 @@ Cyperus2 <- taxlist2taxmap(Cyperus)
 Cyperus2
 
 ## Convert it back to taxlist
-\donttest{
-Cyperus2 <- taxmap2taxlist(Cyperus2)
+Cyperus2 <- taxmap2taxlist(Cyperus2, traits="traits", views="views",
+    synonyms="synonyms")
 summary(Cyperus2)
-}
 
 }
 \author{

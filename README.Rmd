@@ -31,22 +31,23 @@ knitr::opts_chunk$set(
 The aim of `taxlist` is to provide an object structure for taxonomic lists, as
 well as functions for handling and displaying the information contained in such
 objects.
-The structure of `taxlist` objects is inspired on data handled by
-[Turboveg](https://www.synbiosys.alterra.nl/turboveg) and on relational
-database models.
+The structure of `taxlist` objects is inspired on the structure of data handled
+by [Turboveg](https://www.synbiosys.alterra.nl/turboveg) and relational
+databases.
 
 ![](README-figures/taxlist_model.png)<br/>
 **Figure:** Relational model for `taxlist` objects (see [Alvarez & Luebert
 2018](https://doi.org/10.3897/BDJ.6.e23635)).
 
-The functions in this package has being used to structure and clean data stored
-in [SWEA-Dataveg](https://kamapu.github.io/sweadataveg.html), a vegetation-plot
+The functions in this package has being used to structure and cross-check
+consistency of data stored in
+[SWEA-Dataveg](https://kamapu.github.io/sweadataveg.html), a vegetation-plot
 database for Eastern Africa.
 
 ## Installing taxlist
 
 This package is available from the Comprehensive R Archive Network (**CRAN**)
-and can be directly installed in an R-session:
+and can be directly installed within an R-session:
 
 ```{r, eval=FALSE}
 install.packages("taxlist", dependencies=TRUE)
@@ -64,10 +65,10 @@ install_github("kamapu/taxlist", build_vignette=TRUE)
 
 ## Building taxlist Objects
 
-Objects can be built step-by-step as in this example taking as reference the
-"Ferns of Chile" (original in Spanish: "Helechos de Chile") by **Gunkel
-(1984)**.
-The first step will be to generate an empty `taxlist` object:
+Objects can be built step-by-step as in the following example. For it, we will
+use as reference the "Ferns of Chile" (original in Spanish: "Helechos de Chile")
+by **Gunkel (1984)**.
+We will create an empty `taxlist` object using the function `new()`:
 
 ```{r}
 library(taxlist)
@@ -76,15 +77,15 @@ Fern <- new("taxlist")
 summary(Fern)
 ```
 
-We start defining the required taxonomic ranks. In such case, the levels have to
-be provided from the lowest to highest hierarchical level:
+Then we have to set the respective taxonomic ranks. In such case, the levels
+have to be provided from the lowest to highest hierarchical level:
 
 ```{r}
 levels(Fern) <- c("variety","species","genus")
 ```
 
 For convenience, we start inserting taxa with their respective names in a
-top-down direction. We use then the function `add_concept()` to add a new
+top-down direction. We will use the function `add_concept()` to add a new
 taxon. Note that the arguments `TaxonName`, `AuthorName`, and `Level` are
 used to provide the name of the taxon, the authority of the name and the
 taxonomic rank, respectively.
@@ -118,10 +119,10 @@ Fern <- add_concept(Fern,
 ```
 
 You may have realized that the function `summary()` is applied to provide on
-the one side a display of meta-information for the `taxlist` object, and on the
-other side to show a detail of the taxa included in the object. In the later
-case adding the keyword `"all"` in the second argument will show all the
-handled taxa.
+the one side a display of meta-information for the whole `taxlist` object, and
+on the other side to show a detail of the taxa included in the object. In the
+later case adding the keyword `"all"` as second argument, the summary will show
+a detailed information for every taxon included in the object.
 
 ```{r}
 summary(Fern)
@@ -132,30 +133,30 @@ summary(Fern, "all")
 
 ## Similar Packages
 
-The package `taxlist` shares similar objectives than the package
-[`taxa`](https://github.com/ropensci/taxa), but sing different approaches for
-object oriented programming in **R**, namely `taxlist` uses S4 while `taxa`
-uses R6. Additionally, `taxa` is rather developer-oriented, while
-`taxlist` is rather user-oriented.
+The package `taxlist` shares similar objectives with the package
+[`taxa`](https://github.com/ropensci/taxa), but uses different approaches for
+object oriented programming in **R**, namely `taxlist` applies **S4** while
+`taxa` uses **R6**. Additionally, `taxa` is rather developer-oriented, while
+`taxlist` is rather a user-oriented package.
 
 In following cases you may prefer to use `taxlist`:
 
-- In the case that you like to handle taxonomic lists including parent-child
-  relationships and synonymy, especially when you need an automatic check on
-  the consistency of this information (i.e. using the function
-  `validObject()`) or when the information have to be re-arranged during a
-  session.
+- When you need an automatic check on the consistency of information regarding
+  taxonomic ranks and parent-child relationships (parents have to be of a
+  higher rank then children), as well as non-duplicated combinations of names
+  and authors. Such checks are done by the function `validObject()`.
 - When you foresee statistical assessments on taxonomy diversity or taxon
   properties (chorology, conservation status, functional traits, etc.).
 - When you seek to produce documents using **rmarkdown**, for instance guide
   books or check-lists. Also in article manuscripts taxonomic names referring
-  to a taxon concept can be easily formatted by the function `print_name()`.
+  to a taxon concept can easily get formatted by the function `print_name()`.
 - When importing taxonomic lists from databases stored in
   [**Turboveg 2**](http://www.synbiosys.alterra.nl/turboveg).
 - When you seek to implement the package
-  [`vegtable`](https://CRAN.R-project.org/package=vegtable) on handling and
+  [`vegtable`](https://CRAN.R-project.org/package=vegtable) for handling and
   assessing biodiversity records, especially vegetation-plot data. In that
-  case, taxonomic lists will be formatted as a `taxlist` object.
+  case, taxonomic lists will be formatted by `taxlist` as a slot within a
+  `vegtable` object.
 
 
 ## Rmarkdown Integration
@@ -224,8 +225,9 @@ Now, we can sort them to produce a nice bar plot.
 ```{r genera_bar}
 Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE),]
 
-par(las=2, mar=c(10,3,1,1))
-with(Cype_stat, barplot(species_count, names.arg=genus))
+par(las=2, mar=c(10,5,1,1))
+with(Cype_stat, barplot(species_count, names.arg=genus,
+				ylab="Number of Species"))
 ```
 
 
