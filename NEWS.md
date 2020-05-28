@@ -1,3 +1,11 @@
+taxlist 0.1.9
+=============
+
+### Bug Fixes
+
+* Problems with encoding of data set `Easplist`
+
+
 taxlist 0.1.8
 =============
 
@@ -46,7 +54,7 @@ taxlist 0.1.6
 * New function `count_taxa()`
 
 ### Improvements
-* A new option `style="knitr"` for function `print_name()` (See [this issue](https://stackoverflow.com/questions/51092103/formatted-scientific-names-from-r-to-latex-using-sweave-or-knitr)) at **Stack Overflow**.
+* A new option `style="knitr"` for function `print_name()` (See [this issue](https://stackoverflow.com/questions/51092103/formatted-scientific-names-from-r-to-latex-using-sweave-or-knitr) at **Stack Overflow**).
 * In function `backup_object()`, the message will be done after successful saving and not before.
 * New argument `accepted_only` in function `match_names()`, for comparing strings only with accepted names.
 * Error message for NA's in argument `x` at function `match_names()`

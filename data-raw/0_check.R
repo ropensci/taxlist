@@ -15,11 +15,14 @@ document()
 # Report coverage
 report()
 
-# Check application of good practices
-gp()
-
 # Render readme-file.
 render("README.Rmd")
+
+# Write data set
+source("data-raw/Easplist/Easplist.R")
+
+# Check application of good practices
+gp()
 
 # Build package
 Root <- sub("/taxlist", "", getwd(), fixed=TRUE)

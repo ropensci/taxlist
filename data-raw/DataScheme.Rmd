@@ -1,0 +1,82 @@
+---
+title: Structure of taxlist objects
+author: Miguel Alvarez
+output: pdf_document
+header-includes:
+  - \usepackage{fontawesome}
+  - \usepackage{tikz}
+  - \usetikzlibrary{shapes}
+  - \tikzset{font={\fontsize{10pt}{12}\selectfont}}
+  #- \usepackage[usenames,dvipsnames]{xcolor} % colors
+  - \definecolor{Grey1}{RGB}{191,191,191}
+  - \definecolor{Grey2}{RGB}{222,222,222}
+---
+
+\tikzstyle{table}=[rectangle,draw=black,rounded corners,anchor=north west,
+text width=3.5cm,rectangle split,rectangle split parts=2,
+rectangle split part fill={Grey1,Grey2}]
+
+\begin{tikzpicture}
+    % Rectangles
+    \node[table](taxonNames){
+        \textbf{taxonNames}
+        \nodepart{second}TaxonConceptID
+        \newline TaxonUsageID \faKey
+        \newline TaxonName
+        \newline AuthorName
+        \newline \ldots   
+    };
+    \node[table](taxonRelations) at ([xshift=1.5cm]taxonNames.north east){
+        \textbf{taxonRelations}
+        \nodepart{second}TaxonConceptID \faKey
+        \newline AcceptedName
+        \newline Basionym
+        \newline Parent
+        \newline Level
+        \newline ViewID
+        \newline \ldots
+    };
+    \node[table](taxonTraits) at ([xshift=1.5cm]taxonRelations.north east){
+        \textbf{taxonTraits}
+        \nodepart{second}TaxonConceptID \faKey
+        \newline \ldots
+    };
+    \node[table](taxonViews) at ([yshift=-1cm]taxonTraits.south west){
+        \textbf{taxonViews}
+        \nodepart{second}ViewID \faKey
+        \newline \ldots
+    };
+    % Arrows
+    \draw([yshift=-0.7cm]taxonNames.north east)--
+    ([yshift=-0.7cm]taxonRelations.north west);
+    \draw([yshift=-1.2cm]taxonNames.north east)--
+    ([yshift=-1.2cm]taxonRelations.north west);
+    \draw([yshift=-0.7cm]taxonRelations.north east)--
+    ([yshift=-0.7cm]taxonTraits.north west);
+    % Auxiliar nodes and break line
+    \node(ctrl5) at ([xshift=0.12cm,yshift=-1.4cm]taxonNames.north east);
+    \node(ctrl6) at ([xshift=0.9cm,yshift=-1.4cm]taxonNames.north east);
+    \node(ctrl7) at ([xshift=0.9cm,yshift=-1.72cm]taxonNames.north east);
+    \node(ctrl8) at ([xshift=1.38cm,yshift=-1.72cm]taxonNames.north east);
+        \draw(ctrl5.north west)--(ctrl6.north west)--(ctrl7.north west)--
+        (ctrl8.north east);
+    \node(ctrl9) at ([xshift=0.12cm,yshift=-0.9cm]taxonRelations.north east);
+    \node(ctrl10) at ([xshift=0.5cm,yshift=-0.9cm]taxonRelations.north east);
+    \node(ctrl11) at ([xshift=0.5cm,yshift=-2.2cm]taxonRelations.north east);
+    \node(ctrl12) at ([xshift=0.12cm,yshift=-2.2cm]taxonRelations.north east);
+        \draw(ctrl9.north west)--(ctrl10.north west)--(ctrl11.north west)--
+        (ctrl12.north west);  
+    \node(ctrl1) at ([xshift=0.12cm,yshift=-3.04cm]taxonRelations.north east);
+    \node(ctrl2) at ([xshift=0.7cm,yshift=-3.04cm]taxonRelations.north east);
+    \node(ctrl3) at ([xshift=0.7cm,yshift=-3.32cm]taxonRelations.north east);
+    \node(ctrl4) at ([xshift=1.38cm,yshift=-3.32cm]taxonRelations.north east);
+        \draw(ctrl1.north west)--(ctrl2.north west)--(ctrl3.north west)--
+        (ctrl4.north east);
+    % Names of arrows
+    \node at([xshift=0.75cm,yshift=-0.5cm]taxonNames.north east){n:1};
+    \node at([xshift=0.75cm,yshift=-0.95cm]taxonNames.north east){1:1};
+    \node at([xshift=0.75cm,yshift=-1.9cm]taxonNames.north east){1:1};
+    \node at([xshift=0.75cm,yshift=-0.5cm]taxonRelations.north east){1:1};
+    \node at([xshift=0.75cm,yshift=-1.4cm]taxonRelations.north east){1:n};
+    \node at([xshift=0.9cm,yshift=-2.9cm]taxonRelations.north east){n:1};
+\end{tikzpicture}

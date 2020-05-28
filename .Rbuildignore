@@ -11,3 +11,6 @@
 ^README\.Rmd$
 ^README\.md$
 ^TODO\.md$
+^CRAN-RELEASE$
+^doc$
+^Meta$
