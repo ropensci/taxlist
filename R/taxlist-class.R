@@ -122,7 +122,8 @@ setClass("taxlist",
 								"slot 'taxonTraits'"))
             # parent-child relationships
             if(!all(is.na(object@taxonRelations$Parent)) &
-                    !all(is.na(object@taxonRelations$Level))) {
+                    !all(is.na(object@taxonRelations$Level)) &
+					is.factor(object@taxonRelations$Level)) {
                 Children <- object@taxonRelations[
                         !is.na(object@taxonRelations$Parent),
                         c("TaxonConceptID","Parent","Level")]
