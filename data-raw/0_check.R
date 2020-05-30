@@ -29,4 +29,5 @@ Root <- sub("/taxlist", "", getwd(), fixed=TRUE)
 Ploc <- build(path=file.path(Root, "00_Rpackages"))
 
 # Test the package
+Sys.setenv(LANG="en_US.iso88591")
 check_built(path=Ploc)
