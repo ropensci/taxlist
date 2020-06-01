@@ -9,9 +9,8 @@
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
-<br>
-[![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
+<!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
 <br> [![Travis Build
 Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 [![codecov](https://codecov.io/gh/kamapu/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/taxlist)
@@ -63,12 +62,6 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 
 ``` r
 library(taxlist)
-#> This is taxlist 0.1.8
-#> 
-#> Attaching package: 'taxlist'
-#> The following object is masked from 'package:base':
-#> 
-#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
