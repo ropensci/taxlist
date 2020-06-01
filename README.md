@@ -9,7 +9,9 @@
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
+<br>
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
+[![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 <br> [![Travis Build
 Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
 [![codecov](https://codecov.io/gh/kamapu/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/taxlist)
@@ -61,6 +63,12 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 
 ``` r
 library(taxlist)
+#> This is taxlist 0.1.8
+#> 
+#> Attaching package: 'taxlist'
+#> The following object is masked from 'package:base':
+#> 
+#>     levels
 
 Fern <- new("taxlist")
 summary(Fern)
@@ -282,20 +290,20 @@ ranks suitable for frequency calculations.
 ``` r
 Easplist <- tax2traits(Easplist, get_names=TRUE)
 head(Easplist@taxonTraits)
-#>   TaxonConceptID       lf_behn_2018 form variety subspecies
-#> 1              7       phanerophyte <NA>    <NA>       <NA>
-#> 2              9       phanerophyte <NA>    <NA>       <NA>
-#> 3             18 facultative_annual <NA>    <NA>       <NA>
-#> 4             20 facultative_annual <NA>    <NA>       <NA>
-#> 5             21    obligate_annual <NA>    <NA>       <NA>
-#> 6             22        chamaephyte <NA>    <NA>       <NA>
-#>                  species complex        genus        family
-#> 1        Acacia mearnsii    <NA>       Acacia   Leguminosae
-#> 2     Acacia polyacantha    <NA>       Acacia   Leguminosae
-#> 3     Achyranthes aspera    <NA>  Achyranthes Amaranthaceae
-#> 4     Acmella caulirhiza    <NA>      Acmella    Compositae
-#> 5      Acmella uliginosa    <NA>      Acmella    Compositae
-#> 6 Aeschynomene schimperi    <NA> Aeschynomene   Leguminosae
+#>    TaxonConceptID       lf_behn_2018 form variety subspecies
+#> 3               7       phanerophyte <NA>    <NA>       <NA>
+#> 4               9       phanerophyte <NA>    <NA>       <NA>
+#> 7              18 facultative_annual <NA>    <NA>       <NA>
+#> 8              20 facultative_annual <NA>    <NA>       <NA>
+#> 9              21    obligate_annual <NA>    <NA>       <NA>
+#> 14             22        chamaephyte <NA>    <NA>       <NA>
+#>                   species complex        genus        family
+#> 3         Acacia mearnsii    <NA>       Acacia   Leguminosae
+#> 4      Acacia polyacantha    <NA>       Acacia   Leguminosae
+#> 7      Achyranthes aspera    <NA>  Achyranthes Amaranthaceae
+#> 8      Acmella caulirhiza    <NA>      Acmella    Compositae
+#> 9       Acmella uliginosa    <NA>      Acmella    Compositae
+#> 14 Aeschynomene schimperi    <NA> Aeschynomene   Leguminosae
 ```
 
 Note that the respective parental ranks are inserted in the table
