@@ -284,20 +284,20 @@ ranks suitable for frequency calculations.
 ``` r
 Easplist <- tax2traits(Easplist, get_names=TRUE)
 head(Easplist@taxonTraits)
-#>    TaxonConceptID       lf_behn_2018 form variety subspecies
-#> 3               7       phanerophyte <NA>    <NA>       <NA>
-#> 4               9       phanerophyte <NA>    <NA>       <NA>
-#> 7              18 facultative_annual <NA>    <NA>       <NA>
-#> 8              20 facultative_annual <NA>    <NA>       <NA>
-#> 9              21    obligate_annual <NA>    <NA>       <NA>
-#> 14             22        chamaephyte <NA>    <NA>       <NA>
-#>                   species complex        genus        family
-#> 3         Acacia mearnsii    <NA>       Acacia   Leguminosae
-#> 4      Acacia polyacantha    <NA>       Acacia   Leguminosae
-#> 7      Achyranthes aspera    <NA>  Achyranthes Amaranthaceae
-#> 8      Acmella caulirhiza    <NA>      Acmella    Compositae
-#> 9       Acmella uliginosa    <NA>      Acmella    Compositae
-#> 14 Aeschynomene schimperi    <NA> Aeschynomene   Leguminosae
+#>   TaxonConceptID       lf_behn_2018 form variety subspecies
+#> 1              7       phanerophyte <NA>    <NA>       <NA>
+#> 2              9       phanerophyte <NA>    <NA>       <NA>
+#> 3             18 facultative_annual <NA>    <NA>       <NA>
+#> 4             20 facultative_annual <NA>    <NA>       <NA>
+#> 5             21    obligate_annual <NA>    <NA>       <NA>
+#> 6             22        chamaephyte <NA>    <NA>       <NA>
+#>                  species complex        genus        family
+#> 1        Acacia mearnsii    <NA>       Acacia   Leguminosae
+#> 2     Acacia polyacantha    <NA>       Acacia   Leguminosae
+#> 3     Achyranthes aspera    <NA>  Achyranthes Amaranthaceae
+#> 4     Acmella caulirhiza    <NA>      Acmella    Compositae
+#> 5      Acmella uliginosa    <NA>      Acmella    Compositae
+#> 6 Aeschynomene schimperi    <NA> Aeschynomene   Leguminosae
 ```
 
 Note that the respective parental ranks are inserted in the table
