@@ -35,9 +35,10 @@ check_built(path=Ploc)
 
 # After check ------------------------------------------------------------------
 
-# TODO: Additional steps at final version
 # Install the package
-# Build vignette for homepage
+## install()
+
+# TODO: Build vignette for homepage
 
 # Render readme-file.
 render("README.Rmd")
