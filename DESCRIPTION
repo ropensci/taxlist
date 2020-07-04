@@ -71,6 +71,5 @@ Collate:
     'taxlist2taxmap.R'
     'Easplist-data.R'
     'taxlist-package.R'
-    'StartMessage.R'
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
