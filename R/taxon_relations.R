@@ -18,7 +18,7 @@
 #' @param ... Further arguments passed among methods.
 #' 
 #' @details 
-#' The replacement method `taxon_relatiions<-` should be only used when
+#' The replacement method `taxon_relations<-` should be only used when
 #' constructing [taxlist-class] objects from an empty one
 #' (prototype).
 #' 
