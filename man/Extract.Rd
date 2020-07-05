@@ -15,11 +15,19 @@
 \arguments{
 \item{x}{Object of class \linkS4class{taxlist}.}
 
-\item{i, j}{Indices for access.}
+\item{i}{Integer or logical vector used as index for access to taxon
+concepts, referring to the rows in slot 'taxonRelations'. These indices can
+be used to produce a object with a subset of taxon concepts. It is not
+recommended to use character values for this index.}
+
+\item{j}{Integer, logical or character vector used as index for access to
+variables in slot 'taxonTraits'. These indices can be used to reduce the
+number of variables in the mentioned slot.}
 
 \item{drop}{A logical value passed to \code{\link[base]{Extract}}.}
 
-\item{name}{A name to access.}
+\item{name}{A symbol or character value for the method \code{$}, corresponding to
+a variable either at slot 'taxonTraits' or slot 'taxonRelations'.}
 }
 \value{
 The method \code{$} retrieves a vector, while \code{[} retrieves a subset
@@ -28,16 +36,6 @@ of the input \linkS4class{taxlist} object.
 \description{
 Quick access to slots \code{taxonTraits} and \code{taxonRelations} within
 \linkS4class{taxlist} objects.
-}
-\details{
-While the method \code{$} automatically recognizes the slot queried, provided
-that there is no shared column names.
-
-In the method \code{[}, the first index is referred to the rows in slot
-\code{taxonRelations}, while the second index indicate the columns in slot
-\code{taxonTraits}.
-
-A replacement method \verb{$<-} is also implemented.
 }
 \examples{
 ## Statistics on life forms

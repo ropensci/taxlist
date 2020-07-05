@@ -204,20 +204,16 @@ setMethod("summary", signature(object="taxlist"),
 
 #' @rdname summary
 #' 
-#' @aliases show show,taxlist-method
+#' @aliases show,taxlist-method
 #' 
 #' @exportMethod show
 #' 
-setMethod("show", signature=(object="taxlist"),
+setMethod("show", signature(object="taxlist"),
 		function(object) {
 			summary(object)
 		}
 )
 
-#' @rdname summary
-#' 
-#' @aliases print
-#' 
 #' @exportMethod print
 #' 
 if(!isGeneric("print"))
@@ -230,7 +226,7 @@ if(!isGeneric("print"))
 #' 
 #' @aliases print,taxlist-method
 #' 
-setMethod("print", signature=(x="taxlist"),
+setMethod("print", signature(x="taxlist"),
 		function(x, ...) {
 			summary(x, ...)
 		}

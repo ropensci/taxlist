@@ -67,7 +67,7 @@ setClass("taxlist",
         ),
         # Validity procedures
 		validity=function(object) {
-            # slot taxonNames
+            ## slot taxonNames
 			if(!all(c("TaxonUsageID","TaxonConceptID","TaxonName",
 							"AuthorName") %in% colnames(object@taxonNames)))
 				return(paste("'TaxonUsageID', 'TaxonConceptID', 'TaxonName'",
@@ -83,7 +83,7 @@ setClass("taxlist",
                                     object@taxonNames$AuthorName))))
                 return(paste("Some combinations of name and name's author",
 								"are duplicated"))
-            # slot taxonRelations
+            ## slot taxonRelations
             if(!all(c("TaxonConceptID","AcceptedName","Basionym","Parent",
                             "Level") %in% colnames(object@taxonRelations)))
                 return(paste("'TaxonConceptID', 'AcceptedName', 'Basionym',",
@@ -109,7 +109,7 @@ setClass("taxlist",
                                     !is.na(object@taxonRelations$ViewID
                                     )] %in% object@taxonViews$ViewID))
                 return("Some concept views are missing in slot 'taxonViews'")
-            # taxonTraits
+            ## taxonTraits
             if(!"TaxonConceptID" %in% colnames(object@taxonTraits))
                 return(paste("'TaxonConceptID' is a mandatory column in",
 								"slot 'taxonTraits'"))
@@ -120,7 +120,13 @@ setClass("taxlist",
             if(any(duplicated(object@taxonTraits$TaxonConceptID)))
                 return(paste("Duplicated concepts are not allowed in",
 								"slot 'taxonTraits'"))
-            # parent-child relationships
+			# - duplicated variables in taxonRelations compared with taxonTraits
+			if(any(colnames(object@taxonTraits)[colnames(object@taxonTraits) !=
+									"TaxonConceptID"] %in%
+					colnames(object@taxonRelations)))
+				return(paste("Some variables at 'taxonTraits' are shared with",
+								"slot 'taxonRelations'"))
+            ## parent-child relationships
             if(!all(is.na(object@taxonRelations$Parent)) &
                     !all(is.na(object@taxonRelations$Level)) &
 					is.factor(object@taxonRelations$Level)) {
@@ -135,7 +141,7 @@ setClass("taxlist",
 									"inconsistent with hierarchical levels"))
                 rm(Children,Parents)
             }
-			# Accepted Names
+			## Accepted Names
 			if(!all(is.na(object@taxonRelations$AcceptedName))) {
 				if(any(!object@taxonRelations$AcceptedName %in%
 								object@taxonNames$TaxonUsageID))
@@ -153,7 +159,7 @@ setClass("taxlist",
 									"respective 'TaxonConceptID' in slot",
 									"'taxonNames'"))
 			}
-			# The same for basionyms
+			## The same for basionyms
 			if(!all(is.na(object@taxonRelations$Basionym))) {
 				if(any(!object@taxonRelations$Basionym %in%
 								object@taxonNames$TaxonUsageID))

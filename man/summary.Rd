@@ -4,7 +4,6 @@
 \alias{summary}
 \alias{summary,taxlist-method}
 \alias{show,taxlist-method}
-\alias{show}
 \alias{print,taxlist-method}
 \title{Print overviews for taxlist Objects and their content}
 \usage{
