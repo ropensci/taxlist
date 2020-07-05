@@ -57,7 +57,7 @@ Retrieve the content of slot \code{taxonRelations} from a
 \linkS4class{taxlist} object or replace it by a new data frame.
 }
 \details{
-The replacement method \verb{taxon_relatiions<-} should be only used when
+The replacement method \verb{taxon_relations<-} should be only used when
 constructing \linkS4class{taxlist} objects from an empty one
 (prototype).
 

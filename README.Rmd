@@ -75,7 +75,7 @@ databases.
 This package is available from the Comprehensive R Archive Network (**CRAN**)
 and can be directly installed within an R-session:
 
-```{r, eval=FALSE}
+```{r eval=FALSE}
 install.packages("taxlist", dependencies=TRUE)
 ```
 
@@ -88,6 +88,12 @@ library(devtools)
 install_github("kamapu/taxlist", build_vignette=TRUE)
 ```
 
+A vignette is installed with this package introducing to the work with
+`taxlist` and can be accessed by following command in your R-session:
+
+```{r eval=FALSE}
+vignette("taxlist-intro")
+```
 
 ## Building taxlist Objects
 
