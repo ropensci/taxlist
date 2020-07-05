@@ -35,7 +35,7 @@ summary(Splist, "Erigeron floribundus")
 
 ## ----load_easplist------------------------------------------------------------
 data(Easplist)
-summary(Easplist)
+Easplist
 
 
 ## ----summary_life_forms-------------------------------------------------------
@@ -43,23 +43,23 @@ summary(as.factor(Easplist$lf_behn_2018))
 
 
 ## ----papyrus_otp1, results="hide"---------------------------------------------
-Papyrus <- subset(Easplist, grepl("papyrus", TaxonName), slot="names")
+Papyrus <- subset(x=Easplist, subset=grepl("papyrus", TaxonName), slot="names")
 summary(Papyrus, "all")
 
 
 ## ----papyrus_opt2, results="hide"---------------------------------------------
-Papyrus <- subset(Easplist, TaxonConceptID == 206, slot="relations")
+Papyrus <- subset(x=Easplist, subset=TaxonConceptID == 206, slot="relations")
 summary(Papyrus, "all")
 
 
 ## ----phragmites, results="hide"-----------------------------------------------
-Phraaus <- subset(Easplist, charmatch("Phragmites australis", TaxonName),
-	slot="names")
+Phraaus <- subset(x=Easplist,
+		subset=charmatch("Phragmites australis", TaxonName), slot="names")
 summary(Phraaus, "all")
 
 
 ## ----summary_again------------------------------------------------------------
-summary(Easplist)
+Easplist
 
 
 ## ----recover_parents----------------------------------------------------------
@@ -88,7 +88,7 @@ Syntax <- with(Concepts, add_concept(Syntax, TaxonName=TaxonName,
                 AuthorName=AuthorName, Parent=Parent, Level=Level,
                 ViewID=rep(1, nrow(Concepts))))
 
-summary(Syntax)
+Syntax
 
 
 ## ----adding_synonyms----------------------------------------------------------
@@ -100,7 +100,7 @@ Syntax <- with(Synonyms, add_synonym(Syntax, ConceptID=TaxonConceptID,
 ## ----adding_traits------------------------------------------------------------
 head(Codes)
 taxon_traits(Syntax) <- Codes
-summary(Syntax)
+Syntax
 
 
 ## ----get_nymplot--------------------------------------------------------------

@@ -13,7 +13,7 @@ vignette: >
 # 1. Getting started
 
 The package `taxlist` aims to implement an object class and functions (methods)
-for handling taxonomic data i **R**.
+for handling taxonomic data in **R**.
 The homonymous object class `taxlist` can be further linked to biodiversity
 records (e.g. for observations in vegetation plots).
 
@@ -110,7 +110,7 @@ This data is a subset of the species list used by the database **SWEA-Dataveg**
 
 ```{r load_easplist}
 data(Easplist)
-summary(Easplist)
+Easplist
 ```
 
 
@@ -141,22 +141,22 @@ argument `slot`.
 
 
 ```{r papyrus_otp1, results="hide"}
-Papyrus <- subset(Easplist, grepl("papyrus", TaxonName), slot="names")
+Papyrus <- subset(x=Easplist, subset=grepl("papyrus", TaxonName), slot="names")
 summary(Papyrus, "all")
 ```
 
 Or the very same results:
 
 ```{r papyrus_opt2, results="hide"}
-Papyrus <- subset(Easplist, TaxonConceptID == 206, slot="relations")
+Papyrus <- subset(x=Easplist, subset=TaxonConceptID == 206, slot="relations")
 summary(Papyrus, "all")
 ```
 
 Similarly, you can look for a specific name.
 
 ```{r phragmites, results="hide"}
-Phraaus <- subset(Easplist, charmatch("Phragmites australis", TaxonName),
-	slot="names")
+Phraaus <- subset(x=Easplist,
+		subset=charmatch("Phragmites australis", TaxonName), slot="names")
 summary(Phraaus, "all")
 ```
 
@@ -169,11 +169,11 @@ Such information is also included in the data `Easplist`, as shown in the
 summary output.
 
 ```{r summary_again}
-summary(Easplist)
+Easplist
 ```
 
-Note that such information can get lost once applied `subset`, since the
-respective parents or children from the original data set are not anymore in
+Note that such information can get lost once `subset()` has been applied, since
+the respective parents or children from the original data set are not anymore in
 the subset.
 May you like to recover parents and children, you can use the functions
 `get_parents` or `get_children`, respectively.
@@ -226,7 +226,7 @@ Syntax <- with(Concepts, add_concept(Syntax, TaxonName=TaxonName,
                 AuthorName=AuthorName, Parent=Parent, Level=Level,
                 ViewID=rep(1, nrow(Concepts))))
 
-summary(Syntax)
+Syntax
 ```
 
 Note that the function `new` created an empty object (prototype), while
@@ -253,7 +253,7 @@ properties) of them in the slot `taxonTraits`.
 ```{r adding_traits}
 head(Codes)
 taxon_traits(Syntax) <- Codes
-summary(Syntax)
+Syntax
 ```
 
 For instance, you may like to get the parental chain from an association (e.g.
