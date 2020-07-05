@@ -3,3 +3,6 @@
 /tests/hidden_data/
 doc
 Meta
+.Rproj.user
+*.Rproj
+tests/testthat/*.rda

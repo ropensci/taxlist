@@ -1,9 +1,11 @@
 context("coerce objects to taxlist")
 
-Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus", "names.csv"),
-        stringsAsFactors=FALSE)
+pat <- system.file("cyperus", "names.csv", package = "taxlist")
 
-system.file('dir_within_pkg', 'file_name', package = 'taxlist')
+Cyperus <- read.csv(pat,
+                    stringsAsFactors=FALSE)
+
+# system.file('dir_within_pkg', 'file_name', package = 'taxlist')
 
 test_that("coercion to taxlist works", {
 			expect_is(df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM),

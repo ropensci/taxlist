@@ -1,7 +1,9 @@
 context("manipulating taxon concepts")
 
 # Loading installed examples
-load(file.path(path.package("taxlist"), "taxlist_examples/examples.Rda"))
+pat <- system.file("taxlist_examples", "examples.Rda", package = "taxlist")
+
+load(pat)
 
 test_that("function taxon_relations is working", {
 			expect_is(taxon_relations(Easplist), "data.frame")
