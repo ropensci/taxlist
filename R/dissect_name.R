@@ -26,7 +26,7 @@
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
 #' @examples 
-#' Easplist <- subset(Easplist, Level == "variety", slot="relations")
+#' Easplist <- subset(x=Easplist, subset=Level == "variety", slot="relations")
 #' Easplist <- accepted_name(Easplist)[c(1:10),"TaxonName"]
 #' 
 #' dissect_name(Easplist)

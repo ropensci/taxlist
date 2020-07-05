@@ -57,7 +57,7 @@ The replacement method \verb{taxon_views<-} replaces the whole content of slot
 taxon_views(Easplist)
 
 ## Add a new view
-Easplist <- add_view(Easplist, secundum="Beentje et al. (1952)",
+Easplist <- add_view(taxlist=Easplist, secundum="Beentje et al. (1952)",
   Title="Flora of Tropical East Africa",
   URL="http://www.kew.org/science/directory/projects/FloraTropEAfrica.html")
 

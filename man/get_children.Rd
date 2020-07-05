@@ -49,10 +49,11 @@ Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
 Ebenaceae <- get_children(Easplist, Ebenaceae)
 
 summary(Ebenaceae)
-summary(Ebenaceae, "all", maxsum=100)
+summary(object=Ebenaceae, ConceptID="all", maxsum=100)
 
 ## Get parents of Diospyros tricolor
-Diostri <- subset(Easplist, TaxonConceptID == 52403, slot="relations")
+Diostri <- subset(x=Easplist, subset=TaxonConceptID == 52403,
+    slot="relations")
 Diostri <- get_parents(Easplist, Diostri)
 
 summary(Diostri)

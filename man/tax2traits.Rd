@@ -33,8 +33,8 @@ relationships and information on taxonomic levels.
 }
 \examples{
 ## Family Acanthaceae with children
-Acanthaceae <- subset(Easplist, TaxonName == "Acanthaceae", slot="names",
-    keep_children=TRUE)
+Acanthaceae <- subset(x=Easplist, subset=TaxonName == "Acanthaceae",
+    slot="names", keep_children=TRUE)
 summary(Acanthaceae)
 
 ## Insert taxonomy to taxon traits

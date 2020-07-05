@@ -36,9 +36,9 @@
 #' Cyperus2
 #' 
 #' ## Convert it back to taxlist
-#' Cyperus2 <- taxmap2taxlist(Cyperus2, traits="traits", views="views",
+#' Cyperus2 <- taxmap2taxlist(taxmap=Cyperus2, traits="traits", views="views",
 #'     synonyms="synonyms")
-#' summary(Cyperus2)
+#' Cyperus2
 #' 
 #' @exportMethod taxlist2taxmap
 #' 

@@ -180,6 +180,12 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
 #' ## summary of the object
 #' summary(Easplist, units="Mb")
 #' 
+#' ## the same output
+#' summary(Easplist)
+#' show(Easplist)
+#' print(Easplist)
+#' Easplist
+#' 
 #' ## summary for two taxa
 #' summary(Easplist, c(51128,51140))
 #' 
@@ -187,7 +193,7 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
 #' summary(Easplist, "Acmella")
 #' 
 #' ## summary for the first 10 taxa
-#' summary(Easplist, "all", maxsum=10)
+#' summary(object=Easplist, ConceptID="all", maxsum=10)
 #' 
 #' @aliases summary,taxlist-method
 #' 

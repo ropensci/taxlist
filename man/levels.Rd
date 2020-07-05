@@ -45,8 +45,8 @@ A replacement method of the form \code{levels(x) <- value} it is also implemente
 taxlist::levels(Easplist)
 
 ## Add aggregate as new taxonomic level
-levels(Easplist) <- c("form","variety","subspecies","species",
-    "complex", "aggregate","genus","family")
+levels(Easplist) <- c("form", "variety", "subspecies", "species",
+    "complex", "aggregate", "genus", "family")
 summary(Easplist)
 
 }

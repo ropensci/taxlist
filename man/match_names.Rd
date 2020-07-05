@@ -67,7 +67,7 @@ species <- c("Cperus papyrus", "Typha australis", "Luke skywalker")
 match_names(species, Easplist)
 
 ## Display accepted names in output
-match_names(species, Easplist, show_concepts=TRUE)
+match_names(x=species, object=Easplist, show_concepts=TRUE)
 
 }
 \seealso{

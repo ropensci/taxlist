@@ -29,7 +29,7 @@ The number of columns in the resulting matrix will depend on the longest
 polynomial string.
 }
 \examples{
-Easplist <- subset(Easplist, Level == "variety", slot="relations")
+Easplist <- subset(x=Easplist, subset=Level == "variety", slot="relations")
 Easplist <- accepted_name(Easplist)[c(1:10),"TaxonName"]
 
 dissect_name(Easplist)

@@ -34,15 +34,16 @@
 #' library(taxlist)
 #' 
 #' ## Replace values in vector
-#' replace_x(letters, c("b", "p", "f"), c("bee", "pork", "fungus"))
+#' replace_x(x=letters, old=c("b", "p", "f"), new=c("bee", "pork", "fungus"))
 #' 
 #' ## Replace values using indices
-#' replace_idx(letters, 1:length(letters), c(2,7,17), c("second", "seven",
-#'     "seventeenth"))
+#' replace_idx(x=letters, idx1=1:length(letters), idx2=c(2, 7, 17),
+#'     new=c("second", "seven", "seventeenth"))
 #' 
 #' ## Replace values if they are NAs
 #' letters[2] <- NA
-#' replace_na(letters, 1:length(letters), c(1:3), c("alpha", "beta", "zeta"))
+#' replace_na(x=letters, idx1=1:length(letters), idx2=c(1:3),
+#'     new=c("alpha", "beta", "zeta"))
 #' 
 #' ## Merge data frames including new columns
 #' data(iris)

@@ -44,25 +44,26 @@
 #' 
 #' @examples 
 #' ## Subset for the genus Euclea and display of slot 'taxonNames'
-#' Euclea <- subset(Easplist, charmatch("Euclea", TaxonName), slot="names")
+#' Euclea <- subset(x=Easplist, subset=charmatch("Euclea", TaxonName),
+#'     slot="names")
 #' Euclea <- get_children(Easplist, Euclea)
 #' 
-#' summary(Euclea)
+#' Euclea
 #' taxon_relations(Euclea)
 #' 
 #' ## Subset with family Ebenaceae and children
 #' Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
 #' Ebenaceae <- get_children(Easplist, Ebenaceae)
 #' 
-#' summary(Ebenaceae)
-#' summary(Ebenaceae, "all", maxsum=100)
+#' Ebenaceae
+#' summary(object=Ebenaceae, ConceptID="all", maxsum=100)
 #' 
 #' ## Adding a new concept
-#' Ebenaceae <- add_concept(Ebenaceae, TaxonName="Euclea acutifolia",
+#' Ebenaceae <- add_concept(taxlist=Ebenaceae, TaxonName="Euclea acutifolia",
 #'     AuthorName="E. Mey. ex A. DC.", Level="species", Parent=55707, ViewID=1)
 #' 
 #' ## A summary again  
-#' summary(Ebenaceae)
+#' Ebenaceae
 #' summary(Ebenaceae, "all", maxsum=100)
 #' 
 #' ## Display two Typha species
@@ -70,7 +71,8 @@
 #' 
 #' ## Update a concept
 #' summary(Easplist, "Corchorus olitorius")
-#' Easplist <- update_concept(Easplist, 155, Level="subspecies")
+#' Easplist <- update_concept(taxlist=Easplist, ConceptID=155,
+#'     Level="subspecies")
 #' summary(Easplist, "Corchorus olitorius")
 #' 
 #' @rdname taxon_relations

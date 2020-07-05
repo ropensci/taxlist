@@ -36,12 +36,12 @@
 #' 
 #' @examples 
 #' ## Read the table with names of Cyperus species
-#' Cyperus <- read.csv(file.path(path.package("taxlist"), "cyperus",
+#' Cyperus <- read.csv(file=file.path(path.package("taxlist"), "cyperus",
 #'     "names.csv"), stringsAsFactors=FALSE)
 #' head(Cyperus)
 #' 
 #' ## Convert to 'taxlist' object
-#' Cyperus <- df2taxlist(Cyperus, AcceptedName=!Cyperus$SYNONYM)
+#' Cyperus <- df2taxlist(Cyperus, AcceptedName =! Cyperus$SYNONYM)
 #' summary(Cyperus)
 #' 
 #' ## Create a 'taxlist' object from character vectors

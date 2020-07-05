@@ -43,8 +43,8 @@ if(!isGeneric("levels"))
 #' taxlist::levels(Easplist)
 #' 
 #' ## Add aggregate as new taxonomic level
-#' levels(Easplist) <- c("form","variety","subspecies","species",
-#'     "complex", "aggregate","genus","family")
+#' levels(Easplist) <- c("form", "variety", "subspecies", "species",
+#'     "complex", "aggregate", "genus", "family")
 #' summary(Easplist)
 #' 
 #' @rdname levels

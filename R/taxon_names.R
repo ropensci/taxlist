@@ -35,15 +35,15 @@
 #' 
 #' @examples 
 #' ## Display of slot 'taxonNames'
-#' Euclea <- subset(Easplist, charmatch("Euclea", TaxonName), slot="names",
-#'     keep_children=TRUE)
+#' Euclea <- subset(x=Easplist, subset=charmatch("Euclea", TaxonName),
+#'     slot="names", keep_children=TRUE)
 #' summary(Euclea)
 #' taxon_names(Euclea)
 #' 
 #' ## Insert a synonym to Diospyros scabra
 #' summary(Easplist, "Diospyros scabra")
-#' Easplist <- add_synonym(Easplist, 51793, TaxonName="Maba scabra",
-#'     AuthorName="Chiov.")
+#' Easplist <- add_synonym(taxlist=Easplist, ConceptID=51793,
+#'     TaxonName="Maba scabra", AuthorName="Chiov.")
 #' summary(Easplist, "Diospyros scabra")
 #' 
 #' ## Delete a synonym of Launaea cornuta

@@ -62,8 +62,8 @@ stamp.
 \examples{
 \dontrun{
 ## A subset with Pseudognaphalium and relatives
-Pseudognaphalium <- subset(Easplist, grepl("Pseudognaphalium", TaxonName),
-slot="names")
+Pseudognaphalium <- subset(x=Easplist, subset=grepl("Pseudognaphalium",
+    TaxonName), slot="names")
 Pseudognaphalium <- get_parents(Easplist, Pseudognaphalium)
 
 ## Create a backup with date stamp

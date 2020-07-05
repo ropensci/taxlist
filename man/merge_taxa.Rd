@@ -61,7 +61,8 @@ level or higher (if parent of merged taxa are at a higher rank).
 ## Merge Cyperus papyrus and Cyperus dives
 summary(Easplist, c(206, 197))
 
-Easplist <- merge_taxa(Easplist, c(206, 197), print_output=TRUE)
+Easplist <- merge_taxa(object=Easplist, concepts=c(206, 197),
+    print_output=TRUE)
 
 ## Move the name Typha aethiopica to concept 573 (T. latifolia)
 change_concept(Easplist, 53130) <- 573

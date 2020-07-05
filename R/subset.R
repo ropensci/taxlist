@@ -32,7 +32,8 @@
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
 #' @examples 
-#' Easplist <- subset(Easplist, lf_behn_2018 == "reed_plant", slot="traits")
+#' Easplist <- subset(x=Easplist, subset=lf_behn_2018 == "reed_plant",
+#'     slot="traits")
 #' summary(Easplist)
 #' 
 #' summary(as.factor(Easplist$lf_behn_2018))
