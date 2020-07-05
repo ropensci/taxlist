@@ -20,21 +20,46 @@ downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r
 
 <!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
 
-The aim of `taxlist` is to provide an object structure for taxonomic
-lists, as well as functions for handling and displaying the information
-contained in such objects. The structure of `taxlist` objects is
-inspired on the structure of data handled by
-[Turboveg](https://www.synbiosys.alterra.nl/turboveg) and relational
-databases.
+## Introduction
+
+`taxlist` is a package designed to handle and assess taxonomic lists in
+**R**, providing an object class and functions in `S4` language. The
+homonymous object class `taxlist` was originally designed as a module
+for taxa recorded in vegetation-plot observations (see
+[`vegtable`](https://github.com/kamapu/vegtable)), but became as an
+independent object with the ability of contain not only lists of species
+but also synonymy, hierarchical taxonomy, and functional traits
+(attributes of taxa).
+
+The main aim of this package is to keep consistence in taxonomic lists
+(a set of rules are checked by the function `validObject()`), to enable
+the re-arrangement of such data, and to statistically assess functional
+traits and other attributes, for instance taxonomy itself (function
+`tax2traits()` set taxonomic information as trait).
+
+While this package only includes a function for the import of taxonomic
+lists from [Turboveg](https://www.synbiosys.alterra.nl/turboveg), almost
+any data source can be structured as `taxlist` object, so far the
+information is imported into data frames in an R session and the
+consistency rules are respected (validity).
+
+The use of `taxlist` is recommended for people cleaning raw data before
+importing it to relational databases, either in the context of taxonomic
+work or biodiversity assessments. The other way around, people having
+relational databases or clean and structured taxonomic lists may use
+`taxlist` as recipient of this information in R sessions in order to
+carry out further statistical assessments. Finally, the function
+`print_name()` makes `taxlist` suitable for its implementation in
+interactive documents using `rmarkdonw` and `knitr` (e.g. reports,
+manuscripts and check-lists).
+
+The structure of `taxlist` objects is inspired on the structure of data
+handled by [Turboveg](https://www.synbiosys.alterra.nl/turboveg) and
+relational databases.
 
 ![](README-figures/taxlist_model.png)<br/> **Figure:** Relational model
 for `taxlist` objects (see [Alvarez & Luebert
 2018](https://doi.org/10.3897/BDJ.6.e23635)).
-
-The functions in this package has being used to structure and
-cross-check consistency of data stored in
-[SWEA-Dataveg](https://kamapu.github.io/sweadataveg.html), a
-vegetation-plot database for Eastern Africa.
 
 ## Installing taxlist
 
@@ -284,20 +309,20 @@ ranks suitable for frequency calculations.
 ``` r
 Easplist <- tax2traits(Easplist, get_names=TRUE)
 head(Easplist@taxonTraits)
-#>    TaxonConceptID       lf_behn_2018 form variety subspecies
-#> 3               7       phanerophyte <NA>    <NA>       <NA>
-#> 4               9       phanerophyte <NA>    <NA>       <NA>
-#> 7              18 facultative_annual <NA>    <NA>       <NA>
-#> 8              20 facultative_annual <NA>    <NA>       <NA>
-#> 9              21    obligate_annual <NA>    <NA>       <NA>
-#> 14             22        chamaephyte <NA>    <NA>       <NA>
-#>                   species complex        genus        family
-#> 3         Acacia mearnsii    <NA>       Acacia   Leguminosae
-#> 4      Acacia polyacantha    <NA>       Acacia   Leguminosae
-#> 7      Achyranthes aspera    <NA>  Achyranthes Amaranthaceae
-#> 8      Acmella caulirhiza    <NA>      Acmella    Compositae
-#> 9       Acmella uliginosa    <NA>      Acmella    Compositae
-#> 14 Aeschynomene schimperi    <NA> Aeschynomene   Leguminosae
+#>   TaxonConceptID       lf_behn_2018 form variety subspecies
+#> 1              7       phanerophyte <NA>    <NA>       <NA>
+#> 2              9       phanerophyte <NA>    <NA>       <NA>
+#> 3             18 facultative_annual <NA>    <NA>       <NA>
+#> 4             20 facultative_annual <NA>    <NA>       <NA>
+#> 5             21    obligate_annual <NA>    <NA>       <NA>
+#> 6             22        chamaephyte <NA>    <NA>       <NA>
+#>                  species complex        genus        family
+#> 1        Acacia mearnsii    <NA>       Acacia   Leguminosae
+#> 2     Acacia polyacantha    <NA>       Acacia   Leguminosae
+#> 3     Achyranthes aspera    <NA>  Achyranthes Amaranthaceae
+#> 4     Acmella caulirhiza    <NA>      Acmella    Compositae
+#> 5      Acmella uliginosa    <NA>      Acmella    Compositae
+#> 6 Aeschynomene schimperi    <NA> Aeschynomene   Leguminosae
 ```
 
 Note that the respective parental ranks are inserted in the table

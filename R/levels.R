@@ -1,3 +1,11 @@
+#' @exportMethod levels
+#' 
+if(!isGeneric("levels"))
+	setGeneric("levels",
+			function(x)
+				standardGeneric("levels")
+	)
+
 #' @name levels
 #' 
 #' @title Set and retrieves hierarchical levels
@@ -13,7 +21,6 @@
 #' 
 #' @param x A [taxlist-class] object.
 #' @param value A character vector with replacement values for levels o `x`.
-#' @param ... Additional arguments passed among methods.
 #' 
 #' @details 
 #' Taxonomic levels will be handled as factors in the
@@ -42,20 +49,10 @@
 #' 
 #' @rdname levels
 #' 
-#' @exportMethod levels
-#' 
-if(!isGeneric("levels"))
-    setGeneric("levels",
-            function(x, ...)
-                standardGeneric("levels")
-)
-
-#' @rdname levels
-#' 
 #' @aliases levels,taxlist-method
 #' 
 setMethod("levels", signature(x="taxlist"),
-        function(x, ...) {
+        function(x) {
             if(class(x@taxonRelations$Level) != "factor")
 				stop("Variable 'Level' in slot taxonRelations is not a factor")
 			base::levels(x@taxonRelations$Level)

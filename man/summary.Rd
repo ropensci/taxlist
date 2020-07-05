@@ -3,6 +3,8 @@
 \name{summary}
 \alias{summary}
 \alias{summary,taxlist-method}
+\alias{show,taxlist-method}
+\alias{print,taxlist-method}
 \title{Print overviews for taxlist Objects and their content}
 \usage{
 \S4method{summary}{taxlist}(
@@ -15,9 +17,13 @@
   secundum = NULL,
   ...
 )
+
+\S4method{show}{taxlist}(object)
+
+\S4method{print}{taxlist}(x, ...)
 }
 \arguments{
-\item{object}{A \linkS4class{taxlist} object.}
+\item{object, x}{A \linkS4class{taxlist} object.}
 
 \item{ConceptID}{IDs of concepts to be displayed in the summary.}
 

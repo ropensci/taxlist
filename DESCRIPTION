@@ -6,7 +6,9 @@ Authors@R: c(
     person("Miguel", "Alvarez", email="kamapu78@gmail.com",
         role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834")),
     person("Zachary", "Foster", email="zacharyfoster1989@gmail.com",
-        role="ctb", comment=c(ORCID = "0000-0002-5075-0948"))
+        role="ctb", comment=c(ORCID = "0000-0002-5075-0948")),
+    person("Sam", "Levin", email="levisc8@gmail.com", role="rev"),
+	person("Margaret", "Siple", email="siplem@uw.edu", role="rev")
     )
 Depends:
     R(>= 3.5.0)
@@ -20,14 +22,10 @@ Imports:
     utils,
     vegdata
 Suggests:
-    devtools,
-    goodpractice,
     knitr,
-    stringi,
     testthat,
     rmarkdown,
-    roxygen2,
-    covr
+    roxygen2
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
     This package provides functions to import species lists from 'Turboveg'
@@ -73,6 +71,5 @@ Collate:
     'taxlist2taxmap.R'
     'Easplist-data.R'
     'taxlist-package.R'
-    'StartMessage.R'
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
