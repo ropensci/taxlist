@@ -1,78 +1,78 @@
-## ----install_github, eval=FALSE----------------------------------------------------------------------------------------
+## ----install_github, eval=FALSE-----------------------------------------------
 ## library(devtools)
 ## install_github("kamapu/taxlist", build_vignettes=TRUE)
 
 
-## ----install_cran, eval=FALSE------------------------------------------------------------------------------------------
+## ----install_cran, eval=FALSE-------------------------------------------------
 ## install.packages("taxlist", dependencies=TRUE)
 
 
-## ----load_taxlist, message=FALSE---------------------------------------------------------------------------------------
+## ----load_taxlist, message=FALSE----------------------------------------------
 library(taxlist)
 
 
-## ----call_vignette, eval=FALSE-----------------------------------------------------------------------------------------
+## ----call_vignette, eval=FALSE------------------------------------------------
 ## vignette("taxlist-intro")
 
 
-## ----load_example_table------------------------------------------------------------------------------------------------
+## ----load_example_table-------------------------------------------------------
 load(url("https://github.com/kamapu/thisdataismine/raw/master/data/Cross.rda"))
 
 
-## ----head_example------------------------------------------------------------------------------------------------------
+## ----head_example-------------------------------------------------------------
 head(Cross[,1:8])
 
 
-## ----character2taxlist-------------------------------------------------------------------------------------------------
+## ----character2taxlist--------------------------------------------------------
 Splist <- Cross[,"TaxonName"]
 Splist <- df2taxlist(Splist)
 summary(Splist)
 
 
-## ----summary_character-------------------------------------------------------------------------------------------------
+## ----summary_character--------------------------------------------------------
 summary(Splist, "Erigeron floribundus")
 
 
-## ----load_easplist-----------------------------------------------------------------------------------------------------
+## ----load_easplist------------------------------------------------------------
 data(Easplist)
 summary(Easplist)
 
 
-## ----summary_life_forms------------------------------------------------------------------------------------------------
+## ----summary_life_forms-------------------------------------------------------
 summary(as.factor(Easplist$lf_behn_2018))
 
 
-## ----papyrus_otp1, results="hide"--------------------------------------------------------------------------------------
+## ----papyrus_otp1, results="hide"---------------------------------------------
 Papyrus <- subset(Easplist, grepl("papyrus", TaxonName), slot="names")
 summary(Papyrus, "all")
 
 
-## ----papyrus_opt2, results="hide"--------------------------------------------------------------------------------------
+## ----papyrus_opt2, results="hide"---------------------------------------------
 Papyrus <- subset(Easplist, TaxonConceptID == 206, slot="relations")
 summary(Papyrus, "all")
 
 
-## ----phragmites, results="hide"----------------------------------------------------------------------------------------
+## ----phragmites, results="hide"-----------------------------------------------
 Phraaus <- subset(Easplist, charmatch("Phragmites australis", TaxonName),
 	slot="names")
 summary(Phraaus, "all")
 
 
-## ----summary_again-----------------------------------------------------------------------------------------------------
+## ----summary_again------------------------------------------------------------
 summary(Easplist)
 
 
-## ----recover_parents---------------------------------------------------------------------------------------------------
+## ----recover_parents----------------------------------------------------------
 summary(Papyrus, "all")
 Papyrus <- get_parents(Easplist, Papyrus)
 summary(Papyrus, "all")
 
 
-## ----load_syntax-------------------------------------------------------------------------------------------------------
+## ----load_syntax--------------------------------------------------------------
 load(url("https://github.com/kamapu/Guides/raw/master/data/wetlands_syntax.rda"))
 
 
-## ----prototype---------------------------------------------------------------------------------------------------------
+## ----prototype----------------------------------------------------------------
 head(Concepts)
 
 Syntax <- new("taxlist")
@@ -91,24 +91,24 @@ Syntax <- with(Concepts, add_concept(Syntax, TaxonName=TaxonName,
 summary(Syntax)
 
 
-## ----adding_synonyms---------------------------------------------------------------------------------------------------
+## ----adding_synonyms----------------------------------------------------------
 head(Synonyms)
 Syntax <- with(Synonyms, add_synonym(Syntax, ConceptID=TaxonConceptID,
                 TaxonName=TaxonName, AuthorName=AuthorName))
 
 
-## ----adding_traits-----------------------------------------------------------------------------------------------------
+## ----adding_traits------------------------------------------------------------
 head(Codes)
 taxon_traits(Syntax) <- Codes
 summary(Syntax)
 
 
-## ----get_nymplot-------------------------------------------------------------------------------------------------------
+## ----get_nymplot--------------------------------------------------------------
 Nymplot <- subset(Syntax, charmatch("Nymphaeetum", TaxonName), slot="names")
 summary(Nymplot, "all")
 
 
-## ----get_nymplot_2-----------------------------------------------------------------------------------------------------
+## ----get_nymplot_2------------------------------------------------------------
 Nymplot <- subset(Syntax, charmatch("Nymphaeetum", TaxonName), slot="names",
 	keep_parents=TRUE)
 summary(Nymplot, "all")
