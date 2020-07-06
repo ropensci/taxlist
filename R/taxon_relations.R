@@ -181,9 +181,13 @@ setMethod("add_concept", signature(taxlist="taxlist", TaxonName="character"),
 setMethod("add_concept", signature(taxlist="taxlist", TaxonName="taxlist"),
 		function(taxlist, TaxonName, insert_view, ...) {
 			# First check
-			if(any(with(TaxonName@taxonNames, paste(TaxonName,
-											AuthorName)) %in%
-							with(taxlist@taxonNames, paste(TaxonName, AuthorName))))
+			## if(any(with(TaxonName@taxonNames, paste(TaxonName,
+			##                                 AuthorName)) %in%
+			##                 with(taxlist@taxonNames, paste(TaxonName, AuthorName))))
+			if(any(paste(TaxonName@taxonNames$TaxonName,
+									TaxonName@taxonNames$AuthorName) %in%
+							paste(taxlist@taxonNames$TaxonName,
+									taxlist@taxonNames$AuthorName)))
 				stop("Shared combinations are not allowed.")
 			# Change taxon views, if necessary
 			if(!missing(insert_view)) {
@@ -191,9 +195,11 @@ setMethod("add_concept", signature(taxlist="taxlist", TaxonName="taxlist"),
 					old_view <- TaxonName@taxonViews$ViewID
 				TaxonName@taxonViews$ViewID <- new_view <-
 						max(taxlist@taxonViews$ViewID) + seq_along(old_view)
-				TaxonName@taxonRelations$ViewID <-
-						with(TaxonName@taxonRelations, replace_x(ViewID,
-										old_view, new_view))
+				## TaxonName@taxonRelations$ViewID <-
+				##         with(TaxonName@taxonRelations, replace_x(ViewID,
+				##                         old_view, new_view))
+				TaxonName@taxonRelations$ViewID <- replace_x(
+						TaxonName@taxonRelations$ViewID, old_view, new_view)
 				taxlist@taxonViews <- insert_rows(taxlist@taxonViews,
 						TaxonName@taxonViews)
 			}

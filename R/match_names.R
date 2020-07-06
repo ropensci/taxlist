@@ -100,10 +100,16 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 				stop("non-valid value for 'output'")
 			if(output == 2) {
 				new_names <- lapply(SIM, function(a, b, best) {
-							return(list(TaxonName=with(b@taxonNames,
-													TaxonName[
-															match(a$TaxonUsageID[1:best],
-																	TaxonUsageID)]),
+							## return(list(TaxonName=with(b@taxonNames,
+							##                         TaxonName[
+							##                                 match(a$TaxonUsageID[1:best],
+							##                                         TaxonUsageID)]),
+							##                 TaxonUsageID=a$TaxonUsageID[1:best],
+							##                 similarity=a$similarity[1:best]))
+							return(list(TaxonName=b@taxonNames$TaxonName[
+													match(a$TaxonUsageID[
+																	1:best],
+															b@taxonNames$TaxonUsageID)],
 											TaxonUsageID=a$TaxonUsageID[1:best],
 											similarity=a$similarity[1:best]))
 						}, b=object, best=best)
@@ -133,17 +139,26 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 						}, b=object)
 				new_names <- do.call(rbind, new_names)
 				new_names <- data.frame(submittedname=x,
-				        TaxonName=with(object@taxonNames,
-				                TaxonName[match(new_names$TaxonUsageID,
-				                                TaxonUsageID)]),
-				        AuthorName=with(object@taxonNames,
-				                AuthorName[match(new_names$TaxonUsageID,
-				                                TaxonUsageID)]),
-				        new_names, stringsAsFactors=FALSE)
+						## TaxonName=with(object@taxonNames,
+						##         TaxonName[match(new_names$TaxonUsageID,
+						##                         TaxonUsageID)]),
+						TaxonName=object@taxonNames$TaxonName[
+								match(new_names$TaxonUsageID,
+										object@taxonNames$TaxonUsageID)],
+						## AuthorName=with(object@taxonNames,
+						##         AuthorName[match(new_names$TaxonUsageID,
+						##                         TaxonUsageID)]),
+						AuthorName=object@taxonNames$AuthorName[
+								match(new_names$TaxonUsageID,
+										object@taxonNames$TaxonUsageID)],
+						new_names, stringsAsFactors=FALSE)
 				if(show_concepts) {
-				    new_names$TaxonConceptID <- with(object@taxonNames,
-				            TaxonConceptID[match(new_names$TaxonUsageID,
-				                            TaxonUsageID)])
+					## new_names$TaxonConceptID <- with(object@taxonNames,
+					##         TaxonConceptID[match(new_names$TaxonUsageID,
+					##                         TaxonUsageID)])
+					new_names$TaxonConceptID <- object@taxonNames$TaxonConceptID[
+							match(new_names$TaxonUsageID,
+									object@taxonNames$TaxonUsageID)]
 				}
 			}
 			return(new_names)

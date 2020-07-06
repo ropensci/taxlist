@@ -157,14 +157,25 @@ setMethod("synonyms", signature(taxlist="taxlist", ConceptID="numeric"),
 			Syn <- taxlist@taxonNames[taxlist@taxonNames$TaxonConceptID %in%
 							ConceptID,c("TaxonUsageID","TaxonConceptID",
 							"TaxonName","AuthorName")]
-			Syn$AcceptedName <- with(taxlist@taxonRelations,
-					AcceptedName[match(Syn$TaxonConceptID, TaxonConceptID)])
-			Syn$AuthorAcceptedName <- with(taxlist@taxonNames,
-					AuthorName[match(Syn$AcceptedName, TaxonUsageID)])
-			Syn$AcceptedName <- with(taxlist@taxonNames,
-					TaxonName[match(Syn$AcceptedName, TaxonUsageID)])
-			Syn <- Syn[!Syn$TaxonUsageID %in% with(taxlist@taxonRelations,
-							AcceptedName[TaxonConceptID %in% ConceptID]),]
+			## Syn$AcceptedName <- with(taxlist@taxonRelations,
+			##         AcceptedName[match(Syn$TaxonConceptID, TaxonConceptID)])
+			Syn$AcceptedName <- taxlist@taxonRelations$AcceptedName[
+					match(Syn$TaxonConceptID,
+							taxlist@taxonRelations$TaxonConceptID)]
+			## Syn$AuthorAcceptedName <- with(taxlist@taxonNames,
+			##         AuthorName[match(Syn$AcceptedName, TaxonUsageID)])
+			Syn$AuthorAcceptedName <- taxlist@taxonNames$AuthorName[
+					match(Syn$AcceptedName, taxlist@taxonNames$TaxonUsageID)]
+			## Syn$AcceptedName <- with(taxlist@taxonNames,
+			##         TaxonName[match(Syn$AcceptedName, TaxonUsageID)])
+			Syn$AcceptedName <- taxlist@taxonNames$TaxonName[
+					match(Syn$AcceptedName, taxlist@taxonNames$TaxonUsageID)]
+			## Syn <- Syn[!Syn$TaxonUsageID %in% with(taxlist@taxonRelations,
+			##                 AcceptedName[TaxonConceptID %in% ConceptID]),]
+			Syn <- Syn[!Syn$TaxonUsageID %in%
+							taxlist@taxonRelations$AcceptedName[
+									taxlist@taxonRelations$TaxonConceptID %in%
+											ConceptID],]
 			return(Syn)
 		}
 )
@@ -200,10 +211,14 @@ setMethod("basionym", signature(taxlist="taxlist", ConceptID="numeric"),
 			Basionym <- taxlist@taxonRelations[match(ConceptID,
 							taxlist@taxonRelations$TaxonConceptID),
 					c("TaxonConceptID","Basionym")]
-			Basionym$BasionymName <- with(taxlist@taxonNames,
-					TaxonName[match(Basionym$Basionym, TaxonUsageID)])
-			Basionym$BasionymAuthor <- with(taxlist@taxonNames,
-					AuthorName[match(Basionym$Basionym, TaxonUsageID)])
+			## Basionym$BasionymName <- with(taxlist@taxonNames,
+			##         TaxonName[match(Basionym$Basionym, TaxonUsageID)])
+			Basionym$BasionymName <- taxlist@taxonNames$TaxonName[
+					match(Basionym$Basionym, taxlist@taxonNames$TaxonUsageID)]
+			## Basionym$BasionymAuthor <- with(taxlist@taxonNames,
+			##         AuthorName[match(Basionym$Basionym, TaxonUsageID)])
+			Basionym$BasionymAuthor <- taxlist@taxonNames$AuthorName[
+					match(Basionym$Basionym, taxlist@taxonNames$TaxonUsageID)]
 			return(Basionym)
 		}
 )

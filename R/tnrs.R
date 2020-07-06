@@ -54,17 +54,22 @@ setMethod("tnrs", signature(query="taxlist"),
             # score for subset
             spp_out$score <- as.numeric(spp_out$score)
             spp_out$score[is.na(spp_out$acceptedname)] <- 0
-            spp_out <- subset(spp_out, score >= min_score)
+			## spp_out <- subset(spp_out, score >= min_score)
+			spp_out <- spp_out[spp_out$score >= min_score, ]
             for(i in colnames(spp_out)) spp_out[spp_out[,i] == "",i] <- NA
-            spp_out <- subset(spp_out, !is.na(acceptedname))
-            # new and old names
+			## spp_out <- subset(spp_out, !is.na(acceptedname))
+			spp_out <- spp_out[!is.na(spp_out$acceptedname), ]
+			# new and old names
             spp_out$new <- !spp_out$acceptedname %in% query@taxonNames$TaxonName
             spp_out$TaxonConceptID <- query@taxonNames$TaxonConceptID[match(
                             spp_out$submittedname, query@taxonNames$TaxonName)]
             # Add new names as synonyms
-            query <- with(spp_out[spp_out$new,], add_synonym(query,
-                            TaxonConceptID, acceptedname, authority))
-            # correct names
+			## query <- with(spp_out[spp_out$new,], add_synonym(query,
+			##                 TaxonConceptID, acceptedname, authority))
+			query <- add_synonym(query, spp_out[spp_out$new,"TaxonConceptID"],
+					spp_out[spp_out$new,"acceptedname"],
+					spp_out[spp_out$new,"authority"])
+			# correct names
             query@taxonNames$TaxonName[na.omit(match(spp_out$submittedname,
                                     query@taxonNames$TaxonName))] <-
                     spp_out$matchedname

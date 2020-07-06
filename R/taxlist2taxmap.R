@@ -55,18 +55,25 @@ setMethod("taxlist2taxmap", signature(taxlist="taxlist"),
 		function(taxlist, ...) {
 			# Use the edge list to start making the intput object
 			taxlist_df <- accepted_name(taxlist)
-			taxlist_df$Parent <- with(taxlist@taxonRelations,
-					Parent[match(taxlist_df$TaxonConceptID, TaxonConceptID)])
+			## taxlist_df$Parent <- with(taxlist@taxonRelations,
+			##         Parent[match(taxlist_df$TaxonConceptID, TaxonConceptID)])
+			taxlist_df$Parent <- taxlist@taxonRelations$Parent[
+					match(taxlist_df$TaxonConceptID,
+							taxlist@taxonRelations$TaxonConceptID)]
 			taxlist_df$Level <- as.character(taxlist_df$Level)
 			obj <- taxa::parse_edge_list(taxlist_df, taxon_id="TaxonConceptID",
 					supertaxon_id="Parent", taxon_name="TaxonName",
 					taxon_rank="Level")
 			names(obj$data) <- c("relations")
-			obj$data$relations <- with(obj$data,
-					relations[,colnames(relations) != "TaxonConceptID"])
+			## obj$data$relations <- with(obj$data,
+			##         relations[,colnames(relations) != "TaxonConceptID"])
+			obj$data$relations <- obj$data$relations[
+					,colnames(obj$data$relations) != "TaxonConceptID"]
 			# Set taxon authorities
-			obj$set_taxon_auths(with(taxlist_df,
-							AuthorName[match(obj$taxon_ids(), TaxonConceptID)]))
+			## obj$set_taxon_auths(with(taxlist_df,
+			##                 AuthorName[match(obj$taxon_ids(), TaxonConceptID)]))
+			obj$set_taxon_auths(taxlist_df$AuthorName[
+							match(obj$taxon_ids(), taxlist_df$TaxonConceptID)])
 			# Add traits table to the taxlistect
 			obj$data$traits <- taxlist@taxonTraits
 			names(obj$data$traits)[1] <- "taxon_id"

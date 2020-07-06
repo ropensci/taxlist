@@ -40,7 +40,6 @@ URL:
 BugReports: https://github.com/kamapu/taxlist/issues
 Collate:
 	'imports.R'
-    'NULLing.R'
     'internal.R'
     'deprecated-functions.R'
     'replace_x.R'

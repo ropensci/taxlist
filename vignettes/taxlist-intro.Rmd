@@ -222,9 +222,9 @@ taxon_views(Syntax) <- data.frame(ViewID=1, Secundum="Alvarez (2017)",
         Title="Classification of aquatic and semi-aquatic vegetation in East Africa",
         stringsAsFactors=FALSE)
 
-Syntax <- with(Concepts, add_concept(Syntax, TaxonName=TaxonName,
-                AuthorName=AuthorName, Parent=Parent, Level=Level,
-                ViewID=rep(1, nrow(Concepts))))
+Syntax <- add_concept(Syntax, TaxonName=Concepts$TaxonName,
+		AuthorName=Concepts$AuthorName, Parent=Concepts$Parent,
+		Level=Concepts$Level, ViewID=rep(1, nrow(Concepts)))
 
 Syntax
 ```
@@ -243,8 +243,8 @@ Synonyms are included in the data frame `Synonyms`.
 
 ```{r adding_synonyms}
 head(Synonyms)
-Syntax <- with(Synonyms, add_synonym(Syntax, ConceptID=TaxonConceptID,
-                TaxonName=TaxonName, AuthorName=AuthorName))
+Syntax <- add_synonym(Syntax, ConceptID=Synonyms$TaxonConceptID,
+		TaxonName=Synonyms$TaxonName, AuthorName=Synonyms$AuthorName)
 ```
 
 Finally, the codes provided for the associations will be inserted as traits

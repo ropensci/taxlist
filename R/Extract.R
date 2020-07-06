@@ -47,8 +47,10 @@ setMethod("[", signature(x="taxlist"),
 			if(is.logical(j)) i[is.na(j)] <- FALSE else j <- na.omit(j)
 			x@taxonRelations <- x@taxonRelations[i,,drop]
 			if(nrow(x@taxonTraits) > 0) {
-				k <- with(x@taxonTraits, TaxonConceptID %in%
-								x@taxonRelations$TaxonConceptID)
+				## k <- with(x@taxonTraits, TaxonConceptID %in%
+				##                 x@taxonRelations$TaxonConceptID)
+				k <- x@taxonTraits$TaxonConceptID %in%
+						x@taxonRelations$TaxonConceptID
 				x@taxonTraits <- x@taxonTraits[k,j,drop]
 			}
 			return(clean(x))
@@ -67,9 +69,12 @@ setMethod("$", signature(x="taxlist"), function(x, name) {
 				stop(paste("Only variables in slots 'taxonTraits' or",
 								"'taxonRelations' can be accessed by '$'"))
 			if(!paste(substitute(name)) %in% colnames(x@taxonRelations))
-				x@taxonRelations[[name]] <- with(x@taxonTraits,
-						get(name)[match(x@taxonRelations$TaxonConceptID,
-										TaxonConceptID)])
+				## x@taxonRelations[[name]] <- with(x@taxonTraits,
+				##         get(name)[match(x@taxonRelations$TaxonConceptID,
+				##                         TaxonConceptID)])
+				x@taxonRelations[[name]] <- x@taxonTraits[
+						match(x@taxonRelations$TaxonConceptID,
+								x@taxonTraits$TaxonConceptID), name]
 			return(x@taxonRelations[[name]])
         }
 )

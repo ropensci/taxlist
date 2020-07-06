@@ -16,6 +16,9 @@ document()
 # Report coverage
 report()
 
+# Carry out the tests
+test()
+
 # Write data set
 source("data-raw/Easplist/Easplist.R")
 
