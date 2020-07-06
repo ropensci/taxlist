@@ -63,8 +63,8 @@ setMethod("clean_strings", signature(x="factor"),
 setMethod("clean_strings", signature(x="data.frame"),
 		function(x, from="utf8", to="utf8", ...) {
 			for(i in colnames(x)) {
-				if(is.character(x[,i]) | is.factor(x[,i]))
-					x[,i] <- clean_strings(x[,i], from, to)
+				if(is.character(x[ ,i]) | is.factor(x[ ,i]))
+					x[ ,i] <- clean_strings(x[ ,i], from, to)
 			}
 			return(x)
 		}

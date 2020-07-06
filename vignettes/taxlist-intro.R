@@ -20,11 +20,11 @@ load(url("https://github.com/kamapu/thisdataismine/raw/master/data/Cross.rda"))
 
 
 ## ----head_example-------------------------------------------------------------
-head(Cross[,1:8])
+head(Cross[ ,1:8])
 
 
 ## ----character2taxlist--------------------------------------------------------
-Splist <- Cross[,"TaxonName"]
+Splist <- Cross[ ,"TaxonName"]
 Splist <- df2taxlist(Splist)
 summary(Splist)
 

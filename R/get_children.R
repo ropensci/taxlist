@@ -64,7 +64,7 @@ setMethod("get_children", signature(taxlist="taxlist", ConceptID="numeric"),
             }
             ConceptID <- do.call(c, ConceptID)
             taxlist@taxonRelations <- taxlist@taxonRelations[
-                    taxlist@taxonRelations$TaxonConceptID %in% ConceptID,]
+                    taxlist@taxonRelations$TaxonConceptID %in% ConceptID, ]
             return(clean(taxlist))
         }
 )
@@ -110,7 +110,7 @@ setMethod("get_parents", signature(taxlist="taxlist", ConceptID="numeric"),
             ConceptID <- do.call(c, ConceptID)
             ConceptID <- na.omit(ConceptID)
             taxlist@taxonRelations <- taxlist@taxonRelations[
-                    taxlist@taxonRelations$TaxonConceptID %in% ConceptID,]
+                    taxlist@taxonRelations$TaxonConceptID %in% ConceptID, ]
             return(clean(taxlist))
         }
 )

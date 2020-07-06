@@ -66,7 +66,7 @@ setMethod("taxlist2taxmap", signature(taxlist="taxlist"),
 					taxon_rank="Level")
 			names(obj$data) <- c("relations")
 			## obj$data$relations <- with(obj$data,
-			##         relations[,colnames(relations) != "TaxonConceptID"])
+			##         relations[ ,colnames(relations) != "TaxonConceptID"])
 			obj$data$relations <- obj$data$relations[
 					,colnames(obj$data$relations) != "TaxonConceptID"]
 			# Set taxon authorities
@@ -81,7 +81,7 @@ setMethod("taxlist2taxmap", signature(taxlist="taxlist"),
 			# Add views table to the taxlistect
 			obj$data$views <- taxlist@taxonViews
 			# Add synonyms in a table
-			obj$data$synonyms <- synonyms(taxlist)[,c("TaxonConceptID",
+			obj$data$synonyms <- synonyms(taxlist)[ ,c("TaxonConceptID",
 							"TaxonUsageID", "TaxonName", "AuthorName")]
 			names(obj$data$synonyms) <- c("taxon_id", "TaxonUsageID", "synonym",
 					"synonym_authority")
@@ -128,12 +128,12 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 	if(!"AuthorName" %in% colnames(taxonRelations))
 		taxonRelations$AuthorName <- vapply(taxmap$taxa, "[[", c(AuthorName=""),
 				i="authority")
-	taxonNames <- taxonRelations[,c("TaxonUsageID", "TaxonConceptID",
+	taxonNames <- taxonRelations[ ,c("TaxonUsageID", "TaxonConceptID",
 					"TaxonName", "AuthorName")]
 	taxonNames$AuthorName[taxonNames$AuthorName == "NA"] <- NA
 	# Completing taxonRelations
 	taxonRelations$AcceptedName <- taxonRelations$TaxonUsageID
-	taxonRelations <- taxonRelations[,!colnames(taxonRelations) %in%
+	taxonRelations <- taxonRelations[ ,!colnames(taxonRelations) %in%
 					c("TaxonUsageID", "TaxonName", "AuthorName")]
 	taxonRelations$Level <- taxon_ranks(taxmap)
 	taxonRelations$Parent <- taxmap$edge_list$from
@@ -153,7 +153,7 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 			Synonyms$TaxonUsageID <- as.integer(max(taxonNames$TaxonUsageID) +
 							seq_len(nrow(Synonyms)))
 		taxonNames <- do.call(rbind, list(taxonNames,
-						Synonyms[,colnames(taxonNames)]))
+						Synonyms[ ,colnames(taxonNames)]))
 	}
 	# Adding taxon traits
 	if(!missing(traits)) {
@@ -166,10 +166,10 @@ taxmap2taxlist <- function(taxmap, relations, traits, synonyms, views,
 	# Extract taxonomic ranks
 	Level <- taxmap$edge_list
 	for(i in c(1,2))
-		Level[,i] <- replace_x(Level[,i], old_ids, taxonRelations$Level)
+		Level[ ,i] <- replace_x(Level[ ,i], old_ids, taxonRelations$Level)
 	Level <- unique(Level)
-	Level <- Level[!is.na(Level[,2]),]
-	Level <- Level[!is.na(Level[,1]),]
+	Level <- Level[!is.na(Level[ ,2]), ]
+	Level <- Level[!is.na(Level[ ,1]), ]
 	Level <- rev(unique(unlist(Level)))
 	taxonRelations$Level <- factor(taxonRelations$Level, levels=Level)
 	# assembling taxlist

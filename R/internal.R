@@ -63,15 +63,15 @@ sort_backups <- function(file, f_timestamp="%Y-%m-%d", fext=".rda") {
 					x <- c(x, rep_len("0", y - length(x) + 3))
 				return(x)
 			}, y=underscores)
-	OUT <- as.data.frame(do.call(rbind, Name), stringsAsFactors=FALSE)[,
+	OUT <- as.data.frame(do.call(rbind, Name), stringsAsFactors=FALSE)[ ,
 			c((underscores + 2):(underscores + 3))]
 	colnames(OUT) <- c("date","suffix")
 	OUT$path <- path
 	OUT$filename <- inFolder
 	OUT$date <- as.Date(strptime(OUT$date, f_timestamp))
-	OUT <- OUT[!is.na(OUT$date),]
+	OUT <- OUT[!is.na(OUT$date), ]
 	OUT$suffix <- as.integer(OUT$suffix)
-	## OUT <- OUT[with(OUT, order(date, suffix)),]
+	## OUT <- OUT[with(OUT, order(date, suffix)), ]
 	OUT <- OUT[order(OUT$date, OUT$suffix), ]
 	OUT$order <- c(seq_len(nrow(OUT)))
 	return(OUT)
@@ -90,7 +90,7 @@ sort_backups <- function(file, f_timestamp="%Y-%m-%d", fext=".rda") {
 #' @keywords internal
 add_nacolumn <- function(x, y) {
 	for(i in y[!y %in% colnames(x)])
-		x[,i] <- NA
+		x[ ,i] <- NA
 	return(x)
 }
 
@@ -105,6 +105,6 @@ add_nacolumn <- function(x, y) {
 two2one_df <- function(x, y) {
 	x <- add_nacolumn(x, colnames(y))
 	y <- add_nacolumn(y, colnames(x))
-	x <- do.call(rbind, list(x, y[, colnames(x)]))
+	x <- do.call(rbind, list(x, y[ , colnames(x)]))
 	return(x)
 }

@@ -60,7 +60,7 @@ setMethod("subset", signature(x="taxlist"),
             }
             z <- x
             z@taxonRelations <- x@taxonRelations[
-                    x@taxonRelations$TaxonConceptID %in% subset,]
+                    x@taxonRelations$TaxonConceptID %in% subset, ]
             z <- clean(z)
             if(keep_children)
                 z <- get_children(x, z)

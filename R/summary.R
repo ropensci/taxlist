@@ -66,9 +66,9 @@ overview_taxon <- function(object, ConceptID, display, maxsum, secundum=NULL) {
     # Create index for synonyms
     Synonym <- list()
     for(i in ConceptID) {
-        temp_name <- object@taxonNames[object@taxonNames$TaxonConceptID == i,]
+        temp_name <- object@taxonNames[object@taxonNames$TaxonConceptID == i, ]
         temp_name <- temp_name[!temp_name$TaxonUsageID %in%
-						Names$TaxonUsageID[Names$TaxonConceptID == i],]
+						Names$TaxonUsageID[Names$TaxonConceptID == i], ]
         if(length(temp_name) > 0) Synonym[[paste(i)]] <- temp_name
     }
     # display option

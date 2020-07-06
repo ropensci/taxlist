@@ -47,11 +47,11 @@ test_that("function add_concept is working", {
 			tax_1 <- clean(subset(Easplist, TaxonName == "Cyperus papyrus",
 							slot="names"))
 			tax_1@taxonViews <- tax_1@taxonViews[tax_1@taxonViews$ViewID %in%
-							tax_1@taxonRelations$ViewID,]
+							tax_1@taxonRelations$ViewID, ]
 			tax_2 <- clean(subset(Easplist, TaxonName == "Cyperaceae",
 							slot="names"))
 			tax_2@taxonViews <- tax_2@taxonViews[tax_2@taxonViews$ViewID %in%
-							tax_2@taxonRelations$ViewID,]
+							tax_2@taxonRelations$ViewID, ]
 			expect_is(add_concept(tax_1, tax_2, insert_view=TRUE), "taxlist")
 		}
 )

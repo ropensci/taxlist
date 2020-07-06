@@ -42,7 +42,7 @@ Quick access to slots \code{taxonTraits} and \code{taxonRelations} within
 summary(as.factor(Easplist$lf_behn_2018))
 
 ## First ten concepts in this list
-summary(Easplist[1:10,], "all")
+summary(Easplist[1:10, ], "all")
 
 }
 \seealso{

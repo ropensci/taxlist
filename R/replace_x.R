@@ -102,9 +102,9 @@ replace_na <- function(x, idx1, idx2, new) {
 #' 
 insert_rows <- function(x, y) {
 	for(i in colnames(y)[!colnames(y) %in% colnames(x)])
-		x[,i] <- NA
+		x[ ,i] <- NA
 	for(i in colnames(x)[!colnames(x) %in% colnames(y)])
-		y[,i] <- NA
-	x <- do.call(rbind, list(x, y[,colnames(x)]))
+		y[ ,i] <- NA
+	x <- do.call(rbind, list(x, y[ ,colnames(x)]))
 	return(x)
 }

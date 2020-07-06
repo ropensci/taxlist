@@ -60,14 +60,14 @@ setMethod("tax2traits", signature(object="taxlist"),
 				ID <- object@taxonRelations[
 						paste(object@taxonRelations$Level) == i,
 						"TaxonConceptID"]
-				TAX[,i] <- ID[match(object@taxonRelations$TaxonConceptID, ID)]
+				TAX[ ,i] <- ID[match(object@taxonRelations$TaxonConceptID, ID)]
 			}
 			# second entry parents
 			for(i in taxlist::levels(object)[
 					-length(taxlist::levels(object))]) {
-				if(!all(is.na(TAX[,i]))) {
-					TAX <- split(TAX, is.na(TAX[,i]))
-					ID <- TAX[["FALSE"]][,i]
+				if(!all(is.na(TAX[ ,i]))) {
+					TAX <- split(TAX, is.na(TAX[ ,i]))
+					ID <- TAX[["FALSE"]][ ,i]
 					PAR <- object@taxonRelations[match(ID,
 									object@taxonRelations$TaxonConceptID),
 							"Parent"]
@@ -78,14 +78,14 @@ setMethod("tax2traits", signature(object="taxlist"),
 					for(j in unique(LEV[!is.na(LEV)])) {
 						ID_2 <- ID[LEV == j]
 						PAR_2 <- PAR[LEV == j]
-						TAX[["FALSE"]][,j] <- PAR_2[match(TAX[["FALSE"]][,i],
+						TAX[["FALSE"]][ ,j] <- PAR_2[match(TAX[["FALSE"]][ ,i],
 										ID_2)]
 					}
 					TAX <- do.call(rbind, TAX)
 				}
 			}
 			# supress empty columns
-			TAX <- TAX[,apply(TAX, 2, function(x) !all(is.na(x)))]
+			TAX <- TAX[ ,apply(TAX, 2, function(x) !all(is.na(x)))]
 			colnames(TAX)[colnames(TAX) == "TaxonConceptID"] <- "ConceptID"
 			object <- do.call(update_trait, c(list(taxlist=object),
 							as.list(TAX)))
@@ -93,8 +93,8 @@ setMethod("tax2traits", signature(object="taxlist"),
 				Names <- accepted_name(object)
 				for(i in taxlist::levels(object)[taxlist::levels(object) %in%
 								colnames(TAX)]) {
-					object@taxonTraits[,i] <- Names[
-							match(object@taxonTraits[,i], Names$TaxonConceptID),
+					object@taxonTraits[ ,i] <- Names[
+							match(object@taxonTraits[ ,i], Names$TaxonConceptID),
 							"TaxonName"]
 				}
 			}

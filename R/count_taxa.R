@@ -75,7 +75,7 @@ setMethod("count_taxa", signature(object="taxlist", data="missing"),
 					stop(paste("Value of argument 'level' is not a level in",
 									"'object'."))
 				n_taxa <- nrow(object@taxonRelations[
-								paste(object@taxonRelations$Level) == level,])
+								paste(object@taxonRelations$Level) == level, ])
 			}
 			return(n_taxa)
 		}
@@ -110,13 +110,13 @@ setMethod("count_taxa", signature(object="formula", data="taxlist"),
 				traits_df <- data.frame(TaxonConceptID=
 								data@taxonRelations$TaxonConceptID)
 				for(i in attr(terms(object), "term.labels")) {
-					## traits_df[,i] <- with(data@taxonTraits,
+					## traits_df[ ,i] <- with(data@taxonTraits,
 					##         get(i)[match(traits_df$TaxonConceptID,
 					##                         TaxonConceptID)])
-					traits_df[,i] <- data@taxonTraits[
+					traits_df[ ,i] <- data@taxonTraits[
 							match(traits_df$TaxonConceptID,
 									data@taxonTraits$TaxonConceptID),i]
-					traits_df[,i] <- replace_x(paste(traits_df[,i]),
+					traits_df[ ,i] <- replace_x(paste(traits_df[ ,i]),
 							c("", "NA"), rep("NAs", 2))
 				}
 				data@taxonTraits <- traits_df

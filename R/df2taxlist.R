@@ -66,9 +66,9 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
             # If author names missing
             if(!"AuthorName" %in% colnames(x))
                 x$AuthorName <- NA
-            if(any(duplicated(x[,c("TaxonName","AuthorName")]))) {
+            if(any(duplicated(x[ ,c("TaxonName","AuthorName")]))) {
                 warning("Some duplicated combinations will be deleted")
-                x <- x[!duplicated(x[,c("TaxonName","AuthorName")]),]
+                x <- x[!duplicated(x[ ,c("TaxonName","AuthorName")]), ]
             }
             # Some tests previous to run the function
             AcceptedName <- substitute(AcceptedName)
@@ -101,14 +101,14 @@ setMethod("df2taxlist", signature(x="data.frame", AcceptedName="logical"),
             extra_cols <- list(...)
             suppressWarnings({
                         if(length(extra_cols > 0))
-                            for(i in names(extra_cols)) x[,i] <- extra_cols[[i]]
+                            for(i in names(extra_cols)) x[ ,i] <- extra_cols[[i]]
                     }
             )
             taxlist <- new("taxlist")
 			## for(i in colnames(taxlist@taxonNames))
-			##     if(!i %in% colnames(x)) x[,i] <- NA
+			##     if(!i %in% colnames(x)) x[ ,i] <- NA
             for(i in colnames(taxlist@taxonRelations))
-                if(!i %in% colnames(taxonRelations)) taxonRelations[,i] <- NA
+                if(!i %in% colnames(taxonRelations)) taxonRelations[ ,i] <- NA
             taxlist@taxonNames <- x
             taxlist@taxonRelations <- taxonRelations
             return(taxlist)

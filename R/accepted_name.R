@@ -81,11 +81,11 @@ setMethod("accepted_name", signature(taxlist="taxlist", ConceptID="numeric"),
                     taxlist@taxonRelations$TaxonConceptID %in%
                             ConceptID,c("TaxonConceptID","AcceptedName")]
             for(i in c("TaxonName","AuthorName"))
-                AcceptedName[,i] <- taxlist@taxonNames[
+                AcceptedName[ ,i] <- taxlist@taxonNames[
                         match(AcceptedName$AcceptedName,
                                 taxlist@taxonNames$TaxonUsageID),i]
             colnames(AcceptedName)[2] <- "TaxonUsageID"
-			AcceptedName <- merge(AcceptedName, taxlist@taxonRelations[,
+			AcceptedName <- merge(AcceptedName, taxlist@taxonRelations[ ,
 							c("TaxonConceptID","ViewID","Level")], sort=FALSE)
 			if(show_traits)
 				AcceptedName <- merge(AcceptedName, taxlist@taxonTraits,
@@ -171,11 +171,11 @@ setMethod("synonyms", signature(taxlist="taxlist", ConceptID="numeric"),
 			Syn$AcceptedName <- taxlist@taxonNames$TaxonName[
 					match(Syn$AcceptedName, taxlist@taxonNames$TaxonUsageID)]
 			## Syn <- Syn[!Syn$TaxonUsageID %in% with(taxlist@taxonRelations,
-			##                 AcceptedName[TaxonConceptID %in% ConceptID]),]
+			##                 AcceptedName[TaxonConceptID %in% ConceptID]), ]
 			Syn <- Syn[!Syn$TaxonUsageID %in%
 							taxlist@taxonRelations$AcceptedName[
 									taxlist@taxonRelations$TaxonConceptID %in%
-											ConceptID],]
+											ConceptID], ]
 			return(Syn)
 		}
 )

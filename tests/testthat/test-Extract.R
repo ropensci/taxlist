@@ -1,14 +1,14 @@
 context("extract rows or columns")
 
 test_that("square brackets work", {
-			expect_is(Easplist[1,], "taxlist")
-			expect_is(Easplist[c(1:10),], "taxlist")
-			expect_is(Easplist[-c(1:5),], "taxlist")
-			expect_equal(nrow(Easplist[1,]@taxonRelations), 1)
-			expect_is(Easplist[,1], "taxlist")
-			expect_is(Easplist[,c(1:2)], "taxlist")
-			expect_is(Easplist[,-c(1:2)], "taxlist")
-			expect_equal(ncol(Easplist[,1]@taxonTraits), 1)
+			expect_is(Easplist[1, ], "taxlist")
+			expect_is(Easplist[c(1:10), ], "taxlist")
+			expect_is(Easplist[-c(1:5), ], "taxlist")
+			expect_equal(nrow(Easplist[1, ]@taxonRelations), 1)
+			expect_is(Easplist[ ,1], "taxlist")
+			expect_is(Easplist[ ,c(1:2)], "taxlist")
+			expect_is(Easplist[ ,-c(1:2)], "taxlist")
+			expect_equal(ncol(Easplist[ ,1]@taxonTraits), 1)
 		}
 )
 

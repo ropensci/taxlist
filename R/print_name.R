@@ -90,7 +90,7 @@ setMethod("print_name", signature(object="taxlist", id="numeric"),
 						object@taxonRelations$TaxonConceptID == id]
 			} else id_name <- id
 			Name <- dissect_name(object@taxonNames$TaxonName[
-							object@taxonNames$TaxonUsageID == id_name])[1,]
+							object@taxonNames$TaxonUsageID == id_name])[1, ]
 			Italic <- !grepl(".", Name, fixed=TRUE)
 			if(include_author & !second_mention) {
 				Name <- c(Name, object@taxonNames$AuthorName[

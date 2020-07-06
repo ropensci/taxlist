@@ -255,7 +255,7 @@ Cype_stat <- count_taxa(species ~ genus, Cype)
 Now, we can sort them to produce a nice bar plot.
 
 ```{r genera_bar}
-Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE),]
+Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE), ]
 
 par(las=2, mar=c(10,5,1,1))
 with(Cype_stat, barplot(species_count, names.arg=genus,

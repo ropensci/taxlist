@@ -121,7 +121,7 @@ setMethod("add_synonym", signature(taxlist="taxlist"),
 				new_name[[i]] <- rep(NA, length(new_name$TaxonConceptID))
 			for(i in names(new_name)[!names(new_name) %in%
 							colnames(taxlist@taxonNames)])
-				taxlist@taxonNames[,i] <- NA
+				taxlist@taxonNames[ ,i] <- NA
 			taxlist@taxonNames <- do.call(rbind,
 					list(taxlist@taxonNames,
 							new_name[match(colnames(taxlist@taxonNames),
@@ -161,7 +161,7 @@ setMethod("update_name", signature(taxlist="taxlist", UsageID="numeric"),
 			for(i in colnames(new_entries))
 				taxlist@taxonNames[match(UsageID,
 								taxlist@taxonNames$TaxonUsageID),
-						i] <- new_entries[,i]
+						i] <- new_entries[ ,i]
 			return(taxlist)
 		}
 )
@@ -190,7 +190,7 @@ setMethod("delete_name", signature(taxlist="taxlist", UsageID="numeric"),
 				stop(paste("Values in 'UsageID' are not allowed to be",
 								"basionyms in 'taxlist'."))
 			taxlist@taxonNames <- taxlist@taxonNames[
-					!taxlist@taxonNames$TaxonUsageID %in% UsageID,]
+					!taxlist@taxonNames$TaxonUsageID %in% UsageID, ]
 			return(taxlist)
 		}
 )

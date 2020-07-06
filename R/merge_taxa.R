@@ -73,7 +73,7 @@ setMethod("merge_taxa", signature(object="taxlist", concepts="numeric",
 			object@taxonRelations[object@taxonRelations$Parent %in% concepts,
 					"Parent"] <- concepts[1]
 			object@taxonRelations <- object@taxonRelations[
-					!object@taxonRelations$TaxonConceptID %in% concepts[-1],]
+					!object@taxonRelations$TaxonConceptID %in% concepts[-1], ]
 			object <- clean(object)
 			# Print result#
 			if(print_output) {
@@ -107,7 +107,7 @@ setMethod("merge_taxa", signature(object="taxlist", concepts="missing",
 														DEL, "TaxonConceptID"],
 										DEL)]
 				object@taxonRelations <- object@taxonRelations[
-						!object@taxonRelations$TaxonConceptID %in% DEL,]
+						!object@taxonRelations$TaxonConceptID %in% DEL, ]
 			}
 		return(clean(object))
 		}

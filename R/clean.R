@@ -23,7 +23,7 @@
 #' 
 #' @examples 
 #' ## Direct manipulation of slot taxonRelations generates an invalid object
-#' Easplist@taxonRelations <- Easplist@taxonRelations[1:5,]
+#' Easplist@taxonRelations <- Easplist@taxonRelations[1:5, ]
 #' \dontrun{
 #' summary(Easplist)
 #' }	
@@ -49,14 +49,14 @@ clean_once_taxlist <- function(object) {
 	# clean slot taxonRelations (lost accepted names)
 	object@taxonRelations <- object@taxonRelations[
 			object@taxonRelations$AcceptedName %in%
-					object@taxonNames$TaxonUsageID,]
+					object@taxonNames$TaxonUsageID, ]
 	# clean parents (deleted parents)
 	object@taxonRelations$Parent[!object@taxonRelations$Parent %in%
 					object@taxonRelations$TaxonConceptID] <- NA
 	# clean slot taxonNames (skip orphaned names)
 	object@taxonNames <- object@taxonNames[
 			object@taxonNames$TaxonConceptID %in%
-					object@taxonRelations$TaxonConceptID,]
+					object@taxonRelations$TaxonConceptID, ]
 	# clean slot taxonTraits
 	if(nrow(object@taxonTraits) > 0)
 		object@taxonTraits <- object@taxonTraits[
