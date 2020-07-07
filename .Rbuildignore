@@ -7,6 +7,7 @@
 ^codecov\.yml$
 ^cran-comments\.md$
 ^data-raw$
+^built-pkg$
 ^README-figures$
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$

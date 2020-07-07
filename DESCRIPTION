@@ -22,6 +22,7 @@ Imports:
     utils,
     vegdata
 Suggests:
+    ape,
     knitr,
     testthat,
     rmarkdown,

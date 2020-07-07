@@ -29,12 +29,11 @@ purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
 gp()
 
 # Build package
-Root <- sub("/taxlist", "", getwd(), fixed=TRUE)
-Ploc <- build(path=file.path(Root, "00_Rpackages"))
+pkg_loc <- build(path="built-pkg")
 
 # Test the package
 Sys.setenv(LANG="en_US.iso88591")
-check_built(path=Ploc)
+check_built(path=pkg_loc)
 
 # After check ------------------------------------------------------------------
 
