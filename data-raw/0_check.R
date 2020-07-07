@@ -9,6 +9,7 @@ library(covr)
 library(goodpractice)
 library(rmarkdown)
 library(knitr)
+library(pkgdown)
 
 # Document package
 document()
@@ -44,3 +45,19 @@ check_built(path=pkg_loc)
 
 # Render readme-file.
 render("README.Rmd")
+
+# Render package-site
+usethis::use_pkgdown()
+pkgdown::build_site()
+
+# Copy site
+r_path <- gsub("/taxlist", "", getwd())
+pkg_path <- file.path(r_path, "kamapu.github.io", "rpkg")
+
+file.copy("docs", pkg_path, recursive=TRUE)
+unlink("docs", recursive=TRUE)
+
+file.rename(file.path(pkg_path, "docs"), file.path(pkg_path, "taxlist"))
+
+file.copy("README-figures", file.path(pkg_path, "taxlist"), recursive=TRUE)
+
