@@ -1,3 +1,11 @@
+taxlist 0.2.0
+=============
+
+### Improvements
+
+* Response to review at **ROpenSci**
+
+
 taxlist 0.1.9
 =============
 
@@ -160,15 +168,3 @@ taxlist 0.1.0
 ### New Features
 
 * Released to **CRAN** (https://cran.r-project.org/package=taxlist).
-
-taxlist 0.0.0.9014
-==================
-
-### New Features
-
-* New method `as.list`.
-
-### Improvements
-
-* New validation rule: duplicated combinations `TaxonName` and `AuthorName` not allowed in slot `taxonNames`.
-* Data **Easplist** modified to fulfil the latter rule.

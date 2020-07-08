@@ -16,51 +16,69 @@ replace_na(x, idx1, idx2, new)
 insert_rows(x, y)
 }
 \arguments{
-\item{x}{A vector to be modified or a data frame in the case of
-\code{insert_rows}.}
+\item{x}{A vector to be modified. In the case of \code{insert_rows()}, \code{x} is a
+data frame.}
 
-\item{old, new}{Vectors containing the values to be replaced and the updated
-values, respectively.}
+\item{old}{A vector with values to be replaced by \code{replace_x()} in a vector.}
 
-\item{idx1, idx2}{Indices applied for the values in 'x' and the values to be
-replaced, respectively.}
+\item{new}{A vector containing values to be inserted, either comparing values
+or using indices.}
 
-\item{y}{Data frame including rows to be inserted in \code{x}.}
+\item{idx1, idx2}{Indices applied for value replacements to match \code{x} with
+\code{new}, respectively.}
+
+\item{y}{A data frame including rows (and columns) to be inserted in \code{x}.}
 }
 \value{
 A vector or data frame with the modified values.
 }
 \description{
-Functions provided for fast replacement and update of data.
-}
-\details{
-These are functions implemented for efficient coding of insert and replace
-routines.
+This is a series of functions designed for a fast coding of replacements
+both, as internal functions and in workflows dealing with information stored
+in vectors and data frames.
+Such functions are especially useful when handling with functional traits
+stored in \linkS4class{taxlist} objects.
 
-The functions \code{replace_x} and \code{replace_idx} replace values in vectors,
-in the first case comparing values in the vector and in the second one by
-using indices.
-The function \code{replace_na} works in the same way as \code{replace_idx}, but
-carries out the replacement only if the previous value is a \code{NA}.
+\code{replace_x()} is used to exchange values in vectors.
+\code{replace_idx()} changes values in vectors by matching indices or conditions.
+The function \code{replace_na()} works in the same way as \code{replace_idx()} but will
+only insert values in empty elements (NAs).
 
-The function \code{insert_rows} inserts \code{y} as new rows in \code{x}. If \code{y} contains
-columns absent in \code{x}, they will be added to the output data frame.
+The function \code{insert_rows()} will add rows and columns at the same time.
+This function will be used when a new table is appended to another but
+sharing only part of the columns.
 }
 \examples{
-library(taxlist)
-
 ## Replace values in vector
 replace_x(x=letters, old=c("b", "p", "f"), new=c("bee", "pork", "fungus"))
 
 ## Replace values using indices
 replace_idx(x=letters, idx1=1:length(letters), idx2=c(2, 7, 17),
-    new=c("second", "seven", "seventeenth"))
+    new=c("second", "seventh", "seventeenth"))
 
 ## Replace values if they are NAs
 letters[2] <- NA
 replace_na(x=letters, idx1=1:length(letters), idx2=c(1:3),
     new=c("alpha", "beta", "zeta"))
 
+## The same applications but this time for functional traits
+summary(as.factor(Easplist$lf_behn_2018))
+
+# Merge annuals
+Easplist@taxonTraits$lifeform <- replace_x(
+    x=Easplist@taxonTraits$lf_behn_2018,
+    old=c("obligate_annual", "facultative_annual"),
+    new=c("annual", "annual"))
+summary(as.factor(Easplist$lifeform))
+
+# The same effect
+Easplist@taxonTraits$lifeform <- replace_idx(
+    x=Easplist@taxonTraits$lf_behn_2018,
+    idx1=grepl("annual", Easplist@taxonTraits$lf_behn_2018),
+    idx2=TRUE,
+    new="annual")
+summary(as.factor(Easplist$lifeform))
+ 
 ## Merge data frames including new columns
 data(iris)
 iris$Species <- paste(iris$Species)
