@@ -40,7 +40,18 @@
 
 
 <meta property="og:title" content="Data manipulation. — replace_x" />
-<meta property="og:description" content="Functions provided for fast replacement and update of data." />
+<meta property="og:description" content="This is a series of functions designed for a fast coding of replacements
+both, as internal functions and in workflows dealing with information stored
+in vectors and data frames.
+Such functions are especially useful when handling with functional traits
+stored in taxlist objects.
+replace_x() is used to exchange values in vectors.
+replace_idx() changes values in vectors by matching indices or conditions.
+The function replace_na() works in the same way as replace_idx() but will
+only insert values in empty elements (NAs).
+The function insert_rows() will add rows and columns at the same time.
+This function will be used when a new table is appended to another but
+sharing only part of the columns." />
 
 
 
@@ -72,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -129,7 +140,18 @@
     </div>
 
     <div class="ref-description">
-    <p>Functions provided for fast replacement and update of data.</p>
+    <p>This is a series of functions designed for a fast coding of replacements
+both, as internal functions and in workflows dealing with information stored
+in vectors and data frames.
+Such functions are especially useful when handling with functional traits
+stored in <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.</p>
+<p><code><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_x()</a></code> is used to exchange values in vectors.
+<code><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_idx()</a></code> changes values in vectors by matching indices or conditions.
+The function <code><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_na()</a></code> works in the same way as <code><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_idx()</a></code> but will
+only insert values in empty elements (NAs).</p>
+<p>The function <code><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>insert_rows()</a></code> will add rows and columns at the same time.
+This function will be used when a new table is appended to another but
+sharing only part of the columns.</p>
     </div>
 
     <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_x</a></span>(<span class='kw'>x</span>, <span class='kw'>old</span>, <span class='kw'>new</span>)
@@ -145,55 +167,46 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A vector to be modified or a data frame in the case of
-<code>insert_rows</code>.</p></td>
+      <td><p>A vector to be modified. In the case of <code><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>insert_rows()</a></code>, <code>x</code> is a
+data frame.</p></td>
     </tr>
     <tr>
-      <th>old, new</th>
-      <td><p>Vectors containing the values to be replaced and the updated
-values, respectively.</p></td>
+      <th>old</th>
+      <td><p>A vector with values to be replaced by <code><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_x()</a></code> in a vector.</p></td>
+    </tr>
+    <tr>
+      <th>new</th>
+      <td><p>A vector containing values to be inserted, either comparing values
+or using indices.</p></td>
     </tr>
     <tr>
       <th>idx1, idx2</th>
-      <td><p>Indices applied for the values in 'x' and the values to be
-replaced, respectively.</p></td>
+      <td><p>Indices applied for value replacements to match <code>x</code> with
+<code>new</code>, respectively.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>Data frame including rows to be inserted in <code>x</code>.</p></td>
+      <td><p>A data frame including rows (and columns) to be inserted in <code>x</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A vector or data frame with the modified values.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>These are functions implemented for efficient coding of insert and replace
-routines.</p>
-<p>The functions <code>replace_x</code> and <code>replace_idx</code> replace values in vectors,
-in the first case comparing values in the vector and in the second one by
-using indices.
-The function <code>replace_na</code> works in the same way as <code>replace_idx</code>, but
-carries out the replacement only if the previous value is a <code>NA</code>.</p>
-<p>The function <code>insert_rows</code> inserts <code>y</code> as new rows in <code>x</code>. If <code>y</code> contains
-columns absent in <code>x</code>, they will be added to the output data frame.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://cran.r-project.org/package=taxlist'>taxlist</a></span>)
-
-<span class='co'>## Replace values in vector</span>
+    <pre class="examples"><div class='input'><span class='co'>## Replace values in vector</span>
 <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_x</a></span>(x=<span class='kw'>letters</span>, old=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"p"</span>, <span class='st'>"f"</span>), new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bee"</span>, <span class='st'>"pork"</span>, <span class='st'>"fungus"</span>))</div><div class='output co'>#&gt;  [1] "a"      "bee"    "c"      "d"      "e"      "fungus" "g"      "h"     
 #&gt;  [9] "i"      "j"      "k"      "l"      "m"      "n"      "o"      "pork"  
 #&gt; [17] "q"      "r"      "s"      "t"      "u"      "v"      "w"      "x"     
 #&gt; [25] "y"      "z"     </div><div class='input'>
 <span class='co'>## Replace values using indices</span>
 <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_idx</a></span>(x=<span class='kw'>letters</span>, idx1=<span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>letters</span>), idx2=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>17</span>),
-    new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"second"</span>, <span class='st'>"seven"</span>, <span class='st'>"seventeenth"</span>))</div><div class='output co'>#&gt;  [1] "a"           "second"      "c"           "d"           "e"          
-#&gt;  [6] "f"           "seven"       "h"           "i"           "j"          
+    new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"second"</span>, <span class='st'>"seventh"</span>, <span class='st'>"seventeenth"</span>))</div><div class='output co'>#&gt;  [1] "a"           "second"      "c"           "d"           "e"          
+#&gt;  [6] "f"           "seventh"     "h"           "i"           "j"          
 #&gt; [11] "k"           "l"           "m"           "n"           "o"          
 #&gt; [16] "p"           "seventeenth" "r"           "s"           "t"          
 #&gt; [21] "u"           "v"           "w"           "x"           "y"          
@@ -204,6 +217,36 @@ columns absent in <code>x</code>, they will be added to the output data frame.</
     new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"zeta"</span>))</div><div class='output co'>#&gt;  [1] "a"    "beta" "c"    "d"    "e"    "f"    "g"    "h"    "i"    "j"   
 #&gt; [11] "k"    "l"    "m"    "n"    "o"    "p"    "q"    "r"    "s"    "t"   
 #&gt; [21] "u"    "v"    "w"    "x"    "y"    "z"   </div><div class='input'>
+<span class='co'>## The same applications but this time for functional traits</span>
+<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lf_behn_2018</span>))</div><div class='output co'>#&gt;   acropleustophyte        chamaephyte     climbing_plant facultative_annual 
+#&gt;                  8                 25                 25                 20 
+#&gt;    obligate_annual       phanerophyte   pleustohelophyte         reed_plant 
+#&gt;                114                 26                  8                 14 
+#&gt;      reptant_plant      tussock_plant               NA's 
+#&gt;                 19                 52               3576 </div><div class='input'>
+<span class='co'># Merge annuals</span>
+<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_x</a></span>(
+    x=<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lf_behn_2018</span>,
+    old=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"obligate_annual"</span>, <span class='st'>"facultative_annual"</span>),
+    new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"annual"</span>, <span class='st'>"annual"</span>))
+<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lifeform</span>))</div><div class='output co'>#&gt; acropleustophyte           annual      chamaephyte   climbing_plant 
+#&gt;                8              134               25               25 
+#&gt;     phanerophyte pleustohelophyte       reed_plant    reptant_plant 
+#&gt;               26                8               14               19 
+#&gt;    tussock_plant             NA's 
+#&gt;               52             3576 </div><div class='input'>
+<span class='co'># The same effect</span>
+<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/replace_x.html'>replace_idx</a></span>(
+    x=<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lf_behn_2018</span>,
+    idx1=<span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span>(<span class='st'>"annual"</span>, <span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lf_behn_2018</span>),
+    idx2=<span class='fl'>TRUE</span>,
+    new=<span class='st'>"annual"</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lifeform</span>))</div><div class='output co'>#&gt; acropleustophyte           annual      chamaephyte   climbing_plant 
+#&gt;                8              134               25               25 
+#&gt;     phanerophyte pleustohelophyte       reed_plant    reptant_plant 
+#&gt;               26                8               14               19 
+#&gt;    tussock_plant             NA's 
+#&gt;               52             3576 </div><div class='input'> 
 <span class='co'>## Merge data frames including new columns</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>iris</span>)
 <span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Species</span>)

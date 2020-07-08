@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -126,6 +126,19 @@
       <small>Source: <a href='https://github.com/kamapu/taxlist/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="taxlist-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#taxlist-020" class="anchor"></a>taxlist 0.2.0<small> Unreleased </small>
+</h1>
+<div id="improvements" class="section level3">
+<h3 class="hasAnchor">
+<a href="#improvements" class="anchor"></a>Improvements</h3>
+<ul>
+<li>Response to review at <strong>ROpenSci</strong>
+</li>
+</ul>
+</div>
+</div>
     <div id="taxlist-019" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.9">
 <a href="#taxlist-019" class="anchor"></a>taxlist 0.1.9<small> 2020-05-31 </small>
@@ -151,9 +164,9 @@
 <li>Function <code><a href="https://rdrr.io/pkg/taxlist/man/taxlist2taxmap.html">taxmap2taxlist()</a></code> for the conversion of <code>Taxmap</code> objects into <code>taxlist</code> ones.</li>
 </ul>
 </div>
-<div id="improvements" class="section level3">
+<div id="improvements-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements" class="anchor"></a>Improvements</h3>
+<a href="#improvements-1" class="anchor"></a>Improvements</h3>
 <ul>
 <li>Roxygenized version.</li>
 <li>Method <code>formula</code> for function <code><a href="https://rdrr.io/pkg/taxlist/man/count_taxa.html">count_taxa()</a></code>.</li>
@@ -174,9 +187,9 @@
 <li>Function <code><a href="https://rdrr.io/pkg/taxlist/man/clean.html">clean()</a></code> with new argument <strong>times</strong> for repeat cleaning of <code>taxlist</code> objects.</li>
 </ul>
 </div>
-<div id="improvements-1" class="section level3">
+<div id="improvements-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements-1" class="anchor"></a>Improvements</h3>
+<a href="#improvements-2" class="anchor"></a>Improvements</h3>
 <ul>
 <li>Warning in function <code><a href="https://rdrr.io/pkg/taxlist/man/tax2traits.html">tax2traits()</a></code> for objects without taxonomic ranks.</li>
 <li>Second argument in function <code><a href="https://rdrr.io/pkg/taxlist/man/Extract.html">[</a></code> applies only to slot <strong>taxonTraits</strong>.</li>
@@ -209,9 +222,9 @@
 </li>
 </ul>
 </div>
-<div id="improvements-2" class="section level3">
+<div id="improvements-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements-2" class="anchor"></a>Improvements</h3>
+<a href="#improvements-3" class="anchor"></a>Improvements</h3>
 <ul>
 <li>A new option <code>style="knitr"</code> for function <code><a href="https://rdrr.io/pkg/taxlist/man/print_name.html">print_name()</a></code> (See <a href="https://stackoverflow.com/questions/51092103/formatted-scientific-names-from-r-to-latex-using-sweave-or-knitr">this issue</a> at <strong>Stack Overflow</strong>).</li>
 <li>In function <code><a href="https://rdrr.io/pkg/taxlist/man/backup_object.html">backup_object()</a></code>, the message will be done after successful saving and not before.</li>
@@ -249,9 +262,9 @@
 <li>New method <code>basionym</code> for handling basionyms.</li>
 </ul>
 </div>
-<div id="improvements-3" class="section level3">
+<div id="improvements-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements-3" class="anchor"></a>Improvements</h3>
+<a href="#improvements-4" class="anchor"></a>Improvements</h3>
 <ul>
 <li>Function <code>accepted_name</code> retrieves also information on <code>Level</code> (taxonomic rank) and traits (optional in argument <code>show_traits</code>).</li>
 <li>Function <code>summary</code> for single taxon is displaying the name of the parent taxon (accepted name) and optional a string for the taxon view.</li>
@@ -285,9 +298,9 @@
 <li>New function <code>match_names</code> matching character vectors with names of a <code>taxlist</code> object.</li>
 </ul>
 </div>
-<div id="improvements-4" class="section level3">
+<div id="improvements-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements-4" class="anchor"></a>Improvements</h3>
+<a href="#improvements-5" class="anchor"></a>Improvements</h3>
 <ul>
 <li>Function <code>backup_object</code> is also working with relative paths.</li>
 </ul>
@@ -314,9 +327,9 @@
 <li>New function: <code>tax2traits</code>.</li>
 </ul>
 </div>
-<div id="improvements-5" class="section level3">
+<div id="improvements-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements-5" class="anchor"></a>Improvements</h3>
+<a href="#improvements-6" class="anchor"></a>Improvements</h3>
 <ul>
 <li>Argument <code>level</code> inserted in function <code>merge_taxa</code>.</li>
 <li>Function <code>clean</code> also set keys to class <code>integer</code>.</li>
@@ -342,9 +355,9 @@
 <li>new function <code>merge_taxa</code>.</li>
 </ul>
 </div>
-<div id="improvements-6" class="section level3">
+<div id="improvements-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements-6" class="anchor"></a>Improvements</h3>
+<a href="#improvements-7" class="anchor"></a>Improvements</h3>
 <ul>
 <li>Argument <code>ConceptID</code> in <code>summary</code> (<code>taxlis-method</code>) can be a character vector matching <code>TaxonName</code>.</li>
 </ul>
@@ -361,9 +374,9 @@
 <li>New vignette <code>taxlist-intro</code>.</li>
 </ul>
 </div>
-<div id="improvements-7" class="section level3">
+<div id="improvements-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#improvements-7" class="anchor"></a>Improvements</h3>
+<a href="#improvements-8" class="anchor"></a>Improvements</h3>
 <ul>
 <li>Package <code>vegdata</code> moved from Depends to Imports.</li>
 <li>Function <code>df2taxlist</code> adapted to species lists with duplicated names.</li>
@@ -380,26 +393,6 @@
 <a href="#new-features-8" class="anchor"></a>New Features</h3>
 <ul>
 <li>Released to <strong>CRAN</strong> (<a href="https://cran.r-project.org/package=taxlist" class="uri">https://cran.r-project.org/package=taxlist</a>).</li>
-</ul>
-</div>
-</div>
-    <div id="taxlist-0009014" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.0.9014">
-<a href="#taxlist-0009014" class="anchor"></a>taxlist 0.0.0.9014<small> Unreleased </small>
-</h1>
-<div id="new-features-9" class="section level3">
-<h3 class="hasAnchor">
-<a href="#new-features-9" class="anchor"></a>New Features</h3>
-<ul>
-<li>New method <code>as.list</code>.</li>
-</ul>
-</div>
-<div id="improvements-8" class="section level3">
-<h3 class="hasAnchor">
-<a href="#improvements-8" class="anchor"></a>Improvements</h3>
-<ul>
-<li>New validation rule: duplicated combinations <code>TaxonName</code> and <code>AuthorName</code> not allowed in slot <code>taxonNames</code>.</li>
-<li>Data <strong>Easplist</strong> modified to fulfil the latter rule.</li>
 </ul>
 </div>
 </div>
