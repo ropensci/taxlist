@@ -3,7 +3,7 @@ taxlist 0.2.0
 
 ### Improvements
 
-* Response to review at **ROpenSci**
+* Several improvements to meet **ROpenSci** requirements documented [here](https://github.com/ropensci/software-review/issues/233#issuecomment-652846890).
 
 
 taxlist 0.1.9
