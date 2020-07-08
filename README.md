@@ -79,6 +79,13 @@ library(devtools)
 install_github("kamapu/taxlist", build_vignette=TRUE)
 ```
 
+A vignette is installed with this package introducing to the work with
+`taxlist` and can be accessed by following command in your R-session:
+
+``` r
+vignette("taxlist-intro")
+```
+
 ## Building taxlist Objects
 
 Objects can be built step-by-step as in the following example. For it,
@@ -90,7 +97,7 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 library(taxlist)
 
 Fern <- new("taxlist")
-summary(Fern)
+Fern
 #> object size: 5.1 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
@@ -222,6 +229,69 @@ summary(Fern, "all")
 #> ------------------------------
 ```
 
+## From data frame to taxlist
+
+A more convenient way is to create an object from a data frame including
+both, the taxon concepts with their accepted names and the taxonomic
+ranks with parent-child relationships. In the case of the last example,
+the required data frame looks like this one:
+
+``` r
+Fern_df <- data.frame(
+        TaxonConceptID=1:4,
+        TaxonUsageID=1:4,
+        TaxonName=c("Asplenium", "Asplenium obliquum",
+                "Asplenium obliquum var. sphenoides",
+                "Asplenium obliquum var. chondrophyllum"),
+        AuthorName=c("L.", "Forster", "(Kunze) Espinosa",
+                "(Bertero apud Colla) C. Christense & C. Skottsberg"),
+        Level=c("genus", "species", "variety", "variety"),
+        Parent=c(NA, 1, 2, 2),
+        stringsAsFactors=FALSE)
+Fern_df
+#>   TaxonConceptID TaxonUsageID                              TaxonName
+#> 1              1            1                              Asplenium
+#> 2              2            2                     Asplenium obliquum
+#> 3              3            3     Asplenium obliquum var. sphenoides
+#> 4              4            4 Asplenium obliquum var. chondrophyllum
+#>                                           AuthorName   Level Parent
+#> 1                                                 L.   genus     NA
+#> 2                                            Forster species      1
+#> 3                                   (Kunze) Espinosa variety      2
+#> 4 (Bertero apud Colla) C. Christense & C. Skottsberg variety      2
+```
+
+This kind of tables can be written in a spreadsheet application and
+imported to your R session. The two first columns correspond to the IDs
+of the taxon concept and the respective accepted name. They can be
+custom IDs but are restricted to integers in `taxlist`. For the use of
+the function `df2taxlist()`, the two first columns are mandatory. Also
+note that the column **Parent** is pointing to the concept IDs of the
+respective parent taxon. To get the object, we just use the
+`df2taxlist()` indicating the sequence of taxonomic ranks in the
+argument `levels`.
+
+``` r
+Fern2 <- df2taxlist(Fern_df, levels=c("variety", "species", "genus"))
+Fern2
+#> object size: 6.2 Kb 
+#> validation of 'taxlist' object: TRUE 
+#> 
+#> number of taxon usage names: 4 
+#> number of taxon concepts: 4 
+#> trait entries: 0 
+#> number of trait variables: 0 
+#> taxon views: 0 
+#> 
+#> concepts with parents: 3 
+#> concepts with children: 2 
+#> 
+#> hierarchical levels: variety < species < genus 
+#> number of concepts in level variety: 2
+#> number of concepts in level species: 1
+#> number of concepts in level genus: 1
+```
+
 ## Similar Packages
 
 The package `taxlist` shares similar objectives with the package
@@ -339,7 +409,7 @@ Cype_stat <- count_taxa(species ~ genus, Cype)
 Now, we can sort them to produce a nice bar plot.
 
 ``` r
-Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE),]
+Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE), ]
 
 par(las=2, mar=c(10,5,1,1))
 with(Cype_stat, barplot(species_count, names.arg=genus,

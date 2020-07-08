@@ -5,3 +5,4 @@ Meta
 .Rproj.user
 *.Rproj
 tests/testthat/*.rda
+docs

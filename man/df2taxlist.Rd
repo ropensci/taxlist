@@ -9,7 +9,7 @@
 \usage{
 df2taxlist(x, AcceptedName, ...)
 
-\S4method{df2taxlist}{data.frame,logical}(x, AcceptedName, ...)
+\S4method{df2taxlist}{data.frame,logical}(x, AcceptedName, levels, ...)
 
 \S4method{df2taxlist}{data.frame,missing}(x, AcceptedName, ...)
 
@@ -22,6 +22,9 @@ df2taxlist(x, AcceptedName, ...)
 \code{TRUE}.}
 
 \item{...}{Additional vectors to be added as columns in slot\code{taxonNames}.}
+
+\item{levels}{A vector with the names of the taxonomic ranks. This argument
+is passed to \code{\link[taxlist:levels]{taxlist::levels()}}.}
 }
 \value{
 A \linkS4class{taxlist} object.
