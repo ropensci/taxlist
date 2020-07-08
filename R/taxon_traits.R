@@ -31,6 +31,15 @@
 #' @examples 
 #' head(taxon_traits(Easplist))
 #' 
+#' ## Updating traits for Launaea cornuta
+#' summary(Easplist, "Launaea cornuta")
+#' accepted_name(taxlist=Easplist, ConceptID=355, show_traits=TRUE)
+#' 
+#' # Update
+#' Easplist <- update_trait(taxlist=Easplist, ConceptID=355,
+#'     lf_behn_2018="annual")
+#' accepted_name(taxlist=Easplist, ConceptID=355, show_traits=TRUE)
+#' 
 #' @rdname taxon_traits
 #' 
 #' @exportMethod taxon_traits
