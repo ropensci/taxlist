@@ -216,7 +216,7 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
     <pre class="examples"><div class='input'><span class='co'>## Display of slot 'taxonNames'</span>
 <span class='kw'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Euclea"</span>, <span class='kw'>TaxonName</span>),
     slot=<span class='st'>"names"</span>, keep_children=<span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Euclea</span>)</div><div class='output co'>#&gt; object size: 7 Kb 
+<span class='kw'>Euclea</span></div><div class='output co'>#&gt; object size: 7 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 3 
@@ -289,6 +289,20 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey 
+#&gt; 
+#&gt; # synonyms (1): 
+#&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
+#&gt; ------------------------------ </div><div class='input'>
+<span class='co'>## Hypothetical correction in author name in Launaea cornuta</span>
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>update_name</a></span>(taxlist=<span class='kw'>Easplist</span>, UsageID=<span class='fl'>355</span>, AuthorName=<span class='st'>"L."</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+#&gt; concept ID: 355 
+#&gt; view ID: 1 
+#&gt; level: species 
+#&gt; parent: 54923 Launaea Cass. 
+#&gt; 
+#&gt; # accepted name: 
+#&gt; 355 Launaea cornuta L. 
 #&gt; 
 #&gt; # synonyms (1): 
 #&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 

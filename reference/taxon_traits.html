@@ -198,7 +198,31 @@ constructing <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlis
 #&gt; 3             18 facultative_annual
 #&gt; 4             20 facultative_annual
 #&gt; 5             21    obligate_annual
-#&gt; 6             22        chamaephyte</div><div class='input'></div></pre>
+#&gt; 6             22        chamaephyte</div><div class='input'>
+<span class='co'>## Updating traits for Launaea cornuta</span>
+<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+#&gt; concept ID: 355 
+#&gt; view ID: 1 
+#&gt; level: species 
+#&gt; parent: 54923 Launaea Cass. 
+#&gt; 
+#&gt; # accepted name: 
+#&gt; 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey 
+#&gt; 
+#&gt; # synonyms (2): 
+#&gt; 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. 
+#&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
+#&gt; ------------------------------ </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/accepted_name.html'>accepted_name</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>, show_traits=<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
+#&gt; 1            355          355 Launaea cornuta
+#&gt;                              AuthorName ViewID   Level  lf_behn_2018
+#&gt; 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species tussock_plant</div><div class='input'>
+<span class='co'># Update</span>
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>update_trait</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>,
+    lf_behn_2018=<span class='st'>"annual"</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/accepted_name.html'>accepted_name</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>, show_traits=<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
+#&gt; 1            355          355 Launaea cornuta
+#&gt;                              AuthorName ViewID   Level lf_behn_2018
+#&gt; 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species       annual</div><div class='input'></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
