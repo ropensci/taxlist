@@ -41,7 +41,16 @@
 
 <meta property="og:title" content="An S4 class to represent taxonomic lists. — taxlist-class" />
 <meta property="og:description" content="Class for taxonomic lists including synonyms, hierarchical ranks,
-parent-child relationships, taxon views and taxon traits." />
+parent-child relationships, taxon views and taxon traits.
+Note that each taxon becomes an identifier, represented by the column
+TaxonConceptID in the slot taxonRelations, analogous to a primary key
+in a relational database.
+This identifier is restricted to an integer in taxlist and is specific for
+the object.
+In the same way, each taxon usage name has an identifier in the column
+TaxonUsageID, slot taxonNames.
+The column ViewID in slot taxonViews is the identifier of the taxon
+view." />
 
 
 
@@ -132,6 +141,15 @@ parent-child relationships, taxon views and taxon traits." />
     <div class="ref-description">
     <p>Class for taxonomic lists including synonyms, hierarchical ranks,
 parent-child relationships, taxon views and taxon traits.</p>
+<p>Note that each taxon becomes an identifier, represented by the column
+<strong>TaxonConceptID</strong> in the slot <strong>taxonRelations</strong>, analogous to a primary key
+in a relational database.
+This identifier is restricted to an integer in <code>taxlist</code> and is specific for
+the object.</p>
+<p>In the same way, each taxon usage name has an identifier in the column
+<strong>TaxonUsageID</strong>, slot <strong>taxonNames</strong>.
+The column <strong>ViewID</strong> in slot <strong>taxonViews</strong> is the identifier of the taxon
+view.</p>
     </div>
 
 
