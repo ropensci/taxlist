@@ -131,42 +131,42 @@ These functions assist on the access and modification of entries for names." />
     </div>
 
     <div class="ref-description">
-    <p>The slot <code>taxonNames</code> in <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects contains
+    <p>The slot <code>taxonNames</code> in <a href='taxlist-class.html'>taxlist</a> objects contains
 taxon usage names for the respective taxon.
 These functions assist on the access and modification of entries for names.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>taxon_names</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>taxon_names</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+<span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>taxon_names</a></span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for taxlist,data.frame</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>taxon_names</a></span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>add_synonym</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>add_synonym</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>add_synonym</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>TaxonName</span>, <span class='kw'>AuthorName</span>, <span class='kw'>...</span>)
+<span class='fu'>add_synonym</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>TaxonName</span>, <span class='kw'>AuthorName</span>, <span class='kw'>...</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>update_name</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
-
-<span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>update_name</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
-
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>delete_name</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
+<span class='fu'>update_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>delete_name</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>update_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
+
+<span class='fu'>delete_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
+
+<span class='co'># S4 method for taxlist,numeric</span>
+<span class='fu'>delete_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>taxlist</th>
-      <td><p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object to be modified.</p></td>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object to be modified.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -197,26 +197,27 @@ synonyms will be added.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A data frame or, in the case of the replacement method, a
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object with modified slot <code>taxonNames</code>.</p>
+<a href='taxlist-class.html'>taxlist</a> object with modified slot <code>taxonNames</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The replacement method <code>taxon_names&lt;-</code> is a quick alternative to include
-names in empty <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.</p>
-<p>The function <code><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>add_synonym()</a></code> works only for adding names to existing
+names in empty <a href='taxlist-class.html'>taxlist</a> objects.</p>
+<p>The function <code>add_synonym()</code> works only for adding names to existing
 taxon concepts.
-For adding new taxon concepts as well you should use <code><a href='https://rdrr.io/pkg/taxlist/man/taxon_relations.html'>add_concept()</a></code>.</p>
+For adding new taxon concepts as well you should use <code><a href='taxon_relations.html'>add_concept()</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a></p></div>
+    <div class='dont-index'><p><a href='taxlist-class.html'>taxlist</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Display of slot 'taxonNames'</span>
-<span class='kw'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Euclea"</span>, <span class='kw'>TaxonName</span>),
+<span class='kw'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Euclea"</span>, <span class='kw'>TaxonName</span>),
     slot=<span class='st'>"names"</span>, keep_children=<span class='fl'>TRUE</span>)
-<span class='kw'>Euclea</span></div><div class='output co'>#&gt; object size: 7 Kb 
+<span class='kw'>Euclea</span>
+</div><div class='output co'>#&gt; object size: 7 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 3 
@@ -236,7 +237,8 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 1
 #&gt; number of concepts in level family: 0
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>taxon_names</a></span>(<span class='kw'>Euclea</span>)</div><div class='output co'>#&gt;      TaxonUsageID TaxonConceptID                       TaxonName
+#&gt; </div><div class='input'><span class='fu'>taxon_names</span>(<span class='kw'>Euclea</span>)
+</div><div class='output co'>#&gt;      TaxonUsageID TaxonConceptID                       TaxonName
 #&gt; 297           269            269                Euclea divinorum
 #&gt; 298         50787            269 Euclea divinorum ssp. keniensis
 #&gt; 5043        55709          55707                          Euclea
@@ -245,7 +247,8 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; 298  (R. E. Fr.) de Wit
 #&gt; 5043                   </div><div class='input'>
 <span class='co'>## Insert a synonym to Diospyros scabra</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Diospyros scabra"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Diospyros scabra"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 51793 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -253,9 +256,10 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 51793 Diospyros scabra (Chiov.) Cufod. 
-#&gt; ------------------------------ </div><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>add_synonym</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>51793</span>,
+#&gt; ------------------------------ </div><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_synonym</span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>51793</span>,
     TaxonName=<span class='st'>"Maba scabra"</span>, AuthorName=<span class='st'>"Chiov."</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Diospyros scabra"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Diospyros scabra"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 51793 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -268,7 +272,8 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; 56139 Maba scabra Chiov. 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Delete a synonym of Launaea cornuta</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 355 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -280,8 +285,9 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; # synonyms (2): 
 #&gt; 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. 
 #&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>delete_name</a></span>(<span class='kw'>Easplist</span>, <span class='fl'>53821</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+#&gt; ------------------------------ </div><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>delete_name</span>(<span class='kw'>Easplist</span>, <span class='fl'>53821</span>)
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 355 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -294,8 +300,9 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Hypothetical correction in author name in Launaea cornuta</span>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_names.html'>update_name</a></span>(taxlist=<span class='kw'>Easplist</span>, UsageID=<span class='fl'>355</span>, AuthorName=<span class='st'>"L."</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_name</span>(taxlist=<span class='kw'>Easplist</span>, UsageID=<span class='fl'>355</span>, AuthorName=<span class='st'>"L."</span>)
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 355 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -306,7 +313,8 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 #&gt; 
 #&gt; # synonyms (1): 
 #&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'></div></pre>
+#&gt; ------------------------------ </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -322,7 +330,7 @@ For adding new taxon concepts as well you should use <code><a href='https://rdrr
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

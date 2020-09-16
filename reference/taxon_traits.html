@@ -132,33 +132,33 @@ information in taxonomic lists." />
     </div>
 
     <div class="ref-description">
-    <p>The slot <code>taxonTraits</code> in <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects contains
+    <p>The slot <code>taxonTraits</code> in <a href='taxlist-class.html'>taxlist</a> objects contains
 attributes of taxon concepts (e.g. functional traits).
 These functions are suitable for replacing, retrieving and appending trait
 information in taxonomic lists.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>taxon_traits</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>taxon_traits</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>taxon_traits</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+<span class='fu'>taxon_traits</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>taxon_traits</a></span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_traits</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for taxlist,data.frame</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>taxon_traits</a></span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_traits</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>update_trait</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>update_trait</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>update_trait</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>update_trait</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>taxlist</th>
-      <td><p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p></td>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -177,22 +177,23 @@ information in taxonomic lists.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Taxon traits are contained in a data frame at the slot <code>taxonTraits</code> in
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.
+<a href='taxlist-class.html'>taxlist</a> objects.
 To optimise space, this data frame contain only entries for those concepts
 with information, while taxa with no information are skipped from this table.
 Thus appending new variables may also have to include new rows in this slot,
 which is automatically carried out by this function.</p>
 <p>The replacement method <code>taxon_traits&lt;-</code> should be only used when
-constructing <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects from an empty one.</p>
+constructing <a href='taxlist-class.html'>taxlist</a> objects from an empty one.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p></div>
+    <div class='dont-index'><p><a href='taxlist-class.html'>taxlist</a>.</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>taxon_traits</a></span>(<span class='kw'>Easplist</span>))</div><div class='output co'>#&gt;   TaxonConceptID       lf_behn_2018
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>taxon_traits</span>(<span class='kw'>Easplist</span>))
+</div><div class='output co'>#&gt;   TaxonConceptID       lf_behn_2018
 #&gt; 1              7       phanerophyte
 #&gt; 2              9       phanerophyte
 #&gt; 3             18 facultative_annual
@@ -200,7 +201,8 @@ constructing <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlis
 #&gt; 5             21    obligate_annual
 #&gt; 6             22        chamaephyte</div><div class='input'>
 <span class='co'>## Updating traits for Launaea cornuta</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 355 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -212,17 +214,20 @@ constructing <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlis
 #&gt; # synonyms (2): 
 #&gt; 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. 
 #&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/accepted_name.html'>accepted_name</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>, show_traits=<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
+#&gt; ------------------------------ </div><div class='input'><span class='fu'><a href='accepted_name.html'>accepted_name</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>, show_traits=<span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
 #&gt; 1            355          355 Launaea cornuta
 #&gt;                              AuthorName ViewID   Level  lf_behn_2018
 #&gt; 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species tussock_plant</div><div class='input'>
 <span class='co'># Update</span>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>update_trait</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>,
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_trait</span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>,
     lf_behn_2018=<span class='st'>"annual"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/accepted_name.html'>accepted_name</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>, show_traits=<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
+<span class='fu'><a href='accepted_name.html'>accepted_name</a></span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>355</span>, show_traits=<span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
 #&gt; 1            355          355 Launaea cornuta
 #&gt;                              AuthorName ViewID   Level lf_behn_2018
-#&gt; 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species       annual</div><div class='input'></div></pre>
+#&gt; 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species       annual</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -238,7 +243,7 @@ constructing <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlis
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

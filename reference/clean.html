@@ -133,22 +133,22 @@ of the objects." />
 
     <div class="ref-description">
     <p>Manipulation of slots may generate orphaned entries in
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.
+<a href='taxlist-class.html'>taxlist</a> objects.
 The function <code>clean</code> deletes such entries and restores the consistency
 of the objects.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/clean.html'>clean</a></span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>clean</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/clean.html'>clean</a></span>(<span class='kw'>object</span>, times = <span class='fl'>2</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>clean</span>(<span class='kw'>object</span>, times = <span class='fl'>2</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p></td>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -163,7 +163,7 @@ repeated.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A clean <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p>
+    <p>A clean <a href='taxlist-class.html'>taxlist</a> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Cleaning of objects will follow the deletion of orphaned names, orphaned
@@ -176,12 +176,13 @@ taxon trait entries, and orphaned parent entries.</p>
     <pre class="examples"><div class='input'><span class='co'>## Direct manipulation of slot taxonRelations generates an invalid object</span>
 <span class='kw'>Easplist</span><span class='op'>@</span>taxonRelations <span class='op'>&lt;-</span> <span class='kw'>Easplist</span><span class='op'>@</span>taxonRelations[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, ]
 <span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)
-}	
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)
+}  
 
 <span class='co'>## Now apply cleaning</span>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/clean.html'>clean</a></span>(<span class='kw'>Easplist</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; object size: 7.8 Kb 
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>clean</span>(<span class='kw'>Easplist</span>)
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; object size: 7.8 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 7 
@@ -198,7 +199,8 @@ taxon trait entries, and orphaned parent entries.</p>
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 0
 #&gt; number of concepts in level family: 0
-#&gt; </div><div class='input'></div></pre>
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -214,7 +216,7 @@ taxon trait entries, and orphaned parent entries.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

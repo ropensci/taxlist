@@ -131,11 +131,11 @@ taxlist objects or an overview of selected taxa." />
 
     <div class="ref-description">
     <p>A method to display either an overview of the content of
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects or an overview of selected taxa.</p>
+<a href='taxlist-class.html'>taxlist</a> objects or an overview of selected taxa.</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(
+<span class='fu'>summary</span>(
   <span class='kw'>object</span>,
   <span class='kw'>ConceptID</span>,
   units = <span class='st'>"Kb"</span>,
@@ -157,7 +157,7 @@ taxlist objects or an overview of selected taxa." />
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object, x</th>
-      <td><p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p></td>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object.</p></td>
     </tr>
     <tr>
       <th>ConceptID</th>
@@ -196,7 +196,7 @@ to be displayed in the summary.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>A general overview indicating number of names, concepts and taxon views
-included in <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.
+included in <a href='taxlist-class.html'>taxlist</a> objects.
 If argument <code>ConceptID</code> is a vector with concept IDs or names to be matched
 by <code><a href='https://rdrr.io/r/base/grep.html'>grepl()</a></code>, then a display of all names included in each concept will be
 produced.
@@ -212,14 +212,15 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <code><a href='https://rdrr.io/r/utils/object.size.html'>object.size()</a></code> for further alternatives).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a></p></div>
+    <div class='dont-index'><p><a href='taxlist-class.html'>taxlist</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## summary of the object</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, units=<span class='st'>"Mb"</span>)</div><div class='output co'>#&gt; object size: 0.7 Mb 
+<span class='fu'>summary</span>(<span class='kw'>Easplist</span>, units=<span class='st'>"Mb"</span>)
+</div><div class='output co'>#&gt; object size: 0.7 Mb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 5393 
@@ -241,7 +242,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; number of concepts in level family: 186
 #&gt; </div><div class='input'>
 <span class='co'>## the same output</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; object size: 761.4 Kb 
+<span class='fu'>summary</span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; object size: 761.4 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 5393 
@@ -261,7 +263,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; number of concepts in level complex: 1
 #&gt; number of concepts in level genus: 1011
 #&gt; number of concepts in level family: 186
-#&gt; </div><div class='input'><span class='fu'>show</span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; object size: 761.4 Kb 
+#&gt; </div><div class='input'><span class='fu'>show</span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; object size: 761.4 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 5393 
@@ -281,7 +284,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; number of concepts in level complex: 1
 #&gt; number of concepts in level genus: 1011
 #&gt; number of concepts in level family: 186
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; object size: 761.4 Kb 
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; object size: 761.4 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 5393 
@@ -301,7 +305,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; number of concepts in level complex: 1
 #&gt; number of concepts in level genus: 1011
 #&gt; number of concepts in level family: 186
-#&gt; </div><div class='input'><span class='kw'>Easplist</span></div><div class='output co'>#&gt; object size: 761.4 Kb 
+#&gt; </div><div class='input'><span class='kw'>Easplist</span>
+</div><div class='output co'>#&gt; object size: 761.4 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 5393 
@@ -323,7 +328,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; number of concepts in level family: 186
 #&gt; </div><div class='input'>
 <span class='co'>## summary for two taxa</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>51128</span>,<span class='fl'>51140</span>))</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'>summary</span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>51128</span>,<span class='fl'>51140</span>))
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 51128 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -347,7 +353,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; 51141 Vittaria volkensii Hieron. 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## summary for a name</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Acmella"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'>summary</span>(<span class='kw'>Easplist</span>, <span class='st'>"Acmella"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 20 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -397,7 +404,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; 54762 Acmella Pers. 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## summary for the first 10 taxa</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(object=<span class='kw'>Easplist</span>, ConceptID=<span class='st'>"all"</span>, maxsum=<span class='fl'>10</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'>summary</span>(object=<span class='kw'>Easplist</span>, ConceptID=<span class='st'>"all"</span>, maxsum=<span class='fl'>10</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 1 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -483,7 +491,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 10 Acacia reficiens Wawra 
-#&gt; ------------------------------ </div><div class='input'></div></pre>
+#&gt; ------------------------------ </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -499,7 +508,7 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

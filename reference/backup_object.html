@@ -144,7 +144,7 @@ The function <code>load_last</code> is adapted to this style, loading the newest
 version to the session.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/backup_object.html'>backup_object</a></span>(
+    <pre class="usage"><span class='fu'>backup_object</span>(
   <span class='kw'>...</span>,
   objects = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
   <span class='kw'>file</span>,
@@ -152,7 +152,7 @@ version to the session.</p>
   overwrite = <span class='fl'>FALSE</span>
 )
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/backup_object.html'>load_last</a></span>(<span class='kw'>file</span>, fext = <span class='st'>".rda"</span>)</pre>
+<span class='fu'>load_last</span>(<span class='kw'>file</span>, fext = <span class='st'>".rda"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,7 +201,7 @@ For <code>overwrite=FALSE</code> (the default), a numeric suffix will be added t
 the backup's name, if another backup was produced at the same day.
 For <code>overwrite=TRUE</code> no suffix will be included in the file and existing
 files will be overwritten.</p>
-<p>The function <code><a href='https://rdrr.io/pkg/taxlist/man/backup_object.html'>load_last()</a></code> will load the newest version among backups
+<p>The function <code>load_last()</code> will load the newest version among backups
 stored in the same folder, provided that the backup name includes a time
 stamp.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -214,22 +214,24 @@ stamp.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>## A subset with Pseudognaphalium and relatives</span>
-<span class='kw'>Pseudognaphalium</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span>(<span class='st'>"Pseudognaphalium"</span>,
+<span class='kw'>Pseudognaphalium</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span>(<span class='st'>"Pseudognaphalium"</span>,
     <span class='kw'>TaxonName</span>), slot=<span class='st'>"names"</span>)
-<span class='kw'>Pseudognaphalium</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_parents</a></span>(<span class='kw'>Easplist</span>, <span class='kw'>Pseudognaphalium</span>)
+<span class='kw'>Pseudognaphalium</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_parents</a></span>(<span class='kw'>Easplist</span>, <span class='kw'>Pseudognaphalium</span>)
 
 <span class='co'>## Create a backup with date stamp</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/backup_object.html'>backup_object</a></span>(<span class='kw'>Pseudognaphalium</span>, file=<span class='st'>"Pseudonaphalium"</span>)
+<span class='fu'>backup_object</span>(<span class='kw'>Pseudognaphalium</span>, file=<span class='st'>"Pseudonaphalium"</span>)
 
 <span class='co'>## The same</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/backup_object.html'>backup_object</a></span>(objects=<span class='st'>"Pseudognaphalium"</span>, file=<span class='st'>"Pseudonaphalium"</span>)
+<span class='fu'>backup_object</span>(objects=<span class='st'>"Pseudognaphalium"</span>, file=<span class='st'>"Pseudonaphalium"</span>)
 
 <span class='co'>## To load the last backup into a session</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/backup_object.html'>load_last</a></span>(<span class='st'>"Pseudognaphalium"</span>)
+<span class='fu'>load_last</span>(<span class='st'>"Pseudognaphalium"</span>)
 }
 
 <span class='co'>## Load pre-installed backup</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/backup_object.html'>load_last</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/find.package.html'>path.package</a></span>(<span class='st'>"taxlist"</span>), <span class='st'>"extdata"</span>, <span class='st'>"Podocarpus"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading file 'Podocarpus_2020-01-10.rda' to session.</span></div><div class='input'></div></pre>
+<span class='fu'>load_last</span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/find.package.html'>path.package</a></span>(<span class='st'>"taxlist"</span>), <span class='st'>"extdata"</span>, <span class='st'>"Podocarpus"</span>))
+</div><div class='output co'>#&gt; <span class='message'>Loading file 'Podocarpus_2020-01-10.rda' to session.</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -245,7 +247,7 @@ stamp.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

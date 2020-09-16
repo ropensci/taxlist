@@ -129,16 +129,16 @@
     </div>
 
     <div class="ref-description">
-    <p>Merge taxon concepts form a <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object into single ones.</p>
+    <p>Merge taxon concepts form a <a href='taxlist-class.html'>taxlist</a> object into single ones.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/merge_taxa.html'>merge_taxa</a></span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, <span class='kw'>level</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>merge_taxa</span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, <span class='kw'>level</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,numeric,missing</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/merge_taxa.html'>merge_taxa</a></span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, print_output = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
+<span class='fu'>merge_taxa</span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, print_output = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,missing,character</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/merge_taxa.html'>merge_taxa</a></span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, <span class='kw'>level</span>, <span class='kw'>...</span>)
+<span class='fu'>merge_taxa</span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, <span class='kw'>level</span>, <span class='kw'>...</span>)
 
 <span class='fu'>change_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
@@ -150,7 +150,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object, taxlist</th>
-      <td><p>Object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p></td>
+      <td><p>Object of class <a href='taxlist-class.html'>taxlist</a>.</p></td>
     </tr>
     <tr>
       <th>concepts</th>
@@ -184,7 +184,7 @@ names.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p>
+    <p>An object of class <a href='taxlist-class.html'>taxlist</a>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Taxon concepts indicated in argument <code>concepts</code> will be merged into a
@@ -203,7 +203,8 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Merge Cyperus papyrus and Cyperus dives</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>206</span>, <span class='fl'>197</span>))</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>206</span>, <span class='fl'>197</span>))
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 206 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -231,8 +232,9 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 #&gt; 52602 Cyperus immensus var. petherickii (C.B. Clarke) Kük. 
 #&gt; 52603 Cyperus petherickii C.B. Clarke 
 #&gt; ------------------------------ </div><div class='input'>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/merge_taxa.html'>merge_taxa</a></span>(object=<span class='kw'>Easplist</span>, concepts=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>206</span>, <span class='fl'>197</span>),
-    print_output=<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>merge_taxa</span>(object=<span class='kw'>Easplist</span>, concepts=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>206</span>, <span class='fl'>197</span>),
+    print_output=<span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 206 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -253,7 +255,8 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Move the name Typha aethiopica to concept 573 (T. latifolia)</span>
 <span class='fu'>change_concept</span>(<span class='kw'>Easplist</span>, <span class='fl'>53130</span>) <span class='op'>&lt;-</span> <span class='fl'>573</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>50105</span>,<span class='fl'>573</span>))</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>50105</span>,<span class='fl'>573</span>))
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 50105 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -282,7 +285,8 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 #&gt; 
 #&gt; # synonyms (1): 
 #&gt; 53130 Typha aethiopica (Rohrb.) Kronfeldt 
-#&gt; ------------------------------ </div><div class='input'></div></pre>
+#&gt; ------------------------------ </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -298,7 +302,7 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

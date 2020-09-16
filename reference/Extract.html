@@ -131,7 +131,7 @@ taxlist objects." />
 
     <div class="ref-description">
     <p>Quick access to slots <code>taxonTraits</code> and <code>taxonRelations</code> within
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.</p>
+<a href='taxlist-class.html'>taxlist</a> objects.</p>
     </div>
 
     <pre class="usage"># S4 method for taxlist
@@ -145,7 +145,7 @@ $(x, name)</pre>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p></td>
+      <td><p>Object of class <a href='taxlist-class.html'>taxlist</a>.</p></td>
     </tr>
     <tr>
       <th>i</th>
@@ -166,32 +166,34 @@ number of variables in the mentioned slot.</p></td>
     </tr>
     <tr>
       <th>name</th>
-      <td><p>A symbol or character value for the method <code><a href='https://rdrr.io/pkg/taxlist/man/Extract.html'>$</a></code>, corresponding to
+      <td><p>A symbol or character value for the method <code>$</code>, corresponding to
 a variable either at slot 'taxonTraits' or slot 'taxonRelations'.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The method <code><a href='https://rdrr.io/pkg/taxlist/man/Extract.html'>$</a></code> retrieves a vector, while <code><a href='https://rdrr.io/pkg/taxlist/man/Extract.html'>[</a></code> retrieves a subset
-of the input <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p>
+    <p>The method <code>$</code> retrieves a vector, while <code>[</code> retrieves a subset
+of the input <a href='taxlist-class.html'>taxlist</a> object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> <code><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></code></p></div>
+    <div class='dont-index'><p><a href='taxlist-class.html'>taxlist</a> <code><a href='subset.html'>subset</a></code></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Statistics on life forms</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lf_behn_2018</span>))</div><div class='output co'>#&gt;   acropleustophyte        chamaephyte     climbing_plant facultative_annual 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lf_behn_2018</span>))
+</div><div class='output co'>#&gt;   acropleustophyte        chamaephyte     climbing_plant facultative_annual 
 #&gt;                  8                 25                 25                 20 
 #&gt;    obligate_annual       phanerophyte   pleustohelophyte         reed_plant 
 #&gt;                114                 26                  8                 14 
 #&gt;      reptant_plant      tussock_plant               NA's 
 #&gt;                 19                 52               3576 </div><div class='input'>
 <span class='co'>## First ten concepts in this list</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ], <span class='st'>"all"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ], <span class='st'>"all"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 1 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -237,7 +239,8 @@ of the input <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlis
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 5 Acacia elatior Brenan 
-#&gt; ------------------------------ </div><div class='input'></div></pre>
+#&gt; ------------------------------ </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -253,7 +256,7 @@ of the input <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlis
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

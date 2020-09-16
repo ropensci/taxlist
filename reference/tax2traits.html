@@ -132,23 +132,23 @@ such information in the slot taxonTraits." />
     </div>
 
     <div class="ref-description">
-    <p>Taxonomic classification can be included in <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>
+    <p>Taxonomic classification can be included in <a href='taxlist-class.html'>taxlist</a>
 objects within the information provided at slot <code>taxonRelations</code>.
 Nevertheless, for statistical analyses it may be more convenient to insert
 such information in the slot <code>taxonTraits</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/tax2traits.html'>tax2traits</a></span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>tax2traits</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/tax2traits.html'>tax2traits</a></span>(<span class='kw'>object</span>, get_names = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>tax2traits</span>(<span class='kw'>object</span>, get_names = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>An object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p></td>
+      <td><p>An object of class <a href='taxlist-class.html'>taxlist</a>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -163,7 +163,7 @@ retrieved instead of taxon IDs.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> with taxonomy added
+    <p>An object of class <a href='taxlist-class.html'>taxlist</a> with taxonomy added
 as traits.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -175,9 +175,10 @@ relationships and information on taxonomic levels.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Family Acanthaceae with children</span>
-<span class='kw'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>TaxonName</span> <span class='op'>==</span> <span class='st'>"Acanthaceae"</span>,
+<span class='kw'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>TaxonName</span> <span class='op'>==</span> <span class='st'>"Acanthaceae"</span>,
     slot=<span class='st'>"names"</span>, keep_children=<span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Acanthaceae</span>)</div><div class='output co'>#&gt; object size: 29.9 Kb 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Acanthaceae</span>)
+</div><div class='output co'>#&gt; object size: 29.9 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 143 
@@ -199,8 +200,9 @@ relationships and information on taxonomic levels.</p>
 #&gt; number of concepts in level family: 1
 #&gt; </div><div class='input'>
 <span class='co'>## Insert taxonomy to taxon traits</span>
-<span class='kw'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/tax2traits.html'>tax2traits</a></span>(<span class='kw'>Acanthaceae</span>, get_names=<span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_traits.html'>taxon_traits</a></span>(<span class='kw'>Acanthaceae</span>))</div><div class='output co'>#&gt;     TaxonConceptID    lf_behn_2018 variety subspecies               species
+<span class='kw'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'>tax2traits</span>(<span class='kw'>Acanthaceae</span>, get_names=<span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='taxon_traits.html'>taxon_traits</a></span>(<span class='kw'>Acanthaceae</span>))
+</div><div class='output co'>#&gt;     TaxonConceptID    lf_behn_2018 variety subspecies               species
 #&gt; 14              59 obligate_annual    &lt;NA&gt;       &lt;NA&gt;   Asystasia gangetica
 #&gt; 15              60 obligate_annual    &lt;NA&gt;       &lt;NA&gt;  Asystasia mysurensis
 #&gt; 97             319 obligate_annual    &lt;NA&gt;       &lt;NA&gt; Hygrophila auriculata
@@ -213,7 +215,8 @@ relationships and information on taxonomic levels.</p>
 #&gt; 97  Hygrophila Acanthaceae
 #&gt; 108   Justicia Acanthaceae
 #&gt; 238 Thunbergia Acanthaceae
-#&gt; 241  Hypoestes Acanthaceae</div><div class='input'></div></pre>
+#&gt; 241  Hypoestes Acanthaceae</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -229,7 +232,7 @@ relationships and information on taxonomic levels.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

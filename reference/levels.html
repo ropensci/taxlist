@@ -134,26 +134,26 @@ taxonomic hierarchy." />
     </div>
 
     <div class="ref-description">
-    <p>Taxonomic hierarchies can be set as levels in <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>
+    <p>Taxonomic hierarchies can be set as levels in <a href='taxlist-class.html'>taxlist</a>
 objects, ordered from lower to higher levels.</p>
 <p>Add taxonomic levels for specific taxon concepts in a
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.
+<a href='taxlist-class.html'>taxlist</a> object.
 Also changes in concept circumscription may implicate changes in its
 taxonomic hierarchy.</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/levels.html'>levels</a></span>(<span class='kw'>x</span>)
+<span class='fu'>levels</span>(<span class='kw'>x</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/levels.html'>levels</a></span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span></pre>
+<span class='fu'>levels</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p></td>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object.</p></td>
     </tr>
     <tr>
       <th>value</th>
@@ -163,14 +163,14 @@ taxonomic hierarchy.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>character</code> vector or a <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object with
+    <p>A <code>character</code> vector or a <a href='taxlist-class.html'>taxlist</a> object with
 added or modified taxonomic levels.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Taxonomic levels will be handled as factors in the
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.
+<a href='taxlist-class.html'>taxlist</a> objects.
 Those levels are useful for creating subsets of related groups (e.g. by
-functions <code><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_children()</a></code> or <code><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_parents()</a></code>).</p>
+functions <code><a href='get_children.html'>get_children()</a></code> or <code><a href='get_children.html'>get_parents()</a></code>).</p>
 <p>Levels in combination to parent-child relationships will be further used for
 checking consistency of taxonomic lists.</p>
 <p>A replacement method of the form <code>levels(x) &lt;- value</code> it is also implemented.</p>
@@ -180,12 +180,14 @@ checking consistency of taxonomic lists.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Get levels of species list</span>
-<span class='kw'>taxlist</span>::<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/levels.html'>levels</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; [1] "form"       "variety"    "subspecies" "species"    "complex"   
+<span class='kw'>taxlist</span>::<span class='fu'>levels</span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; [1] "form"       "variety"    "subspecies" "species"    "complex"   
 #&gt; [6] "genus"      "family"    </div><div class='input'>
 <span class='co'>## Add aggregate as new taxonomic level</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/levels.html'>levels</a></span>(<span class='kw'>Easplist</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"form"</span>, <span class='st'>"variety"</span>, <span class='st'>"subspecies"</span>, <span class='st'>"species"</span>,
+<span class='fu'>levels</span>(<span class='kw'>Easplist</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"form"</span>, <span class='st'>"variety"</span>, <span class='st'>"subspecies"</span>, <span class='st'>"species"</span>,
     <span class='st'>"complex"</span>, <span class='st'>"aggregate"</span>, <span class='st'>"genus"</span>, <span class='st'>"family"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; object size: 761.5 Kb 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; object size: 761.5 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 5393 
@@ -206,7 +208,8 @@ checking consistency of taxonomic lists.</p>
 #&gt; number of concepts in level aggregate: 0
 #&gt; number of concepts in level genus: 1011
 #&gt; number of concepts in level family: 186
-#&gt; </div><div class='input'></div></pre>
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -222,7 +225,7 @@ checking consistency of taxonomic lists.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

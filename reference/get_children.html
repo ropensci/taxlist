@@ -132,28 +132,28 @@
     <p>Retrieve all children or all parents of a queried taxon concept.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_children</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>get_children</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_children</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_children</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_children</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_children</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_parents</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_parents</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_parents</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_parents</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist,taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_parents</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>get_parents</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>taxlist</th>
-      <td><p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p></td>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object.</p></td>
     </tr>
     <tr>
       <th>ConceptID</th>
@@ -168,11 +168,11 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object with a subset including
+    <p>A <a href='taxlist-class.html'>taxlist</a> object with a subset including
 requested concepts with children or parents.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function produces subsets of <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects
+    <p>This function produces subsets of <a href='taxlist-class.html'>taxlist</a> objects
 including all children or parents of queried taxon concepts.
 Multiple concepts can be queried in these function.
 The argument <code>ConceptID</code> can be a vector of concept IDs or a subset of
@@ -183,10 +183,11 @@ the input <code>taxlist</code> object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Subset with family Ebenaceae and children</span>
-<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Ebenaceae"</span>, <span class='kw'>TaxonName</span>))
-<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_children</a></span>(<span class='kw'>Easplist</span>, <span class='kw'>Ebenaceae</span>)
+<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Ebenaceae"</span>, <span class='kw'>TaxonName</span>))
+<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'>get_children</span>(<span class='kw'>Easplist</span>, <span class='kw'>Ebenaceae</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Ebenaceae</span>)</div><div class='output co'>#&gt; object size: 8.5 Kb 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Ebenaceae</span>)
+</div><div class='output co'>#&gt; object size: 8.5 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 10 
@@ -206,7 +207,8 @@ the input <code>taxlist</code> object.</p>
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 2
 #&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(object=<span class='kw'>Ebenaceae</span>, ConceptID=<span class='st'>"all"</span>, maxsum=<span class='fl'>100</span>)</div><div class='output co'>#&gt; ------------------------------ 
+#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(object=<span class='kw'>Ebenaceae</span>, ConceptID=<span class='st'>"all"</span>, maxsum=<span class='fl'>100</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 269 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -283,11 +285,12 @@ the input <code>taxlist</code> object.</p>
 #&gt; 56053 Ebenaceae  
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Get parents of Diospyros tricolor</span>
-<span class='kw'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>TaxonConceptID</span> <span class='op'>==</span> <span class='fl'>52403</span>,
+<span class='kw'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>TaxonConceptID</span> <span class='op'>==</span> <span class='fl'>52403</span>,
     slot=<span class='st'>"relations"</span>)
-<span class='kw'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/get_children.html'>get_parents</a></span>(<span class='kw'>Easplist</span>, <span class='kw'>Diostri</span>)
+<span class='kw'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'>get_parents</span>(<span class='kw'>Easplist</span>, <span class='kw'>Diostri</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Diostri</span>)</div><div class='output co'>#&gt; object size: 7.1 Kb 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Diostri</span>)
+</div><div class='output co'>#&gt; object size: 7.1 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 3 
@@ -307,7 +310,8 @@ the input <code>taxlist</code> object.</p>
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 1
 #&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Diostri</span>, <span class='st'>"all"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Diostri</span>, <span class='st'>"all"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 52403 
 #&gt; view ID: 1 
 #&gt; level: species 
@@ -331,7 +335,8 @@ the input <code>taxlist</code> object.</p>
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 56053 Ebenaceae  
-#&gt; ------------------------------ </div><div class='input'></div></pre>
+#&gt; ------------------------------ </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -347,7 +352,7 @@ the input <code>taxlist</code> object.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

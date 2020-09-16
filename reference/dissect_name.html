@@ -140,7 +140,7 @@ A string with names can be consequently split into those elements, meanwhile
 the number of elements will suggest the taxonomic ranks.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/dissect_name.html'>dissect_name</a></span>(<span class='kw'>x</span>, split = <span class='st'>" "</span>, fixed = <span class='fl'>TRUE</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>dissect_name</span>(<span class='kw'>x</span>, split = <span class='st'>" "</span>, fixed = <span class='fl'>TRUE</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,10 +173,11 @@ polynomial string.</p>
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>Level</span> <span class='op'>==</span> <span class='st'>"variety"</span>, slot=<span class='st'>"relations"</span>)
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/accepted_name.html'>accepted_name</a></span>(<span class='kw'>Easplist</span>)[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>),<span class='st'>"TaxonName"</span>]
+    <pre class="examples"><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>Level</span> <span class='op'>==</span> <span class='st'>"variety"</span>, slot=<span class='st'>"relations"</span>)
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='accepted_name.html'>accepted_name</a></span>(<span class='kw'>Easplist</span>)[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>),<span class='st'>"TaxonName"</span>]
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/dissect_name.html'>dissect_name</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt;       [,1]          [,2]            [,3]   [,4]               
+<span class='fu'>dissect_name</span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt;       [,1]          [,2]            [,3]   [,4]               
 #&gt;  [1,] "Euphorbia"   "inaequilatera" "var." "dentata"          
 #&gt;  [2,] "Oldenlandia" "corymbosa"     "var." "caespitosa"       
 #&gt;  [3,] "Pilea"       "usambarensis"  "var." "veronicifolia"    
@@ -186,7 +187,8 @@ polynomial string.</p>
 #&gt;  [7,] "Pimpinella"  "oreophila"     "var." "kilimandscharica" 
 #&gt;  [8,] "Cyperus"     "denudatus"     "var." "lucenti-nigricans"
 #&gt;  [9,] "Achyranthes" "aspera"        "var." "sicula"           
-#&gt; [10,] "Digitaria"   "diagonalis"    "var." "uniglumis"        </div><div class='input'></div></pre>
+#&gt; [10,] "Digitaria"   "diagonalis"    "var." "uniglumis"        </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -202,7 +204,7 @@ polynomial string.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

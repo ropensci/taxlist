@@ -129,30 +129,30 @@
     </div>
 
     <div class="ref-description">
-    <p>Retrieve or replace slot <code>taxonViews</code> in an object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a></p>
+    <p>Retrieve or replace slot <code>taxonViews</code> in an object of class <a href='taxlist-class.html'>taxlist</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>taxon_views</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>taxon_views</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>taxon_views</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+<span class='fu'>taxon_views</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>taxon_views</a></span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_views</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for taxlist,data.frame</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>taxon_views</a></span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_views</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>add_view</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+<span class='fu'>add_view</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>add_view</a></span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>add_view</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>taxlist</th>
-      <td><p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p></td>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -168,20 +168,20 @@ used to define the circumscription of taxon concepts included in
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> with added views.</p>
+    <p>An object of class <a href='taxlist-class.html'>taxlist</a> with added views.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Taxon views indicate in <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects the references
+    <p>Taxon views indicate in <a href='taxlist-class.html'>taxlist</a> objects the references
 determining the circumscription of the respective taxon concepts.
-When adding a new concept (see <code><a href='https://rdrr.io/pkg/taxlist/man/taxon_relations.html'>add_concept()</a></code>), the respective
-reference may not yet occur in the input <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p>
+When adding a new concept (see <code><a href='taxon_relations.html'>add_concept()</a></code>), the respective
+reference may not yet occur in the input <a href='taxlist-class.html'>taxlist</a> object.</p>
 <p>The term taxon view was introduced by <strong>Zhong et al. (1996)</strong> and
 corresponds to the reference used for the definition of a concept.</p>
 <p>This function retrieves the slot <code>taxonViews</code> from objects of the class
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p>
+<a href='taxlist-class.html'>taxlist</a>.</p>
 <p>The replacement method <code>taxon_views&lt;-</code> replaces the whole content of slot
 <code>taxonViews</code> and it is only recommended to use when constructing a new
-<a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object from an empty prototype.</p>
+<a href='taxlist-class.html'>taxlist</a> object from an empty prototype.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p><b>Zhong Y, Jung S, Pramanik S, Beaman JH (1996).</b> Data model and
@@ -191,23 +191,25 @@ database.
 <a href='https://doi.org/10.1093/bioinformatics/15.2.149'>https://doi.org/10.1093/bioinformatics/15.2.149</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a></p></div>
+    <div class='dont-index'><p><a href='taxlist-class.html'>taxlist</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## See existing views</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>taxon_views</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt;   ViewID                                 secundum view_bibtexkey
+<span class='fu'>taxon_views</span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt;   ViewID                                 secundum view_bibtexkey
 #&gt; 1      1            African Plant Database (2012)  CJBGSANBI2012
 #&gt; 2      2 Taxonomic Name Resolution Service (2018)       TNRS2018
 #&gt; 3      3                    The Plant List (2013)        TPL2013</div><div class='input'>
 <span class='co'>## Add a new view</span>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>add_view</a></span>(taxlist=<span class='kw'>Easplist</span>, secundum=<span class='st'>"Beentje et al. (1952)"</span>,
+<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_view</span>(taxlist=<span class='kw'>Easplist</span>, secundum=<span class='st'>"Beentje et al. (1952)"</span>,
   Title=<span class='st'>"Flora of Tropical East Africa"</span>,
   URL=<span class='st'>"http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/taxon_views.html'>taxon_views</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt;   ViewID                                 secundum view_bibtexkey
+<span class='fu'>taxon_views</span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt;   ViewID                                 secundum view_bibtexkey
 #&gt; 1      1            African Plant Database (2012)  CJBGSANBI2012
 #&gt; 2      2 Taxonomic Name Resolution Service (2018)       TNRS2018
 #&gt; 3      3                    The Plant List (2013)        TPL2013
@@ -221,7 +223,8 @@ database.
 #&gt; 1                                                                &lt;NA&gt;
 #&gt; 2                                                                &lt;NA&gt;
 #&gt; 3                                                                &lt;NA&gt;
-#&gt; 4 http://www.kew.org/science/directory/projects/FloraTropEAfrica.html</div><div class='input'></div></pre>
+#&gt; 4 http://www.kew.org/science/directory/projects/FloraTropEAfrica.html</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -237,7 +240,7 @@ database.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

@@ -132,14 +132,14 @@ taxonNames, taxonRelations or taxonTraits." />
     </div>
 
     <div class="ref-description">
-    <p>Subset of <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects will be done applying either
+    <p>Subset of <a href='taxlist-class.html'>taxlist</a> objects will be done applying either
 logical operations or pattern matchings.
 Subsets can be referred to information contained either in the slot
 <code>taxonNames</code>, <code>taxonRelations</code> or <code>taxonTraits</code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(
+<span class='fu'>subset</span>(
   <span class='kw'>x</span>,
   <span class='kw'>subset</span>,
   slot = <span class='st'>"names"</span>,
@@ -153,7 +153,7 @@ Subsets can be referred to information contained either in the slot
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p></td>
+      <td><p>Object of class <a href='taxlist-class.html'>taxlist</a>.</p></td>
     </tr>
     <tr>
       <th>subset</th>
@@ -179,7 +179,7 @@ Subsets can be referred to information contained either in the slot
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a>.</p>
+    <p>An object of class <a href='taxlist-class.html'>taxlist</a>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The argument <code>subset</code> will be applied to the slot specified in argument
@@ -189,15 +189,16 @@ This argument also allows partial matchings.</p>
 including parent-child relationships.
 When those arguments are set as <code>FALSE</code> (the default), children or parents
 of selected taxon concepts will not be included in the subset.</p>
-<p>Be aware that <code><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset()</a></code> won't work properly inside of function definitions.</p>
+<p>Be aware that <code>subset()</code> won't work properly inside of function definitions.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>lf_behn_2018</span> <span class='op'>==</span> <span class='st'>"reed_plant"</span>,
+    <pre class="examples"><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>subset</span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>lf_behn_2018</span> <span class='op'>==</span> <span class='st'>"reed_plant"</span>,
     slot=<span class='st'>"traits"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; object size: 20.3 Kb 
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; object size: 20.3 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 87 
@@ -215,8 +216,10 @@ of selected taxon concepts will not be included in the subset.</p>
 #&gt; number of concepts in level genus: 0
 #&gt; number of concepts in level family: 0
 #&gt; </div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lf_behn_2018</span>))</div><div class='output co'>#&gt; reed_plant 
-#&gt;         14 </div><div class='input'></div></pre>
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lf_behn_2018</span>))
+</div><div class='output co'>#&gt; reed_plant 
+#&gt;         14 </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -232,7 +235,7 @@ of selected taxon concepts will not be included in the subset.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

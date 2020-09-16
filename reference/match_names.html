@@ -132,17 +132,17 @@ using the function stringsim()." />
 
     <div class="ref-description">
     <p>Names provided in a character vector will be compared with names stored in
-slot <code>taxonNames</code> within an object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> by
+slot <code>taxonNames</code> within an object of class <a href='taxlist-class.html'>taxlist</a> by
 using the function <code>stringsim()</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/match_names.html'>match_names</a></span>(<span class='kw'>x</span>, <span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>match_names</span>(<span class='kw'>x</span>, <span class='kw'>object</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for character,character</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/match_names.html'>match_names</a></span>(<span class='kw'>x</span>, <span class='kw'>object</span>, best = <span class='fl'>5</span>, clean = <span class='fl'>TRUE</span>, <span class='kw'>...</span>)
+<span class='fu'>match_names</span>(<span class='kw'>x</span>, <span class='kw'>object</span>, best = <span class='fl'>5</span>, clean = <span class='fl'>TRUE</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for character,taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/match_names.html'>match_names</a></span>(
+<span class='fu'>match_names</span>(
   <span class='kw'>x</span>,
   <span class='kw'>object</span>,
   clean = <span class='fl'>TRUE</span>,
@@ -163,7 +163,7 @@ using the function <code>stringsim()</code>.</p>
     </tr>
     <tr>
       <th>object</th>
-      <td><p>An object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> to be compared
+      <td><p>An object of class <a href='taxlist-class.html'>taxlist</a> to be compared
 with.</p></td>
     </tr>
     <tr>
@@ -203,7 +203,7 @@ similarity) for each queried name will be retrieved, where the number is set
 by argument <code>best</code>.
 Option <code>accepted_only=TRUE</code> will only work with<code>output="data.frame"</code>.
 This will be applied especially in those cases were the requested names have
-more than one match in the reference <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object
+more than one match in the reference <a href='taxlist-class.html'>taxlist</a> object
 (matching homonyms) and will retrieve the one name, that has the status of
 accepted name, otherwise no matchings will be retrieved.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -218,7 +218,8 @@ accepted name, otherwise no matchings will be retrieved.</p>
 <span class='kw'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Cperus papyrus"</span>, <span class='st'>"Typha australis"</span>, <span class='st'>"Luke skywalker"</span>)
 
 <span class='co'>## Retrieve taxon usage names</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/match_names.html'>match_names</a></span>(<span class='kw'>species</span>, <span class='kw'>Easplist</span>)</div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
+<span class='fu'>match_names</span>(<span class='kw'>species</span>, <span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
 #&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
 #&gt; 2 Typha australis     Typha australis                        Schumach.
 #&gt; 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.
@@ -227,14 +228,16 @@ accepted name, otherwise no matchings will be retrieved.</p>
 #&gt; 2        51999       1  1.0000000
 #&gt; 3        51565       1  0.4848485</div><div class='input'>
 <span class='co'>## Display accepted names in output</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/match_names.html'>match_names</a></span>(x=<span class='kw'>species</span>, object=<span class='kw'>Easplist</span>, show_concepts=<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
+<span class='fu'>match_names</span>(x=<span class='kw'>species</span>, object=<span class='kw'>Easplist</span>, show_concepts=<span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
 #&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
 #&gt; 2 Typha australis     Typha australis                        Schumach.
 #&gt; 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.
 #&gt;   TaxonUsageID matches similarity TaxonConceptID
 #&gt; 1          206       1  0.9655172            206
 #&gt; 2        51999       1  1.0000000          50105
-#&gt; 3        51565       1  0.4848485          51565</div><div class='input'></div></pre>
+#&gt; 3        51565       1  0.4848485          51565</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -250,7 +253,7 @@ accepted name, otherwise no matchings will be retrieved.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

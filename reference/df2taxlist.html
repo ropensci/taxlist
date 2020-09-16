@@ -131,19 +131,19 @@ a taxlist object." />
 
     <div class="ref-description">
     <p>Taxon lists may be provided in data frame format, which will be converted to
-a <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p>
+a <a href='taxlist-class.html'>taxlist</a> object.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/df2taxlist.html'>df2taxlist</a></span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>df2taxlist</span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for data.frame,logical</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/df2taxlist.html'>df2taxlist</a></span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>levels</span>, <span class='kw'>...</span>)
+<span class='fu'>df2taxlist</span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>levels</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for data.frame,missing</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/df2taxlist.html'>df2taxlist</a></span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>...</span>)
+<span class='fu'>df2taxlist</span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for character,missing</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/df2taxlist.html'>df2taxlist</a></span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>df2taxlist</span>(<span class='kw'>x</span>, <span class='kw'>AcceptedName</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,13 +164,13 @@ a <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objec
     <tr>
       <th>levels</th>
       <td><p>A vector with the names of the taxonomic ranks. This argument
-is passed to <code><a href='https://rdrr.io/pkg/taxlist/man/levels.html'>taxlist::levels()</a></code>.</p></td>
+is passed to <code><a href='levels.html'>levels()</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> object.</p>
+    <p>A <a href='taxlist-class.html'>taxlist</a> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>In the method <code>data.frame</code>, the input data frame must have following columns:</p><dl>
@@ -197,7 +197,8 @@ provided in this package.</p>
     <pre class="examples"><div class='input'><span class='co'>## Read the table with names of Cyperus species</span>
 <span class='kw'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(file=<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/find.package.html'>path.package</a></span>(<span class='st'>"taxlist"</span>), <span class='st'>"cyperus"</span>,
     <span class='st'>"names.csv"</span>), stringsAsFactors=<span class='fl'>FALSE</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>Cyperus</span>)</div><div class='output co'>#&gt;   TaxonUsageID LETTERCODE           SHORTNAME           TaxonName NATIVENAME
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>Cyperus</span>)
+</div><div class='output co'>#&gt;   TaxonUsageID LETTERCODE           SHORTNAME           TaxonName NATIVENAME
 #&gt; 1          192    CYPEAUR Cyperus auriculatus Cyperus auriculatus         NA
 #&gt; 2          193    CYPECOR  Cyperus corymbosus  Cyperus corymbosus         NA
 #&gt; 3          194    CYPEDIF   Cyperus difformis   Cyperus difformis         NA
@@ -212,8 +213,9 @@ provided in this package.</p>
 #&gt; 5                           L. f.   FALSE            196
 #&gt; 6                          Delile   FALSE            197</div><div class='input'>
 <span class='co'>## Convert to 'taxlist' object</span>
-<span class='kw'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/df2taxlist.html'>df2taxlist</a></span>(<span class='kw'>Cyperus</span>, AcceptedName =<span class='op'>!</span> <span class='kw'>Cyperus</span><span class='op'>$</span><span class='kw'>SYNONYM</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Cyperus</span>)</div><div class='output co'>#&gt; object size: 32.4 Kb 
+<span class='kw'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'>df2taxlist</span>(<span class='kw'>Cyperus</span>, AcceptedName =<span class='op'>!</span> <span class='kw'>Cyperus</span><span class='op'>$</span><span class='kw'>SYNONYM</span>)
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Cyperus</span>)
+</div><div class='output co'>#&gt; object size: 32.4 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 95 
@@ -223,8 +225,9 @@ provided in this package.</p>
 #&gt; taxon views: 0 
 #&gt; </div><div class='input'>
 <span class='co'>## Create a 'taxlist' object from character vectors</span>
-<span class='kw'>Plants</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/df2taxlist.html'>df2taxlist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Triticum aestivum"</span>,<span class='st'>"Zea mays"</span>), AuthorName=<span class='st'>"L."</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/summary.html'>summary</a></span>(<span class='kw'>Plants</span>, <span class='st'>"all"</span>)</div><div class='output co'>#&gt; ------------------------------ 
+<span class='kw'>Plants</span> <span class='op'>&lt;-</span> <span class='fu'>df2taxlist</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Triticum aestivum"</span>,<span class='st'>"Zea mays"</span>), AuthorName=<span class='st'>"L."</span>)
+<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Plants</span>, <span class='st'>"all"</span>)
+</div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 1 
 #&gt; view ID: none 
 #&gt; level: none 
@@ -240,7 +243,8 @@ provided in this package.</p>
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 2 Zea mays L. 
-#&gt; ------------------------------ </div><div class='input'></div></pre>
+#&gt; ------------------------------ </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -256,7 +260,7 @@ provided in this package.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

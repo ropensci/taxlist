@@ -134,17 +134,17 @@ avoiding errors caused by their validation." />
 avoiding errors caused by their validation.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/as.list.html'>S4_to_list</a></span>(<span class='kw'>x</span>)
+    <pre class="usage"><span class='fu'>S4_to_list</span>(<span class='kw'>x</span>)
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/as.list.html'>as.list</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>as.list</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An object of class <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> or any S4 class.</p></td>
+      <td><p>An object of class <a href='taxlist-class.html'>taxlist</a> or any S4 class.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -159,14 +159,16 @@ avoiding errors caused by their validation.</p>
 
     <p>The function <code>S4_to_list</code> transforms any S4 object to a list setting
 slots to elements of the list and it is running internally in the method
-<code>as.list</code> for <a href='https://rdrr.io/pkg/taxlist/man/taxlist-class.html'>taxlist</a> objects.</p>
+<code>as.list</code> for <a href='taxlist-class.html'>taxlist</a> objects.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/taxlist/man/as.list.html'>as.list</a></span>(<span class='kw'>Easplist</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='kw'>Easplist</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>as.list</span>(<span class='kw'>Easplist</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='kw'>Easplist</span>)
+</div><div class='output co'>#&gt; [1] "list"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -182,7 +184,7 @@ slots to elements of the list and it is running internally in the method
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
