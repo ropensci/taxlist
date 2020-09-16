@@ -33,7 +33,9 @@ gp()
 pkg_loc <- build(path="built-pkg")
 
 # Test the package
-Sys.setenv(LANG="en_US.iso88591")
+## Sys.setenv(LANG="en_US.iso88591")
+Sys.setlocale("LC_ALL", "en_US.iso88591")
+Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
 check_built(path=pkg_loc)
 
 # After check ------------------------------------------------------------------

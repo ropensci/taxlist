@@ -8,7 +8,7 @@
 #' 
 #' @param object An object containing a taxonomic list or a formula.
 #' @param data An object of class [taxlist-class] in the `formula` method.
-#' @param rm.na Logical value, whether NAs have to be removed from the input
+#' @param na.rm Logical value, whether NAs have to be removed from the input
 #'     vector or not.
 #' @param level Character value indicating the taxonomic rank of counted taxa.
 #' @param ... further arguments passed among methods.
@@ -46,8 +46,8 @@ setGeneric("count_taxa",
 #' @aliases count_taxa,character,missing-method
 #' 
 setMethod("count_taxa", signature(object="character", data="missing"),
-		function(object, rm.na=TRUE, ...) {
-			if(rm.na) object <- object[!is.na(object)]
+		function(object, na.rm=TRUE, ...) {
+			if(na.rm) object <- object[!is.na(object)]
 			return(length(unique(object)))
 		}
 )
@@ -57,8 +57,8 @@ setMethod("count_taxa", signature(object="character", data="missing"),
 #' @aliases count_taxa,factor,missing-method
 #' 
 setMethod("count_taxa", signature(object="factor", data="missing"),
-		function(object, rm.na=TRUE, ...) {
-			if(rm.na) object <- object[!is.na(object)]
+		function(object, na.rm=TRUE, ...) {
+			if(na.rm) object <- object[!is.na(object)]
 			return(count_taxa(paste(object)))
 		}
 )

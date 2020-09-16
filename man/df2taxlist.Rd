@@ -24,7 +24,7 @@ df2taxlist(x, AcceptedName, ...)
 \item{...}{Additional vectors to be added as columns in slot\code{taxonNames}.}
 
 \item{levels}{A vector with the names of the taxonomic ranks. This argument
-is passed to \code{\link[taxlist:levels]{taxlist::levels()}}.}
+is passed to \code{\link[=levels]{levels()}}.}
 }
 \value{
 A \linkS4class{taxlist} object.

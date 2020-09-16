@@ -10,9 +10,9 @@
 \usage{
 count_taxa(object, data, ...)
 
-\S4method{count_taxa}{character,missing}(object, rm.na = TRUE, ...)
+\S4method{count_taxa}{character,missing}(object, na.rm = TRUE, ...)
 
-\S4method{count_taxa}{factor,missing}(object, rm.na = TRUE, ...)
+\S4method{count_taxa}{factor,missing}(object, na.rm = TRUE, ...)
 
 \S4method{count_taxa}{taxlist,missing}(object, level, ...)
 
@@ -25,7 +25,7 @@ count_taxa(object, data, ...)
 
 \item{...}{further arguments passed among methods.}
 
-\item{rm.na}{Logical value, whether NAs have to be removed from the input
+\item{na.rm}{Logical value, whether NAs have to be removed from the input
 vector or not.}
 
 \item{level}{Character value indicating the taxonomic rank of counted taxa.}

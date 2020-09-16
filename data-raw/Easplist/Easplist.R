@@ -14,8 +14,6 @@ Easplist <- new("taxlist")
 for(i in c("taxonViews","taxonRelations","taxonNames","taxonTraits"))
 	slot(Easplist, i) <- read.csv2(file.path(Dir, paste0(i, ".csv")),
 			encoding="UTF-8", stringsAsFactors=FALSE)
-# TODO: Test if summary is working at this point
-
 levels(Easplist) <- c("form","variety","subspecies","species","complex","genus",
 		"family")
 
