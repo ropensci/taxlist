@@ -6,6 +6,17 @@
 #' Class for taxonomic lists including synonyms, hierarchical ranks,
 #' parent-child relationships, taxon views and taxon traits.
 #' 
+#' Note that each taxon becomes an identifier, represented by the column
+#' **TaxonConceptID** in the slot **taxonRelations**, analogous to a primary key
+#' in a relational database.
+#' This identifier is restricted to an integer in `taxlist` and is specific for
+#' the object.
+#' 
+#' In the same way, each taxon usage name has an identifier in the column
+#' **TaxonUsageID**, slot **taxonNames**.
+#' The column **ViewID** in slot **taxonViews** is the identifier of the taxon
+#' view.
+#' 
 #' @slot taxonNames (`data.frame`) Table of taxon usage names (accepted names
 #'     and synonyms).
 #' @slot taxonRelations (`data.frame`) Relations between concepts, accepted

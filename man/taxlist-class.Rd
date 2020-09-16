@@ -7,6 +7,17 @@
 \description{
 Class for taxonomic lists including synonyms, hierarchical ranks,
 parent-child relationships, taxon views and taxon traits.
+
+Note that each taxon becomes an identifier, represented by the column
+\strong{TaxonConceptID} in the slot \strong{taxonRelations}, analogous to a primary key
+in a relational database.
+This identifier is restricted to an integer in \code{taxlist} and is specific for
+the object.
+
+In the same way, each taxon usage name has an identifier in the column
+\strong{TaxonUsageID}, slot \strong{taxonNames}.
+The column \strong{ViewID} in slot \strong{taxonViews} is the identifier of the taxon
+view.
 }
 \section{Slots}{
 
