@@ -81,12 +81,6 @@ class taxlist." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -107,7 +101,7 @@ class taxlist." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -126,7 +120,7 @@ class taxlist." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Import species lists from Turboveg databases</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/tv2taxlist.R'><code>R/tv2taxlist.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/tv2taxlist.R'><code>R/tv2taxlist.R</code></a></small>
     <div class="hidden name"><code>tv2taxlist.Rd</code></div>
     </div>
 
@@ -136,7 +130,7 @@ class taxlist." />
 class <a href='taxlist-class.html'>taxlist</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tv2taxlist</span>(<span class='kw'>taxlist</span>, tv_home = <span class='fu'>tv.home</span>())</pre>
+    <pre class="usage"><span class='fu'>tv2taxlist</span><span class='op'>(</span><span class='va'>taxlist</span>, tv_home <span class='op'>=</span> <span class='fu'>tv.home</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,10 +171,10 @@ If this is not correct, consider setting it manually by using the functions
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Cyperus data set installed as Turboveg species list</span>
-<span class='kw'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'>tv2taxlist</span>(taxlist=<span class='st'>"cyperus"</span>,
-    tv_home=<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/find.package.html'>path.package</a></span>(<span class='st'>"taxlist"</span>), <span class='st'>"tv_data"</span>))
+<span class='va'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'>tv2taxlist</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='st'>"cyperus"</span>,
+    tv_home<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/find.package.html'>path.package</a></span><span class='op'>(</span><span class='st'>"taxlist"</span><span class='op'>)</span>, <span class='st'>"tv_data"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Cyperus</span>)
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Cyperus</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; object size: 45.8 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 

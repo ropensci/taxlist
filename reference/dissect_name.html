@@ -83,12 +83,6 @@ the number of elements will suggest the taxonomic ranks." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -109,7 +103,7 @@ the number of elements will suggest the taxonomic ranks." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -128,7 +122,7 @@ the number of elements will suggest the taxonomic ranks." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Dissect Scientific Names into their Elements</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/dissect_name.R'><code>R/dissect_name.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/dissect_name.R'><code>R/dissect_name.R</code></a></small>
     <div class="hidden name"><code>dissect_name.Rd</code></div>
     </div>
 
@@ -140,7 +134,7 @@ A string with names can be consequently split into those elements, meanwhile
 the number of elements will suggest the taxonomic ranks.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dissect_name</span>(<span class='kw'>x</span>, split = <span class='st'>" "</span>, fixed = <span class='fl'>TRUE</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>" "</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,10 +167,10 @@ polynomial string.</p>
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>Level</span> <span class='op'>==</span> <span class='st'>"variety"</span>, slot=<span class='st'>"relations"</span>)
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='accepted_name.html'>accepted_name</a></span>(<span class='kw'>Easplist</span>)[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>),<span class='st'>"TaxonName"</span>]
+    <pre class="examples"><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='va'>Level</span> <span class='op'>==</span> <span class='st'>"variety"</span>, slot<span class='op'>=</span><span class='st'>"relations"</span><span class='op'>)</span>
+<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>,<span class='st'>"TaxonName"</span><span class='op'>]</span>
 
-<span class='fu'>dissect_name</span>(<span class='kw'>Easplist</span>)
+<span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;       [,1]          [,2]            [,3]   [,4]               
 #&gt;  [1,] "Euphorbia"   "inaequilatera" "var." "dentata"          
 #&gt;  [2,] "Oldenlandia" "corymbosa"     "var." "caespitosa"       

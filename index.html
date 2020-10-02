@@ -42,12 +42,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -68,7 +62,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -94,7 +88,7 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p><code>taxlist</code> is a package designed to handle and assess taxonomic lists in <strong>R</strong>, providing an object class and functions in <code>S4</code> language. The homonymous object class <code>taxlist</code> was originally designed as a module for taxa recorded in vegetation-plot observations (see <a href="https://github.com/kamapu/vegtable"><code>vegtable</code></a>), but became as an independent object with the ability of contain not only lists of species but also synonymy, hierarchical taxonomy, and functional traits (attributes of taxa).</p>
+<p><code>taxlist</code> is a package designed to handle and assess taxonomic lists in <strong>R</strong>, providing an object class and functions in <code>S4</code> language. The homonymous object class <code>taxlist</code> was originally designed as a module for taxa recorded in vegetation-plot observations (see <a href="https://github.com/ropensci/vegtable"><code>vegtable</code></a>), but became as an independent object with the ability of contain not only lists of species but also synonymy, hierarchical taxonomy, and functional traits (attributes of taxa).</p>
 <p>The main aim of this package is to keep consistence in taxonomic lists (a set of rules are checked by the function <code>validObject()</code>), to enable the re-arrangement of such data, and to statistically assess functional traits and other attributes, for instance taxonomy itself (function <code><a href="reference/tax2traits.html">tax2traits()</a></code> set taxonomic information as trait).</p>
 <p>While this package only includes a function for the import of taxonomic lists from <a href="https://www.synbiosys.alterra.nl/turboveg">Turboveg</a>, almost any data source can be structured as <code>taxlist</code> object, so far the information is imported into data frames in an R session and the consistency rules are respected (validity).</p>
 <p>The use of <code>taxlist</code> is recommended for people cleaning raw data before importing it to relational databases, either in the context of taxonomic work or biodiversity assessments. The other way around, people having relational databases or clean and structured taxonomic lists may use <code>taxlist</code> as recipient of this information in R sessions in order to carry out further statistical assessments. Finally, the function <code><a href="reference/print_name.html">print_name()</a></code> makes <code>taxlist</code> suitable for its implementation in interactive documents using <code>rmarkdonw</code> and <code>knitr</code> (e.g. reports, manuscripts and check-lists).</p>
@@ -106,27 +100,24 @@
 <a href="#installing-taxlist" class="anchor"></a>Installing taxlist</h2>
 <p>This package is available from the Comprehensive R Archive Network (<strong>CRAN</strong>) and can be directly installed within an R-session:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"taxlist"</span>, dependencies=<span class="fl">TRUE</span>)
-</pre></div>
-<p>Alternatively, the current development version is available from <a href="https://github.com/kamapu/taxlist">GitHub</a> and can be installed using the package <code>devtools</code>:</p>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"taxlist"</span>, dependencies<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<p>Alternatively, the current development version is available from <a href="https://github.com/ropensci/taxlist">GitHub</a> and can be installed using the package <code>devtools</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">devtools</span>)
-<span class="fu">install_github</span>(<span class="st">"kamapu/taxlist"</span>, build_vignette=<span class="fl">TRUE</span>)
-</pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">devtools</span><span class="op">)</span>
+<span class="fu">install_github</span><span class="op">(</span><span class="st">"ropensci/taxlist"</span>, build_vignette<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
 <p>A vignette is installed with this package introducing to the work with <code>taxlist</code> and can be accessed by following command in your R-session:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span>(<span class="st">"taxlist-intro"</span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span><span class="st">"taxlist-intro"</span><span class="op">)</span></pre></div>
 </div>
 <div id="building-taxlist-objects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#building-taxlist-objects" class="anchor"></a>Building taxlist Objects</h2>
 <p>Objects can be built step-by-step as in the following example. For it, we will use as reference the “Ferns of Chile” (original in Spanish: “Helechos de Chile”) by <strong>Gunkel (1984)</strong>. We will create an empty <code>taxlist</code> object using the function <code>new()</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://cran.r-project.org/package=taxlist">taxlist</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://cran.r-project.org/package=taxlist">taxlist</a></span><span class="op">)</span>
 
-<span class="kw">Fern</span> <span class="op">&lt;-</span> <span class="fu">new</span>(<span class="st">"taxlist"</span>)
-<span class="kw">Fern</span>
+<span class="va">Fern</span> <span class="op">&lt;-</span> <span class="fu">new</span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>
+<span class="va">Fern</span>
 <span class="co">#&gt; object size: 5.1 Kb </span>
 <span class="co">#&gt; validation of 'taxlist' object: TRUE </span>
 <span class="co">#&gt; </span>
@@ -134,16 +125,14 @@
 <span class="co">#&gt; number of taxon concepts: 0 </span>
 <span class="co">#&gt; trait entries: 0 </span>
 <span class="co">#&gt; number of trait variables: 0 </span>
-<span class="co">#&gt; taxon views: 0</span>
-</pre></div>
+<span class="co">#&gt; taxon views: 0</span></pre></div>
 <p>Then we have to set the respective taxonomic ranks. In such case, the levels have to be provided from the lowest to highest hierarchical level:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="reference/levels.html">levels</a></span>(<span class="kw">Fern</span>) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"variety"</span>,<span class="st">"species"</span>,<span class="st">"genus"</span>)
-</pre></div>
+<span class="fu"><a href="reference/levels.html">levels</a></span><span class="op">(</span><span class="va">Fern</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"variety"</span>,<span class="st">"species"</span>,<span class="st">"genus"</span><span class="op">)</span></pre></div>
 <p>For convenience, we start inserting taxa with their respective names in a top-down direction. We will use the function <code><a href="reference/taxon_relations.html">add_concept()</a></code> to add a new taxon. Note that the arguments <code>TaxonName</code>, <code>AuthorName</code>, and <code>Level</code> are used to provide the name of the taxon, the authority of the name and the taxonomic rank, respectively.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">Fern</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/taxon_relations.html">add_concept</a></span>(<span class="kw">Fern</span>, TaxonName=<span class="st">"Asplenium"</span>, AuthorName=<span class="st">"L."</span>, Level=<span class="st">"genus"</span>)
-<span class="fu"><a href="reference/summary.html">summary</a></span>(<span class="kw">Fern</span>, <span class="st">"all"</span>)
+<span class="va">Fern</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/taxon_relations.html">add_concept</a></span><span class="op">(</span><span class="va">Fern</span>, TaxonName<span class="op">=</span><span class="st">"Asplenium"</span>, AuthorName<span class="op">=</span><span class="st">"L."</span>, Level<span class="op">=</span><span class="st">"genus"</span><span class="op">)</span>
+<span class="fu"><a href="reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Fern</span>, <span class="st">"all"</span><span class="op">)</span>
 <span class="co">#&gt; ------------------------------ </span>
 <span class="co">#&gt; concept ID: 1 </span>
 <span class="co">#&gt; view ID: none </span>
@@ -152,13 +141,12 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; # accepted name: </span>
 <span class="co">#&gt; 1 Asplenium L. </span>
-<span class="co">#&gt; ------------------------------</span>
-</pre></div>
+<span class="co">#&gt; ------------------------------</span></pre></div>
 <p>As you see, the inserted genus got the concept ID <strong>1</strong> (see <code>TaxonConceptID</code> in the previous figure). To insert a species of this genus, we use again the function <code><a href="reference/taxon_relations.html">add_concept()</a></code>, but this time we will also provide the ID of the parent taxon with the argument <code>Parent</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">Fern</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/taxon_relations.html">add_concept</a></span>(<span class="kw">Fern</span>, TaxonName=<span class="st">"Asplenium obliquum"</span>, AuthorName=<span class="st">"Forster"</span>,
-    Level=<span class="st">"species"</span>, Parent=<span class="fl">1</span>)
-<span class="fu"><a href="reference/summary.html">summary</a></span>(<span class="kw">Fern</span>, <span class="st">"Asplenium obliquum"</span>)
+<span class="va">Fern</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/taxon_relations.html">add_concept</a></span><span class="op">(</span><span class="va">Fern</span>, TaxonName<span class="op">=</span><span class="st">"Asplenium obliquum"</span>, AuthorName<span class="op">=</span><span class="st">"Forster"</span>,
+    Level<span class="op">=</span><span class="st">"species"</span>, Parent<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Fern</span>, <span class="st">"Asplenium obliquum"</span><span class="op">)</span>
 <span class="co">#&gt; ------------------------------ </span>
 <span class="co">#&gt; concept ID: 2 </span>
 <span class="co">#&gt; view ID: none </span>
@@ -167,20 +155,18 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; # accepted name: </span>
 <span class="co">#&gt; 2 Asplenium obliquum Forster </span>
-<span class="co">#&gt; ------------------------------</span>
-</pre></div>
+<span class="co">#&gt; ------------------------------</span></pre></div>
 <p>In the same way, we can add now two varieties of the inserted species:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">Fern</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/taxon_relations.html">add_concept</a></span>(<span class="kw">Fern</span>,
-    TaxonName=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Asplenium obliquum var. sphenoides"</span>,
-        <span class="st">"Asplenium obliquum var. chondrophyllum"</span>),
-    AuthorName=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"(Kunze) Espinosa"</span>,
-        <span class="st">"(Bertero apud Colla) C. Christense &amp; C. Skottsberg"</span>),
-    Level=<span class="st">"variety"</span>, Parent=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">2</span>,<span class="fl">2</span>))
-</pre></div>
+<span class="va">Fern</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/taxon_relations.html">add_concept</a></span><span class="op">(</span><span class="va">Fern</span>,
+    TaxonName<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Asplenium obliquum var. sphenoides"</span>,
+        <span class="st">"Asplenium obliquum var. chondrophyllum"</span><span class="op">)</span>,
+    AuthorName<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"(Kunze) Espinosa"</span>,
+        <span class="st">"(Bertero apud Colla) C. Christense &amp; C. Skottsberg"</span><span class="op">)</span>,
+    Level<span class="op">=</span><span class="st">"variety"</span>, Parent<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p>You may have realized that the function <code><a href="reference/summary.html">summary()</a></code> is applied to provide on the one side a display of meta-information for the whole <code>taxlist</code> object, and on the other side to show a detail of the taxa included in the object. In the later case adding the keyword <code>"all"</code> as second argument, the summary will show a detailed information for every taxon included in the object.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="reference/summary.html">summary</a></span>(<span class="kw">Fern</span>)
+<span class="fu"><a href="reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Fern</span><span class="op">)</span>
 <span class="co">#&gt; object size: 6.2 Kb </span>
 <span class="co">#&gt; validation of 'taxlist' object: TRUE </span>
 <span class="co">#&gt; </span>
@@ -198,7 +184,7 @@
 <span class="co">#&gt; number of concepts in level species: 1</span>
 <span class="co">#&gt; number of concepts in level genus: 1</span>
 
-<span class="fu"><a href="reference/summary.html">summary</a></span>(<span class="kw">Fern</span>, <span class="st">"all"</span>)
+<span class="fu"><a href="reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Fern</span>, <span class="st">"all"</span><span class="op">)</span>
 <span class="co">#&gt; ------------------------------ </span>
 <span class="co">#&gt; concept ID: 1 </span>
 <span class="co">#&gt; view ID: none </span>
@@ -231,26 +217,25 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; # accepted name: </span>
 <span class="co">#&gt; 4 Asplenium obliquum var. chondrophyllum (Bertero apud Colla) C. Christense &amp; C. Skottsberg </span>
-<span class="co">#&gt; ------------------------------</span>
-</pre></div>
+<span class="co">#&gt; ------------------------------</span></pre></div>
 </div>
 <div id="from-data-frame-to-taxlist" class="section level2">
 <h2 class="hasAnchor">
 <a href="#from-data-frame-to-taxlist" class="anchor"></a>From data frame to taxlist</h2>
 <p>A more convenient way is to create an object from a data frame including both, the taxon concepts with their accepted names and the taxonomic ranks with parent-child relationships. In the case of the last example, the required data frame looks like this one:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="kw">Fern_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-        TaxonConceptID=<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,
-        TaxonUsageID=<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,
-        TaxonName=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Asplenium"</span>, <span class="st">"Asplenium obliquum"</span>,
+<span class="va">Fern_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+        TaxonConceptID<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,
+        TaxonUsageID<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,
+        TaxonName<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Asplenium"</span>, <span class="st">"Asplenium obliquum"</span>,
                 <span class="st">"Asplenium obliquum var. sphenoides"</span>,
-                <span class="st">"Asplenium obliquum var. chondrophyllum"</span>),
-        AuthorName=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"L."</span>, <span class="st">"Forster"</span>, <span class="st">"(Kunze) Espinosa"</span>,
-                <span class="st">"(Bertero apud Colla) C. Christense &amp; C. Skottsberg"</span>),
-        Level=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"genus"</span>, <span class="st">"species"</span>, <span class="st">"variety"</span>, <span class="st">"variety"</span>),
-        Parent=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>),
-        stringsAsFactors=<span class="fl">FALSE</span>)
-<span class="kw">Fern_df</span>
+                <span class="st">"Asplenium obliquum var. chondrophyllum"</span><span class="op">)</span>,
+        AuthorName<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"L."</span>, <span class="st">"Forster"</span>, <span class="st">"(Kunze) Espinosa"</span>,
+                <span class="st">"(Bertero apud Colla) C. Christense &amp; C. Skottsberg"</span><span class="op">)</span>,
+        Level<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"genus"</span>, <span class="st">"species"</span>, <span class="st">"variety"</span>, <span class="st">"variety"</span><span class="op">)</span>,
+        Parent<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>,
+        stringsAsFactors<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">Fern_df</span>
 <span class="co">#&gt;   TaxonConceptID TaxonUsageID                              TaxonName</span>
 <span class="co">#&gt; 1              1            1                              Asplenium</span>
 <span class="co">#&gt; 2              2            2                     Asplenium obliquum</span>
@@ -260,12 +245,11 @@
 <span class="co">#&gt; 1                                                 L.   genus     NA</span>
 <span class="co">#&gt; 2                                            Forster species      1</span>
 <span class="co">#&gt; 3                                   (Kunze) Espinosa variety      2</span>
-<span class="co">#&gt; 4 (Bertero apud Colla) C. Christense &amp; C. Skottsberg variety      2</span>
-</pre></div>
+<span class="co">#&gt; 4 (Bertero apud Colla) C. Christense &amp; C. Skottsberg variety      2</span></pre></div>
 <p>This kind of tables can be written in a spreadsheet application and imported to your R session. The two first columns correspond to the IDs of the taxon concept and the respective accepted name. They can be custom IDs but are restricted to integers in <code>taxlist</code>. For the use of the function <code><a href="reference/df2taxlist.html">df2taxlist()</a></code>, the two first columns are mandatory. Also note that the column <strong>Parent</strong> is pointing to the concept IDs of the respective parent taxon. To get the object, we just use the <code><a href="reference/df2taxlist.html">df2taxlist()</a></code> indicating the sequence of taxonomic ranks in the argument <code>levels</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="kw">Fern2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/df2taxlist.html">df2taxlist</a></span>(<span class="kw">Fern_df</span>, levels=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"variety"</span>, <span class="st">"species"</span>, <span class="st">"genus"</span>))
-<span class="kw">Fern2</span>
+<span class="va">Fern2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/df2taxlist.html">df2taxlist</a></span><span class="op">(</span><span class="va">Fern_df</span>, levels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"variety"</span>, <span class="st">"species"</span>, <span class="st">"genus"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">Fern2</span>
 <span class="co">#&gt; object size: 6.2 Kb </span>
 <span class="co">#&gt; validation of 'taxlist' object: TRUE </span>
 <span class="co">#&gt; </span>
@@ -281,8 +265,7 @@
 <span class="co">#&gt; hierarchical levels: variety &lt; species &lt; genus </span>
 <span class="co">#&gt; number of concepts in level variety: 2</span>
 <span class="co">#&gt; number of concepts in level species: 1</span>
-<span class="co">#&gt; number of concepts in level genus: 1</span>
-</pre></div>
+<span class="co">#&gt; number of concepts in level genus: 1</span></pre></div>
 </div>
 <div id="similar-packages" class="section level2">
 <h2 class="hasAnchor">
@@ -313,11 +296,11 @@
 <p>Information located in the slot <strong>taxonTraits</strong> are suitable for statistical assessments. For instance, in the installed object <code>Easplist</code> a column called <strong>lf_behn_2018</strong> includes a classification of macrophytes into different life forms. To know the frequency of these life forms in the <code>Easplist</code>, we can use the function <code><a href="reference/count_taxa.html">count_taxa()</a></code>:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="co"># how man taxa in 'Easplist'</span>
-<span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span>(<span class="kw">Easplist</span>)
+<span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span>
 <span class="co">#&gt; [1] 3887</span>
 
 <span class="co"># frequency of life forms</span>
-<span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span>(<span class="op">~</span> <span class="kw">lf_behn_2018</span>, <span class="kw">Easplist</span>)
+<span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="op">~</span> <span class="va">lf_behn_2018</span>, <span class="va">Easplist</span><span class="op">)</span>
 <span class="co">#&gt;          lf_behn_2018 taxa_count</span>
 <span class="co">#&gt; 1    acropleustophyte          8</span>
 <span class="co">#&gt; 2         chamaephyte         25</span>
@@ -328,12 +311,11 @@
 <span class="co">#&gt; 7    pleustohelophyte          8</span>
 <span class="co">#&gt; 8          reed_plant         14</span>
 <span class="co">#&gt; 9       reptant_plant         19</span>
-<span class="co">#&gt; 10      tussock_plant         52</span>
-</pre></div>
+<span class="co">#&gt; 10      tussock_plant         52</span></pre></div>
 <p>Furthermore, taxonomic information can be also transferred to this slot using the function <code><a href="reference/tax2traits.html">tax2traits()</a></code>. By this way we will make taxonomic ranks suitable for frequency calculations.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="kw">Easplist</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tax2traits.html">tax2traits</a></span>(<span class="kw">Easplist</span>, get_names=<span class="fl">TRUE</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">Easplist</span><span class="op">@</span>taxonTraits)
+<span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tax2traits.html">tax2traits</a></span><span class="op">(</span><span class="va">Easplist</span>, get_names<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">)</span>
 <span class="co">#&gt;   TaxonConceptID       lf_behn_2018 form variety subspecies</span>
 <span class="co">#&gt; 1              7       phanerophyte &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;</span>
 <span class="co">#&gt; 2              9       phanerophyte &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;</span>
@@ -347,21 +329,18 @@
 <span class="co">#&gt; 3     Achyranthes aspera    &lt;NA&gt;  Achyranthes Amaranthaceae</span>
 <span class="co">#&gt; 4     Acmella caulirhiza    &lt;NA&gt;      Acmella    Compositae</span>
 <span class="co">#&gt; 5      Acmella uliginosa    &lt;NA&gt;      Acmella    Compositae</span>
-<span class="co">#&gt; 6 Aeschynomene schimperi    &lt;NA&gt; Aeschynomene   Leguminosae</span>
-</pre></div>
+<span class="co">#&gt; 6 Aeschynomene schimperi    &lt;NA&gt; Aeschynomene   Leguminosae</span></pre></div>
 <p>Note that the respective parental ranks are inserted in the table <strong>taxonTraits</strong>, which contains the attributes of the taxa. In the two next command lines, we will produce a subset with only members of the family Cyperaceae and then calculate the frequency of species per genera.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="kw">Cype</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/subset.html">subset</a></span>(<span class="kw">Easplist</span>, <span class="kw">family</span> <span class="op">==</span> <span class="st">"Cyperaceae"</span>, slot=<span class="st">"taxonTraits"</span>)
-<span class="kw">Cype_stat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span>(<span class="kw">species</span> <span class="op">~</span> <span class="kw">genus</span>, <span class="kw">Cype</span>)
-</pre></div>
+<span class="va">Cype</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/subset.html">subset</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">family</span> <span class="op">==</span> <span class="st">"Cyperaceae"</span>, slot<span class="op">=</span><span class="st">"taxonTraits"</span><span class="op">)</span>
+<span class="va">Cype_stat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="va">species</span> <span class="op">~</span> <span class="va">genus</span>, <span class="va">Cype</span><span class="op">)</span></pre></div>
 <p>Now, we can sort them to produce a nice bar plot.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="kw">Cype_stat</span> <span class="op">&lt;-</span> <span class="kw">Cype_stat</span>[<span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span>(<span class="kw">Cype_stat</span><span class="op">$</span><span class="kw">species_count</span>, decreasing=<span class="fl">TRUE</span>), ]
+<span class="va">Cype_stat</span> <span class="op">&lt;-</span> <span class="va">Cype_stat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">Cype_stat</span><span class="op">$</span><span class="va">species_count</span>, decreasing<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, <span class="op">]</span>
 
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(las=<span class="fl">2</span>, mar=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">1</span>,<span class="fl">1</span>))
-<span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="kw">Cype_stat</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span>(<span class="kw">species_count</span>, names.arg=<span class="kw">genus</span>,
-                ylab=<span class="st">"Number of Species"</span>))
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>las<span class="op">=</span><span class="fl">2</span>, mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">5</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">Cype_stat</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="va">species_count</span>, names.arg<span class="op">=</span><span class="va">genus</span>,
+                ylab<span class="op">=</span><span class="st">"Number of Species"</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p><img src="README-figures/genera_bar-1.png"><!-- --></p>
 </div>
 <div id="acknowledgements" class="section level2">
@@ -379,9 +358,9 @@
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=taxlist">https://​cloud.r-project.org/​package=taxlist</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/kamapu/taxlist/">https://​github.com/​kamapu/​taxlist/​</a>
+<li>Browse source code at <br><a href="https://github.com/ropensci/taxlist/">https://​github.com/​ropensci/​taxlist/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/kamapu/taxlist/issues">https://​github.com/​kamapu/​taxlist/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/ropensci/taxlist/issues">https://​github.com/​ropensci/​taxlist/​issues</a>
 </li>
 </ul>
 </div>
@@ -418,8 +397,8 @@
 <li><a href="https://cran.r-project.org/package=taxlist"><img src="http://www.r-pkg.org/badges/version/taxlist" alt="CRAN_Status_Badge"></a></li>
 <li><a href="http://www.rdocumentation.org/packages/taxlist"><img src="http://www.rdocumentation.org/badges/version/taxlist" alt="Rdoc"></a></li>
 <li><a href="https://github.com/ropensci/software-review/issues/233"><img src="https://badges.ropensci.org/233_status.svg"></a></li>
-<li><a href="https://travis-ci.org/kamapu/taxlist"><img src="https://travis-ci.org/kamapu/taxlist.svg?branch=master" alt="Travis Build Status"></a></li>
-<li><a href="https://codecov.io/gh/kamapu/taxlist"><img src="https://codecov.io/gh/kamapu/taxlist/branch/master/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://travis-ci.org/ropensci/taxlist"><img src="https://travis-ci.org/ropensci/taxlist.svg?branch=master" alt="Travis Build Status"></a></li>
+<li><a href="https://codecov.io/gh/ropensci/taxlist"><img src="https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg" alt="codecov"></a></li>
 <li><a href="https://cran.r-project.org/package=taxlist"><img src="http://cranlogs.r-pkg.org/badges/taxlist" alt="CRAN_downloads"></a></li>
 <li><a href="https://cran.r-project.org/package=taxlist"><img src="http://cranlogs.r-pkg.org/badges/grand-total/taxlist" alt="total downloads"></a></li>
 </ul>

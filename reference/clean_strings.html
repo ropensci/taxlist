@@ -81,12 +81,6 @@ The function clean_strings get rid of them." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -107,7 +101,7 @@ The function clean_strings get rid of them." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -126,7 +120,7 @@ The function clean_strings get rid of them." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Cleaning character strings.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/clean_strings.R'><code>R/clean_strings.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/clean_strings.R'><code>R/clean_strings.R</code></a></small>
     <div class="hidden name"><code>clean_strings.Rd</code></div>
     </div>
 
@@ -136,16 +130,16 @@ cause serious problems in information dealing with taxonomic names.
 The function <code>clean_strings</code> get rid of them.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clean_strings</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>clean_strings</span>(<span class='kw'>x</span>, from = <span class='st'>"utf8"</span>, to = <span class='st'>"utf8"</span>, <span class='kw'>...</span>)
+<span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, from <span class='op'>=</span> <span class='st'>"utf8"</span>, to <span class='op'>=</span> <span class='st'>"utf8"</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for factor</span>
-<span class='fu'>clean_strings</span>(<span class='kw'>x</span>, from = <span class='st'>"utf8"</span>, to = <span class='st'>"utf8"</span>, <span class='kw'>...</span>)
+<span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, from <span class='op'>=</span> <span class='st'>"utf8"</span>, to <span class='op'>=</span> <span class='st'>"utf8"</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>clean_strings</span>(<span class='kw'>x</span>, from = <span class='st'>"utf8"</span>, to = <span class='st'>"utf8"</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, from <span class='op'>=</span> <span class='st'>"utf8"</span>, to <span class='op'>=</span> <span class='st'>"utf8"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,8 +172,8 @@ spaces, either in strings (method <code>character</code>), levels (method
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'> 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://cran.r-project.org/package=taxlist'>taxlist</a></span>)
-<span class='fu'>clean_strings</span>(<span class='st'>" Cyperus    papyrus L.     "</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://cran.r-project.org/package=taxlist'>taxlist</a></span><span class='op'>)</span>
+<span class='fu'>clean_strings</span><span class='op'>(</span><span class='st'>" Cyperus    papyrus L.     "</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "Cyperus papyrus L."</div><div class='input'>
 </div></pre>
   </div>

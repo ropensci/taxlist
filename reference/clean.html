@@ -82,12 +82,6 @@ of the objects." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -108,7 +102,7 @@ of the objects." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -127,7 +121,7 @@ of the objects." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Delete orphaned records</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/clean.R'><code>R/clean.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/clean.R'><code>R/clean.R</code></a></small>
     <div class="hidden name"><code>clean.Rd</code></div>
     </div>
 
@@ -138,10 +132,10 @@ The function <code>clean</code> deletes such entries and restores the consistenc
 of the objects.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clean</span>(<span class='kw'>object</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>clean</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>clean</span>(<span class='kw'>object</span>, times = <span class='fl'>2</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>clean</span><span class='op'>(</span><span class='va'>object</span>, times <span class='op'>=</span> <span class='fl'>2</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,14 +168,14 @@ taxon trait entries, and orphaned parent entries.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Direct manipulation of slot taxonRelations generates an invalid object</span>
-<span class='kw'>Easplist</span><span class='op'>@</span>taxonRelations <span class='op'>&lt;-</span> <span class='kw'>Easplist</span><span class='op'>@</span>taxonRelations[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, ]
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)
-}  
+<span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonRelations</span> <span class='op'>&lt;-</span> <span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonRelations</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
+<span class='op'>}</span>  
 
 <span class='co'>## Now apply cleaning</span>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>clean</span>(<span class='kw'>Easplist</span>)
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>)
+<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>clean</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; object size: 7.8 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 

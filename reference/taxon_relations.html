@@ -80,12 +80,6 @@ taxlist object or replace it by a new data frame." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -106,7 +100,7 @@ taxlist object or replace it by a new data frame." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -125,7 +119,7 @@ taxlist object or replace it by a new data frame." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve or replace slot taxonRelations in taxlist objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/taxon_relations.R'><code>R/taxon_relations.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/taxon_relations.R'><code>R/taxon_relations.R</code></a></small>
     <div class="hidden name"><code>taxon_relations.Rd</code></div>
     </div>
 
@@ -134,28 +128,28 @@ taxlist object or replace it by a new data frame." />
 <a href='taxlist-class.html'>taxlist</a> object or replace it by a new data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>taxon_relations</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>taxon_relations</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+<span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>taxon_relations</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>taxlist</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for taxlist,data.frame</span>
-<span class='fu'>taxon_relations</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>taxlist</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='fu'>add_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>TaxonName</span>, <span class='kw'>...</span>)
+<span class='fu'>add_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>TaxonName</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,character</span>
-<span class='fu'>add_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>TaxonName</span>, <span class='kw'>Level</span>, <span class='kw'>...</span>)
+<span class='fu'>add_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>TaxonName</span>, <span class='va'>Level</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,taxlist</span>
-<span class='fu'>add_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>TaxonName</span>, <span class='kw'>insert_view</span>, <span class='kw'>...</span>)
+<span class='fu'>add_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>TaxonName</span>, <span class='va'>insert_view</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>update_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>update_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>update_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>update_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -220,11 +214,11 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Subset for the genus Euclea and display of slot 'taxonNames'</span>
-<span class='kw'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Euclea"</span>, <span class='kw'>TaxonName</span>),
-    slot=<span class='st'>"names"</span>)
-<span class='kw'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span>(<span class='kw'>Easplist</span>, <span class='kw'>Euclea</span>)
+<span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Euclea"</span>, <span class='va'>TaxonName</span><span class='op'>)</span>,
+    slot<span class='op'>=</span><span class='st'>"names"</span><span class='op'>)</span>
+<span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Euclea</span><span class='op'>)</span>
 
-<span class='kw'>Euclea</span>
+<span class='va'>Euclea</span>
 </div><div class='output co'>#&gt; object size: 7 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
@@ -245,15 +239,15 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 1
 #&gt; number of concepts in level family: 0
-#&gt; </div><div class='input'><span class='fu'>taxon_relations</span>(<span class='kw'>Euclea</span>)
+#&gt; </div><div class='input'><span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>Euclea</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      TaxonConceptID AcceptedName Basionym Parent   Level ViewID
 #&gt; 267             269          269       NA  55707 species      1
 #&gt; 3537          55707        55709       NA     NA   genus     NA</div><div class='input'>
 <span class='co'>## Subset with family Ebenaceae and children</span>
-<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Ebenaceae"</span>, <span class='kw'>TaxonName</span>))
-<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span>(<span class='kw'>Easplist</span>, <span class='kw'>Ebenaceae</span>)
+<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Ebenaceae"</span>, <span class='va'>TaxonName</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Ebenaceae</span><span class='op'>)</span>
 
-<span class='kw'>Ebenaceae</span>
+<span class='va'>Ebenaceae</span>
 </div><div class='output co'>#&gt; object size: 8.5 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
@@ -274,7 +268,7 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 2
 #&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(object=<span class='kw'>Ebenaceae</span>, ConceptID=<span class='st'>"all"</span>, maxsum=<span class='fl'>100</span>)
+#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span>object<span class='op'>=</span><span class='va'>Ebenaceae</span>, ConceptID<span class='op'>=</span><span class='st'>"all"</span>, maxsum<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 269 
 #&gt; view ID: 1 
@@ -352,11 +346,11 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 #&gt; 56053 Ebenaceae  
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Adding a new concept</span>
-<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'>add_concept</span>(taxlist=<span class='kw'>Ebenaceae</span>, TaxonName=<span class='st'>"Euclea acutifolia"</span>,
-    AuthorName=<span class='st'>"E. Mey. ex A. DC."</span>, Level=<span class='st'>"species"</span>, Parent=<span class='fl'>55707</span>, ViewID=<span class='fl'>1</span>)
+<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'>add_concept</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Ebenaceae</span>, TaxonName<span class='op'>=</span><span class='st'>"Euclea acutifolia"</span>,
+    AuthorName<span class='op'>=</span><span class='st'>"E. Mey. ex A. DC."</span>, Level<span class='op'>=</span><span class='st'>"species"</span>, Parent<span class='op'>=</span><span class='fl'>55707</span>, ViewID<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
 
 <span class='co'>## A summary again  </span>
-<span class='kw'>Ebenaceae</span>
+<span class='va'>Ebenaceae</span>
 </div><div class='output co'>#&gt; object size: 8.8 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
@@ -377,7 +371,7 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 2
 #&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Ebenaceae</span>, <span class='st'>"all"</span>, maxsum=<span class='fl'>100</span>)
+#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Ebenaceae</span>, <span class='st'>"all"</span>, maxsum<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 269 
 #&gt; view ID: 1 
@@ -463,7 +457,7 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 #&gt; 56054 Euclea acutifolia E. Mey. ex A. DC. 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Display two Typha species</span>
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Typha domingensis"</span>,<span class='st'>"Typha latifolia"</span>))
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Typha domingensis"</span>,<span class='st'>"Typha latifolia"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 50105 
 #&gt; view ID: 1 
@@ -493,7 +487,7 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 #&gt; 573 Typha latifolia L. 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Update a concept</span>
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span>)
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 155 
 #&gt; view ID: 1 
@@ -502,9 +496,9 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 155 Corchorus olitorius L. 
-#&gt; ------------------------------ </div><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_concept</span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>155</span>,
-    Level=<span class='st'>"subspecies"</span>)
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span>)
+#&gt; ------------------------------ </div><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_concept</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>155</span>,
+    Level<span class='op'>=</span><span class='st'>"subspecies"</span><span class='op'>)</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 155 
 #&gt; view ID: 1 

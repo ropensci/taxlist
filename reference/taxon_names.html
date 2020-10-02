@@ -81,12 +81,6 @@ These functions assist on the access and modification of entries for names." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -107,7 +101,7 @@ These functions assist on the access and modification of entries for names." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -126,7 +120,7 @@ These functions assist on the access and modification of entries for names." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Handle information on taxon usage names.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/taxon_names.R'><code>R/taxon_names.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/taxon_names.R'><code>R/taxon_names.R</code></a></small>
     <div class="hidden name"><code>taxon_names.Rd</code></div>
     </div>
 
@@ -136,30 +130,30 @@ taxon usage names for the respective taxon.
 These functions assist on the access and modification of entries for names.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>, <span class='kw'>...</span>)
+<span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>taxlist</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for taxlist,data.frame</span>
-<span class='fu'>taxon_names</span>(<span class='kw'>taxlist</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>taxlist</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='fu'>add_synonym</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>add_synonym</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>add_synonym</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>TaxonName</span>, <span class='kw'>AuthorName</span>, <span class='kw'>...</span>)
+<span class='fu'>add_synonym</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>TaxonName</span>, <span class='va'>AuthorName</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>update_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
-
-<span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>update_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
-
-<span class='fu'>delete_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)
+<span class='fu'>update_name</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>delete_name</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>update_name</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S4 method for taxlist,numeric</span>
+<span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -214,9 +208,9 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Display of slot 'taxonNames'</span>
-<span class='kw'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Euclea"</span>, <span class='kw'>TaxonName</span>),
-    slot=<span class='st'>"names"</span>, keep_children=<span class='fl'>TRUE</span>)
-<span class='kw'>Euclea</span>
+<span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Euclea"</span>, <span class='va'>TaxonName</span><span class='op'>)</span>,
+    slot<span class='op'>=</span><span class='st'>"names"</span>, keep_children<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>Euclea</span>
 </div><div class='output co'>#&gt; object size: 7 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
@@ -237,7 +231,7 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 1
 #&gt; number of concepts in level family: 0
-#&gt; </div><div class='input'><span class='fu'>taxon_names</span>(<span class='kw'>Euclea</span>)
+#&gt; </div><div class='input'><span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>Euclea</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;      TaxonUsageID TaxonConceptID                       TaxonName
 #&gt; 297           269            269                Euclea divinorum
 #&gt; 298         50787            269 Euclea divinorum ssp. keniensis
@@ -247,7 +241,7 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
 #&gt; 298  (R. E. Fr.) de Wit
 #&gt; 5043                   </div><div class='input'>
 <span class='co'>## Insert a synonym to Diospyros scabra</span>
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Diospyros scabra"</span>)
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Diospyros scabra"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 51793 
 #&gt; view ID: 1 
@@ -256,9 +250,9 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
 #&gt; 
 #&gt; # accepted name: 
 #&gt; 51793 Diospyros scabra (Chiov.) Cufod. 
-#&gt; ------------------------------ </div><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_synonym</span>(taxlist=<span class='kw'>Easplist</span>, ConceptID=<span class='fl'>51793</span>,
-    TaxonName=<span class='st'>"Maba scabra"</span>, AuthorName=<span class='st'>"Chiov."</span>)
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Diospyros scabra"</span>)
+#&gt; ------------------------------ </div><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_synonym</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>51793</span>,
+    TaxonName<span class='op'>=</span><span class='st'>"Maba scabra"</span>, AuthorName<span class='op'>=</span><span class='st'>"Chiov."</span><span class='op'>)</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Diospyros scabra"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 51793 
 #&gt; view ID: 1 
@@ -272,7 +266,7 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
 #&gt; 56139 Maba scabra Chiov. 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Delete a synonym of Launaea cornuta</span>
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 355 
 #&gt; view ID: 1 
@@ -285,8 +279,8 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
 #&gt; # synonyms (2): 
 #&gt; 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. 
 #&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'><span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>delete_name</span>(<span class='kw'>Easplist</span>, <span class='fl'>53821</span>)
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)
+#&gt; ------------------------------ </div><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fl'>53821</span><span class='op'>)</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 355 
 #&gt; view ID: 1 
@@ -300,8 +294,8 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
 #&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Hypothetical correction in author name in Launaea cornuta</span>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_name</span>(taxlist=<span class='kw'>Easplist</span>, UsageID=<span class='fl'>355</span>, AuthorName=<span class='st'>"L."</span>)
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='st'>"Launaea cornuta"</span>)
+<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_name</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, UsageID<span class='op'>=</span><span class='fl'>355</span>, AuthorName<span class='op'>=</span><span class='st'>"L."</span><span class='op'>)</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 355 
 #&gt; view ID: 1 

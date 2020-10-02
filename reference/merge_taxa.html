@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -105,7 +99,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -124,7 +118,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Merge concepts or move names</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/merge_taxa.R'><code>R/merge_taxa.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/merge_taxa.R'><code>R/merge_taxa.R</code></a></small>
     <div class="hidden name"><code>merge_taxa.Rd</code></div>
     </div>
 
@@ -132,18 +126,18 @@
     <p>Merge taxon concepts form a <a href='taxlist-class.html'>taxlist</a> object into single ones.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>merge_taxa</span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, <span class='kw'>level</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>merge_taxa</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>concepts</span>, <span class='va'>level</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric,missing</span>
-<span class='fu'>merge_taxa</span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, print_output = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
+<span class='fu'>merge_taxa</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>concepts</span>, print_output <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,missing,character</span>
-<span class='fu'>merge_taxa</span>(<span class='kw'>object</span>, <span class='kw'>concepts</span>, <span class='kw'>level</span>, <span class='kw'>...</span>)
+<span class='fu'>merge_taxa</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>concepts</span>, <span class='va'>level</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>change_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>change_concept</span>(<span class='kw'>taxlist</span>, <span class='kw'>UsageID</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span></pre>
+<span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -203,7 +197,7 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Merge Cyperus papyrus and Cyperus dives</span>
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>206</span>, <span class='fl'>197</span>))
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>206</span>, <span class='fl'>197</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 206 
 #&gt; view ID: 1 
@@ -232,8 +226,8 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 #&gt; 52602 Cyperus immensus var. petherickii (C.B. Clarke) Kük. 
 #&gt; 52603 Cyperus petherickii C.B. Clarke 
 #&gt; ------------------------------ </div><div class='input'>
-<span class='kw'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>merge_taxa</span>(object=<span class='kw'>Easplist</span>, concepts=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>206</span>, <span class='fl'>197</span>),
-    print_output=<span class='fl'>TRUE</span>)
+<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>merge_taxa</span><span class='op'>(</span>object<span class='op'>=</span><span class='va'>Easplist</span>, concepts<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>206</span>, <span class='fl'>197</span><span class='op'>)</span>,
+    print_output<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 206 
 #&gt; view ID: 1 
@@ -254,8 +248,8 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 #&gt; 52613 Cyperus papyrus ssp. nyassicus Chiov. 
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Move the name Typha aethiopica to concept 573 (T. latifolia)</span>
-<span class='fu'>change_concept</span>(<span class='kw'>Easplist</span>, <span class='fl'>53130</span>) <span class='op'>&lt;-</span> <span class='fl'>573</span>
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>50105</span>,<span class='fl'>573</span>))
+<span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fl'>53130</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fl'>573</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>50105</span>,<span class='fl'>573</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 50105 
 #&gt; view ID: 1 

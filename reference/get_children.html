@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -105,7 +99,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -124,7 +118,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve children or parents of taxon concepts</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/get_children.R'><code>R/get_children.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/get_children.R'><code>R/get_children.R</code></a></small>
     <div class="hidden name"><code>get_children.Rd</code></div>
     </div>
 
@@ -132,21 +126,21 @@
     <p>Retrieve all children or all parents of a queried taxon concept.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_children</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>get_children</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>get_children</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_children</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,taxlist</span>
-<span class='fu'>get_children</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_children</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>get_parents</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_parents</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>get_parents</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)
+<span class='fu'>get_parents</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,taxlist</span>
-<span class='fu'>get_parents</span>(<span class='kw'>taxlist</span>, <span class='kw'>ConceptID</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>get_parents</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,10 +177,10 @@ the input <code>taxlist</code> object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Subset with family Ebenaceae and children</span>
-<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(<span class='kw'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span>(<span class='st'>"Ebenaceae"</span>, <span class='kw'>TaxonName</span>))
-<span class='kw'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'>get_children</span>(<span class='kw'>Easplist</span>, <span class='kw'>Ebenaceae</span>)
+<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Ebenaceae"</span>, <span class='va'>TaxonName</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'>get_children</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Ebenaceae</span><span class='op'>)</span>
 
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Ebenaceae</span>)
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Ebenaceae</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; object size: 8.5 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
@@ -207,7 +201,7 @@ the input <code>taxlist</code> object.</p>
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 2
 #&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(object=<span class='kw'>Ebenaceae</span>, ConceptID=<span class='st'>"all"</span>, maxsum=<span class='fl'>100</span>)
+#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span>object<span class='op'>=</span><span class='va'>Ebenaceae</span>, ConceptID<span class='op'>=</span><span class='st'>"all"</span>, maxsum<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 269 
 #&gt; view ID: 1 
@@ -285,11 +279,11 @@ the input <code>taxlist</code> object.</p>
 #&gt; 56053 Ebenaceae  
 #&gt; ------------------------------ </div><div class='input'>
 <span class='co'>## Get parents of Diospyros tricolor</span>
-<span class='kw'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span>(x=<span class='kw'>Easplist</span>, subset=<span class='kw'>TaxonConceptID</span> <span class='op'>==</span> <span class='fl'>52403</span>,
-    slot=<span class='st'>"relations"</span>)
-<span class='kw'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'>get_parents</span>(<span class='kw'>Easplist</span>, <span class='kw'>Diostri</span>)
+<span class='va'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='va'>TaxonConceptID</span> <span class='op'>==</span> <span class='fl'>52403</span>,
+    slot<span class='op'>=</span><span class='st'>"relations"</span><span class='op'>)</span>
+<span class='va'>Diostri</span> <span class='op'>&lt;-</span> <span class='fu'>get_parents</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Diostri</span><span class='op'>)</span>
 
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Diostri</span>)
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Diostri</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; object size: 7.1 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
@@ -310,7 +304,7 @@ the input <code>taxlist</code> object.</p>
 #&gt; number of concepts in level complex: 0
 #&gt; number of concepts in level genus: 1
 #&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span>(<span class='kw'>Diostri</span>, <span class='st'>"all"</span>)
+#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Diostri</span>, <span class='st'>"all"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; ------------------------------ 
 #&gt; concept ID: 52403 
 #&gt; view ID: 1 

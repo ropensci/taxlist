@@ -90,12 +90,6 @@ sharing only part of the columns." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -116,7 +110,7 @@ sharing only part of the columns." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/kamapu/taxlist/">
+  <a href="https://github.com/ropensci/taxlist/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -135,7 +129,7 @@ sharing only part of the columns." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Data manipulation.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kamapu/taxlist/blob/master/R/replace_x.R'><code>R/replace_x.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/replace_x.R'><code>R/replace_x.R</code></a></small>
     <div class="hidden name"><code>replace_x.Rd</code></div>
     </div>
 
@@ -154,13 +148,13 @@ This function will be used when a new table is appended to another but
 sharing only part of the columns.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>replace_x</span>(<span class='kw'>x</span>, <span class='kw'>old</span>, <span class='kw'>new</span>)
+    <pre class="usage"><span class='fu'>replace_x</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span>
 
-<span class='fu'>replace_idx</span>(<span class='kw'>x</span>, <span class='kw'>idx1</span>, <span class='kw'>idx2</span>, <span class='kw'>new</span>)
+<span class='fu'>replace_idx</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>idx1</span>, <span class='va'>idx2</span>, <span class='va'>new</span><span class='op'>)</span>
 
-<span class='fu'>replace_na</span>(<span class='kw'>x</span>, <span class='kw'>idx1</span>, <span class='kw'>idx2</span>, <span class='kw'>new</span>)
+<span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>idx1</span>, <span class='va'>idx2</span>, <span class='va'>new</span><span class='op'>)</span>
 
-<span class='fu'>insert_rows</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)</pre>
+<span class='fu'>insert_rows</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -199,14 +193,14 @@ or using indices.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Replace values in vector</span>
-<span class='fu'>replace_x</span>(x=<span class='kw'>letters</span>, old=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"p"</span>, <span class='st'>"f"</span>), new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bee"</span>, <span class='st'>"pork"</span>, <span class='st'>"fungus"</span>))
+<span class='fu'>replace_x</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, old<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"p"</span>, <span class='st'>"f"</span><span class='op'>)</span>, new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"bee"</span>, <span class='st'>"pork"</span>, <span class='st'>"fungus"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "a"      "bee"    "c"      "d"      "e"      "fungus" "g"      "h"     
 #&gt;  [9] "i"      "j"      "k"      "l"      "m"      "n"      "o"      "pork"  
 #&gt; [17] "q"      "r"      "s"      "t"      "u"      "v"      "w"      "x"     
 #&gt; [25] "y"      "z"     </div><div class='input'>
 <span class='co'>## Replace values using indices</span>
-<span class='fu'>replace_idx</span>(x=<span class='kw'>letters</span>, idx1=<span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>letters</span>), idx2=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>17</span>),
-    new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"second"</span>, <span class='st'>"seventh"</span>, <span class='st'>"seventeenth"</span>))
+<span class='fu'>replace_idx</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, idx1<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, idx2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>17</span><span class='op'>)</span>,
+    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"second"</span>, <span class='st'>"seventh"</span>, <span class='st'>"seventeenth"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "a"           "second"      "c"           "d"           "e"          
 #&gt;  [6] "f"           "seventh"     "h"           "i"           "j"          
 #&gt; [11] "k"           "l"           "m"           "n"           "o"          
@@ -214,14 +208,14 @@ or using indices.</p></td>
 #&gt; [21] "u"           "v"           "w"           "x"           "y"          
 #&gt; [26] "z"          </div><div class='input'>
 <span class='co'>## Replace values if they are NAs</span>
-<span class='kw'>letters</span>[<span class='fl'>2</span>] <span class='op'>&lt;-</span> <span class='fl'>NA</span>
-<span class='fu'>replace_na</span>(x=<span class='kw'>letters</span>, idx1=<span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw'>letters</span>), idx2=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>),
-    new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"zeta"</span>))
+<span class='va'>letters</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
+<span class='fu'>replace_na</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, idx1<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, idx2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,
+    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"zeta"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "a"    "beta" "c"    "d"    "e"    "f"    "g"    "h"    "i"    "j"   
 #&gt; [11] "k"    "l"    "m"    "n"    "o"    "p"    "q"    "r"    "s"    "t"   
 #&gt; [21] "u"    "v"    "w"    "x"    "y"    "z"   </div><div class='input'>
 <span class='co'>## The same applications but this time for functional traits</span>
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lf_behn_2018</span>))
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   acropleustophyte        chamaephyte     climbing_plant facultative_annual 
 #&gt;                  8                 25                 25                 20 
 #&gt;    obligate_annual       phanerophyte   pleustohelophyte         reed_plant 
@@ -229,11 +223,11 @@ or using indices.</p></td>
 #&gt;      reptant_plant      tussock_plant               NA's 
 #&gt;                 19                 52               3576 </div><div class='input'>
 <span class='co'># Merge annuals</span>
-<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_x</span>(
-    x=<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lf_behn_2018</span>,
-    old=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"obligate_annual"</span>, <span class='st'>"facultative_annual"</span>),
-    new=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"annual"</span>, <span class='st'>"annual"</span>))
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lifeform</span>))
+<span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_x</span><span class='op'>(</span>
+    x<span class='op'>=</span><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span>,
+    old<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"obligate_annual"</span>, <span class='st'>"facultative_annual"</span><span class='op'>)</span>,
+    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"annual"</span>, <span class='st'>"annual"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lifeform</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; acropleustophyte           annual      chamaephyte   climbing_plant 
 #&gt;                8              134               25               25 
 #&gt;     phanerophyte pleustohelophyte       reed_plant    reptant_plant 
@@ -241,12 +235,12 @@ or using indices.</p></td>
 #&gt;    tussock_plant             NA's 
 #&gt;               52             3576 </div><div class='input'>
 <span class='co'># The same effect</span>
-<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_idx</span>(
-    x=<span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lf_behn_2018</span>,
-    idx1=<span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span>(<span class='st'>"annual"</span>, <span class='kw'>Easplist</span><span class='op'>@</span>taxonTraits<span class='op'>$</span><span class='kw'>lf_behn_2018</span>),
-    idx2=<span class='fl'>TRUE</span>,
-    new=<span class='st'>"annual"</span>)
-<span class='fu'><a href='summary.html'>summary</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='kw'>Easplist</span><span class='op'>$</span><span class='kw'>lifeform</span>))
+<span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_idx</span><span class='op'>(</span>
+    x<span class='op'>=</span><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span>,
+    idx1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"annual"</span>, <span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span>,
+    idx2<span class='op'>=</span><span class='cn'>TRUE</span>,
+    new<span class='op'>=</span><span class='st'>"annual"</span><span class='op'>)</span>
+<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lifeform</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; acropleustophyte           annual      chamaephyte   climbing_plant 
 #&gt;                8              134               25               25 
 #&gt;     phanerophyte pleustohelophyte       reed_plant    reptant_plant 
@@ -254,11 +248,11 @@ or using indices.</p></td>
 #&gt;    tussock_plant             NA's 
 #&gt;               52             3576 </div><div class='input'> 
 <span class='co'>## Merge data frames including new columns</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>iris</span>)
-<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Species</span>)
-<span class='kw'>new_iris</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(Species=<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"humilis"</span>, <span class='fl'>2</span>), Height=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>,<span class='fl'>20</span>),
-    stringsAsFactors=<span class='fl'>FALSE</span>)
-<span class='fu'>insert_rows</span>(<span class='kw'>iris</span>, <span class='kw'>new_iris</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span><span class='op'>)</span>
+<span class='va'>new_iris</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>Species<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"humilis"</span>, <span class='fl'>2</span><span class='op'>)</span>, Height<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>,<span class='fl'>20</span><span class='op'>)</span>,
+    stringsAsFactors<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>insert_rows</span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>new_iris</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species Height
 #&gt; 1            5.1         3.5          1.4         0.2     setosa     NA
 #&gt; 2            4.9         3.0          1.4         0.2     setosa     NA
