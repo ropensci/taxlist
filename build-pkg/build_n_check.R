@@ -10,6 +10,7 @@ library(goodpractice)
 library(rmarkdown)
 library(knitr)
 library(pkgdown)
+library(codemetar)
 
 # Document package
 document()
@@ -28,6 +29,9 @@ purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
 
 # Check application of good practices
 gp()
+
+# Codemetar
+write_codemeta() 
 
 # Build package
 pkg_loc <- build(path="build-pkg")
