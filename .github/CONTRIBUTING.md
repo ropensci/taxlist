@@ -11,7 +11,7 @@ the GitHub web interface, so long as the changes are made in the _source_ file.
 ### Prerequisites
 
 Before you make a substantial pull request, you should always file an issue at
-the packages [BugReports](https://github.com/kamapu/taxlist/issues)
+the packages [BugReports](https://github.com/ropensci/taxlist/issues)
 and make sure someone from the team agrees that it’s a problem. If you’ve found
 a bug, create an associated issue and illustrate the bug with a minimal 
 [reprex](https://www.tidyverse.org/help/#reprex).

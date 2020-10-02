@@ -11,8 +11,8 @@
 [![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 <br> [![Travis Build
-Status](https://travis-ci.org/kamapu/taxlist.svg?branch=master)](https://travis-ci.org/kamapu/taxlist)
-[![codecov](https://codecov.io/gh/kamapu/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/taxlist)
+Status](https://travis-ci.org/ropensci/taxlist.svg?branch=master)](https://travis-ci.org/ropensci/taxlist)
+[![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
 <br>
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
 [![total
@@ -26,7 +26,7 @@ downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r
 **R**, providing an object class and functions in `S4` language. The
 homonymous object class `taxlist` was originally designed as a module
 for taxa recorded in vegetation-plot observations (see
-[`vegtable`](https://github.com/kamapu/vegtable)), but became as an
+[`vegtable`](https://github.com/ropensci/vegtable)), but became as an
 independent object with the ability of contain not only lists of species
 but also synonymy, hierarchical taxonomy, and functional traits
 (attributes of taxa).
@@ -71,12 +71,12 @@ install.packages("taxlist", dependencies=TRUE)
 ```
 
 Alternatively, the current development version is available from
-[GitHub](https://github.com/kamapu/taxlist) and can be installed using
+[GitHub](https://github.com/ropensci/taxlist) and can be installed using
 the package `devtools`:
 
 ``` r
 library(devtools)
-install_github("kamapu/taxlist", build_vignette=TRUE)
+install_github("ropensci/taxlist", build_vignette=TRUE)
 ```
 
 A vignette is installed with this package introducing to the work with

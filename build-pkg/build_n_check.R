@@ -30,7 +30,7 @@ purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
 gp()
 
 # Build package
-pkg_loc <- build(path="built-pkg")
+pkg_loc <- build(path="build-pkg")
 
 # Test the package
 ## Sys.setenv(LANG="en_US.iso88591")

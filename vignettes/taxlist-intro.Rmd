@@ -18,12 +18,12 @@ The homonymous object class `taxlist` can be further linked to biodiversity
 records (e.g. for observations in vegetation plots).
 
 The `taxlist` package is developed on the repository **GitHub**
-([https://github.com/kamapu/taxlist](https://github.com/kamapu/taxlist)) and can
+([https://github.com/ropensci/taxlist](https://github.com/ropensci/taxlist)) and can
 be installed in your R-session using the package `devtools`:
 
 ```{r install_github, eval=FALSE}
 library(devtools)
-install_github("kamapu/taxlist", build_vignettes=TRUE)
+install_github("ropensci/taxlist", build_vignettes=TRUE)
 ```
 
 Since this package is already available in the Comprehensive R Archive Network

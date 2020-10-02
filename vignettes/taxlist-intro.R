@@ -1,6 +1,6 @@
 ## ----install_github, eval=FALSE-----------------------------------------------
 ## library(devtools)
-## install_github("kamapu/taxlist", build_vignettes=TRUE)
+## install_github("ropensci/taxlist", build_vignettes=TRUE)
 
 
 ## ----install_cran, eval=FALSE-------------------------------------------------
@@ -16,7 +16,7 @@ library(taxlist)
 
 
 ## ----load_example_table-------------------------------------------------------
-load(url("https://github.com/kamapu/thisdataismine/raw/master/data/Cross.rda"))
+load(url("https://github.com/ropensci/thisdataismine/raw/master/data/Cross.rda"))
 
 
 ## ----head_example-------------------------------------------------------------
@@ -69,7 +69,7 @@ summary(Papyrus, "all")
 
 
 ## ----load_syntax--------------------------------------------------------------
-load(url("https://github.com/kamapu/Guides/raw/master/data/wetlands_syntax.rda"))
+load(url("https://github.com/ropensci/Guides/raw/master/data/wetlands_syntax.rda"))
 
 
 ## ----prototype----------------------------------------------------------------

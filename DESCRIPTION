@@ -37,8 +37,8 @@ License: GPL (>= 2)
 Roxygen: list(markdown = TRUE)
 URL:
     https://cran.r-project.org/package=taxlist,
-    https://github.com/kamapu/taxlist
-BugReports: https://github.com/kamapu/taxlist/issues
+    https://github.com/ropensci/taxlist
+BugReports: https://github.com/ropensci/taxlist/issues
 Collate:
 	'imports.R'
     'internal.R'
