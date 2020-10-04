@@ -140,12 +140,12 @@ using the function <code>stringsim()</code>.</p>
   <span class='va'>x</span>,
   <span class='va'>object</span>,
   clean <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  decreasing <span class='op'>=</span> <span class='cn'>TRUE</span>,
   output <span class='op'>=</span> <span class='st'>"data.frame"</span>,
   best <span class='op'>=</span> <span class='fl'>5</span>,
   show_concepts <span class='op'>=</span> <span class='cn'>FALSE</span>,
   accepted_only <span class='op'>=</span> <span class='cn'>FALSE</span>,
   method <span class='op'>=</span> <span class='st'>"lcs"</span>,
+  <span class='va'>decreasing</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -178,7 +178,8 @@ sorted by decreasing or increasing similarity value. In the character
 method, the sorting corresponds to similarities between the queried value
 and the reference vector (argument <code>object</code>). In the taxlist method using
 <code>output="data.frame"</code>, the order corresponds to the similarity of the
-best match. This argument is passed to <code><a href='https://rdrr.io/r/base/order.html'>order()</a></code>.</p></td>
+best match (by default, no sorting is done). This argument is passed to
+<code><a href='https://rdrr.io/r/base/order.html'>order()</a></code>.</p></td>
     </tr>
     <tr>
       <th>output</th>
@@ -223,22 +224,22 @@ matched or all usage names (including synonyms).</p></td>
 <span class='co'>## Retrieve taxon usage names</span>
 <span class='fu'>match_names</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>Easplist</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
-#&gt; 2 Typha australis     Typha australis                        Schumach.
 #&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
+#&gt; 2 Typha australis     Typha australis                        Schumach.
 #&gt; 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.
 #&gt;   TaxonUsageID matches similarity
-#&gt; 2        51999       1  1.0000000
 #&gt; 1          206       1  0.9655172
+#&gt; 2        51999       1  1.0000000
 #&gt; 3        51565       1  0.4848485</div><div class='input'>
 <span class='co'>## Display accepted names in output</span>
 <span class='fu'>match_names</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>species</span>, object<span class='op'>=</span><span class='va'>Easplist</span>, show_concepts<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
-#&gt; 2 Typha australis     Typha australis                        Schumach.
 #&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
+#&gt; 2 Typha australis     Typha australis                        Schumach.
 #&gt; 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.
 #&gt;   TaxonUsageID matches similarity TaxonConceptID
-#&gt; 2        51999       1  1.0000000          50105
 #&gt; 1          206       1  0.9655172            206
+#&gt; 2        51999       1  1.0000000          50105
 #&gt; 3        51565       1  0.4848485          51565</div><div class='input'>
 </div></pre>
   </div>
