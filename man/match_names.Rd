@@ -8,12 +8,13 @@
 \usage{
 match_names(x, object, ...)
 
-\S4method{match_names}{character,character}(x, object, best = 5, clean = TRUE, ...)
+\S4method{match_names}{character,character}(x, object, best = 5, clean = TRUE, decreasing = TRUE, ...)
 
 \S4method{match_names}{character,taxlist}(
   x,
   object,
   clean = TRUE,
+  decreasing = TRUE,
   output = "data.frame",
   best = 5,
   show_concepts = FALSE,
@@ -34,13 +35,23 @@ be displayed (only working for \code{output="list"}).}
 \item{clean}{Logical value, whether leading, tailing and double blanks should
 be deleted from \code{x}.}
 
-\item{output}{Character value indicating the type of output (see details).}
+\item{decreasing}{Logical value indicating whether retrieved names should be
+sorted by decreasing or increasing similarity value. In the character
+method, the sorting corresponds to similarities between the queried value
+and the reference vector (argument \code{object}). In the taxlist method using
+\code{output="data.frame"}, the order corresponds to the similarity of the
+best match. This argument is passed to \code{\link[=order]{order()}}.}
+
+\item{output}{Character value indicating the type of output. Alternative
+values are "list" (taxon concepts ID's sorted by similarity for each
+queried name) or "data.frame" (a table including the best match for every
+queried name).}
 
 \item{show_concepts}{Logical value, whether respective concepts should be
 displayed in output or not.}
 
 \item{accepted_only}{Logical value, whether only accepted names should be
-matched or all.}
+matched or all usage names (including synonyms).}
 
 \item{method, ...}{Further arguments passed to \code{\link[=stringsim]{stringsim()}}.}
 }
@@ -49,19 +60,12 @@ Names provided in a character vector will be compared with names stored in
 slot \code{taxonNames} within an object of class \linkS4class{taxlist} by
 using the function \code{\link[=stringsim]{stringsim()}}.
 }
-\details{
-For \code{output="list"} a list with the best matches (taxon usage name ID and
-similarity) for each queried name will be retrieved, where the number is set
-by argument \code{best}.
-Option \code{accepted_only=TRUE} will only work with\code{output="data.frame"}.
-This will be applied especially in those cases were the requested names have
-more than one match in the reference \linkS4class{taxlist} object
-(matching homonyms) and will retrieve the one name, that has the status of
-accepted name, otherwise no matchings will be retrieved.
-}
 \examples{
 ## Names to be compared
 species <- c("Cperus papyrus", "Typha australis", "Luke skywalker")
+
+## Comparing character vectors
+match_names("Cyperus paper", species)
 
 ## Retrieve taxon usage names
 match_names(species, Easplist)

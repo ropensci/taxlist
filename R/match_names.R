@@ -12,24 +12,23 @@
 #'     with.
 #' @param clean Logical value, whether leading, tailing and double blanks should
 #'     be deleted from `x`.
-#' @param output Character value indicating the type of output (see details).
 #' @param best Integer value indicating how many from the best matches have to
 #'     be displayed (only working for `output="list"`).
+#' @param decreasing Logical value indicating whether retrieved names should be
+#'     sorted by decreasing or increasing similarity value. In the character
+#'     method, the sorting corresponds to similarities between the queried value
+#'     and the reference vector (argument `object`). In the taxlist method using
+#'     `output="data.frame"`, the order corresponds to the similarity of the
+#'     best match. This argument is passed to [order()].
+#' @param output Character value indicating the type of output. Alternative
+#'     values are "list" (taxon concepts ID's sorted by similarity for each
+#'     queried name) or "data.frame" (a table including the best match for every
+#'     queried name).
 #' @param show_concepts Logical value, whether respective concepts should be
 #'     displayed in output or not.
 #' @param accepted_only Logical value, whether only accepted names should be
-#'     matched or all.
+#'     matched or all usage names (including synonyms).
 #' @param method,... Further arguments passed to [stringsim()].
-#' 
-#' @details 
-#' For `output="list"` a list with the best matches (taxon usage name ID and
-#' similarity) for each queried name will be retrieved, where the number is set
-#' by argument `best`.
-#' Option `accepted_only=TRUE` will only work with`output="data.frame"`.
-#' This will be applied especially in those cases were the requested names have
-#' more than one match in the reference [taxlist-class] object
-#' (matching homonyms) and will retrieve the one name, that has the status of
-#' accepted name, otherwise no matchings will be retrieved.
 #' 
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #' 
@@ -38,6 +37,9 @@
 #' @examples 
 #' ## Names to be compared
 #' species <- c("Cperus papyrus", "Typha australis", "Luke skywalker")
+#' 
+#' ## Comparing character vectors
+#' match_names("Cyperus paper", species)
 #' 
 #' ## Retrieve taxon usage names
 #' match_names(species, Easplist)
@@ -59,7 +61,7 @@ setGeneric("match_names",
 #' @aliases match_names,character,character-method
 #' 
 setMethod("match_names", signature(x="character", object="character"),
-		function(x, object, best=5, clean=TRUE, ...) {
+		function(x, object, best=5, clean=TRUE, decreasing=TRUE, ...) {
 			if(length(x) > 1) {
 				warning("Only the first element in 'x' will be compared.")
 				x <- x[1]
@@ -68,9 +70,12 @@ setMethod("match_names", signature(x="character", object="character"),
 				x <- clean_strings(x)
 				object <- clean_strings(object)
 			}
-			c_sim <- stringsim(x, object, ...)
-			object <- object[order(c_sim, decreasing=TRUE)]
-			return(object[seq_len(best)])
+			OUT <- data.frame(name=object, similarity=stringsim(x, object, ...),
+					stringsAsFactors=FALSE)
+			OUT <- OUT[order(OUT$similarity, decreasing=decreasing),]
+			if(best < length(object))
+				OUT <- OUT[1:best,]
+			return(OUT)
 		}
 )
 
@@ -79,8 +84,9 @@ setMethod("match_names", signature(x="character", object="character"),
 #' @aliases match_names,character,taxlist-method
 #' 
 setMethod("match_names", signature(x="character", object="taxlist"),
-		function(x, object, clean=TRUE, output="data.frame", best=5,
-				show_concepts=FALSE, accepted_only=FALSE, method="lcs", ...) {
+		function(x, object, clean=TRUE, decreasing=TRUE, output="data.frame",
+				best=5, show_concepts=FALSE, accepted_only=FALSE, method="lcs",
+				...) {
 			if(any(is.na(x)))
 				stop("NAs are not allowed in argument 'x'")
 			if(clean)
@@ -100,16 +106,10 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 				stop("non-valid value for 'output'")
 			if(output == 2) {
 				new_names <- lapply(SIM, function(a, b, best) {
-							## return(list(TaxonName=with(b@taxonNames,
-							##                         TaxonName[
-							##                                 match(a$TaxonUsageID[1:best],
-							##                                         TaxonUsageID)]),
-							##                 TaxonUsageID=a$TaxonUsageID[1:best],
-							##                 similarity=a$similarity[1:best]))
 							return(list(TaxonName=b@taxonNames$TaxonName[
 													match(a$TaxonUsageID[
 																	1:best],
-															b@taxonNames$TaxonUsageID)],
+													b@taxonNames$TaxonUsageID)],
 											TaxonUsageID=a$TaxonUsageID[1:best],
 											similarity=a$similarity[1:best]))
 						}, b=object, best=best)
@@ -139,27 +139,21 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 						}, b=object)
 				new_names <- do.call(rbind, new_names)
 				new_names <- data.frame(submittedname=x,
-						## TaxonName=with(object@taxonNames,
-						##         TaxonName[match(new_names$TaxonUsageID,
-						##                         TaxonUsageID)]),
 						TaxonName=object@taxonNames$TaxonName[
 								match(new_names$TaxonUsageID,
 										object@taxonNames$TaxonUsageID)],
-						## AuthorName=with(object@taxonNames,
-						##         AuthorName[match(new_names$TaxonUsageID,
-						##                         TaxonUsageID)]),
 						AuthorName=object@taxonNames$AuthorName[
 								match(new_names$TaxonUsageID,
 										object@taxonNames$TaxonUsageID)],
 						new_names, stringsAsFactors=FALSE)
 				if(show_concepts) {
-					## new_names$TaxonConceptID <- with(object@taxonNames,
-					##         TaxonConceptID[match(new_names$TaxonUsageID,
-					##                         TaxonUsageID)])
-					new_names$TaxonConceptID <- object@taxonNames$TaxonConceptID[
+					new_names$TaxonConceptID <- object@taxonNames$
+							TaxonConceptID[
 							match(new_names$TaxonUsageID,
 									object@taxonNames$TaxonUsageID)]
 				}
+				new_names <- new_names[order(new_names$similarity,
+								decreasing=decreasing), ]
 			}
 			return(new_names)
 		}

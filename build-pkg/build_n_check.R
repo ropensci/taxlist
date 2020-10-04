@@ -31,7 +31,7 @@ purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
 gp()
 
 # Codemetar
-write_codemeta() 
+# write_codemeta()
 
 # Build package
 pkg_loc <- build(path="build-pkg")

@@ -416,7 +416,7 @@ with(Cype_stat, barplot(species_count, names.arg=genus,
                 ylab="Number of Species"))
 ```
 
-![](README-figures/genera_bar-1.png)<!-- -->
+![](man/figures/genera_bar-1.png)<!-- -->
 
 ## Acknowledgements
 

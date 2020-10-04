@@ -16,7 +16,7 @@ library(taxlist)
 
 
 ## ----load_example_table-------------------------------------------------------
-load(url("https://github.com/ropensci/thisdataismine/raw/master/data/Cross.rda"))
+load(file.path(path.package("taxlist"), "Cross.rda"))
 
 
 ## ----head_example-------------------------------------------------------------
@@ -69,7 +69,7 @@ summary(Papyrus, "all")
 
 
 ## ----load_syntax--------------------------------------------------------------
-load(url("https://github.com/ropensci/Guides/raw/master/data/wetlands_syntax.rda"))
+load(file.path(path.package("taxlist"), "wetlands_syntax.rda"))
 
 
 ## ----prototype----------------------------------------------------------------

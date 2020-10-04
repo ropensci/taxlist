@@ -11,8 +11,8 @@ test_that("match_names is working", {
 			expect_equal(length(match_names(c("Prosopis juliflora",
 											"Opuntia vulgaris"), Easplist,
 									output="list")), 2)
-			expect_equal(length(match_names("Poa pratensis",
-									c("Poa annua", "Geranium pratensis"))), 5)
+			expect_equal(nrow(match_names("Poa pratensis",
+									c("Poa annua", "Geranium pratensis"))), 2)
 			expect_warning(match_names(
 							c("Geranium robertianum", "Poa pratensis"),
 							c("Poa annua", "Geranium pratensis")))

@@ -67,7 +67,7 @@ relev&eacute;s collected at the borderline between the
 The digitized data can be loaded by following command:
 
 ```{r load_example_table}
-load(url("https://github.com/kamapu/thisdataismine/raw/master/data/Cross.rda"))
+load(file.path(path.package("taxlist"), "Cross.rda"))
 ```
 
 The data is formatted as `data.frame` in **R**, including the names of the
@@ -203,7 +203,7 @@ The content for the taxonomic list is included in a data frame and can be
 downloaded by following command:
 
 ```{r load_syntax}
-load(url("https://github.com/kamapu/Guides/raw/master/data/wetlands_syntax.rda"))
+load(file.path(path.package("taxlist"), "wetlands_syntax.rda"))
 ```
 
 The data frame `Concepts` contains the list of syntaxon names that are

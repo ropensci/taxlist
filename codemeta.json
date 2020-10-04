@@ -1,11 +1,18 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "taxlist",
   "description": "Handling taxonomic lists through objects of class 'taxlist'.\n    This package provides functions to import species lists from 'Turboveg'\n    (<https://www.synbiosys.alterra.nl/turboveg>) and the possibility to create\n    backups from resulting R-objects.\n    Also quick displays are implemented as summary-methods.",
   "name": "taxlist: Handling Taxonomic Lists",
   "codeRepository": "https://github.com/ropensci/taxlist",
-  "relatedLink": ["https://cran.r-project.org/package=taxlist", "https://docs.ropensci.org/taxlist/", "https://CRAN.R-project.org/package=taxlist"],
+  "relatedLink": [
+    "https://cran.r-project.org/package=taxlist",
+    "https://docs.ropensci.org/taxlist/",
+    "https://CRAN.R-project.org/package=taxlist"
+  ],
   "issueTracker": "https://github.com/ropensci/taxlist/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
   "version": "0.2.0",
@@ -197,7 +204,7 @@
   ],
   "releaseNotes": "https://github.com/ropensci/taxlist/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/taxlist/blob/master/README.md",
-  "fileSize": "6732.682KB",
+  "fileSize": "7019.782KB",
   "contIntegration": ["https://travis-ci.org/ropensci/taxlist", "https://codecov.io/gh/ropensci/taxlist"],
   "review": {
     "@type": "Review",

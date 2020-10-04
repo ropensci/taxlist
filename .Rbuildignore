@@ -8,7 +8,6 @@
 ^cran-comments\.md$
 ^data-raw$
 ^build-pkg$
-^README-figures$
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
 ^README\.md$
