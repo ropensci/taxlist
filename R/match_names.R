@@ -19,7 +19,8 @@
 #'     method, the sorting corresponds to similarities between the queried value
 #'     and the reference vector (argument `object`). In the taxlist method using
 #'     `output="data.frame"`, the order corresponds to the similarity of the
-#'     best match. This argument is passed to [order()].
+#'     best match (by default, no sorting is done). This argument is passed to
+#'     [order()].
 #' @param output Character value indicating the type of output. Alternative
 #'     values are "list" (taxon concepts ID's sorted by similarity for each
 #'     queried name) or "data.frame" (a table including the best match for every
@@ -84,9 +85,9 @@ setMethod("match_names", signature(x="character", object="character"),
 #' @aliases match_names,character,taxlist-method
 #' 
 setMethod("match_names", signature(x="character", object="taxlist"),
-		function(x, object, clean=TRUE, decreasing=TRUE, output="data.frame",
-				best=5, show_concepts=FALSE, accepted_only=FALSE, method="lcs",
-				...) {
+		function(x, object, clean=TRUE, output="data.frame", best=5,
+				show_concepts=FALSE, accepted_only=FALSE, method="lcs",
+				decreasing, ...) {
 			if(any(is.na(x)))
 				stop("NAs are not allowed in argument 'x'")
 			if(clean)
@@ -152,8 +153,9 @@ setMethod("match_names", signature(x="character", object="taxlist"),
 							match(new_names$TaxonUsageID,
 									object@taxonNames$TaxonUsageID)]
 				}
-				new_names <- new_names[order(new_names$similarity,
-								decreasing=decreasing), ]
+				if(!missing(decreasing))
+					new_names <- new_names[order(new_names$similarity,
+									decreasing=decreasing), ]
 			}
 			return(new_names)
 		}

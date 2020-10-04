@@ -14,12 +14,12 @@ match_names(x, object, ...)
   x,
   object,
   clean = TRUE,
-  decreasing = TRUE,
   output = "data.frame",
   best = 5,
   show_concepts = FALSE,
   accepted_only = FALSE,
   method = "lcs",
+  decreasing,
   ...
 )
 }
@@ -40,7 +40,8 @@ sorted by decreasing or increasing similarity value. In the character
 method, the sorting corresponds to similarities between the queried value
 and the reference vector (argument \code{object}). In the taxlist method using
 \code{output="data.frame"}, the order corresponds to the similarity of the
-best match. This argument is passed to \code{\link[=order]{order()}}.}
+best match (by default, no sorting is done). This argument is passed to
+\code{\link[=order]{order()}}.}
 
 \item{output}{Character value indicating the type of output. Alternative
 values are "list" (taxon concepts ID's sorted by similarity for each
