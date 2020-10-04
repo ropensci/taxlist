@@ -79,7 +79,7 @@
       <h1 data-toc-skip>Applying taxlist to species lists on diversity records</h1>
                         <h4 class="author">Miguel Alvarez</h4>
             
-            <h4 class="date">2020-10-02</h4>
+            <h4 class="date">2020-10-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/taxlist/blob/master/vignettes/taxlist-intro.Rmd"><code>vignettes/taxlist-intro.Rmd</code></a></small>
       <div class="hidden name"><code>taxlist-intro.Rmd</code></div>
@@ -117,7 +117,7 @@
 <p><img src="Siegesbeckia_orientalis.png"></p>
 <p>The digitized data can be loaded by following command:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://github.com/kamapu/thisdataismine/raw/master/data/Cross.rda"</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html">path.package</a></span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>, <span class="st">"Cross.rda"</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p>The data is formatted as <code>data.frame</code> in <strong>R</strong>, including the names of the species in the first column:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Cross</span><span class="op">[</span> ,<span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span></pre></div>
@@ -311,7 +311,7 @@
 <a href="#building-the-taxlist-object" class="anchor"></a>4.2 Building the taxlist object</h2>
 <p>The content for the taxonomic list is included in a data frame and can be downloaded by following command:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://github.com/kamapu/Guides/raw/master/data/wetlands_syntax.rda"</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html">path.package</a></span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>, <span class="st">"wetlands_syntax.rda"</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p>The data frame <code>Concepts</code> contains the list of syntaxon names that are considered as accepted in the previous scheme. This list will be used to insert the new concepts in the <code>taxlist</code> object.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Concepts</span><span class="op">)</span></pre></div>

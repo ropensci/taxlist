@@ -133,13 +133,14 @@ using the function <code>stringsim()</code>.</p>
     <pre class="usage"><span class='fu'>match_names</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for character,character</span>
-<span class='fu'>match_names</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>object</span>, best <span class='op'>=</span> <span class='fl'>5</span>, clean <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>match_names</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>object</span>, best <span class='op'>=</span> <span class='fl'>5</span>, clean <span class='op'>=</span> <span class='cn'>TRUE</span>, decreasing <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for character,taxlist</span>
 <span class='fu'>match_names</span><span class='op'>(</span>
   <span class='va'>x</span>,
   <span class='va'>object</span>,
   clean <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  decreasing <span class='op'>=</span> <span class='cn'>TRUE</span>,
   output <span class='op'>=</span> <span class='st'>"data.frame"</span>,
   best <span class='op'>=</span> <span class='fl'>5</span>,
   show_concepts <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -171,8 +172,20 @@ be displayed (only working for <code>output="list"</code>).</p></td>
 be deleted from <code>x</code>.</p></td>
     </tr>
     <tr>
+      <th>decreasing</th>
+      <td><p>Logical value indicating whether retrieved names should be
+sorted by decreasing or increasing similarity value. In the character
+method, the sorting corresponds to similarities between the queried value
+and the reference vector (argument <code>object</code>). In the taxlist method using
+<code>output="data.frame"</code>, the order corresponds to the similarity of the
+best match. This argument is passed to <code><a href='https://rdrr.io/r/base/order.html'>order()</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>output</th>
-      <td><p>Character value indicating the type of output (see details).</p></td>
+      <td><p>Character value indicating the type of output. Alternative
+values are "list" (taxon concepts ID's sorted by similarity for each
+queried name) or "data.frame" (a table including the best match for every
+queried name).</p></td>
     </tr>
     <tr>
       <th>show_concepts</th>
@@ -182,7 +195,7 @@ displayed in output or not.</p></td>
     <tr>
       <th>accepted_only</th>
       <td><p>Logical value, whether only accepted names should be
-matched or all.</p></td>
+matched or all usage names (including synonyms).</p></td>
     </tr>
     <tr>
       <th>method, ...</th>
@@ -190,16 +203,6 @@ matched or all.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>For <code>output="list"</code> a list with the best matches (taxon usage name ID and
-similarity) for each queried name will be retrieved, where the number is set
-by argument <code>best</code>.
-Option <code>accepted_only=TRUE</code> will only work with<code>output="data.frame"</code>.
-This will be applied especially in those cases were the requested names have
-more than one match in the reference <a href='taxlist-class.html'>taxlist</a> object
-(matching homonyms) and will retrieve the one name, that has the status of
-accepted name, otherwise no matchings will be retrieved.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>stringsim()</code></p></div>
@@ -211,25 +214,31 @@ accepted name, otherwise no matchings will be retrieved.</p>
     <pre class="examples"><div class='input'><span class='co'>## Names to be compared</span>
 <span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Cperus papyrus"</span>, <span class='st'>"Typha australis"</span>, <span class='st'>"Luke skywalker"</span><span class='op'>)</span>
 
+<span class='co'>## Comparing character vectors</span>
+<span class='fu'>match_names</span><span class='op'>(</span><span class='st'>"Cyperus paper"</span>, <span class='va'>species</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;              name similarity
+#&gt; 1  Cperus papyrus  0.7142857
+#&gt; 2 Typha australis  0.3333333
+#&gt; 3  Luke skywalker  0.2857143</div><div class='input'>
 <span class='co'>## Retrieve taxon usage names</span>
 <span class='fu'>match_names</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>Easplist</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
-#&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
 #&gt; 2 Typha australis     Typha australis                        Schumach.
+#&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
 #&gt; 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.
 #&gt;   TaxonUsageID matches similarity
-#&gt; 1          206       1  0.9655172
 #&gt; 2        51999       1  1.0000000
+#&gt; 1          206       1  0.9655172
 #&gt; 3        51565       1  0.4848485</div><div class='input'>
 <span class='co'>## Display accepted names in output</span>
 <span class='fu'>match_names</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>species</span>, object<span class='op'>=</span><span class='va'>Easplist</span>, show_concepts<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     submittedname           TaxonName                       AuthorName
-#&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
 #&gt; 2 Typha australis     Typha australis                        Schumach.
+#&gt; 1  Cperus papyrus     Cyperus papyrus                               L.
 #&gt; 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.
 #&gt;   TaxonUsageID matches similarity TaxonConceptID
-#&gt; 1          206       1  0.9655172            206
 #&gt; 2        51999       1  1.0000000          50105
+#&gt; 1          206       1  0.9655172            206
 #&gt; 3        51565       1  0.4848485          51565</div><div class='input'>
 </div></pre>
   </div>
