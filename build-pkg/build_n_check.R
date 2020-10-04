@@ -51,6 +51,8 @@ check_built(path=pkg_loc)
 render("README.Rmd")
 
 # Render package-site
+# pkgdown::build_home()
+# Render package-site
 ## usethis::use_pkgdown()
 ## pkgdown::build_site(preview=FALSE)
 ## 

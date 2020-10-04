@@ -57,8 +57,8 @@ The structure of `taxlist` objects is inspired on the structure of data
 handled by [Turboveg](https://www.synbiosys.alterra.nl/turboveg) and
 relational databases.
 
-![](README-figures/taxlist_model.png)<br/> **Figure:** Relational model
-for `taxlist` objects (see [Alvarez & Luebert
+![](man/figures/taxlist_model.png)<br/> **Figure:** Relational model for
+`taxlist` objects (see [Alvarez & Luebert
 2018](https://doi.org/10.3897/BDJ.6.e23635)).
 
 ## Installing taxlist
