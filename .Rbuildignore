@@ -10,6 +10,7 @@
 ^build-pkg$
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
+^README-figures$
 ^README\.md$
 ^TODO\.md$
 ^CRAN-RELEASE$

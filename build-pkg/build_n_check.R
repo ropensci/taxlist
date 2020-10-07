@@ -3,6 +3,10 @@
 # Author: Miguel Alvarez
 ################################################################################
 
+# See at
+## browseURL(paste0("https://www.marinedatascience.co/blog/2020/01/09/",
+##                 "checklist-for-r-package-re-submissions-on-cran/"))
+
 # Needed packages
 library(devtools)
 library(covr)
@@ -49,6 +53,12 @@ check_built(path=pkg_loc)
 
 # Render readme-file.
 render("README.Rmd")
+
+# Check on Win-builder
+browseURL("https://win-builder.r-project.org/")
+
+# submit to CRAN
+
 
 # Render package-site
 # pkgdown::build_home()
