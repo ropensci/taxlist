@@ -30,7 +30,7 @@ Suggests:
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
     This package provides functions to import species lists from 'Turboveg'
-    (<https://www.synbiosys.alterra.nl/turboveg>) and the possibility to create
+    (<https://www.synbiosys.alterra.nl/turboveg/>) and the possibility to create
     backups from resulting R-objects.
     Also quick displays are implemented as summary-methods.
 License: GPL (>= 2)
