@@ -44,7 +44,9 @@
 strings containing taxon usage names (scientific names) are constructed with
 different parts.
 A string with names can be consequently split into those elements, meanwhile
-the number of elements will suggest the taxonomic ranks." />
+the number of elements may suggest the taxonomic ranks.
+This function is a wrapper of strsplit(), while name element can be
+re-pasted if indicated in argument repaste." />
 
 
 
@@ -76,7 +78,7 @@ the number of elements will suggest the taxonomic ranks." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -131,10 +133,12 @@ the number of elements will suggest the taxonomic ranks." />
 strings containing taxon usage names (scientific names) are constructed with
 different parts.
 A string with names can be consequently split into those elements, meanwhile
-the number of elements will suggest the taxonomic ranks.</p>
+the number of elements may suggest the taxonomic ranks.</p>
+<p>This function is a wrapper of <code><a href='https://rdrr.io/r/base/strsplit.html'>strsplit()</a></code>, while name element can be
+re-pasted if indicated in argument <code>repaste</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>" "</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>" "</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>repaste</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,18 +151,17 @@ the number of elements will suggest the taxonomic ranks.</p>
       <th>split, fixed, ...</th>
       <td><p>Arguments passed to <code><a href='https://rdrr.io/r/base/strsplit.html'>strsplit()</a></code>.</p></td>
     </tr>
+    <tr>
+      <th>repaste</th>
+      <td><p>An integer vector indicating the elements of the name selected
+for the output.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character matrix with as many rows as names in the input vector.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This function is using <code><a href='https://rdrr.io/r/base/strsplit.html'>strsplit()</a></code> for splitting names.
-Single spaces will be used to dissect names but it can be changed in the
-value of argument <code>split</code>.
-The number of columns in the resulting matrix will depend on the longest
-polynomial string.</p>
+    <p>A character matrix with as many rows as names in the input vector.
+If <code>repaste</code> is indicated, then the output will be a character vector.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/strsplit.html'>strsplit()</a></code></p></div>
@@ -170,6 +173,7 @@ polynomial string.</p>
     <pre class="examples"><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='va'>Level</span> <span class='op'>==</span> <span class='st'>"variety"</span>, slot<span class='op'>=</span><span class='st'>"relations"</span><span class='op'>)</span>
 <span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>,<span class='st'>"TaxonName"</span><span class='op'>]</span>
 
+<span class='co'># split name</span>
 <span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;       [,1]          [,2]            [,3]   [,4]               
 #&gt;  [1,] "Euphorbia"   "inaequilatera" "var." "dentata"          
@@ -182,6 +186,13 @@ polynomial string.</p>
 #&gt;  [8,] "Cyperus"     "denudatus"     "var." "lucenti-nigricans"
 #&gt;  [9,] "Achyranthes" "aspera"        "var." "sicula"           
 #&gt; [10,] "Digitaria"   "diagonalis"    "var." "uniglumis"        </div><div class='input'>
+<span class='co'># re-paste the two first words</span>
+<span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>Easplist</span>, repaste<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "Euphorbia inaequilatera" "Oldenlandia corymbosa"  
+#&gt;  [3] "Pilea usambarensis"      "Trifolium semipilosum"  
+#&gt;  [5] "Pentas lanceolata"       "Stachys aculeolata"     
+#&gt;  [7] "Pimpinella oreophila"    "Cyperus denudatus"      
+#&gt;  [9] "Achyranthes aspera"      "Digitaria diagonalis"   </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
