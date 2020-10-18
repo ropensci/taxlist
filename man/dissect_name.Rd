@@ -4,35 +4,39 @@
 \alias{dissect_name}
 \title{Dissect Scientific Names into their Elements}
 \usage{
-dissect_name(x, split = " ", fixed = TRUE, ...)
+dissect_name(x, split = " ", fixed = TRUE, repaste, ...)
 }
 \arguments{
 \item{x}{A character vector containing taxon names.}
 
 \item{split, fixed, ...}{Arguments passed to \code{\link[=strsplit]{strsplit()}}.}
+
+\item{repaste}{An integer vector indicating the elements of the name selected
+for the output.}
 }
 \value{
 A character matrix with as many rows as names in the input vector.
+If \code{repaste} is indicated, then the output will be a character vector.
 }
 \description{
 Depending the degree of resolution and specific roles of nomenclature,
 strings containing taxon usage names (scientific names) are constructed with
 different parts.
 A string with names can be consequently split into those elements, meanwhile
-the number of elements will suggest the taxonomic ranks.
-}
-\details{
-This function is using \code{\link[=strsplit]{strsplit()}} for splitting names.
-Single spaces will be used to dissect names but it can be changed in the
-value of argument \code{split}.
-The number of columns in the resulting matrix will depend on the longest
-polynomial string.
+the number of elements may suggest the taxonomic ranks.
+
+This function is a wrapper of \code{\link[=strsplit]{strsplit()}}, while name element can be
+re-pasted if indicated in argument \code{repaste}.
 }
 \examples{
 Easplist <- subset(x=Easplist, subset=Level == "variety", slot="relations")
 Easplist <- accepted_name(Easplist)[c(1:10),"TaxonName"]
 
+# split name
 dissect_name(Easplist)
+
+# re-paste the two first words
+dissect_name(Easplist, repaste=c(1:2))
 
 }
 \seealso{

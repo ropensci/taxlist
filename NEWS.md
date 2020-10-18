@@ -1,3 +1,11 @@
+taxlist 0.2.1
+=============
+
+### Improvements
+
+* New argument `repaste` in function `dissect_name()` for re-pasting
+  dissected names.
+
 taxlist 0.2.0
 =============
 
