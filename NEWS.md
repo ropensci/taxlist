@@ -5,6 +5,7 @@ taxlist 0.2.1
 
 * New argument `repaste` in function `dissect_name()` for re-pasting
   dissected names.
+* Special characters corrected in data set *Cyperus*.
 
 taxlist 0.2.0
 =============

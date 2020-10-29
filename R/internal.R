@@ -76,6 +76,7 @@ sort_backups <- function(file, f_timestamp="%Y-%m-%d", fext=".rda") {
 	OUT$order <- c(seq_len(nrow(OUT)))
 	return(OUT)
 }
+# TODO: add 'sep="_"' in the argument list
 
 #' Filling missed columns with NAs
 #' 
