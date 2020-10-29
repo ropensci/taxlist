@@ -199,17 +199,17 @@ provided in this package.</p>
 #&gt; 4          195    CYPEDIG   Cyperus digitatus   Cyperus digitatus         NA
 #&gt; 5          196    CYPEDIS     Cyperus distans     Cyperus distans         NA
 #&gt; 6          197    CYPEDIV       Cyperus dives       Cyperus dives         NA
-#&gt;                        AuthorName SYNONYM TaxonConceptID
-#&gt; 1 (Nees &amp; Meyen ex Kunth) K\xfck.   FALSE            192
-#&gt; 2                          Rottb.   FALSE            193
-#&gt; 3                              L.   FALSE            194
-#&gt; 4                           Roxb.   FALSE            195
-#&gt; 5                           L. f.   FALSE            196
-#&gt; 6                          Delile   FALSE            197</div><div class='input'>
+#&gt;                     AuthorName SYNONYM TaxonConceptID
+#&gt; 1 (Nees &amp; Meyen ex Kunth) Kük.   FALSE            192
+#&gt; 2                       Rottb.   FALSE            193
+#&gt; 3                           L.   FALSE            194
+#&gt; 4                        Roxb.   FALSE            195
+#&gt; 5                        L. f.   FALSE            196
+#&gt; 6                       Delile   FALSE            197</div><div class='input'>
 <span class='co'>## Convert to 'taxlist' object</span>
 <span class='va'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'>df2taxlist</span><span class='op'>(</span><span class='va'>Cyperus</span>, AcceptedName <span class='op'>=</span><span class='op'>!</span> <span class='va'>Cyperus</span><span class='op'>$</span><span class='va'>SYNONYM</span><span class='op'>)</span>
 <span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Cyperus</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; object size: 32.4 Kb 
+</div><div class='output co'>#&gt; object size: 32.1 Kb 
 #&gt; validation of 'taxlist' object: TRUE 
 #&gt; 
 #&gt; number of taxon usage names: 95 
