@@ -150,9 +150,9 @@ sharing only part of the columns.</p>
 
     <pre class="usage"><span class='fu'>replace_x</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span>
 
-<span class='fu'>replace_idx</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>idx1</span>, <span class='va'>idx2</span>, <span class='va'>new</span><span class='op'>)</span>
+<span class='fu'>replace_idx</span><span class='op'>(</span><span class='va'>x</span>, idx1 <span class='op'>=</span> <span class='va'>x</span>, idx2 <span class='op'>=</span> <span class='va'>idx1</span>, <span class='va'>new</span><span class='op'>)</span>
 
-<span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>idx1</span>, <span class='va'>idx2</span>, <span class='va'>new</span><span class='op'>)</span>
+<span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>idx1</span>, idx2 <span class='op'>=</span> <span class='va'>idx1</span>, <span class='va'>new</span><span class='op'>)</span>
 
 <span class='fu'>insert_rows</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span></pre>
 
@@ -176,7 +176,8 @@ or using indices.</p></td>
     <tr>
       <th>idx1, idx2</th>
       <td><p>Indices applied for value replacements to match <code>x</code> with
-<code>new</code>, respectively.</p></td>
+<code>new</code>, respectively. If <code>idx2</code> is not provided, it will be assumed as
+equivalent to <code>idx1</code>.</p></td>
     </tr>
     <tr>
       <th>y</th>
