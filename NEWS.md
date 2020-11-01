@@ -5,6 +5,8 @@ taxlist 0.2.1
 
 * New argument `repaste` in function `dissect_name()` for re-pasting
   dissected names.
+* Function `replace_idx()` setting by default `idx1=x`.
+* Functions `replace_idx()` and `replace_na()` setting by default `idx2=idx1`.
 * Special characters corrected in data set *Cyperus*.
 
 taxlist 0.2.0

@@ -9,9 +9,9 @@
 \usage{
 replace_x(x, old, new)
 
-replace_idx(x, idx1, idx2, new)
+replace_idx(x, idx1 = x, idx2 = idx1, new)
 
-replace_na(x, idx1, idx2, new)
+replace_na(x, idx1, idx2 = idx1, new)
 
 insert_rows(x, y)
 }
@@ -25,7 +25,8 @@ data frame.}
 or using indices.}
 
 \item{idx1, idx2}{Indices applied for value replacements to match \code{x} with
-\code{new}, respectively.}
+\code{new}, respectively. If \code{idx2} is not provided, it will be assumed as
+equivalent to \code{idx1}.}
 
 \item{y}{A data frame including rows (and columns) to be inserted in \code{x}.}
 }

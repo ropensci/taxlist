@@ -24,7 +24,8 @@
 #' @param new A vector containing values to be inserted, either comparing values
 #'     or using indices.
 #' @param idx1,idx2 Indices applied for value replacements to match `x` with
-#'     `new`, respectively.
+#'     `new`, respectively. If `idx2` is not provided, it will be assumed as
+#'     equivalent to `idx1`.
 #' @param y A data frame including rows (and columns) to be inserted in `x`.
 #' 
 #' @return A vector or data frame with the modified values.
@@ -86,10 +87,9 @@ replace_x <- function(x, old, new) {
 #' 
 #' @export replace_idx
 #' 
-replace_idx <- function(x, idx1, idx2, new) {
+replace_idx <- function(x, idx1=x, idx2=idx1, new) {
 	if(length(x) != length(idx1))
 		stop("Arguments 'x' and 'idx1' have to be of the same length.")
-	if(missing(idx2)) idx2 <- idx1
 	if(length(idx2) != length(new))
 		stop("Arguments 'idx2' and 'new' have to be of the same length.")
 	x[idx1 %in% idx2] <- new[match(idx1[idx1 %in% idx2], idx2)]
@@ -102,10 +102,9 @@ replace_idx <- function(x, idx1, idx2, new) {
 #' 
 #' @export replace_na
 #' 
-replace_na <- function(x, idx1, idx2, new) {
+replace_na <- function(x, idx1, idx2=idx1, new) {
 	if(length(x) != length(idx1))
 		stop("Arguments 'x' and 'idx1' have to be of the same length.")
-	if(missing(idx2)) idx2 <- idx1
 	if(length(idx2) != length(new))
 		stop("Arguments 'idx2' and 'new' have to be of the same length.")
 	x[idx1 %in% idx2 & is.na(x)] <- new[match(idx1[idx1 %in% idx2 & is.na(x)],
