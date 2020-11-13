@@ -3,7 +3,7 @@
 
 <!-- Use snippet 'render_markdown' for it -->
 
-# taxlist <img src="man/figures/taxlist_logo.png" align="right" />
+# taxlist <img src="man/figures/taxlist_logo.png" height="134.5" align="right" />
 
 <!-- Budges -->
 
