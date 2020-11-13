@@ -4,7 +4,6 @@
 ^\.gitignore$
 ^\.project$
 ^\.travis.yml$
-^codecov\.yml$
 ^cran-comments\.md$
 ^data-raw$
 ^build-pkg$

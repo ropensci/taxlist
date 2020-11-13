@@ -3,7 +3,7 @@
 
 <!-- Use snippet 'render_markdown' for it -->
 
-# taxlist
+# taxlist <img src="man/figures/taxlist_logo.png" align="right" />
 
 <!-- Budges -->
 
@@ -38,8 +38,8 @@ traits and other attributes, for instance taxonomy itself (function
 `tax2traits()` set taxonomic information as trait).
 
 While this package only includes a function for the import of taxonomic
-lists from [Turboveg](https://www.synbiosys.alterra.nl/turboveg), almost
-any data source can be structured as `taxlist` object, so far the
+lists from [Turboveg](https://www.synbiosys.alterra.nl/turboveg/),
+almost any data source can be structured as `taxlist` object, so far the
 information is imported into data frames in an R session and the
 consistency rules are respected (validity).
 
@@ -54,7 +54,7 @@ interactive documents using `rmarkdonw` and `knitr` (e.g. reports,
 manuscripts and check-lists).
 
 The structure of `taxlist` objects is inspired on the structure of data
-handled by [Turboveg](https://www.synbiosys.alterra.nl/turboveg) and
+handled by [Turboveg](https://www.synbiosys.alterra.nl/turboveg/) and
 relational databases.
 
 ![](man/figures/taxlist_model.png)<br/> **Figure:** Relational model for
@@ -315,7 +315,7 @@ In following cases you may prefer to use `taxlist`:
     names referring to a taxon concept can easily get formatted by the
     function `print_name()`.
   - When importing taxonomic lists from databases stored in
-    [**Turboveg 2**](http://www.synbiosys.alterra.nl/turboveg).
+    [**Turboveg 2**](http://www.synbiosys.alterra.nl/turboveg/).
   - When you seek to implement the package
     [`vegtable`](https://CRAN.R-project.org/package=vegtable) for
     handling and assessing biodiversity records, especially
@@ -421,7 +421,7 @@ with(Cype_stat, barplot(species_count, names.arg=genus,
 ## Acknowledgements
 
 The author thanks **Stephan Hennekens**, developer of
-[Turboveg](http://www.synbiosys.alterra.nl/turboveg), for his patience
+[Turboveg](http://www.synbiosys.alterra.nl/turboveg/), for his patience
 and great support finding a common language between **R** and
 **Turboveg**, as well as for his advices on formatting our taxonomic
 list **EA-Splist**.
