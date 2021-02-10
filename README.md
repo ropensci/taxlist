@@ -1,6 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- Use snippet 'render_markdown' for it -->
 
 # taxlist <img src="man/figures/taxlist_logo.png" height="150" align="right" />
@@ -302,21 +301,21 @@ developer-oriented, while `taxlist` is rather a user-oriented package.
 
 In following cases you may prefer to use `taxlist`:
 
-  - When you need an automatic check on the consistency of information
+-   When you need an automatic check on the consistency of information
     regarding taxonomic ranks and parent-child relationships (parents
     have to be of a higher rank then children), as well as
     non-duplicated combinations of names and authors. Such checks are
     done by the function `validObject()`.
-  - When you foresee statistical assessments on taxonomy diversity or
+-   When you foresee statistical assessments on taxonomy diversity or
     taxon properties (chorology, conservation status, functional traits,
     etc.).
-  - When you seek to produce documents using **rmarkdown**, for instance
+-   When you seek to produce documents using **rmarkdown**, for instance
     guide books or check-lists. Also in article manuscripts taxonomic
     names referring to a taxon concept can easily get formatted by the
     function `print_name()`.
-  - When importing taxonomic lists from databases stored in
-    [**Turboveg 2**](http://www.synbiosys.alterra.nl/turboveg/).
-  - When you seek to implement the package
+-   When importing taxonomic lists from databases stored in [**Turboveg
+    2**](http://www.synbiosys.alterra.nl/turboveg/).
+-   When you seek to implement the package
     [`vegtable`](https://CRAN.R-project.org/package=vegtable) for
     handling and assessing biodiversity records, especially
     vegetation-plot data. In that case, taxonomic lists will be

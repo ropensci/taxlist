@@ -142,15 +142,16 @@ setClass("taxlist",
                     !all(is.na(object@taxonRelations$Level)) &
 					is.factor(object@taxonRelations$Level)) {
                 Children <- object@taxonRelations[
-                        !is.na(object@taxonRelations$Parent),
+                        !is.na(object@taxonRelations$Parent) &
+								!is.na(object@taxonRelations$Level),
                         c("TaxonConceptID","Parent","Level")]
                 Parents <- object@taxonRelations[match(Children$Parent,
                                 object@taxonRelations$TaxonConceptID),
                         c("TaxonConceptID","Level")]
-                if(any(as.numeric(Children$Level) >= as.numeric(Parents$Level)))
+				
+                if(any(as.integer(Children$Level) >= as.integer(Parents$Level)))
                     return(paste("Some parent-child relationships are",
 									"inconsistent with hierarchical levels"))
-                rm(Children,Parents)
             }
 			## Accepted Names
 			if(!all(is.na(object@taxonRelations$AcceptedName))) {
