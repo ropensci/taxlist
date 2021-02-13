@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cleaning character strings. — clean_strings • taxlist</title>
+<title>Print hierarchical structure in indented lists — indented_list • taxlist</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,9 @@
 
 
 
-<meta property="og:title" content="Cleaning character strings. — clean_strings" />
-<meta property="og:description" content="Multiple, leading and trailing white spaces as well as wrong encodings may
-cause serious problems in information dealing with taxonomic names.
-The function clean_strings get rid of them." />
+<meta property="og:title" content="Print hierarchical structure in indented lists — indented_list" />
+<meta property="og:description" content="Print taxonomic hierarchies (ranks and parent-child relationships) from
+taxlist objects in an indented list." />
 
 
 
@@ -127,62 +126,126 @@ The function clean_strings get rid of them." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Cleaning character strings.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/clean_strings.R'><code>R/clean_strings.R</code></a></small>
-    <div class="hidden name"><code>clean_strings.Rd</code></div>
+    <h1>Print hierarchical structure in indented lists</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/taxlist/blob/master/R/indented_list.R'><code>R/indented_list.R</code></a></small>
+    <div class="hidden name"><code>indented_list.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Multiple, leading and trailing white spaces as well as wrong encodings may
-cause serious problems in information dealing with taxonomic names.
-The function <code>clean_strings</code> get rid of them.</p>
+    <p>Print taxonomic hierarchies (ranks and parent-child relationships) from
+<a href='taxlist-class.html'>taxlist</a> objects in an indented list.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='co'># S4 method for character</span>
-<span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, from <span class='op'>=</span> <span class='st'>"utf8"</span>, to <span class='op'>=</span> <span class='st'>"utf8"</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='co'># S4 method for factor</span>
-<span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, from <span class='op'>=</span> <span class='st'>"utf8"</span>, to <span class='op'>=</span> <span class='st'>"utf8"</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>clean_strings</span><span class='op'>(</span><span class='va'>x</span>, from <span class='op'>=</span> <span class='st'>"utf8"</span>, to <span class='op'>=</span> <span class='st'>"utf8"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='co'># S4 method for taxlist</span>
+<span class='fu'>indented_list</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>filter</span>,
+  keep_children <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  keep_parents <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  indent <span class='op'>=</span> <span class='st'>" "</span>,
+  print <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  author <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  level <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  synonyms <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  syn_encl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"= "</span>, <span class='st'>""</span><span class='op'>)</span>,
+  <span class='va'>secundum</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Object to be cleaned.</p></td>
+      <th>object</th>
+      <td><p>A <a href='taxlist-class.html'>taxlist</a> object containing taxonomic concepts.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Further arguments passed among methods (not yet in use).</p></td>
+      <td><p>Further arguments (not used yet).</p></td>
     </tr>
     <tr>
-      <th>from, to</th>
-      <td><p>Arguments passed to <code><a href='https://rdrr.io/r/base/iconv.html'>iconv()</a></code>.</p></td>
+      <th>filter</th>
+      <td><p>A character value (optional) that will be matched with the
+taxon usage names to produce a subset of 'object'. Note that this filter
+will be also applied to synonyms, independent of the argument applied in
+parameter 'synonyms'.</p></td>
+    </tr>
+    <tr>
+      <th>keep_children</th>
+      <td><p>A logical value indicating whether children of matched
+concept should be included in the result.</p></td>
+    </tr>
+    <tr>
+      <th>keep_parents</th>
+      <td><p>A logical value indicating whether parents of matched
+concept should be included in the result.</p></td>
+    </tr>
+    <tr>
+      <th>indent</th>
+      <td><p>Symbol used for indentation. This symbol will be multiplied by
+the depth of the taxonomic rank. The default is a blank space.
+This can be also provided as a named vector, with a different indentation
+symbol for the respective taxonomic ranks.</p></td>
+    </tr>
+    <tr>
+      <th>print</th>
+      <td><p>A logical value indicating whether the indented list should be
+printed in the console or not (default = TRUE).</p></td>
+    </tr>
+    <tr>
+      <th>author</th>
+      <td><p>A logical value indicating whether the author should be printed
+with the name (default = TRUE).</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
+      <td><p>A logical value indicating whether the name of the level
+(taxonomic rank) should be included before the name or not
+(default = FALSE).</p></td>
+    </tr>
+    <tr>
+      <th>synonyms</th>
+      <td><p>A logical value indicating whether the synonyms should be
+included after accepted names or not (default = FALSE).</p></td>
+    </tr>
+    <tr>
+      <th>syn_encl</th>
+      <td><p>A character vector of length 2 including the symbols used to
+enclose synonyms. First value will be set before the synonyms and second
+value, after the synonyms.</p></td>
+    </tr>
+    <tr>
+      <th>secundum</th>
+      <td><p>A character value matching a name in slot 'taxonViews', which
+will be printed as secundum (taxon view). It is not printed by default.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The same as input <code>x</code>.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This function automatically deletes leading, trailing and multiple white
-spaces, either in strings (method <code>character</code>), levels (method
-<code>factor</code> or in single columns (method <code>data.frame</code>).</p>
+    <p>If 'print = TRUE', the indented list is printed in the console. The result,
+which is a data frame with the elements used to format the names, can be also
+assigned to an object.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Miguel Alvarez.</p>
+    <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> 
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://cran.r-project.org/package=taxlist'>taxlist</a></span><span class='op'>)</span>
-<span class='fu'>clean_strings</span><span class='op'>(</span><span class='st'>" Cyperus    papyrus L.     "</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Cyperus papyrus L."</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'>## Show taxonomy of papyrus</span>
+<span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"papyrus"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Cyperaceae Juss.
+#&gt;  Cyperus L.
+#&gt;    Cyperus papyrus L. </div><div class='input'>
+<span class='co'>## Include synonyms and taxon views</span>
+<span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"papyrus"</span>, level <span class='op'>=</span> <span class='cn'>TRUE</span>, synonyms <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    secundum <span class='op'>=</span> <span class='st'>"secundum"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; family Cyperaceae Juss. sec. The Plant List (2013)
+#&gt;  genus Cyperus L. sec. Taxonomic Name Resolution Service (2018)
+#&gt;    species Cyperus papyrus L. sec. African Plant Database (2012)
+#&gt;    = Cyperus papyrus ssp. antiquorum (Willd.) Chiov.
+#&gt;    = Cyperus papyrus ssp. nyassicus Chiov. </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
