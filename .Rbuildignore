@@ -3,7 +3,6 @@
 ^\.settings$
 ^\.gitignore$
 ^\.project$
-^\.travis.yml$
 ^cran-comments\.md$
 ^data-raw$
 ^build-pkg$

@@ -115,7 +115,7 @@ setMethod("indented_list", signature(object = "taxlist"),
 			# indented names
 			Names$formatted_name <- paste0(Names$indent, Names$formatted_name)
 			# Handle synonyms
-			if(synonyms) {
+			if(synonyms & nrow(synonyms(object)) > 0) {
 				Syn <- synonyms(object)
 				Syn$formatted_name <- Syn$TaxonName
 				Syn$indent <- Names$indent[match(Syn$TaxonConceptID,
