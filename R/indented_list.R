@@ -15,6 +15,8 @@
 #'     concept should be included in the result.
 #' @param keep_parents A logical value indicating whether parents of matched
 #'     concept should be included in the result.
+#' @param rankless_as A character vector indicating a level (taxonomic rank) to
+#'     which rankless taxa may be set before doing the list.
 #' @param indent Symbol used for indentation. This symbol will be multiplied by
 #'     the depth of the taxonomic rank. The default is a blank space.
 #'     This can be also provided as a named vector, with a different indentation
@@ -65,8 +67,8 @@ setGeneric("indented_list",
 #' 
 setMethod("indented_list", signature(object = "taxlist"),
 		function(object, filter, keep_children = TRUE, keep_parents = TRUE,
-				indent = " ", print = TRUE, author = TRUE, level = FALSE,
-				synonyms = FALSE, syn_encl = c("= ", ""), secundum, ...) {
+				rankless_as, indent = " ", print = TRUE, author = TRUE,
+				level = FALSE, synonyms = FALSE, syn_encl = c("= ", ""), secundum, ...) {
 			object <- tax2traits(object)
 			# Make subset
 			if(!missing(filter)) {
@@ -84,6 +86,9 @@ setMethod("indented_list", signature(object = "taxlist"),
 					Temp <- get_parents(object, Temp)
 				object <- Temp
 			}
+			if(!missing(rankless_as))
+				object@taxonRelations[is.na(object@taxonRelations$Level),
+						"Level"] <- rankless_as
 			Names <- accepted_name(object, show_traits = TRUE)
 			Names$formatted_name <- Names$TaxonName
 			# Set indentation
