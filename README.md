@@ -1,5 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Use snippet 'render_markdown' for it -->
 
 # taxlist <img src="man/figures/taxlist_logo.png" height="150" align="right" />
@@ -7,10 +8,11 @@
 <!-- Budges -->
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
-[![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
-<br> [![Travis Build
-Status](https://travis-ci.org/ropensci/taxlist.svg?branch=master)](https://travis-ci.org/ropensci/taxlist)
+[![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
+[![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
+<br>
+[![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
 [![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
 <br>
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
@@ -174,7 +176,7 @@ second argument, the summary will show a detailed information for every
 taxon included in the object.
 
 ``` r
-summary(Fern)
+Fern
 #> object size: 6.2 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
@@ -226,6 +228,20 @@ summary(Fern, "all")
 #> # accepted name: 
 #> 4 Asplenium obliquum var. chondrophyllum (Bertero apud Colla) C. Christense & C. Skottsberg 
 #> ------------------------------
+```
+
+## Indented lists
+
+A feature implemented in version 0.2.1 is the function
+`indented_list()`, which provides a better display on the hierarchical
+strucutre of `taxlist` objects.
+
+``` r
+indented_list(Fern)
+#> Asplenium L.
+#>  Asplenium obliquum Forster
+#>   Asplenium obliquum var. sphenoides (Kunze) Espinosa
+#>   Asplenium obliquum var. chondrophyllum (Bertero apud Colla) C. Christense & C. Skottsberg
 ```
 
 ## From data frame to taxlist
@@ -301,21 +317,21 @@ developer-oriented, while `taxlist` is rather a user-oriented package.
 
 In following cases you may prefer to use `taxlist`:
 
--   When you need an automatic check on the consistency of information
+  - When you need an automatic check on the consistency of information
     regarding taxonomic ranks and parent-child relationships (parents
     have to be of a higher rank then children), as well as
     non-duplicated combinations of names and authors. Such checks are
     done by the function `validObject()`.
--   When you foresee statistical assessments on taxonomy diversity or
+  - When you foresee statistical assessments on taxonomy diversity or
     taxon properties (chorology, conservation status, functional traits,
     etc.).
--   When you seek to produce documents using **rmarkdown**, for instance
+  - When you seek to produce documents using **rmarkdown**, for instance
     guide books or check-lists. Also in article manuscripts taxonomic
     names referring to a taxon concept can easily get formatted by the
     function `print_name()`.
--   When importing taxonomic lists from databases stored in [**Turboveg
-    2**](http://www.synbiosys.alterra.nl/turboveg/).
--   When you seek to implement the package
+  - When importing taxonomic lists from databases stored in
+    [**Turboveg 2**](http://www.synbiosys.alterra.nl/turboveg/).
+  - When you seek to implement the package
     [`vegtable`](https://CRAN.R-project.org/package=vegtable) for
     handling and assessing biodiversity records, especially
     vegetation-plot data. In that case, taxonomic lists will be
