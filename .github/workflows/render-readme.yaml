@@ -1,0 +1,36 @@
+# For help visit following page:
+# https://fromthebottomoftheheap.net/2020/04/30/rendering-your-readme-with-github-actions/
+name: render readme
+
+# Controls when the action will run
+on:
+  push:
+    branches: master
+
+jobs:
+  render:
+    # The type of runner that the job will run on
+    runs-on: macOS-latest
+    
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      
+      # Install packages needed
+      - name: install required packages
+        run: Rscript -e 'install.packages(c("devtools", "knitr", "rmarkdown"))'
+      
+      # Install packages needed from GitHub
+      - name: install from GitHub
+        run: Rscript -e 'remotes::install_github("ropensci/taxlist")'
+      
+      # Render README.md using rmarkdown
+      - name: render README
+        run: Rscript -e 'rmarkdown::render("README.Rmd")'
+      
+      - name: commit rendered README
+        run: |
+          git commit README.md -m 'Re-build README.Rmd' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
