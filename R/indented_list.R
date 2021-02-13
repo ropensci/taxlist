@@ -69,6 +69,9 @@ setMethod("indented_list", signature(object = "taxlist"),
 		function(object, filter, keep_children = TRUE, keep_parents = TRUE,
 				rankless_as, indent = " ", print = TRUE, author = TRUE,
 				level = FALSE, synonyms = FALSE, syn_encl = c("= ", ""), secundum, ...) {
+			if(!missing(rankless_as))
+				object@taxonRelations[is.na(object@taxonRelations$Level),
+						"Level"] <- rankless_as
 			object <- tax2traits(object)
 			# Make subset
 			if(!missing(filter)) {
@@ -86,9 +89,7 @@ setMethod("indented_list", signature(object = "taxlist"),
 					Temp <- get_parents(object, Temp)
 				object <- Temp
 			}
-			if(!missing(rankless_as))
-				object@taxonRelations[is.na(object@taxonRelations$Level),
-						"Level"] <- rankless_as
+			
 			Names <- accepted_name(object, show_traits = TRUE)
 			Names$formatted_name <- Names$TaxonName
 			# Set indentation
