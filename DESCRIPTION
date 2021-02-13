@@ -69,8 +69,9 @@ Collate:
     'tax2traits.R'
     'match_names.R'
     'print_name.R'
+    'indented_list.R'
     'taxlist2taxmap.R'
     'Easplist-data.R'
     'taxlist-package.R'
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.1.9000

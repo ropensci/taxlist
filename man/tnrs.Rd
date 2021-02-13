@@ -16,7 +16,7 @@ tnrs(query, ...)
 \item{query}{Either a character vector or a taxlist object with names to
 search.}
 
-\item{...}{Further arguments passed to \code{\link[taxize:tnrs]{taxize::tnrs()}}.}
+\item{...}{Further arguments passed to \code{\link[taxize:tnrs-defunct]{taxize::tnrs()}}.}
 
 \item{min_score}{Minimum value of score for considering accepted names as
 suggested by the output.}
@@ -27,7 +27,7 @@ suggested by the output.}
 A data frame or an object of class \linkS4class{taxlist}.
 }
 \description{
-Methods of \code{\link[taxize:tnrs]{taxize::tnrs()}} for \linkS4class{taxlist} objects.
+Methods of \code{\link[taxize:tnrs-defunct]{taxize::tnrs()}} for \linkS4class{taxlist} objects.
 }
 \details{
 This function checks for matching of taxon names in \linkS4class{taxlist}
@@ -38,7 +38,7 @@ object and new accepted names will be inserted.
 A method for character vectors is defined for the original function.
 }
 \seealso{
-\code{\link[taxize:tnrs]{taxize::tnrs()}}
+\code{\link[taxize:tnrs-defunct]{taxize::tnrs()}}
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
