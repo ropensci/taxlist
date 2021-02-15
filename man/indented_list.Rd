@@ -12,6 +12,7 @@ indented_list(object, ...)
   filter,
   keep_children = TRUE,
   keep_parents = TRUE,
+  rankless_as,
   indent = " ",
   print = TRUE,
   author = TRUE,
@@ -19,6 +20,7 @@ indented_list(object, ...)
   synonyms = FALSE,
   syn_encl = c("= ", ""),
   secundum,
+  alphabetical = FALSE,
   ...
 )
 }
@@ -37,6 +39,9 @@ concept should be included in the result.}
 
 \item{keep_parents}{A logical value indicating whether parents of matched
 concept should be included in the result.}
+
+\item{rankless_as}{A character vector indicating a level (taxonomic rank) to
+which rankless taxa may be set before doing the list.}
 
 \item{indent}{Symbol used for indentation. This symbol will be multiplied by
 the depth of the taxonomic rank. The default is a blank space.
@@ -62,6 +67,11 @@ value, after the synonyms.}
 
 \item{secundum}{A character value matching a name in slot 'taxonViews', which
 will be printed as secundum (taxon view). It is not printed by default.}
+
+\item{alphabetical}{A logical value indicating whether taxa may be sorted by
+names or by IDs. The default is FALSE, thus taxa are sorted by IDs.
+Note that argument TRUE may not work properly if the object contains
+homonymous taxa.}
 }
 \value{
 If 'print = TRUE', the indented list is printed in the console. The result,
