@@ -35,6 +35,10 @@
 #'     value, after the synonyms.
 #' @param secundum A character value matching a name in slot 'taxonViews', which
 #'     will be printed as secundum (taxon view). It is not printed by default.
+#' @param alphabetical A logical value indicating whether taxa may be sorted by
+#'     names or by IDs. The default is FALSE, thus taxa are sorted by IDs.
+#'     Note that argument TRUE may not work properly if the object contains
+#'     homonymous taxa.
 #' @param ... Further arguments (not used yet).
 #' 
 #' @return
@@ -69,11 +73,11 @@ setMethod("indented_list", signature(object = "taxlist"),
 		function(object, filter, keep_children = TRUE, keep_parents = TRUE,
 				rankless_as, indent = " ", print = TRUE, author = TRUE,
 				level = FALSE, synonyms = FALSE, syn_encl = c("= ", ""),
-				secundum, ...) {
+				secundum, alphabetical = FALSE, ...) {
 			if(!missing(rankless_as))
 				object@taxonRelations[is.na(object@taxonRelations$Level),
 						"Level"] <- rankless_as
-			object <- tax2traits(object, get_names = TRUE)
+			object <- tax2traits(object, get_names = alphabetical)
 			# Make subset
 			if(!missing(filter)) {
 				Temp <- object
