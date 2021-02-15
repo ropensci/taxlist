@@ -240,8 +240,8 @@ strucutre of `taxlist` objects.
 indented_list(Fern)
 #> Asplenium L.
 #>  Asplenium obliquum Forster
-#>   Asplenium obliquum var. sphenoides (Kunze) Espinosa
 #>   Asplenium obliquum var. chondrophyllum (Bertero apud Colla) C. Christense & C. Skottsberg
+#>   Asplenium obliquum var. sphenoides (Kunze) Espinosa
 ```
 
 ## From data frame to taxlist
