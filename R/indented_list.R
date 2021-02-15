@@ -68,11 +68,12 @@ setGeneric("indented_list",
 setMethod("indented_list", signature(object = "taxlist"),
 		function(object, filter, keep_children = TRUE, keep_parents = TRUE,
 				rankless_as, indent = " ", print = TRUE, author = TRUE,
-				level = FALSE, synonyms = FALSE, syn_encl = c("= ", ""), secundum, ...) {
+				level = FALSE, synonyms = FALSE, syn_encl = c("= ", ""),
+				secundum, ...) {
 			if(!missing(rankless_as))
 				object@taxonRelations[is.na(object@taxonRelations$Level),
 						"Level"] <- rankless_as
-			object <- tax2traits(object)
+			object <- tax2traits(object, get_names = TRUE)
 			# Make subset
 			if(!missing(filter)) {
 				Temp <- object
