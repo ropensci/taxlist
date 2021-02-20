@@ -21,6 +21,8 @@
 #'     the depth of the taxonomic rank. The default is a blank space.
 #'     This can be also provided as a named vector, with a different indentation
 #'     symbol for the respective taxonomic ranks.
+#' @param lead_br Optional line break symbol leading before the indentation.
+#'     It may be required for r-markdown documents.
 #' @param print A logical value indicating whether the indented list should be
 #'     printed in the console or not (default = TRUE).
 #' @param author A logical value indicating whether the author should be printed
@@ -71,9 +73,9 @@ setGeneric("indented_list",
 #' 
 setMethod("indented_list", signature(object = "taxlist"),
 		function(object, filter, keep_children = TRUE, keep_parents = TRUE,
-				rankless_as, indent = " ", print = TRUE, author = TRUE,
-				level = FALSE, synonyms = FALSE, syn_encl = c("= ", ""),
-				secundum, alphabetical = FALSE, ...) {
+				rankless_as, indent = " ", lead_br = "", print = TRUE,
+				author = TRUE, level = FALSE, synonyms = FALSE,
+				syn_encl = c("= ", ""), secundum, alphabetical = FALSE, ...) {
 			if(!missing(rankless_as))
 				object@taxonRelations[is.na(object@taxonRelations$Level),
 						"Level"] <- rankless_as
@@ -103,8 +105,8 @@ setMethod("indented_list", signature(object = "taxlist"),
 				for(i in seq_along(levels(object)))
 					indent_symbol[i] <- paste0(rep(indent, times = i - 1),
 							collapse = "")
-				Names$indent <- rev(indent_symbol)[match(paste(Names$Level),
-								levels(object))]
+				Names$indent <- rev(paste0(lead_br, indent_symbol))[
+						match(paste(Names$Level), levels(object))]
 			} else {
 				no_match <- unique(paste(Names$Level))
 				no_match <- no_match[!no_match %in% names(indent)]
@@ -112,7 +114,8 @@ setMethod("indented_list", signature(object = "taxlist"),
 					stop(paste0("Indentations missing in 'indent' ",
 									"for following level(s): '",
 									paste0(no_match, collapse = "' '"), "'"))
-				Names$indent <- indent[match(paste(Names$Level), names(indent))]
+				Names$indent <- paste0(lead_br, indent[match(paste(Names$Level),
+										names(indent))])
 			}
 			if(level)
 				Names$formatted_name <- paste(Names$Level, Names$formatted_name)

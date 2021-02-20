@@ -14,6 +14,7 @@ indented_list(object, ...)
   keep_parents = TRUE,
   rankless_as,
   indent = " ",
+  lead_br = "",
   print = TRUE,
   author = TRUE,
   level = FALSE,
@@ -47,6 +48,9 @@ which rankless taxa may be set before doing the list.}
 the depth of the taxonomic rank. The default is a blank space.
 This can be also provided as a named vector, with a different indentation
 symbol for the respective taxonomic ranks.}
+
+\item{lead_br}{Optional line break symbol leading before the indentation.
+It may be required for r-markdown documents.}
 
 \item{print}{A logical value indicating whether the indented list should be
 printed in the console or not (default = TRUE).}
