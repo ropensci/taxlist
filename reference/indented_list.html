@@ -146,6 +146,7 @@ taxlist objects in an indented list." />
   keep_parents <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>rankless_as</span>,
   indent <span class='op'>=</span> <span class='st'>" "</span>,
+  lead_br <span class='op'>=</span> <span class='st'>""</span>,
   print <span class='op'>=</span> <span class='cn'>TRUE</span>,
   author <span class='op'>=</span> <span class='cn'>TRUE</span>,
   level <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -195,6 +196,11 @@ which rankless taxa may be set before doing the list.</p></td>
 the depth of the taxonomic rank. The default is a blank space.
 This can be also provided as a named vector, with a different indentation
 symbol for the respective taxonomic ranks.</p></td>
+    </tr>
+    <tr>
+      <th>lead_br</th>
+      <td><p>Optional line break symbol leading before the indentation.
+It may be required for r-markdown documents.</p></td>
     </tr>
     <tr>
       <th>print</th>
@@ -272,11 +278,11 @@ assigned to an object.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Miguel Alvarez.</p>
+  <p><p>Developed by Miguel Alvarez.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
