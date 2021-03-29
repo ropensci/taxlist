@@ -46,7 +46,7 @@ Splist <- new("taxlist")
 \references{
 \bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant
 taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
-\url{https://doi.org/10.3897/bdj.6.e23635}
+\doi{10.3897/bdj.6.e23635}
 }
 \author{
 Miguel Alvarez
