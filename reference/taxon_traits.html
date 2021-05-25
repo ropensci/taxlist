@@ -61,8 +61,6 @@ information in taxonomic lists." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -143,7 +141,7 @@ These functions are suitable for replacing, retrieving and appending trait
 information in taxonomic lists.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>taxon_traits</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>taxon_traits</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
 <span class='fu'>taxon_traits</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -156,7 +154,7 @@ information in taxonomic lists.</p>
 <span class='fu'>update_trait</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>update_trait</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>update_trait</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,42 +195,46 @@ constructing <a href='taxlist-class.html'>taxlist</a> objects from an empty one.
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>taxon_traits</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   TaxonConceptID       lf_behn_2018
-#&gt; 1              7       phanerophyte
-#&gt; 2              9       phanerophyte
-#&gt; 3             18 facultative_annual
-#&gt; 4             20 facultative_annual
-#&gt; 5             21    obligate_annual
-#&gt; 6             22        chamaephyte</div><div class='input'>
-<span class='co'>## Updating traits for Launaea cornuta</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 355 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54923 Launaea Cass. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey 
-#&gt; 
-#&gt; # synonyms (2): 
-#&gt; 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. 
-#&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'><span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>355</span>, show_traits<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
-#&gt; 1            355          355 Launaea cornuta
-#&gt;                              AuthorName ViewID   Level  lf_behn_2018
-#&gt; 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species tussock_plant</div><div class='input'>
-<span class='co'># Update</span>
-<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_trait</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>355</span>,
-    lf_behn_2018<span class='op'>=</span><span class='st'>"annual"</span><span class='op'>)</span>
-<span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>355</span>, show_traits<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   TaxonConceptID TaxonUsageID       TaxonName
-#&gt; 1            355          355 Launaea cornuta
-#&gt;                              AuthorName ViewID   Level lf_behn_2018
-#&gt; 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species       annual</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>taxon_traits</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   TaxonConceptID       lf_behn_2018</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1              7       phanerophyte</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2              9       phanerophyte</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3             18 facultative_annual</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4             20 facultative_annual</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5             21    obligate_annual</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6             22        chamaephyte</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Updating traits for Launaea cornuta</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 355 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54923 Launaea Cass. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (2): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'><span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>355</span>, show_traits<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   TaxonConceptID TaxonUsageID       TaxonName</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1            355          355 Launaea cornuta</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                              AuthorName ViewID   Level  lf_behn_2018</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species tussock_plant</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Update</span></span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_trait</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>355</span>,</span>
+<span class='r-in'>    lf_behn_2018<span class='op'>=</span><span class='st'>"annual"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>355</span>, show_traits<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   TaxonConceptID TaxonUsageID       TaxonName</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1            355          355 Launaea cornuta</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                              AuthorName ViewID   Level lf_behn_2018</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey      1 species       annual</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

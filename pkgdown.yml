@@ -1,7 +1,7 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1.9001
-pkgdown_sha: 5f1ef9785827a976afbdc09a2d2a626d6ef1f2b4
+pkgdown_sha: 3b870d0efcfcf92a42aa881d58c3462cdbb110a8
 articles:
   taxlist-intro: taxlist-intro.html
-last_built: 2021-03-29T06:02Z
+last_built: 2021-05-25T09:30Z
 

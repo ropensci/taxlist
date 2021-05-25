@@ -60,8 +60,6 @@ taxlist-package and taxa." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -141,12 +139,12 @@ taxlist-package and taxa." />
 <a href='taxlist-package.html'>taxlist-package</a> and <code>taxa</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>taxlist2taxmap</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>taxlist2taxmap</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
 <span class='fu'>taxlist2taxmap</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>taxmap2taxlist</span><span class='op'>(</span><span class='va'>taxmap</span>, <span class='va'>relations</span>, <span class='va'>traits</span>, <span class='va'>synonyms</span>, <span class='va'>views</span>, reindex <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+<span class='fu'>taxmap2taxlist</span><span class='op'>(</span><span class='va'>taxmap</span>, <span class='va'>relations</span>, <span class='va'>traits</span>, <span class='va'>synonyms</span>, <span class='va'>views</span>, reindex <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -187,68 +185,70 @@ object.</p>
 (<a href='mailto:zacharyfoster1989@gmail.com'>zacharyfoster1989@gmail.com</a>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Subset Easplist</span>
-<span class='va'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"Cyperus"</span>, <span class='va'>TaxonName</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'>## Convert to taxmap </span>
-<span class='va'>Cyperus2</span> <span class='op'>&lt;-</span> <span class='fu'>taxlist2taxmap</span><span class='op'>(</span><span class='va'>Cyperus</span><span class='op'>)</span>
-<span class='va'>Cyperus2</span>
-</div><div class='output co'>#&gt; &lt;Taxmap&gt;
-#&gt;   61 taxa: 160. Courtoisina assimilis<span style='color: #555555;'> ... </span><span>54853. Cyperus
-#&gt;   61 edges: </span><span style='color: #00BB00;'>NA</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>160</span><span style='color: #555555;'>, </span><span style='color: #00BB00;'>54853</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>192</span><span style='color: #555555;'> ... </span><span style='color: #00BB00;'>195</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>54255</span><span style='color: #555555;'>, </span><span style='color: #00BB00;'>NA</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>54853</span><span>
-#&gt;   4 data sets:
-#&gt;     </span><span style='font-weight: bold;'>relations</span><span>:
-#&gt; </span><span style='font-style: italic;'>      # A data.frame: 61 x 7 (first 3 rows shown)
-#&gt; </span><span>       </span><span style='color: #00BB00;'> taxon_id </span><span>TaxonUsageID             TaxonName                   AuthorName
-#&gt;       1      160          160 Courtoisina assimilis              (Steud.) Maquet
-#&gt;       2      192          192   Cyperus auriculatus (Nees &amp; Meyen ex Kunth) Kük.
-#&gt;       3      193          193    Cyperus corymbosus                       Rottb.
-#&gt;         ViewID   Level Parent
-#&gt;       1      1 species   &lt;NA&gt;
-#&gt;       2      1 species  54853
-#&gt;       3      1 species  54853
-#&gt;     </span><span style='font-weight: bold;'>traits</span><span>:
-#&gt; </span><span style='font-style: italic;'>      # A data.frame: 23 x 2 (first 3 rows shown)
-#&gt; </span><span>        </span><span style='color: #00BB00;'> taxon_id </span><span>      lf_behn_2018
-#&gt;       49      192 facultative_annual
-#&gt;       50      194    obligate_annual
-#&gt;       51      195      tussock_plant
-#&gt;     </span><span style='font-weight: bold;'>views</span><span>:
-#&gt; </span><span style='font-style: italic;'>      # A data.frame: 3 x 3
-#&gt; </span><span>        ViewID                                 secundum view_bibtexkey
-#&gt;       1      1            African Plant Database (2012)  CJBGSANBI2012
-#&gt;       2      2 Taxonomic Name Resolution Service (2018)       TNRS2018
-#&gt;       3      3                    The Plant List (2013)        TPL2013
-#&gt;     </span><span style='font-weight: bold;'>synonyms</span><span>:
-#&gt; </span><span style='font-style: italic;'>      # A data.frame: 102 x 4 (first 3 rows shown)
-#&gt; </span><span>         </span><span style='color: #00BB00;'> taxon_id </span><span>TaxonUsageID           synonym synonym_authority
-#&gt;       180      160        50015 Cyperus assimilis            Steud.
-#&gt;       219      197        52000  Cyperus immensus       C.B. Clarke
-#&gt;       228      205        50017  Cyperus diffusus              Vahl
-#&gt;   0 functions:</div><div class='input'>
-<span class='co'>## Convert it back to taxlist</span>
-<span class='va'>Cyperus2</span> <span class='op'>&lt;-</span> <span class='fu'>taxmap2taxlist</span><span class='op'>(</span>taxmap<span class='op'>=</span><span class='va'>Cyperus2</span>, traits<span class='op'>=</span><span class='st'>"traits"</span>, views<span class='op'>=</span><span class='st'>"views"</span>,
-    synonyms<span class='op'>=</span><span class='st'>"synonyms"</span><span class='op'>)</span>
-<span class='va'>Cyperus2</span>
-</div><div class='output co'>#&gt; object size: 48.7 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 163 
-#&gt; number of taxon concepts: 61 
-#&gt; trait entries: 23 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; concepts with parents: 44 
-#&gt; concepts with children: 6 
-#&gt; 
-#&gt; hierarchical levels: variety &lt; subspecies &lt; species &lt; genus 
-#&gt; number of concepts in level variety: 4
-#&gt; number of concepts in level subspecies: 2
-#&gt; number of concepts in level species: 54
-#&gt; number of concepts in level genus: 1
-#&gt; </div><div class='input'>
-</div></span></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Subset Easplist</span></span>
+<span class='r-in'><span class='va'>Cyperus</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"Cyperus"</span>, <span class='va'>TaxonName</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Convert to taxmap </span></span>
+<span class='r-in'><span class='va'>Cyperus2</span> <span class='op'>&lt;-</span> <span class='fu'>taxlist2taxmap</span><span class='op'>(</span><span class='va'>Cyperus</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>Cyperus2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;Taxmap&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   61 taxa: 160. Courtoisina assimilis<span style='color: #555555;'> ... </span>54853. Cyperus</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   61 edges: <span style='color: #00BB00;'>NA</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>160</span><span style='color: #555555;'>, </span><span style='color: #00BB00;'>54853</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>192</span><span style='color: #555555;'> ... </span><span style='color: #00BB00;'>195</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>54255</span><span style='color: #555555;'>, </span><span style='color: #00BB00;'>NA</span><span style='color: #555555;'>-&gt;</span><span style='color: #00BB00;'>54853</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   4 data sets:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='font-weight: bold;'>relations</span>:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='font-style: italic;'>      # A data.frame: 61 x 7 (first 3 rows shown)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        <span style='color: #00BB00;'> taxon_id </span>TaxonUsageID             TaxonName                   AuthorName</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       1      160          160 Courtoisina assimilis              (Steud.) Maquet</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       2      192          192   Cyperus auriculatus (Nees &amp; Meyen ex Kunth) Kük.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       3      193          193    Cyperus corymbosus                       Rottb.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         ViewID   Level Parent</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       1      1 species   &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       2      1 species  54853</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       3      1 species  54853</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='font-weight: bold;'>traits</span>:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='font-style: italic;'>      # A data.frame: 23 x 2 (first 3 rows shown)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         <span style='color: #00BB00;'> taxon_id </span>      lf_behn_2018</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       49      192 facultative_annual</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       50      194    obligate_annual</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       51      195      tussock_plant</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='font-weight: bold;'>views</span>:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='font-style: italic;'>      # A data.frame: 3 x 3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         ViewID                                 secundum view_bibtexkey</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       1      1            African Plant Database (2012)  CJBGSANBI2012</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       2      2 Taxonomic Name Resolution Service (2018)       TNRS2018</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       3      3                    The Plant List (2013)        TPL2013</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     <span style='font-weight: bold;'>synonyms</span>:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='font-style: italic;'>      # A data.frame: 102 x 4 (first 3 rows shown)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          <span style='color: #00BB00;'> taxon_id </span>TaxonUsageID           synonym synonym_authority</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       180      160        50015 Cyperus assimilis            Steud.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       219      197        52000  Cyperus immensus       C.B. Clarke</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       228      205        50017  Cyperus diffusus              Vahl</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   0 functions:</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Convert it back to taxlist</span></span>
+<span class='r-in'><span class='va'>Cyperus2</span> <span class='op'>&lt;-</span> <span class='fu'>taxmap2taxlist</span><span class='op'>(</span>taxmap<span class='op'>=</span><span class='va'>Cyperus2</span>, traits<span class='op'>=</span><span class='st'>"traits"</span>, views<span class='op'>=</span><span class='st'>"views"</span>,</span>
+<span class='r-in'>    synonyms<span class='op'>=</span><span class='st'>"synonyms"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>Cyperus2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 48.7 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 163 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 61 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 23 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with parents: 44 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with children: 6 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: variety &lt; subspecies &lt; species &lt; genus </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 54</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

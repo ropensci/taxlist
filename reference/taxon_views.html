@@ -58,8 +58,6 @@
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -137,7 +135,7 @@
     <p>Retrieve or replace slot <code>taxonViews</code> in an object of class <a href='taxlist-class.html'>taxlist</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>taxon_views</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>taxon_views</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
 <span class='fu'>taxon_views</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -150,7 +148,7 @@
 <span class='fu'>add_view</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>add_view</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>add_view</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,34 +200,36 @@ doi: <a href='https://doi.org/10.1093/bioinformatics/15.2.149'>10.1093/bioinform
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## See existing views</span>
-<span class='fu'>taxon_views</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   ViewID                                 secundum view_bibtexkey
-#&gt; 1      1            African Plant Database (2012)  CJBGSANBI2012
-#&gt; 2      2 Taxonomic Name Resolution Service (2018)       TNRS2018
-#&gt; 3      3                    The Plant List (2013)        TPL2013</div><div class='input'>
-<span class='co'>## Add a new view</span>
-<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_view</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, secundum<span class='op'>=</span><span class='st'>"Beentje et al. (1952)"</span>,
-  Title<span class='op'>=</span><span class='st'>"Flora of Tropical East Africa"</span>,
-  URL<span class='op'>=</span><span class='st'>"http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"</span><span class='op'>)</span>
-
-<span class='fu'>taxon_views</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   ViewID                                 secundum view_bibtexkey
-#&gt; 1      1            African Plant Database (2012)  CJBGSANBI2012
-#&gt; 2      2 Taxonomic Name Resolution Service (2018)       TNRS2018
-#&gt; 3      3                    The Plant List (2013)        TPL2013
-#&gt; 4      4                    Beentje et al. (1952)           &lt;NA&gt;
-#&gt;                           Title
-#&gt; 1                          &lt;NA&gt;
-#&gt; 2                          &lt;NA&gt;
-#&gt; 3                          &lt;NA&gt;
-#&gt; 4 Flora of Tropical East Africa
-#&gt;                                                                   URL
-#&gt; 1                                                                &lt;NA&gt;
-#&gt; 2                                                                &lt;NA&gt;
-#&gt; 3                                                                &lt;NA&gt;
-#&gt; 4 http://www.kew.org/science/directory/projects/FloraTropEAfrica.html</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## See existing views</span></span>
+<span class='r-in'><span class='fu'>taxon_views</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ViewID                                 secundum view_bibtexkey</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      1            African Plant Database (2012)  CJBGSANBI2012</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      2 Taxonomic Name Resolution Service (2018)       TNRS2018</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      3                    The Plant List (2013)        TPL2013</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Add a new view</span></span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_view</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, secundum<span class='op'>=</span><span class='st'>"Beentje et al. (1952)"</span>,</span>
+<span class='r-in'>  Title<span class='op'>=</span><span class='st'>"Flora of Tropical East Africa"</span>,</span>
+<span class='r-in'>  URL<span class='op'>=</span><span class='st'>"http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>taxon_views</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ViewID                                 secundum view_bibtexkey</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      1            African Plant Database (2012)  CJBGSANBI2012</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      2 Taxonomic Name Resolution Service (2018)       TNRS2018</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      3                    The Plant List (2013)        TPL2013</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4      4                    Beentje et al. (1952)           &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                           Title</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                          &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2                          &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3                          &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 Flora of Tropical East Africa</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                                   URL</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                                                                &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2                                                                &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3                                                                &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 http://www.kew.org/science/directory/projects/FloraTropEAfrica.html</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -59,8 +59,6 @@ taxlist object or replace it by a new data frame." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -139,7 +137,7 @@ taxlist object or replace it by a new data frame." />
 <a href='taxlist-class.html'>taxlist</a> object or replace it by a new data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
 <span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -160,7 +158,7 @@ taxlist object or replace it by a new data frame." />
 <span class='fu'>update_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>update_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>update_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>ConceptID</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -224,302 +222,311 @@ For adding a new view, use <code><a href='taxon_views.html'>add_view()</a></code
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Subset for the genus Euclea and display of slot 'taxonNames'</span>
-<span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Euclea"</span>, <span class='va'>TaxonName</span><span class='op'>)</span>,
-    slot<span class='op'>=</span><span class='st'>"names"</span><span class='op'>)</span>
-<span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Euclea</span><span class='op'>)</span>
-
-<span class='va'>Euclea</span>
-</div><div class='output co'>#&gt; object size: 7 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 3 
-#&gt; number of taxon concepts: 2 
-#&gt; trait entries: 0 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; concepts with parents: 1 
-#&gt; concepts with children: 1 
-#&gt; 
-#&gt; hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-#&gt; number of concepts in level form: 0
-#&gt; number of concepts in level variety: 0
-#&gt; number of concepts in level subspecies: 0
-#&gt; number of concepts in level species: 1
-#&gt; number of concepts in level complex: 0
-#&gt; number of concepts in level genus: 1
-#&gt; number of concepts in level family: 0
-#&gt; </div><div class='input'><span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>Euclea</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      TaxonConceptID AcceptedName Basionym Parent   Level ViewID
-#&gt; 267             269          269       NA  55707 species      1
-#&gt; 3537          55707        55709       NA     NA   genus     NA</div><div class='input'>
-<span class='co'>## Subset with family Ebenaceae and children</span>
-<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Ebenaceae"</span>, <span class='va'>TaxonName</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Ebenaceae</span><span class='op'>)</span>
-
-<span class='va'>Ebenaceae</span>
-</div><div class='output co'>#&gt; object size: 8.5 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 10 
-#&gt; number of taxon concepts: 9 
-#&gt; trait entries: 0 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; concepts with parents: 8 
-#&gt; concepts with children: 3 
-#&gt; 
-#&gt; hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-#&gt; number of concepts in level form: 0
-#&gt; number of concepts in level variety: 0
-#&gt; number of concepts in level subspecies: 0
-#&gt; number of concepts in level species: 6
-#&gt; number of concepts in level complex: 0
-#&gt; number of concepts in level genus: 2
-#&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span>object<span class='op'>=</span><span class='va'>Ebenaceae</span>, ConceptID<span class='op'>=</span><span class='st'>"all"</span>, maxsum<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 269 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55707 Euclea  
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 269 Euclea divinorum Hiern 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 50787 Euclea divinorum ssp. keniensis (R. E. Fr.) de Wit 
-#&gt; ------------------------------ 
-#&gt; concept ID: 50330 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 50330 Diospyros abyssinica (Hiern) F. White 
-#&gt; ------------------------------ 
-#&gt; concept ID: 51793 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 51793 Diospyros scabra (Chiov.) Cufod. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 52298 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 52298 Diospyros mespiliformis Hochst. ex A.DC. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 52403 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 52403 Diospyros tricolor (Schumach. &amp; Thonn.) Hiern 
-#&gt; ------------------------------ 
-#&gt; concept ID: 53547 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 53547 Diospyros ferrea (Willd.) Bakh. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 55171 
-#&gt; view ID: 2 
-#&gt; level: genus 
-#&gt; parent: 56051 Ebenaceae  
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 55173 Diospyros L. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 55707 
-#&gt; view ID: none 
-#&gt; level: genus 
-#&gt; parent: 56051 Ebenaceae  
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 55709 Euclea  
-#&gt; ------------------------------ 
-#&gt; concept ID: 56051 
-#&gt; view ID: 3 
-#&gt; level: family 
-#&gt; parent: none 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 56053 Ebenaceae  
-#&gt; ------------------------------ </div><div class='input'>
-<span class='co'>## Adding a new concept</span>
-<span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'>add_concept</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Ebenaceae</span>, TaxonName<span class='op'>=</span><span class='st'>"Euclea acutifolia"</span>,
-    AuthorName<span class='op'>=</span><span class='st'>"E. Mey. ex A. DC."</span>, Level<span class='op'>=</span><span class='st'>"species"</span>, Parent<span class='op'>=</span><span class='fl'>55707</span>, ViewID<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
-
-<span class='co'>## A summary again  </span>
-<span class='va'>Ebenaceae</span>
-</div><div class='output co'>#&gt; object size: 8.8 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 11 
-#&gt; number of taxon concepts: 10 
-#&gt; trait entries: 0 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; concepts with parents: 9 
-#&gt; concepts with children: 3 
-#&gt; 
-#&gt; hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-#&gt; number of concepts in level form: 0
-#&gt; number of concepts in level variety: 0
-#&gt; number of concepts in level subspecies: 0
-#&gt; number of concepts in level species: 7
-#&gt; number of concepts in level complex: 0
-#&gt; number of concepts in level genus: 2
-#&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Ebenaceae</span>, <span class='st'>"all"</span>, maxsum<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 269 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55707 Euclea  
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 269 Euclea divinorum Hiern 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 50787 Euclea divinorum ssp. keniensis (R. E. Fr.) de Wit 
-#&gt; ------------------------------ 
-#&gt; concept ID: 50330 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 50330 Diospyros abyssinica (Hiern) F. White 
-#&gt; ------------------------------ 
-#&gt; concept ID: 51793 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 51793 Diospyros scabra (Chiov.) Cufod. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 52298 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 52298 Diospyros mespiliformis Hochst. ex A.DC. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 52403 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 52403 Diospyros tricolor (Schumach. &amp; Thonn.) Hiern 
-#&gt; ------------------------------ 
-#&gt; concept ID: 53547 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 53547 Diospyros ferrea (Willd.) Bakh. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 55171 
-#&gt; view ID: 2 
-#&gt; level: genus 
-#&gt; parent: 56051 Ebenaceae  
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 55173 Diospyros L. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 55707 
-#&gt; view ID: none 
-#&gt; level: genus 
-#&gt; parent: 56051 Ebenaceae  
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 55709 Euclea  
-#&gt; ------------------------------ 
-#&gt; concept ID: 56051 
-#&gt; view ID: 3 
-#&gt; level: family 
-#&gt; parent: none 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 56053 Ebenaceae  
-#&gt; ------------------------------ 
-#&gt; concept ID: 56052 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55707 Euclea  
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 56054 Euclea acutifolia E. Mey. ex A. DC. 
-#&gt; ------------------------------ </div><div class='input'>
-<span class='co'>## Display two Typha species</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Typha domingensis"</span>,<span class='st'>"Typha latifolia"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 50105 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55040 Typha L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 50105 Typha domingensis Pers. 
-#&gt; 
-#&gt; # synonyms (9): 
-#&gt; 51999 Typha australis Schumach. 
-#&gt; 53124 Typha angustifolia ssp. australis (Schumach.) Graebn. 
-#&gt; 53125 Typha aequalis Schnizl. 
-#&gt; 53126 Typha angustata Bory &amp; Chaub. 
-#&gt; 53127 Typha angustifolia ssp. angustata (Bory &amp; Chaub.) Briq. 
-#&gt; 53128 Typha angustata var. abyssinica Graebn. 
-#&gt; 53129 Typha angustata var. aethiopica Rohrb. 
-#&gt; 53130 Typha aethiopica (Rohrb.) Kronfeldt 
-#&gt; 53131 Typha schimperi Rohrb. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 573 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55040 Typha L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 573 Typha latifolia L. 
-#&gt; ------------------------------ </div><div class='input'>
-<span class='co'>## Update a concept</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 155 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54838 Corchorus L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 155 Corchorus olitorius L. 
-#&gt; ------------------------------ </div><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_concept</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>155</span>,
-    Level<span class='op'>=</span><span class='st'>"subspecies"</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 155 
-#&gt; view ID: 1 
-#&gt; level: subspecies 
-#&gt; parent: 54838 Corchorus L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 155 Corchorus olitorius L. 
-#&gt; ------------------------------ </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Subset for the genus Euclea and display of slot 'taxonNames'</span></span>
+<span class='r-in'><span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Euclea"</span>, <span class='va'>TaxonName</span><span class='op'>)</span>,</span>
+<span class='r-in'>    slot<span class='op'>=</span><span class='st'>"names"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Euclea</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>Euclea</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 7 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 0 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with parents: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with children: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level form: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level complex: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level family: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'>taxon_relations</span><span class='op'>(</span><span class='va'>Euclea</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      TaxonConceptID AcceptedName Basionym Parent   Level ViewID</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 267             269          269       NA  55707 species      1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3537          55707        55709       NA     NA   genus     NA</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Subset with family Ebenaceae and children</span></span>
+<span class='r-in'><span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Ebenaceae"</span>, <span class='va'>TaxonName</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_children.html'>get_children</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='va'>Ebenaceae</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>Ebenaceae</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 8.5 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 10 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 9 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 0 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with parents: 8 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with children: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level form: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level complex: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level family: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span>object<span class='op'>=</span><span class='va'>Ebenaceae</span>, ConceptID<span class='op'>=</span><span class='st'>"all"</span>, maxsum<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 269 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55707 Euclea  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 269 Euclea divinorum Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50787 Euclea divinorum ssp. keniensis (R. E. Fr.) de Wit </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 50330 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50330 Diospyros abyssinica (Hiern) F. White </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 51793 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51793 Diospyros scabra (Chiov.) Cufod. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 52298 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52298 Diospyros mespiliformis Hochst. ex A.DC. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 52403 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52403 Diospyros tricolor (Schumach. &amp; Thonn.) Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 53547 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53547 Diospyros ferrea (Willd.) Bakh. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 55171 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: genus </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 56051 Ebenaceae  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55173 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 55707 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: genus </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 56051 Ebenaceae  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55709 Euclea  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 56051 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56053 Ebenaceae  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Adding a new concept</span></span>
+<span class='r-in'><span class='va'>Ebenaceae</span> <span class='op'>&lt;-</span> <span class='fu'>add_concept</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Ebenaceae</span>, TaxonName<span class='op'>=</span><span class='st'>"Euclea acutifolia"</span>,</span>
+<span class='r-in'>    AuthorName<span class='op'>=</span><span class='st'>"E. Mey. ex A. DC."</span>, Level<span class='op'>=</span><span class='st'>"species"</span>, Parent<span class='op'>=</span><span class='fl'>55707</span>, ViewID<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## A summary again  </span></span>
+<span class='r-in'><span class='va'>Ebenaceae</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 8.8 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 11 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 10 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 0 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with parents: 9 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with children: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level form: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 7</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level complex: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level family: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Ebenaceae</span>, <span class='st'>"all"</span>, maxsum<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 269 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55707 Euclea  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 269 Euclea divinorum Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50787 Euclea divinorum ssp. keniensis (R. E. Fr.) de Wit </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 50330 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50330 Diospyros abyssinica (Hiern) F. White </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 51793 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51793 Diospyros scabra (Chiov.) Cufod. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 52298 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52298 Diospyros mespiliformis Hochst. ex A.DC. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 52403 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52403 Diospyros tricolor (Schumach. &amp; Thonn.) Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 53547 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53547 Diospyros ferrea (Willd.) Bakh. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 55171 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: genus </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 56051 Ebenaceae  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55173 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 55707 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: genus </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 56051 Ebenaceae  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55709 Euclea  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 56051 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56053 Ebenaceae  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 56052 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55707 Euclea  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56054 Euclea acutifolia E. Mey. ex A. DC. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Display two Typha species</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Typha domingensis"</span>,<span class='st'>"Typha latifolia"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 50105 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55040 Typha L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50105 Typha domingensis Pers. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (9): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51999 Typha australis Schumach. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53124 Typha angustifolia ssp. australis (Schumach.) Graebn. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53125 Typha aequalis Schnizl. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53126 Typha angustata Bory &amp; Chaub. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53127 Typha angustifolia ssp. angustata (Bory &amp; Chaub.) Briq. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53128 Typha angustata var. abyssinica Graebn. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53129 Typha angustata var. aethiopica Rohrb. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53130 Typha aethiopica (Rohrb.) Kronfeldt </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53131 Typha schimperi Rohrb. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 573 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55040 Typha L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 573 Typha latifolia L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Update a concept</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 155 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54838 Corchorus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 155 Corchorus olitorius L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_concept</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>155</span>,</span>
+<span class='r-in'>    Level<span class='op'>=</span><span class='st'>"subspecies"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Corchorus olitorius"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 155 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: subspecies </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54838 Corchorus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 155 Corchorus olitorius L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

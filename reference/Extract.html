@@ -59,8 +59,6 @@ taxlist objects." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -139,11 +137,11 @@ taxlist objects." />
 <a href='taxlist-class.html'>taxlist</a> objects.</p>
     </div>
 
-    <pre class="usage"># S4 method for taxlist
+    <div class="ref-usage sourceCode"><pre><code># S4 method for taxlist
 [(x, i, j, drop = FALSE)
 
 # S4 method for taxlist
-$(x, name)</pre>
+$(x, name)</code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,64 +186,66 @@ of the input <a href='taxlist-class.html'>taxlist</a> object.</p>
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Statistics on life forms</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   acropleustophyte        chamaephyte     climbing_plant facultative_annual 
-#&gt;                  8                 25                 25                 20 
-#&gt;    obligate_annual       phanerophyte   pleustohelophyte         reed_plant 
-#&gt;                114                 26                  8                 14 
-#&gt;      reptant_plant      tussock_plant               NA's 
-#&gt;                 19                 52               3576 </div><div class='input'>
-<span class='co'>## First ten concepts in this list</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='st'>"all"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 1 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: none 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 1 Abelmoschus esculentus (L.) Moench 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 52313 Hibiscus esculentus L. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 2 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: none 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 2 Abutilon indicum (L.) 
-#&gt; ------------------------------ 
-#&gt; concept ID: 3 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: none 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 3 Abutilon mauritianum (Jacq.) Medik. 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 50361 Pavonia patens (Andrews) Chiov. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 4 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: none 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 4 Acacia drepanolobium Harms ex Y. Sjöstedt 
-#&gt; ------------------------------ 
-#&gt; concept ID: 5 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: none 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 5 Acacia elatior Brenan 
-#&gt; ------------------------------ </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Statistics on life forms</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   acropleustophyte        chamaephyte     climbing_plant facultative_annual </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  8                 25                 25                 20 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    obligate_annual       phanerophyte   pleustohelophyte         reed_plant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                114                 26                  8                 14 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      reptant_plant      tussock_plant               NA's </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                 19                 52               3576 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## First ten concepts in this list</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, <span class='st'>"all"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Abelmoschus esculentus (L.) Moench </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52313 Hibiscus esculentus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 Abutilon indicum (L.) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 Abutilon mauritianum (Jacq.) Medik. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50361 Pavonia patens (Andrews) Chiov. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 4 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 Acacia drepanolobium Harms ex Y. Sjöstedt </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 5 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: none </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 Acacia elatior Brenan </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

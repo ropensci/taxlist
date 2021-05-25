@@ -58,8 +58,6 @@
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -137,7 +135,7 @@
     <p>Merge taxon concepts form a <a href='taxlist-class.html'>taxlist</a> object into single ones.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>merge_taxa</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>concepts</span>, <span class='va'>level</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>merge_taxa</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>concepts</span>, <span class='va'>level</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric,missing</span>
 <span class='fu'>merge_taxa</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>concepts</span>, print_output <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -148,7 +146,7 @@
 <span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
+<span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,91 +205,94 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Merge Cyperus papyrus and Cyperus dives</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>206</span>, <span class='fl'>197</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 206 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54853 Cyperus L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 206 Cyperus papyrus L. 
-#&gt; 
-#&gt; # synonyms (2): 
-#&gt; 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. 
-#&gt; 52613 Cyperus papyrus ssp. nyassicus Chiov. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 197 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54853 Cyperus L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 197 Cyperus dives Delile 
-#&gt; 
-#&gt; # synonyms (5): 
-#&gt; 52000 Cyperus immensus C.B. Clarke 
-#&gt; 52600 Cyperus exaltatus var. dives (Delile) C.B. Clarke 
-#&gt; 52601 Cyperus alopecuroides var. dives Boeckeler 
-#&gt; 52602 Cyperus immensus var. petherickii (C.B. Clarke) Kük. 
-#&gt; 52603 Cyperus petherickii C.B. Clarke 
-#&gt; ------------------------------ </div><div class='input'>
-<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>merge_taxa</span><span class='op'>(</span>object<span class='op'>=</span><span class='va'>Easplist</span>, concepts<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>206</span>, <span class='fl'>197</span><span class='op'>)</span>,
-    print_output<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 206 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54853 Cyperus L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 206 Cyperus papyrus L. 
-#&gt; 
-#&gt; # synonyms (8): 
-#&gt; 197 Cyperus dives Delile 
-#&gt; 52000 Cyperus immensus C.B. Clarke 
-#&gt; 52600 Cyperus exaltatus var. dives (Delile) C.B. Clarke 
-#&gt; 52601 Cyperus alopecuroides var. dives Boeckeler 
-#&gt; 52602 Cyperus immensus var. petherickii (C.B. Clarke) Kük. 
-#&gt; 52603 Cyperus petherickii C.B. Clarke 
-#&gt; 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. 
-#&gt; 52613 Cyperus papyrus ssp. nyassicus Chiov. 
-#&gt; ------------------------------ </div><div class='input'>
-<span class='co'>## Move the name Typha aethiopica to concept 573 (T. latifolia)</span>
-<span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fl'>53130</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fl'>573</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>50105</span>,<span class='fl'>573</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 50105 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55040 Typha L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 50105 Typha domingensis Pers. 
-#&gt; 
-#&gt; # synonyms (8): 
-#&gt; 51999 Typha australis Schumach. 
-#&gt; 53124 Typha angustifolia ssp. australis (Schumach.) Graebn. 
-#&gt; 53125 Typha aequalis Schnizl. 
-#&gt; 53126 Typha angustata Bory &amp; Chaub. 
-#&gt; 53127 Typha angustifolia ssp. angustata (Bory &amp; Chaub.) Briq. 
-#&gt; 53128 Typha angustata var. abyssinica Graebn. 
-#&gt; 53129 Typha angustata var. aethiopica Rohrb. 
-#&gt; 53131 Typha schimperi Rohrb. 
-#&gt; ------------------------------ 
-#&gt; concept ID: 573 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55040 Typha L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 573 Typha latifolia L. 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 53130 Typha aethiopica (Rohrb.) Kronfeldt 
-#&gt; ------------------------------ </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Merge Cyperus papyrus and Cyperus dives</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>206</span>, <span class='fl'>197</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 206 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54853 Cyperus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 206 Cyperus papyrus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (2): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52613 Cyperus papyrus ssp. nyassicus Chiov. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 197 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54853 Cyperus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 197 Cyperus dives Delile </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (5): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52000 Cyperus immensus C.B. Clarke </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52600 Cyperus exaltatus var. dives (Delile) C.B. Clarke </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52601 Cyperus alopecuroides var. dives Boeckeler </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52602 Cyperus immensus var. petherickii (C.B. Clarke) Kük. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52603 Cyperus petherickii C.B. Clarke </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>merge_taxa</span><span class='op'>(</span>object<span class='op'>=</span><span class='va'>Easplist</span>, concepts<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>206</span>, <span class='fl'>197</span><span class='op'>)</span>,</span>
+<span class='r-in'>    print_output<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 206 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54853 Cyperus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 206 Cyperus papyrus L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (8): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 197 Cyperus dives Delile </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52000 Cyperus immensus C.B. Clarke </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52600 Cyperus exaltatus var. dives (Delile) C.B. Clarke </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52601 Cyperus alopecuroides var. dives Boeckeler </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52602 Cyperus immensus var. petherickii (C.B. Clarke) Kük. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52603 Cyperus petherickii C.B. Clarke </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52613 Cyperus papyrus ssp. nyassicus Chiov. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Move the name Typha aethiopica to concept 573 (T. latifolia)</span></span>
+<span class='r-in'><span class='fu'>change_concept</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fl'>53130</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fl'>573</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>50105</span>,<span class='fl'>573</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 50105 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55040 Typha L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50105 Typha domingensis Pers. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (8): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51999 Typha australis Schumach. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53124 Typha angustifolia ssp. australis (Schumach.) Graebn. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53125 Typha aequalis Schnizl. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53126 Typha angustata Bory &amp; Chaub. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53127 Typha angustifolia ssp. angustata (Bory &amp; Chaub.) Briq. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53128 Typha angustata var. abyssinica Graebn. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53129 Typha angustata var. aethiopica Rohrb. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53131 Typha schimperi Rohrb. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 573 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55040 Typha L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 573 Typha latifolia L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53130 Typha aethiopica (Rohrb.) Kronfeldt </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

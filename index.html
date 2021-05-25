@@ -83,14 +83,14 @@
   <div class="contents col-md-9">
 <div id="taxlist-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#taxlist-" class="anchor"></a>taxlist <img src="reference/figures/taxlist_logo.png" height="150" align="right">
+<a href="#taxlist-" class="anchor" aria-hidden="true"></a>taxlist <img src="reference/figures/taxlist_logo.png" height="150" align="right">
 </h1></div>
 <!-- Budges -->
 
 <!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
+<a href="#introduction" class="anchor" aria-hidden="true"></a>Introduction</h2>
 <p><code>taxlist</code> is a package designed to handle and assess taxonomic lists in <strong>R</strong>, providing an object class and functions in <code>S4</code> language. The homonymous object class <code>taxlist</code> was originally designed as a module for taxa recorded in vegetation-plot observations (see <a href="https://github.com/ropensci/vegtable" class="external-link"><code>vegtable</code></a>), but became as an independent object with the ability of contain not only lists of species but also synonymy, hierarchical taxonomy, and functional traits (attributes of taxa).</p>
 <p>The main aim of this package is to keep consistence in taxonomic lists (a set of rules are checked by the function <code>validObject()</code>), to enable the re-arrangement of such data, and to statistically assess functional traits and other attributes, for instance taxonomy itself (function <code><a href="reference/tax2traits.html">tax2traits()</a></code> set taxonomic information as trait).</p>
 <p>While this package only includes a function for the import of taxonomic lists from <a href="https://www.synbiosys.alterra.nl/turboveg/" class="external-link">Turboveg</a>, almost any data source can be structured as <code>taxlist</code> object, so far the information is imported into data frames in an R session and the consistency rules are respected (validity).</p>
@@ -100,7 +100,7 @@
 </div>
 <div id="installing-taxlist" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installing-taxlist" class="anchor"></a>Installing taxlist</h2>
+<a href="#installing-taxlist" class="anchor" aria-hidden="true"></a>Installing taxlist</h2>
 <p>This package is available from the Comprehensive R Archive Network (<strong>CRAN</strong>) and can be directly installed within an R-session:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"taxlist"</span>, dependencies<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
@@ -114,7 +114,7 @@
 </div>
 <div id="building-taxlist-objects" class="section level2">
 <h2 class="hasAnchor">
-<a href="#building-taxlist-objects" class="anchor"></a>Building taxlist Objects</h2>
+<a href="#building-taxlist-objects" class="anchor" aria-hidden="true"></a>Building taxlist Objects</h2>
 <p>Objects can be built step-by-step as in the following example. For it, we will use as reference the “Ferns of Chile” (original in Spanish: “Helechos de Chile”) by <strong>Gunkel (1984)</strong>. We will create an empty <code>taxlist</code> object using the function <code>new()</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cran.r-project.org/package=taxlist" class="external-link">taxlist</a></span><span class="op">)</span>
@@ -224,7 +224,7 @@
 </div>
 <div id="indented-lists" class="section level2">
 <h2 class="hasAnchor">
-<a href="#indented-lists" class="anchor"></a>Indented lists</h2>
+<a href="#indented-lists" class="anchor" aria-hidden="true"></a>Indented lists</h2>
 <p>A feature implemented in version 0.2.1 is the function <code><a href="reference/indented_list.html">indented_list()</a></code>, which provides a better display on the hierarchical strucutre of <code>taxlist</code> objects.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/indented_list.html">indented_list</a></span><span class="op">(</span><span class="va">Fern</span><span class="op">)</span>
@@ -235,7 +235,7 @@
 </div>
 <div id="from-data-frame-to-taxlist" class="section level2">
 <h2 class="hasAnchor">
-<a href="#from-data-frame-to-taxlist" class="anchor"></a>From data frame to taxlist</h2>
+<a href="#from-data-frame-to-taxlist" class="anchor" aria-hidden="true"></a>From data frame to taxlist</h2>
 <p>A more convenient way is to create an object from a data frame including both, the taxon concepts with their accepted names and the taxonomic ranks with parent-child relationships. In the case of the last example, the required data frame looks like this one:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Fern_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
@@ -283,7 +283,7 @@
 </div>
 <div id="similar-packages" class="section level2">
 <h2 class="hasAnchor">
-<a href="#similar-packages" class="anchor"></a>Similar Packages</h2>
+<a href="#similar-packages" class="anchor" aria-hidden="true"></a>Similar Packages</h2>
 <p>The package <code>taxlist</code> shares similar objectives with the package <a href="https://github.com/ropensci/taxa" class="external-link"><code>taxa</code></a>, but uses different approaches for object oriented programming in <strong>R</strong>, namely <code>taxlist</code> applies <strong>S4</strong> while <code>taxa</code> uses <strong>R6</strong>. Additionally, <code>taxa</code> is rather developer-oriented, while <code>taxlist</code> is rather a user-oriented package.</p>
 <p>In following cases you may prefer to use <code>taxlist</code>:</p>
 <ul>
@@ -296,7 +296,7 @@
 </div>
 <div id="rmarkdown-integration" class="section level2">
 <h2 class="hasAnchor">
-<a href="#rmarkdown-integration" class="anchor"></a>Rmarkdown Integration</h2>
+<a href="#rmarkdown-integration" class="anchor" aria-hidden="true"></a>Rmarkdown Integration</h2>
 <p>As mentioned before, <code>taxlist</code> objects can be also used for writing rmarkdown documents (see <a href="https://dx.doi.org/10.13140/RG.2.2.36713.90728" class="external-link">this poster</a>). For instance you can insert your objects at the beginning of the document with a hidden chunk:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="bn">```{r  echo=FALSE, message=FALSE, warning=FALSE}</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="bn">library(taxlist)</span></span>
@@ -306,7 +306,7 @@
 </div>
 <div id="descriptive-statistics" class="section level2">
 <h2 class="hasAnchor">
-<a href="#descriptive-statistics" class="anchor"></a>Descriptive Statistics</h2>
+<a href="#descriptive-statistics" class="anchor" aria-hidden="true"></a>Descriptive Statistics</h2>
 <p>Information located in the slot <strong>taxonTraits</strong> are suitable for statistical assessments. For instance, in the installed object <code>Easplist</code> a column called <strong>lf_behn_2018</strong> includes a classification of macrophytes into different life forms. To know the frequency of these life forms in the <code>Easplist</code>, we can use the function <code><a href="reference/count_taxa.html">count_taxa()</a></code>:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># how man taxa in 'Easplist'</span>
@@ -359,7 +359,7 @@
 </div>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
-<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
+<a href="#acknowledgements" class="anchor" aria-hidden="true"></a>Acknowledgements</h2>
 <p>The author thanks <strong>Stephan Hennekens</strong>, developer of <a href="http://www.synbiosys.alterra.nl/turboveg/" class="external-link">Turboveg</a>, for his patience and great support finding a common language between <strong>R</strong> and <strong>Turboveg</strong>, as well as for his advices on formatting our taxonomic list <strong>EA-Splist</strong>.</p>
 <p>Also thanks to <strong>Federico Luebert</strong> for the fruitful discussions regarding the terminology used in this project.</p>
 </div>

@@ -59,8 +59,6 @@ taxlist objects in an indented list." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -139,7 +137,7 @@ taxlist objects in an indented list." />
 <a href='taxlist-class.html'>taxlist</a> objects in an indented list.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
 <span class='fu'>indented_list</span><span class='op'>(</span>
@@ -158,7 +156,7 @@ taxlist objects in an indented list." />
   <span class='va'>secundum</span>,
   alphabetical <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>...</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -256,20 +254,22 @@ assigned to an object.</p>
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Show taxonomy of papyrus</span>
-<span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"papyrus"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Cyperaceae Juss.
-#&gt;  Cyperus L.
-#&gt;    Cyperus papyrus L. </div><div class='input'>
-<span class='co'>## Include synonyms and taxon views</span>
-<span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"papyrus"</span>, level <span class='op'>=</span> <span class='cn'>TRUE</span>, synonyms <span class='op'>=</span> <span class='cn'>TRUE</span>,
-    secundum <span class='op'>=</span> <span class='st'>"secundum"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; family Cyperaceae Juss. sec. The Plant List (2013)
-#&gt;  genus Cyperus L. sec. Taxonomic Name Resolution Service (2018)
-#&gt;    species Cyperus papyrus L. sec. African Plant Database (2012)
-#&gt;    = Cyperus papyrus ssp. antiquorum (Willd.) Chiov.
-#&gt;    = Cyperus papyrus ssp. nyassicus Chiov. </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Show taxonomy of papyrus</span></span>
+<span class='r-in'><span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"papyrus"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Cyperaceae Juss.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Cyperus L.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    Cyperus papyrus L. </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Include synonyms and taxon views</span></span>
+<span class='r-in'><span class='fu'>indented_list</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"papyrus"</span>, level <span class='op'>=</span> <span class='cn'>TRUE</span>, synonyms <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span class='r-in'>    secundum <span class='op'>=</span> <span class='st'>"secundum"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> family Cyperaceae Juss. sec. The Plant List (2013)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  genus Cyperus L. sec. Taxonomic Name Resolution Service (2018)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    species Cyperus papyrus L. sec. African Plant Database (2012)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    = Cyperus papyrus ssp. antiquorum (Willd.) Chiov.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    = Cyperus papyrus ssp. nyassicus Chiov. </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

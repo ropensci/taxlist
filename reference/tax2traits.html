@@ -61,8 +61,6 @@ such information in the slot taxonTraits." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -143,10 +141,10 @@ Nevertheless, for statistical analyses it may be more convenient to insert
 such information in the slot <code>taxonTraits</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tax2traits</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>tax2traits</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>tax2traits</span><span class='op'>(</span><span class='va'>object</span>, get_names <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>tax2traits</span><span class='op'>(</span><span class='va'>object</span>, get_names <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,49 +177,51 @@ relationships and information on taxonomic levels.</p>
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Family Acanthaceae with children</span>
-<span class='va'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='va'>TaxonName</span> <span class='op'>==</span> <span class='st'>"Acanthaceae"</span>,
-    slot<span class='op'>=</span><span class='st'>"names"</span>, keep_children<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Acanthaceae</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; object size: 29.9 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 143 
-#&gt; number of taxon concepts: 113 
-#&gt; trait entries: 9 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; concepts with parents: 112 
-#&gt; concepts with children: 28 
-#&gt; 
-#&gt; hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-#&gt; number of concepts in level form: 0
-#&gt; number of concepts in level variety: 2
-#&gt; number of concepts in level subspecies: 3
-#&gt; number of concepts in level species: 84
-#&gt; number of concepts in level complex: 0
-#&gt; number of concepts in level genus: 23
-#&gt; number of concepts in level family: 1
-#&gt; </div><div class='input'>
-<span class='co'>## Insert taxonomy to taxon traits</span>
-<span class='va'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'>tax2traits</span><span class='op'>(</span><span class='va'>Acanthaceae</span>, get_names<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='taxon_traits.html'>taxon_traits</a></span><span class='op'>(</span><span class='va'>Acanthaceae</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     TaxonConceptID    lf_behn_2018 variety subspecies               species
-#&gt; 14              59 obligate_annual    &lt;NA&gt;       &lt;NA&gt;   Asystasia gangetica
-#&gt; 15              60 obligate_annual    &lt;NA&gt;       &lt;NA&gt;  Asystasia mysurensis
-#&gt; 97             319 obligate_annual    &lt;NA&gt;       &lt;NA&gt; Hygrophila auriculata
-#&gt; 108            341    phanerophyte    &lt;NA&gt;       &lt;NA&gt;     Justicia betonica
-#&gt; 238          50264  climbing_plant    &lt;NA&gt;       &lt;NA&gt;      Thunbergia alata
-#&gt; 241          50423    phanerophyte    &lt;NA&gt;       &lt;NA&gt;    Hypoestes aristata
-#&gt;          genus      family
-#&gt; 14   Asystasia Acanthaceae
-#&gt; 15   Asystasia Acanthaceae
-#&gt; 97  Hygrophila Acanthaceae
-#&gt; 108   Justicia Acanthaceae
-#&gt; 238 Thunbergia Acanthaceae
-#&gt; 241  Hypoestes Acanthaceae</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Family Acanthaceae with children</span></span>
+<span class='r-in'><span class='va'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='va'>TaxonName</span> <span class='op'>==</span> <span class='st'>"Acanthaceae"</span>,</span>
+<span class='r-in'>    slot<span class='op'>=</span><span class='st'>"names"</span>, keep_children<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Acanthaceae</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 29.9 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 143 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 113 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 9 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with parents: 112 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with children: 28 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level form: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 84</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level complex: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level family: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Insert taxonomy to taxon traits</span></span>
+<span class='r-in'><span class='va'>Acanthaceae</span> <span class='op'>&lt;-</span> <span class='fu'>tax2traits</span><span class='op'>(</span><span class='va'>Acanthaceae</span>, get_names<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='taxon_traits.html'>taxon_traits</a></span><span class='op'>(</span><span class='va'>Acanthaceae</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     TaxonConceptID    lf_behn_2018 variety subspecies               species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14              59 obligate_annual    &lt;NA&gt;       &lt;NA&gt;   Asystasia gangetica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15              60 obligate_annual    &lt;NA&gt;       &lt;NA&gt;  Asystasia mysurensis</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 97             319 obligate_annual    &lt;NA&gt;       &lt;NA&gt; Hygrophila auriculata</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 108            341    phanerophyte    &lt;NA&gt;       &lt;NA&gt;     Justicia betonica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 238          50264  climbing_plant    &lt;NA&gt;       &lt;NA&gt;      Thunbergia alata</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 241          50423    phanerophyte    &lt;NA&gt;       &lt;NA&gt;    Hypoestes aristata</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          genus      family</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14   Asystasia Acanthaceae</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15   Asystasia Acanthaceae</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 97  Hygrophila Acanthaceae</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 108   Justicia Acanthaceae</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 238 Thunbergia Acanthaceae</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 241  Hypoestes Acanthaceae</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

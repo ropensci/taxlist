@@ -60,8 +60,6 @@ These functions assist on the access and modification of entries for names." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -141,7 +139,7 @@ taxon usage names for the respective taxon.
 These functions assist on the access and modification of entries for names.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
 <span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -164,7 +162,7 @@ These functions assist on the access and modification of entries for names.</p>
 <span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist,numeric</span>
-<span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>taxlist</span>, <span class='va'>UsageID</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,108 +216,115 @@ For adding new taxon concepts as well you should use <code><a href='taxon_relati
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Display of slot 'taxonNames'</span>
-<span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Euclea"</span>, <span class='va'>TaxonName</span><span class='op'>)</span>,
-    slot<span class='op'>=</span><span class='st'>"names"</span>, keep_children<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>Euclea</span>
-</div><div class='output co'>#&gt; object size: 7 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 3 
-#&gt; number of taxon concepts: 2 
-#&gt; trait entries: 0 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; concepts with parents: 1 
-#&gt; concepts with children: 1 
-#&gt; 
-#&gt; hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-#&gt; number of concepts in level form: 0
-#&gt; number of concepts in level variety: 0
-#&gt; number of concepts in level subspecies: 0
-#&gt; number of concepts in level species: 1
-#&gt; number of concepts in level complex: 0
-#&gt; number of concepts in level genus: 1
-#&gt; number of concepts in level family: 0
-#&gt; </div><div class='input'><span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>Euclea</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      TaxonUsageID TaxonConceptID                       TaxonName
-#&gt; 297           269            269                Euclea divinorum
-#&gt; 298         50787            269 Euclea divinorum ssp. keniensis
-#&gt; 5043        55709          55707                          Euclea
-#&gt;              AuthorName
-#&gt; 297               Hiern
-#&gt; 298  (R. E. Fr.) de Wit
-#&gt; 5043                   </div><div class='input'>
-<span class='co'>## Insert a synonym to Diospyros scabra</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Diospyros scabra"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 51793 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 51793 Diospyros scabra (Chiov.) Cufod. 
-#&gt; ------------------------------ </div><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_synonym</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>51793</span>,
-    TaxonName<span class='op'>=</span><span class='st'>"Maba scabra"</span>, AuthorName<span class='op'>=</span><span class='st'>"Chiov."</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Diospyros scabra"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 51793 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 55171 Diospyros L. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 51793 Diospyros scabra (Chiov.) Cufod. 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 56139 Maba scabra Chiov. 
-#&gt; ------------------------------ </div><div class='input'>
-<span class='co'>## Delete a synonym of Launaea cornuta</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 355 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54923 Launaea Cass. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey 
-#&gt; 
-#&gt; # synonyms (2): 
-#&gt; 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. 
-#&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fl'>53821</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 355 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54923 Launaea Cass. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'>
-<span class='co'>## Hypothetical correction in author name in Launaea cornuta</span>
-<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_name</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, UsageID<span class='op'>=</span><span class='fl'>355</span>, AuthorName<span class='op'>=</span><span class='st'>"L."</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ------------------------------ 
-#&gt; concept ID: 355 
-#&gt; view ID: 1 
-#&gt; level: species 
-#&gt; parent: 54923 Launaea Cass. 
-#&gt; 
-#&gt; # accepted name: 
-#&gt; 355 Launaea cornuta L. 
-#&gt; 
-#&gt; # synonyms (1): 
-#&gt; 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern 
-#&gt; ------------------------------ </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Display of slot 'taxonNames'</span></span>
+<span class='r-in'><span class='va'>Euclea</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/charmatch.html'>charmatch</a></span><span class='op'>(</span><span class='st'>"Euclea"</span>, <span class='va'>TaxonName</span><span class='op'>)</span>,</span>
+<span class='r-in'>    slot<span class='op'>=</span><span class='st'>"names"</span>, keep_children<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>Euclea</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 7 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 0 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with parents: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with children: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level form: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level complex: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level family: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'>taxon_names</span><span class='op'>(</span><span class='va'>Euclea</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      TaxonUsageID TaxonConceptID                       TaxonName</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 297           269            269                Euclea divinorum</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 298         50787            269 Euclea divinorum ssp. keniensis</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5043        55709          55707                          Euclea</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>              AuthorName</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 297               Hiern</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 298  (R. E. Fr.) de Wit</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5043                   </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Insert a synonym to Diospyros scabra</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Diospyros scabra"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 51793 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51793 Diospyros scabra (Chiov.) Cufod. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>add_synonym</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, ConceptID<span class='op'>=</span><span class='fl'>51793</span>,</span>
+<span class='r-in'>    TaxonName<span class='op'>=</span><span class='st'>"Maba scabra"</span>, AuthorName<span class='op'>=</span><span class='st'>"Chiov."</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Diospyros scabra"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 51793 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 55171 Diospyros L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51793 Diospyros scabra (Chiov.) Cufod. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56139 Maba scabra Chiov. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Delete a synonym of Launaea cornuta</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 355 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54923 Launaea Cass. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (2): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53821 Sonchus exauriculatus (Oliv. &amp; Hiern) O. Hoffm. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>delete_name</span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='fl'>53821</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 355 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54923 Launaea Cass. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 355 Launaea cornuta (Hochst. ex Oliv. &amp; Hiern) C. Jeffrey </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Hypothetical correction in author name in Launaea cornuta</span></span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>update_name</span><span class='op'>(</span>taxlist<span class='op'>=</span><span class='va'>Easplist</span>, UsageID<span class='op'>=</span><span class='fl'>355</span>, AuthorName<span class='op'>=</span><span class='st'>"L."</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span>, <span class='st'>"Launaea cornuta"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concept ID: 355 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> view ID: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> level: species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> parent: 54923 Launaea Cass. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # accepted name: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 355 Launaea cornuta L. </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # synonyms (1): </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53843 Sonchus bipontini var. pinnatifidus Oliv. &amp; Hiern </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ------------------------------ </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

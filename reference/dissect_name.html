@@ -64,8 +64,6 @@ re-pasted if indicated in argument repaste." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -149,7 +147,7 @@ the number of elements may suggest the taxonomic ranks.</p>
 re-pasted if indicated in argument <code>repaste</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>" "</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>repaste</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>" "</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>repaste</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,30 +179,32 @@ If <code>repaste</code> is indicated, then the output will be a character vector
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='va'>Level</span> <span class='op'>==</span> <span class='st'>"variety"</span>, slot<span class='op'>=</span><span class='st'>"relations"</span><span class='op'>)</span>
-<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>,<span class='st'>"TaxonName"</span><span class='op'>]</span>
-
-<span class='co'># split name</span>
-<span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;       [,1]          [,2]            [,3]   [,4]               
-#&gt;  [1,] "Euphorbia"   "inaequilatera" "var." "dentata"          
-#&gt;  [2,] "Oldenlandia" "corymbosa"     "var." "caespitosa"       
-#&gt;  [3,] "Pilea"       "usambarensis"  "var." "veronicifolia"    
-#&gt;  [4,] "Trifolium"   "semipilosum"   "var." "glabrescens"      
-#&gt;  [5,] "Pentas"      "lanceolata"    "var." "nemorosa"         
-#&gt;  [6,] "Stachys"     "aculeolata"    "var." "aculeolata"       
-#&gt;  [7,] "Pimpinella"  "oreophila"     "var." "kilimandscharica" 
-#&gt;  [8,] "Cyperus"     "denudatus"     "var." "lucenti-nigricans"
-#&gt;  [9,] "Achyranthes" "aspera"        "var." "sicula"           
-#&gt; [10,] "Digitaria"   "diagonalis"    "var." "uniglumis"        </div><div class='input'>
-<span class='co'># re-paste the two first words</span>
-<span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>Easplist</span>, repaste<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "Euphorbia inaequilatera" "Oldenlandia corymbosa"  
-#&gt;  [3] "Pilea usambarensis"      "Trifolium semipilosum"  
-#&gt;  [5] "Pentas lanceolata"       "Stachys aculeolata"     
-#&gt;  [7] "Pimpinella oreophila"    "Cyperus denudatus"      
-#&gt;  [9] "Achyranthes aspera"      "Digitaria diagonalis"   </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subset.html'>subset</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Easplist</span>, subset<span class='op'>=</span><span class='va'>Level</span> <span class='op'>==</span> <span class='st'>"variety"</span>, slot<span class='op'>=</span><span class='st'>"relations"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='accepted_name.html'>accepted_name</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>,<span class='st'>"TaxonName"</span><span class='op'>]</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># split name</span></span>
+<span class='r-in'><span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       [,1]          [,2]            [,3]   [,4]               </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1,] "Euphorbia"   "inaequilatera" "var." "dentata"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2,] "Oldenlandia" "corymbosa"     "var." "caespitosa"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3,] "Pilea"       "usambarensis"  "var." "veronicifolia"    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4,] "Trifolium"   "semipilosum"   "var." "glabrescens"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5,] "Pentas"      "lanceolata"    "var." "nemorosa"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6,] "Stachys"     "aculeolata"    "var." "aculeolata"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7,] "Pimpinella"  "oreophila"     "var." "kilimandscharica" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8,] "Cyperus"     "denudatus"     "var." "lucenti-nigricans"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9,] "Achyranthes" "aspera"        "var." "sicula"           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10,] "Digitaria"   "diagonalis"    "var." "uniglumis"        </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># re-paste the two first words</span></span>
+<span class='r-in'><span class='fu'>dissect_name</span><span class='op'>(</span><span class='va'>Easplist</span>, repaste<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "Euphorbia inaequilatera" "Oldenlandia corymbosa"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "Pilea usambarensis"      "Trifolium semipilosum"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "Pentas lanceolata"       "Stachys aculeolata"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "Pimpinella oreophila"    "Cyperus denudatus"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "Achyranthes aspera"      "Digitaria diagonalis"   </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

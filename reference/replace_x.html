@@ -69,8 +69,6 @@ sharing only part of the columns." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -159,13 +157,13 @@ This function will be used when a new table is appended to another but
 sharing only part of the columns.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>replace_x</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>replace_x</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span>
 
 <span class='fu'>replace_idx</span><span class='op'>(</span><span class='va'>x</span>, idx1 <span class='op'>=</span> <span class='va'>x</span>, idx2 <span class='op'>=</span> <span class='va'>idx1</span>, <span class='va'>new</span><span class='op'>)</span>
 
 <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>idx1</span>, idx2 <span class='op'>=</span> <span class='va'>idx1</span>, <span class='va'>new</span><span class='op'>)</span>
 
-<span class='fu'>insert_rows</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span></pre>
+<span class='fu'>insert_rows</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,221 +202,228 @@ equivalent to <code>idx1</code>.</p></td>
     <p>Miguel Alvarez.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Replace values in vector</span>
-<span class='fu'>replace_x</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, old<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"p"</span>, <span class='st'>"f"</span><span class='op'>)</span>, new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"bee"</span>, <span class='st'>"pork"</span>, <span class='st'>"fungus"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "a"      "bee"    "c"      "d"      "e"      "fungus" "g"      "h"     
-#&gt;  [9] "i"      "j"      "k"      "l"      "m"      "n"      "o"      "pork"  
-#&gt; [17] "q"      "r"      "s"      "t"      "u"      "v"      "w"      "x"     
-#&gt; [25] "y"      "z"     </div><div class='input'>
-<span class='co'>## Replace values using indices</span>
-<span class='fu'>replace_idx</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, idx1<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, idx2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>17</span><span class='op'>)</span>,
-    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"second"</span>, <span class='st'>"seventh"</span>, <span class='st'>"seventeenth"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "a"           "second"      "c"           "d"           "e"          
-#&gt;  [6] "f"           "seventh"     "h"           "i"           "j"          
-#&gt; [11] "k"           "l"           "m"           "n"           "o"          
-#&gt; [16] "p"           "seventeenth" "r"           "s"           "t"          
-#&gt; [21] "u"           "v"           "w"           "x"           "y"          
-#&gt; [26] "z"          </div><div class='input'>
-<span class='co'>## Replace values if they are NAs</span>
-<span class='va'>letters</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
-<span class='fu'>replace_na</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, idx1<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, idx2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,
-    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"zeta"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "a"    "beta" "c"    "d"    "e"    "f"    "g"    "h"    "i"    "j"   
-#&gt; [11] "k"    "l"    "m"    "n"    "o"    "p"    "q"    "r"    "s"    "t"   
-#&gt; [21] "u"    "v"    "w"    "x"    "y"    "z"   </div><div class='input'>
-<span class='co'>## The same applications but this time for functional traits</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   acropleustophyte        chamaephyte     climbing_plant facultative_annual 
-#&gt;                  8                 25                 25                 20 
-#&gt;    obligate_annual       phanerophyte   pleustohelophyte         reed_plant 
-#&gt;                114                 26                  8                 14 
-#&gt;      reptant_plant      tussock_plant               NA's 
-#&gt;                 19                 52               3576 </div><div class='input'>
-<span class='co'># Merge annuals</span>
-<span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_x</span><span class='op'>(</span>
-    x<span class='op'>=</span><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span>,
-    old<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"obligate_annual"</span>, <span class='st'>"facultative_annual"</span><span class='op'>)</span>,
-    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"annual"</span>, <span class='st'>"annual"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lifeform</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; acropleustophyte           annual      chamaephyte   climbing_plant 
-#&gt;                8              134               25               25 
-#&gt;     phanerophyte pleustohelophyte       reed_plant    reptant_plant 
-#&gt;               26                8               14               19 
-#&gt;    tussock_plant             NA's 
-#&gt;               52             3576 </div><div class='input'>
-<span class='co'># The same effect</span>
-<span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_idx</span><span class='op'>(</span>
-    x<span class='op'>=</span><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span>,
-    idx1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"annual"</span>, <span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span>,
-    idx2<span class='op'>=</span><span class='cn'>TRUE</span>,
-    new<span class='op'>=</span><span class='st'>"annual"</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lifeform</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; acropleustophyte           annual      chamaephyte   climbing_plant 
-#&gt;                8              134               25               25 
-#&gt;     phanerophyte pleustohelophyte       reed_plant    reptant_plant 
-#&gt;               26                8               14               19 
-#&gt;    tussock_plant             NA's 
-#&gt;               52             3576 </div><div class='input'> 
-<span class='co'>## Merge data frames including new columns</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-<span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span><span class='op'>)</span>
-<span class='va'>new_iris</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>Species<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"humilis"</span>, <span class='fl'>2</span><span class='op'>)</span>, Height<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>,<span class='fl'>20</span><span class='op'>)</span>,
-    stringsAsFactors<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='fu'>insert_rows</span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>new_iris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species Height
-#&gt; 1            5.1         3.5          1.4         0.2     setosa     NA
-#&gt; 2            4.9         3.0          1.4         0.2     setosa     NA
-#&gt; 3            4.7         3.2          1.3         0.2     setosa     NA
-#&gt; 4            4.6         3.1          1.5         0.2     setosa     NA
-#&gt; 5            5.0         3.6          1.4         0.2     setosa     NA
-#&gt; 6            5.4         3.9          1.7         0.4     setosa     NA
-#&gt; 7            4.6         3.4          1.4         0.3     setosa     NA
-#&gt; 8            5.0         3.4          1.5         0.2     setosa     NA
-#&gt; 9            4.4         2.9          1.4         0.2     setosa     NA
-#&gt; 10           4.9         3.1          1.5         0.1     setosa     NA
-#&gt; 11           5.4         3.7          1.5         0.2     setosa     NA
-#&gt; 12           4.8         3.4          1.6         0.2     setosa     NA
-#&gt; 13           4.8         3.0          1.4         0.1     setosa     NA
-#&gt; 14           4.3         3.0          1.1         0.1     setosa     NA
-#&gt; 15           5.8         4.0          1.2         0.2     setosa     NA
-#&gt; 16           5.7         4.4          1.5         0.4     setosa     NA
-#&gt; 17           5.4         3.9          1.3         0.4     setosa     NA
-#&gt; 18           5.1         3.5          1.4         0.3     setosa     NA
-#&gt; 19           5.7         3.8          1.7         0.3     setosa     NA
-#&gt; 20           5.1         3.8          1.5         0.3     setosa     NA
-#&gt; 21           5.4         3.4          1.7         0.2     setosa     NA
-#&gt; 22           5.1         3.7          1.5         0.4     setosa     NA
-#&gt; 23           4.6         3.6          1.0         0.2     setosa     NA
-#&gt; 24           5.1         3.3          1.7         0.5     setosa     NA
-#&gt; 25           4.8         3.4          1.9         0.2     setosa     NA
-#&gt; 26           5.0         3.0          1.6         0.2     setosa     NA
-#&gt; 27           5.0         3.4          1.6         0.4     setosa     NA
-#&gt; 28           5.2         3.5          1.5         0.2     setosa     NA
-#&gt; 29           5.2         3.4          1.4         0.2     setosa     NA
-#&gt; 30           4.7         3.2          1.6         0.2     setosa     NA
-#&gt; 31           4.8         3.1          1.6         0.2     setosa     NA
-#&gt; 32           5.4         3.4          1.5         0.4     setosa     NA
-#&gt; 33           5.2         4.1          1.5         0.1     setosa     NA
-#&gt; 34           5.5         4.2          1.4         0.2     setosa     NA
-#&gt; 35           4.9         3.1          1.5         0.2     setosa     NA
-#&gt; 36           5.0         3.2          1.2         0.2     setosa     NA
-#&gt; 37           5.5         3.5          1.3         0.2     setosa     NA
-#&gt; 38           4.9         3.6          1.4         0.1     setosa     NA
-#&gt; 39           4.4         3.0          1.3         0.2     setosa     NA
-#&gt; 40           5.1         3.4          1.5         0.2     setosa     NA
-#&gt; 41           5.0         3.5          1.3         0.3     setosa     NA
-#&gt; 42           4.5         2.3          1.3         0.3     setosa     NA
-#&gt; 43           4.4         3.2          1.3         0.2     setosa     NA
-#&gt; 44           5.0         3.5          1.6         0.6     setosa     NA
-#&gt; 45           5.1         3.8          1.9         0.4     setosa     NA
-#&gt; 46           4.8         3.0          1.4         0.3     setosa     NA
-#&gt; 47           5.1         3.8          1.6         0.2     setosa     NA
-#&gt; 48           4.6         3.2          1.4         0.2     setosa     NA
-#&gt; 49           5.3         3.7          1.5         0.2     setosa     NA
-#&gt; 50           5.0         3.3          1.4         0.2     setosa     NA
-#&gt; 51           7.0         3.2          4.7         1.4 versicolor     NA
-#&gt; 52           6.4         3.2          4.5         1.5 versicolor     NA
-#&gt; 53           6.9         3.1          4.9         1.5 versicolor     NA
-#&gt; 54           5.5         2.3          4.0         1.3 versicolor     NA
-#&gt; 55           6.5         2.8          4.6         1.5 versicolor     NA
-#&gt; 56           5.7         2.8          4.5         1.3 versicolor     NA
-#&gt; 57           6.3         3.3          4.7         1.6 versicolor     NA
-#&gt; 58           4.9         2.4          3.3         1.0 versicolor     NA
-#&gt; 59           6.6         2.9          4.6         1.3 versicolor     NA
-#&gt; 60           5.2         2.7          3.9         1.4 versicolor     NA
-#&gt; 61           5.0         2.0          3.5         1.0 versicolor     NA
-#&gt; 62           5.9         3.0          4.2         1.5 versicolor     NA
-#&gt; 63           6.0         2.2          4.0         1.0 versicolor     NA
-#&gt; 64           6.1         2.9          4.7         1.4 versicolor     NA
-#&gt; 65           5.6         2.9          3.6         1.3 versicolor     NA
-#&gt; 66           6.7         3.1          4.4         1.4 versicolor     NA
-#&gt; 67           5.6         3.0          4.5         1.5 versicolor     NA
-#&gt; 68           5.8         2.7          4.1         1.0 versicolor     NA
-#&gt; 69           6.2         2.2          4.5         1.5 versicolor     NA
-#&gt; 70           5.6         2.5          3.9         1.1 versicolor     NA
-#&gt; 71           5.9         3.2          4.8         1.8 versicolor     NA
-#&gt; 72           6.1         2.8          4.0         1.3 versicolor     NA
-#&gt; 73           6.3         2.5          4.9         1.5 versicolor     NA
-#&gt; 74           6.1         2.8          4.7         1.2 versicolor     NA
-#&gt; 75           6.4         2.9          4.3         1.3 versicolor     NA
-#&gt; 76           6.6         3.0          4.4         1.4 versicolor     NA
-#&gt; 77           6.8         2.8          4.8         1.4 versicolor     NA
-#&gt; 78           6.7         3.0          5.0         1.7 versicolor     NA
-#&gt; 79           6.0         2.9          4.5         1.5 versicolor     NA
-#&gt; 80           5.7         2.6          3.5         1.0 versicolor     NA
-#&gt; 81           5.5         2.4          3.8         1.1 versicolor     NA
-#&gt; 82           5.5         2.4          3.7         1.0 versicolor     NA
-#&gt; 83           5.8         2.7          3.9         1.2 versicolor     NA
-#&gt; 84           6.0         2.7          5.1         1.6 versicolor     NA
-#&gt; 85           5.4         3.0          4.5         1.5 versicolor     NA
-#&gt; 86           6.0         3.4          4.5         1.6 versicolor     NA
-#&gt; 87           6.7         3.1          4.7         1.5 versicolor     NA
-#&gt; 88           6.3         2.3          4.4         1.3 versicolor     NA
-#&gt; 89           5.6         3.0          4.1         1.3 versicolor     NA
-#&gt; 90           5.5         2.5          4.0         1.3 versicolor     NA
-#&gt; 91           5.5         2.6          4.4         1.2 versicolor     NA
-#&gt; 92           6.1         3.0          4.6         1.4 versicolor     NA
-#&gt; 93           5.8         2.6          4.0         1.2 versicolor     NA
-#&gt; 94           5.0         2.3          3.3         1.0 versicolor     NA
-#&gt; 95           5.6         2.7          4.2         1.3 versicolor     NA
-#&gt; 96           5.7         3.0          4.2         1.2 versicolor     NA
-#&gt; 97           5.7         2.9          4.2         1.3 versicolor     NA
-#&gt; 98           6.2         2.9          4.3         1.3 versicolor     NA
-#&gt; 99           5.1         2.5          3.0         1.1 versicolor     NA
-#&gt; 100          5.7         2.8          4.1         1.3 versicolor     NA
-#&gt; 101          6.3         3.3          6.0         2.5  virginica     NA
-#&gt; 102          5.8         2.7          5.1         1.9  virginica     NA
-#&gt; 103          7.1         3.0          5.9         2.1  virginica     NA
-#&gt; 104          6.3         2.9          5.6         1.8  virginica     NA
-#&gt; 105          6.5         3.0          5.8         2.2  virginica     NA
-#&gt; 106          7.6         3.0          6.6         2.1  virginica     NA
-#&gt; 107          4.9         2.5          4.5         1.7  virginica     NA
-#&gt; 108          7.3         2.9          6.3         1.8  virginica     NA
-#&gt; 109          6.7         2.5          5.8         1.8  virginica     NA
-#&gt; 110          7.2         3.6          6.1         2.5  virginica     NA
-#&gt; 111          6.5         3.2          5.1         2.0  virginica     NA
-#&gt; 112          6.4         2.7          5.3         1.9  virginica     NA
-#&gt; 113          6.8         3.0          5.5         2.1  virginica     NA
-#&gt; 114          5.7         2.5          5.0         2.0  virginica     NA
-#&gt; 115          5.8         2.8          5.1         2.4  virginica     NA
-#&gt; 116          6.4         3.2          5.3         2.3  virginica     NA
-#&gt; 117          6.5         3.0          5.5         1.8  virginica     NA
-#&gt; 118          7.7         3.8          6.7         2.2  virginica     NA
-#&gt; 119          7.7         2.6          6.9         2.3  virginica     NA
-#&gt; 120          6.0         2.2          5.0         1.5  virginica     NA
-#&gt; 121          6.9         3.2          5.7         2.3  virginica     NA
-#&gt; 122          5.6         2.8          4.9         2.0  virginica     NA
-#&gt; 123          7.7         2.8          6.7         2.0  virginica     NA
-#&gt; 124          6.3         2.7          4.9         1.8  virginica     NA
-#&gt; 125          6.7         3.3          5.7         2.1  virginica     NA
-#&gt; 126          7.2         3.2          6.0         1.8  virginica     NA
-#&gt; 127          6.2         2.8          4.8         1.8  virginica     NA
-#&gt; 128          6.1         3.0          4.9         1.8  virginica     NA
-#&gt; 129          6.4         2.8          5.6         2.1  virginica     NA
-#&gt; 130          7.2         3.0          5.8         1.6  virginica     NA
-#&gt; 131          7.4         2.8          6.1         1.9  virginica     NA
-#&gt; 132          7.9         3.8          6.4         2.0  virginica     NA
-#&gt; 133          6.4         2.8          5.6         2.2  virginica     NA
-#&gt; 134          6.3         2.8          5.1         1.5  virginica     NA
-#&gt; 135          6.1         2.6          5.6         1.4  virginica     NA
-#&gt; 136          7.7         3.0          6.1         2.3  virginica     NA
-#&gt; 137          6.3         3.4          5.6         2.4  virginica     NA
-#&gt; 138          6.4         3.1          5.5         1.8  virginica     NA
-#&gt; 139          6.0         3.0          4.8         1.8  virginica     NA
-#&gt; 140          6.9         3.1          5.4         2.1  virginica     NA
-#&gt; 141          6.7         3.1          5.6         2.4  virginica     NA
-#&gt; 142          6.9         3.1          5.1         2.3  virginica     NA
-#&gt; 143          5.8         2.7          5.1         1.9  virginica     NA
-#&gt; 144          6.8         3.2          5.9         2.3  virginica     NA
-#&gt; 145          6.7         3.3          5.7         2.5  virginica     NA
-#&gt; 146          6.7         3.0          5.2         2.3  virginica     NA
-#&gt; 147          6.3         2.5          5.0         1.9  virginica     NA
-#&gt; 148          6.5         3.0          5.2         2.0  virginica     NA
-#&gt; 149          6.2         3.4          5.4         2.3  virginica     NA
-#&gt; 150          5.9         3.0          5.1         1.8  virginica     NA
-#&gt; 151           NA          NA           NA          NA    humilis     15
-#&gt; 152           NA          NA           NA          NA    humilis     20</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Replace values in vector</span></span>
+<span class='r-in'><span class='fu'>replace_x</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, old<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"p"</span>, <span class='st'>"f"</span><span class='op'>)</span>, new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"bee"</span>, <span class='st'>"pork"</span>, <span class='st'>"fungus"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "a"      "bee"    "c"      "d"      "e"      "fungus" "g"      "h"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "i"      "j"      "k"      "l"      "m"      "n"      "o"      "pork"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "q"      "r"      "s"      "t"      "u"      "v"      "w"      "x"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [25] "y"      "z"     </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Replace values using indices</span></span>
+<span class='r-in'><span class='fu'>replace_idx</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, idx1<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, idx2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>17</span><span class='op'>)</span>,</span>
+<span class='r-in'>    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"second"</span>, <span class='st'>"seventh"</span>, <span class='st'>"seventeenth"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "a"           "second"      "c"           "d"           "e"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "f"           "seventh"     "h"           "i"           "j"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [11] "k"           "l"           "m"           "n"           "o"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [16] "p"           "seventeenth" "r"           "s"           "t"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "u"           "v"           "w"           "x"           "y"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [26] "z"          </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Replace values if they are NAs</span></span>
+<span class='r-in'><span class='va'>letters</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span></span>
+<span class='r-in'><span class='fu'>replace_na</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>letters</span>, idx1<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, idx2<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>,</span>
+<span class='r-in'>    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"zeta"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "a"    "beta" "c"    "d"    "e"    "f"    "g"    "h"    "i"    "j"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [11] "k"    "l"    "m"    "n"    "o"    "p"    "q"    "r"    "s"    "t"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "u"    "v"    "w"    "x"    "y"    "z"   </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## The same applications but this time for functional traits</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   acropleustophyte        chamaephyte     climbing_plant facultative_annual </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  8                 25                 25                 20 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    obligate_annual       phanerophyte   pleustohelophyte         reed_plant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                114                 26                  8                 14 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      reptant_plant      tussock_plant               NA's </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                 19                 52               3576 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Merge annuals</span></span>
+<span class='r-in'><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_x</span><span class='op'>(</span></span>
+<span class='r-in'>    x<span class='op'>=</span><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span>,</span>
+<span class='r-in'>    old<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"obligate_annual"</span>, <span class='st'>"facultative_annual"</span><span class='op'>)</span>,</span>
+<span class='r-in'>    new<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"annual"</span>, <span class='st'>"annual"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lifeform</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> acropleustophyte           annual      chamaephyte   climbing_plant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                8              134               25               25 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     phanerophyte pleustohelophyte       reed_plant    reptant_plant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               26                8               14               19 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    tussock_plant             NA's </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               52             3576 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># The same effect</span></span>
+<span class='r-in'><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lifeform</span> <span class='op'>&lt;-</span> <span class='fu'>replace_idx</span><span class='op'>(</span></span>
+<span class='r-in'>    x<span class='op'>=</span><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span>,</span>
+<span class='r-in'>    idx1<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grepl</a></span><span class='op'>(</span><span class='st'>"annual"</span>, <span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonTraits</span><span class='op'>$</span><span class='va'>lf_behn_2018</span><span class='op'>)</span>,</span>
+<span class='r-in'>    idx2<span class='op'>=</span><span class='cn'>TRUE</span>,</span>
+<span class='r-in'>    new<span class='op'>=</span><span class='st'>"annual"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>$</span><span class='va'>lifeform</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> acropleustophyte           annual      chamaephyte   climbing_plant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                8              134               25               25 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     phanerophyte pleustohelophyte       reed_plant    reptant_plant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               26                8               14               19 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    tussock_plant             NA's </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               52             3576 </span>
+<span class='r-in'> </span>
+<span class='r-in'><span class='co'>## Merge data frames including new columns</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>new_iris</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>Species<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"humilis"</span>, <span class='fl'>2</span><span class='op'>)</span>, Height<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>,<span class='fl'>20</span><span class='op'>)</span>,</span>
+<span class='r-in'>    stringsAsFactors<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>insert_rows</span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>new_iris</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species Height</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1            5.1         3.5          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2            4.9         3.0          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3            4.7         3.2          1.3         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4            4.6         3.1          1.5         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5            5.0         3.6          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6            5.4         3.9          1.7         0.4     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7            4.6         3.4          1.4         0.3     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8            5.0         3.4          1.5         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9            4.4         2.9          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10           4.9         3.1          1.5         0.1     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11           5.4         3.7          1.5         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12           4.8         3.4          1.6         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13           4.8         3.0          1.4         0.1     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14           4.3         3.0          1.1         0.1     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15           5.8         4.0          1.2         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16           5.7         4.4          1.5         0.4     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17           5.4         3.9          1.3         0.4     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18           5.1         3.5          1.4         0.3     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19           5.7         3.8          1.7         0.3     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20           5.1         3.8          1.5         0.3     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21           5.4         3.4          1.7         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22           5.1         3.7          1.5         0.4     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23           4.6         3.6          1.0         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24           5.1         3.3          1.7         0.5     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25           4.8         3.4          1.9         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26           5.0         3.0          1.6         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 27           5.0         3.4          1.6         0.4     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 28           5.2         3.5          1.5         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 29           5.2         3.4          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 30           4.7         3.2          1.6         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 31           4.8         3.1          1.6         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 32           5.4         3.4          1.5         0.4     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 33           5.2         4.1          1.5         0.1     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 34           5.5         4.2          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 35           4.9         3.1          1.5         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 36           5.0         3.2          1.2         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 37           5.5         3.5          1.3         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 38           4.9         3.6          1.4         0.1     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 39           4.4         3.0          1.3         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 40           5.1         3.4          1.5         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 41           5.0         3.5          1.3         0.3     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 42           4.5         2.3          1.3         0.3     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 43           4.4         3.2          1.3         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 44           5.0         3.5          1.6         0.6     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 45           5.1         3.8          1.9         0.4     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 46           4.8         3.0          1.4         0.3     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 47           5.1         3.8          1.6         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 48           4.6         3.2          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 49           5.3         3.7          1.5         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50           5.0         3.3          1.4         0.2     setosa     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51           7.0         3.2          4.7         1.4 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52           6.4         3.2          4.5         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53           6.9         3.1          4.9         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 54           5.5         2.3          4.0         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55           6.5         2.8          4.6         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56           5.7         2.8          4.5         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 57           6.3         3.3          4.7         1.6 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 58           4.9         2.4          3.3         1.0 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 59           6.6         2.9          4.6         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 60           5.2         2.7          3.9         1.4 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 61           5.0         2.0          3.5         1.0 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 62           5.9         3.0          4.2         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 63           6.0         2.2          4.0         1.0 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 64           6.1         2.9          4.7         1.4 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 65           5.6         2.9          3.6         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 66           6.7         3.1          4.4         1.4 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 67           5.6         3.0          4.5         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 68           5.8         2.7          4.1         1.0 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 69           6.2         2.2          4.5         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 70           5.6         2.5          3.9         1.1 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 71           5.9         3.2          4.8         1.8 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 72           6.1         2.8          4.0         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 73           6.3         2.5          4.9         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 74           6.1         2.8          4.7         1.2 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 75           6.4         2.9          4.3         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 76           6.6         3.0          4.4         1.4 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 77           6.8         2.8          4.8         1.4 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 78           6.7         3.0          5.0         1.7 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 79           6.0         2.9          4.5         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 80           5.7         2.6          3.5         1.0 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 81           5.5         2.4          3.8         1.1 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 82           5.5         2.4          3.7         1.0 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 83           5.8         2.7          3.9         1.2 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 84           6.0         2.7          5.1         1.6 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 85           5.4         3.0          4.5         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 86           6.0         3.4          4.5         1.6 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 87           6.7         3.1          4.7         1.5 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 88           6.3         2.3          4.4         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 89           5.6         3.0          4.1         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 90           5.5         2.5          4.0         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 91           5.5         2.6          4.4         1.2 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 92           6.1         3.0          4.6         1.4 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 93           5.8         2.6          4.0         1.2 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 94           5.0         2.3          3.3         1.0 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 95           5.6         2.7          4.2         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 96           5.7         3.0          4.2         1.2 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 97           5.7         2.9          4.2         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 98           6.2         2.9          4.3         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 99           5.1         2.5          3.0         1.1 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 100          5.7         2.8          4.1         1.3 versicolor     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 101          6.3         3.3          6.0         2.5  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 102          5.8         2.7          5.1         1.9  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 103          7.1         3.0          5.9         2.1  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 104          6.3         2.9          5.6         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 105          6.5         3.0          5.8         2.2  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 106          7.6         3.0          6.6         2.1  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 107          4.9         2.5          4.5         1.7  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 108          7.3         2.9          6.3         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 109          6.7         2.5          5.8         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 110          7.2         3.6          6.1         2.5  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 111          6.5         3.2          5.1         2.0  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 112          6.4         2.7          5.3         1.9  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 113          6.8         3.0          5.5         2.1  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 114          5.7         2.5          5.0         2.0  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 115          5.8         2.8          5.1         2.4  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 116          6.4         3.2          5.3         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 117          6.5         3.0          5.5         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 118          7.7         3.8          6.7         2.2  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 119          7.7         2.6          6.9         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 120          6.0         2.2          5.0         1.5  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 121          6.9         3.2          5.7         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 122          5.6         2.8          4.9         2.0  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 123          7.7         2.8          6.7         2.0  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 124          6.3         2.7          4.9         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 125          6.7         3.3          5.7         2.1  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 126          7.2         3.2          6.0         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 127          6.2         2.8          4.8         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 128          6.1         3.0          4.9         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 129          6.4         2.8          5.6         2.1  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 130          7.2         3.0          5.8         1.6  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 131          7.4         2.8          6.1         1.9  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 132          7.9         3.8          6.4         2.0  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 133          6.4         2.8          5.6         2.2  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 134          6.3         2.8          5.1         1.5  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 135          6.1         2.6          5.6         1.4  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 136          7.7         3.0          6.1         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 137          6.3         3.4          5.6         2.4  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 138          6.4         3.1          5.5         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 139          6.0         3.0          4.8         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 140          6.9         3.1          5.4         2.1  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 141          6.7         3.1          5.6         2.4  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 142          6.9         3.1          5.1         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 143          5.8         2.7          5.1         1.9  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 144          6.8         3.2          5.9         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 145          6.7         3.3          5.7         2.5  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 146          6.7         3.0          5.2         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 147          6.3         2.5          5.0         1.9  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 148          6.5         3.0          5.2         2.0  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 149          6.2         3.4          5.4         2.3  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 150          5.9         3.0          5.1         1.8  virginica     NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 151           NA          NA           NA          NA    humilis     15</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 152           NA          NA           NA          NA    humilis     20</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

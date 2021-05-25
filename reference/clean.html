@@ -61,8 +61,6 @@ of the objects." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -143,10 +141,10 @@ The function <code>clean</code> deletes such entries and restores the consistenc
 of the objects.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clean</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>clean</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>clean</span><span class='op'>(</span><span class='va'>object</span>, times <span class='op'>=</span> <span class='fl'>2</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>clean</span><span class='op'>(</span><span class='va'>object</span>, times <span class='op'>=</span> <span class='fl'>2</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,34 +176,35 @@ taxon trait entries, and orphaned parent entries.</p>
     <p>Miguel Alvarez.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Direct manipulation of slot taxonRelations generates an invalid object</span>
-<span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonRelations</span> <span class='op'>&lt;-</span> <span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonRelations</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-<span class='op'>}</span>  
-
-<span class='co'>## Now apply cleaning</span>
-<span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>clean</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; object size: 7.8 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 7 
-#&gt; number of taxon concepts: 5 
-#&gt; trait entries: 0 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-#&gt; number of concepts in level form: 0
-#&gt; number of concepts in level variety: 0
-#&gt; number of concepts in level subspecies: 0
-#&gt; number of concepts in level species: 5
-#&gt; number of concepts in level complex: 0
-#&gt; number of concepts in level genus: 0
-#&gt; number of concepts in level family: 0
-#&gt; </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Direct manipulation of slot taxonRelations generates an invalid object</span></span>
+<span class='r-in'><span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonRelations</span> <span class='op'>&lt;-</span> <span class='va'>Easplist</span><span class='op'>@</span><span class='va'>taxonRelations</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span>  </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Now apply cleaning</span></span>
+<span class='r-in'><span class='va'>Easplist</span> <span class='op'>&lt;-</span> <span class='fu'>clean</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 7.8 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 7 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 5 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 0 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level form: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level complex: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level family: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

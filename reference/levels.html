@@ -63,8 +63,6 @@ taxonomic hierarchy." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -147,11 +145,11 @@ Also changes in concept circumscription may implicate changes in its
 taxonomic hierarchy.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for taxlist</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='co'># S4 method for taxlist</span>
 <span class='fu'>levels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='co'># S4 method for taxlist</span>
-<span class='fu'>levels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
+<span class='fu'>levels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,37 +182,39 @@ checking consistency of taxonomic lists.</p>
     <p>Miguel Alvarez <a href='mailto:kamapu78@gmail.com'>kamapu78@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Get levels of species list</span>
-<span class='fu'>taxlist</span><span class='fu'>::</span><span class='fu'>levels</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "form"       "variety"    "subspecies" "species"    "complex"   
-#&gt; [6] "genus"      "family"    </div><div class='input'>
-<span class='co'>## Add aggregate as new taxonomic level</span>
-<span class='fu'>levels</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"form"</span>, <span class='st'>"variety"</span>, <span class='st'>"subspecies"</span>, <span class='st'>"species"</span>,
-    <span class='st'>"complex"</span>, <span class='st'>"aggregate"</span>, <span class='st'>"genus"</span>, <span class='st'>"family"</span><span class='op'>)</span>
-<span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; object size: 761.5 Kb 
-#&gt; validation of 'taxlist' object: TRUE 
-#&gt; 
-#&gt; number of taxon usage names: 5393 
-#&gt; number of taxon concepts: 3887 
-#&gt; trait entries: 311 
-#&gt; number of trait variables: 1 
-#&gt; taxon views: 3 
-#&gt; 
-#&gt; concepts with parents: 3698 
-#&gt; concepts with children: 1343 
-#&gt; 
-#&gt; hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; aggregate &lt; genus &lt; family 
-#&gt; number of concepts in level form: 2
-#&gt; number of concepts in level variety: 95
-#&gt; number of concepts in level subspecies: 71
-#&gt; number of concepts in level species: 2521
-#&gt; number of concepts in level complex: 1
-#&gt; number of concepts in level aggregate: 0
-#&gt; number of concepts in level genus: 1011
-#&gt; number of concepts in level family: 186
-#&gt; </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'>## Get levels of species list</span></span>
+<span class='r-in'><span class='fu'>taxlist</span><span class='fu'>::</span><span class='fu'>levels</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "form"       "variety"    "subspecies" "species"    "complex"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [6] "genus"      "family"    </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Add aggregate as new taxonomic level</span></span>
+<span class='r-in'><span class='fu'>levels</span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"form"</span>, <span class='st'>"variety"</span>, <span class='st'>"subspecies"</span>, <span class='st'>"species"</span>,</span>
+<span class='r-in'>    <span class='st'>"complex"</span>, <span class='st'>"aggregate"</span>, <span class='st'>"genus"</span>, <span class='st'>"family"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='summary.html'>summary</a></span><span class='op'>(</span><span class='va'>Easplist</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> object size: 761.5 Kb </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon usage names: 5393 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of taxon concepts: 3887 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trait entries: 311 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of trait variables: 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> taxon views: 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with parents: 3698 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> concepts with children: 1343 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; aggregate &lt; genus &lt; family </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level form: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level variety: 95</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level subspecies: 71</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level species: 2521</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level complex: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level aggregate: 0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level genus: 1011</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> number of concepts in level family: 186</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
