@@ -40,44 +40,51 @@
 #' ## Create an empty object
 #' Splist <- new("taxlist")
 #' 
+#' @rdname taxlist-class
+#' 
+setOldClass("data.frame")
+setOldClass("lib_df")
+setClassUnion("data.frame.lib_df", c("data.frame", "lib_df"))
+
+#' @rdname taxlist-class
 #' @exportClass taxlist
 #' 
 setClass("taxlist",
         # Definition of slots
-		slots=c(
-                taxonNames="data.frame",
-                taxonRelations="data.frame",
-                taxonViews="data.frame",
-				taxonTraits="data.frame"
+		slots = c(
+                taxonNames = "data.frame",
+                taxonRelations = "data.frame",
+                taxonViews = "data.frame.lib_df",
+				taxonTraits = "data.frame"
         ),
         # Prototype
-		prototype=list(
-                taxonNames=data.frame(
-                        TaxonUsageID=integer(),
-						TaxonConceptID=integer(),
-                        TaxonName=character(),
-						AuthorName=character(),
-                        stringsAsFactors=FALSE
+		prototype = list(
+                taxonNames = data.frame(
+                        TaxonUsageID = integer(),
+						TaxonConceptID = integer(),
+                        TaxonName = character(),
+						AuthorName = character(),
+                        stringsAsFactors = FALSE
                 ),
-                taxonRelations=data.frame(
-                        TaxonConceptID=integer(),
-						AcceptedName=integer(),
-                        Basionym=integer(),
-                        Parent=integer(),
-                        Level=factor(),
-                        ViewID=integer()
+                taxonRelations = data.frame(
+                        TaxonConceptID = integer(),
+						AcceptedName = integer(),
+                        Basionym = integer(),
+                        Parent = integer(),
+                        Level = factor(),
+                        ViewID = integer()
                 ),
-                taxonViews=data.frame(
-                        ViewID=integer(),
-						## Secundum=character(),
-						stringsAsFactors=FALSE
+                taxonViews = data.frame(
+                        ViewID = integer(),
+						## Secundum = character(),
+						stringsAsFactors = FALSE
                 ),
-				taxonTraits=data.frame(
-                        TaxonConceptID=integer()
+				taxonTraits = data.frame(
+                        TaxonConceptID = integer()
                 )
         ),
         # Validity procedures
-		validity=function(object) {
+		validity = function(object) {
             ## slot taxonNames
 			if(!all(c("TaxonUsageID","TaxonConceptID","TaxonName",
 							"AuthorName") %in% colnames(object@taxonNames)))
@@ -131,8 +138,8 @@ setClass("taxlist",
             if(any(duplicated(object@taxonTraits$TaxonConceptID)))
                 return(paste("Duplicated concepts are not allowed in",
 								"slot 'taxonTraits'"))
-			# - duplicated variables in taxonRelations compared with taxonTraits
-			if(any(colnames(object@taxonTraits)[colnames(object@taxonTraits) !=
+			# duplicated variables in taxonRelations compared with taxonTraits
+			if(any(colnames(object@taxonTraits)[colnames(object@taxonTraits) != 
 									"TaxonConceptID"] %in%
 					colnames(object@taxonRelations)))
 				return(paste("Some variables at 'taxonTraits' are shared with",

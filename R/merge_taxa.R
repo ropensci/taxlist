@@ -58,9 +58,9 @@ setGeneric("merge_taxa",
 #' @rdname merge_taxa
 #' 
 #' @aliases merge_taxa,taxlist,numeric,missing-method
-setMethod("merge_taxa", signature(object="taxlist", concepts="numeric",
-				level="missing"),
-		function(object, concepts, print_output=FALSE, ...) {
+setMethod("merge_taxa", signature(object = "taxlist", concepts = "numeric",
+				level = "missing"),
+		function(object, concepts, print_output = FALSE, ...) {
 			# Tests previous running function
 			if(!length(concepts) > 1)
 				stop("Argument 'concepts' must have a length > 1")
