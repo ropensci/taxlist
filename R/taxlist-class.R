@@ -43,7 +43,7 @@
 #' @rdname taxlist-class
 #' 
 setOldClass("data.frame")
-setOldClass("lib_df")
+## setOldClass("lib_df")
 setClassUnion("data.frame.lib_df", c("data.frame", "lib_df"))
 
 #' @rdname taxlist-class

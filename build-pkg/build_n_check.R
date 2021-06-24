@@ -38,6 +38,7 @@ gp()
 # write_codemeta()
 
 # Build package
+library(devtools)
 document()
 pkg_loc <- build(path="build-pkg")
 

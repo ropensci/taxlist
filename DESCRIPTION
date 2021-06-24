@@ -13,6 +13,7 @@ Authors@R: c(
 Depends:
     R(>= 3.5.0)
 Imports:
+    biblio,
     foreign,
     methods,
     stats,
