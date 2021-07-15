@@ -12,7 +12,6 @@ taxlist 0.2.1
 ### New Features
 
 * New function `indented_list()` to print taxonomic ranks in indented lists.
-* Slot **taxonViews** in `taxlist` objects extended to class `lib_df`.
 
 ### Improvements
 
