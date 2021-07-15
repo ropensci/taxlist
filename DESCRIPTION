@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.1
+Version: 0.2.2
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -13,7 +13,6 @@ Authors@R: c(
 Depends:
     R(>= 3.5.0)
 Imports:
-    biblio,
     foreign,
     methods,
     stats,
@@ -71,7 +70,6 @@ Collate:
     'match_names.R'
     'print_name.R'
     'indented_list.R'
-    'taxlist2taxmap.R'
     'Easplist-data.R'
     'taxlist-package.R'
 VignetteBuilder: knitr

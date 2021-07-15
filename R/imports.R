@@ -5,6 +5,6 @@
 #' @importFrom taxize tnrs
 #' @importFrom foreign read.dbf
 #' @importFrom stringdist stringsim
-#' @importFrom taxa taxon_ids taxon_ranks
-#' @importClassesFrom biblio lib_df
+# #' @importFrom taxa taxon_ids taxon_ranks
+# #' @importClassesFrom biblio lib_df
 NULL

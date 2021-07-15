@@ -40,12 +40,12 @@
 #' ## Create an empty object
 #' Splist <- new("taxlist")
 #' 
-#' @rdname taxlist-class
-#' 
-setOldClass("data.frame")
-## setOldClass("lib_df")
-setClassUnion("data.frame.lib_df", c("data.frame", "lib_df"))
-
+## #' @rdname taxlist-class
+## #' 
+## setOldClass("data.frame")
+## ## setOldClass("lib_df")
+## setClassUnion("data.frame.lib_df", c("data.frame", "lib_df"))
+## 
 #' @rdname taxlist-class
 #' @exportClass taxlist
 #' 
@@ -54,7 +54,7 @@ setClass("taxlist",
 		slots = c(
                 taxonNames = "data.frame",
                 taxonRelations = "data.frame",
-                taxonViews = "data.frame.lib_df",
+                taxonViews = "data.frame",
 				taxonTraits = "data.frame"
         ),
         # Prototype

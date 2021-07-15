@@ -10,7 +10,8 @@
 #' @export add_parent
 #' 
 add_parent <- function() {
-	.Deprecated(msg="'add_parent' is deprecated. Use 'update_concept' instead.")
+	.Deprecated(new = "update_concept", package = "taxlist",
+			msg = "'add_parent' is deprecated. Use 'update_concept' instead.")
 }
 
 #' @rdname Deprecated-functions
@@ -20,7 +21,8 @@ add_parent <- function() {
 #' @export add_trait
 #' 
 add_trait <- function() {
-	.Deprecated(msg="'add_trait' is deprecated. Use 'update_trait' instead.")
+	.Deprecated(new = "update_trait", package = "taxlist",
+			msg = "'add_trait' is deprecated. Use 'update_trait' instead.")
 }
 
 #' @rdname Deprecated-functions
@@ -30,7 +32,8 @@ add_trait <- function() {
 #' @export add_level
 #' 
 add_level <- function() {
-	.Deprecated(msg=paste("'add_level' is deprecated. Use 'levels' or",
+	.Deprecated(package = "taxlist",
+			msg = paste("'add_level' is deprecated. Use 'levels' or",
 					"'update_concept' instead."))
 }
 
@@ -41,6 +44,31 @@ add_level <- function() {
 #' @export replace_view
 #' 
 replace_view <- function() {
-	.Deprecated(msg=paste("'replace_view' is deprecated. Use",
+	.Deprecated(new = "update_concept", package = "taxlist",
+			msg = paste("'replace_view' is deprecated. Use",
 					"'update_concept' instead."))
+}
+
+#' @rdname Deprecated-functions
+#' 
+#' @aliases taxlist2taxmap
+#' 
+#' @export taxlist2taxmap
+#' 
+taxlist2taxmap <- function() {
+	.Deprecated(package = "taxlist",
+			msg = paste("This function is temporarily deprecated",
+					"to avoid conflicts with new version of 'taxa'"))
+}
+
+#' @rdname Deprecated-functions
+#' 
+#' @aliases taxmap2taxlist
+#' 
+#' @export taxmap2taxlist
+#' 
+taxmap2taxlist <- function() {
+	.Deprecated(package = "taxlist",
+			msg = paste("This function is temporarily deprecated",
+					"to avoid conflicts with new version of 'taxa'"))
 }

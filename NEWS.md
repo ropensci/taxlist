@@ -1,10 +1,17 @@
+taxlist 0.2.2
+=============
+
+### Bug Fixes
+
+* Functions `taxlist2taxmap()` and `taxmap2taxlist()` temporarily
+  deprecated due to conflicts with release of [taxa v. 0.4.0](https://github.com/ropensci/taxa/releases/tag/v0.4.0)
+
 taxlist 0.2.1
 =============
 
 ### New Features
 
 * New function `indented_list()` to print taxonomic ranks in indented lists.
-* Slot **taxonViews** in `taxlist` objects extended to class `lib_df`.
 
 ### Improvements
 

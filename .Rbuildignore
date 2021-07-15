@@ -21,3 +21,5 @@
 ^docs$
 ^pkgdown$
 ^codemeta\.json$
+^R/taxlist2taxmap-recycle\.R$
+^tests/testthat/test-taxlist2taxmap\.R$
