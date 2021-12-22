@@ -37,11 +37,12 @@ If this is not correct, consider setting it manually by using the functions
 }
 \examples{
 ## Cyperus data set installed as Turboveg species list
-Cyperus <- tv2taxlist(taxlist="cyperus",
-    tv_home=file.path(path.package("taxlist"), "tv_data"))
+Cyperus <- tv2taxlist(
+  taxlist = "cyperus",
+  tv_home = file.path(path.package("taxlist"), "tv_data")
+)
 
 summary(Cyperus)
-
 }
 \seealso{
 \linkS4class{taxlist}

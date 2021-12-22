@@ -36,10 +36,8 @@ spaces, either in strings (method \code{character}), levels (method
 \code{factor} or in single columns (method \code{data.frame}).
 }
 \examples{
- 
 library(taxlist)
 clean_strings(" Cyperus    papyrus L.     ")
-
 }
 \author{
 Miguel Alvarez.

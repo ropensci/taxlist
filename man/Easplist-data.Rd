@@ -28,6 +28,5 @@ is an incomplete list.
 }
 \examples{
 summary(Easplist)
-
 }
 \keyword{datasets}

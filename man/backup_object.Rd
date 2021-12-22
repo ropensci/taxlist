@@ -62,15 +62,17 @@ stamp.
 \examples{
 \dontrun{
 ## A subset with Pseudognaphalium and relatives
-Pseudognaphalium <- subset(x=Easplist, subset=grepl("Pseudognaphalium",
-    TaxonName), slot="names")
+Pseudognaphalium <- subset(x = Easplist, subset = grepl(
+  "Pseudognaphalium",
+  TaxonName
+), slot = "names")
 Pseudognaphalium <- get_parents(Easplist, Pseudognaphalium)
 
 ## Create a backup with date stamp
-backup_object(Pseudognaphalium, file="Pseudonaphalium")
+backup_object(Pseudognaphalium, file = "Pseudonaphalium")
 
 ## The same
-backup_object(objects="Pseudognaphalium", file="Pseudonaphalium")
+backup_object(objects = "Pseudognaphalium", file = "Pseudonaphalium")
 
 ## To load the last backup into a session
 load_last("Pseudognaphalium")
@@ -78,7 +80,6 @@ load_last("Pseudognaphalium")
 
 ## Load pre-installed backup
 load_last(file.path(path.package("taxlist"), "extdata", "Podocarpus"))
-
 }
 \seealso{
 \code{\link{save}} \code{\link{load}}.

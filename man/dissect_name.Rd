@@ -29,15 +29,14 @@ This function is a wrapper of \code{\link[=strsplit]{strsplit()}}, while name el
 re-pasted if indicated in argument \code{repaste}.
 }
 \examples{
-Easplist <- subset(x=Easplist, subset=Level == "variety", slot="relations")
-Easplist <- accepted_name(Easplist)[c(1:10),"TaxonName"]
+Easplist <- subset(x = Easplist, subset = Level == "variety", slot = "relations")
+Easplist <- accepted_name(Easplist)[c(1:10), "TaxonName"]
 
 # split name
 dissect_name(Easplist)
 
 # re-paste the two first words
-dissect_name(Easplist, repaste=c(1:2))
-
+dissect_name(Easplist, repaste = c(1:2))
 }
 \seealso{
 \code{\link[=strsplit]{strsplit()}}

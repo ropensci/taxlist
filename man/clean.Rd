@@ -35,12 +35,11 @@ taxon trait entries, and orphaned parent entries.
 Easplist@taxonRelations <- Easplist@taxonRelations[1:5, ]
 \dontrun{
 summary(Easplist)
-}	
+}
 
 ## Now apply cleaning
 Easplist <- clean(Easplist)
 summary(Easplist)
-
 }
 \author{
 Miguel Alvarez.

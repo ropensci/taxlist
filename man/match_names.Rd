@@ -19,7 +19,8 @@ match_names(x, object, ...)
   show_concepts = FALSE,
   accepted_only = FALSE,
   method = "lcs",
-  decreasing,
+  sort_by,
+  order_args = list(decreasing = TRUE),
   ...
 )
 }
@@ -39,7 +40,7 @@ be deleted from \code{x}.}
 sorted by decreasing or increasing similarity value. In the character
 method, the sorting corresponds to similarities between the queried value
 and the reference vector (argument \code{object}). In the taxlist method using
-\code{output="data.frame"}, the order corresponds to the similarity of the
+\verb{'output = "data.frame'"}, the order corresponds to the similarity of the
 best match (by default, no sorting is done). This argument is passed to
 \code{\link[=order]{order()}}.}
 
@@ -55,6 +56,14 @@ displayed in output or not.}
 matched or all usage names (including synonyms).}
 
 \item{method, ...}{Further arguments passed to \code{\link[=stringsim]{stringsim()}}.}
+
+\item{sort_by}{A character vector including the output columns used for
+sorting the output table. Used only in 'character,taxlist-method'. The
+function checks the presence of these values as columns in the output
+data frame.}
+
+\item{order_args}{A named list including arguments passed to \code{\link[=order]{order()}} in the
+'character,taxlist-method'.}
 }
 \description{
 Names provided in a character vector will be compared with names stored in
@@ -72,8 +81,7 @@ match_names("Cyperus paper", species)
 match_names(species, Easplist)
 
 ## Display accepted names in output
-match_names(x=species, object=Easplist, show_concepts=TRUE)
-
+match_names(x = species, object = Easplist, show_concepts = TRUE)
 }
 \seealso{
 \code{\link[=stringsim]{stringsim()}}

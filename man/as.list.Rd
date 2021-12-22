@@ -30,7 +30,6 @@ slots to elements of the list and it is running internally in the method
 \examples{
 Easplist <- as.list(Easplist)
 class(Easplist)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

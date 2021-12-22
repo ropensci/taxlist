@@ -49,12 +49,13 @@ of selected taxon concepts will not be included in the subset.
 Be aware that \code{\link[=subset]{subset()}} won't work properly inside of function definitions.
 }
 \examples{
-Easplist <- subset(x=Easplist, subset=lf_behn_2018 == "reed_plant",
-    slot="traits")
+Easplist <- subset(
+  x = Easplist, subset = lf_behn_2018 == "reed_plant",
+  slot = "traits"
+)
 summary(Easplist)
 
 summary(as.factor(Easplist$lf_behn_2018))
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

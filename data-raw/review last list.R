@@ -1,5 +1,5 @@
 # TODO:   Solve some problems with special characters in species list
-# 
+#
 # Author: Miguel Alvarez
 ################################################################################
 
@@ -11,4 +11,3 @@ library(readODS)
 data(Easplist)
 
 head(Easplist@taxonRelations)
-
