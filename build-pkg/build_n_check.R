@@ -15,8 +15,10 @@ library(rmarkdown)
 library(knitr)
 library(pkgdown)
 library(codemetar)
+library(styler)
 
 # Document package
+style_pkg()
 document()
 
 # Report coverage
@@ -39,13 +41,14 @@ gp()
 
 # Build package
 library(devtools)
+style_pkg()
 document()
 pkg_loc <- build(path="build-pkg")
 
 # Test the package
 ## Sys.setenv(LANG="en_US.iso88591")
 ## Sys.setlocale("LC_ALL", "en_US.iso88591")
-Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
+## Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
 check_built(path=pkg_loc)
 
 # After check ------------------------------------------------------------------

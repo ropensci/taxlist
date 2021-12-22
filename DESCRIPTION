@@ -73,4 +73,4 @@ Collate:
     'Easplist-data.R'
     'taxlist-package.R'
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1.9000
+RoxygenNote: 7.1.2
