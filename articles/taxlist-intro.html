@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
       </span>
     </div>
 
@@ -81,22 +81,22 @@
       <h1 data-toc-skip>Applying taxlist to species lists on diversity records</h1>
                         <h4 data-toc-skip class="author">Miguel Alvarez</h4>
             
-            <h4 data-toc-skip class="date">2021-07-15</h4>
+            <h4 data-toc-skip class="date">2022-01-10</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/taxlist/blob/master/vignettes/taxlist-intro.Rmd" class="external-link"><code>vignettes/taxlist-intro.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/taxlist/blob/HEAD/vignettes/taxlist-intro.Rmd" class="external-link"><code>vignettes/taxlist-intro.Rmd</code></a></small>
       <div class="hidden name"><code>taxlist-intro.Rmd</code></div>
 
     </div>
 
     
     
-<div id="getting-started" class="section level1">
-<h1 class="hasAnchor">
-<a href="#getting-started" class="anchor" aria-hidden="true"></a>1. Getting started</h1>
+<div class="section level1">
+<h1 id="getting-started">1. Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h1>
 <p>The package <code>taxlist</code> aims to implement an object class and functions (methods) for handling taxonomic data in <strong>R</strong>. The homonymous object class <code>taxlist</code> can be further linked to biodiversity records (e.g. for observations in vegetation plots).</p>
 <p>The <code>taxlist</code> package is developed on the repository <strong>GitHub</strong> (<a href="https://github.com/ropensci/taxlist" class="external-link">https://github.com/ropensci/taxlist</a>) and can be installed in your R-session using the package <code>devtools</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">devtools</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
 <span class="fu">install_github</span><span class="op">(</span><span class="st">"ropensci/taxlist"</span>, build_vignettes<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Since this package is already available in the Comprehensive R Archive Network (CRAN), it is also possible to install it using the function <code>install.packages</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -108,12 +108,12 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"taxlist-intro"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="extracting-a-species-list-from-a-vegetation-table" class="section level1">
-<h1 class="hasAnchor">
-<a href="#extracting-a-species-list-from-a-vegetation-table" class="anchor" aria-hidden="true"></a>2. Extracting a species list from a vegetation table</h1>
-<div id="example-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-data" class="anchor" aria-hidden="true"></a>2.1 Example data</h2>
+<div class="section level1">
+<h1 id="extracting-a-species-list-from-a-vegetation-table">2. Extracting a species list from a vegetation table<a class="anchor" aria-label="anchor" href="#extracting-a-species-list-from-a-vegetation-table"></a>
+</h1>
+<div class="section level2">
+<h2 id="example-data">2.1 Example data<a class="anchor" aria-label="anchor" href="#example-data"></a>
+</h2>
 <p>One of the main tasks of <code>taxlist</code> is to structure taxonomic information for a further linkage to biodiversity records. This structure have to be on the one side consistent with taxonomic issues (e.g. synonyms, hierarchies, etc.), on the other side have to be flexible for containing different depth of information availability (from plain species lists to hierarchical structures).</p>
 <p>In this guide, we will work with a species list from phytosociological relevés collected at the borderline between the <strong>Democratic Republic of the Congo</strong> and <strong>Rwanda</strong> (Mullenders 1953 <em>Vegetatio</em> 4(2): 73–83).</p>
 <p><img src="Siegesbeckia_orientalis.png"></p>
@@ -123,92 +123,92 @@
 <p>The data is formatted as <code>data.frame</code> in <strong>R</strong>, including the names of the species in the first column:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Cross</span><span class="op">[</span> ,<span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span></code></pre></div>
-<pre><code>##                 TaxonName 3094 3093 3092 3095 3096 3097 3098
-## 1   Eragrostis tenuifolia    + &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 2        Cyperus sublimis &lt;NA&gt;    + &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 3    Digitaria abyssinica    +    1    2    2    2    3    1
-## 4 Hyparrhenia filipendula &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 5    Erigeron floribundus    +    1 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 6            Aerva lanata    +    1 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</code></pre>
+<pre><code><span class="co">##                 TaxonName 3094 3093 3092 3095 3096 3097 3098</span>
+<span class="co">## 1   Eragrostis tenuifolia    + &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">## 2        Cyperus sublimis &lt;NA&gt;    + &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">## 3    Digitaria abyssinica    +    1    2    2    2    3    1</span>
+<span class="co">## 4 Hyparrhenia filipendula &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">## 5    Erigeron floribundus    +    1 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">## 6            Aerva lanata    +    1 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></code></pre>
 </div>
-<div id="from-plain-list-to-taxlist" class="section level2">
-<h2 class="hasAnchor">
-<a href="#from-plain-list-to-taxlist" class="anchor" aria-hidden="true"></a>2.2 From plain list to taxlist</h2>
+<div class="section level2">
+<h2 id="from-plain-list-to-taxlist">2.2 From plain list to taxlist<a class="anchor" aria-label="anchor" href="#from-plain-list-to-taxlist"></a>
+</h2>
 <p>As already mentioned, the first column in the cross table contains the names of the species occurring in the observed plots. Thus, we can use this character vector to construct a <code>taxlist</code> object. This can be achieved through the function <code>df2taxlist</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Splist</span> <span class="op">&lt;-</span> <span class="va">Cross</span><span class="op">[</span> ,<span class="st">"TaxonName"</span><span class="op">]</span>
 <span class="va">Splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/df2taxlist.html">df2taxlist</a></span><span class="op">(</span><span class="va">Splist</span><span class="op">)</span>
 <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Splist</span><span class="op">)</span></code></pre></div>
-<pre><code>## object size: 9 Kb 
-## validation of 'taxlist' object: TRUE 
-## 
-## number of taxon usage names: 35 
-## number of taxon concepts: 35 
-## trait entries: 0 
-## number of trait variables: 0 
-## taxon views: 0</code></pre>
+<pre><code><span class="co">## object size: 9 Kb </span>
+<span class="co">## validation of 'taxlist' object: TRUE </span>
+<span class="co">## </span>
+<span class="co">## number of taxon usage names: 35 </span>
+<span class="co">## number of taxon concepts: 35 </span>
+<span class="co">## trait entries: 0 </span>
+<span class="co">## number of trait variables: 0 </span>
+<span class="co">## taxon views: 0</span></code></pre>
 <p>Note that the function <code>summary</code> provides a quick overview in the content of the resulting object. This function can be also applied to a specific taxon:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Splist</span>, <span class="st">"Erigeron floribundus"</span><span class="op">)</span></code></pre></div>
-<pre><code>## ------------------------------ 
-## concept ID: 5 
-## view ID: none 
-## level: none 
-## parent: none 
-## 
-## # accepted name: 
-## 5 Erigeron floribundus NA 
-## ------------------------------</code></pre>
+<pre><code><span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 5 </span>
+<span class="co">## view ID: none </span>
+<span class="co">## level: none </span>
+<span class="co">## parent: none </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 5 Erigeron floribundus NA </span>
+<span class="co">## ------------------------------</span></code></pre>
 </div>
 </div>
-<div id="built-in-data-set" class="section level1">
-<h1 class="hasAnchor">
-<a href="#built-in-data-set" class="anchor" aria-hidden="true"></a>3. Built-in data set</h1>
-<div id="easplist" class="section level2">
-<h2 class="hasAnchor">
-<a href="#easplist" class="anchor" aria-hidden="true"></a>3.1 Easplist</h2>
+<div class="section level1">
+<h1 id="built-in-data-set">3. Built-in data set<a class="anchor" aria-label="anchor" href="#built-in-data-set"></a>
+</h1>
+<div class="section level2">
+<h2 id="easplist">3.1 Easplist<a class="anchor" aria-label="anchor" href="#easplist"></a>
+</h2>
 <p>The installation of <code>taxlist</code> includes the data <code>Easplist</code>, which is formatted as a <code>taxlist</code> object. This data is a subset of the species list used by the database <strong>SWEA-Dataveg</strong> (<a href="http://www.givd.info/ID/AF-00-006" title="SWEA-Dataveg" class="external-link">GIVD ID AF-006</a>):</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span>
 <span class="va">Easplist</span></code></pre></div>
-<pre><code>## object size: 761.4 Kb 
-## validation of 'taxlist' object: TRUE 
-## 
-## number of taxon usage names: 5393 
-## number of taxon concepts: 3887 
-## trait entries: 311 
-## number of trait variables: 1 
-## taxon views: 3 
-## 
-## concepts with parents: 3698 
-## concepts with children: 1343 
-## 
-## hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-## number of concepts in level form: 2
-## number of concepts in level variety: 95
-## number of concepts in level subspecies: 71
-## number of concepts in level species: 2521
-## number of concepts in level complex: 1
-## number of concepts in level genus: 1011
-## number of concepts in level family: 186</code></pre>
+<pre><code><span class="co">## object size: 761.4 Kb </span>
+<span class="co">## validation of 'taxlist' object: TRUE </span>
+<span class="co">## </span>
+<span class="co">## number of taxon usage names: 5393 </span>
+<span class="co">## number of taxon concepts: 3887 </span>
+<span class="co">## trait entries: 311 </span>
+<span class="co">## number of trait variables: 1 </span>
+<span class="co">## taxon views: 3 </span>
+<span class="co">## </span>
+<span class="co">## concepts with parents: 3698 </span>
+<span class="co">## concepts with children: 1343 </span>
+<span class="co">## </span>
+<span class="co">## hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class="co">## number of concepts in level form: 2</span>
+<span class="co">## number of concepts in level variety: 95</span>
+<span class="co">## number of concepts in level subspecies: 71</span>
+<span class="co">## number of concepts in level species: 2521</span>
+<span class="co">## number of concepts in level complex: 1</span>
+<span class="co">## number of concepts in level genus: 1011</span>
+<span class="co">## number of concepts in level family: 186</span></code></pre>
 </div>
-<div id="access-to-slots" class="section level2">
-<h2 class="hasAnchor">
-<a href="#access-to-slots" class="anchor" aria-hidden="true"></a>3.2 Access to slots</h2>
+<div class="section level2">
+<h2 id="access-to-slots">3.2 Access to slots<a class="anchor" aria-label="anchor" href="#access-to-slots"></a>
+</h2>
 <p>The common ways to access to the content of slots in <code>S4</code> objects are either using the function <code>slot(object, name)</code> or the symbol <code>@</code> (i.e. <code>object@name</code>). Additional functions, which are specific for <code>taxlist</code> objects are <code>taxon_names</code>, <code>taxon_relations</code>, <code>taxon_traits</code> and <code>taxon_views</code> (see the help documentation).</p>
 <p>Additionally, it is possible to use the methods <code>$</code> and <code>[</code> , the first for access to information in the slot <code>taxonTraits</code>, while the second can be also used for other slots in the object.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">lf_behn_2018</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##   acropleustophyte        chamaephyte     climbing_plant facultative_annual 
-##                  8                 25                 25                 20 
-##    obligate_annual       phanerophyte   pleustohelophyte         reed_plant 
-##                114                 26                  8                 14 
-##      reptant_plant      tussock_plant               NA's 
-##                 19                 52               3576</code></pre>
+<pre><code><span class="co">##   acropleustophyte        chamaephyte     climbing_plant facultative_annual </span>
+<span class="co">##                  8                 25                 25                 20 </span>
+<span class="co">##    obligate_annual       phanerophyte   pleustohelophyte         reed_plant </span>
+<span class="co">##                114                 26                  8                 14 </span>
+<span class="co">##      reptant_plant      tussock_plant               NA's </span>
+<span class="co">##                 19                 52               3576</span></code></pre>
 </div>
-<div id="subsets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#subsets" class="anchor" aria-hidden="true"></a>3.3 Subsets</h2>
+<div class="section level2">
+<h2 id="subsets">3.3 Subsets<a class="anchor" aria-label="anchor" href="#subsets"></a>
+</h2>
 <p>Methods for the function <code>subset</code> are also implemented in this package. Such subsets usually apply pattern matching (for character vectors) or logical operations and are analogous to query building in relational databases. The <code>subset</code> method can be apply to any slot by setting the value of the argument <code>slot</code>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Papyrus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Easplist</span>, subset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"papyrus"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span><span class="op">)</span>
@@ -223,114 +223,114 @@
         subset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/charmatch.html" class="external-link">charmatch</a></span><span class="op">(</span><span class="st">"Phragmites australis"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Phraaus</span>, <span class="st">"all"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="hierarchical-structure" class="section level2">
-<h2 class="hasAnchor">
-<a href="#hierarchical-structure" class="anchor" aria-hidden="true"></a>3.4 Hierarchical structure</h2>
+<div class="section level2">
+<h2 id="hierarchical-structure">3.4 Hierarchical structure<a class="anchor" aria-label="anchor" href="#hierarchical-structure"></a>
+</h2>
 <p>Objects belonging to the class <code>taxlist</code> can optionally content parent-child relationships and taxonomic levels. Such information is also included in the data <code>Easplist</code>, as shown in the summary output.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Easplist</span></code></pre></div>
-<pre><code>## object size: 761.4 Kb 
-## validation of 'taxlist' object: TRUE 
-## 
-## number of taxon usage names: 5393 
-## number of taxon concepts: 3887 
-## trait entries: 311 
-## number of trait variables: 1 
-## taxon views: 3 
-## 
-## concepts with parents: 3698 
-## concepts with children: 1343 
-## 
-## hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family 
-## number of concepts in level form: 2
-## number of concepts in level variety: 95
-## number of concepts in level subspecies: 71
-## number of concepts in level species: 2521
-## number of concepts in level complex: 1
-## number of concepts in level genus: 1011
-## number of concepts in level family: 186</code></pre>
+<pre><code><span class="co">## object size: 761.4 Kb </span>
+<span class="co">## validation of 'taxlist' object: TRUE </span>
+<span class="co">## </span>
+<span class="co">## number of taxon usage names: 5393 </span>
+<span class="co">## number of taxon concepts: 3887 </span>
+<span class="co">## trait entries: 311 </span>
+<span class="co">## number of trait variables: 1 </span>
+<span class="co">## taxon views: 3 </span>
+<span class="co">## </span>
+<span class="co">## concepts with parents: 3698 </span>
+<span class="co">## concepts with children: 1343 </span>
+<span class="co">## </span>
+<span class="co">## hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class="co">## number of concepts in level form: 2</span>
+<span class="co">## number of concepts in level variety: 95</span>
+<span class="co">## number of concepts in level subspecies: 71</span>
+<span class="co">## number of concepts in level species: 2521</span>
+<span class="co">## number of concepts in level complex: 1</span>
+<span class="co">## number of concepts in level genus: 1011</span>
+<span class="co">## number of concepts in level family: 186</span></code></pre>
 <p>Note that such information can get lost once <code><a href="../reference/subset.html">subset()</a></code> has been applied, since the respective parents or children from the original data set are not anymore in the subset. May you like to recover parents and children, you can use the functions <code>get_parents</code> or <code>get_children</code>, respectively.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Papyrus</span>, <span class="st">"all"</span><span class="op">)</span></code></pre></div>
-<pre><code>## ------------------------------ 
-## concept ID: 206 
-## view ID: 1 
-## level: species 
-## parent: none 
-## 
-## # accepted name: 
-## 206 Cyperus papyrus L. 
-## 
-## # synonyms (2): 
-## 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. 
-## 52613 Cyperus papyrus ssp. nyassicus Chiov. 
-## ------------------------------</code></pre>
+<pre><code><span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 206 </span>
+<span class="co">## view ID: 1 </span>
+<span class="co">## level: species </span>
+<span class="co">## parent: none </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 206 Cyperus papyrus L. </span>
+<span class="co">## </span>
+<span class="co">## # synonyms (2): </span>
+<span class="co">## 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. </span>
+<span class="co">## 52613 Cyperus papyrus ssp. nyassicus Chiov. </span>
+<span class="co">## ------------------------------</span></code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Papyrus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_children.html">get_parents</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">Papyrus</span><span class="op">)</span>
 <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Papyrus</span>, <span class="st">"all"</span><span class="op">)</span></code></pre></div>
-<pre><code>## ------------------------------ 
-## concept ID: 206 
-## view ID: 1 
-## level: species 
-## parent: 54853 Cyperus L. 
-## 
-## # accepted name: 
-## 206 Cyperus papyrus L. 
-## 
-## # synonyms (2): 
-## 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. 
-## 52613 Cyperus papyrus ssp. nyassicus Chiov. 
-## ------------------------------ 
-## concept ID: 54853 
-## view ID: 2 
-## level: genus 
-## parent: 55959 Cyperaceae Juss. 
-## 
-## # accepted name: 
-## 54855 Cyperus L. 
-## ------------------------------ 
-## concept ID: 55959 
-## view ID: 3 
-## level: family 
-## parent: none 
-## 
-## # accepted name: 
-## 55961 Cyperaceae Juss. 
-## ------------------------------</code></pre>
+<pre><code><span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 206 </span>
+<span class="co">## view ID: 1 </span>
+<span class="co">## level: species </span>
+<span class="co">## parent: 54853 Cyperus L. </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 206 Cyperus papyrus L. </span>
+<span class="co">## </span>
+<span class="co">## # synonyms (2): </span>
+<span class="co">## 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. </span>
+<span class="co">## 52613 Cyperus papyrus ssp. nyassicus Chiov. </span>
+<span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 54853 </span>
+<span class="co">## view ID: 2 </span>
+<span class="co">## level: genus </span>
+<span class="co">## parent: 55959 Cyperaceae Juss. </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 54855 Cyperus L. </span>
+<span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 55959 </span>
+<span class="co">## view ID: 3 </span>
+<span class="co">## level: family </span>
+<span class="co">## parent: none </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 55961 Cyperaceae Juss. </span>
+<span class="co">## ------------------------------</span></code></pre>
 </div>
 </div>
-<div id="applying-taxlist-to-syntaxonomic-schemes" class="section level1">
-<h1 class="hasAnchor">
-<a href="#applying-taxlist-to-syntaxonomic-schemes" class="anchor" aria-hidden="true"></a>4. Applying taxlist to syntaxonomic schemes</h1>
-<div id="example-of-a-phytosociological-classification" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-of-a-phytosociological-classification" class="anchor" aria-hidden="true"></a>4.1 Example of a phytosociological classification</h2>
+<div class="section level1">
+<h1 id="applying-taxlist-to-syntaxonomic-schemes">4. Applying taxlist to syntaxonomic schemes<a class="anchor" aria-label="anchor" href="#applying-taxlist-to-syntaxonomic-schemes"></a>
+</h1>
+<div class="section level2">
+<h2 id="example-of-a-phytosociological-classification">4.1 Example of a phytosociological classification<a class="anchor" aria-label="anchor" href="#example-of-a-phytosociological-classification"></a>
+</h2>
 <p>To illustrate the flexibility of the <code>taxlist</code> objects, the next example will handle a syntaxonomical scheme. As example it will be used a scheme proposed by the author for aquatic and semi-aquatic vegetation in Tanzania (Alvarez 2017 <em>Phytocoenologia</em> in review). The scheme includes 10 associations classified into 4 classes:</p>
 <p><img src="wetlands_syntax.png"></p>
 </div>
-<div id="building-the-taxlist-object" class="section level2">
-<h2 class="hasAnchor">
-<a href="#building-the-taxlist-object" class="anchor" aria-hidden="true"></a>4.2 Building the taxlist object</h2>
+<div class="section level2">
+<h2 id="building-the-taxlist-object">4.2 Building the taxlist object<a class="anchor" aria-label="anchor" href="#building-the-taxlist-object"></a>
+</h2>
 <p>The content for the taxonomic list is included in a data frame and can be downloaded by following command:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>, <span class="st">"wetlands_syntax.rda"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The data frame <code>Concepts</code> contains the list of syntaxon names that are considered as accepted in the previous scheme. This list will be used to insert the new concepts in the <code>taxlist</code> object.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Concepts</span><span class="op">)</span></code></pre></div>
-<pre><code>##   TaxonConceptID Parent                                TaxonName
-## 1              1     NA                         Lemnetea minoris
-## 2              2      1                 Salvinio-Eichhornietalia
-## 3              3      2                       Pistion stratiotes
-## 4              4      3 Lemno paucicostatae-Pistietum stratiotes
-## 5              5     NA                                Potametea
-## 6              6      5                       Nymphaeetalia loti
-##                                   AuthorName       Level
-## 1    Koch &amp; Tüxen ex den Hartog &amp; Segal 1964       class
-## 2 Borhidi ex Borhidi, Muñiz &amp; del Risco 1979       order
-## 3                (Schmitz 1971) Schmitz 1988    alliance
-## 4                                Lebrun 1947 association
-## 5                Klika ex Klika &amp; Novák 1941       class
-## 6                                Lebrun 1947       order</code></pre>
+<pre><code><span class="co">##   TaxonConceptID Parent                                TaxonName</span>
+<span class="co">## 1              1     NA                         Lemnetea minoris</span>
+<span class="co">## 2              2      1                 Salvinio-Eichhornietalia</span>
+<span class="co">## 3              3      2                       Pistion stratiotes</span>
+<span class="co">## 4              4      3 Lemno paucicostatae-Pistietum stratiotes</span>
+<span class="co">## 5              5     NA                                Potametea</span>
+<span class="co">## 6              6      5                       Nymphaeetalia loti</span>
+<span class="co">##                                   AuthorName       Level</span>
+<span class="co">## 1    Koch &amp; Tüxen ex den Hartog &amp; Segal 1964       class</span>
+<span class="co">## 2 Borhidi ex Borhidi, Muñiz &amp; del Risco 1979       order</span>
+<span class="co">## 3                (Schmitz 1971) Schmitz 1988    alliance</span>
+<span class="co">## 4                                Lebrun 1947 association</span>
+<span class="co">## 5                Klika ex Klika &amp; Novák 1941       class</span>
+<span class="co">## 6                                Lebrun 1947       order</span></code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Syntax</span> <span class="op">&lt;-</span> <span class="fu">new</span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>
 
@@ -346,133 +346,133 @@
         Level<span class="op">=</span><span class="va">Concepts</span><span class="op">$</span><span class="va">Level</span>, ViewID<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">Concepts</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">Syntax</span></code></pre></div>
-<pre><code>## object size: 10.9 Kb 
-## validation of 'taxlist' object: TRUE 
-## 
-## number of taxon usage names: 26 
-## number of taxon concepts: 26 
-## trait entries: 0 
-## number of trait variables: 0 
-## taxon views: 1 
-## 
-## concepts with parents: 22 
-## concepts with children: 16 
-## 
-## hierarchical levels: association &lt; alliance &lt; order &lt; class 
-## number of concepts in level association: 10
-## number of concepts in level alliance: 7
-## number of concepts in level order: 5
-## number of concepts in level class: 4</code></pre>
+<pre><code><span class="co">## object size: 10.9 Kb </span>
+<span class="co">## validation of 'taxlist' object: TRUE </span>
+<span class="co">## </span>
+<span class="co">## number of taxon usage names: 26 </span>
+<span class="co">## number of taxon concepts: 26 </span>
+<span class="co">## trait entries: 0 </span>
+<span class="co">## number of trait variables: 0 </span>
+<span class="co">## taxon views: 1 </span>
+<span class="co">## </span>
+<span class="co">## concepts with parents: 22 </span>
+<span class="co">## concepts with children: 16 </span>
+<span class="co">## </span>
+<span class="co">## hierarchical levels: association &lt; alliance &lt; order &lt; class </span>
+<span class="co">## number of concepts in level association: 10</span>
+<span class="co">## number of concepts in level alliance: 7</span>
+<span class="co">## number of concepts in level order: 5</span>
+<span class="co">## number of concepts in level class: 4</span></code></pre>
 <p>Note that the function <code>new</code> created an empty object (prototype), while <code>levels</code> insert the custom levels (syntaxonomical hierarchies). For the later function, the levels have to be inserted from the lower to the higher ranks. Furthermore the reference defining the concepts included in the syntaxonomic scheme was inserted in the object using the function <code>taxon_views</code> and finally the concepts were inserted by the function <code>add_concept</code>.</p>
 <p>The next step will be inserting those names that are considered as synonyms for the respective syntaxa. Synonyms are included in the data frame <code>Synonyms</code>.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Synonyms</span><span class="op">)</span></code></pre></div>
-<pre><code>##   TaxonConceptID                             TaxonName
-## 1              1                          Stratiotetea
-## 2              3                  Pistion pantropicale
-## 3              8               Utriculario-Nymphaeetum
-## 4              8 Utriculario exoletae-Nymphaeetum loti
-## 5              9                          Phragmitetea
-## 6             10                           Papyretalia
-##                   AuthorName
-## 1    den Hartog &amp; Segal 1964
-## 2               Schmitz 1971
-## 3 (Lebrun 1947) Léonard 1950
-## 4    Szafranski &amp; Apema 1983
-## 5      Tüxen &amp; Preising 1942
-## 6                Lebrun 1947</code></pre>
+<pre><code><span class="co">##   TaxonConceptID                             TaxonName</span>
+<span class="co">## 1              1                          Stratiotetea</span>
+<span class="co">## 2              3                  Pistion pantropicale</span>
+<span class="co">## 3              8               Utriculario-Nymphaeetum</span>
+<span class="co">## 4              8 Utriculario exoletae-Nymphaeetum loti</span>
+<span class="co">## 5              9                          Phragmitetea</span>
+<span class="co">## 6             10                           Papyretalia</span>
+<span class="co">##                   AuthorName</span>
+<span class="co">## 1    den Hartog &amp; Segal 1964</span>
+<span class="co">## 2               Schmitz 1971</span>
+<span class="co">## 3 (Lebrun 1947) Léonard 1950</span>
+<span class="co">## 4    Szafranski &amp; Apema 1983</span>
+<span class="co">## 5      Tüxen &amp; Preising 1942</span>
+<span class="co">## 6                Lebrun 1947</span></code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Syntax</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/taxon_names.html">add_synonym</a></span><span class="op">(</span><span class="va">Syntax</span>, ConceptID<span class="op">=</span><span class="va">Synonyms</span><span class="op">$</span><span class="va">TaxonConceptID</span>,
         TaxonName<span class="op">=</span><span class="va">Synonyms</span><span class="op">$</span><span class="va">TaxonName</span>, AuthorName<span class="op">=</span><span class="va">Synonyms</span><span class="op">$</span><span class="va">AuthorName</span><span class="op">)</span></code></pre></div>
 <p>Finally, the codes provided for the associations will be inserted as traits properties) of them in the slot <code>taxonTraits</code>.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Codes</span><span class="op">)</span></code></pre></div>
-<pre><code>##   TaxonConceptID Code
-## 1             12  HE1
-## 2             13  HE2
-## 3             14  HE3
-## 4             20  HE4
-## 5             17  HE5
-## 6             18  HE6</code></pre>
+<pre><code><span class="co">##   TaxonConceptID Code</span>
+<span class="co">## 1             12  HE1</span>
+<span class="co">## 2             13  HE2</span>
+<span class="co">## 3             14  HE3</span>
+<span class="co">## 4             20  HE4</span>
+<span class="co">## 5             17  HE5</span>
+<span class="co">## 6             18  HE6</span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/taxon_traits.html">taxon_traits</a></span><span class="op">(</span><span class="va">Syntax</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">Codes</span>
 <span class="va">Syntax</span></code></pre></div>
-<pre><code>## object size: 13.4 Kb 
-## validation of 'taxlist' object: TRUE 
-## 
-## number of taxon usage names: 37 
-## number of taxon concepts: 26 
-## trait entries: 10 
-## number of trait variables: 1 
-## taxon views: 1 
-## 
-## concepts with parents: 22 
-## concepts with children: 16 
-## 
-## hierarchical levels: association &lt; alliance &lt; order &lt; class 
-## number of concepts in level association: 10
-## number of concepts in level alliance: 7
-## number of concepts in level order: 5
-## number of concepts in level class: 4</code></pre>
+<pre><code><span class="co">## object size: 13.4 Kb </span>
+<span class="co">## validation of 'taxlist' object: TRUE </span>
+<span class="co">## </span>
+<span class="co">## number of taxon usage names: 37 </span>
+<span class="co">## number of taxon concepts: 26 </span>
+<span class="co">## trait entries: 10 </span>
+<span class="co">## number of trait variables: 1 </span>
+<span class="co">## taxon views: 1 </span>
+<span class="co">## </span>
+<span class="co">## concepts with parents: 22 </span>
+<span class="co">## concepts with children: 16 </span>
+<span class="co">## </span>
+<span class="co">## hierarchical levels: association &lt; alliance &lt; order &lt; class </span>
+<span class="co">## number of concepts in level association: 10</span>
+<span class="co">## number of concepts in level alliance: 7</span>
+<span class="co">## number of concepts in level order: 5</span>
+<span class="co">## number of concepts in level class: 4</span></code></pre>
 <p>For instance, you may like to get the parental chain from an association (e.g. for <em>Nymphaeetum loti</em>).</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Nymplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span><span class="va">Syntax</span>, <span class="fu"><a href="https://rdrr.io/r/base/charmatch.html" class="external-link">charmatch</a></span><span class="op">(</span><span class="st">"Nymphaeetum"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Nymplot</span>, <span class="st">"all"</span><span class="op">)</span></code></pre></div>
-<pre><code>## ------------------------------ 
-## concept ID: 8 
-## view ID: 1 
-## level: association 
-## parent: none 
-## 
-## # accepted name: 
-## 8 Nymphaeetum loti Lebrun 1947 
-## 
-## # synonyms (2): 
-## 29 Utriculario-Nymphaeetum (Lebrun 1947) Léonard 1950 
-## 30 Utriculario exoletae-Nymphaeetum loti Szafranski &amp; Apema 1983 
-## ------------------------------</code></pre>
+<pre><code><span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 8 </span>
+<span class="co">## view ID: 1 </span>
+<span class="co">## level: association </span>
+<span class="co">## parent: none </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 8 Nymphaeetum loti Lebrun 1947 </span>
+<span class="co">## </span>
+<span class="co">## # synonyms (2): </span>
+<span class="co">## 29 Utriculario-Nymphaeetum (Lebrun 1947) Léonard 1950 </span>
+<span class="co">## 30 Utriculario exoletae-Nymphaeetum loti Szafranski &amp; Apema 1983 </span>
+<span class="co">## ------------------------------</span></code></pre>
 <p>Note that there is the logical arguments <code>keep_parents</code> and <code>keep_children</code> to preserve hierarchical information in the subset:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Nymplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span><span class="va">Syntax</span>, <span class="fu"><a href="https://rdrr.io/r/base/charmatch.html" class="external-link">charmatch</a></span><span class="op">(</span><span class="st">"Nymphaeetum"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span>,
     keep_parents<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Nymplot</span>, <span class="st">"all"</span><span class="op">)</span></code></pre></div>
-<pre><code>## ------------------------------ 
-## concept ID: 5 
-## view ID: 1 
-## level: class 
-## parent: none 
-## 
-## # accepted name: 
-## 5 Potametea Klika ex Klika &amp; Novák 1941 
-## ------------------------------ 
-## concept ID: 6 
-## view ID: 1 
-## level: order 
-## parent: 5 Potametea Klika ex Klika &amp; Novák 1941 
-## 
-## # accepted name: 
-## 6 Nymphaeetalia loti Lebrun 1947 
-## ------------------------------ 
-## concept ID: 7 
-## view ID: 1 
-## level: alliance 
-## parent: 6 Nymphaeetalia loti Lebrun 1947 
-## 
-## # accepted name: 
-## 7 Nymphaeion loti Lebrun 1947 
-## ------------------------------ 
-## concept ID: 8 
-## view ID: 1 
-## level: association 
-## parent: 7 Nymphaeion loti Lebrun 1947 
-## 
-## # accepted name: 
-## 8 Nymphaeetum loti Lebrun 1947 
-## 
-## # synonyms (2): 
-## 29 Utriculario-Nymphaeetum (Lebrun 1947) Léonard 1950 
-## 30 Utriculario exoletae-Nymphaeetum loti Szafranski &amp; Apema 1983 
-## ------------------------------</code></pre>
+<pre><code><span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 5 </span>
+<span class="co">## view ID: 1 </span>
+<span class="co">## level: class </span>
+<span class="co">## parent: none </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 5 Potametea Klika ex Klika &amp; Novák 1941 </span>
+<span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 6 </span>
+<span class="co">## view ID: 1 </span>
+<span class="co">## level: order </span>
+<span class="co">## parent: 5 Potametea Klika ex Klika &amp; Novák 1941 </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 6 Nymphaeetalia loti Lebrun 1947 </span>
+<span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 7 </span>
+<span class="co">## view ID: 1 </span>
+<span class="co">## level: alliance </span>
+<span class="co">## parent: 6 Nymphaeetalia loti Lebrun 1947 </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 7 Nymphaeion loti Lebrun 1947 </span>
+<span class="co">## ------------------------------ </span>
+<span class="co">## concept ID: 8 </span>
+<span class="co">## view ID: 1 </span>
+<span class="co">## level: association </span>
+<span class="co">## parent: 7 Nymphaeion loti Lebrun 1947 </span>
+<span class="co">## </span>
+<span class="co">## # accepted name: </span>
+<span class="co">## 8 Nymphaeetum loti Lebrun 1947 </span>
+<span class="co">## </span>
+<span class="co">## # synonyms (2): </span>
+<span class="co">## 29 Utriculario-Nymphaeetum (Lebrun 1947) Léonard 1950 </span>
+<span class="co">## 30 Utriculario exoletae-Nymphaeetum loti Szafranski &amp; Apema 1983 </span>
+<span class="co">## ------------------------------</span></code></pre>
 <p>By using the function <code>subset</code> we just created a new object containing only the association <em>Nymphaeetum loti</em> and its parental chain. This subset was then used to extract the parental chain from <code>Syntax</code>.</p>
 </div>
 </div>
@@ -495,7 +495,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer>
