@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.2
+Version: 0.2.3
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -13,6 +13,7 @@ Authors@R: c(
 Depends:
     R(>= 3.5.0)
 Imports:
+    biblio,
     foreign,
     methods,
     stats,
@@ -24,9 +25,7 @@ Imports:
 Suggests:
     ape,
     knitr,
-    testthat,
-    rmarkdown,
-    roxygen2
+    testthat
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.
     This package provides functions to import species lists from 'Turboveg'

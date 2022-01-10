@@ -3,13 +3,13 @@
 ^\.settings$
 ^\.gitignore$
 ^\.project$
-^cran-comments\.md$
 ^data-raw$
 ^build-pkg$
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
 ^README-figures$
 ^README\.md$
+^lab$
 ^TODO\.md$
 ^CRAN-RELEASE$
 ^doc$

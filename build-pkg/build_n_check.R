@@ -3,6 +3,34 @@
 # Author: Miguel Alvarez
 ################################################################################
 
+library(devtools)
+library(styler)
+
+# Clean session
+rm(list = ls())
+
+# Clean folder
+unlink(file.path("build-pkg", list.files("build-pkg", ".tar.gz")))
+unlink(file.path("build-pkg", list.files("build-pkg", ".pdf")))
+
+# Write data
+## source("data-raw/create-data.R")
+
+# re-style scripts
+style_pkg()
+
+# write documentation
+document()
+
+# Build and check package
+pkg_loc <- build(path = "build-pkg", args = "--resave-data")
+check_built(path = pkg_loc)
+
+
+
+
+
+
 # See at
 ## browseURL(paste0("https://www.marinedatascience.co/blog/2020/01/09/",
 ##                 "checklist-for-r-package-re-submissions-on-cran/"))
@@ -14,7 +42,7 @@ library(goodpractice)
 library(rmarkdown)
 library(knitr)
 library(pkgdown)
-library(codemetar)
+## library(codemetar)
 library(styler)
 
 # Document package

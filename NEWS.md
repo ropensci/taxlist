@@ -1,3 +1,16 @@
+taxlist 0.2.3
+=============
+
+### New Features
+
+* Function `match_names()` allows to sort output data frame in the
+  `'character,taxlist-method'`
+
+### Improvements
+
+* Slot **taxonViews** allowing class `lib_df` from package `biblio`
+* New style of scripts using the package `styler`
+
 taxlist 0.2.2
 =============
 

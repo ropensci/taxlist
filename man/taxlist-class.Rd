@@ -41,7 +41,6 @@ showClass("taxlist")
 
 ## Create an empty object
 Splist <- new("taxlist")
-
 }
 \references{
 \bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant

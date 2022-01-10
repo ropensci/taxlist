@@ -99,7 +99,7 @@ setMethod(
   "match_names", signature(x = "character", object = "taxlist"),
   function(x, object, clean = TRUE, output = "data.frame", best = 5,
            show_concepts = FALSE, accepted_only = FALSE, method = "lcs",
-           sort_by, order_args = list(decreasing = TRUE), ...) {
+           sort_by, order_args = list(), ...) {
     if (any(is.na(x))) {
       stop("NAs are not allowed in argument 'x'")
     }

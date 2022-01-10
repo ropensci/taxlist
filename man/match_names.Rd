@@ -20,7 +20,7 @@ match_names(x, object, ...)
   accepted_only = FALSE,
   method = "lcs",
   sort_by,
-  order_args = list(decreasing = TRUE),
+  order_args = list(),
   ...
 )
 }
