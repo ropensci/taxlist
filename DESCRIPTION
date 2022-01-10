@@ -25,6 +25,7 @@ Imports:
 Suggests:
     ape,
     knitr,
+    rmarkdown,
     testthat
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.

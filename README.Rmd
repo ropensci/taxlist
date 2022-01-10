@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 <!-- Budges -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
-[![Rdoc](http://www.rdocumentation.org/badges/version/taxlist)](http://www.rdocumentation.org/packages/taxlist)
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 <br>
 [![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
