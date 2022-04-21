@@ -182,6 +182,7 @@ setClass("taxlist",
         "slot 'taxonRelations'"
       ))
     }
+    # TODO: Check missing Parents first
     ## parent-child relationships
     if (!all(is.na(object@taxonRelations$Parent)) &
       !all(is.na(object@taxonRelations$Level)) &
