@@ -9,6 +9,7 @@
 ^CODE_OF_CONDUCT\.md$
 ^README-figures$
 ^README\.md$
+^cran-comments\.md$
 ^lab$
 ^TODO\.md$
 ^CRAN-RELEASE$

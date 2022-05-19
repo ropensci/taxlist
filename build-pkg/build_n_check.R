@@ -23,31 +23,13 @@ style_pkg()
 document()
 
 # Build and check package
-pkg_loc <- build(path = "build-pkg", args = "--resave-data")
+Folder = "build-pkg"
+pkg_loc <- build(path = Folder, args = "--resave-data")
 check_built(path = pkg_loc)
 
-
-
-
-
-
-# See at
-## browseURL(paste0("https://www.marinedatascience.co/blog/2020/01/09/",
-##                 "checklist-for-r-package-re-submissions-on-cran/"))
-
-# Needed packages
-library(devtools)
-library(covr)
-library(goodpractice)
-library(rmarkdown)
-library(knitr)
-library(pkgdown)
-## library(codemetar)
-library(styler)
-
-# Document package
-style_pkg()
-document()
+# a posteriori
+build_manual(path = Folder)
+install()
 
 # Report coverage
 report()
@@ -67,23 +49,6 @@ gp()
 # Codemetar
 # write_codemeta()
 
-# Build package
-library(devtools)
-style_pkg()
-document()
-pkg_loc <- build(path="build-pkg")
-
-# Test the package
-## Sys.setenv(LANG="en_US.iso88591")
-## Sys.setlocale("LC_ALL", "en_US.iso88591")
-## Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
-check_built(path=pkg_loc)
-
-# After check ------------------------------------------------------------------
-
-# Install the package
-## install()
-
 # Render readme-file.
 render("README.Rmd")
 
@@ -91,7 +56,6 @@ render("README.Rmd")
 browseURL("https://win-builder.r-project.org/")
 
 # submit to CRAN
-
 
 # Render package-site
 # pkgdown::build_home()

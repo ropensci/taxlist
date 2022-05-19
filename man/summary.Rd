@@ -16,6 +16,7 @@
   display = "both",
   maxsum = 5,
   secundum = NULL,
+  exact = FALSE,
   ...
 )
 
@@ -41,6 +42,10 @@ details).}
 
 \item{secundum}{A character value indicating the column from slot\code{taxonViews}
 to be displayed in the summary.}
+
+\item{exact}{A logical value indicating whether taxon names should match the
+exact argument in parameter 'ConceptID'. It works only if 'ConceptID' is
+provided as character value and  is not the keyword 'all'.}
 
 \item{...}{Further arguments passed to or from another methods.}
 }
