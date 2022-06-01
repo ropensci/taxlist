@@ -39,7 +39,7 @@ Easplist
 
 
 ## ----summary_life_forms-------------------------------------------------------
-summary(as.factor(Easplist$lf_behn_2018))
+summary(as.factor(Easplist$life_form))
 
 
 ## ----papyrus_otp1, results="hide"---------------------------------------------

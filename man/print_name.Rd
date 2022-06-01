@@ -2,16 +2,27 @@
 % Please edit documentation in R/print_name.R
 \name{print_name}
 \alias{print_name}
-\alias{print_name,taxlist,numeric-method}
+\alias{print_name.character}
+\alias{print_name,character-method}
+\alias{print_name.taxlist}
+\alias{print_name,taxlist-method}
 \title{Format usage names for publications}
 \usage{
-print_name(object, id, ...)
+print_name(object, ...)
 
-\S4method{print_name}{taxlist,numeric}(
+\method{print_name}{character}(
+  object,
+  second_mention = FALSE,
+  style = "markdown",
+  isolate = c("var.", "ssp.", "subsp.", "f.", "fma."),
+  trim = c("spp.", "sp.", "species"),
+  ...
+)
+
+\method{print_name}{taxlist}(
   object,
   id,
   concept = TRUE,
-  second_mention = FALSE,
   include_author = TRUE,
   secundum,
   style = "markdown",
@@ -21,24 +32,34 @@ print_name(object, id, ...)
 \arguments{
 \item{object}{An object of class \linkS4class{taxlist}.}
 
-\item{id}{Integer containing either a concept or a name ID.}
-
 \item{...}{Further arguments passed among methods.}
-
-\item{concept}{Logical value, whether \code{id} corresponds to a concept ID
-or a taxon usage name ID.}
 
 \item{second_mention}{Logical value, whether the genus name should be
 abbreviated or not.}
+
+\item{style}{Character value indicating the alternative format for italics.
+The available options are \code{"markdown"} (called within Rmarkdown
+documents), \code{"html"} (for documents rendered into html files),
+\code{"expression"} (used for labels in graphics), and \code{"knitr"} (format in
+LaTeX code).}
+
+\item{isolate}{A character vector with words (usually abbreviations)
+appearing in the middle of scientific names, which are not formatted in
+italics.}
+
+\item{trim}{A character vectors with words appearing at the end of scientific
+names that are not formatted in italics, either.}
+
+\item{id}{Integer containing either a concept or a name ID.}
+
+\item{concept}{Logical value, whether \code{id} corresponds to a concept ID
+or a taxon usage name ID.}
 
 \item{include_author}{Logical value, whether authors of the name should be
 mentioned or not.}
 
 \item{secundum}{Character value indicating the column in slot \code{taxonViews}
 that will be mentioned as \emph{secundum} (according to).}
-
-\item{style}{Character value indicating the alternative format for italics
-(at the moment only markdown and html implemented).}
 }
 \value{
 A character value including format to italic font.
@@ -49,8 +70,7 @@ documents including the typical italic format for different elements of a
 scientific name.
 The function \code{print_name} can be applied either in markdown documents or
 for graphics.
-}
-\details{
+
 In \strong{Rmarkdown} documents use \code{*Cyperus papyrus* L.} for
 inserting a formatted a species name.
 }
@@ -64,7 +84,8 @@ plot(
 )
 
 ## Accepted name with author
-text(x = 0, y = 1, labels = print_name(Easplist, 363, style = "expression"), pos = 4)
+text(x = 0, y = 1, labels = print_name(Easplist, 363, style = "expression"),
+  pos = 4)
 
 ## Including taxon view
 text(x = 0, y = 2, labels = print_name(Easplist, 363,

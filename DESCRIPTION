@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.3
+Version: 0.2.3.9001
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -19,6 +19,7 @@ Imports:
     stats,
     taxize,
     stringdist,
+    stringr,
     utils,
     vegdata
 Suggests:

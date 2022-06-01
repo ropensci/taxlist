@@ -1,6 +1,11 @@
 taxlist 0.2.3
 =============
 
+### New Features
+
+* New arguments `isolate` and `trim` to prevent parts of scientific names to be
+  formatted in italics.
+
 ### Improvements
 
 * Function `match_names()` allows to sort output data frame in the
@@ -10,6 +15,8 @@ taxlist 0.2.3
   allow for querying the exact name, which is usefull when querying genera.
 * New style of scripts using the package `styler`.
 * Name of taxon attribute **lf_behn_2018** changed to **life_form**.
+* Function `print_name()` is now working with more than one name (vectorized)
+  and reset to an S3 method, including an option for character vectors.
 
 taxlist 0.2.2
 =============
