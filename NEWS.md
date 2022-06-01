@@ -4,11 +4,12 @@ taxlist 0.2.3
 ### Improvements
 
 * Function `match_names()` allows to sort output data frame in the
-  `'character,taxlist-method'`
-* Slot **taxonViews** allowing class `lib_df` from package `biblio`
+  `'character,taxlist-method'`.
+* Slot **taxonViews** allowing class `lib_df` from package `biblio`.
 * In function `summary()`, when using text as query, a new parameter `exact`
   allow for querying the exact name, which is usefull when querying genera.
-* New style of scripts using the package `styler`
+* New style of scripts using the package `styler`.
+* Name of taxon attribute **lf_behn_2018** changed to **life_form**.
 
 taxlist 0.2.2
 =============

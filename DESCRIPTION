@@ -17,7 +17,6 @@ Imports:
     foreign,
     methods,
     stats,
-    taxa,
     taxize,
     stringdist,
     utils,
@@ -26,6 +25,7 @@ Suggests:
     ape,
     knitr,
     rmarkdown,
+    taxa,
     testthat
 LazyData: true
 Description: Handling taxonomic lists through objects of class 'taxlist'.

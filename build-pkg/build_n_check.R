@@ -5,6 +5,8 @@
 
 library(devtools)
 library(styler)
+library(knitr)
+library(qpdf)
 
 # Clean session
 rm(list = ls())
@@ -13,11 +15,14 @@ rm(list = ls())
 unlink(file.path("build-pkg", list.files("build-pkg", ".tar.gz")))
 unlink(file.path("build-pkg", list.files("build-pkg", ".pdf")))
 
-# Write data
-## source("data-raw/create-data.R")
-
 # re-style scripts
 style_pkg()
+
+# Write data
+source("data-raw/create-data.R")
+
+# Purl vignette R-code
+purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
 
 # write documentation
 document()
@@ -38,10 +43,7 @@ report()
 test()
 
 # Write data set
-source("data-raw/Easplist/Easplist.R")
-
-# Purl vignette R-code
-purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
+## source("data-raw/Easplist/Easplist.R")
 
 # Check application of good practices
 gp()

@@ -30,7 +30,7 @@
 #' count_taxa(Easplist, level = "species")
 #'
 #' ## using a formula
-#' count_taxa(~lf_behn_2018, Easplist)
+#' count_taxa(~life_form, Easplist)
 #' @rdname count_taxa
 #'
 #' @exportMethod count_taxa

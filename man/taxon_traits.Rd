@@ -57,7 +57,7 @@ accepted_name(taxlist = Easplist, ConceptID = 355, show_traits = TRUE)
 # Update
 Easplist <- update_trait(
   taxlist = Easplist, ConceptID = 355,
-  lf_behn_2018 = "annual"
+  life_form = "annual"
 )
 accepted_name(taxlist = Easplist, ConceptID = 355, show_traits = TRUE)
 }

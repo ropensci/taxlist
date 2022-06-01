@@ -33,12 +33,12 @@
 #'
 #' @examples
 #' Easplist <- subset(
-#'   x = Easplist, subset = lf_behn_2018 == "reed_plant",
+#'   x = Easplist, subset = life_form == "reed_plant",
 #'   slot = "traits"
 #' )
 #' summary(Easplist)
 #'
-#' summary(as.factor(Easplist$lf_behn_2018))
+#' summary(as.factor(Easplist$life_form))
 #' @aliases subset,taxlist-method
 #'
 #' @exportMethod subset

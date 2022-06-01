@@ -50,12 +50,12 @@ Be aware that \code{\link[=subset]{subset()}} won't work properly inside of func
 }
 \examples{
 Easplist <- subset(
-  x = Easplist, subset = lf_behn_2018 == "reed_plant",
+  x = Easplist, subset = life_form == "reed_plant",
   slot = "traits"
 )
 summary(Easplist)
 
-summary(as.factor(Easplist$lf_behn_2018))
+summary(as.factor(Easplist$life_form))
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

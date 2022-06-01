@@ -50,11 +50,11 @@
 #' )
 #'
 #' ## The same applications but this time for functional traits
-#' summary(as.factor(Easplist$lf_behn_2018))
+#' summary(as.factor(Easplist$life_form))
 #'
 #' # Merge annuals
 #' Easplist@taxonTraits$lifeform <- replace_x(
-#'   x = Easplist@taxonTraits$lf_behn_2018,
+#'   x = Easplist@taxonTraits$life_form,
 #'   old = c("obligate_annual", "facultative_annual"),
 #'   new = c("annual", "annual")
 #' )
@@ -62,8 +62,8 @@
 #'
 #' # The same effect
 #' Easplist@taxonTraits$lifeform <- replace_idx(
-#'   x = Easplist@taxonTraits$lf_behn_2018,
-#'   idx1 = grepl("annual", Easplist@taxonTraits$lf_behn_2018),
+#'   x = Easplist@taxonTraits$life_form,
+#'   idx1 = grepl("annual", Easplist@taxonTraits$life_form),
 #'   idx2 = TRUE,
 #'   new = "annual"
 #' )

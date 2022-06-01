@@ -1,9 +1,12 @@
-# TODO:   Script for generating data set 'Easplist' in package 'taxlist'
+# TODO:   Script for generating data sets in package 'taxlist'
 #
 # Author: Miguel Alvarez
 ################################################################################
 
 library(taxlist)
+
+# Easplist ---------------------------------------------------------------------
+
 
 # Sub-folder in taxlist source
 Dir <- "data-raw/Easplist"
