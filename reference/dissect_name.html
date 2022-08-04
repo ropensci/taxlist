@@ -23,7 +23,7 @@ re-pasted if indicated in argument repaste."><!-- mathjax --><script src="https:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -32,7 +32,7 @@ re-pasted if indicated in argument repaste."><!-- mathjax --><script src="https:
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,22 +75,29 @@ re-pasted if indicated in argument <code>repaste</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dissect_name</span><span class="op">(</span><span class="va">x</span>, split <span class="op">=</span> <span class="st">" "</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">repaste</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dissect_name</span><span class="op">(</span><span class="va">x</span>, split <span class="op">=</span> <span class="st">" "</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">repaste</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A character vector containing taxon names.</p></dd>
+
+
 <dt>split, fixed, ...</dt>
 <dd><p>Arguments passed to <code><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit()</a></code>.</p></dd>
+
+
 <dt>repaste</dt>
 <dd><p>An integer vector indicating the elements of the name selected
 for the output.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A character matrix with as many rows as names in the input vector.
+    
+
+<p>A character matrix with as many rows as names in the input vector.
 If <code>repaste</code> is indicated, then the output will be a character vector.</p>
     </div>
     <div id="see-also">
@@ -104,11 +111,11 @@ If <code>repaste</code> is indicated, then the output will be a character vector
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easplist</span>, subset <span class="op">=</span> <span class="va">Level</span> <span class="op">==</span> <span class="st">"variety"</span>, slot <span class="op">=</span> <span class="st">"relations"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu"><a href="accepted_name.html">accepted_name</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"TaxonName"</span><span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># split name</span></span>
-<span class="r-in"><span class="fu">dissect_name</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easplist</span>, subset <span class="op">=</span> <span class="va">Level</span> <span class="op">==</span> <span class="st">"variety"</span>, slot <span class="op">=</span> <span class="st">"relations"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu"><a href="accepted_name.html">accepted_name</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"TaxonName"</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># split name</span></span></span>
+<span class="r-in"><span><span class="fu">dissect_name</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       [,1]          [,2]            [,3]   [,4]               </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] "Euphorbia"   "inaequilatera" "var." "dentata"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] "Oldenlandia" "corymbosa"     "var." "caespitosa"       </span>
@@ -120,9 +127,9 @@ If <code>repaste</code> is indicated, then the output will be a character vector
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [8,] "Cyperus"     "denudatus"     "var." "lucenti-nigricans"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9,] "Achyranthes" "aspera"        "var." "sicula"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10,] "Digitaria"   "diagonalis"    "var." "uniglumis"        </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># re-paste the two first words</span></span>
-<span class="r-in"><span class="fu">dissect_name</span><span class="op">(</span><span class="va">Easplist</span>, repaste <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># re-paste the two first words</span></span></span>
+<span class="r-in"><span><span class="fu">dissect_name</span><span class="op">(</span><span class="va">Easplist</span>, repaste <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Euphorbia inaequilatera" "Oldenlandia corymbosa"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Pilea usambarensis"      "Trifolium semipilosum"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Pentas lanceolata"       "Stachys aculeolata"     </span>
@@ -142,7 +149,7 @@ If <code>repaste</code> is indicated, then the output will be a character vector
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -63,44 +63,59 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for taxlist,numeric,missing</span>
-<span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, print_output <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for taxlist,missing,character</span>
-<span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">change_concept</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">UsageID</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for taxlist</span>
-<span class="fu">change_concept</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">UsageID</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for taxlist,numeric,missing</span></span>
+<span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, print_output <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for taxlist,missing,character</span></span>
+<span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">change_concept</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">UsageID</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="fu">change_concept</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">UsageID</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object, taxlist</dt>
 <dd><p>Object of class <a href="taxlist-class.html">taxlist</a>.</p></dd>
+
+
 <dt>concepts</dt>
 <dd><p>Numeric (integer) vector including taxon concepts to be
 merged.</p></dd>
+
+
 <dt>level</dt>
 <dd><p>Character vector indicating the lowest level for merging.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further arguments to be passed to or from other methods.</p></dd>
+
+
 <dt>print_output</dt>
 <dd><p>Logical value indicating whether the merged concept
 should be displayed in the console.</p></dd>
+
+
 <dt>UsageID</dt>
 <dd><p>Numeric vector with taxon usage IDs to be changed from
 concept.</p></dd>
+
+
 <dt>value</dt>
 <dd><p>Numeric vector with taxon concept IDs to be assigned to the
 names.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <a href="taxlist-class.html">taxlist</a>.</p>
+    
+
+<p>An object of class <a href="taxlist-class.html">taxlist</a>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -122,8 +137,8 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Merge Cyperus papyrus and Cyperus dives</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">206</span>, <span class="fl">197</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Merge Cyperus papyrus and Cyperus dives</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">206</span>, <span class="fl">197</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 206 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
@@ -151,12 +166,12 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52601 Cyperus alopecuroides var. dives Boeckeler </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52602 Cyperus immensus var. petherickii (C.B. Clarke) Kük. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52603 Cyperus petherickii C.B. Clarke </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu">merge_taxa</span><span class="op">(</span></span>
-<span class="r-in">  object <span class="op">=</span> <span class="va">Easplist</span>, concepts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">206</span>, <span class="fl">197</span><span class="op">)</span>,</span>
-<span class="r-in">  print_output <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu">merge_taxa</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  object <span class="op">=</span> <span class="va">Easplist</span>, concepts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">206</span>, <span class="fl">197</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  print_output <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 206 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
@@ -175,11 +190,11 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52603 Cyperus petherickii C.B. Clarke </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52613 Cyperus papyrus ssp. nyassicus Chiov. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Move the name Typha aethiopica to concept 573 (T. latifolia)</span></span>
-<span class="r-in"><span class="fu">change_concept</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">53130</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">573</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50105</span>, <span class="fl">573</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Move the name Typha aethiopica to concept 573 (T. latifolia)</span></span></span>
+<span class="r-in"><span><span class="fu">change_concept</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">53130</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">573</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50105</span>, <span class="fl">573</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 50105 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
@@ -209,7 +224,7 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> # synonyms (1): </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 53130 Typha aethiopica (Rohrb.) Kronfeldt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
 </code></pre></div>
     </div>
   </div>
@@ -224,7 +239,7 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

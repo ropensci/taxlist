@@ -18,7 +18,7 @@ taxlist objects in an indented list."><!-- mathjax --><script src="https://cdnjs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -27,7 +27,7 @@ taxlist objects in an indented list."><!-- mathjax --><script src="https://cdnjs
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -65,85 +65,116 @@ taxlist objects in an indented list."><!-- mathjax --><script src="https://cdnjs
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">indented_list</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for taxlist</span>
-<span class="fu">indented_list</span><span class="op">(</span>
-  <span class="va">object</span>,
-  <span class="va">filter</span>,
-  keep_children <span class="op">=</span> <span class="cn">TRUE</span>,
-  keep_parents <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">rankless_as</span>,
-  indent <span class="op">=</span> <span class="st">" "</span>,
-  lead_br <span class="op">=</span> <span class="st">""</span>,
-  print <span class="op">=</span> <span class="cn">TRUE</span>,
-  author <span class="op">=</span> <span class="cn">TRUE</span>,
-  level <span class="op">=</span> <span class="cn">FALSE</span>,
-  synonyms <span class="op">=</span> <span class="cn">FALSE</span>,
-  syn_encl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"= "</span>, <span class="st">""</span><span class="op">)</span>,
-  <span class="va">secundum</span>,
-  alphabetical <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">indented_list</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="fu">indented_list</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  <span class="va">filter</span>,</span>
+<span>  keep_children <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  keep_parents <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">rankless_as</span>,</span>
+<span>  indent <span class="op">=</span> <span class="st">" "</span>,</span>
+<span>  lead_br <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  print <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  author <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  level <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  synonyms <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  syn_encl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"= "</span>, <span class="st">""</span><span class="op">)</span>,</span>
+<span>  <span class="va">secundum</span>,</span>
+<span>  alphabetical <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
 <dd><p>A <a href="taxlist-class.html">taxlist</a> object containing taxonomic concepts.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further arguments (not used yet).</p></dd>
+
+
 <dt>filter</dt>
 <dd><p>A character value (optional) that will be matched with the
 taxon usage names to produce a subset of 'object'. Note that this filter
 will be also applied to synonyms, independent of the argument applied in
 parameter 'synonyms'.</p></dd>
+
+
 <dt>keep_children</dt>
 <dd><p>A logical value indicating whether children of matched
 concept should be included in the result.</p></dd>
+
+
 <dt>keep_parents</dt>
 <dd><p>A logical value indicating whether parents of matched
 concept should be included in the result.</p></dd>
+
+
 <dt>rankless_as</dt>
 <dd><p>A character vector indicating a level (taxonomic rank) to
 which rankless taxa may be set before doing the list.</p></dd>
+
+
 <dt>indent</dt>
 <dd><p>Symbol used for indentation. This symbol will be multiplied by
 the depth of the taxonomic rank. The default is a blank space.
 This can be also provided as a named vector, with a different indentation
 symbol for the respective taxonomic ranks.</p></dd>
+
+
 <dt>lead_br</dt>
 <dd><p>Optional line break symbol leading before the indentation.
 It may be required for r-markdown documents.</p></dd>
+
+
 <dt>print</dt>
 <dd><p>A logical value indicating whether the indented list should be
 printed in the console or not (default = TRUE).</p></dd>
+
+
 <dt>author</dt>
 <dd><p>A logical value indicating whether the author should be printed
 with the name (default = TRUE).</p></dd>
+
+
 <dt>level</dt>
 <dd><p>A logical value indicating whether the name of the level
 (taxonomic rank) should be included before the name or not
 (default = FALSE).</p></dd>
+
+
 <dt>synonyms</dt>
 <dd><p>A logical value indicating whether the synonyms should be
 included after accepted names or not (default = FALSE).</p></dd>
+
+
 <dt>syn_encl</dt>
 <dd><p>A character vector of length 2 including the symbols used to
 enclose synonyms. First value will be set before the synonyms and second
 value, after the synonyms.</p></dd>
+
+
 <dt>secundum</dt>
 <dd><p>A character value matching a name in slot 'taxonViews', which
 will be printed as secundum (taxon view). It is not printed by default.</p></dd>
+
+
 <dt>alphabetical</dt>
 <dd><p>A logical value indicating whether taxa may be sorted by
 names or by IDs. The default is FALSE, thus taxa are sorted by IDs.
 Note that argument TRUE may not work properly if the object contains
 homonymous taxa.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>If 'print = TRUE', the indented list is printed in the console. The result,
+    
+
+<p>If 'print = TRUE', the indented list is printed in the console. The result,
 which is a data frame with the elements used to format the names, can be also
 assigned to an object.</p>
     </div>
@@ -154,17 +185,17 @@ assigned to an object.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Show taxonomy of papyrus</span></span>
-<span class="r-in"><span class="fu">indented_list</span><span class="op">(</span><span class="va">Easplist</span>, <span class="st">"papyrus"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Show taxonomy of papyrus</span></span></span>
+<span class="r-in"><span><span class="fu">indented_list</span><span class="op">(</span><span class="va">Easplist</span>, <span class="st">"papyrus"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cyperaceae Juss.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Cyperus L.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Cyperus papyrus L. </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Include synonyms and taxon views</span></span>
-<span class="r-in"><span class="fu">indented_list</span><span class="op">(</span><span class="va">Easplist</span>, <span class="st">"papyrus"</span>,</span>
-<span class="r-in">  level <span class="op">=</span> <span class="cn">TRUE</span>, synonyms <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  secundum <span class="op">=</span> <span class="st">"secundum"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Include synonyms and taxon views</span></span></span>
+<span class="r-in"><span><span class="fu">indented_list</span><span class="op">(</span><span class="va">Easplist</span>, <span class="st">"papyrus"</span>,</span></span>
+<span class="r-in"><span>  level <span class="op">=</span> <span class="cn">TRUE</span>, synonyms <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  secundum <span class="op">=</span> <span class="st">"secundum"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> family Cyperaceae Juss. sec. The Plant List (2013)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  genus Cyperus L. sec. Taxonomic Name Resolution Service (2018)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    species Cyperus papyrus L. sec. African Plant Database (2012)</span>
@@ -184,7 +215,7 @@ assigned to an object.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

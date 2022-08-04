@@ -18,7 +18,7 @@ taxlist objects or an overview of selected taxa."><!-- mathjax --><script src="h
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -27,7 +27,7 @@ taxlist objects or an overview of selected taxa."><!-- mathjax --><script src="h
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -65,47 +65,69 @@ taxlist objects or an overview of selected taxa."><!-- mathjax --><script src="h
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for taxlist</span>
-<span class="fu">summary</span><span class="op">(</span>
-  <span class="va">object</span>,
-  <span class="va">ConceptID</span>,
-  units <span class="op">=</span> <span class="st">"Kb"</span>,
-  check_validity <span class="op">=</span> <span class="cn">TRUE</span>,
-  display <span class="op">=</span> <span class="st">"both"</span>,
-  maxsum <span class="op">=</span> <span class="fl">5</span>,
-  secundum <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="co"># S4 method for taxlist</span>
-<span class="fu">show</span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
-
-<span class="co"># S4 method for taxlist</span>
-<span class="fu">print</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="fu">summary</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  <span class="va">ConceptID</span>,</span>
+<span>  units <span class="op">=</span> <span class="st">"Kb"</span>,</span>
+<span>  check_validity <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  display <span class="op">=</span> <span class="st">"both"</span>,</span>
+<span>  maxsum <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  secundum <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  exact <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="fu">show</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="fu">print</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object, x</dt>
 <dd><p>A <a href="taxlist-class.html">taxlist</a> object.</p></dd>
+
+
 <dt>ConceptID</dt>
 <dd><p>IDs of concepts to be displayed in the summary.</p></dd>
+
+
 <dt>units</dt>
 <dd><p>Character value indicating the units shown in the object's
 allocated space.</p></dd>
+
+
 <dt>check_validity</dt>
 <dd><p>Logical value indicating whether the validity of
 <code>object</code> should be checked or not.</p></dd>
+
+
 <dt>display</dt>
 <dd><p>Character value indicating the field to be displayed (see
 details).</p></dd>
+
+
 <dt>maxsum</dt>
 <dd><p>Integer indicating the maximum number of displayed taxa.</p></dd>
+
+
 <dt>secundum</dt>
 <dd><p>A character value indicating the column from slot<code>taxonViews</code>
 to be displayed in the summary.</p></dd>
+
+
+<dt>exact</dt>
+<dd><p>A logical value indicating whether taxon names should match the
+exact argument in parameter 'ConceptID'. It works only if 'ConceptID' is
+provided as character value and  is not the keyword 'all'.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further arguments passed to or from another methods.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -136,8 +158,8 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## summary of the object</span></span>
-<span class="r-in"><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span>, units <span class="op">=</span> <span class="st">"Mb"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## summary of the object</span></span></span>
+<span class="r-in"><span><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span>, units <span class="op">=</span> <span class="st">"Mb"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 0.7 Mb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -159,9 +181,9 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1011</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 186</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## the same output</span></span>
-<span class="r-in"><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## the same output</span></span></span>
+<span class="r-in"><span><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 761.4 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -183,7 +205,7 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1011</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 186</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">show</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">show</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 761.4 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -205,7 +227,7 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1011</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 186</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">print</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">print</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 761.4 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -227,7 +249,7 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1011</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 186</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="va">Easplist</span></span>
+<span class="r-in"><span><span class="va">Easplist</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 761.4 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -249,9 +271,9 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1011</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 186</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## summary for two taxa</span></span>
-<span class="r-in"><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">51128</span>, <span class="fl">51140</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## summary for two taxa</span></span></span>
+<span class="r-in"><span><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">51128</span>, <span class="fl">51140</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 51128 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
@@ -274,10 +296,10 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> # synonyms (1): </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 51141 Vittaria volkensii Hieron. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## summary for a name</span></span>
-<span class="r-in"><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span>, <span class="st">"Acmella"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## summary for a name</span></span></span>
+<span class="r-in"><span><span class="fu">summary</span><span class="op">(</span><span class="va">Easplist</span>, <span class="st">"Acmella"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 20 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
@@ -326,10 +348,10 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 54762 Acmella Pers. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## summary for the first 10 taxa</span></span>
-<span class="r-in"><span class="fu">summary</span><span class="op">(</span>object <span class="op">=</span> <span class="va">Easplist</span>, ConceptID <span class="op">=</span> <span class="st">"all"</span>, maxsum <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## summary for the first 10 taxa</span></span></span>
+<span class="r-in"><span><span class="fu">summary</span><span class="op">(</span>object <span class="op">=</span> <span class="va">Easplist</span>, ConceptID <span class="op">=</span> <span class="st">"all"</span>, maxsum <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
@@ -416,7 +438,7 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 Acacia reficiens Wawra </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
 </code></pre></div>
     </div>
   </div>
@@ -431,7 +453,7 @@ Such values are taken from slot <code>taxonNames</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

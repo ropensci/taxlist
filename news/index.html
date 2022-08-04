@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -61,15 +61,15 @@
 <h2 class="page-header" data-toc-text="0.2.3" id="taxlist-023">taxlist 0.2.3<a class="anchor" aria-label="anchor" href="#taxlist-023"></a></h2>
 <div class="section level4">
 <h4 id="new-features-0-2-3">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-2-3"></a></h4>
-<ul><li>Function <code><a href="../reference/match_names.html">match_names()</a></code> allows to sort output data frame in the <code>'character,taxlist-method'</code>
-</li>
-</ul></div>
+<ul><li>New arguments <code>isolate</code> and <code>trim</code> to prevent parts of scientific names to be formatted in italics.</li></ul></div>
 <div class="section level4">
 <h4 id="improvements-0-2-3">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-2-3"></a></h4>
-<ul><li>Slot <strong>taxonViews</strong> allowing class <code>lib_df</code> from package <code>biblio</code>
-</li>
-<li>New style of scripts using the package <code>styler</code>
-</li>
+<ul><li>Function <code><a href="../reference/match_names.html">match_names()</a></code> allows to sort output data frame in the <code>'character,taxlist-method'</code>.</li>
+<li>Slot <strong>taxonViews</strong> allowing class <code>lib_df</code> from package <code>biblio</code>.</li>
+<li>In function <code><a href="../reference/summary.html">summary()</a></code>, when using text as query, a new parameter <code>exact</code> allow for querying the exact name, which is usefull when querying genera.</li>
+<li>New style of scripts using the package <code>styler</code>.</li>
+<li>Name of taxon attribute <strong>lf_behn_2018</strong> changed to <strong>life_form</strong>.</li>
+<li>Function <code><a href="../reference/print_name.html">print_name()</a></code> is now working with more than one name (vectorized) and reset to an S3 method, including an option for character vectors.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -77,15 +77,13 @@
 <div class="section level4">
 <h4 id="bug-fixes-0-2-2">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-2"></a></h4>
 <ul><li>Functions <code><a href="../reference/Deprecated-functions.html">taxlist2taxmap()</a></code> and <code><a href="../reference/Deprecated-functions.html">taxmap2taxlist()</a></code> temporarily deprecated due to conflicts with release of <a href="https://github.com/ropensci/taxa/releases/tag/v0.4.0" class="external-link">taxa v. 0.4.0</a>
-</li>
-</ul></div>
+</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.1" id="taxlist-021">taxlist 0.2.1<small>2021-03-29</small><a class="anchor" aria-label="anchor" href="#taxlist-021"></a></h2>
 <div class="section level4">
 <h4 id="new-features-0-2-1">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-2-1"></a></h4>
-<ul><li>New function <code><a href="../reference/indented_list.html">indented_list()</a></code> to print taxonomic ranks in indented lists.</li>
-</ul></div>
+<ul><li>New function <code><a href="../reference/indented_list.html">indented_list()</a></code> to print taxonomic ranks in indented lists.</li></ul></div>
 <div class="section level4">
 <h4 id="improvements-0-2-1">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-2-1"></a></h4>
 <ul><li>New argument <code>repaste</code> in function <code><a href="../reference/dissect_name.html">dissect_name()</a></code> for re-pasting dissected names.</li>
@@ -99,16 +97,14 @@
 <h2 class="page-header" data-toc-text="0.2.0" id="taxlist-020">taxlist 0.2.0<small>2020-10-07</small><a class="anchor" aria-label="anchor" href="#taxlist-020"></a></h2>
 <div class="section level4">
 <h4 id="improvements-0-2-0">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-2-0"></a></h4>
-<ul><li>Several improvements to meet <strong>ROpenSci</strong> requirements documented <a href="https://github.com/ropensci/software-review/issues/233#issuecomment-652846890" class="external-link">here</a>.</li>
-</ul></div>
+<ul><li>Several improvements to meet <strong>ROpenSci</strong> requirements documented <a href="https://github.com/ropensci/software-review/issues/233#issuecomment-652846890" class="external-link">here</a>.</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.9" id="taxlist-019">taxlist 0.1.9<small>2020-05-31</small><a class="anchor" aria-label="anchor" href="#taxlist-019"></a></h2>
 <div class="section level4">
 <h4 id="bug-fixes-0-1-9">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-1-9"></a></h4>
 <ul><li>Problems with encoding of data set <code>Easplist</code>
-</li>
-</ul></div>
+</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.8" id="taxlist-018">taxlist 0.1.8<small>2020-04-29</small><a class="anchor" aria-label="anchor" href="#taxlist-018"></a></h2>
@@ -154,8 +150,7 @@
 <div class="section level4">
 <h4 id="new-features-0-1-6">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-6"></a></h4>
 <ul><li>New function <code><a href="../reference/count_taxa.html">count_taxa()</a></code>
-</li>
-</ul></div>
+</li></ul></div>
 <div class="section level4">
 <h4 id="improvements-0-1-6">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-1-6"></a></h4>
 <ul><li>A new option <code>style="knitr"</code> for function <code><a href="../reference/print_name.html">print_name()</a></code> (See <a href="https://stackoverflow.com/questions/51092103/formatted-scientific-names-from-r-to-latex-using-sweave-or-knitr" class="external-link">this issue</a> at <strong>Stack Overflow</strong>).</li>
@@ -212,8 +207,7 @@
 </ul></div>
 <div class="section level4">
 <h4 id="improvements-0-1-4">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-1-4"></a></h4>
-<ul><li>Function <code>backup_object</code> is also working with relative paths.</li>
-</ul></div>
+<ul><li>Function <code>backup_object</code> is also working with relative paths.</li></ul></div>
 <div class="section level4">
 <h4 id="bugs-fixes-0-1-4">Bugs Fixes<a class="anchor" aria-label="anchor" href="#bugs-fixes-0-1-4"></a></h4>
 <ul><li>Function <code>add_view</code> was not adding new columns in the respective slot.</li>
@@ -236,26 +230,22 @@
 </ul></div>
 <div class="section level4">
 <h4 id="bugs-fixes-0-1-3">Bugs Fixes<a class="anchor" aria-label="anchor" href="#bugs-fixes-0-1-3"></a></h4>
-<ul><li>Bug in <code>add_concept</code>: wrong assignment of <code>AcceptedName</code>.</li>
-</ul></div>
+<ul><li>Bug in <code>add_concept</code>: wrong assignment of <code>AcceptedName</code>.</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.2" id="taxlist-012">taxlist 0.1.2<small>2017-08-06</small><a class="anchor" aria-label="anchor" href="#taxlist-012"></a></h2>
 <div class="section level4">
 <h4 id="new-features-0-1-2">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-2"></a></h4>
-<ul><li>new function <code>merge_taxa</code>.</li>
-</ul></div>
+<ul><li>new function <code>merge_taxa</code>.</li></ul></div>
 <div class="section level4">
 <h4 id="improvements-0-1-2">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-1-2"></a></h4>
-<ul><li>Argument <code>ConceptID</code> in <code>summary</code> (<code>taxlis-method</code>) can be a character vector matching <code>TaxonName</code>.</li>
-</ul></div>
+<ul><li>Argument <code>ConceptID</code> in <code>summary</code> (<code>taxlis-method</code>) can be a character vector matching <code>TaxonName</code>.</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.1" id="taxlist-011">taxlist 0.1.1<small>2017-07-23</small><a class="anchor" aria-label="anchor" href="#taxlist-011"></a></h2>
 <div class="section level4">
 <h4 id="new-features-0-1-1">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-1"></a></h4>
-<ul><li>New vignette <code>taxlist-intro</code>.</li>
-</ul></div>
+<ul><li>New vignette <code>taxlist-intro</code>.</li></ul></div>
 <div class="section level4">
 <h4 id="improvements-0-1-1">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-1-1"></a></h4>
 <ul><li>Package <code>vegdata</code> moved from Depends to Imports.</li>
@@ -267,8 +257,7 @@
 <h2 class="page-header" data-toc-text="0.1.0" id="taxlist-010">taxlist 0.1.0<small>2017-06-14</small><a class="anchor" aria-label="anchor" href="#taxlist-010"></a></h2>
 <div class="section level4">
 <h4 id="new-features-0-1-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-0"></a></h4>
-<ul><li>Released to <strong>CRAN</strong> (<a href="https://cran.r-project.org/package=taxlist" class="external-link uri">https://cran.r-project.org/package=taxlist</a>).</li>
-</ul></div>
+<ul><li>Released to <strong>CRAN</strong> (<a href="https://cran.r-project.org/package=taxlist" class="external-link uri">https://cran.r-project.org/package=taxlist</a>).</li></ul></div>
 </div>
   </div>
 
@@ -284,7 +273,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

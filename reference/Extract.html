@@ -18,7 +18,7 @@ taxlist objects."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -27,7 +27,7 @@ taxlist objects."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -76,24 +76,35 @@ $(x, name)</code></pre></div>
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Object of class <a href="taxlist-class.html">taxlist</a>.</p></dd>
+
+
 <dt>i</dt>
 <dd><p>Integer or logical vector used as index for access to taxon
 concepts, referring to the rows in slot 'taxonRelations'. These indices can
 be used to produce a object with a subset of taxon concepts. It is not
 recommended to use character values for this index.</p></dd>
+
+
 <dt>j</dt>
 <dd><p>Integer, logical or character vector used as index for access to
 variables in slot 'taxonTraits'. These indices can be used to reduce the
 number of variables in the mentioned slot.</p></dd>
+
+
 <dt>drop</dt>
 <dd><p>A logical value passed to <code><a href="https://rdrr.io/r/base/Extract.html" class="external-link">Extract</a></code>.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>A symbol or character value for the method <code>$</code>, corresponding to
 a variable either at slot 'taxonTraits' or slot 'taxonRelations'.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The method <code>$</code> retrieves a vector, while <code>[</code> retrieves a subset
+    
+
+<p>The method <code>$</code> retrieves a vector, while <code>[</code> retrieves a subset
 of the input <a href="taxlist-class.html">taxlist</a> object.</p>
     </div>
     <div id="see-also">
@@ -107,17 +118,17 @@ of the input <a href="taxlist-class.html">taxlist</a> object.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Statistics on life forms</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">lf_behn_2018</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Statistics on life forms</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">life_form</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   acropleustophyte        chamaephyte     climbing_plant facultative_annual </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  8                 25                 25                 20 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    obligate_annual       phanerophyte   pleustohelophyte         reed_plant </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                114                 26                  8                 14 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      reptant_plant      tussock_plant               NA's </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                 19                 52               3576 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## First ten concepts in this list</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, <span class="st">"all"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## First ten concepts in this list</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, <span class="st">"all"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
@@ -164,7 +175,7 @@ of the input <a href="taxlist-class.html">taxlist</a> object.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 Acacia elatior Brenan </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
 </code></pre></div>
     </div>
   </div>
@@ -179,7 +190,7 @@ of the input <a href="taxlist-class.html">taxlist</a> object.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

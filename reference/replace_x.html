@@ -28,7 +28,7 @@ sharing only part of the columns."><!-- mathjax --><script src="https://cdnjs.cl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -37,7 +37,7 @@ sharing only part of the columns."><!-- mathjax --><script src="https://cdnjs.cl
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -85,13 +85,13 @@ sharing only part of the columns.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">replace_x</span><span class="op">(</span><span class="va">x</span>, <span class="va">old</span>, <span class="va">new</span><span class="op">)</span>
-
-<span class="fu">replace_idx</span><span class="op">(</span><span class="va">x</span>, idx1 <span class="op">=</span> <span class="va">x</span>, idx2 <span class="op">=</span> <span class="va">idx1</span>, <span class="va">new</span><span class="op">)</span>
-
-<span class="fu">replace_na</span><span class="op">(</span><span class="va">x</span>, <span class="va">idx1</span>, idx2 <span class="op">=</span> <span class="va">idx1</span>, <span class="va">new</span><span class="op">)</span>
-
-<span class="fu">insert_rows</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">replace_x</span><span class="op">(</span><span class="va">x</span>, <span class="va">old</span>, <span class="va">new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">replace_idx</span><span class="op">(</span><span class="va">x</span>, idx1 <span class="op">=</span> <span class="va">x</span>, idx2 <span class="op">=</span> <span class="va">idx1</span>, <span class="va">new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">replace_na</span><span class="op">(</span><span class="va">x</span>, <span class="va">idx1</span>, idx2 <span class="op">=</span> <span class="va">idx1</span>, <span class="va">new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">insert_rows</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -99,21 +99,32 @@ sharing only part of the columns.</p>
     <dl><dt>x</dt>
 <dd><p>A vector to be modified. In the case of <code>insert_rows()</code>, <code>x</code> is a
 data frame.</p></dd>
+
+
 <dt>old</dt>
 <dd><p>A vector with values to be replaced by <code>replace_x()</code> in a vector.</p></dd>
+
+
 <dt>new</dt>
 <dd><p>A vector containing values to be inserted, either comparing values
 or using indices.</p></dd>
+
+
 <dt>idx1, idx2</dt>
 <dd><p>Indices applied for value replacements to match <code>x</code> with
 <code>new</code>, respectively. If <code>idx2</code> is not provided, it will be assumed as
 equivalent to <code>idx1</code>.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>A data frame including rows (and columns) to be inserted in <code>x</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A vector or data frame with the modified values.</p>
+    
+
+<p>A vector or data frame with the modified values.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -122,81 +133,81 @@ equivalent to <code>idx1</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Replace values in vector</span></span>
-<span class="r-in"><span class="fu">replace_x</span><span class="op">(</span>x <span class="op">=</span> <span class="va">letters</span>, old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"b"</span>, <span class="st">"p"</span>, <span class="st">"f"</span><span class="op">)</span>, new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bee"</span>, <span class="st">"pork"</span>, <span class="st">"fungus"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Replace values in vector</span></span></span>
+<span class="r-in"><span><span class="fu">replace_x</span><span class="op">(</span>x <span class="op">=</span> <span class="va">letters</span>, old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"b"</span>, <span class="st">"p"</span>, <span class="st">"f"</span><span class="op">)</span>, new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bee"</span>, <span class="st">"pork"</span>, <span class="st">"fungus"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "a"      "bee"    "c"      "d"      "e"      "fungus" "g"      "h"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "i"      "j"      "k"      "l"      "m"      "n"      "o"      "pork"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [17] "q"      "r"      "s"      "t"      "u"      "v"      "w"      "x"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [25] "y"      "z"     </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Replace values using indices</span></span>
-<span class="r-in"><span class="fu">replace_idx</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">letters</span>, idx1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span>, idx2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">7</span>, <span class="fl">17</span><span class="op">)</span>,</span>
-<span class="r-in">  new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"second"</span>, <span class="st">"seventh"</span>, <span class="st">"seventeenth"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Replace values using indices</span></span></span>
+<span class="r-in"><span><span class="fu">replace_idx</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">letters</span>, idx1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span>, idx2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">7</span>, <span class="fl">17</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"second"</span>, <span class="st">"seventh"</span>, <span class="st">"seventeenth"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "a"           "second"      "c"           "d"           "e"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "f"           "seventh"     "h"           "i"           "j"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] "k"           "l"           "m"           "n"           "o"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [16] "p"           "seventeenth" "r"           "s"           "t"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [21] "u"           "v"           "w"           "x"           "y"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [26] "z"          </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Replace values if they are NAs</span></span>
-<span class="r-in"><span class="va">letters</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
-<span class="r-in"><span class="fu">replace_na</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">letters</span>, idx1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span>, idx2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,</span>
-<span class="r-in">  new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alpha"</span>, <span class="st">"beta"</span>, <span class="st">"zeta"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Replace values if they are NAs</span></span></span>
+<span class="r-in"><span><span class="va">letters</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span><span class="fu">replace_na</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">letters</span>, idx1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">letters</span><span class="op">)</span>, idx2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alpha"</span>, <span class="st">"beta"</span>, <span class="st">"zeta"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "a"    "beta" "c"    "d"    "e"    "f"    "g"    "h"    "i"    "j"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] "k"    "l"    "m"    "n"    "o"    "p"    "q"    "r"    "s"    "t"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [21] "u"    "v"    "w"    "x"    "y"    "z"   </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## The same applications but this time for functional traits</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">lf_behn_2018</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## The same applications but this time for functional traits</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">life_form</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   acropleustophyte        chamaephyte     climbing_plant facultative_annual </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  8                 25                 25                 20 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    obligate_annual       phanerophyte   pleustohelophyte         reed_plant </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                114                 26                  8                 14 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      reptant_plant      tussock_plant               NA's </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                 19                 52               3576 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Merge annuals</span></span>
-<span class="r-in"><span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">lifeform</span> <span class="op">&lt;-</span> <span class="fu">replace_x</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">lf_behn_2018</span>,</span>
-<span class="r-in">  old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"obligate_annual"</span>, <span class="st">"facultative_annual"</span><span class="op">)</span>,</span>
-<span class="r-in">  new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"annual"</span>, <span class="st">"annual"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">lifeform</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Merge annuals</span></span></span>
+<span class="r-in"><span><span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">lifeform</span> <span class="op">&lt;-</span> <span class="fu">replace_x</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">life_form</span>,</span></span>
+<span class="r-in"><span>  old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"obligate_annual"</span>, <span class="st">"facultative_annual"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"annual"</span>, <span class="st">"annual"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">lifeform</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> acropleustophyte           annual      chamaephyte   climbing_plant </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                8              134               25               25 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     phanerophyte pleustohelophyte       reed_plant    reptant_plant </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               26                8               14               19 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    tussock_plant             NA's </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               52             3576 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The same effect</span></span>
-<span class="r-in"><span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">lifeform</span> <span class="op">&lt;-</span> <span class="fu">replace_idx</span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">lf_behn_2018</span>,</span>
-<span class="r-in">  idx1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"annual"</span>, <span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">lf_behn_2018</span><span class="op">)</span>,</span>
-<span class="r-in">  idx2 <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  new <span class="op">=</span> <span class="st">"annual"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">lifeform</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The same effect</span></span></span>
+<span class="r-in"><span><span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">lifeform</span> <span class="op">&lt;-</span> <span class="fu">replace_idx</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">life_form</span>,</span></span>
+<span class="r-in"><span>  idx1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"annual"</span>, <span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">$</span><span class="va">life_form</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  idx2 <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  new <span class="op">=</span> <span class="st">"annual"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">lifeform</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> acropleustophyte           annual      chamaephyte   climbing_plant </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                8              134               25               25 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     phanerophyte pleustohelophyte       reed_plant    reptant_plant </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               26                8               14               19 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    tussock_plant             NA's </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               52             3576 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Merge data frames including new columns</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">new_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">  Species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"humilis"</span>, <span class="fl">2</span><span class="op">)</span>, Height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span>,</span>
-<span class="r-in">  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu">insert_rows</span><span class="op">(</span><span class="va">iris</span>, <span class="va">new_iris</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Merge data frames including new columns</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">new_iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  Species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"humilis"</span>, <span class="fl">2</span><span class="op">)</span>, Height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">insert_rows</span><span class="op">(</span><span class="va">iris</span>, <span class="va">new_iris</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species Height</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1            5.1         3.5          1.4         0.2     setosa     NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2            4.9         3.0          1.4         0.2     setosa     NA</span>
@@ -364,7 +375,7 @@ equivalent to <code>idx1</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

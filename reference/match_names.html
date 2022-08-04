@@ -19,7 +19,7 @@ using the function stringsim()."><!-- mathjax --><script src="https://cdnjs.clou
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -28,7 +28,7 @@ using the function stringsim()."><!-- mathjax --><script src="https://cdnjs.clou
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,40 +67,48 @@ using the function <code>stringsim()</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">match_names</span><span class="op">(</span><span class="va">x</span>, <span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for character,character</span>
-<span class="fu">match_names</span><span class="op">(</span><span class="va">x</span>, <span class="va">object</span>, best <span class="op">=</span> <span class="fl">5</span>, clean <span class="op">=</span> <span class="cn">TRUE</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for character,taxlist</span>
-<span class="fu">match_names</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">object</span>,
-  clean <span class="op">=</span> <span class="cn">TRUE</span>,
-  output <span class="op">=</span> <span class="st">"data.frame"</span>,
-  best <span class="op">=</span> <span class="fl">5</span>,
-  show_concepts <span class="op">=</span> <span class="cn">FALSE</span>,
-  accepted_only <span class="op">=</span> <span class="cn">FALSE</span>,
-  method <span class="op">=</span> <span class="st">"lcs"</span>,
-  <span class="va">sort_by</span>,
-  order_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">match_names</span><span class="op">(</span><span class="va">x</span>, <span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for character,character</span></span>
+<span><span class="fu">match_names</span><span class="op">(</span><span class="va">x</span>, <span class="va">object</span>, best <span class="op">=</span> <span class="fl">5</span>, clean <span class="op">=</span> <span class="cn">TRUE</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for character,taxlist</span></span>
+<span><span class="fu">match_names</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">object</span>,</span>
+<span>  clean <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  output <span class="op">=</span> <span class="st">"data.frame"</span>,</span>
+<span>  best <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  show_concepts <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  accepted_only <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"lcs"</span>,</span>
+<span>  <span class="va">sort_by</span>,</span>
+<span>  order_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A character vector with names to be compared.</p></dd>
+
+
 <dt>object</dt>
 <dd><p>An object of class <a href="taxlist-class.html">taxlist</a> to be compared
 with.</p></dd>
+
+
 <dt>best</dt>
 <dd><p>Integer value indicating how many from the best matches have to
 be displayed (only working for <code>output="list"</code>).</p></dd>
+
+
 <dt>clean</dt>
 <dd><p>Logical value, whether leading, tailing and double blanks should
 be deleted from <code>x</code>.</p></dd>
+
+
 <dt>decreasing</dt>
 <dd><p>Logical value indicating whether retrieved names should be
 sorted by decreasing or increasing similarity value. In the character
@@ -109,27 +117,40 @@ and the reference vector (argument <code>object</code>). In the taxlist method u
 <code>'output = "data.frame'"</code>, the order corresponds to the similarity of the
 best match (by default, no sorting is done). This argument is passed to
 <code><a href="https://rdrr.io/r/base/order.html" class="external-link">order()</a></code>.</p></dd>
+
+
 <dt>output</dt>
 <dd><p>Character value indicating the type of output. Alternative
 values are "list" (taxon concepts ID's sorted by similarity for each
 queried name) or "data.frame" (a table including the best match for every
 queried name).</p></dd>
+
+
 <dt>show_concepts</dt>
 <dd><p>Logical value, whether respective concepts should be
 displayed in output or not.</p></dd>
+
+
 <dt>accepted_only</dt>
 <dd><p>Logical value, whether only accepted names should be
 matched or all usage names (including synonyms).</p></dd>
+
+
 <dt>method, ...</dt>
 <dd><p>Further arguments passed to <code>stringsim()</code>.</p></dd>
+
+
 <dt>sort_by</dt>
 <dd><p>A character vector including the output columns used for
 sorting the output table. Used only in 'character,taxlist-method'. The
 function checks the presence of these values as columns in the output
 data frame.</p></dd>
+
+
 <dt>order_args</dt>
 <dd><p>A named list including arguments passed to <code><a href="https://rdrr.io/r/base/order.html" class="external-link">order()</a></code> in the
 'character,taxlist-method'.</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -142,18 +163,18 @@ data frame.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Names to be compared</span></span>
-<span class="r-in"><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cperus papyrus"</span>, <span class="st">"Typha australis"</span>, <span class="st">"Luke skywalker"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Comparing character vectors</span></span>
-<span class="r-in"><span class="fu">match_names</span><span class="op">(</span><span class="st">"Cyperus paper"</span>, <span class="va">species</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Names to be compared</span></span></span>
+<span class="r-in"><span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cperus papyrus"</span>, <span class="st">"Typha australis"</span>, <span class="st">"Luke skywalker"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Comparing character vectors</span></span></span>
+<span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span><span class="st">"Cyperus paper"</span>, <span class="va">species</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              name similarity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  Cperus papyrus  0.7142857</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 Typha australis  0.3333333</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3  Luke skywalker  0.2857143</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Retrieve taxon usage names</span></span>
-<span class="r-in"><span class="fu">match_names</span><span class="op">(</span><span class="va">species</span>, <span class="va">Easplist</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Retrieve taxon usage names</span></span></span>
+<span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span><span class="va">species</span>, <span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     submittedname           TaxonName                       AuthorName</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  Cperus papyrus     Cyperus papyrus                               L.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 Typha australis     Typha australis                        Schumach.</span>
@@ -162,9 +183,9 @@ data frame.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          206       1  0.9655172</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2        51999       1  1.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3        51565       1  0.4848485</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Display accepted names in output</span></span>
-<span class="r-in"><span class="fu">match_names</span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span>, object <span class="op">=</span> <span class="va">Easplist</span>, show_concepts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Display accepted names in output</span></span></span>
+<span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span>, object <span class="op">=</span> <span class="va">Easplist</span>, show_concepts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     submittedname           TaxonName                       AuthorName</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  Cperus papyrus     Cyperus papyrus                               L.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 Typha australis     Typha australis                        Schumach.</span>
@@ -187,7 +208,7 @@ data frame.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

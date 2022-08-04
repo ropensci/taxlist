@@ -22,7 +22,7 @@ taxonomic hierarchy."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -31,7 +31,7 @@ taxonomic hierarchy."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -73,23 +73,28 @@ taxonomic hierarchy.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for taxlist</span>
-<span class="fu">levels</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for taxlist</span>
-<span class="fu">levels</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="fu">levels</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="fu">levels</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A <a href="taxlist-class.html">taxlist</a> object.</p></dd>
+
+
 <dt>value</dt>
 <dd><p>A character vector with replacement values for levels o <code>x</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>character</code> vector or a <a href="taxlist-class.html">taxlist</a> object with
+    
+
+<p>A <code>character</code> vector or a <a href="taxlist-class.html">taxlist</a> object with
 added or modified taxonomic levels.</p>
     </div>
     <div id="details">
@@ -109,17 +114,17 @@ checking consistency of taxonomic lists.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Get levels of species list</span></span>
-<span class="r-in"><span class="fu">taxlist</span><span class="fu">::</span><span class="fu">levels</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Get levels of species list</span></span></span>
+<span class="r-in"><span><span class="fu">taxlist</span><span class="fu">::</span><span class="fu">levels</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "form"       "variety"    "subspecies" "species"    "complex"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [6] "genus"      "family"    </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Add aggregate as new taxonomic level</span></span>
-<span class="r-in"><span class="fu">levels</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="st">"form"</span>, <span class="st">"variety"</span>, <span class="st">"subspecies"</span>, <span class="st">"species"</span>,</span>
-<span class="r-in">  <span class="st">"complex"</span>, <span class="st">"aggregate"</span>, <span class="st">"genus"</span>, <span class="st">"family"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Add aggregate as new taxonomic level</span></span></span>
+<span class="r-in"><span><span class="fu">levels</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"form"</span>, <span class="st">"variety"</span>, <span class="st">"subspecies"</span>, <span class="st">"species"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"complex"</span>, <span class="st">"aggregate"</span>, <span class="st">"genus"</span>, <span class="st">"family"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 761.5 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -156,7 +161,7 @@ checking consistency of taxonomic lists.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>
