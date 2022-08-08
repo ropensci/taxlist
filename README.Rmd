@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# taxlist <img src="man/figures/taxlist_logo.png" height="150" align="right" />
+# taxlist <img src="https://docs.ropensci.org/taxlist/reference/figures/taxlist_logo.png" height="140" align="right" />
 
 <!-- Budges -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
