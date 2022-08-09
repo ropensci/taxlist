@@ -15,7 +15,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+<<<<<<< HEAD
 # taxlist <img src='man/figures/taxlist_logo.png' height="138" align="right" />
+=======
+# taxlist <img src="https://docs.ropensci.org/taxlist/reference/figures/taxlist_logo.png" height="140" align="right" />
+>>>>>>> branch 'master' of https://github.com/ropensci/taxlist.git
 
 <!-- badges: start -->
 
