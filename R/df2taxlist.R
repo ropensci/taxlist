@@ -40,6 +40,24 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
 #'
+#' @examples
+#' Cyperus <- read.csv(file = file.path(
+#'   path.package("taxlist"), "cyperus",
+#'   "names.csv"
+#' ))
+#' head(Cyperus)
+#'
+#' ## Convert to 'taxlist' object
+#' Cyperus$AcceptedName <- !Cyperus$SYNONYM
+#' Cyperus <- df2taxlist(Cyperus)
+#' Cyperus
+#'
+#' ## Create a 'taxlist' object from character vectors
+#' Plants <- df2taxlist(c("Triticum aestivum", "Zea mays"), AuthorName = "L.")
+#' summary(Plants, "all")
+#'
+#' @rdname df2taxlist
+#'
 #' @export
 df2taxlist <- function(x, ...) {
   UseMethod("df2taxlist", x)
@@ -114,7 +132,7 @@ df2taxlist.data.frame <- function(x, taxonTraits, taxonViews, levels,
   # Duplicated concept IDs
   dupl_names <- duplicated(x$TaxonConceptID) & x$AcceptedName
   if (any(dupl_names)) {
-    dupl_names <- dupl_names[
+    dupl_names <- x[
       (x$TaxonConceptID %in%
         x$TaxonConceptID[dupl_names]) & x$AcceptedName,
       c("TaxonUsageID", "TaxonConceptID", "TaxonName", "AuthorName")

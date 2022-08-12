@@ -57,6 +57,23 @@ Function converting template data frame into \linkS4class{taxlist} object.
 Also character vectors including taxonomic names will be converted
 but without any information on taxonomic ranks and parental taxa.
 }
+\examples{
+Cyperus <- read.csv(file = file.path(
+  path.package("taxlist"), "cyperus",
+  "names.csv"
+))
+head(Cyperus)
+
+## Convert to 'taxlist' object
+Cyperus$AcceptedName <- !Cyperus$SYNONYM
+Cyperus <- df2taxlist(Cyperus)
+Cyperus
+
+## Create a 'taxlist' object from character vectors
+Plants <- df2taxlist(c("Triticum aestivum", "Zea mays"), AuthorName = "L.")
+summary(Plants, "all")
+
+}
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}.
 }

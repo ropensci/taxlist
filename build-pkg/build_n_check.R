@@ -6,7 +6,8 @@
 library(devtools)
 library(styler)
 library(knitr)
-library(qpdf)
+## library(qpdf)
+library(covr)
 
 # Clean session
 rm(list = ls())
@@ -29,8 +30,9 @@ document()
 
 # Build and check package
 Folder = "build-pkg"
-## pkg_loc <- build(path = Folder, args = "--resave-data")
-pkg_loc <- build(path = Folder, args = c("--resave-data", "--no-build-vignettes"))
+pkg_loc <- build(path = Folder, args = "--resave-data")
+## pkg_loc <- build(path = Folder,
+##     args = c("--resave-data", "--no-build-vignettes"))
 check_built(path = pkg_loc)
 
 # a posteriori

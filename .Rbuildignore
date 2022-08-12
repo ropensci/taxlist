@@ -3,7 +3,6 @@
 ^data-raw$
 ^db-scheme$
 ^lab$
-^tests$
 ^_pkgdown\.yml$
 ^\.gitignore$
 ^\.project$
