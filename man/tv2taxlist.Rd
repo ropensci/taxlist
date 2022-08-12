@@ -4,36 +4,27 @@
 \alias{tv2taxlist}
 \title{Import species lists from Turboveg databases}
 \usage{
-tv2taxlist(taxlist, tv_home = tv.home())
+tv2taxlist(taxlist, tv_home = tv.home(), ...)
 }
 \arguments{
-\item{taxlist}{The name of a species list in Turboveg as character value.}
+\item{taxlist}{Character value indicating the name of a species list in
+Turboveg.}
 
 \item{tv_home}{Character value indicating the path to the main Turboveg
-folder.}
+folder. By default the function \code{\link[=tv.home]{tv.home()}} from \link{vegdata-package} is
+called.}
+
+\item{...}{Further arguments passed to \code{\link[=df2taxlist]{df2taxlist()}}.}
 }
 \value{
-An object of class \linkS4class{taxlist}.
+A \linkS4class{taxlist} object.
 }
 \description{
-Importing species lists from Turboveg
-\url{https://www.synbiosys.alterra.nl/turboveg/} databases into an object of
-class \linkS4class{taxlist}.
-}
-\details{
-This function imports species lists using the function \code{\link[=read.dbf]{read.dbf()}}.
-When available, also taxon traits will be imported into the output object
-(usually the file \strong{ecodbase.dbf}).
-During import of taxon traits, duplicated entries for a same concept will
-be discarded as well as entries for non-existing concepts.
+Importing species lists from
+\href{https://www.synbiosys.alterra.nl/turboveg/}{Turboveg 2} databases into a
+\linkS4class{taxlist} object.
 
-By default \code{tv_home} will be set by the function \code{\link[=tv.home]{tv.home()}} from the
-package \link{vegdata-package}.
-
-By default, the name of the database will be set as concept view for all
-concepts included in the species list.
-If this is not correct, consider setting it manually by using the functions
-\code{\link[=taxon_views]{taxon_views()}} and \code{\link[=add_view]{add_view()}}.
+Internally the funcions \code{\link[=read.dbf]{read.dbf()}} and \code{\link[=df2taxlist]{df2taxlist()}} are called.
 }
 \examples{
 ## Cyperus data set installed as Turboveg species list
@@ -41,11 +32,11 @@ Cyperus <- tv2taxlist(
   taxlist = "cyperus",
   tv_home = file.path(path.package("taxlist"), "tv_data")
 )
+Cyperus
 
-summary(Cyperus)
 }
 \seealso{
-\linkS4class{taxlist}
+\code{\link[=df2taxlist]{df2taxlist()}}
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

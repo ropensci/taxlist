@@ -1,7 +1,7 @@
 context("producing subsets")
 
 test_that("function subset", {
-  expect_error(subset(Easplist, lf_behn_2018 == "reed_plant",
+  expect_error(subset(Easplist, life_form == "reed_plant",
     slot = "animals"
   ))
   expect_equal(nrow(Easplist@taxonRelations) >

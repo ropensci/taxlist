@@ -19,7 +19,7 @@ test_that("dollar works", {
   ## expect_equal(Easplist$lf_behn_2018,
   ##         Easplist@taxonTraits$lf_behn_2018)
   expect_equal(
-    length(Easplist$lf_behn_2018),
+    length(Easplist$life_form),
     nrow(Easplist@taxonRelations)
   )
 })
