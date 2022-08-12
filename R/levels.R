@@ -58,7 +58,7 @@ if (!isGeneric("levels")) {
 setMethod(
   "levels", signature(x = "taxlist"),
   function(x) {
-    if (class(x@taxonRelations$Level) != "factor") {
+    if (!is(x@taxonRelations$Level, "factor")) {
       stop("Variable 'Level' in slot taxonRelations is not a factor")
     }
     base::levels(x@taxonRelations$Level)

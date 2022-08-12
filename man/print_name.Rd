@@ -84,8 +84,10 @@ plot(
 )
 
 ## Accepted name with author
-text(x = 0, y = 1, labels = print_name(Easplist, 363, style = "expression"),
-  pos = 4)
+text(
+  x = 0, y = 1, labels = print_name(Easplist, 363, style = "expression"),
+  pos = 4
+)
 
 ## Including taxon view
 text(x = 0, y = 2, labels = print_name(Easplist, 363,

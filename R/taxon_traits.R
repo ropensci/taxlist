@@ -84,7 +84,7 @@ setReplaceMethod(
     if (!"TaxonConceptID" %in% colnames(value)) {
       stop("'TaxonConceptID' is a mandatory field in 'value'")
     }
-    if (class(value$TaxonConceptID) != "integer") {
+    if (!is(value$TaxonConceptID, "integer")) {
       value$TaxonConceptID <- as.integer(value$TaxonConceptID)
     }
     if (any(duplicated(value$TaxonConceptID))) {
