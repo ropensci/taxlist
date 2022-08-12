@@ -81,7 +81,7 @@
       <h1 data-toc-skip>Applying taxlist to species lists on diversity records</h1>
                         <h4 data-toc-skip class="author">Miguel Alvarez</h4>
             
-            <h4 data-toc-skip class="date">2022-08-09</h4>
+            <h4 data-toc-skip class="date">2022-08-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/taxlist/blob/HEAD/vignettes/taxlist-intro.Rmd" class="external-link"><code>vignettes/taxlist-intro.Rmd</code></a></small>
       <div class="hidden name"><code>taxlist-intro.Rmd</code></div>
@@ -137,8 +137,10 @@
 <p>As already mentioned, the first column in the cross table contains the names of the species occurring in the observed plots. Thus, we can use this character vector to construct a <code>taxlist</code> object. This can be achieved through the function <code>df2taxlist</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Splist</span> <span class="op">&lt;-</span> <span class="va">Cross</span><span class="op">[</span> ,<span class="st">"TaxonName"</span><span class="op">]</span></span>
-<span><span class="va">Splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/df2taxlist.html">df2taxlist</a></span><span class="op">(</span><span class="va">Splist</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Splist</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">Splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/df2taxlist.html">df2taxlist</a></span><span class="op">(</span><span class="va">Splist</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## No values for 'AcceptedName' in 'x'. all names will be considered as accepted names.</span></span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Splist</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## object size: 9 Kb </span></span>
 <span><span class="co">## validation of 'taxlist' object: TRUE </span></span>
 <span><span class="co">## </span></span>
@@ -148,7 +150,7 @@
 <span><span class="co">## number of trait variables: 0 </span></span>
 <span><span class="co">## taxon views: 0</span></span></code></pre>
 <p>Note that the function <code>summary</code> provides a quick overview in the content of the resulting object. This function can be also applied to a specific taxon:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Splist</span>, <span class="st">"Erigeron floribundus"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ------------------------------ </span></span>
 <span><span class="co">## concept ID: 5 </span></span>
@@ -168,7 +170,7 @@
 <h3 id="easplist">3.1 Easplist<a class="anchor" aria-label="anchor" href="#easplist"></a>
 </h3>
 <p>The installation of <code>taxlist</code> includes the data <code>Easplist</code>, which is formatted as a <code>taxlist</code> object. This data is a subset of the species list used by the database <strong>SWEA-Dataveg</strong> (<a href="http://www.givd.info/ID/AF-00-006" title="SWEA-Dataveg" class="external-link">GIVD ID AF-006</a>):</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
 <span><span class="va">Easplist</span></span></code></pre></div>
 <pre><code><span><span class="co">## object size: 761.4 Kb </span></span>
@@ -197,7 +199,7 @@
 </h3>
 <p>The common ways to access to the content of slots in <code>S4</code> objects are either using the function <code>slot(object, name)</code> or the symbol <code>@</code> (i.e. <code>object@name</code>). Additional functions, which are specific for <code>taxlist</code> objects are <code>taxon_names</code>, <code>taxon_relations</code>, <code>taxon_traits</code> and <code>taxon_views</code> (see the help documentation).</p>
 <p>Additionally, it is possible to use the methods <code>$</code> and <code>[</code> , the first for access to information in the slot <code>taxonTraits</code>, while the second can be also used for other slots in the object.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">$</span><span class="va">life_form</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   acropleustophyte        chamaephyte     climbing_plant facultative_annual </span></span>
 <span><span class="co">##                  8                 25                 25                 20 </span></span>
@@ -210,15 +212,15 @@
 <h3 id="subsets">3.3 Subsets<a class="anchor" aria-label="anchor" href="#subsets"></a>
 </h3>
 <p>Methods for the function <code>subset</code> are also implemented in this package. Such subsets usually apply pattern matching (for character vectors) or logical operations and are analogous to query building in relational databases. The <code>subset</code> method can be apply to any slot by setting the value of the argument <code>slot</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Papyrus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Easplist</span>, subset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"papyrus"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Papyrus</span>, <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
 <p>Or the very same results:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Papyrus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Easplist</span>, subset<span class="op">=</span><span class="va">TaxonConceptID</span> <span class="op">==</span> <span class="fl">206</span>, slot<span class="op">=</span><span class="st">"relations"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Papyrus</span>, <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
 <p>Similarly, you can look for a specific name.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Phraaus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Easplist</span>,</span>
 <span>        subset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/charmatch.html" class="external-link">charmatch</a></span><span class="op">(</span><span class="st">"Phragmites australis"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Phraaus</span>, <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
@@ -227,7 +229,7 @@
 <h3 id="hierarchical-structure">3.4 Hierarchical structure<a class="anchor" aria-label="anchor" href="#hierarchical-structure"></a>
 </h3>
 <p>Objects belonging to the class <code>taxlist</code> can optionally content parent-child relationships and taxonomic levels. Such information is also included in the data <code>Easplist</code>, as shown in the summary output.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Easplist</span></span></code></pre></div>
 <pre><code><span><span class="co">## object size: 761.4 Kb </span></span>
 <span><span class="co">## validation of 'taxlist' object: TRUE </span></span>
@@ -250,7 +252,7 @@
 <span><span class="co">## number of concepts in level genus: 1011</span></span>
 <span><span class="co">## number of concepts in level family: 186</span></span></code></pre>
 <p>Note that such information can get lost once <code><a href="../reference/subset.html">subset()</a></code> has been applied, since the respective parents or children from the original data set are not anymore in the subset. May you like to recover parents and children, you can use the functions <code>get_parents</code> or <code>get_children</code>, respectively.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Papyrus</span>, <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ------------------------------ </span></span>
 <span><span class="co">## concept ID: 206 </span></span>
@@ -265,7 +267,7 @@
 <span><span class="co">## 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. </span></span>
 <span><span class="co">## 52613 Cyperus papyrus ssp. nyassicus Chiov. </span></span>
 <span><span class="co">## ------------------------------</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Papyrus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_children.html">get_parents</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">Papyrus</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Papyrus</span>, <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ------------------------------ </span></span>
@@ -312,10 +314,10 @@
 <h3 id="building-the-taxlist-object">4.2 Building the taxlist object<a class="anchor" aria-label="anchor" href="#building-the-taxlist-object"></a>
 </h3>
 <p>The content for the taxonomic list is included in a data frame and can be downloaded by following command:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>, <span class="st">"wetlands_syntax.rda"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The data frame <code>Concepts</code> contains the list of syntaxon names that are considered as accepted in the previous scheme. This list will be used to insert the new concepts in the <code>taxlist</code> object.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Concepts</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   TaxonConceptID Parent                                TaxonName</span></span>
 <span><span class="co">## 1              1     NA                         Lemnetea minoris</span></span>
@@ -331,7 +333,7 @@
 <span><span class="co">## 4                                Lebrun 1947 association</span></span>
 <span><span class="co">## 5                Klika ex Klika &amp; Novák 1941       class</span></span>
 <span><span class="co">## 6                                Lebrun 1947       order</span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Syntax</span> <span class="op">&lt;-</span> <span class="fu">new</span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/levels.html">levels</a></span><span class="op">(</span><span class="va">Syntax</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"association"</span>,<span class="st">"alliance"</span>,<span class="st">"order"</span>,<span class="st">"class"</span><span class="op">)</span></span>
@@ -365,7 +367,7 @@
 <span><span class="co">## number of concepts in level class: 4</span></span></code></pre>
 <p>Note that the function <code>new</code> created an empty object (prototype), while <code>levels</code> insert the custom levels (syntaxonomical hierarchies). For the later function, the levels have to be inserted from the lower to the higher ranks. Furthermore the reference defining the concepts included in the syntaxonomic scheme was inserted in the object using the function <code>taxon_views</code> and finally the concepts were inserted by the function <code>add_concept</code>.</p>
 <p>The next step will be inserting those names that are considered as synonyms for the respective syntaxa. Synonyms are included in the data frame <code>Synonyms</code>.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Synonyms</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   TaxonConceptID                             TaxonName</span></span>
 <span><span class="co">## 1              1                          Stratiotetea</span></span>
@@ -381,11 +383,11 @@
 <span><span class="co">## 4    Szafranski &amp; Apema 1983</span></span>
 <span><span class="co">## 5      Tüxen &amp; Preising 1942</span></span>
 <span><span class="co">## 6                Lebrun 1947</span></span></code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Syntax</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/taxon_names.html">add_synonym</a></span><span class="op">(</span><span class="va">Syntax</span>, ConceptID<span class="op">=</span><span class="va">Synonyms</span><span class="op">$</span><span class="va">TaxonConceptID</span>,</span>
 <span>        TaxonName<span class="op">=</span><span class="va">Synonyms</span><span class="op">$</span><span class="va">TaxonName</span>, AuthorName<span class="op">=</span><span class="va">Synonyms</span><span class="op">$</span><span class="va">AuthorName</span><span class="op">)</span></span></code></pre></div>
 <p>Finally, the codes provided for the associations will be inserted as traits properties) of them in the slot <code>taxonTraits</code>.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Codes</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   TaxonConceptID Code</span></span>
 <span><span class="co">## 1             12  HE1</span></span>
@@ -394,7 +396,7 @@
 <span><span class="co">## 4             20  HE4</span></span>
 <span><span class="co">## 5             17  HE5</span></span>
 <span><span class="co">## 6             18  HE6</span></span></code></pre>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/taxon_traits.html">taxon_traits</a></span><span class="op">(</span><span class="va">Syntax</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">Codes</span></span>
 <span><span class="va">Syntax</span></span></code></pre></div>
 <pre><code><span><span class="co">## object size: 13.4 Kb </span></span>
@@ -415,7 +417,7 @@
 <span><span class="co">## number of concepts in level order: 5</span></span>
 <span><span class="co">## number of concepts in level class: 4</span></span></code></pre>
 <p>For instance, you may like to get the parental chain from an association (e.g. for <em>Nymphaeetum loti</em>).</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Nymplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span><span class="va">Syntax</span>, <span class="fu"><a href="https://rdrr.io/r/base/charmatch.html" class="external-link">charmatch</a></span><span class="op">(</span><span class="st">"Nymphaeetum"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Nymplot</span>, <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ------------------------------ </span></span>
@@ -432,7 +434,7 @@
 <span><span class="co">## 30 Utriculario exoletae-Nymphaeetum loti Szafranski &amp; Apema 1983 </span></span>
 <span><span class="co">## ------------------------------</span></span></code></pre>
 <p>Note that there is the logical arguments <code>keep_parents</code> and <code>keep_children</code> to preserve hierarchical information in the subset:</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Nymplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset.html">subset</a></span><span class="op">(</span><span class="va">Syntax</span>, <span class="fu"><a href="https://rdrr.io/r/base/charmatch.html" class="external-link">charmatch</a></span><span class="op">(</span><span class="st">"Nymphaeetum"</span>, <span class="va">TaxonName</span><span class="op">)</span>, slot<span class="op">=</span><span class="st">"names"</span>,</span>
 <span>    keep_parents<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Nymplot</span>, <span class="st">"all"</span><span class="op">)</span></span></code></pre></div>
