@@ -1,3 +1,4 @@
+**/*.ods#
 /.settings/
 /tests/hidden_data/
 Meta

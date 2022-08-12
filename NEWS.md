@@ -17,6 +17,7 @@ taxlist 0.2.3
 * Name of taxon attribute **lf_behn_2018** changed to **life_form**.
 * Function `print_name()` is now working with more than one name (vectorized)
   and reset to an S3 method, including an option for character vectors.
+* Function `df2taxlist()` redefined to allow import from a single data frame.
 
 taxlist 0.2.2
 =============

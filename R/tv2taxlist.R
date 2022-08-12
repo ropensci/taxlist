@@ -3,34 +3,24 @@
 #' @title Import species lists from Turboveg databases
 #'
 #' @description
-#' Importing species lists from Turboveg
-#' \url{https://www.synbiosys.alterra.nl/turboveg/} databases into an object of
-#' class [taxlist-class].
+#' Importing species lists from
+#' [Turboveg 2](https://www.synbiosys.alterra.nl/turboveg/) databases into a
+#' [taxlist-class] object.
 #'
-#' @param taxlist The name of a species list in Turboveg as character value.
+#' Internally the funcions [read.dbf()] and [df2taxlist()] are called.
+#'
+#' @param taxlist Character value indicating the name of a species list in
+#'     Turboveg.
 #' @param tv_home Character value indicating the path to the main Turboveg
-#'     folder.
+#'     folder. By default the function [tv.home()] from [vegdata-package] is
+#'     called.
+#' @param ... Further arguments passed to [df2taxlist()].
 #'
-#' @details
-#' This function imports species lists using the function [read.dbf()].
-#' When available, also taxon traits will be imported into the output object
-#' (usually the file **ecodbase.dbf**).
-#' During import of taxon traits, duplicated entries for a same concept will
-#' be discarded as well as entries for non-existing concepts.
-#'
-#' By default `tv_home` will be set by the function [tv.home()] from the
-#' package [vegdata-package].
-#'
-#' By default, the name of the database will be set as concept view for all
-#' concepts included in the species list.
-#' If this is not correct, consider setting it manually by using the functions
-#' [taxon_views()] and [add_view()].
-#'
-#' @return An object of class [taxlist-class].
+#' @return A [taxlist-class] object.
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @seealso [taxlist-class]
+#' @seealso [df2taxlist()]
 #'
 #' @examples
 #' ## Cyperus data set installed as Turboveg species list
@@ -38,26 +28,27 @@
 #'   taxlist = "cyperus",
 #'   tv_home = file.path(path.package("taxlist"), "tv_data")
 #' )
+#' Cyperus
 #'
-#' summary(Cyperus)
 #' @export
-#'
-tv2taxlist <- function(taxlist, tv_home = tv.home()) {
+tv2taxlist <- function(taxlist, tv_home = tv.home(), ...) {
   tv_home <- file.path(tv_home, "species", taxlist)
   species <- read.dbf(file.path(tv_home, "species.dbf"), as.is = TRUE)
-  names(species) <- replace_x(
-    names(species),
-    c("SPECIES_NR", "ABBREVIAT", "AUTHOR", "VALID_NR"),
-    c("TaxonUsageID", "TaxonName", "AuthorName", "TaxonConceptID")
+  names(species) <- replace_x(names(species),
+    old = c("SPECIES_NR", "ABBREVIAT", "AUTHOR", "VALID_NR"),
+    new = c("TaxonUsageID", "TaxonName", "AuthorName", "TaxonConceptID")
   )
-  species <- df2taxlist(species, !species$SYNONYM)
+  species$AcceptedName <- !species$SYNONYM
   if (any(grepl("ecodbase.dbf", list.files(tv_home), ignore.case = TRUE))) {
     ecodbase <- read.dbf(file.path(tv_home, "ecodbase.dbf"), as.is = TRUE)
-    names(ecodbase) <- replace(
+    names(ecodbase) <- replace_x(
       names(ecodbase),
-      names(ecodbase) == "SPECIES_NR", "TaxonConceptID"
+      old = "SPECIES_NR",
+      new = "TaxonConceptID"
     )
-    taxon_traits(species) <- ecodbase
+    species <- df2taxlist(species, taxonTraits = ecodbase, ...)
+  } else {
+    species <- df2taxlist(species, ...)
   }
   return(species)
 }

@@ -28,5 +28,5 @@ test_that("printed names are working", {
     )
   )
   ## when more than one name is requested
-  expect_warning(print_name(Easplist, c(1, 2)))
+  ## expect_warning(print_name(Easplist, c(1, 2)))
 })

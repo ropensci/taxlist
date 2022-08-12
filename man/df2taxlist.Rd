@@ -2,71 +2,77 @@
 % Please edit documentation in R/df2taxlist.R
 \name{df2taxlist}
 \alias{df2taxlist}
-\alias{df2taxlist,data.frame,logical-method}
-\alias{df2taxlist,data.frame,missing-method}
-\alias{df2taxlist,character,missing-method}
-\title{Convert data frames into taxlist objects}
+\alias{df2taxlist.data.frame}
+\alias{df2taxlist,data.frame-method}
+\alias{df2taxlist.character}
+\alias{df2taxlist,character-method}
+\title{Convert data frames and strings into taxlist objects}
 \usage{
-df2taxlist(x, AcceptedName, ...)
+df2taxlist(x, ...)
 
-\S4method{df2taxlist}{data.frame,logical}(x, AcceptedName, levels, ...)
+\method{df2taxlist}{data.frame}(x, taxonTraits, taxonViews, levels, clean_strings = TRUE, ...)
 
-\S4method{df2taxlist}{data.frame,missing}(x, AcceptedName, ...)
-
-\S4method{df2taxlist}{character,missing}(x, AcceptedName, ...)
+\method{df2taxlist}{character}(x, ...)
 }
 \arguments{
-\item{x}{A data frame or a character vector with taxon names.}
+\item{x}{A data frame or a character vector with taxonomic names. If x is
+a data frame, the columns \strong{TaxonUsageID} (integer with IDs for each
+name), \strong{TaxonConceptID} (integer with IDs for the respective taxon
+concepts), and \strong{TaxonName} (character) are mandatory.
+Other optional columns are \strong{AuthorName} (character with names'
+authorities), \strong{AccpetedName} (logical indicating whether the name is
+an accepted name or a synonym and will be set as TRUE by default),
+\strong{Level}
+(factor sorting taxonomic ranks in the bottom-up direction), \strong{Parent}
+(integer, the taxon concept ID of the parental taxon), and \strong{ViewID}
+(integer pointing to the ID of taxonomic view, usually a bibliographic
+reference, and will be used only if 'taxonViews' is provided.
+Any further column not included in the prototype of taxlist will be
+considered as names' attributes and inserted in slot \strong{taxonNames}.}
 
-\item{AcceptedName}{A logical vector indicating accepted names with value
-\code{TRUE}.}
+\item{...}{Further arguments passed among methods. For the
+\code{'character-method'}, arguments will be passed to the
+\code{'data.frame-method'}.}
 
-\item{...}{Additional vectors to be added as columns in slot\code{taxonNames}.}
+\item{taxonTraits}{A data frame with attributes of taxonomic concepts
+(optional). If provided, the column \strong{TaxonConceptID} is mandatorial.}
 
-\item{levels}{A vector with the names of the taxonomic ranks. This argument
-is passed to \code{\link[=levels]{levels()}}.}
+\item{taxonViews}{A data frame or \linkS4class{lib_df} with references of taxonomic
+views (optional). If provided, the column \strong{ViewID} is mandatorial and
+have to match the homonymous column at 'x'.}
+
+\item{levels}{A character vector setting the levels or taxonomic ranks from
+the bottom to the top. This argument is optional and if missing, the
+column \strong{Level} will be preserved (if factor) or coerced to factor,
+except in the case that no column \strong{Level} is provided.}
+
+\item{clean_strings}{Logical value, whether function \code{\link[=clean_strings]{clean_strings()}} should
+be applied to 'x' or not.}
 }
 \value{
 A \linkS4class{taxlist} object.
 }
 \description{
-Taxon lists may be provided in data frame format, which will be converted to
-a \linkS4class{taxlist} object.
-}
-\details{
-In the method \code{data.frame}, the input data frame must have following columns:
-\describe{
-\item{TaxonUsageID}{Numeric code for the name.}
-\item{TaxonConceptID}{Numeric code for the concept.}
-\item{TaxonName}{Full name (usage), excluding author name.}
-\item{AuthorName}{Author of the combination (taxon name).}
-}
-
-If the argument \code{AcceptedName} is missing, all names will be assumed as
-accepted names.
-In the alternative \code{character} method, author names have to be added as
-additional vectors.
-
-Be aware that the resulting object misses any information on taxon views,
-basionyms, parent concepts, hierarchical levels and taxon traits.
-All those elements can be added \emph{a posteriori} by further functions
-provided in this package.
+Function converting template data frame into \linkS4class{taxlist} object.
+Also character vectors including taxonomic names will be converted
+but without any information on taxonomic ranks and parental taxa.
 }
 \examples{
-## Read the table with names of Cyperus species
 Cyperus <- read.csv(file = file.path(
   path.package("taxlist"), "cyperus",
   "names.csv"
-), stringsAsFactors = FALSE)
+))
 head(Cyperus)
 
 ## Convert to 'taxlist' object
-Cyperus <- df2taxlist(Cyperus, AcceptedName = !Cyperus$SYNONYM)
-summary(Cyperus)
+Cyperus$AcceptedName <- !Cyperus$SYNONYM
+Cyperus <- df2taxlist(Cyperus)
+Cyperus
 
 ## Create a 'taxlist' object from character vectors
 Plants <- df2taxlist(c("Triticum aestivum", "Zea mays"), AuthorName = "L.")
 summary(Plants, "all")
+
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}.
