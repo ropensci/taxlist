@@ -1,30 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- Use snippet 'render_markdown' for it -->
 
-\<\<\<\<\<\<\< HEAD \# taxlist
-<img src='man/figures/taxlist_logo.png' height="138" align="right" />
-======= \# taxlist
-<img src="https://docs.ropensci.org/taxlist/reference/figures/taxlist_logo.png" height="140" align="right" />
-\>\>\>\>\>\>\> branch ‘master’ of
-<https://github.com/ropensci/taxlist.git>
+# taxlist <img src='man/figures/logo.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 <br>
 [![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
 [![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
 <br>
-[![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
+[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
 
 <!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
-
 <!-- badges: end -->
 
 ## Introduction
@@ -329,21 +322,21 @@ developer-oriented, while `taxlist` is rather a user-oriented package.
 
 In following cases you may prefer to use `taxlist`:
 
-  - When you need an automatic check on the consistency of information
+-   When you need an automatic check on the consistency of information
     regarding taxonomic ranks and parent-child relationships (parents
     have to be of a higher rank then children), as well as
     non-duplicated combinations of names and authors. Such checks are
     done by the function `validObject()`.
-  - When you foresee statistical assessments on taxonomy diversity or
+-   When you foresee statistical assessments on taxonomy diversity or
     taxon properties (chorology, conservation status, functional traits,
     etc.).
-  - When you seek to produce documents using **rmarkdown**, for instance
+-   When you seek to produce documents using **rmarkdown**, for instance
     guide books or check-lists. Also in article manuscripts taxonomic
     names referring to a taxon concept can easily get formatted by the
     function `print_name()`.
-  - When importing taxonomic lists from databases stored in
-    [**Turboveg 2**](http://www.synbiosys.alterra.nl/turboveg/).
-  - When you seek to implement the package
+-   When importing taxonomic lists from databases stored in [**Turboveg
+    2**](http://www.synbiosys.alterra.nl/turboveg/).
+-   When you seek to implement the package
     [`vegtable`](https://CRAN.R-project.org/package=vegtable) for
     handling and assessing biodiversity records, especially
     vegetation-plot data. In that case, taxonomic lists will be
@@ -365,18 +358,18 @@ data(Easplist)
 ````
 
 To mention a taxon, you can write in-line codes, such as <code>\`r
-print\_name(Easplist, 206)\`</code>, which will insert *Cyperus papyrus*
+print_name(Easplist, 206)\`</code>, which will insert *Cyperus papyrus*
 L. in your document (note that the number is the ID of the taxon concept
 in `Easplist`). Fort a second mention of the same species, you can then
-use <code>\`r print\_name(Easplist, 206, second\_mention=TRUE)\`</code>,
+use <code>\`r print_name(Easplist, 206, second_mention=TRUE)\`</code>,
 which will insert *C. papyrus* L. in your text.
 
 ## Descriptive Statistics
 
 Information located in the slot **taxonTraits** are suitable for
 statistical assessments. For instance, in the installed object
-`Easplist` a column called **lf\_behn\_2018** includes a classification
-of macrophytes into different life forms. To know the frequency of these
+`Easplist` a column called **life_form** includes a classification of
+macrophytes into different life forms. To know the frequency of these
 life forms in the `Easplist`, we can use the function `count_taxa()`:
 
 ``` r

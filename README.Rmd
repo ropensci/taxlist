@@ -269,7 +269,7 @@ text.
 Information located in the slot **taxonTraits** are suitable for statistical
 assessments.
 For instance, in the installed object `Easplist` a column called
-**lf_behn_2018** includes a classification of macrophytes into different life
+**life_form** includes a classification of macrophytes into different life
 forms.
 To know the frequency of these life forms in the `Easplist`, we can use the
 function `count_taxa()`:
