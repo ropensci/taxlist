@@ -284,7 +284,7 @@ function `count_taxa()`:
 count_taxa(Easplist)
 
 # frequency of life forms
-count_taxa(~ lf_behn_2018, Easplist)
+count_taxa(~ life_form, Easplist)
 ```
 
 Furthermore, taxonomic information can be also transferred to this slot using
