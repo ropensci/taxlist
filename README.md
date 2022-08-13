@@ -3,12 +3,7 @@
 
 <!-- Use snippet 'render_markdown' for it -->
 
-\<\<\<\<\<\<\< HEAD \# taxlist
-<img src='man/figures/taxlist_logo.png' height="138" align="right" />
-======= \# taxlist
-<img src="https://docs.ropensci.org/taxlist/reference/figures/taxlist_logo.png" height="140" align="right" />
-\>\>\>\>\>\>\> branch ‘master’ of
-<https://github.com/ropensci/taxlist.git>
+# taxlist <img src='man/figures/logo.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
