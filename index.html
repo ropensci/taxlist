@@ -82,7 +82,7 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="taxlist-">taxlist <img src="reference/figures/taxlist_logo.png" height="150" align="right"><a class="anchor" aria-label="anchor" href="#taxlist-"></a>
+<div class="page-header"><h1 id="taxlist-">taxlist <img src="https://docs.ropensci.org/taxlist/reference/figures/taxlist_logo.png" height="140" align="right"><a class="anchor" aria-label="anchor" href="#taxlist-"></a>
 </h1></div>
 <!-- Budges -->
 <!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) --><div class="section level2">
@@ -260,8 +260,9 @@
 <p>This kind of tables can be written in a spreadsheet application and imported to your R session. The two first columns correspond to the IDs of the taxon concept and the respective accepted name. They can be custom IDs but are restricted to integers in <code>taxlist</code>. For the use of the function <code><a href="reference/df2taxlist.html">df2taxlist()</a></code>, the two first columns are mandatory. Also note that the column <strong>Parent</strong> is pointing to the concept IDs of the respective parent taxon. To get the object, we just use the <code><a href="reference/df2taxlist.html">df2taxlist()</a></code> indicating the sequence of taxonomic ranks in the argument <code>levels</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Fern2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/df2taxlist.html">df2taxlist</a></span><span class="op">(</span><span class="va">Fern_df</span>, levels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"variety"</span>, <span class="st">"species"</span>, <span class="st">"genus"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; No values for 'AcceptedName' in 'x'. all names will be considered as accepted names.</span></span>
 <span><span class="va">Fern2</span></span>
-<span><span class="co">#&gt; object size: 6.2 Kb </span></span>
+<span><span class="co">#&gt; object size: 6.1 Kb </span></span>
 <span><span class="co">#&gt; validation of 'taxlist' object: TRUE </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; number of taxon usage names: 4 </span></span>
@@ -299,7 +300,7 @@
 <span id="cb13-2"><a href="#cb13-2"></a><span class="bn">library(taxlist)</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="bn">data(Easplist)</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="bn">```</span></span></code></pre></div>
-<p>To mention a taxon, you can write in-line codes, such as <code>`r print_name(Easplist, 206)`</code>, which will insert <em>Cyperus papyrus</em> L. in your document (note that the number is the ID of the taxon concept in <code>Easplist</code>). Fort a second mention of the same species, you can then use <code>`r print_name(Easplist, 206, second_mention=TRUE)`</code>, which will insert <em>C. papyrus</em> in your text.</p>
+<p>To mention a taxon, you can write in-line codes, such as <code>`r print_name(Easplist, 206)`</code>, which will insert <em>Cyperus papyrus</em> L. in your document (note that the number is the ID of the taxon concept in <code>Easplist</code>). Fort a second mention of the same species, you can then use <code>`r print_name(Easplist, 206, second_mention=TRUE)`</code>, which will insert <em>C. papyrus</em> L. in your text.</p>
 </div>
 <div class="section level2">
 <h2 id="descriptive-statistics">Descriptive Statistics<a class="anchor" aria-label="anchor" href="#descriptive-statistics"></a>
@@ -311,8 +312,8 @@
 <span><span class="co">#&gt; [1] 3887</span></span>
 <span></span>
 <span><span class="co"># frequency of life forms</span></span>
-<span><span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="op">~</span> <span class="va">lf_behn_2018</span>, <span class="va">Easplist</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          lf_behn_2018 taxa_count</span></span>
+<span><span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="op">~</span> <span class="va">life_form</span>, <span class="va">Easplist</span><span class="op">)</span></span>
+<span><span class="co">#&gt;             life_form taxa_count</span></span>
 <span><span class="co">#&gt; 1    acropleustophyte          8</span></span>
 <span><span class="co">#&gt; 2         chamaephyte         25</span></span>
 <span><span class="co">#&gt; 3      climbing_plant         25</span></span>
@@ -327,7 +328,7 @@
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Easplist</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tax2traits.html">tax2traits</a></span><span class="op">(</span><span class="va">Easplist</span>, get_names<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">@</span><span class="va">taxonTraits</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   TaxonConceptID       lf_behn_2018 form variety subspecies</span></span>
+<span><span class="co">#&gt;   TaxonConceptID          life_form form variety subspecies</span></span>
 <span><span class="co">#&gt; 1              7       phanerophyte &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 2              9       phanerophyte &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 3             18 facultative_annual &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;</span></span>
@@ -408,7 +409,6 @@
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=taxlist" class="external-link"><img src="http://www.r-pkg.org/badges/version/taxlist" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://github.com/ropensci/software-review/issues/233" class="external-link"><img src="https://badges.ropensci.org/233_status.svg"></a></li>
-<li><a href="http://www.rdocumentation.org/packages/taxlist" class="external-link"><img src="http://www.rdocumentation.org/badges/version/taxlist" alt="Rdoc"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/54913161" class="external-link"><img src="https://zenodo.org/badge/54913161.svg" alt="DOI"></a></li>
 <li><a href="https://github.com/ropensci/taxlist/actions" class="external-link"><img src="https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/ropensci/taxlist" class="external-link"><img src="https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg" alt="codecov"></a></li>
