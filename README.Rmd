@@ -14,11 +14,10 @@ knitr::opts_chunk$set(
   fig.path="man/figures/"
 )
 ```
-
-
 # taxlist <img src='man/figures/logo.png' align="right" height="139"/>
 
-<!-- Budges -->
+<!-- badges: start -->
+
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
@@ -30,6 +29,8 @@ knitr::opts_chunk$set(
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
 
 <!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
+
+<!-- badges: end -->
 
 ## Introduction
 
