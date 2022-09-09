@@ -16,8 +16,7 @@
 #' is an incomplete list.
 #'
 #' @source
-#' \href{http://www.ville-ge.ch/musinfo/bd/cjb/africa/recherche.php}{African
-#' Plant Database},
+#' \href{https://africanplantdatabase.ch/}{African Plant Database},
 #' \href{http://www.givd.info/ID/AF-00-006}{SWEA-Dataveg}.
 #'
 #' @examples
