@@ -1,6 +1,6 @@
 #' @name as.list
 #'
-#' @title Coerce an S4 object to a list.
+#' @title Coerce taxlist objects to lists.
 #'
 #' @description
 #' Coercion of S4 objects to lists can be applied to explore their content,
@@ -10,9 +10,7 @@
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @details
-#' The function `S4_to_list` transforms any S4 object to a list setting
-#' slots to elements of the list and it is running internally in the method
-#' `as.list` for [taxlist-class] objects.
+#' Coerce [taxlist-class] objects to lists.
 #'
 #' @return An object of class [list].
 #'
@@ -21,27 +19,43 @@
 #' @examples
 #' Easplist <- as.list(Easplist)
 #' class(Easplist)
-#' @rdname as.list
 #'
-#' @aliases S4_to_list
+#' @rdname coerce-methods
 #'
-#' @export
+#' @aliases as.list
 #'
+#' @keywords internal
 S4_to_list <- function(x) {
   out <- list()
   for (i in slotNames(x)) out[[i]] <- slot(x, i)
   return(out)
 }
 
-#' @rdname as.list
-#'
+#' @rdname coerce-methods
 #' @aliases as.list,taxlist-method
-#'
 #' @exportMethod as.list
-#'
 setMethod(
   "as.list", signature(x = "taxlist"),
   function(x, ...) {
     S4_to_list(x)
+  }
+)
+
+setAs("taxlist", "list", function(from) as.list(from))
+
+#' @rdname coerce-methods
+#' @aliases as<-
+#' @exportMethod as<-
+setGeneric("as<-", function(from, value) {
+  standardGeneric("as<-")
+})
+
+#' @rdname coerce-methods
+#' @aliases as<-,taxlist-method
+setReplaceMethod(
+  "as", signature(from = "taxlist"),
+  function(from, value) {
+    from <- as(object = from, Class = value)
+    return(from)
   }
 )
