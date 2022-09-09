@@ -88,8 +88,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD # taxlist <img src="reference/figures/taxlist_logo.png" height="138" align="right"> ======= # taxlist <img src="https://docs.ropensci.org/taxlist/reference/figures/taxlist_logo.png" height="140" align="right"> &gt;&gt;&gt;&gt;&gt;&gt;&gt; branch ‘master’ of <a href="https://github.com/ropensci/taxlist.git" class="external-link uri">https://github.com/ropensci/taxlist.git</a></p>
+<div class="section level1">
+<div class="page-header"><h1 id="taxlist-">taxlist <img src="reference/figures/logo.png" align="right" height="139"><a class="anchor" aria-label="anchor" href="#taxlist-"></a>
+</h1></div>
 <!-- badges: start -->
 <!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) --><!-- badges: end --><div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -316,7 +317,7 @@
 <div class="section level2">
 <h2 id="descriptive-statistics">Descriptive Statistics<a class="anchor" aria-label="anchor" href="#descriptive-statistics"></a>
 </h2>
-<p>Information located in the slot <strong>taxonTraits</strong> are suitable for statistical assessments. For instance, in the installed object <code>Easplist</code> a column called <strong>lf_behn_2018</strong> includes a classification of macrophytes into different life forms. To know the frequency of these life forms in the <code>Easplist</code>, we can use the function <code><a href="reference/count_taxa.html">count_taxa()</a></code>:</p>
+<p>Information located in the slot <strong>taxonTraits</strong> are suitable for statistical assessments. For instance, in the installed object <code>Easplist</code> a column called <strong>life_form</strong> includes a classification of macrophytes into different life forms. To know the frequency of these life forms in the <code>Easplist</code>, we can use the function <code><a href="reference/count_taxa.html">count_taxa()</a></code>:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># how man taxa in 'Easplist'</span></span>
 <span><span class="fu"><a href="reference/count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span>
@@ -372,7 +373,7 @@
 <p>The author thanks <strong>Stephan Hennekens</strong>, developer of <a href="http://www.synbiosys.alterra.nl/turboveg/" class="external-link">Turboveg</a>, for his patience and great support finding a common language between <strong>R</strong> and <strong>Turboveg</strong>, as well as for his advices on formatting our taxonomic list <strong>EA-Splist</strong>.</p>
 <p>Also thanks to <strong>Federico Luebert</strong> for the fruitful discussions regarding the terminology used in this project.</p>
 </div>
-
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

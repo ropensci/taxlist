@@ -49,9 +49,6 @@
     <loc>/reference/add_suffix.html</loc>
   </url>
   <url>
-    <loc>/reference/as.list.html</loc>
-  </url>
-  <url>
     <loc>/reference/backup_object.html</loc>
   </url>
   <url>
@@ -62,6 +59,9 @@
   </url>
   <url>
     <loc>/reference/clean_strings.html</loc>
+  </url>
+  <url>
+    <loc>/reference/coerce-methods.html</loc>
   </url>
   <url>
     <loc>/reference/count_taxa.html</loc>
