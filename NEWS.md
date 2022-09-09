@@ -5,6 +5,7 @@ taxlist 0.2.3
 
 * New arguments `isolate` and `trim` to prevent parts of scientific names to be
   formatted in italics.
+  
 
 ### Improvements
 

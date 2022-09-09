@@ -57,6 +57,23 @@ gp()
 # Render readme-file.
 render("README.Rmd")
 
+# Other checks
+library(rhub)
+
+chk <- check_for_cran()
+chk$cran_summary()
+
+
+
+cran_check_flavours()
+
+cran_check_results("taxlist")
+
+rcmdcheck()
+
+
+
+
 # Check on Win-builder
 browseURL("https://win-builder.r-project.org/")
 
