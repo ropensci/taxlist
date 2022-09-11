@@ -20,6 +20,12 @@ as(from) <- value
 \item{x}{An object of class \linkS4class{taxlist} or any S4 class.}
 
 \item{...}{further arguments passed to or from other methods.}
+
+\item{from}{An object of class \linkS4class{taxlist}, which will be coerced by
+the replacement method.}
+
+\item{value}{A character value indicating the class to be coerced to. Here
+it is always \code{"list"}.}
 }
 \value{
 An object of class \link{list}.
@@ -39,4 +45,3 @@ class(Easplist)
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
 }
-\keyword{internal}
