@@ -7,6 +7,10 @@
 #' avoiding errors caused by their validation.
 #'
 #' @param x An object of class [taxlist-class] or any S4 class.
+#' @param from An object of class [taxlist-class], which will be coerced by
+#'     the replacement method.
+#' @param value A character value indicating the class to be coerced to. Here
+#'     it is always `"list"`.
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @details
@@ -24,7 +28,7 @@
 #'
 #' @aliases as.list
 #'
-#' @keywords internal
+#' @export
 S4_to_list <- function(x) {
   out <- list()
   for (i in slotNames(x)) out[[i]] <- slot(x, i)
