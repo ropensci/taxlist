@@ -1,3 +1,11 @@
+taxlist 0.2.4
+=============
+
+### Improvements
+
+* The validation for `taxlist` objects is also looking if Parent IDs are missing
+  in the object
+
 taxlist 0.2.3
 =============
 

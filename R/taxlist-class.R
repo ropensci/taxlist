@@ -182,7 +182,15 @@ setClass("taxlist",
         "slot 'taxonRelations'"
       ))
     }
-    # TODO: Check missing Parents first
+    ## are all parent IDs existing concepts?
+    idx <- !is.na(object@taxonRelations$Parent)
+    if (!all(object@taxonRelations$Parent[idx] %in%
+      object@taxonRelations$TaxonConceptID)) {
+      stop(paste(
+        "Some parent IDs are not included as concepts in the",
+        "taxlist object."
+      ))
+    }
     ## parent-child relationships
     if (!all(is.na(object@taxonRelations$Parent)) &
       !all(is.na(object@taxonRelations$Level)) &

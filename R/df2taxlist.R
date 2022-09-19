@@ -12,7 +12,7 @@
 #'     name), **TaxonConceptID** (integer with IDs for the respective taxon
 #'     concepts), and **TaxonName** (character) are mandatory.
 #'     Other optional columns are **AuthorName** (character with names'
-#'     authorities), **AccpetedName** (logical indicating whether the name is
+#'     authorities), **AcceptedName** (logical indicating whether the name is
 #'     an accepted name or a synonym and will be set as TRUE by default),
 #'     **Level**
 #'     (factor sorting taxonomic ranks in the bottom-up direction), **Parent**

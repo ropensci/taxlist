@@ -20,7 +20,7 @@ a data frame, the columns \strong{TaxonUsageID} (integer with IDs for each
 name), \strong{TaxonConceptID} (integer with IDs for the respective taxon
 concepts), and \strong{TaxonName} (character) are mandatory.
 Other optional columns are \strong{AuthorName} (character with names'
-authorities), \strong{AccpetedName} (logical indicating whether the name is
+authorities), \strong{AcceptedName} (logical indicating whether the name is
 an accepted name or a synonym and will be set as TRUE by default),
 \strong{Level}
 (factor sorting taxonomic ranks in the bottom-up direction), \strong{Parent}
