@@ -7,8 +7,8 @@
 #' avoiding errors caused by their validation.
 #'
 #' @param x An object of class [taxlist-class] or any S4 class.
-#' @param from An object of class [taxlist-class], which will be coerced by
-#'     the replacement method.
+#' @param object An object of class [taxlist-class] to be coerced.
+#' @param Class A character value indicating the class for coercion.
 #' @param value A character value indicating the class to be coerced to. Here
 #'     it is always `"list"`.
 #' @param ... further arguments passed to or from other methods.
@@ -45,21 +45,21 @@ setMethod(
   }
 )
 
-setAs("taxlist", "list", function(from) as.list(from))
+setAs("taxlist", "list", function(from) {
+  as.list(from)
+})
 
-#' @rdname coerce-methods
-#' @aliases as<-
-#' @exportMethod as<-
-setGeneric("as<-", function(from, value) {
+setGeneric("as<-", function(object, Class, value) {
   standardGeneric("as<-")
 })
 
 #' @rdname coerce-methods
-#' @aliases as<-,taxlist-method
-setReplaceMethod(
-  "as", signature(from = "taxlist"),
-  function(from, value) {
-    from <- as(object = from, Class = value)
-    return(from)
+#' @aliases as<- as<-,taxlist,missing,character-method
+#' @exportMethod as<-
+setMethod(
+  "as<-", signature(object = "taxlist", Class = "missing", value = "character"),
+  function(object, Class, value) {
+    object <- as(object, value)
+    return(object)
   }
 )

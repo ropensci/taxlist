@@ -50,7 +50,7 @@ Collate:
     'clean_strings.R'
     'taxlist-class.R'
     'clean.R'
-    'as.R'
+    'coerce-methods.R'
     'taxon_views.R'
     'count_taxa.R'
     'taxon_names.R'
