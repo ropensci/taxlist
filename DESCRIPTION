@@ -49,6 +49,7 @@ Collate:
     'dissect_name.R'
     'clean_strings.R'
     'taxlist-class.R'
+    'matched_names-class.R'
     'clean.R'
     'coerce-methods.R'
     'taxon_views.R'
@@ -74,4 +75,4 @@ Collate:
     'Easplist-data.R'
     'taxlist-package.R'
 VignetteBuilder: knitr
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2

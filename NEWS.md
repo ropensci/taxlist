@@ -1,10 +1,19 @@
 taxlist 0.2.4
 =============
 
+### New Features
+
+* New S3 class `matched_names` inheriting data frame properties. This class
+  will be used for an interactive selection of multiple choices, when a name
+  matches more than one candidate.
+
 ### Improvements
 
 * The validation for `taxlist` objects is also looking if Parent IDs are missing
-  in the object
+  in the object.
+* Function `match_names()` displays multiple matchings per name and also works
+  comparing a string with itself.
+* Simplified coercion in form of `to_class <- as(obj, from_class)`
 
 taxlist 0.2.3
 =============

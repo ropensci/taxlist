@@ -9,9 +9,9 @@ output:
 
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(
-  collapse=TRUE,
-  comment="#>",
-  fig.path="man/figures/"
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/"
 )
 ```
 # taxlist <img src='man/figures/logo.png' align="right" height="139"/>
@@ -78,7 +78,7 @@ This package is available from the Comprehensive R Archive Network (**CRAN**)
 and can be directly installed within an R-session:
 
 ```{r eval=FALSE}
-install.packages("taxlist", dependencies=TRUE)
+install.packages("taxlist", dependencies = TRUE)
 ```
 
 Alternatively, the current development version is available from
@@ -87,7 +87,7 @@ package `devtools`:
 
 ```{r, eval=FALSE}
 library(devtools)
-install_github("ropensci/taxlist", build_vignette=TRUE)
+install_github("ropensci/taxlist", build_vignette = TRUE)
 ```
 
 A vignette is installed with this package introducing to the work with
@@ -115,7 +115,7 @@ Then we have to set the respective taxonomic ranks. In such case, the levels
 have to be provided from the lowest to highest hierarchical level:
 
 ```{r}
-levels(Fern) <- c("variety","species","genus")
+levels(Fern) <- c("variety", "species", "genus")
 ```
 
 For convenience, we start inserting taxa with their respective names in a
@@ -125,7 +125,7 @@ used to provide the name of the taxon, the authority of the name and the
 taxonomic rank, respectively.
 
 ```{r}
-Fern <- add_concept(Fern, TaxonName="Asplenium", AuthorName="L.", Level="genus")
+Fern <- add_concept(Fern, TaxonName = "Asplenium", AuthorName = "L.", Level = "genus")
 summary(Fern, "all")
 ```
 
@@ -136,8 +136,10 @@ but this time we will also provide the ID of the parent taxon with the argument
 `Parent`.
 
 ```{r}
-Fern <- add_concept(Fern, TaxonName="Asplenium obliquum", AuthorName="Forster",
-	Level="species", Parent=1)
+Fern <- add_concept(Fern,
+  TaxonName = "Asplenium obliquum", AuthorName = "Forster",
+  Level = "species", Parent = 1
+)
 summary(Fern, "Asplenium obliquum")
 ```
 
@@ -145,11 +147,16 @@ In the same way, we can add now two varieties of the inserted species:
 
 ```{r}
 Fern <- add_concept(Fern,
-	TaxonName=c("Asplenium obliquum var. sphenoides",
-		"Asplenium obliquum var. chondrophyllum"),
-	AuthorName=c("(Kunze) Espinosa",
-		"(Bertero apud Colla) C. Christense & C. Skottsberg"),
-	Level="variety", Parent=c(2,2))
+  TaxonName = c(
+    "Asplenium obliquum var. sphenoides",
+    "Asplenium obliquum var. chondrophyllum"
+  ),
+  AuthorName = c(
+    "(Kunze) Espinosa",
+    "(Bertero apud Colla) C. Christense & C. Skottsberg"
+  ),
+  Level = "variety", Parent = c(2, 2)
+)
 ```
 
 You may have realized that the function `summary()` is applied to provide on
@@ -182,16 +189,21 @@ In the case of the last example, the required data frame looks like this one:
 
 ```{r}
 Fern_df <- data.frame(
-		TaxonConceptID=1:4,
-		TaxonUsageID=1:4,
-		TaxonName=c("Asplenium", "Asplenium obliquum",
-				"Asplenium obliquum var. sphenoides",
-				"Asplenium obliquum var. chondrophyllum"),
-		AuthorName=c("L.", "Forster", "(Kunze) Espinosa",
-				"(Bertero apud Colla) C. Christense & C. Skottsberg"),
-		Level=c("genus", "species", "variety", "variety"),
-		Parent=c(NA, 1, 2, 2),
-		stringsAsFactors=FALSE)
+  TaxonConceptID = 1:4,
+  TaxonUsageID = 1:4,
+  TaxonName = c(
+    "Asplenium", "Asplenium obliquum",
+    "Asplenium obliquum var. sphenoides",
+    "Asplenium obliquum var. chondrophyllum"
+  ),
+  AuthorName = c(
+    "L.", "Forster", "(Kunze) Espinosa",
+    "(Bertero apud Colla) C. Christense & C. Skottsberg"
+  ),
+  Level = c("genus", "species", "variety", "variety"),
+  Parent = c(NA, 1, 2, 2),
+  stringsAsFactors = FALSE
+)
 Fern_df
 ```
 
@@ -208,7 +220,7 @@ To get the object, we just use the `df2taxlist()` indicating the sequence of
 taxonomic ranks in the argument `levels`.
 
 ```{r}
-Fern2 <- df2taxlist(Fern_df, levels=c("variety", "species", "genus"))
+Fern2 <- df2taxlist(Fern_df, levels = c("variety", "species", "genus"))
 Fern2
 ```
 
@@ -279,7 +291,7 @@ function `count_taxa()`:
 count_taxa(Easplist)
 
 # frequency of life forms
-count_taxa(~ life_form, Easplist)
+count_taxa(~life_form, Easplist)
 ```
 
 Furthermore, taxonomic information can be also transferred to this slot using
@@ -287,7 +299,7 @@ the function `tax2traits()`.
 By this way we will make taxonomic ranks suitable for frequency calculations.
 
 ```{r}
-Easplist <- tax2traits(Easplist, get_names=TRUE)
+Easplist <- tax2traits(Easplist, get_names = TRUE)
 head(Easplist@taxonTraits)
 ```
 
@@ -297,18 +309,20 @@ In the two next command lines, we will produce a subset with only members of
 the family Cyperaceae and then calculate the frequency of species per genera.
 
 ```{r}
-Cype <- subset(Easplist, family == "Cyperaceae", slot="taxonTraits")
+Cype <- subset(Easplist, family == "Cyperaceae", slot = "taxonTraits")
 Cype_stat <- count_taxa(species ~ genus, Cype)
 ```
 
 Now, we can sort them to produce a nice bar plot.
 
 ```{r genera_bar}
-Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE), ]
+Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing = TRUE), ]
 
-par(las=2, mar=c(10,5,1,1))
-with(Cype_stat, barplot(species_count, names.arg=genus,
-				ylab="Number of Species"))
+par(las = 2, mar = c(10, 5, 1, 1))
+with(Cype_stat, barplot(species_count,
+  names.arg = genus,
+  ylab = "Number of Species"
+))
 ```
 
 
