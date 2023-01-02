@@ -3,67 +3,73 @@
 \name{match_names}
 \alias{match_names}
 \alias{match_names,character,character-method}
+\alias{match_names,character,missing-method}
 \alias{match_names,character,taxlist-method}
 \title{Search matchings between character and taxlist objects}
 \usage{
 match_names(x, object, ...)
 
-\S4method{match_names}{character,character}(x, object, best = 5, clean = TRUE, decreasing = TRUE, ...)
+\S4method{match_names}{character,character}(
+  x,
+  object,
+  UsageID,
+  best = 1,
+  nomatch = TRUE,
+  method = "lcs",
+  cutlevel = NULL,
+  ...
+)
+
+\S4method{match_names}{character,missing}(x, best, cutlevel, nomatch = TRUE, ...)
 
 \S4method{match_names}{character,taxlist}(
   x,
   object,
-  clean = TRUE,
-  output = "data.frame",
-  best = 5,
   show_concepts = FALSE,
   accepted_only = FALSE,
-  method = "lcs",
-  sort_by,
-  order_args = list(),
+  include_author = FALSE,
   ...
 )
 }
 \arguments{
 \item{x}{A character vector with names to be compared.}
 
-\item{object}{An object of class \linkS4class{taxlist} to be compared
-with.}
+\item{object}{Either a character vector or a \linkS4class{taxlist} object
+containing the taxonomic list for comparison. If missing, the similarity
+of each name in 'x' will be compared with the rest of the names in the
+same vector.}
 
-\item{best}{Integer value indicating how many from the best matches have to
-be displayed (only working for \code{output="list"}).}
+\item{...}{Further arguments passed among methods.}
 
-\item{clean}{Logical value, whether leading, tailing and double blanks should
-be deleted from \code{x}.}
+\item{UsageID}{A vector with IDs for single usage names in the compared list.
+If the IDs are duplicated or not as much as names in 'object', the
+function retrieves an error message. If missing, this function will
+number every name anew (see column 'TaxonUsageID' in the output object).}
 
-\item{decreasing}{Logical value indicating whether retrieved names should be
-sorted by decreasing or increasing similarity value. In the character
-method, the sorting corresponds to similarities between the queried value
-and the reference vector (argument \code{object}). In the taxlist method using
-\verb{'output = "data.frame'"}, the order corresponds to the similarity of the
-best match (by default, no sorting is done). This argument is passed to
-\code{\link[=order]{order()}}.}
+\item{best}{Integer value indicating how many matches should be displayed
+in the output. Matches with the same value of similarity will be
+considered as one. Note that this argument will be overrode by
+'cutlevel'.}
 
-\item{output}{Character value indicating the type of output. Alternative
-values are "list" (taxon concepts ID's sorted by similarity for each
-queried name) or "data.frame" (a table including the best match for every
-queried name).}
+\item{nomatch}{A logical value indicating wheter names without matches should
+be included in the output (\code{'nomatch = TRUE'}) or not
+(\code{'nomatch = FALSE'}).}
 
-\item{show_concepts}{Logical value, whether respective concepts should be
-displayed in output or not.}
+\item{method}{Further arguments passed to \code{\link[=stringsim]{stringsim()}}.}
 
-\item{accepted_only}{Logical value, whether only accepted names should be
-matched or all usage names (including synonyms).}
+\item{cutlevel}{A numeric value indicating a cut level of similarity,
+considering as match names with similarities equal or bigger than the
+cut value. This argument overrides 'best'.}
 
-\item{method, ...}{Further arguments passed to \code{\link[=stringsim]{stringsim()}}.}
+\item{show_concepts}{Logical value indicating whether the respective taxon
+concepts should be displayed in output or not.}
 
-\item{sort_by}{A character vector including the output columns used for
-sorting the output table. Used only in 'character,taxlist-method'. The
-function checks the presence of these values as columns in the output
-data frame.}
+\item{accepted_only}{Logical value indicating whether only accepted names
+should be matched or all usage names (including synonyms).}
 
-\item{order_args}{A named list including arguments passed to \code{\link[=order]{order()}} in the
-'character,taxlist-method'.}
+\item{include_author}{A logical value indicating whether the author name
+in object (method for \linkS4class{taxlist}) should be included in the matching
+list or not.}
 }
 \description{
 Names provided in a character vector will be compared with names stored in
@@ -72,16 +78,19 @@ using the function \code{\link[=stringsim]{stringsim()}}.
 }
 \examples{
 ## Names to be compared
-species <- c("Cperus papyrus", "Typha australis", "Luke skywalker")
+species <- c("Cyperus papyrus", "Typha australis", "Luke Skywalker")
 
 ## Comparing character vectors
-match_names("Cyperus paper", species)
+match_names(c("Cyperus paper", "TIE fighter"), species)
 
 ## Retrieve taxon usage names
 match_names(species, Easplist)
 
 ## Display accepted names in output
 match_names(x = species, object = Easplist, show_concepts = TRUE)
+
+# Using cut value for similarity
+match_names(x = species, object = Easplist, cutlevel = 0.8)
 }
 \seealso{
 \code{\link[=stringsim]{stringsim()}}

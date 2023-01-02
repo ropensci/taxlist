@@ -96,12 +96,12 @@ df2taxlist.data.frame <- function(x, taxonTraits, taxonViews, levels,
   for (i in opt_cols) {
     x[, i] <- NA
   }
-  # set integer classes
-  for (i in c("TaxonUsageID", "TaxonConceptID", "Parent", "ViewID")) {
-    if (!is.integer(x[, i, drop = TRUE])) {
-      x[, i] <- as.integer(x[, i, drop = TRUE])
-    }
-  }
+  ## # set integer classes
+  ## for (i in c("TaxonUsageID", "TaxonConceptID", "Parent", "ViewID")) {
+  ##   if (!is.integer(x[, i, drop = TRUE])) {
+  ##     x[, i] <- as.integer(x[, i, drop = TRUE])
+  ##   }
+  ## }
   # Duplicated names
   dupl_names <- duplicated(x[, c("TaxonName", "AuthorName")])
   if (any(dupl_names)) {
@@ -188,7 +188,7 @@ df2taxlist.data.frame <- function(x, taxonTraits, taxonViews, levels,
     x$ViewID <- NA
   }
   # 2: Taxon Names (detect additional columns for slot taxonNames)
-  all_names <- unique(do.call(c, lapply(as.list(taxlist)[
+  all_names <- unique(do.call(c, lapply(as(taxlist, "list")[
     c("taxonNames", "taxonRelations")
   ], names)))
   extra_cols <- names(x)[!names(x) %in% all_names]
@@ -236,3 +236,15 @@ df2taxlist.character <- function(x, ...) {
   )
   return(df2taxlist(x, ...))
 }
+
+#' @rdname coerce-methods
+#' @aliases coerce,data.frame,taxlist-method
+setAs("data.frame", "taxlist", function(from) {
+  return(df2taxlist(from))
+})
+
+#' @rdname coerce-methods
+#' @aliases coerce,character,taxlist-method
+setAs("character", "taxlist", function(from) {
+  return(df2taxlist(from))
+})

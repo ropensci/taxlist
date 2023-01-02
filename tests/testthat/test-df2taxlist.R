@@ -1,8 +1,6 @@
 context("coerce objects to taxlist")
 
-pat <- system.file("cyperus", "names.csv", package = "taxlist")
-
-Cyperus <- read.csv(pat,
+Cyperus <- read.csv(system.file("cyperus", "names.csv", package = "taxlist"),
   stringsAsFactors = FALSE
 )
 Cyperus$AcceptedName <- !Cyperus$SYNONYM

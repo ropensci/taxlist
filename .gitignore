@@ -6,3 +6,4 @@ Meta
 *.Rproj
 tests/testthat/*.rda
 docs
+/lab/

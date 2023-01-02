@@ -2,6 +2,7 @@
 ^build-pkg$
 ^data-raw$
 ^db-scheme$
+^examples$
 ^lab$
 ^tests$
 ^_pkgdown\.yml$

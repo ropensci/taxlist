@@ -8,55 +8,43 @@
 #' using the function [stringsim()].
 #'
 #' @param x A character vector with names to be compared.
-#' @param object An object of class [taxlist-class] to be compared
-#'     with.
-#' @param clean Logical value, whether leading, tailing and double blanks should
-#'     be deleted from `x`.
-#' @param best Integer value indicating how many from the best matches have to
-#'     be displayed (only working for `output="list"`).
-#' @param sort_by A character vector including the output columns used for
-#'     sorting the output table. Used only in 'character,taxlist-method'. The
-#'     function checks the presence of these values as columns in the output
-#'     data frame.
-#' @param order_args A named list including arguments passed to [order()] in the
-#'     'character,taxlist-method'.
-#' @param decreasing Logical value indicating whether retrieved names should be
-#'     sorted by decreasing or increasing similarity value. In the character
-#'     method, the sorting corresponds to similarities between the queried value
-#'     and the reference vector (argument `object`). In the taxlist method using
-#'     `'output = "data.frame'"`, the order corresponds to the similarity of the
-#'     best match (by default, no sorting is done). This argument is passed to
-#'     [order()].
-#' @param output Character value indicating the type of output. Alternative
-#'     values are "list" (taxon concepts ID's sorted by similarity for each
-#'     queried name) or "data.frame" (a table including the best match for every
-#'     queried name).
-#' @param show_concepts Logical value, whether respective concepts should be
-#'     displayed in output or not.
-#' @param accepted_only Logical value, whether only accepted names should be
-#'     matched or all usage names (including synonyms).
-#' @param method,... Further arguments passed to [stringsim()].
+#' @param object Either a character vector or a [taxlist-class] object
+#'     containing the taxonomic list for comparison. If missing, the similarity
+#'     of each name in 'x' will be compared with the rest of the names in the
+#'     same vector.
+#' @param UsageID A vector with IDs for single usage names in the compared list.
+#'     If the IDs are duplicated or not as much as names in 'object', the
+#'     function retrieves an error message. If missing, this function will
+#'     number every name anew (see column 'TaxonUsageID' in the output object).
+#' @param best Integer value indicating how many matches should be displayed
+#'     in the output. Matches with the same value of similarity will be
+#'     considered as one. Note that this argument will be overrode by
+#'     'cutlevel'.
+#' @param cutlevel A numeric value indicating a cut level of similarity,
+#'     considering as match names with similarities equal or bigger than the
+#'     cut value. This argument overrides 'best'.
+#' @param nomatch A logical value indicating wheter names without matches should
+#'     be included in the output (`'nomatch = TRUE'`) or not
+#'     (`'nomatch = FALSE'`).
+#' @param include_author A logical value indicating whether the author name
+#'     in object (method for [taxlist-class]) should be included in the matching
+#'     list or not.
+#' @param show_concepts Logical value indicating whether the respective taxon
+#'     concepts should be displayed in output or not.
+#' @param accepted_only Logical value indicating whether only accepted names
+#'     should be matched or all usage names (including synonyms).
+#' @param method Further arguments passed to [stringsim()].
+#' @param ... Further arguments passed among methods.
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
 #' @seealso [stringsim()]
 #'
-#' @examples
-#' ## Names to be compared
-#' species <- c("Cperus papyrus", "Typha australis", "Luke skywalker")
+#' @example examples/match_names.R
 #'
-#' ## Comparing character vectors
-#' match_names("Cyperus paper", species)
-#'
-#' ## Retrieve taxon usage names
-#' match_names(species, Easplist)
-#'
-#' ## Display accepted names in output
-#' match_names(x = species, object = Easplist, show_concepts = TRUE)
 #' @rdname match_names
 #'
 #' @exportMethod match_names
-#'
 setGeneric(
   "match_names",
   function(x, object, ...) {
@@ -65,152 +53,145 @@ setGeneric(
 )
 
 #' @rdname match_names
-#'
 #' @aliases match_names,character,character-method
-#'
 setMethod(
   "match_names", signature(x = "character", object = "character"),
-  function(x, object, best = 5, clean = TRUE, decreasing = TRUE, ...) {
-    if (length(x) > 1) {
-      warning("Only the first element in 'x' will be compared.")
-      x <- x[1]
+  function(x, object, UsageID, best = 1, nomatch = TRUE, method = "lcs",
+           cutlevel = NULL, ...) {
+    if (any(is.na(x))) {
+      stop("NAs are not allowed in argument 'x'")
     }
-    if (clean) {
-      x <- clean_strings(x)
-      object <- clean_strings(object)
+    x <- data.frame(idx = seq_along(x), submittedname = x)
+    if (!missing(UsageID)) {
+      if (length(UsageID) != length(object)) {
+        stop(paste(
+          "Length of argument 'object' have to be the same",
+          "as length of argument 'UsageID'."
+        ))
+      }
+      if (any(duplicated(UsageID))) {
+        stop("Duplicated values in 'UsageID' are not allowed.")
+      }
+      object <- data.frame(TaxonUsageID = UsageID, TaxonName = object)
+    } else {
+      object <- data.frame(TaxonUsageID = seq_along(object), TaxonName = object)
     }
-    OUT <- data.frame(
-      name = object, similarity = stringsim(x, object, ...),
-      stringsAsFactors = FALSE
+    SIM <- lapply(split(x, x$idx), function(a, b, c, method, cutlevel) {
+      b$idx <- a$idx
+      b$similarity <- stringsim(a$submittedname, b$TaxonName, method)
+      b <- b[order(b$similarity, decreasing = TRUE), ]
+      b$match <- match(b$similarity, unique(b$similarity))
+      if (!is.null(cutlevel)) {
+        b <- b[b$similarity >= cutlevel, ]
+      } else {
+        b <- b[b$match <= c, ]
+      }
+      return(b)
+    },
+    b = object, c = best, method = method, cutlevel = cutlevel, ...
     )
-    OUT <- OUT[order(OUT$similarity, decreasing = decreasing), ]
-    if (best < length(object)) {
-      OUT <- OUT[1:best, ]
+    SIM <- do.call(rbind, SIM)
+    SIM$submittedname <- x$submittedname[match(SIM$idx, x$idx)]
+    if (nomatch & !all(x$idx %in% SIM$idx)) {
+      x <- x[!(x$idx %in% SIM$idx), ]
+      x$match <- 0
+      SIM <- insert_rows(SIM, x)
     }
-    return(OUT)
+    rownames(SIM) <- NULL
+    class(SIM) <- c("matched_names", "data.frame")
+    return(SIM[, c(
+      "idx", "submittedname", "TaxonUsageID", "TaxonName",
+      "match", "similarity"
+    )])
   }
 )
 
 #' @rdname match_names
-#'
+#' @aliases match_names,character,missing-method
+setMethod(
+  "match_names", signature(x = "character", object = "missing"),
+  function(x, best, cutlevel, nomatch = TRUE, ...) {
+    if (missing(cutlevel)) {
+      if (!missing(best)) {
+        SIM <- match_names(x, x, best = best + 1, ...)
+      } else {
+        SIM <- match_names(x, x, best = 2, ...)
+      }
+    } else {
+      SIM <- match_names(x, x, cutlevel = cutlevel, ...)
+    }
+    SIM$match <- SIM$match - 1
+    SIM <- split(SIM, SIM$match == 0)
+    if (nomatch) {
+      SIM$"TRUE" <- SIM$"TRUE"[!SIM$"TRUE"$idx %in% SIM$"FALSE"$idx, ]
+      if (nrow(SIM$"TRUE" > 0)) {
+        SIM <- insert_rows(SIM$"FALSE", SIM$"TRUE"[
+          ,
+          c("idx", "submittedname", "match")
+        ])
+      } else {
+        SIM <- SIM$"FALSE"
+      }
+    } else {
+      SIM <- SIM$"FALSE"
+    }
+    return(SIM)
+  }
+)
+
+#' @rdname match_names
 #' @aliases match_names,character,taxlist-method
-#'
 setMethod(
   "match_names", signature(x = "character", object = "taxlist"),
-  function(x, object, clean = TRUE, output = "data.frame", best = 5,
-           show_concepts = FALSE, accepted_only = FALSE, method = "lcs",
-           sort_by, order_args = list(), ...) {
-    if (any(is.na(x))) {
-      stop("NAs are not allowed in argument 'x'")
+  function(x, object, show_concepts = FALSE, accepted_only = FALSE,
+           include_author = FALSE, ...) {
+    if (accepted_only) {
+      tax_names <- object@taxonNames[object@taxonNames$TaxonUsageID %in%
+        object@taxonRelations$AcceptedName, ]
+    } else {
+      tax_names <- object@taxonNames
     }
-    if (clean) {
-      x <- clean_strings(x)
+    if (include_author) {
+      tax_names$TaxonName <- paste(tax_names$TaxonName, tax_names$AuthorName)
     }
-    SIM <- lapply(split(x, seq_along(x)), function(a, b, method) {
-      similarity <- stringsim(
-        a, b@taxonNames$TaxonName,
-        method
-      )
-      return(list(
-        TaxonUsageID = b@taxonNames$TaxonUsageID[
-          order(similarity,
-            decreasing = TRUE
-          )
-        ],
-        similarity = similarity[order(similarity,
-          decreasing = TRUE
-        )]
-      ))
-    },
-    b = object, method = method, ...
+    SIM <- match_names(x,
+      object = tax_names$TaxonName,
+      UsageID = tax_names$TaxonUsageID, ...
     )
-    output <- pmatch(output[1], c("data.frame", "list"))
-    if (!output %in% c(1, 2)) {
-      stop("non-valid value for 'output'")
+    SIM$AuthorName <- object@taxonNames$AuthorName[
+      match(SIM$TaxonUsageID, object@taxonNames$TaxonUsageID)
+    ]
+    if (include_author) {
+      SIM$TaxonName <- object@taxonNames$TaxonName[
+        match(SIM$TaxonUsageID, object@taxonNames$TaxonUsageID)
+      ]
     }
-    if (output == 2) {
-      new_names <- lapply(SIM, function(a, b, best) {
-        return(list(
-          TaxonName = b@taxonNames$TaxonName[
-            match(
-              a$TaxonUsageID[
-                1:best
-              ],
-              b@taxonNames$TaxonUsageID
-            )
-          ],
-          TaxonUsageID = a$TaxonUsageID[1:best],
-          similarity = a$similarity[1:best]
-        ))
-      }, b = object, best = best)
-      names(new_names) <- x
+    if (show_concepts) {
+      SIM$TaxonConceptID <- object@taxonNames$TaxonConceptID[
+        match(SIM$TaxonUsageID, object@taxonNames$TaxonUsageID)
+      ]
+      tax_concepts <- object@taxonRelations[
+        object@taxonRelations$TaxonConceptID %in%
+          unique(SIM$TaxonConceptID),
+      ]
+      tax_concepts$AcceptedTaxonName <- object@taxonNames$TaxonName[
+        match(tax_concepts$AcceptedName, object@taxonNames$TaxonUsageID)
+      ]
+      tax_concepts$AcceptedAuthorName <- object@taxonNames$AuthorName[
+        match(tax_concepts$AcceptedName, object@taxonNames$TaxonUsageID)
+      ]
+      SIM <- merge(SIM, tax_concepts[
+        ,
+        c(
+          "TaxonConceptID", "AcceptedTaxonName", "AcceptedAuthorName",
+          "Level"
+        )
+      ], all.x = TRUE, sort = FALSE)
     }
-    if (output == 1) {
-      new_names <- lapply(SIM, function(a, b) {
-        similarity <- a$similarity[a$similarity ==
-          max(a$similarity)]
-        TaxonUsageID <- a$TaxonUsageID[a$similarity ==
-          max(a$similarity)]
-        matches <- length(similarity)
-        if (accepted_only) {
-          TaxonUsageID <- TaxonUsageID[TaxonUsageID %in%
-            b@taxonRelations$AcceptedName]
-          matches <- length(TaxonUsageID)
-          similarity <- similarity[1]
-        }
-        if (matches != 1) {
-          TaxonUsageID <- NA
-          similarity <- similarity[1]
-        }
-        return(data.frame(
-          TaxonUsageID = TaxonUsageID,
-          matches = matches,
-          similarity = similarity,
-          stringsAsFactors = FALSE
-        ))
-      }, b = object)
-      new_names <- do.call(rbind, new_names)
-      new_names <- data.frame(
-        submittedname = x,
-        TaxonName = object@taxonNames$TaxonName[
-          match(
-            new_names$TaxonUsageID,
-            object@taxonNames$TaxonUsageID
-          )
-        ],
-        AuthorName = object@taxonNames$AuthorName[
-          match(
-            new_names$TaxonUsageID,
-            object@taxonNames$TaxonUsageID
-          )
-        ],
-        new_names, stringsAsFactors = FALSE
-      )
-      if (show_concepts) {
-        new_names$TaxonConceptID <- object@taxonNames$
-          TaxonConceptID[
-          match(
-            new_names$TaxonUsageID,
-            object@taxonNames$TaxonUsageID
-          )
-        ]
-      }
-      if (!missing(sort_by)) {
-        if (!all(sort_by %in% colnames(new_names))) {
-          stop(paste(
-            "Some values in 'sort_by' are not columns in the",
-            "output data frame"
-          ))
-        }
-        new_names <- new_names[do.call(order, c(
-          list("..." = new_names[
-            ,
-            sort_by
-          ]),
-          order_args
-        )), ]
-      }
-    }
-    return(new_names)
+    col_names <- c(
+      "idx", "submittedname", "TaxonUsageID", "TaxonName",
+      "AuthorName", "match", "similarity"
+    )
+    return(SIM[, c(col_names, names(SIM)[!names(SIM) %in% col_names])])
   }
 )
