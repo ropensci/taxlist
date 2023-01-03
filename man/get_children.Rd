@@ -45,21 +45,19 @@ the input \code{taxlist} object.
 }
 \examples{
 ## Subset with family Ebenaceae and children
-Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
-Ebenaceae <- get_children(Easplist, Ebenaceae)
+Ebenaceae <- subset(x = Easplist, subset = TaxonName == "Ebenaceae")
+Ebenaceae
 
-summary(Ebenaceae)
-summary(object = Ebenaceae, ConceptID = "all", maxsum = 100)
+Ebenaceae <- get_children(Easplist, Ebenaceae)
+Ebenaceae
 
 ## Get parents of Diospyros tricolor
-Diostri <- subset(
-  x = Easplist, subset = TaxonConceptID == 52403,
-  slot = "relations"
-)
-Diostri <- get_parents(Easplist, Diostri)
+Diostri <- subset(x = Easplist, subset = TaxonConceptID == 52403,
+    slot = "relations")
+Diostri
 
-summary(Diostri)
-summary(Diostri, "all")
+Diostri <- get_parents(Easplist, Diostri)
+Diostri
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

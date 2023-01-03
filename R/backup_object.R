@@ -43,31 +43,11 @@
 #'
 #' @seealso \code{\link{save}} \code{\link{load}}.
 #'
-#' @examples
-#' \dontrun{
-#' ## A subset with Pseudognaphalium and relatives
-#' Pseudognaphalium <- subset(x = Easplist, subset = grepl(
-#'   "Pseudognaphalium",
-#'   TaxonName
-#' ), slot = "names")
-#' Pseudognaphalium <- get_parents(Easplist, Pseudognaphalium)
+#' @example examples/backup_object.R
 #'
-#' ## Create a backup with date stamp
-#' backup_object(Pseudognaphalium, file = "Pseudonaphalium")
-#'
-#' ## The same
-#' backup_object(objects = "Pseudognaphalium", file = "Pseudonaphalium")
-#'
-#' ## To load the last backup into a session
-#' load_last("Pseudognaphalium")
-#' }
-#'
-#' ## Load pre-installed backup
-#' load_last(file.path(path.package("taxlist"), "extdata", "Podocarpus"))
 #' @rdname backup_object
 #'
 #' @export
-#'
 backup_object <- function(..., objects = character(), file, stamp = TRUE,
                           overwrite = FALSE) {
   if (missing(file)) {
@@ -108,9 +88,7 @@ backup_object <- function(..., objects = character(), file, stamp = TRUE,
 }
 
 #' @rdname backup_object
-#'
 #' @export
-#'
 load_last <- function(file, fext = ".rda") {
   OUT <- sort_backups(file = file, fext = fext)
   message(paste0("Loading file '", OUT$filename[nrow(OUT)], "' to session."))

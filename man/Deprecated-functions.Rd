@@ -8,6 +8,7 @@
 \alias{replace_view}
 \alias{taxlist2taxmap}
 \alias{taxmap2taxlist}
+\alias{tnrs}
 \title{Deprecated functions}
 \usage{
 add_parent()
@@ -21,6 +22,10 @@ replace_view()
 taxlist2taxmap()
 
 taxmap2taxlist()
+
+taxmap2taxlist()
+
+tnrs()
 }
 \description{
 Most of those functions have been replaced by alternative 'update' ones.

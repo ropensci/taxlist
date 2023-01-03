@@ -40,21 +40,7 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
 #'
-#' @examples
-#' Cyperus <- read.csv(file = file.path(
-#'   path.package("taxlist"), "cyperus",
-#'   "names.csv"
-#' ))
-#' head(Cyperus)
-#'
-#' ## Convert to 'taxlist' object
-#' Cyperus$AcceptedName <- !Cyperus$SYNONYM
-#' Cyperus <- df2taxlist(Cyperus)
-#' Cyperus
-#'
-#' ## Create a 'taxlist' object from character vectors
-#' Plants <- df2taxlist(c("Triticum aestivum", "Zea mays"), AuthorName = "L.")
-#' summary(Plants, "all")
+#' @example examples/df2taxlist.R
 #'
 #' @rdname df2taxlist
 #'
@@ -237,12 +223,14 @@ df2taxlist.character <- function(x, ...) {
   return(df2taxlist(x, ...))
 }
 
+#' @name as
 #' @rdname coerce-methods
 #' @aliases coerce,data.frame,taxlist-method
 setAs("data.frame", "taxlist", function(from) {
   return(df2taxlist(from))
 })
 
+#' @name as
 #' @rdname coerce-methods
 #' @aliases coerce,character,taxlist-method
 setAs("character", "taxlist", function(from) {

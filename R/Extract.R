@@ -25,12 +25,8 @@
 #'
 #' @seealso [taxlist-class] \code{\link[taxlist]{subset}}
 #'
-#' @examples
-#' ## Statistics on life forms
-#' summary(as.factor(Easplist$life_form))
+#' @example examples/Extract.R
 #'
-#' ## First ten concepts in this list
-#' summary(Easplist[1:10, ], "all")
 #' @rdname Extract
 #'
 #' @aliases [ [,taxlist-method

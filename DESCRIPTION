@@ -17,7 +17,6 @@ Imports:
     foreign,
     methods,
     stats,
-    taxize,
     stringdist,
     stringr,
     utils,
@@ -67,7 +66,6 @@ Collate:
     'summary.R'
     'df2taxlist.R'
     'tv2taxlist.R'
-    'tnrs.R'
     'tax2traits.R'
     'match_names.R'
     'print_name.R'

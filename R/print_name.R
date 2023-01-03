@@ -40,47 +40,8 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' summary(Easplist, 363, secundum = "secundum")
+#' @example examples/print_name.R
 #'
-#' ## Empty plot
-#' plot(
-#'   x = NA, xlim = c(0, 5), ylim = c(7, 1), bty = "n", xaxt = "n", xlab = "",
-#'   ylab = "options"
-#' )
-#'
-#' ## Accepted name with author
-#' text(
-#'   x = 0, y = 1, labels = print_name(Easplist, 363, style = "expression"),
-#'   pos = 4
-#' )
-#'
-#' ## Including taxon view
-#' text(x = 0, y = 2, labels = print_name(Easplist, 363,
-#'   style = "expression",
-#'   secundum = "secundum"
-#' ), pos = 4)
-#'
-#' ## Second mention in text
-#' text(x = 0, y = 3, labels = print_name(Easplist, 363,
-#'   style = "expression",
-#'   second_mention = TRUE
-#' ), pos = 4)
-#'
-#' ## Using synonym
-#' text(x = 0, y = 4, labels = print_name(Easplist, 50037,
-#'   style = "expression",
-#'   concept = FALSE
-#' ), pos = 4)
-#'
-#' ## Markdown style
-#' text(0, 5, labels = print_name(Easplist, 363, style = "markdown"), pos = 4)
-#'
-#' ## HTML style
-#' text(0, 6, labels = print_name(Easplist, 363, style = "html"), pos = 4)
-#'
-#' ## LaTeX style for knitr
-#' text(x = 0, y = 7, labels = print_name(Easplist, 363, style = "knitr"), pos = 4)
 #' @rdname print_name
 #'
 #' @export
@@ -176,7 +137,8 @@ print_name.character <- function(object, second_mention = FALSE,
 #' @method print_name taxlist
 #' @export
 print_name.taxlist <- function(object, id, concept = TRUE,
-                               include_author = TRUE, secundum, style = "markdown",
+                               include_author = TRUE, secundum,
+                               style = "markdown",
                                ...) {
   if (!missing(secundum)) {
     if (!secundum %in% names(object@taxonViews)) {

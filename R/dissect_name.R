@@ -25,15 +25,8 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' Easplist <- subset(x = Easplist, subset = Level == "variety", slot = "relations")
-#' Easplist <- accepted_name(Easplist)[c(1:10), "TaxonName"]
+#' @example examples/dissect_name.R
 #'
-#' # split name
-#' dissect_name(Easplist)
-#'
-#' # re-paste the two first words
-#' dissect_name(Easplist, repaste = c(1:2))
 #' @export dissect_name
 #'
 dissect_name <- function(x, split = " ", fixed = TRUE, repaste, ...) {

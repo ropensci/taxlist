@@ -41,16 +41,8 @@ if (!isGeneric("levels")) {
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' ## Get levels of species list
-#' taxlist::levels(Easplist)
+#' @example examples/levels.R
 #'
-#' ## Add aggregate as new taxonomic level
-#' levels(Easplist) <- c(
-#'   "form", "variety", "subspecies", "species",
-#'   "complex", "aggregate", "genus", "family"
-#' )
-#' summary(Easplist)
 #' @rdname levels
 #'
 #' @aliases levels,taxlist-method
