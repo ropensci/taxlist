@@ -85,7 +85,7 @@ Easplist
 ## summary for two taxa
 summary(Easplist, c(51128, 51140))
 
-## summary for a name
+## summary by matching a name
 summary(Easplist, "Acmella")
 
 ## summary for the first 10 taxa

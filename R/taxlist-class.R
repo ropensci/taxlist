@@ -32,13 +32,8 @@
 #'     taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
 #'     \doi{10.3897/bdj.6.e23635}
 #'
-#' @examples
-#' library(taxlist)
+#' @example examples/taxlist-class.R
 #'
-#' showClass("taxlist")
-#'
-#' ## Create an empty object
-#' Splist <- new("taxlist")
 #' @rdname taxlist-class
 setOldClass("data.frame")
 setOldClass("lib_df")

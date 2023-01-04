@@ -91,10 +91,8 @@ Print taxonomic hierarchies (ranks and parent-child relationships) from
 indented_list(Easplist, "papyrus")
 
 ## Include synonyms and taxon views
-indented_list(Easplist, "papyrus",
-  level = TRUE, synonyms = TRUE,
-  secundum = "secundum"
-)
+indented_list(Easplist, "papyrus", level = TRUE, synonyms = TRUE,
+    secundum = "secundum")
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

@@ -35,18 +35,8 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' ## Merge Cyperus papyrus and Cyperus dives
-#' summary(Easplist, c(206, 197))
+#' @example examples/merge_taxa.R
 #'
-#' Easplist <- merge_taxa(
-#'   object = Easplist, concepts = c(206, 197),
-#'   print_output = TRUE
-#' )
-#'
-#' ## Move the name Typha aethiopica to concept 573 (T. latifolia)
-#' change_concept(Easplist, 53130) <- 573
-#' summary(Easplist, c(50105, 573))
 #' @rdname merge_taxa
 #'
 #' @exportMethod merge_taxa

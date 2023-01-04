@@ -42,44 +42,8 @@
 #'
 #' @seealso [taxlist-class]
 #'
-#' @examples
-#' ## Subset for the genus Euclea and display of slot 'taxonNames'
-#' Euclea <- subset(
-#'   x = Easplist, subset = charmatch("Euclea", TaxonName),
-#'   slot = "names"
-#' )
-#' Euclea <- get_children(Easplist, Euclea)
+#' @example examples/taxon_relations.R
 #'
-#' Euclea
-#' taxon_relations(Euclea)
-#'
-#' ## Subset with family Ebenaceae and children
-#' Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
-#' Ebenaceae <- get_children(Easplist, Ebenaceae)
-#'
-#' Ebenaceae
-#' summary(object = Ebenaceae, ConceptID = "all", maxsum = 100)
-#'
-#' ## Adding a new concept
-#' Ebenaceae <- add_concept(
-#'   taxlist = Ebenaceae, TaxonName = "Euclea acutifolia",
-#'   AuthorName = "E. Mey. ex A. DC.", Level = "species", Parent = 55707, ViewID = 1
-#' )
-#'
-#' ## A summary again
-#' Ebenaceae
-#' summary(Ebenaceae, "all", maxsum = 100)
-#'
-#' ## Display two Typha species
-#' summary(Easplist, c("Typha domingensis", "Typha latifolia"))
-#'
-#' ## Update a concept
-#' summary(Easplist, "Corchorus olitorius")
-#' Easplist <- update_concept(
-#'   taxlist = Easplist, ConceptID = 155,
-#'   Level = "subspecies"
-#' )
-#' summary(Easplist, "Corchorus olitorius")
 #' @rdname taxon_relations
 #'
 #' @exportMethod taxon_relations

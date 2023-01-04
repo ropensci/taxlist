@@ -48,18 +48,16 @@ The replacement method \verb{taxon_traits<-} should be only used when
 constructing \linkS4class{taxlist} objects from an empty one.
 }
 \examples{
+## Displaying taxon traits
 head(taxon_traits(Easplist))
 
 ## Updating traits for Launaea cornuta
 summary(Easplist, "Launaea cornuta")
 accepted_name(taxlist = Easplist, ConceptID = 355, show_traits = TRUE)
 
-# Update
-Easplist <- update_trait(
-  taxlist = Easplist, ConceptID = 355,
-  life_form = "annual"
-)
-accepted_name(taxlist = Easplist, ConceptID = 355, show_traits = TRUE)
+sp_list <- update_trait(taxlist = Easplist, ConceptID = 355,
+    life_form = "annual")
+accepted_name(taxlist = sp_list, ConceptID = 355, show_traits = TRUE)
 }
 \seealso{
 \linkS4class{taxlist}.

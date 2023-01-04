@@ -57,13 +57,11 @@ The replacement method \verb{taxon_views<-} replaces the whole content of slot
 taxon_views(Easplist)
 
 ## Add a new view
-Easplist <- add_view(
-  taxlist = Easplist, secundum = "Beentje et al. (1952)",
+sp_list <- add_view(taxlist = Easplist, secundum = "Beentje et al. (1952)",
   Title = "Flora of Tropical East Africa",
-  URL = "http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"
-)
+  URL = "http://www.kew.org/science/directory/projects/FloraTropEAfrica.html")
 
-taxon_views(Easplist)
+taxon_views(sp_list)
 }
 \references{
 \bold{Zhong Y, Jung S, Pramanik S, Beaman JH (1996).} Data model and

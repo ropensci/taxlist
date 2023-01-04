@@ -20,13 +20,11 @@
 #'
 #' @author Miguel Alvarez.
 #'
-#' @examples
-#' library(taxlist)
-#' clean_strings(" Cyperus    papyrus L.     ")
+#' @example examples/clean_strings.R
+#'
 #' @rdname clean_strings
 #'
 #' @exportMethod clean_strings
-#'
 setGeneric(
   "clean_strings",
   function(x, ...) {
@@ -35,9 +33,7 @@ setGeneric(
 )
 
 #' @rdname clean_strings
-#'
 #' @aliases clean_strings,character-method
-#'
 setMethod(
   "clean_strings", signature(x = "character"),
   function(x, from = "utf8", to = "utf8", ...) {
@@ -49,9 +45,7 @@ setMethod(
 )
 
 #' @rdname clean_strings
-#'
 #' @aliases clean_strings,factor-method
-#'
 setMethod(
   "clean_strings", signature(x = "factor"),
   function(x, from = "utf8", to = "utf8", ...) {
@@ -61,9 +55,7 @@ setMethod(
 )
 
 #' @rdname clean_strings
-#'
 #' @aliases clean_strings,data.frame-method
-#'
 setMethod(
   "clean_strings", signature(x = "data.frame"),
   function(x, from = "utf8", to = "utf8", ...) {

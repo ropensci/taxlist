@@ -21,20 +21,11 @@
 #'
 #' @author Miguel Alvarez.
 #'
-#' @examples
-#' ## Direct manipulation of slot taxonRelations generates an invalid object
-#' Easplist@taxonRelations <- Easplist@taxonRelations[1:5, ]
-#' \dontrun{
-#' summary(Easplist)
-#' }
+#' @example examples/clean.R
 #'
-#' ## Now apply cleaning
-#' Easplist <- clean(Easplist)
-#' summary(Easplist)
 #' @rdname clean
 #'
 #' @exportMethod clean
-#'
 setGeneric(
   "clean",
   function(object, ...) {
@@ -43,9 +34,7 @@ setGeneric(
 )
 
 #' One run clean function
-#'
 #' @keywords internal
-#'
 clean_once_taxlist <- function(object) {
   # clean slot taxonRelations (lost accepted names)
   object@taxonRelations <- object@taxonRelations[
@@ -72,9 +61,7 @@ clean_once_taxlist <- function(object) {
 }
 
 #' @rdname clean
-#'
 #' @aliases clean,taxlist-method
-#'
 setMethod(
   "clean", signature(object = "taxlist"),
   function(object, times = 2, ...) {
@@ -84,29 +71,6 @@ setMethod(
       object <- clean_once_taxlist(object)
       if (count == times) break
     }
-    # clean classes of key fields
-    object@taxonNames$TaxonConceptID <-
-      as.integer(object@taxonNames$TaxonConceptID)
-    object@taxonNames$TaxonUsageID <-
-      as.integer(object@taxonNames$TaxonUsageID)
-    object@taxonNames$TaxonName <-
-      paste(object@taxonNames$TaxonName)
-    object@taxonNames$AuthorName <-
-      paste(object@taxonNames$AuthorName)
-    object@taxonRelations$TaxonConceptID <-
-      as.integer(object@taxonRelations$TaxonConceptID)
-    object@taxonRelations$AcceptedName <-
-      as.integer(object@taxonRelations$AcceptedName)
-    object@taxonRelations$Basionym <-
-      as.integer(object@taxonRelations$Basionym)
-    object@taxonRelations$Parent <-
-      as.integer(object@taxonRelations$Parent)
-    object@taxonRelations$ViewID <-
-      as.integer(object@taxonRelations$ViewID)
-    object@taxonTraits$TaxonConceptID <-
-      as.integer(object@taxonTraits$TaxonConceptID)
-    object@taxonViews$ViewID <-
-      as.integer(object@taxonViews$ViewID)
     return(object)
   }
 )

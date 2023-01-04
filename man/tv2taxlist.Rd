@@ -28,12 +28,9 @@ Internally the funcions \code{\link[=read.dbf]{read.dbf()}} and \code{\link[=df2
 }
 \examples{
 ## Cyperus data set installed as Turboveg species list
-Cyperus <- tv2taxlist(
-  taxlist = "cyperus",
-  tv_home = file.path(path.package("taxlist"), "tv_data")
-)
+Cyperus <- tv2taxlist(taxlist = "cyperus",
+  tv_home = file.path(path.package("taxlist"), "tv_data"))
 Cyperus
-
 }
 \seealso{
 \code{\link[=df2taxlist]{df2taxlist()}}

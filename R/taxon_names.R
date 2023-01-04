@@ -33,31 +33,8 @@
 #'
 #' @seealso [taxlist-class]
 #'
-#' @examples
-#' ## Display of slot 'taxonNames'
-#' Euclea <- subset(
-#'   x = Easplist, subset = charmatch("Euclea", TaxonName),
-#'   slot = "names", keep_children = TRUE
-#' )
-#' Euclea
-#' taxon_names(Euclea)
+#' @example examples/taxon_names.R
 #'
-#' ## Insert a synonym to Diospyros scabra
-#' summary(Easplist, "Diospyros scabra")
-#' Easplist <- add_synonym(
-#'   taxlist = Easplist, ConceptID = 51793,
-#'   TaxonName = "Maba scabra", AuthorName = "Chiov."
-#' )
-#' summary(Easplist, "Diospyros scabra")
-#'
-#' ## Delete a synonym of Launaea cornuta
-#' summary(Easplist, "Launaea cornuta")
-#' Easplist <- delete_name(Easplist, 53821)
-#' summary(Easplist, "Launaea cornuta")
-#'
-#' ## Hypothetical correction in author name in Launaea cornuta
-#' Easplist <- update_name(taxlist = Easplist, UsageID = 355, AuthorName = "L.")
-#' summary(Easplist, "Launaea cornuta")
 #' @rdname taxon_names
 #'
 #' @exportMethod taxon_names
