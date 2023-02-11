@@ -9,11 +9,12 @@ test_that("function taxon_traits is working", {
     taxon_traits(tmp) <- tmp_traits
     taxon_traits(tmp)
   }) == nrow(tmp_traits), TRUE)
-  tax_1 <- df2taxlist(data.frame(
-    TaxonName = "Poa annua",
-    AuthorName = "L.", TaxonConceptID = 1, TaxonUsageID = 1
-  ),
-  AcceptedName = TRUE
+  tax_1 <- df2taxlist(
+    data.frame(
+      TaxonName = "Poa annua",
+      AuthorName = "L.", TaxonConceptID = 1, TaxonUsageID = 1
+    ),
+    AcceptedName = TRUE
   )
   expect_equal(
     {

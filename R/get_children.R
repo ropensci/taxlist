@@ -22,27 +22,11 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' ## Subset with family Ebenaceae and children
-#' Ebenaceae <- subset(Easplist, charmatch("Ebenaceae", TaxonName))
-#' Ebenaceae <- get_children(Easplist, Ebenaceae)
+#' @example examples/get_children.R
 #'
-#' summary(Ebenaceae)
-#' summary(object = Ebenaceae, ConceptID = "all", maxsum = 100)
-#'
-#' ## Get parents of Diospyros tricolor
-#' Diostri <- subset(
-#'   x = Easplist, subset = TaxonConceptID == 52403,
-#'   slot = "relations"
-#' )
-#' Diostri <- get_parents(Easplist, Diostri)
-#'
-#' summary(Diostri)
-#' summary(Diostri, "all")
 #' @rdname get_children
 #'
 #' @exportMethod get_children
-#'
 setGeneric(
   "get_children",
   function(taxlist, ConceptID, ...) {
@@ -51,9 +35,7 @@ setGeneric(
 )
 
 #' @rdname get_children
-#'
 #' @aliases get_children,taxlist,numeric-method
-#'
 setMethod(
   "get_children", signature(taxlist = "taxlist", ConceptID = "numeric"),
   function(taxlist, ConceptID, ...) {
@@ -78,9 +60,7 @@ setMethod(
 )
 
 #' @rdname get_children
-#'
 #' @aliases get_children,taxlist,taxlist-method
-#'
 setMethod(
   "get_children", signature(taxlist = "taxlist", ConceptID = "taxlist"),
   function(taxlist, ConceptID, ...) {
@@ -90,11 +70,8 @@ setMethod(
 )
 
 #' @rdname get_children
-#'
 #' @aliases get_parents
-#'
 #' @exportMethod get_parents
-#'
 setGeneric(
   "get_parents",
   function(taxlist, ConceptID, ...) {

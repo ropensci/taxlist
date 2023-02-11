@@ -40,18 +40,8 @@
 #'
 #' @seealso [taxlist-class]
 #'
-#' @examples
-#' ## See existing views
-#' taxon_views(Easplist)
+#' @example examples/taxon_views.R
 #'
-#' ## Add a new view
-#' Easplist <- add_view(
-#'   taxlist = Easplist, secundum = "Beentje et al. (1952)",
-#'   Title = "Flora of Tropical East Africa",
-#'   URL = "http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"
-#' )
-#'
-#' taxon_views(Easplist)
 #' @rdname taxon_views
 #'
 #' @exportMethod taxon_views

@@ -41,8 +41,8 @@ Quick access to slots \code{taxonTraits} and \code{taxonRelations} within
 ## Statistics on life forms
 summary(as.factor(Easplist$life_form))
 
-## First ten concepts in this list
-summary(Easplist[1:10, ], "all")
+## First concepts in this list
+summary(Easplist[1:5, ], "all")
 }
 \seealso{
 \linkS4class{taxlist} \code{\link[taxlist]{subset}}

@@ -3,6 +3,47 @@
 # Author: Miguel Alvarez
 ################################################################################
 
+# Check
+library(rmarkdown)
+library(devtools)
+library(styler)
+library(covr)
+
+# Automatic styling
+style_pkg()
+
+# document package
+document()
+
+# clean built package and manual
+Folder <- "build-pkg"
+Files <- list.files(Folder, ".tar.gz|.pdf")
+unlink(file.path(Folder, Files))
+
+# Re-build package and manual
+pkg_loc <- build(path = Folder, args = "--resave-data")
+## build_manual(path = Folder)
+
+# common check
+check_built(path = pkg_loc)
+
+# check coverage
+report()
+
+# Special steps ----------------------------------------------------------------
+install()
+build_manual(path = Folder)
+
+################################################################################
+
+# If error due to vignettes
+pkg_loc <- build(path = Folder,
+    args = c("--resave-data", "--no-build-vignettes"))
+check_built(path = pkg_loc)
+
+
+################################################################################
+
 library(devtools)
 library(styler)
 library(knitr)
@@ -30,9 +71,9 @@ document()
 
 # Build and check package
 Folder = "build-pkg"
-pkg_loc <- build(path = Folder, args = "--resave-data")
-## pkg_loc <- build(path = Folder,
-##     args = c("--resave-data", "--no-build-vignettes"))
+## pkg_loc <- build(path = Folder, args = "--resave-data")
+pkg_loc <- build(path = Folder,
+    args = c("--resave-data", "--no-build-vignettes"))
 check_built(path = pkg_loc)
 
 # a posteriori

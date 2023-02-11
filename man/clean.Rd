@@ -33,9 +33,6 @@ taxon trait entries, and orphaned parent entries.
 \examples{
 ## Direct manipulation of slot taxonRelations generates an invalid object
 Easplist@taxonRelations <- Easplist@taxonRelations[1:5, ]
-\dontrun{
-summary(Easplist)
-}
 
 ## Now apply cleaning
 Easplist <- clean(Easplist)

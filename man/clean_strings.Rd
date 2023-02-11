@@ -36,7 +36,7 @@ spaces, either in strings (method \code{character}), levels (method
 \code{factor} or in single columns (method \code{data.frame}).
 }
 \examples{
-library(taxlist)
+## Leading, trailing and multiple spaces
 clean_strings(" Cyperus    papyrus L.     ")
 }
 \author{

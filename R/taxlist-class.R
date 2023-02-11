@@ -32,13 +32,8 @@
 #'     taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
 #'     \doi{10.3897/bdj.6.e23635}
 #'
-#' @examples
-#' library(taxlist)
+#' @example examples/taxlist-class.R
 #'
-#' showClass("taxlist")
-#'
-#' ## Create an empty object
-#' Splist <- new("taxlist")
 #' @rdname taxlist-class
 setOldClass("data.frame")
 setOldClass("lib_df")
@@ -182,7 +177,15 @@ setClass("taxlist",
         "slot 'taxonRelations'"
       ))
     }
-    # TODO: Check missing Parents first
+    ## are all parent IDs existing concepts?
+    idx <- !is.na(object@taxonRelations$Parent)
+    if (!all(object@taxonRelations$Parent[idx] %in%
+      object@taxonRelations$TaxonConceptID)) {
+      stop(paste(
+        "Some parent IDs are not included as concepts in the",
+        "taxlist object."
+      ))
+    }
     ## parent-child relationships
     if (!all(is.na(object@taxonRelations$Parent)) &
       !all(is.na(object@taxonRelations$Level)) &

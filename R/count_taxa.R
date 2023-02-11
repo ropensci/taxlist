@@ -21,20 +21,11 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' ## factor method
-#' count_taxa(iris$Species)
+#' @example examples/count_taxa.R
 #'
-#' ## taxlist method
-#' count_taxa(Easplist)
-#' count_taxa(Easplist, level = "species")
-#'
-#' ## using a formula
-#' count_taxa(~life_form, Easplist)
 #' @rdname count_taxa
 #'
 #' @exportMethod count_taxa
-#'
 setGeneric(
   "count_taxa",
   function(object, data, ...) {
@@ -43,9 +34,7 @@ setGeneric(
 )
 
 #' @rdname count_taxa
-#'
 #' @aliases count_taxa,character,missing-method
-#'
 setMethod(
   "count_taxa", signature(object = "character", data = "missing"),
   function(object, na.rm = TRUE, ...) {
@@ -55,9 +44,7 @@ setMethod(
 )
 
 #' @rdname count_taxa
-#'
 #' @aliases count_taxa,factor,missing-method
-#'
 setMethod(
   "count_taxa", signature(object = "factor", data = "missing"),
   function(object, na.rm = TRUE, ...) {
@@ -67,9 +54,7 @@ setMethod(
 )
 
 #' @rdname count_taxa
-#'
 #' @aliases count_taxa,taxlist,missing-method
-#'
 setMethod(
   "count_taxa", signature(object = "taxlist", data = "missing"),
   function(object, level, ...) {
@@ -99,7 +84,6 @@ setMethod(
 #'     output data frame (only used in `formula` method).
 #'
 #' @aliases count_taxa,formula,taxlist-method
-#'
 setMethod(
   "count_taxa", signature(object = "formula", data = "taxlist"),
   function(object, data, include_na = FALSE, suffix = "_count", ...) {

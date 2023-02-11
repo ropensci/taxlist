@@ -50,19 +50,11 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' ## Show taxonomy of papyrus
-#' indented_list(Easplist, "papyrus")
+#' @example examples/indented_list.R
 #'
-#' ## Include synonyms and taxon views
-#' indented_list(Easplist, "papyrus",
-#'   level = TRUE, synonyms = TRUE,
-#'   secundum = "secundum"
-#' )
 #' @rdname indented_list
 #'
 #' @exportMethod indented_list
-#'
 setGeneric(
   "indented_list",
   function(object, ...) {
@@ -71,9 +63,7 @@ setGeneric(
 )
 
 #' @rdname indented_list
-#'
 #' @aliases indented_list,taxlist-method
-#'
 setMethod(
   "indented_list", signature(object = "taxlist"),
   function(object, filter, keep_children = TRUE, keep_parents = TRUE,

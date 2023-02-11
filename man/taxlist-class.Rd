@@ -35,12 +35,12 @@ circumscription.}
 }}
 
 \examples{
-library(taxlist)
-
+## Class 'taxlist'
 showClass("taxlist")
 
 ## Create an empty object
-Splist <- new("taxlist")
+sp_list <- new("taxlist")
+sp_list
 }
 \references{
 \bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant

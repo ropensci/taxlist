@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.3
+Version: 0.2.3.9001
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -17,7 +17,6 @@ Imports:
     foreign,
     methods,
     stats,
-    taxize,
     stringdist,
     stringr,
     utils,
@@ -49,8 +48,9 @@ Collate:
     'dissect_name.R'
     'clean_strings.R'
     'taxlist-class.R'
+    'matched_names-class.R'
     'clean.R'
-    'as.R'
+    'coerce-methods.R'
     'taxon_views.R'
     'count_taxa.R'
     'taxon_names.R'
@@ -66,7 +66,6 @@ Collate:
     'summary.R'
     'df2taxlist.R'
     'tv2taxlist.R'
-    'tnrs.R'
     'tax2traits.R'
     'match_names.R'
     'print_name.R'
@@ -74,4 +73,4 @@ Collate:
     'Easplist-data.R'
     'taxlist-package.R'
 VignetteBuilder: knitr
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2

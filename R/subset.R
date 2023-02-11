@@ -31,14 +31,8 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' Easplist <- subset(
-#'   x = Easplist, subset = life_form == "reed_plant",
-#'   slot = "traits"
-#' )
-#' summary(Easplist)
+#' @example examples/subset.R
 #'
-#' summary(as.factor(Easplist$life_form))
 #' @aliases subset,taxlist-method
 #'
 #' @exportMethod subset

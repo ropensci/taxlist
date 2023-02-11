@@ -211,24 +211,8 @@ overview_taxon <- function(object, ConceptID, display, maxsum,
 #'
 #' @seealso [taxlist-class]
 #'
-#' @examples
-#' ## summary of the object
-#' summary(Easplist, units = "Mb")
+#' @example examples/summary.R
 #'
-#' ## the same output
-#' summary(Easplist)
-#' show(Easplist)
-#' print(Easplist)
-#' Easplist
-#'
-#' ## summary for two taxa
-#' summary(Easplist, c(51128, 51140))
-#'
-#' ## summary for a name
-#' summary(Easplist, "Acmella")
-#'
-#' ## summary for the first 10 taxa
-#' summary(object = Easplist, ConceptID = "all", maxsum = 10)
 #' @aliases summary,taxlist-method
 #'
 #' @exportMethod summary

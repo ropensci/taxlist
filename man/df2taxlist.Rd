@@ -20,7 +20,7 @@ a data frame, the columns \strong{TaxonUsageID} (integer with IDs for each
 name), \strong{TaxonConceptID} (integer with IDs for the respective taxon
 concepts), and \strong{TaxonName} (character) are mandatory.
 Other optional columns are \strong{AuthorName} (character with names'
-authorities), \strong{AccpetedName} (logical indicating whether the name is
+authorities), \strong{AcceptedName} (logical indicating whether the name is
 an accepted name or a synonym and will be set as TRUE by default),
 \strong{Level}
 (factor sorting taxonomic ranks in the bottom-up direction), \strong{Parent}
@@ -58,21 +58,17 @@ Also character vectors including taxonomic names will be converted
 but without any information on taxonomic ranks and parental taxa.
 }
 \examples{
-Cyperus <- read.csv(file = file.path(
-  path.package("taxlist"), "cyperus",
-  "names.csv"
-))
+Cyperus <- read.csv(file = file.path(path.package("taxlist"), "cyperus",
+  "names.csv"))
 head(Cyperus)
 
 ## Convert to 'taxlist' object
 Cyperus$AcceptedName <- !Cyperus$SYNONYM
-Cyperus <- df2taxlist(Cyperus)
-Cyperus
+df2taxlist(Cyperus)
 
 ## Create a 'taxlist' object from character vectors
 Plants <- df2taxlist(c("Triticum aestivum", "Zea mays"), AuthorName = "L.")
 summary(Plants, "all")
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}.
