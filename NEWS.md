@@ -14,11 +14,16 @@ taxlist 0.2.4
 * Function `match_names()` displays multiple matchings per name and also works
   comparing a string with itself.
 <<<<<<< HEAD
+* Simplified coercion in form of `to_class <- as(obj, from_class)`.
+* Function `tnrs()` deprecated.
+=======
+<<<<<<< HEAD
 * Simplified coercion in form of `to_class <- as(obj, from_class)`
 =======
 * Simplified coercion in form of `to_class <- as(obj, from_class)`.
 * Function `tnrs()` deprecated.
 >>>>>>> refs/heads/20-improve-functionality-of-match_names
+>>>>>>> refs/heads/devel
 
 taxlist 0.2.3
 =============
