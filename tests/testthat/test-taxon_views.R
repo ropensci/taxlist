@@ -1,4 +1,3 @@
-
 context("manipulating taxon views")
 
 test_that("function taxon_views is working", {

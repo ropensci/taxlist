@@ -4,6 +4,7 @@
 #' @importFrom vegdata tv.home
 #' @importFrom foreign read.dbf
 #' @importFrom stringdist stringsim
+#' @importFrom stringi stri_rand_strings
 #' @importFrom stringr fixed str_replace_all str_split
 #' @importClassesFrom biblio lib_df
 NULL
