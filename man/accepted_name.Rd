@@ -2,53 +2,49 @@
 % Please edit documentation in R/accepted_name.R
 \name{accepted_name}
 \alias{accepted_name}
-\alias{accepted_name,taxlist,numeric-method}
-\alias{accepted_name,taxlist,missing-method}
+\alias{accepted_name.taxlist}
+\alias{accepted_name,taxlist-method}
 \alias{accepted_name<-}
-\alias{accepted_name<-,taxlist,numeric,numeric-method}
+\alias{accepted_name<-.taxlist}
+\alias{accepted_name<-,taxlist-method}
 \alias{synonyms}
-\alias{synonyms,taxlist,numeric-method}
-\alias{synonyms,taxlist,missing-method}
+\alias{synonyms.taxlist}
+\alias{synonyms,taxlist-method}
 \alias{basionym}
-\alias{basionym,taxlist,numeric-method}
-\alias{basionym,taxlist,missing-method}
+\alias{basionym.taxlist}
+\alias{basionym,taxlist-method}
 \alias{basionym<-}
-\alias{basionym<-,taxlist,numeric,numeric-method}
+\alias{basionym<-.taxlist}
+\alias{basionym<-,taxlist-method}
 \title{Manage accepted names, synonyms and basionyms}
 \usage{
-accepted_name(taxlist, ConceptID, ...)
+accepted_name(taxlist, ...)
 
-\S4method{accepted_name}{taxlist,numeric}(taxlist, ConceptID, show_traits = FALSE, ...)
+\method{accepted_name}{taxlist}(taxlist, ConceptID, show_traits = FALSE, ...)
 
-\S4method{accepted_name}{taxlist,missing}(taxlist, ConceptID, ...)
+accepted_name(taxlist, ...) <- value
 
-accepted_name(taxlist, ConceptID) <- value
+\method{accepted_name}{taxlist}(taxlist, ConceptID, ...) <- value
 
-\S4method{accepted_name}{taxlist,numeric,numeric}(taxlist, ConceptID) <- value
+synonyms(taxlist, ...)
 
-synonyms(taxlist, ConceptID, ...)
+\method{synonyms}{taxlist}(taxlist, ConceptID, ...)
 
-\S4method{synonyms}{taxlist,numeric}(taxlist, ConceptID, ...)
+basionym(taxlist, ...)
 
-\S4method{synonyms}{taxlist,missing}(taxlist, ConceptID, ...)
+\method{basionym}{taxlist}(taxlist, ConceptID, ...)
 
-basionym(taxlist, ConceptID, ...)
+basionym(taxlist, ...) <- value
 
-\S4method{basionym}{taxlist,numeric}(taxlist, ConceptID, ...)
-
-\S4method{basionym}{taxlist,missing}(taxlist, ConceptID, ...)
-
-basionym(taxlist, ConceptID) <- value
-
-\S4method{basionym}{taxlist,numeric,numeric}(taxlist, ConceptID) <- value
+\method{basionym}{taxlist}(taxlist, ConceptID, ...) <- value
 }
 \arguments{
 \item{taxlist}{An object of class \linkS4class{taxlist}.}
 
+\item{...}{Further arguments passed among methods.}
+
 \item{ConceptID}{Integer containing concept IDs where to request or set names
 for one category.}
-
-\item{...}{Further arguments passed among methods.}
 
 \item{show_traits}{Logical value, whether traits should be included in the
 output of \code{accepted_name} or not.}
@@ -65,12 +61,8 @@ Taxon usage names for a taxon concept can be divided into three categories:
 accepted names, basionyms and synonyms.
 Each single taxon concept may at least have an accepted name, while basionym
 and synonyms are optional.
-The functions \code{accepted_name}, \code{basionym} and \code{synonyms}  can be used either
-to display the respective usage names or to set usage names in one of those
-categories.
-}
-\details{
-The function \code{accepted_name} retrieves the accepted names for the indicated
+
+The function \code{accepted_name()} retrieves the accepted names for the indicated
 taxon concepts or for the whole \linkS4class{taxlist} object.
 By using \code{show_traits=TRUE}, the respective taxon traits will be
 displayed as well, providing an overview of taxa included in the object.
@@ -102,6 +94,19 @@ Easplist <- add_synonym(taxlist = Easplist, ConceptID = 68,
 summary(Easplist, 68)
 accepted_name(Easplist, 68) <- 56139
 summary(Easplist, 68)
+
+## Display synonyms
+head(synonyms(taxlist = Easplist))
+
+## Synonyms for an specific concept
+synonyms(taxlist = Easplist, ConceptID = 20)
+
+## Basionym for Cyclosrus interruptus
+summary(Easplist, 50074)
+basionym(Easplist, 50074) <- 53097
+
+summary(Easplist, 50074)
+basionym(Easplist, 50074)
 }
 \seealso{
 \code{\link[=add_synonym]{add_synonym()}} \link{change_concept<-}
