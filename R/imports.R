@@ -6,5 +6,6 @@
 #' @importFrom stringdist stringsim
 #' @importFrom stringi stri_rand_strings
 #' @importFrom stringr fixed str_replace_all str_split
+#' @importFrom tools file_path_sans_ext
 #' @importClassesFrom biblio lib_df
 NULL
