@@ -2,32 +2,28 @@
 % Please edit documentation in R/get_children.R
 \name{get_children}
 \alias{get_children}
-\alias{get_children,taxlist,numeric-method}
-\alias{get_children,taxlist,taxlist-method}
+\alias{get_children.taxlist}
+\alias{get_children,taxlist-method}
 \alias{get_parents}
-\alias{get_parents,taxlist,numeric-method}
-\alias{get_parents,taxlist,taxlist-method}
+\alias{get_parents.taxlist}
+\alias{get_parents,taxlist-method}
 \title{Retrieve children or parents of taxon concepts}
 \usage{
-get_children(taxlist, ConceptID, ...)
+get_children(taxlist, ...)
 
-\S4method{get_children}{taxlist,numeric}(taxlist, ConceptID, ...)
+\method{get_children}{taxlist}(taxlist, ConceptID, ...)
 
-\S4method{get_children}{taxlist,taxlist}(taxlist, ConceptID, ...)
+get_parents(taxlist, ...)
 
-get_parents(taxlist, ConceptID, ...)
-
-\S4method{get_parents}{taxlist,numeric}(taxlist, ConceptID, ...)
-
-\S4method{get_parents}{taxlist,taxlist}(taxlist, ConceptID, ...)
+\method{get_parents}{taxlist}(taxlist, ConceptID, ...)
 }
 \arguments{
 \item{taxlist}{A \linkS4class{taxlist} object.}
 
+\item{...}{Further arguments passed among methods.}
+
 \item{ConceptID}{Concept IDs for selecting parents or children or a subset of
 \code{taxlist}.}
-
-\item{...}{Further arguments passed among methods.}
 }
 \value{
 A \linkS4class{taxlist} object with a subset including

@@ -2,36 +2,41 @@
 % Please edit documentation in R/taxon_names.R
 \name{taxon_names}
 \alias{taxon_names}
+\alias{taxon_names.taxlist}
 \alias{taxon_names,taxlist-method}
 \alias{taxon_names<-}
-\alias{taxon_names<-,taxlist,data.frame-method}
+\alias{taxon_names<-.taxlist}
+\alias{taxon_names<-,taxlist-method}
 \alias{add_synonym}
+\alias{add_synonym.taxlist}
 \alias{add_synonym,taxlist-method}
 \alias{update_name}
-\alias{update_name,taxlist,numeric-method}
+\alias{update_name.taxlist}
+\alias{update_name,taxlist-method}
 \alias{delete_name}
-\alias{delete_name,taxlist,numeric-method}
+\alias{delete_name.taxlist}
+\alias{delete_name,taxlist-method}
 \title{Handle information on taxon usage names.}
 \usage{
 taxon_names(taxlist, ...)
 
-\S4method{taxon_names}{taxlist}(taxlist, ...)
+\method{taxon_names}{taxlist}(taxlist, ...)
 
-taxon_names(taxlist) <- value
+taxon_names(taxlist, ...) <- value
 
-\S4method{taxon_names}{taxlist,data.frame}(taxlist) <- value
+\method{taxon_names}{taxlist}(taxlist, ...) <- value
 
-add_synonym(taxlist, ConceptID, ...)
+add_synonym(taxlist, ...)
 
-\S4method{add_synonym}{taxlist}(taxlist, ConceptID, TaxonName, AuthorName, ...)
+\method{add_synonym}{taxlist}(taxlist, ConceptID, TaxonName, AuthorName, ...)
 
-update_name(taxlist, UsageID, ...)
+update_name(taxlist, ...)
 
-\S4method{update_name}{taxlist,numeric}(taxlist, UsageID, ...)
+\method{update_name}{taxlist}(taxlist, UsageID, ...)
 
-delete_name(taxlist, UsageID, ...)
+delete_name(taxlist, ...)
 
-\S4method{delete_name}{taxlist,numeric}(taxlist, UsageID, ...)
+\method{delete_name}{taxlist}(taxlist, UsageID, ...)
 }
 \arguments{
 \item{taxlist}{A \linkS4class{taxlist} object to be modified.}

@@ -16,6 +16,9 @@
 \alias{basionym<-}
 \alias{basionym<-.taxlist}
 \alias{basionym<-,taxlist-method}
+\alias{change_concept<-}
+\alias{change_concept<-.taxlist}
+\alias{change_concept<-,taxlist-method}
 \title{Manage accepted names, synonyms and basionyms}
 \usage{
 accepted_name(taxlist, ...)
@@ -37,6 +40,10 @@ basionym(taxlist, ...)
 basionym(taxlist, ...) <- value
 
 \method{basionym}{taxlist}(taxlist, ConceptID, ...) <- value
+
+change_concept(taxlist, ...) <- value
+
+\method{change_concept}{taxlist}(taxlist, UsageID, ...) <- value
 }
 \arguments{
 \item{taxlist}{An object of class \linkS4class{taxlist}.}
@@ -51,6 +58,9 @@ output of \code{accepted_name} or not.}
 
 \item{value}{Integer containing usage IDs to be set to the respective
 category in the respective taxon concept.}
+
+\item{UsageID}{Numeric vector with taxon usage IDs that will be changed to a
+different taxonomic concept.}
 }
 \value{
 Most of the methods return information in data frames, while
@@ -70,16 +80,18 @@ The replacement method for this function will set the respective usage name
 IDs as accepted names for the respective taxon concept, provided that these
 names are already set as synonyms in the respective concepts.
 
-The function \code{synonyms} is working in a similar way as \code{accepted_name}, but
-this function does not include taxon traits in the output and there is no
-replacing method for \code{synonyms}.
+The function \code{synonyms()} is working in a similar way as \code{accepted_name()},
+but this function does not include taxon traits in the output.
 Alternatives for inserting new synonyms into a taxon concept are either
 moving synonyms from other taxa by using \link{change_concept<-} or
 inserting new names in the object by using \code{\link[=add_synonym]{add_synonym()}}.
 
-The function \code{basionym} is retrieving and setting basionyms in the
+The function \code{basionym()} is retrieving and setting basionyms in the
 respective taxon concepts similarly to \code{accepted_name}, but this function
 does not retrieve any information on taxon traits, either.
+
+The fucntion \verb{change_concept<-} replace a taxon usage name (argument
+\code{'UsageID'}) to a different taxonomic concept (argument \code{'value'}).
 }
 \examples{
 ## Set a different accepted name for Cyclosorus interruptus
@@ -107,6 +119,11 @@ basionym(Easplist, 50074) <- 53097
 
 summary(Easplist, 50074)
 basionym(Easplist, 50074)
+
+## Move the name Typha aethiopica to concept 573 (T. latifolia)
+summary(Easplist, c(50105, 573))
+change_concept(Easplist, 53130) <- 573
+summary(Easplist, c(50105, 573))
 }
 \seealso{
 \code{\link[=add_synonym]{add_synonym()}} \link{change_concept<-}

@@ -71,7 +71,7 @@ scientific name.
 The function \code{print_name} can be applied either in markdown documents or
 for graphics.
 
-In \strong{Rmarkdown} documents use \code{*Cyperus papyrus* L.} for
+In \strong{Rmarkdown} documents use \code{`r I(print_name(Easplist, 206))`} for
 inserting a formatted a species name.
 }
 \examples{

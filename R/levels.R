@@ -1,14 +1,3 @@
-#' @exportMethod levels
-#'
-if (!isGeneric("levels")) {
-  setGeneric(
-    "levels",
-    function(x) {
-      standardGeneric("levels")
-    }
-  )
-}
-
 #' @name levels
 #'
 #' @title Set and retrieves hierarchical levels
@@ -45,39 +34,42 @@ if (!isGeneric("levels")) {
 #'
 #' @rdname levels
 #'
-#' @aliases levels,taxlist-method
-#'
-setMethod(
-  "levels", signature(x = "taxlist"),
-  function(x) {
-    if (!is(x@taxonRelations$Level, "factor")) {
-      stop("Variable 'Level' in slot taxonRelations is not a factor")
-    }
-    base::levels(x@taxonRelations$Level)
-  }
-)
+#' @export
+levels <- function(x) UseMethod("levels", x)
 
 #' @rdname levels
-#'
-#' @aliases levels<- levels<-,taxlist-method
-#'
-#' @exportMethod levels<-
-#'
-setReplaceMethod(
-  "levels", signature(x = "taxlist"),
-  function(x, value) {
-    if (!all(paste(x@taxonRelations$Level[
-      !is.na(x@taxonRelations$Level)
-    ]) %in% value)) {
-      stop(paste(
-        "Some levels are not matching those indicated in",
-        "slot 'taxonRelations'"
-      ))
-    }
-    x@taxonRelations$Level <- factor(
-      paste(x@taxonRelations$Level),
-      levels = value
-    )
-    return(x)
+#' @aliases levels,taxlist-method
+#' @method levels taxlist
+#' @export
+levels.taxlist <- function(x) {
+  if (all(is.na(x@taxonRelations$Level))) {
+    stop("Taxonomic list without taxonomic ranks.")
   }
-)
+  base::levels(x@taxonRelations$Level)
+}
+
+#' @rdname levels
+#' @aliases levels<-
+#' @export
+`levels<-` <- function(x, value) UseMethod("levels<-", x)
+
+#' @rdname levels
+#' @aliases levels<-,taxlist-method
+#' @method levels<- taxlist
+#' @export levels<-.taxlist
+#' @export
+`levels<-.taxlist` <- function(x, value) {
+  if (!all(paste(x@taxonRelations$Level[
+    !is.na(x@taxonRelations$Level)
+  ]) %in% value)) {
+    stop(paste(
+      "Some levels are not matching those indicated in",
+      "slot 'taxonRelations'"
+    ))
+  }
+  x@taxonRelations$Level <- factor(
+    paste(x@taxonRelations$Level),
+    levels = value
+  )
+  return(x)
+}

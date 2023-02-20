@@ -16,22 +16,26 @@
 #' IDs as accepted names for the respective taxon concept, provided that these
 #' names are already set as synonyms in the respective concepts.
 #'
-#' The function `synonyms` is working in a similar way as `accepted_name`, but
-#' this function does not include taxon traits in the output and there is no
-#' replacing method for `synonyms`.
+#' The function `synonyms()` is working in a similar way as `accepted_name()`,
+#' but this function does not include taxon traits in the output.
 #' Alternatives for inserting new synonyms into a taxon concept are either
 #' moving synonyms from other taxa by using [change_concept<-] or
 #' inserting new names in the object by using [add_synonym()].
 #'
-#' The function `basionym` is retrieving and setting basionyms in the
+#' The function `basionym()` is retrieving and setting basionyms in the
 #' respective taxon concepts similarly to `accepted_name`, but this function
 #' does not retrieve any information on taxon traits, either.
+#'
+#' The fucntion `change_concept<-` replace a taxon usage name (argument
+#' `'UsageID'`) to a different taxonomic concept (argument `'value'`).
 #'
 #' @param taxlist An object of class [taxlist-class].
 #' @param ConceptID Integer containing concept IDs where to request or set names
 #'     for one category.
 #' @param show_traits Logical value, whether traits should be included in the
 #'     output of `accepted_name` or not.
+#' @param UsageID Numeric vector with taxon usage IDs that will be changed to a
+#'     different taxonomic concept.
 #' @param value Integer containing usage IDs to be set to the respective
 #'     category in the respective taxon concept.
 #' @param ... Further arguments passed among methods.
@@ -49,9 +53,7 @@
 #' @rdname accepted_name
 #'
 #' @export
-accepted_name <- function(taxlist, ...) {
-  UseMethod("accepted_name", taxlist)
-}
+accepted_name <- function(taxlist, ...) UseMethod("accepted_name", taxlist)
 
 #' @rdname accepted_name
 #' @aliases accepted_name,taxlist-method
@@ -233,6 +235,33 @@ basionym.taxlist <- function(taxlist, ConceptID, ...) {
       taxlist@taxonRelations$TaxonConceptID
     ),
     "Basionym"
+  ] <- value
+  return(taxlist)
+}
+
+#' @rdname accepted_name
+#' @aliases change_concept<-
+#' @export
+`change_concept<-` <- function(taxlist, ..., value) {
+  UseMethod("change_concept<-", taxlist)
+}
+
+#' @rdname accepted_name
+#' @aliases change_concept<-,taxlist-method
+#' @method change_concept<- taxlist
+#' @export
+`change_concept<-.taxlist` <- function(taxlist, UsageID, ..., value) {
+  # Test
+  if (length(UsageID) != length(value)) {
+    stop("'UsageID' and 'value' should be of the same length")
+  }
+  if (any(UsageID %in% taxlist@taxonRelations$AcceptedName)) {
+    stop("Changes on concept are not allowed for accepted names")
+  }
+  # now replace
+  taxlist@taxonNames[
+    match(UsageID, taxlist@taxonNames$TaxonUsageID),
+    "TaxonConceptID"
   ] <- value
   return(taxlist)
 }

@@ -2,40 +2,26 @@
 % Please edit documentation in R/merge_taxa.R
 \name{merge_taxa}
 \alias{merge_taxa}
-\alias{merge_taxa,taxlist,numeric,missing-method}
-\alias{merge_taxa,taxlist,missing,character-method}
-\alias{change_concept<-}
-\alias{change_concept<-,taxlist-method}
+\alias{merge_taxa.taxlist}
+\alias{merge_taxa,taxlist-method}
 \title{Merge concepts or move names}
 \usage{
-merge_taxa(object, concepts, level, ...)
+merge_taxa(object, ...)
 
-\S4method{merge_taxa}{taxlist,numeric,missing}(object, concepts, print_output = FALSE, ...)
-
-\S4method{merge_taxa}{taxlist,missing,character}(object, concepts, level, ...)
-
-change_concept(taxlist, UsageID) <- value
-
-\S4method{change_concept}{taxlist}(taxlist, UsageID) <- value
+\method{merge_taxa}{taxlist}(object, concepts, level, print_output = FALSE, ...)
 }
 \arguments{
 \item{object, taxlist}{Object of class \linkS4class{taxlist}.}
+
+\item{...}{Further arguments to be passed to or from other methods.}
 
 \item{concepts}{Numeric (integer) vector including taxon concepts to be
 merged.}
 
 \item{level}{Character vector indicating the lowest level for merging.}
 
-\item{...}{Further arguments to be passed to or from other methods.}
-
 \item{print_output}{Logical value indicating whether the merged concept
 should be displayed in the console.}
-
-\item{UsageID}{Numeric vector with taxon usage IDs to be changed from
-concept.}
-
-\item{value}{Numeric vector with taxon concept IDs to be assigned to the
-names.}
 }
 \value{
 An object of class \linkS4class{taxlist}.
@@ -63,11 +49,6 @@ summary(Easplist, c(206, 197))
 
 sp_list <- merge_taxa(object = Easplist, concepts = c(206, 197),
     print_output = TRUE)
-
-## Move the name Typha aethiopica to concept 573 (T. latifolia)
-summary(Easplist, c(50105, 573))
-change_concept(Easplist, 53130) <- 573
-summary(Easplist, c(50105, 573))
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

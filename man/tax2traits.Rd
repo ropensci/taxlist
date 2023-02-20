@@ -2,12 +2,13 @@
 % Please edit documentation in R/tax2traits.R
 \name{tax2traits}
 \alias{tax2traits}
+\alias{tax2traits.taxlist}
 \alias{tax2traits,taxlist-method}
 \title{Set taxonomic information as taxon traits}
 \usage{
 tax2traits(object, ...)
 
-\S4method{tax2traits}{taxlist}(object, get_names = FALSE, ...)
+\method{tax2traits}{taxlist}(object, get_names = FALSE, ...)
 }
 \arguments{
 \item{object}{An object of class \linkS4class{taxlist}.}
