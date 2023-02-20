@@ -69,8 +69,9 @@ taxon_names.taxlist <- function(taxlist, ...) taxlist@taxonNames
       paste0(tab_names, collapse = "', '"), "'."
     ))
   }
-  if(!"AuthorName" %in% names(value))
+  if (!"AuthorName" %in% names(value)) {
     value$AuthorName <- NA
+  }
   taxlist@taxonNames <- value
   return(taxlist)
 }

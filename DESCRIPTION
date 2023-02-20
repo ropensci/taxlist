@@ -59,6 +59,7 @@ Collate:
     'count_taxa.R'
     'taxon_names.R'
     'taxon_relations.R'
+    'add_concept.R'
     'taxon_traits.R'
     'accepted_name.R'
     'get_children.R'

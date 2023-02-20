@@ -13,6 +13,7 @@ library(covr)
 style_pkg()
 
 # document package
+unlink("NAMESPACE")
 document()
 
 # clean built package and manual

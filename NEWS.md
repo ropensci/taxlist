@@ -13,6 +13,7 @@ taxlist 0.2.4
   recipient database and a data set to be inserted into the mentioned database.
   This function will propose a modified vector for the new data to avoid
   conflicts by duplicated IDs.
+* Coercion of `taxlist` objects to `data.frame` objects.
 
 ### Improvements
 
@@ -23,6 +24,7 @@ taxlist 0.2.4
 * Simplified coercion in form of `to_class <- as(obj, from_class)`.
 * Function `tnrs()` deprecated.
 * Simplified coercion in form of `to_class <- as(obj, from_class)`
+* Function `add_concept()` with a method for `data.frame` objects.
 
 taxlist 0.2.3
 =============
@@ -66,7 +68,8 @@ taxlist 0.2.1
 * New argument `repaste` in function `dissect_name()` for re-pasting
   dissected names.
 * Function `replace_idx()` setting by default `idx1 = x`.
-* Functions `replace_idx()` and `replace_na()` setting by default `idx2 = idx1`.
+* Functions `replace_idx()` and `replace_na()` setting by default
+  `idx2 = idx1`.
 * Special characters corrected in data set *Cyperus*.
 * Validation allowing taxa without rank but parents.
 
