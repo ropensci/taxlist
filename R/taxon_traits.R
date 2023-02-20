@@ -9,7 +9,11 @@
 #' information in taxonomic lists.
 #'
 #' @param taxlist A [taxlist-class] object.
-#' @param ConceptID A numeric vector with the respective taxon concept IDs.
+#' @param taxonTraits a data frame with taxon traits to be inserted in
+#'     `'taxlist'`. A column `'TaxonConceptID'` is mandatory in this table.
+#'     If some taxon concept IDs are not occurring in `'taxlist'`, an error
+#'     message is retrieved by `update_trait()`.
+#' @param ConceptID Deprecated.
 #' @param value Data frame to be set as slot `taxonTraits`.
 #' @param ... Further arguments to be passed among methods.
 #'
@@ -32,114 +36,73 @@
 #'
 #' @rdname taxon_traits
 #'
-#' @exportMethod taxon_traits
-#'
-setGeneric(
-  "taxon_traits",
-  function(taxlist, ...) {
-    standardGeneric("taxon_traits")
-  }
-)
+#' @export
+taxon_traits <- function(taxlist, ...) UseMethod("taxon_traits", taxlist)
 
 #' @rdname taxon_traits
-#'
 #' @aliases taxon_traits,taxlist-method
-#'
-setMethod(
-  "taxon_traits", signature(taxlist = "taxlist"),
-  function(taxlist, ...) taxlist@taxonTraits
-)
+#' @method taxon_traits taxlist
+#' @export
+taxon_traits.taxlist <- function(taxlist, ...) taxlist@taxonTraits
 
 #' @rdname taxon_traits
-#'
 #' @aliases taxon_traits<-
-#'
-#' @exportMethod taxon_traits<-
-#'
-setGeneric("taxon_traits<-", function(taxlist, value) {
-  standardGeneric("taxon_traits<-")
-})
+#' @export
+`taxon_traits<-` <- function(taxlist, ..., value) {
+  UseMethod("taxon_traits<-", taxlist)
+}
 
 #' @rdname taxon_traits
-#'
-#' @aliases taxon_traits<-,taxlist,data.frame-method
-#'
-setReplaceMethod(
-  "taxon_traits", signature(
-    taxlist = "taxlist",
-    value = "data.frame"
-  ),
-  function(taxlist, value) {
-    if (!"TaxonConceptID" %in% colnames(value)) {
-      stop("'TaxonConceptID' is a mandatory field in 'value'")
-    }
-    if (!is(value$TaxonConceptID, "integer")) {
-      value$TaxonConceptID <- as.integer(value$TaxonConceptID)
-    }
-    if (any(duplicated(value$TaxonConceptID))) {
-      warning("duplicated concepts will be deleted from 'value'")
-      value <- value[unique(value$TaxonConceptID), ]
-    }
-    taxlist@taxonTraits <- value[value$TaxonConceptID %in%
-      taxlist@taxonRelations$TaxonConceptID, ]
-    return(taxlist)
+#' @aliases taxon_traits<-,taxlist-method
+#' @method taxon_traits<- taxlist
+#' @export
+`taxon_traits<-.taxlist` <- function(taxlist, ..., value) {
+  if (!"TaxonConceptID" %in% names(value)) {
+    stop("'TaxonConceptID' is a mandatory column in 'value'")
   }
-)
+  concept_ids <- value$TaxonConceptID[!value$TaxonConceptID %in%
+    taxlist@taxonRelations$TaxonConceptID]
+  if (length(concept_ids) > 0) {
+    stop(paste0(
+      "Following taxon concept IDs in 'value' are not ",
+      "present in 'taxlist': '",
+      paste0(concept_ids, collapse = "', '"), "'."
+    ))
+  }
+  taxlist@taxonTraits <- value
+  return(taxlist)
+}
 
 #' @rdname taxon_traits
-#'
 #' @aliases update_trait
-#'
-#' @exportMethod update_trait
-#'
-setGeneric(
-  "update_trait",
-  function(taxlist, ConceptID, ...) {
-    standardGeneric("update_trait")
-  }
-)
+#' @export
+update_trait <- function(taxlist, ...) UseMethod("update_trait", taxlist)
 
 #' @rdname taxon_traits
-#'
-#' @aliases update_trait,taxlist,numeric-method
-#'
-setMethod(
-  "update_trait", signature(taxlist = "taxlist", ConceptID = "numeric"),
-  function(taxlist, ConceptID, ...) {
-    if (any(!ConceptID %in% taxlist@taxonRelations$TaxonConceptID)) {
-      stop(paste(
-        "Some values of 'ConceptID' are not included as",
-        "taxon concept IDs in 'taxlist'."
-      ))
-    }
-    new_entries <- list(...)
-    for (i in names(new_entries)[!names(new_entries) %in%
-      colnames(taxlist@taxonTraits)]) {
-      taxlist@taxonTraits[, i] <- rep(NA, nrow(taxlist@taxonTraits))
-    }
-    if (any(!ConceptID %in% taxlist@taxonTraits$TaxonConceptID)) {
-      df2 <- data.frame(
-        TaxonConceptID = ConceptID[!ConceptID %in%
-          taxlist@taxonTraits$TaxonConceptID],
-        stringsAsFactors = FALSE
-      )
-      for (i in colnames(taxlist@taxonTraits)[
-        colnames(taxlist@taxonTraits) != "TaxonConceptID"
-      ]) {
-        df2[, i] <- NA
-      }
-      taxlist@taxonTraits <- do.call(rbind, list(
-        taxlist@taxonTraits,
-        df2
-      ))
-    }
-    for (i in names(new_entries)) {
-      taxlist@taxonTraits[match(
-        ConceptID,
-        taxlist@taxonTraits$TaxonConceptID
-      ), i] <-
-        new_entries[[i]]
-    }
-    return(taxlist)
+#' @aliases update_trait,taxlist-method
+#' @method update_trait taxlist
+#' @export
+update_trait.taxlist <- function(taxlist, taxonTraits, ConceptID, ...) {
+  if (!is(taxonTraits, "data.frame")) {
+    stop("Argument 'taxonTraits' has to be a data frame.")
   }
-)
+  if (!"TaxonConceptID" %in% names(taxonTraits)) {
+    stop("'TaxonConceptID' is a mandatory column in 'taxonTraits'")
+  }
+  concept_ids <- taxonTraits$TaxonConceptID[!taxonTraits$TaxonConceptID %in%
+    taxlist@taxonRelations$TaxonConceptID]
+  if (length(concept_ids) > 0) {
+    stop(paste0(
+      "Following taxon concept IDs in 'taxonTraits' are not ",
+      "in the 'taxlist' object: '",
+      paste0(concept_ids, collapse = "', '"),
+      "'."
+    ))
+  }
+  taxlist@taxonTraits <- update_data(
+    object = taxlist@taxonTraits,
+    revision = taxonTraits, key = "TaxonConceptID", add = TRUE,
+    update = TRUE
+  )
+  return(taxlist)
+}

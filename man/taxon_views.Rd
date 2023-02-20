@@ -2,24 +2,26 @@
 % Please edit documentation in R/taxon_views.R
 \name{taxon_views}
 \alias{taxon_views}
+\alias{taxon_views.taxlist}
 \alias{taxon_views,taxlist-method}
 \alias{taxon_views<-}
-\alias{taxon_views<-,taxlist,data.frame-method}
+\alias{taxon_views<-.taxlist}
+\alias{taxon_views<-,taxlist-method}
 \alias{add_view}
-\alias{add_view,taxlist-method}
+\alias{add_view,taxlist,data.frame-method}
 \title{Management of concept views in taxonomic lists.}
 \usage{
 taxon_views(taxlist, ...)
 
-\S4method{taxon_views}{taxlist}(taxlist, ...)
+\method{taxon_views}{taxlist}(taxlist, ...)
 
-taxon_views(taxlist) <- value
+taxon_views(taxlist, ...) <- value
 
-\S4method{taxon_views}{taxlist,data.frame}(taxlist) <- value
+\method{taxon_views}{taxlist}(taxlist, ...) <- value
 
-add_view(taxlist, ...)
+add_view(taxlist, taxonViews, ...)
 
-\S4method{add_view}{taxlist}(taxlist, ...)
+\S4method{add_view}{taxlist,data.frame}(taxlist, taxonViews, ...)
 }
 \arguments{
 \item{taxlist}{A \linkS4class{taxlist} object.}
@@ -29,6 +31,9 @@ add_view(taxlist, ...)
 \item{value}{An object of class \link{data.frame} containing the references
 used to define the circumscription of taxon concepts included in
 \code{taxlist}.}
+
+\item{taxonViews}{A data frame with taxon views to be inserted in
+\code{'taxlist'}.}
 }
 \value{
 An object of class \linkS4class{taxlist} with added views.
@@ -57,9 +62,10 @@ The replacement method \verb{taxon_views<-} replaces the whole content of slot
 taxon_views(Easplist)
 
 ## Add a new view
-sp_list <- add_view(taxlist = Easplist, secundum = "Beentje et al. (1952)",
-  Title = "Flora of Tropical East Africa",
-  URL = "http://www.kew.org/science/directory/projects/FloraTropEAfrica.html")
+sp_list <- add_view(taxlist = Easplist, taxonViews = data.frame(
+        secundum = "Beentje et al. (1952)",
+        Title = "Flora of Tropical East Africa",
+        URL = "http://www.kew.org/science/directory/projects/FloraTropEAfrica.html"))
 
 taxon_views(sp_list)
 }

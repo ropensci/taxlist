@@ -100,7 +100,6 @@ setMethod(
       }
       object <- Temp
     }
-
     Names <- accepted_name(object, show_traits = TRUE)
     Names$formatted_name <- Names$TaxonName
     # Set indentation

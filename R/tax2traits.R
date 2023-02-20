@@ -88,11 +88,7 @@ tax2traits.taxlist <- function(object, get_names = FALSE, ...) {
   }
   # supress empty columns
   TAX <- TAX[, apply(TAX, 2, function(x) !all(is.na(x)))]
-  colnames(TAX)[colnames(TAX) == "TaxonConceptID"] <- "ConceptID"
-  object <- do.call(update_trait, c(
-    list(taxlist = object),
-    as.list(TAX)
-  ))
+  object <- update_trait(taxlist = object, taxonTraits = TAX)
   if (get_names) {
     Names <- accepted_name(object)
     for (i in taxlist::levels(object)[taxlist::levels(object) %in%
