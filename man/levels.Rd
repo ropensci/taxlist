@@ -2,14 +2,20 @@
 % Please edit documentation in R/levels.R
 \name{levels}
 \alias{levels}
+\alias{levels.taxlist}
 \alias{levels,taxlist-method}
-\alias{levels<-,taxlist-method}
 \alias{levels<-}
+\alias{levels<-.taxlist}
+\alias{levels<-,taxlist-method}
 \title{Set and retrieves hierarchical levels}
 \usage{
-\S4method{levels}{taxlist}(x)
+levels(x)
 
-\S4method{levels}{taxlist}(x) <- value
+\method{levels}{taxlist}(x)
+
+levels(x) <- value
+
+\method{levels}{taxlist}(x) <- value
 }
 \arguments{
 \item{x}{A \linkS4class{taxlist} object.}

@@ -20,6 +20,7 @@ Imports:
     stringdist,
     stringi,
     stringr,
+    tools,
     utils,
     vegdata
 Suggests:
@@ -44,6 +45,7 @@ BugReports: https://github.com/ropensci/taxlist/issues
 Collate:
 	'imports.R'
     'internal.R'
+    'levels.R'
     'deprecated-functions.R'
     'id_generator.R'
     'replace_x.R'
@@ -57,8 +59,8 @@ Collate:
     'count_taxa.R'
     'taxon_names.R'
     'taxon_relations.R'
+    'add_concept.R'
     'taxon_traits.R'
-    'levels.R'
     'accepted_name.R'
     'get_children.R'
     'merge_taxa.R'

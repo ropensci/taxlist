@@ -6,6 +6,8 @@
 #' Retrieve or replace slot `taxonViews` in an object of class [taxlist-class]
 #'
 #' @param taxlist A [taxlist-class] object.
+#' @param taxonViews A data frame with taxon views to be inserted in
+#'     `'taxlist'`.
 #' @param value An object of class [data.frame] containing the references
 #'     used to define the circumscription of taxon concepts included in
 #'     `taxlist`.
@@ -44,89 +46,68 @@
 #'
 #' @rdname taxon_views
 #'
-#' @exportMethod taxon_views
-#'
-setGeneric(
-  "taxon_views",
-  function(taxlist, ...) {
-    standardGeneric("taxon_views")
-  }
-)
+#' @export
+taxon_views <- function(taxlist, ...) UseMethod("taxon_views", taxlist)
 
 #' @rdname taxon_views
-#'
 #' @aliases taxon_views,taxlist-method
-#'
-setMethod(
-  "taxon_views", signature(taxlist = "taxlist"),
-  function(taxlist, ...) taxlist@taxonViews
-)
+#' @method taxon_views taxlist
+#' @export
+taxon_views.taxlist <- function(taxlist, ...) taxlist@taxonViews
 
 #' @rdname taxon_views
-#'
 #' @aliases taxon_views<-
-#'
-#' @exportMethod taxon_views<-
-#'
-setGeneric("taxon_views<-", function(taxlist, value) {
-  standardGeneric("taxon_views<-")
-})
+#' @export
+`taxon_views<-` <- function(taxlist, ..., value) {
+  UseMethod("taxon_views<-", taxlist)
+}
 
 #' @rdname taxon_views
-#'
-#' @aliases taxon_views<-,taxlist,data.frame-method
-#'
-setReplaceMethod("taxon_views", signature(
-  taxlist = "taxlist",
-  value = "data.frame"
-), function(taxlist, value) {
+#' @aliases taxon_views<-,taxlist-method
+#' @method taxon_views<- taxlist
+#' @export
+`taxon_views<-.taxlist` <- function(taxlist, ..., value) {
+  if (!"ViewID" %in% names(value)) {
+    stop("'ViewID' is a mandatory column in 'value'")
+  }
   taxlist@taxonViews <- value
   return(taxlist)
-})
+}
 
 #' @rdname taxon_views
-#'
 #' @aliases add_view
-#'
 #' @exportMethod add_view
-#'
 setGeneric(
   "add_view",
-  function(taxlist, ...) {
+  function(taxlist, taxonViews, ...) {
     standardGeneric("add_view")
   }
 )
 
 #' @rdname taxon_views
-#'
-#' @aliases add_view,taxlist-method
-#'
+#' @aliases add_view,taxlist,data.frame-method
 setMethod(
-  "add_view", signature(taxlist = "taxlist"),
-  function(taxlist, ...) {
-    if (nrow(taxlist@taxonViews) == 0) {
-      ViewID <- 1
-    } else {
-      ViewID <- max(taxlist@taxonViews$ViewID) + 1
-    }
-    new_view <- list(...)
-    ViewID <- ViewID:(ViewID + length(new_view[[1]]) - 1)
-    new_view <- list(ViewID = ViewID, ...)
-    for (i in colnames(taxlist@taxonViews)[
-      !colnames(taxlist@taxonViews) %in% names(new_view)
-    ]) {
-      new_view[[i]] <- rep(NA, length(ViewID))
-    }
-    new_view <- as.data.frame(new_view, stringsAsFactors = FALSE)
-    if (nrow(taxlist@taxonViews) > 0) {
-      old_view <- taxlist@taxonViews
-      for (i in colnames(new_view)[!colnames(new_view) %in%
-        colnames(old_view)]) {
-        old_view[, i] <- rep(NA, nrow(old_view))
+  "add_view", signature(taxlist = "taxlist", taxonViews = "data.frame"),
+  function(taxlist, taxonViews, ...) {
+    if (!"ViewID" %in% names(taxonViews)) {
+      if (is(taxlist@taxonViews$ViewID, "numeric")) {
+        taxonViews$ViewID <- id_generator(len = nrow(taxonViews))
+      } else {
+        taxonViews$ViewID <- id_generator(
+          len = nrow(taxonViews),
+          mode = "character",
+          nchar = max(nchar(taxlist@taxonViews$ViewID))
+        )
       }
-      new_view <- do.call(rbind, list(old_view, new_view))
     }
-    taxlist@taxonViews <- new_view
+    taxonViews$ViewID <- id_solver(
+      insert = taxonViews$ViewID,
+      to = taxlist@taxonViews$ViewID, sep = "_"
+    )
+    taxlist@taxonViews <- update_data(
+      object = taxlist@taxonViews,
+      revision = taxonViews, key = "ViewID", add = TRUE
+    )
     return(taxlist)
   }
 )

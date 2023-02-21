@@ -30,6 +30,25 @@ S4_to_list <- function(x) {
 #' @name as
 #' @rdname coerce-methods
 #' @aliases coerce,taxlist,list-method
-setAs("taxlist", "list", function(from) {
+setAs(from = "taxlist", to = "list", def = function(from) {
   return(S4_to_list(from))
+})
+
+#' @name as
+#' @rdname coerce-methods
+#' @aliases coerce,taxlist,data.frame-method
+setAs(from = "taxlist", to = "data.frame", def = function(from) {
+  DF <- merge(from@taxonRelations, from@taxonNames,
+    by = "TaxonConceptID",
+    all = TRUE, suffixes = c("", "@names")
+  )
+  DF <- merge(DF, from@taxonTraits,
+    by = "TaxonConceptID",
+    all = TRUE, suffixes = c("", "@traits")
+  )
+  DF <- merge(DF, from@taxonViews,
+    by = "ViewID",
+    all = TRUE, suffixes = c("", "@views")
+  )
+  return(DF)
 })

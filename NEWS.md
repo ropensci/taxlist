@@ -6,32 +6,33 @@ taxlist 0.2.4
 * New S3 class `matched_names` inheriting data frame properties. This class
   will be used for an interactive selection of multiple choices, when a name
   matches more than one candidate.
+* Character identifiers (primary keys) are enabled.
+* New functions `id_generator()` to create vectors of identifiers, either as
+  numeric values (integers) or as character values by using random strings.
+* New function `id_solver()` to compare vectors of identifiers between a
+  recipient database and a data set to be inserted into the mentioned database.
+  This function will propose a modified vector for the new data to avoid
+  conflicts by duplicated IDs.
+* Coercion of `taxlist` objects to `data.frame` objects.
 
 ### Improvements
 
-* The validation for `taxlist` objects is also looking if Parent IDs are missing
-  in the object.
+* The validation for `taxlist` objects is also looking if Parent IDs are
+  missing in the object.
 * Function `match_names()` displays multiple matchings per name and also works
   comparing a string with itself.
-<<<<<<< HEAD
 * Simplified coercion in form of `to_class <- as(obj, from_class)`.
 * Function `tnrs()` deprecated.
-=======
-<<<<<<< HEAD
 * Simplified coercion in form of `to_class <- as(obj, from_class)`
-=======
-* Simplified coercion in form of `to_class <- as(obj, from_class)`.
-* Function `tnrs()` deprecated.
->>>>>>> refs/heads/20-improve-functionality-of-match_names
->>>>>>> refs/heads/devel
+* Function `add_concept()` with a method for `data.frame` objects.
 
 taxlist 0.2.3
 =============
 
 ### New Features
 
-* New arguments `isolate` and `trim` to prevent parts of scientific names to be
-  formatted in italics.
+* New arguments `isolate` and `trim` to prevent parts of scientific names to
+  be formatted in italics.
   
 
 ### Improvements
@@ -67,7 +68,8 @@ taxlist 0.2.1
 * New argument `repaste` in function `dissect_name()` for re-pasting
   dissected names.
 * Function `replace_idx()` setting by default `idx1 = x`.
-* Functions `replace_idx()` and `replace_na()` setting by default `idx2 = idx1`.
+* Functions `replace_idx()` and `replace_na()` setting by default
+  `idx2 = idx1`.
 * Special characters corrected in data set *Cyperus*.
 * Validation allowing taxa without rank but parents.
 

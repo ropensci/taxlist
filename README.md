@@ -1,25 +1,24 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- Use snippet 'render_markdown' for it -->
 
 # taxlist <img src='man/figures/logo.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
+[![cran
+checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-project.org/web/checks/check_results_taxlist.html)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 <br>
 [![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
 [![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
-<br>
-[![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
+[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
-
 <!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
-
+[![R-CMD-check](https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Introduction
@@ -69,7 +68,7 @@ This package is available from the Comprehensive R Archive Network
 (**CRAN**) and can be directly installed within an R-session:
 
 ``` r
-install.packages("taxlist", dependencies=TRUE)
+install.packages("taxlist", dependencies = TRUE)
 ```
 
 Alternatively, the current development version is available from
@@ -78,7 +77,7 @@ the package `devtools`:
 
 ``` r
 library(devtools)
-install_github("ropensci/taxlist", build_vignette=TRUE)
+install_github("ropensci/taxlist", build_vignette = TRUE)
 ```
 
 A vignette is installed with this package introducing to the work with
@@ -99,12 +98,9 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 library(taxlist)
 #> 
 #> Attaching package: 'taxlist'
-#> The following object is masked from 'package:methods':
-#> 
-#>     as<-
 #> The following objects are masked from 'package:base':
 #> 
-#>     levels, print
+#>     levels, levels<-, print
 
 Fern <- new("taxlist")
 Fern
@@ -123,7 +119,7 @@ levels have to be provided from the lowest to highest hierarchical
 level:
 
 ``` r
-levels(Fern) <- c("variety","species","genus")
+levels(Fern) <- c("variety", "species", "genus")
 ```
 
 For convenience, we start inserting taxa with their respective names in
@@ -133,7 +129,7 @@ new taxon. Note that the arguments `TaxonName`, `AuthorName`, and
 name and the taxonomic rank, respectively.
 
 ``` r
-Fern <- add_concept(Fern, TaxonName="Asplenium", AuthorName="L.", Level="genus")
+Fern <- add_concept(taxlist = Fern, TaxonName = "Asplenium", AuthorName = "L.", Level = "genus")
 summary(Fern, "all")
 #> ------------------------------ 
 #> concept ID: 1 
@@ -152,8 +148,10 @@ genus, we use again the function `add_concept()`, but this time we will
 also provide the ID of the parent taxon with the argument `Parent`.
 
 ``` r
-Fern <- add_concept(Fern, TaxonName="Asplenium obliquum", AuthorName="Forster",
-    Level="species", Parent=1)
+Fern <- add_concept(Fern,
+  TaxonName = "Asplenium obliquum", AuthorName = "Forster",
+  Level = "species", Parent = 1
+)
 summary(Fern, "Asplenium obliquum")
 #> ------------------------------ 
 #> concept ID: 2 
@@ -170,11 +168,16 @@ In the same way, we can add now two varieties of the inserted species:
 
 ``` r
 Fern <- add_concept(Fern,
-    TaxonName=c("Asplenium obliquum var. sphenoides",
-        "Asplenium obliquum var. chondrophyllum"),
-    AuthorName=c("(Kunze) Espinosa",
-        "(Bertero apud Colla) C. Christense & C. Skottsberg"),
-    Level="variety", Parent=c(2,2))
+  TaxonName = c(
+    "Asplenium obliquum var. sphenoides",
+    "Asplenium obliquum var. chondrophyllum"
+  ),
+  AuthorName = c(
+    "(Kunze) Espinosa",
+    "(Bertero apud Colla) C. Christense & C. Skottsberg"
+  ),
+  Level = "variety", Parent = c(2, 2)
+)
 ```
 
 You may have realized that the function `summary()` is applied to
@@ -262,16 +265,21 @@ the required data frame looks like this one:
 
 ``` r
 Fern_df <- data.frame(
-        TaxonConceptID=1:4,
-        TaxonUsageID=1:4,
-        TaxonName=c("Asplenium", "Asplenium obliquum",
-                "Asplenium obliquum var. sphenoides",
-                "Asplenium obliquum var. chondrophyllum"),
-        AuthorName=c("L.", "Forster", "(Kunze) Espinosa",
-                "(Bertero apud Colla) C. Christense & C. Skottsberg"),
-        Level=c("genus", "species", "variety", "variety"),
-        Parent=c(NA, 1, 2, 2),
-        stringsAsFactors=FALSE)
+  TaxonConceptID = 1:4,
+  TaxonUsageID = 1:4,
+  TaxonName = c(
+    "Asplenium", "Asplenium obliquum",
+    "Asplenium obliquum var. sphenoides",
+    "Asplenium obliquum var. chondrophyllum"
+  ),
+  AuthorName = c(
+    "L.", "Forster", "(Kunze) Espinosa",
+    "(Bertero apud Colla) C. Christense & C. Skottsberg"
+  ),
+  Level = c("genus", "species", "variety", "variety"),
+  Parent = c(NA, 1, 2, 2),
+  stringsAsFactors = FALSE
+)
 Fern_df
 #>   TaxonConceptID TaxonUsageID                              TaxonName
 #> 1              1            1                              Asplenium
@@ -296,10 +304,10 @@ respective parent taxon. To get the object, we just use the
 argument `levels`.
 
 ``` r
-Fern2 <- df2taxlist(Fern_df, levels=c("variety", "species", "genus"))
+Fern2 <- df2taxlist(Fern_df, levels = c("variety", "species", "genus"))
 #> No values for 'AcceptedName' in 'x'. all names will be considered as accepted names.
 Fern2
-#> object size: 6.1 Kb 
+#> object size: 6.2 Kb 
 #> validation of 'taxlist' object: TRUE 
 #> 
 #> number of taxon usage names: 4 
@@ -327,25 +335,25 @@ developer-oriented, while `taxlist` is rather a user-oriented package.
 
 In following cases you may prefer to use `taxlist`:
 
-  - When you need an automatic check on the consistency of information
-    regarding taxonomic ranks and parent-child relationships (parents
-    have to be of a higher rank then children), as well as
-    non-duplicated combinations of names and authors. Such checks are
-    done by the function `validObject()`.
-  - When you foresee statistical assessments on taxonomy diversity or
-    taxon properties (chorology, conservation status, functional traits,
-    etc.).
-  - When you seek to produce documents using **rmarkdown**, for instance
-    guide books or check-lists. Also in article manuscripts taxonomic
-    names referring to a taxon concept can easily get formatted by the
-    function `print_name()`.
-  - When importing taxonomic lists from databases stored in
-    [**Turboveg 2**](http://www.synbiosys.alterra.nl/turboveg/).
-  - When you seek to implement the package
-    [`vegtable`](https://CRAN.R-project.org/package=vegtable) for
-    handling and assessing biodiversity records, especially
-    vegetation-plot data. In that case, taxonomic lists will be
-    formatted by `taxlist` as a slot within a `vegtable` object.
+- When you need an automatic check on the consistency of information
+  regarding taxonomic ranks and parent-child relationships (parents have
+  to be of a higher rank then children), as well as non-duplicated
+  combinations of names and authors. Such checks are done by the
+  function `validObject()`.
+- When you foresee statistical assessments on taxonomy diversity or
+  taxon properties (chorology, conservation status, functional traits,
+  etc.).
+- When you seek to produce documents using **rmarkdown**, for instance
+  guide books or check-lists. Also in article manuscripts taxonomic
+  names referring to a taxon concept can easily get formatted by the
+  function `print_name()`.
+- When importing taxonomic lists from databases stored in [**Turboveg
+  2**](http://www.synbiosys.alterra.nl/turboveg/).
+- When you seek to implement the package
+  [`vegtable`](https://CRAN.R-project.org/package=vegtable) for handling
+  and assessing biodiversity records, especially vegetation-plot data.
+  In that case, taxonomic lists will be formatted by `taxlist` as a slot
+  within a `vegtable` object.
 
 ## Rmarkdown Integration
 
@@ -363,17 +371,17 @@ data(Easplist)
 ````
 
 To mention a taxon, you can write in-line codes, such as <code>\`r
-print\_name(Easplist, 206)\`</code>, which will insert *Cyperus papyrus*
+print_name(Easplist, 206)\`</code>, which will insert *Cyperus papyrus*
 L. in your document (note that the number is the ID of the taxon concept
 in `Easplist`). Fort a second mention of the same species, you can then
-use <code>\`r print\_name(Easplist, 206, second\_mention=TRUE)\`</code>,
+use <code>\`r print_name(Easplist, 206, second_mention=TRUE)\`</code>,
 which will insert *C. papyrus* L. in your text.
 
 ## Descriptive Statistics
 
 Information located in the slot **taxonTraits** are suitable for
 statistical assessments. For instance, in the installed object
-`Easplist` a column called **life\_form** includes a classification of
+`Easplist` a column called **life_form** includes a classification of
 macrophytes into different life forms. To know the frequency of these
 life forms in the `Easplist`, we can use the function `count_taxa()`:
 
@@ -383,7 +391,7 @@ count_taxa(Easplist)
 #> [1] 3887
 
 # frequency of life forms
-count_taxa(~ life_form, Easplist)
+count_taxa(~life_form, Easplist)
 #>             life_form taxa_count
 #> 1    acropleustophyte          8
 #> 2         chamaephyte         25
@@ -402,7 +410,7 @@ using the function `tax2traits()`. By this way we will make taxonomic
 ranks suitable for frequency calculations.
 
 ``` r
-Easplist <- tax2traits(Easplist, get_names=TRUE)
+Easplist <- tax2traits(Easplist, get_names = TRUE)
 head(Easplist@taxonTraits)
 #>   TaxonConceptID          life_form form variety subspecies
 #> 1              7       phanerophyte <NA>    <NA>       <NA>
@@ -427,18 +435,20 @@ family Cyperaceae and then calculate the frequency of species per
 genera.
 
 ``` r
-Cype <- subset(Easplist, family == "Cyperaceae", slot="taxonTraits")
+Cype <- subset(Easplist, family == "Cyperaceae", slot = "taxonTraits")
 Cype_stat <- count_taxa(species ~ genus, Cype)
 ```
 
 Now, we can sort them to produce a nice bar plot.
 
 ``` r
-Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing=TRUE), ]
+Cype_stat <- Cype_stat[order(Cype_stat$species_count, decreasing = TRUE), ]
 
-par(las=2, mar=c(10,5,1,1))
-with(Cype_stat, barplot(species_count, names.arg=genus,
-                ylab="Number of Species"))
+par(las = 2, mar = c(10, 5, 1, 1))
+with(Cype_stat, barplot(species_count,
+  names.arg = genus,
+  ylab = "Number of Species"
+))
 ```
 
 ![](man/figures/genera_bar-1.png)<!-- -->

@@ -4,6 +4,7 @@
 \alias{as}
 \alias{S4_to_list}
 \alias{coerce,taxlist,list-method}
+\alias{coerce,taxlist,data.frame-method}
 \alias{coerce,data.frame,taxlist-method}
 \alias{coerce,character,taxlist-method}
 \title{Coerce taxlist objects to lists.}

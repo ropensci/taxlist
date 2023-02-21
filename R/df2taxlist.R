@@ -216,8 +216,8 @@ df2taxlist.character <- function(x, ...) {
     x <- x[!duplicated(x)]
   }
   x <- data.frame(
-    TaxonUsageID = seq_along(x),
-    TaxonConceptID = seq_along(x),
+    TaxonUsageID = id_generator(len = length(x)),
+    TaxonConceptID = id_generator(len = length(x)),
     TaxonName = x
   )
   return(df2taxlist(x, ...))

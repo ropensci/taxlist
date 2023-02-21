@@ -11,10 +11,6 @@
 #' @param level Character vector indicating the lowest level for merging.
 #' @param print_output Logical value indicating whether the merged concept
 #'     should be displayed in the console.
-#' @param UsageID Numeric vector with taxon usage IDs to be changed from
-#'     concept.
-#' @param value Numeric vector with taxon concept IDs to be assigned to the
-#'     names.
 #' @param ... Further arguments to be passed to or from other methods.
 #'
 #' @details
@@ -39,24 +35,19 @@
 #'
 #' @rdname merge_taxa
 #'
-#' @exportMethod merge_taxa
-#'
-setGeneric(
-  "merge_taxa",
-  function(object, concepts, level, ...) {
-    standardGeneric("merge_taxa")
-  }
-)
+#' @export
+merge_taxa <- function(object, ...) {
+  UseMethod("merge_taxa", object)
+}
 
 #' @rdname merge_taxa
-#'
-#' @aliases merge_taxa,taxlist,numeric,missing-method
-setMethod(
-  "merge_taxa", signature(
-    object = "taxlist", concepts = "numeric",
-    level = "missing"
-  ),
-  function(object, concepts, print_output = FALSE, ...) {
+#' @aliases merge_taxa,taxlist-method
+#' @method merge_taxa taxlist
+#' @export
+merge_taxa.taxlist <- function(
+    object, concepts, level, print_output = FALSE,
+    ...) {
+  if (!missing(concepts)) {
     # Tests previous running function
     if (!length(concepts) > 1) {
       stop("Argument 'concepts' must have a length > 1")
@@ -80,25 +71,12 @@ setMethod(
       !object@taxonRelations$TaxonConceptID %in% concepts[-1],
     ]
     object <- clean(object)
+
     # Print result#
     if (print_output) {
       summary(object, concepts[1])
     }
-    # Return modified object
-    return(object)
-  }
-)
-
-#' @rdname merge_taxa
-#'
-#' @aliases merge_taxa,taxlist,missing,character-method
-#'
-setMethod(
-  "merge_taxa", signature(
-    object = "taxlist", concepts = "missing",
-    level = "character"
-  ),
-  function(object, level, ...) {
+  } else {
     if (!level %in% paste(levels(object))) {
       stop("The requested 'level' is not included in 'object'")
     }
@@ -127,39 +105,8 @@ setMethod(
         !object@taxonRelations$TaxonConceptID %in% DEL,
       ]
     }
-    return(clean(object))
+    object <- clean(object)
   }
-)
-
-#' @rdname merge_taxa
-#'
-#' @aliases change_concept<-
-#'
-#' @exportMethod change_concept<-
-#'
-setGeneric("change_concept<-", function(taxlist, UsageID, value) {
-  standardGeneric("change_concept<-")
-})
-
-#' @rdname merge_taxa
-#'
-#' @aliases change_concept<-,taxlist-method
-#'
-setReplaceMethod(
-  "change_concept", signature(taxlist = "taxlist"),
-  function(taxlist, UsageID, value) {
-    # Test
-    if (length(UsageID) != length(value)) {
-      stop("'UsageID' and 'value' should be of the same length")
-    }
-    if (any(UsageID %in% taxlist@taxonRelations$AcceptedName)) {
-      stop("Changes on concept are not allowed for accepted names")
-    }
-    # now replace
-    taxlist@taxonNames[
-      match(UsageID, taxlist@taxonNames$TaxonUsageID),
-      "TaxonConceptID"
-    ] <- value
-    return(taxlist)
-  }
-)
+  # Return modified object
+  return(object)
+}
