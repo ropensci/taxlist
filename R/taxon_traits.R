@@ -99,10 +99,14 @@ update_trait.taxlist <- function(taxlist, taxonTraits, ConceptID, ...) {
       "'."
     ))
   }
-  taxlist@taxonTraits <- update_data(
-    object = taxlist@taxonTraits,
-    revision = taxonTraits, key = "TaxonConceptID", add = TRUE,
-    update = TRUE
-  )
+  if (nrow(taxlist@taxonTraits) == 0) {
+    taxlist@taxonTraits <- taxonTraits
+  } else {
+    taxlist@taxonTraits <- update_data(
+      object = taxlist@taxonTraits,
+      revision = taxonTraits, key = "TaxonConceptID", add = TRUE,
+      update = TRUE
+    )
+  }
   return(taxlist)
 }

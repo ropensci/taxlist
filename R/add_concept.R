@@ -43,6 +43,8 @@ setMethod(
           "in the 'taxlist' object: '",
           paste0(tn_levels, collapse = "', '"), "'."
         ))
+      } else {
+        TaxonName$Level <- factor(x = TaxonName$Level, levels = levels(taxlist))
       }
     } else {
       TaxonName$Level <- NA

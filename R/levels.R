@@ -42,9 +42,6 @@ levels <- function(x) UseMethod("levels", x)
 #' @method levels taxlist
 #' @export
 levels.taxlist <- function(x) {
-  if (all(is.na(x@taxonRelations$Level))) {
-    stop("Taxonomic list without taxonomic ranks.")
-  }
   base::levels(x@taxonRelations$Level)
 }
 
