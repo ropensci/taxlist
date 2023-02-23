@@ -45,9 +45,7 @@
 #' @rdname df2taxlist
 #'
 #' @export
-df2taxlist <- function(x, ...) {
-  UseMethod("df2taxlist", x)
-}
+df2taxlist <- function(x, ...) UseMethod("df2taxlist", x)
 
 #' @rdname df2taxlist
 #' @aliases df2taxlist,data.frame-method
@@ -59,16 +57,26 @@ df2taxlist.data.frame <- function(x, taxonTraits, taxonViews, levels,
   if (clean_strings) {
     x <- clean_strings(x)
   }
-  # Mandatory columns
-  opt_cols <- c("TaxonConceptID", "TaxonUsageID", "TaxonName")
-  opt_cols <- opt_cols[!opt_cols %in% names(x)]
-  if (length(opt_cols) > 0) {
-    stop(paste0(
-      "Mandatory columns missing in 'x':\n",
-      paste0(opt_cols, collapse = ", "), "."
-    ))
+  # Create empty object
+  taxlist <- new("taxlist")
+  # Mandatory column
+  if (!"TaxonName" %in% names(x)) {
+    stop("'TaxonName' is a mandatory column in 'x'.")
   }
-  # Accepted names
+  if (!"AuthorName" %in% names(x)) {
+    x$AuthorName <- NA
+  }
+  if (!"TaxonUsageID" %in% names(x)) {
+    x$TaxonUsageID <- id_generator(len = nrow(x))
+  }
+  if (!"TaxonConceptID" %in% names(x)) {
+    message(paste(
+      "Missing column 'TaxonConceptID' in 'x'.",
+      "All names will be considered as accepted names."
+    ))
+    x$TaxonConceptID <- id_generator(len = nrow(x))
+    x$AcceptedName <- TRUE
+  }
   if (!"AcceptedName" %in% names(x)) {
     message(paste(
       "No values for 'AcceptedName' in 'x'.",
@@ -76,132 +84,36 @@ df2taxlist.data.frame <- function(x, taxonTraits, taxonViews, levels,
     ))
     x$AcceptedName <- TRUE
   }
-  # Optional columns
-  opt_cols <- c("AuthorName", "Level", "Parent", "ViewID", "Basionym")
-  opt_cols <- opt_cols[!opt_cols %in% names(x)]
-  for (i in opt_cols) {
-    x[, i] <- NA
+  # Slot taxonRelations
+  taxonRelations <- x[
+    x$AcceptedName,
+    names(x) %in% names(taxlist@taxonRelations)
+  ]
+  tr_names <- c("Basionym", "Parent", "Level", "ViewID")
+  tr_names <- tr_names[!tr_names %in% names(taxonRelations)]
+  for (i in tr_names) {
+    taxonRelations[, i] <- NA
   }
-  ## # set integer classes
-  ## for (i in c("TaxonUsageID", "TaxonConceptID", "Parent", "ViewID")) {
-  ##   if (!is.integer(x[, i, drop = TRUE])) {
-  ##     x[, i] <- as.integer(x[, i, drop = TRUE])
-  ##   }
-  ## }
-  # Duplicated names
-  dupl_names <- duplicated(x[, c("TaxonName", "AuthorName")])
-  if (any(dupl_names)) {
-    dupl_names <- paste(x$TaxonName[dupl_names], x$AuthorName[dupl_names])
-    dupl_names <- x[
-      paste(x$TaxonName, x$AuthorName) %in% dupl_names,
-      c("TaxonUsageID", "TaxonConceptID", "TaxonName", "AuthorName")
-    ]
-    print(dupl_names)
-    stop(paste(
-      "Duplicated names detected (see above).",
-      "Resolve it and try again."
-    ))
-  }
-  # Duplicated names IDs
-  dupl_names <- duplicated(x$TaxonUsageID)
-  if (any(dupl_names)) {
-    dupl_names <- dupl_names[
-      x$TaxonUsageID %in% x$TaxonUsageID[dupl_names],
-      c("TaxonUsageID", "TaxonConceptID", "TaxonName", "AuthorName")
-    ]
-    print(dupl_names)
-    stop(paste(
-      "Duplicated values in 'TaxonUsageID' (see above).",
-      "Resolve it and try again."
-    ))
-  }
-  # Duplicated concept IDs
-  dupl_names <- duplicated(x$TaxonConceptID) & x$AcceptedName
-  if (any(dupl_names)) {
-    dupl_names <- x[
-      (x$TaxonConceptID %in%
-        x$TaxonConceptID[dupl_names]) & x$AcceptedName,
-      c("TaxonUsageID", "TaxonConceptID", "TaxonName", "AuthorName")
-    ]
-    print(dupl_names)
-    stop(paste(
-      "Duplicated values in 'TaxonConceptID'",
-      "for accepted names (see above). Resolve it and try again."
-    ))
-  }
-  # Wrong concepts for synonyms
-  dupl_names <- !(x$TaxonConceptID[!x$AcceptedName] %in%
-    x$TaxonConceptID[x$AcceptedName])
-  if (any(dupl_names)) {
-    synonyms <- x[!x$AcceptedName, ]
-    dupl_names <- synonyms[
-      dupl_names,
-      c("TaxonUsageID", "TaxonConceptID", "TaxonName", "AuthorName")
-    ]
-    print(dupl_names)
-    stop(paste(
-      "Values of 'TaxonConceptID' for synonyms",
-      "assigned to a missing concept (see above).",
-      "Resolve it and try again."
-    ))
-  }
-  # Set taxonomic ranks as factors
   if (!missing(levels)) {
-    x$Level <- factor(as.character(x$Level), levels = levels)
-  } else {
-    if (!is.factor(x$Level) & !all(is.na(x$Level))) {
-      x$Level <- as.factor(x$Level)
-    }
+    taxonRelations$Level <- factor(x = taxonRelations$Level, levels = levels)
   }
-  # Create empty object
-  taxlist <- new("taxlist")
-  # 1: Start with taxon views
-  if (!missing(taxonViews)) {
-    if (clean_strings) {
-      taxonViews <- clean_strings(taxonViews)
-    }
-    if (!is(taxonViews, "data.frame")) {
-      stop("Argument for 'taxonViews' have to be of class 'data.frame'.")
-    }
-    if (!"ViewID" %in% names(taxonViews)) {
-      stop("Column 'ViewID' is mandatory in 'taxonViews'.")
-    }
-    if (any(!x$ViewID[!is.na(x$ViewID)]) %in% taxonViews$ViewID) {
-      stop("Some values of 'ViewID' in 'x' are missing in 'taxonViews'.")
-    }
-    taxlist@taxonViews <- taxonViews
-  } else {
-    x$ViewID <- NA
-  }
-  # 2: Taxon Names (detect additional columns for slot taxonNames)
-  all_names <- unique(do.call(c, lapply(as(taxlist, "list")[
-    c("taxonNames", "taxonRelations")
-  ], names)))
-  extra_cols <- names(x)[!names(x) %in% all_names]
-  taxlist@taxonNames <- x[, c(names(taxlist@taxonNames), extra_cols)]
-  # 3: Taxon concepts
-  taxonRelations <- x[x$AcceptedName, c(names(taxlist@taxonRelations))]
-  taxonRelations$AcceptedName <- x$TaxonUsageID[x$AcceptedName]
+  # Replace Accepted Names
+  AcceptedName <- x[x$AcceptedName, c("TaxonUsageID", "TaxonConceptID")]
+  taxonRelations$AcceptedName <-
+    AcceptedName$TaxonUsageID[match(
+      taxonRelations$TaxonConceptID,
+      AcceptedName$TaxonConceptID
+    )]
+  # Slot taxonNames
+  tn_names <- names(taxonRelations)[names(taxonRelations) != "TaxonConceptID"]
+  # Assembly output object
   taxlist@taxonRelations <- taxonRelations
-  # 4: Taxon Traits
+  taxlist@taxonNames <- x[, !names(x) %in% tn_names]
   if (!missing(taxonTraits)) {
-    if (clean_strings) {
-      taxonTraits <- clean_strings(taxonTraits)
-    }
-    if (!is(taxonTraits, "data.frame")) {
-      stop("Argument for 'taxonTraits' have to be of class 'data.frame'.")
-    }
-    if (!"TaxonConceptID" %in% names(taxonTraits)) {
-      stop("Column 'TaxonConceptID' is mandatory in 'taxonTraits'.")
-    }
-    if (any(!taxonTraits$TaxonConceptID %in%
-      taxlist@taxonRelations$TaxonConceptID)) {
-      stop(paste(
-        "Some values of 'TaxonConceptID' in 'taxonTraits'",
-        "are missing in 'x'."
-      ))
-    }
     taxlist@taxonTraits <- taxonTraits
+  }
+  if (!missing(taxonViews)) {
+    taxlist@taxonViews <- taxonViews
   }
   return(taxlist)
 }
@@ -211,16 +123,7 @@ df2taxlist.data.frame <- function(x, taxonTraits, taxonViews, levels,
 #' @method df2taxlist character
 #' @export
 df2taxlist.character <- function(x, ...) {
-  if (any(duplicated(x))) {
-    warning("Some duplicated names will be deleted")
-    x <- x[!duplicated(x)]
-  }
-  x <- data.frame(
-    TaxonUsageID = id_generator(len = length(x)),
-    TaxonConceptID = id_generator(len = length(x)),
-    TaxonName = x
-  )
-  return(df2taxlist(x, ...))
+  return(df2taxlist(data.frame(TaxonName = x), ...))
 }
 
 #' @name as
