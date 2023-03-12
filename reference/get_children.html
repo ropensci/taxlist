@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -63,20 +63,14 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_children</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">ConceptID</span>, <span class="va">...</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_children</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for taxlist,numeric</span></span>
+<span><span class="co"># S3 method for taxlist</span></span>
 <span><span class="fu">get_children</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">ConceptID</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for taxlist,taxlist</span></span>
-<span><span class="fu">get_children</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">ConceptID</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">get_parents</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_parents</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">ConceptID</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for taxlist,numeric</span></span>
-<span><span class="fu">get_parents</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">ConceptID</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for taxlist,taxlist</span></span>
+<span><span class="co"># S3 method for taxlist</span></span>
 <span><span class="fu">get_parents</span><span class="op">(</span><span class="va">taxlist</span>, <span class="va">ConceptID</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -86,13 +80,13 @@
 <dd><p>A <a href="taxlist-class.html">taxlist</a> object.</p></dd>
 
 
+<dt>...</dt>
+<dd><p>Further arguments passed among methods.</p></dd>
+
+
 <dt>ConceptID</dt>
 <dd><p>Concept IDs for selecting parents or children or a subset of
 <code>taxlist</code>.</p></dd>
-
-
-<dt>...</dt>
-<dd><p>Further arguments passed among methods.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -118,10 +112,29 @@ the input <code>taxlist</code> object.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Subset with family Ebenaceae and children</span></span></span>
-<span class="r-in"><span><span class="va">Ebenaceae</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="fu"><a href="https://rdrr.io/r/base/charmatch.html" class="external-link">charmatch</a></span><span class="op">(</span><span class="st">"Ebenaceae"</span>, <span class="va">TaxonName</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">Ebenaceae</span> <span class="op">&lt;-</span> <span class="fu">get_children</span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">Ebenaceae</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Ebenaceae</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easplist</span>, subset <span class="op">=</span> <span class="va">TaxonName</span> <span class="op">==</span> <span class="st">"Ebenaceae"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Ebenaceae</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> object size: 6.7 Kb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon usage names: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon concepts: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trait entries: 0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of trait variables: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> taxon views: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level form: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level variety: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level species: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level complex: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Ebenaceae</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Ebenaceae</span> <span class="op">&lt;-</span> <span class="fu">get_children</span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">Ebenaceae</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Ebenaceae</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 8.5 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -143,92 +156,32 @@ the input <code>taxlist</code> object.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">Ebenaceae</span>, ConceptID <span class="op">=</span> <span class="st">"all"</span>, maxsum <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 269 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: species </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 55707 Euclea  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 269 Euclea divinorum Hiern </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # synonyms (1): </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50787 Euclea divinorum ssp. keniensis (R. E. Fr.) de Wit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 50330 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: species </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 55171 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50330 Diospyros abyssinica (Hiern) F. White </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 51793 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: species </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 55171 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51793 Diospyros scabra (Chiov.) Cufod. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 52298 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: species </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 55171 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52298 Diospyros mespiliformis Hochst. ex A.DC. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 52403 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: species </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 55171 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52403 Diospyros tricolor (Schumach. &amp; Thonn.) Hiern </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 53547 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: species </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 55171 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53547 Diospyros ferrea (Willd.) Bakh. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 55171 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: genus </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 56051 Ebenaceae  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55173 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 55707 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: none </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: genus </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 56051 Ebenaceae  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55709 Euclea  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 56051 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: family </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: none </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56053 Ebenaceae  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Get parents of Diospyros tricolor</span></span></span>
-<span class="r-in"><span><span class="va">Diostri</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">Easplist</span>, subset <span class="op">=</span> <span class="va">TaxonConceptID</span> <span class="op">==</span> <span class="fl">52403</span>,</span></span>
-<span class="r-in"><span>  slot <span class="op">=</span> <span class="st">"relations"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">Diostri</span> <span class="op">&lt;-</span> <span class="fu">get_parents</span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">Diostri</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Diostri</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easplist</span>, subset <span class="op">=</span> <span class="va">TaxonConceptID</span> <span class="op">==</span> <span class="fl">52403</span>,</span></span>
+<span class="r-in"><span>    slot <span class="op">=</span> <span class="st">"relations"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Diostri</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> object size: 6.7 Kb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon usage names: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon concepts: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trait entries: 0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of trait variables: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> taxon views: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level form: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level variety: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level species: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level complex: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Diostri</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Diostri</span> <span class="op">&lt;-</span> <span class="fu">get_parents</span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">Diostri</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Diostri</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 7.1 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -250,32 +203,6 @@ the input <code>taxlist</code> object.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Diostri</span>, <span class="st">"all"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 52403 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: species </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 55171 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52403 Diospyros tricolor (Schumach. &amp; Thonn.) Hiern </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 55171 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: genus </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: 56051 Ebenaceae  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55173 Diospyros L. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 56051 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> level: family </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> parent: none </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # accepted name: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56053 Ebenaceae  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
 </code></pre></div>
     </div>
   </div>
@@ -290,7 +217,7 @@ the input <code>taxlist</code> object.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

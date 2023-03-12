@@ -23,7 +23,7 @@ inserting a formatted a species name."><meta property="og:image" content="/logo.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -169,7 +169,8 @@ that will be mentioned as <em>secundum</em> (according to).</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, secundum <span class="op">=</span> <span class="st">"secundum"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Example subspecies</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, secundum <span class="op">=</span> <span class="st">"secundum"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> concept ID: 363 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> view ID: 1 - African Plant Database (2012) </span>
@@ -186,43 +187,35 @@ that will be mentioned as <em>secundum</em> (according to).</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Empty plot</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="cn">NA</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">1</span><span class="op">)</span>, bty <span class="op">=</span> <span class="st">"n"</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, xlab <span class="op">=</span> <span class="st">""</span>,</span></span>
-<span class="r-in"><span>  ylab <span class="op">=</span> <span class="st">"options"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NA</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">1</span><span class="op">)</span>, bty <span class="op">=</span> <span class="st">"n"</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, xlab <span class="op">=</span> <span class="st">""</span>,</span></span>
+<span class="r-in"><span>  ylab <span class="op">=</span> <span class="st">"options"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Accepted name with author</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">1</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"expression"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  pos <span class="op">=</span> <span class="fl">4</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">1</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"expression"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Including taxon view</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">2</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>,</span></span>
-<span class="r-in"><span>  style <span class="op">=</span> <span class="st">"expression"</span>,</span></span>
-<span class="r-in"><span>  secundum <span class="op">=</span> <span class="st">"secundum"</span></span></span>
-<span class="r-in"><span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">2</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"expression"</span>,</span></span>
+<span class="r-in"><span>  secundum <span class="op">=</span> <span class="st">"secundum"</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span>, cex <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Second mention in text</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">3</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>,</span></span>
-<span class="r-in"><span>  style <span class="op">=</span> <span class="st">"expression"</span>,</span></span>
-<span class="r-in"><span>  second_mention <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">3</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"expression"</span>,</span></span>
+<span class="r-in"><span>  second_mention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Using synonym</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">4</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">50037</span>,</span></span>
-<span class="r-in"><span>  style <span class="op">=</span> <span class="st">"expression"</span>,</span></span>
-<span class="r-in"><span>  concept <span class="op">=</span> <span class="cn">FALSE</span></span></span>
-<span class="r-in"><span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">4</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">50037</span>, style <span class="op">=</span> <span class="st">"expression"</span>,</span></span>
+<span class="r-in"><span>  concept <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Markdown style</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"markdown"</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## HTML style</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"html"</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"html"</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>    cex <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## LaTeX style for knitr</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">7</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"knitr"</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">7</span>, labels <span class="op">=</span> <span class="fu">print_name</span><span class="op">(</span><span class="va">Easplist</span>, <span class="fl">363</span>, style <span class="op">=</span> <span class="st">"knitr"</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>    cex <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="print_name-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -238,7 +231,7 @@ that will be mentioned as <em>secundum</em> (according to).</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

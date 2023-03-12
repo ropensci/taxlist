@@ -43,6 +43,9 @@
     <loc>/reference/accepted_name.html</loc>
   </url>
   <url>
+    <loc>/reference/add_concept.html</loc>
+  </url>
+  <url>
     <loc>/reference/add_nacolumn.html</loc>
   </url>
   <url>
@@ -76,6 +79,9 @@
     <loc>/reference/get_children.html</loc>
   </url>
   <url>
+    <loc>/reference/id_generator.html</loc>
+  </url>
+  <url>
     <loc>/reference/indented_list.html</loc>
   </url>
   <url>
@@ -86,6 +92,9 @@
   </url>
   <url>
     <loc>/reference/match_names.html</loc>
+  </url>
+  <url>
+    <loc>/reference/matched_names-class.html</loc>
   </url>
   <url>
     <loc>/reference/merge_taxa.html</loc>
@@ -131,9 +140,6 @@
   </url>
   <url>
     <loc>/reference/taxon_views.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tnrs.html</loc>
   </url>
   <url>
     <loc>/reference/tv2taxlist.html</loc>

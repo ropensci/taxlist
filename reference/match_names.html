@@ -19,7 +19,7 @@ using the function stringsim()."><meta property="og:image" content="/logo.png"><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -70,20 +70,27 @@ using the function <code>stringsim()</code>.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">match_names</span><span class="op">(</span><span class="va">x</span>, <span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for character,character</span></span>
-<span><span class="fu">match_names</span><span class="op">(</span><span class="va">x</span>, <span class="va">object</span>, best <span class="op">=</span> <span class="fl">5</span>, clean <span class="op">=</span> <span class="cn">TRUE</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">match_names</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">object</span>,</span>
+<span>  <span class="va">UsageID</span>,</span>
+<span>  best <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  nomatch <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"lcs"</span>,</span>
+<span>  cutlevel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for character,missing</span></span>
+<span><span class="fu">match_names</span><span class="op">(</span><span class="va">x</span>, <span class="va">best</span>, <span class="va">cutlevel</span>, nomatch <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for character,taxlist</span></span>
 <span><span class="fu">match_names</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  <span class="va">object</span>,</span>
-<span>  clean <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  output <span class="op">=</span> <span class="st">"data.frame"</span>,</span>
-<span>  best <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  show_concepts <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  accepted_only <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  method <span class="op">=</span> <span class="st">"lcs"</span>,</span>
-<span>  <span class="va">sort_by</span>,</span>
-<span>  order_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  include_author <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -95,61 +102,60 @@ using the function <code>stringsim()</code>.</p>
 
 
 <dt>object</dt>
-<dd><p>An object of class <a href="taxlist-class.html">taxlist</a> to be compared
-with.</p></dd>
+<dd><p>Either a character vector or a <a href="taxlist-class.html">taxlist</a> object
+containing the taxonomic list for comparison. If missing, the similarity
+of each name in 'x' will be compared with the rest of the names in the
+same vector.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>Further arguments passed among methods.</p></dd>
+
+
+<dt>UsageID</dt>
+<dd><p>A vector with IDs for single usage names in the compared list.
+If the IDs are duplicated or not as much as names in 'object', the
+function retrieves an error message. If missing, this function will
+number every name anew (see column 'TaxonUsageID' in the output object).</p></dd>
 
 
 <dt>best</dt>
-<dd><p>Integer value indicating how many from the best matches have to
-be displayed (only working for <code>output="list"</code>).</p></dd>
+<dd><p>Integer value indicating how many matches should be displayed
+in the output. Matches with the same value of similarity will be
+considered as one. Note that this argument will be overrode by
+'cutlevel'.</p></dd>
 
 
-<dt>clean</dt>
-<dd><p>Logical value, whether leading, tailing and double blanks should
-be deleted from <code>x</code>.</p></dd>
+<dt>nomatch</dt>
+<dd><p>A logical value indicating wheter names without matches should
+be included in the output (<code>'nomatch = TRUE'</code>) or not
+(<code>'nomatch = FALSE'</code>).</p></dd>
 
 
-<dt>decreasing</dt>
-<dd><p>Logical value indicating whether retrieved names should be
-sorted by decreasing or increasing similarity value. In the character
-method, the sorting corresponds to similarities between the queried value
-and the reference vector (argument <code>object</code>). In the taxlist method using
-<code>'output = "data.frame'"</code>, the order corresponds to the similarity of the
-best match (by default, no sorting is done). This argument is passed to
-<code><a href="https://rdrr.io/r/base/order.html" class="external-link">order()</a></code>.</p></dd>
-
-
-<dt>output</dt>
-<dd><p>Character value indicating the type of output. Alternative
-values are "list" (taxon concepts ID's sorted by similarity for each
-queried name) or "data.frame" (a table including the best match for every
-queried name).</p></dd>
-
-
-<dt>show_concepts</dt>
-<dd><p>Logical value, whether respective concepts should be
-displayed in output or not.</p></dd>
-
-
-<dt>accepted_only</dt>
-<dd><p>Logical value, whether only accepted names should be
-matched or all usage names (including synonyms).</p></dd>
-
-
-<dt>method, ...</dt>
+<dt>method</dt>
 <dd><p>Further arguments passed to <code>stringsim()</code>.</p></dd>
 
 
-<dt>sort_by</dt>
-<dd><p>A character vector including the output columns used for
-sorting the output table. Used only in 'character,taxlist-method'. The
-function checks the presence of these values as columns in the output
-data frame.</p></dd>
+<dt>cutlevel</dt>
+<dd><p>A numeric value indicating a cut level of similarity,
+considering as match names with similarities equal or bigger than the
+cut value. This argument overrides 'best'.</p></dd>
 
 
-<dt>order_args</dt>
-<dd><p>A named list including arguments passed to <code><a href="https://rdrr.io/r/base/order.html" class="external-link">order()</a></code> in the
-'character,taxlist-method'.</p></dd>
+<dt>show_concepts</dt>
+<dd><p>Logical value indicating whether the respective taxon
+concepts should be displayed in output or not.</p></dd>
+
+
+<dt>accepted_only</dt>
+<dd><p>Logical value indicating whether only accepted names
+should be matched or all usage names (including synonyms).</p></dd>
+
+
+<dt>include_author</dt>
+<dd><p>A logical value indicating whether the author name
+in object (method for <a href="taxlist-class.html">taxlist</a>) should be included in the matching
+list or not.</p></dd>
 
 </dl></div>
     <div id="see-also">
@@ -164,36 +170,47 @@ data frame.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Names to be compared</span></span></span>
-<span class="r-in"><span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cperus papyrus"</span>, <span class="st">"Typha australis"</span>, <span class="st">"Luke skywalker"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cyperus papyrus"</span>, <span class="st">"Typha australis"</span>, <span class="st">"Luke Skywalker"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Comparing character vectors</span></span></span>
-<span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span><span class="st">"Cyperus paper"</span>, <span class="va">species</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              name similarity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Cperus papyrus  0.7142857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Typha australis  0.3333333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  Luke skywalker  0.2857143</span>
+<span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cyperus paper"</span>, <span class="st">"TIE fighter"</span><span class="op">)</span>, <span class="va">species</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   idx submittedname TaxonUsageID       TaxonName match similarity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 Cyperus paper            1 Cyperus papyrus     1  0.8571429</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2   TIE fighter            2 Typha australis     1  0.3076923</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Retrieve taxon usage names</span></span></span>
 <span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span><span class="va">species</span>, <span class="va">Easplist</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     submittedname           TaxonName                       AuthorName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Cperus papyrus     Cyperus papyrus                               L.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Typha australis     Typha australis                        Schumach.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   TaxonUsageID matches similarity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1          206       1  0.9655172</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        51999       1  1.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        51565       1  0.4848485</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   idx   submittedname TaxonUsageID           TaxonName</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 Cyperus papyrus          206     Cyperus papyrus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2 Typha australis        51999     Typha australis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   3  Luke Skywalker        51565 Loudetia kagerensis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         AuthorName match similarity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                               L.     1  1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                        Schumach.     1  1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 (K. Schum.) C.E. Hubb. ex Hutch.     1  0.4848485</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Display accepted names in output</span></span></span>
 <span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span>, object <span class="op">=</span> <span class="va">Easplist</span>, show_concepts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     submittedname           TaxonName                       AuthorName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Cperus papyrus     Cyperus papyrus                               L.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Typha australis     Typha australis                        Schumach.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  Luke skywalker Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   TaxonUsageID matches similarity TaxonConceptID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1          206       1  0.9655172            206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        51999       1  1.0000000          50105</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        51565       1  0.4848485          51565</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   idx   submittedname TaxonUsageID           TaxonName</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 Cyperus papyrus          206     Cyperus papyrus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2 Typha australis        51999     Typha australis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   3  Luke Skywalker        51565 Loudetia kagerensis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         AuthorName match similarity TaxonConceptID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                               L.     1  1.0000000            206</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                        Schumach.     1  1.0000000          50105</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 (K. Schum.) C.E. Hubb. ex Hutch.     1  0.4848485          51565</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     AcceptedTaxonName               AcceptedAuthorName   Level</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     Cyperus papyrus                               L. species</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   Typha domingensis                            Pers. species</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Loudetia kagerensis (K. Schum.) C.E. Hubb. ex Hutch. species</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using cut value for similarity</span></span></span>
+<span class="r-in"><span><span class="fu">match_names</span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span>, object <span class="op">=</span> <span class="va">Easplist</span>, cutlevel <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   idx   submittedname TaxonUsageID       TaxonName AuthorName match similarity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 Cyperus papyrus          206 Cyperus papyrus         L.     1  1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2 Typha australis        51999 Typha australis  Schumach.     1  1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2 Typha australis        53125  Typha aequalis   Schnizl.     2  0.8275862</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   3  Luke Skywalker           NA            &lt;NA&gt;       &lt;NA&gt;     0         NA</span>
 </code></pre></div>
     </div>
   </div>
@@ -208,7 +225,7 @@ data frame.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

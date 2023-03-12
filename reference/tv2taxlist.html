@@ -20,7 +20,7 @@ Internally the funcions read.dbf() and df2taxlist() are called."><meta property=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -107,10 +107,8 @@ called.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Cyperus data set installed as Turboveg species list</span></span></span>
-<span class="r-in"><span><span class="va">Cyperus</span> <span class="op">&lt;-</span> <span class="fu">tv2taxlist</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  taxlist <span class="op">=</span> <span class="st">"cyperus"</span>,</span></span>
-<span class="r-in"><span>  tv_home <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>, <span class="st">"tv_data"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Cyperus</span> <span class="op">&lt;-</span> <span class="fu">tv2taxlist</span><span class="op">(</span>taxlist <span class="op">=</span> <span class="st">"cyperus"</span>,</span></span>
+<span class="r-in"><span>  tv_home <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>, <span class="st">"tv_data"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Cyperus</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 44.6 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
@@ -121,7 +119,6 @@ called.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of trait variables: 2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> taxon views: 0 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -136,7 +133,7 @@ called.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

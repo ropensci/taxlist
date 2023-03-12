@@ -18,7 +18,7 @@ character vectors containing taxon names."><meta property="og:image" content="/l
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -139,22 +139,25 @@ taxa within <a href="taxlist-class.html">taxlist</a> objects and it is just a wr
 <span class="r-in"><span><span class="co">## taxlist method</span></span></span>
 <span class="r-in"><span><span class="fu">count_taxa</span><span class="op">(</span><span class="va">Easplist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3887</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## count only species</span></span></span>
 <span class="r-in"><span><span class="fu">count_taxa</span><span class="op">(</span><span class="va">Easplist</span>, level <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2521</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## using a formula</span></span></span>
-<span class="r-in"><span><span class="fu">count_taxa</span><span class="op">(</span><span class="op">~</span><span class="va">life_form</span>, <span class="va">Easplist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">count_taxa</span><span class="op">(</span><span class="op">~</span><span class="va">life_form</span>, <span class="va">Easplist</span>, include_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             life_form taxa_count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    acropleustophyte          8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         chamaephyte         25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      climbing_plant         25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  facultative_annual         20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     obligate_annual        114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        phanerophyte         26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    pleustohelophyte          8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8          reed_plant         14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9       reptant_plant         19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10      tussock_plant         52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                 NAs       3576</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    acropleustophyte          8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         chamaephyte         25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      climbing_plant         25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  facultative_annual         20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     obligate_annual        114</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7        phanerophyte         26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    pleustohelophyte          8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9          reed_plant         14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10      reptant_plant         19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11      tussock_plant         52</span>
 </code></pre></div>
     </div>
   </div>
@@ -169,7 +172,7 @@ taxa within <a href="taxlist-class.html">taxlist</a> objects and it is just a wr
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

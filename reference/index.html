@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -61,7 +61,7 @@
           <p class="section-desc"></p>
         </th>
       </tr></tbody><tbody><tr><td>
-          <p><code><a href="Deprecated-functions.html">add_parent()</a></code> <code><a href="Deprecated-functions.html">add_trait()</a></code> <code><a href="Deprecated-functions.html">add_level()</a></code> <code><a href="Deprecated-functions.html">replace_view()</a></code> <code><a href="Deprecated-functions.html">taxlist2taxmap()</a></code> <code><a href="Deprecated-functions.html">taxmap2taxlist()</a></code> </p>
+          <p><code><a href="Deprecated-functions.html">add_parent()</a></code> <code><a href="Deprecated-functions.html">add_trait()</a></code> <code><a href="Deprecated-functions.html">add_level()</a></code> <code><a href="Deprecated-functions.html">replace_view()</a></code> <code><a href="Deprecated-functions.html">taxlist2taxmap()</a></code> <code><a href="Deprecated-functions.html">taxmap2taxlist()</a></code> <code><a href="Deprecated-functions.html">taxmap2taxlist()</a></code> <code><a href="Deprecated-functions.html">tnrs()</a></code> </p>
         </td>
         <td><p>Deprecated functions</p></td>
       </tr><tr><td>
@@ -73,9 +73,13 @@
         </td>
         <td><p>Extract or Replace Parts of taxlist Objects</p></td>
       </tr><tr><td>
-          <p><code><a href="accepted_name.html">accepted_name()</a></code> <code><a href="accepted_name.html">`accepted_name&lt;-`()</a></code> <code><a href="accepted_name.html">synonyms()</a></code> <code><a href="accepted_name.html">basionym()</a></code> <code><a href="accepted_name.html">`basionym&lt;-`()</a></code> </p>
+          <p><code><a href="accepted_name.html">accepted_name()</a></code> <code><a href="accepted_name.html">`accepted_name&lt;-`()</a></code> <code><a href="accepted_name.html">synonyms()</a></code> <code><a href="accepted_name.html">basionym()</a></code> <code><a href="accepted_name.html">`basionym&lt;-`()</a></code> <code><a href="accepted_name.html">`change_concept&lt;-`()</a></code> </p>
         </td>
         <td><p>Manage accepted names, synonyms and basionyms</p></td>
+      </tr><tr><td>
+          <p><code><a href="add_concept.html">add_concept()</a></code> <code><a href="add_concept.html">update_concept()</a></code> </p>
+        </td>
+        <td><p>Add new taxonomic concepts into taxlist objects</p></td>
       </tr><tr><td>
           <p><code><a href="backup_object.html">backup_object()</a></code> <code><a href="backup_object.html">load_last()</a></code> </p>
         </td>
@@ -89,7 +93,7 @@
         </td>
         <td><p>Cleaning character strings.</p></td>
       </tr><tr><td>
-          <p><code><a href="coerce-methods.html">S4_to_list()</a></code> <code><a href="coerce-methods.html">as.list(<i>&lt;taxlist&gt;</i>)</a></code> <code><a href="coerce-methods.html">`as&lt;-`()</a></code> </p>
+          <p><code><a href="coerce-methods.html">S4_to_list()</a></code> </p>
         </td>
         <td><p>Coerce taxlist objects to lists.</p></td>
       </tr><tr><td>
@@ -109,11 +113,15 @@
         </td>
         <td><p>Retrieve children or parents of taxon concepts</p></td>
       </tr><tr><td>
+          <p><code><a href="id_generator.html">id_generator()</a></code> <code><a href="id_generator.html">id_solver()</a></code> </p>
+        </td>
+        <td><p>Generate Identifiers</p></td>
+      </tr><tr><td>
           <p><code><a href="indented_list.html">indented_list()</a></code> </p>
         </td>
         <td><p>Print hierarchical structure in indented lists</p></td>
       </tr><tr><td>
-          <p><code><a href="levels.html">levels(<i>&lt;taxlist&gt;</i>)</a></code> <code><a href="levels.html">`levels&lt;-`(<i>&lt;taxlist&gt;</i>)</a></code> </p>
+          <p><code><a href="levels.html">levels()</a></code> <code><a href="levels.html">`levels&lt;-`()</a></code> </p>
         </td>
         <td><p>Set and retrieves hierarchical levels</p></td>
       </tr><tr><td>
@@ -121,7 +129,11 @@
         </td>
         <td><p>Search matchings between character and taxlist objects</p></td>
       </tr><tr><td>
-          <p><code><a href="merge_taxa.html">merge_taxa()</a></code> <code><a href="merge_taxa.html">`change_concept&lt;-`()</a></code> </p>
+          <p><code><a href="matched_names-class.html">matched_names-class</a></code> </p>
+        </td>
+        <td><p>Names matched with a reference taxonomic list</p></td>
+      </tr><tr><td>
+          <p><code><a href="merge_taxa.html">merge_taxa()</a></code> </p>
         </td>
         <td><p>Merge concepts or move names</p></td>
       </tr><tr><td>
@@ -157,7 +169,7 @@
         </td>
         <td><p>Handle information on taxon usage names.</p></td>
       </tr><tr><td>
-          <p><code><a href="taxon_relations.html">taxon_relations()</a></code> <code><a href="taxon_relations.html">`taxon_relations&lt;-`()</a></code> <code><a href="taxon_relations.html">add_concept()</a></code> <code><a href="taxon_relations.html">update_concept()</a></code> </p>
+          <p><code><a href="taxon_relations.html">taxon_relations()</a></code> <code><a href="taxon_relations.html">`taxon_relations&lt;-`()</a></code> <code><a href="taxon_relations.html">update_concept(<i>&lt;taxlist&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> </p>
         </td>
         <td><p>Retrieve or replace slot taxonRelations in taxlist objects</p></td>
       </tr><tr><td>
@@ -168,10 +180,6 @@
           <p><code><a href="taxon_views.html">taxon_views()</a></code> <code><a href="taxon_views.html">`taxon_views&lt;-`()</a></code> <code><a href="taxon_views.html">add_view()</a></code> </p>
         </td>
         <td><p>Management of concept views in taxonomic lists.</p></td>
-      </tr><tr><td>
-          <p><code><a href="tnrs.html">tnrs()</a></code> </p>
-        </td>
-        <td><p>Taxonomic Name Resolution Service</p></td>
       </tr><tr><td>
           <p><code><a href="tv2taxlist.html">tv2taxlist()</a></code> </p>
         </td>
@@ -189,7 +197,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

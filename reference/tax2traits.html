@@ -20,7 +20,7 @@ such information in the slot taxonTraits."><meta property="og:image" content="/l
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3.9001</span>
       </span>
     </div>
 
@@ -71,7 +71,7 @@ such information in the slot <code>taxonTraits</code>.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tax2traits</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for taxlist</span></span>
+<span><span class="co"># S3 method for taxlist</span></span>
 <span><span class="fu">tax2traits</span><span class="op">(</span><span class="va">object</span>, get_names <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -110,10 +110,8 @@ relationships and information on taxonomic levels.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Family Acanthaceae with children</span></span></span>
-<span class="r-in"><span><span class="va">Acanthaceae</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="va">Easplist</span>, subset <span class="op">=</span> <span class="va">TaxonName</span> <span class="op">==</span> <span class="st">"Acanthaceae"</span>,</span></span>
-<span class="r-in"><span>  slot <span class="op">=</span> <span class="st">"names"</span>, keep_children <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Acanthaceae</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Easplist</span>, subset <span class="op">=</span> <span class="va">TaxonName</span> <span class="op">==</span> <span class="st">"Acanthaceae"</span>,</span></span>
+<span class="r-in"><span>  slot <span class="op">=</span> <span class="st">"names"</span>, keep_children <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Acanthaceae</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> object size: 29.9 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
@@ -168,7 +166,7 @@ relationships and information on taxonomic levels.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
