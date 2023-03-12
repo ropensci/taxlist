@@ -35,8 +35,6 @@ update_trait(taxlist, ...)
 \code{'taxlist'}. A column \code{'TaxonConceptID'} is mandatory in this table.
 If some taxon concept IDs are not occurring in \code{'taxlist'}, an error
 message is retrieved by \code{update_trait()}.}
-
-\item{ConceptID}{Deprecated.}
 }
 \description{
 The slot \code{taxonTraits} in \linkS4class{taxlist} objects contains
