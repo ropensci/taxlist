@@ -13,7 +13,6 @@
 #'     `'taxlist'`. A column `'TaxonConceptID'` is mandatory in this table.
 #'     If some taxon concept IDs are not occurring in `'taxlist'`, an error
 #'     message is retrieved by `update_trait()`.
-#' @param ConceptID Deprecated.
 #' @param value Data frame to be set as slot `taxonTraits`.
 #' @param ... Further arguments to be passed among methods.
 #'
