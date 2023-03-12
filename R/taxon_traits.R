@@ -82,7 +82,7 @@ update_trait <- function(taxlist, ...) UseMethod("update_trait", taxlist)
 #' @aliases update_trait,taxlist-method
 #' @method update_trait taxlist
 #' @export
-update_trait.taxlist <- function(taxlist, taxonTraits, ConceptID, ...) {
+update_trait.taxlist <- function(taxlist, taxonTraits, ...) {
   if (!is(taxonTraits, "data.frame")) {
     stop("Argument 'taxonTraits' has to be a data frame.")
   }

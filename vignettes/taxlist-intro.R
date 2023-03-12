@@ -81,7 +81,9 @@ load(file.path(path.package("taxlist"), "wetlands_syntax.rda"))
 ## ----prototype----------------------------------------------------------------
 head(Concepts)
 
-Syntax <- new("taxlist")
+Concepts$TaxonUsageID <- Concepts$TaxonConceptID
+
+Syntax <- df2taxlist(Concepts)
 
 levels(Syntax) <- c("association", "alliance", "order", "class")
 
@@ -92,11 +94,7 @@ taxon_views(Syntax) <- data.frame(
   stringsAsFactors = FALSE
 )
 
-Syntax <- add_concept(Syntax,
-  TaxonName = Concepts$TaxonName,
-  AuthorName = Concepts$AuthorName, Parent = Concepts$Parent,
-  Level = Concepts$Level, ViewID = rep(1, nrow(Concepts))
-)
+Syntax@taxonRelations$ViewID <- 1
 
 Syntax
 

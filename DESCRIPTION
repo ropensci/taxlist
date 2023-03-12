@@ -11,9 +11,9 @@ Authors@R: c(
 	person("Margaret", "Siple", email="siplem@uw.edu", role="rev")
     )
 Depends:
-    R(>= 3.5.0)
+    R(>= 4.0)
 Imports:
-    biblio,
+    biblio (>= 0.0.8),
     foreign,
     methods,
     stats,

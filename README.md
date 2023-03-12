@@ -96,11 +96,6 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 
 ``` r
 library(taxlist)
-#> 
-#> Attaching package: 'taxlist'
-#> The following objects are masked from 'package:base':
-#> 
-#>     levels, levels<-, print
 
 Fern <- new("taxlist")
 Fern

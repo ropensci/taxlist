@@ -22,7 +22,7 @@ taxon_traits(taxlist, ...) <- value
 
 update_trait(taxlist, ...)
 
-\method{update_trait}{taxlist}(taxlist, taxonTraits, ConceptID, ...)
+\method{update_trait}{taxlist}(taxlist, taxonTraits, ...)
 }
 \arguments{
 \item{taxlist}{A \linkS4class{taxlist} object.}
