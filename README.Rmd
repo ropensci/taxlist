@@ -26,8 +26,6 @@ knitr::opts_chunk$set(
 [![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
 [![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
-<!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
-[![R-CMD-check](https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Introduction
