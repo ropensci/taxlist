@@ -30,6 +30,8 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
+#' @seealso [prune_levels()]
+#'
 #' @example examples/levels.R
 #'
 #' @rdname levels

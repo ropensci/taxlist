@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.4.9001
+Version: 0.2.4.9002
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -64,6 +64,7 @@ Collate:
     'taxon_traits.R'
     'accepted_name.R'
     'get_children.R'
+    'merge_to_parent.R'
     'merge_taxa.R'
     'Extract.R'
     'subset.R'

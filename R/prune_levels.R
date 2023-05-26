@@ -11,6 +11,8 @@
 #'
 #' @return An object of class [taxlist-class] with pruned taxonomic ranks.
 #'
+#' @seealso [levels()][taxlist::levels()]
+#'
 #' @example examples/prune_levels.R
 #'
 #' @rdname prune_levels

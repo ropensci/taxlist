@@ -31,3 +31,6 @@ Cyperus
 ## Prune not used ranks
 prune_levels(Cyperus)
 }
+\seealso{
+\link[=levels]{levels()}
+}
