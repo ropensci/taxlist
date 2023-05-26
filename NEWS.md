@@ -2,8 +2,10 @@
 
 ### New Features
 
-- new Function `prune_levels()` pruning levels that are not used in `taxlist`
+- New function `prune_levels()` pruning levels that are not used in `taxlist`
   objects.
+- New function `merge_to_parent()` merging multiple taxa to their respective
+  parents.
 
 
 taxlist 0.2.4

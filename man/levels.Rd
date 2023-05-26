@@ -55,6 +55,9 @@ levels(Easplist) <- c("form", "variety", "subspecies", "species", "complex",
     "aggregate", "genus", "family")
 summary(Easplist)
 }
+\seealso{
+\code{\link[=prune_levels]{prune_levels()}}
+}
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
 }
