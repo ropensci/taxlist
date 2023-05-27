@@ -66,7 +66,14 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for taxlist</span></span>
-<span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, level <span class="op">=</span> <span class="cn">NULL</span>, print_output <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">merge_taxa</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  <span class="va">concepts</span>,</span>
+<span>  level <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  delete_nomatch <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  print_output <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -91,9 +98,16 @@ their respective parents by <code><a href="merge_to_parent.html">merge_to_parent
 well as rankless concepts will be deleted from the output.</p></dd>
 
 
+<dt>delete_nomatch</dt>
+<dd><p>A logical value indicating whether no matched ranks
+(i.e. top rank and rankless concepts) should be deleted from the output
+or not.</p></dd>
+
+
 <dt>print_output</dt>
 <dd><p>Logical value indicating whether the merged concept
-should be displayed in the console.</p></dd>
+should be displayed in the console. Thi works only if a vector is
+provided at <code>concepts</code>.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -242,17 +256,17 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Merge to variety and genus</span></span></span>
 <span class="r-in"><span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">ky</span>, level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"variety"</span>, <span class="st">"genus"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> object size: 13.6 Kb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> object size: 13.7 Kb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon usage names: 44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon concepts: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon usage names: 45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon concepts: 4 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> trait entries: 0 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of trait variables: 1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> taxon views: 3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with parents: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with children: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with parents: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with children: 2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level form: 0</span>
@@ -261,7 +275,7 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level species: 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level complex: 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
