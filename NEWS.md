@@ -6,6 +6,11 @@
   objects.
 - New function `merge_to_parent()` merging multiple taxa to their respective
   parents.
+  
+### Improvements
+
+- Function `merge_taxa()` can now be used to query a list of taxonomic ranks.
+  This is enabled through the argument **level**.
 
 
 taxlist 0.2.4

@@ -8,7 +8,7 @@
 \usage{
 merge_taxa(object, ...)
 
-\method{merge_taxa}{taxlist}(object, concepts, level, print_output = FALSE, ...)
+\method{merge_taxa}{taxlist}(object, concepts, level = NULL, print_output = FALSE, ...)
 }
 \arguments{
 \item{object, taxlist}{Object of class \linkS4class{taxlist}.}
@@ -18,7 +18,10 @@ merge_taxa(object, ...)
 \item{concepts}{Numeric (integer) vector including taxon concepts to be
 merged.}
 
-\item{level}{Character vector indicating the lowest level for merging.}
+\item{level}{Character vector with queried taxonomic ranks. This setting
+works only if \code{concepts} are missing. ranks in between will be merged to
+their respective parents by \code{\link[=merge_to_parent]{merge_to_parent()}}. Non queried ranks as
+well as rankless concepts will be deleted from the output.}
 
 \item{print_output}{Logical value indicating whether the merged concept
 should be displayed in the console.}
@@ -49,6 +52,18 @@ summary(Easplist, c(206, 197))
 
 merged_cyperus <- merge_taxa(object = Easplist, concepts = c(206, 197),
     print_output = TRUE)
+
+## Subset with Kyllinga species
+ky <- subset(Easplist, TaxonName == "Kyllinga", keep_children = TRUE,
+    keep_parents = TRUE)
+ky
+indented_list(ky)
+
+## Merge to species and family
+merge_taxa(ky, level = c("species", "family"))
+
+## Merge to variety and genus
+merge_taxa(ky, level = c("variety", "genus"))
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

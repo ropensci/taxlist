@@ -18,3 +18,9 @@ test_that("taxa are merged", {
   ), print = TRUE)
   expect_equal(grepl("Cyperus", result$output), TRUE)
 })
+
+test_that("Error messages are triggered", {
+      expect_error(merge_taxa(Easplist, concepts = 1))
+      expect_error(merge_taxa(Easplist, concepts = c("flora", "fauna")))
+      expect_error(merge_taxa(Easplist))
+    })

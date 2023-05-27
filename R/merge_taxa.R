@@ -8,7 +8,10 @@
 #' @param object,taxlist Object of class [taxlist-class].
 #' @param concepts Numeric (integer) vector including taxon concepts to be
 #'     merged.
-#' @param level Character vector indicating the lowest level for merging.
+#' @param level Character vector with queried taxonomic ranks. This setting
+#'     works only if `concepts` are missing. ranks in between will be merged to
+#'     their respective parents by [merge_to_parent()]. Non queried ranks as
+#'     well as rankless concepts will be deleted from the output.
 #' @param print_output Logical value indicating whether the merged concept
 #'     should be displayed in the console.
 #' @param ... Further arguments to be passed to or from other methods.
@@ -45,7 +48,7 @@ merge_taxa <- function(object, ...) {
 #' @method merge_taxa taxlist
 #' @export
 merge_taxa.taxlist <- function(
-    object, concepts, level, print_output = FALSE,
+    object, concepts, level = NULL, print_output = FALSE,
     ...) {
   if (!missing(concepts)) {
     # Tests previous running function
@@ -71,40 +74,29 @@ merge_taxa.taxlist <- function(
       !object@taxonRelations$TaxonConceptID %in% concepts[-1],
     ]
     object <- clean(object)
-
     # Print result#
     if (print_output) {
       summary(object, concepts[1])
     }
   } else {
-    if (!level %in% paste(levels(object))) {
-      stop("The requested 'level' is not included in 'object'")
+    level <- level[level %in% levels(object)]
+    if (!length(level)) {
+      stop(paste(
+        "The queried ranks in 'level' are not included as levels",
+        "in 'object'"
+      ))
     }
-    for (i in paste(levels(object))[1:(which(paste(levels(object)) ==
-      level) - 1)]) {
-      DEL <- object@taxonRelations[
-        paste(object@taxonRelations$Level) == i,
-        "TaxonConceptID"
+    for (i in levels(object)) {
+      sel_level <- object@taxonRelations$TaxonConceptID[
+        object@taxonRelations$Level == i
       ]
-      REPL <- object@taxonRelations[
-        paste(object@taxonRelations$Level) == i, "Parent"
-      ]
-      object@taxonNames[
-        object@taxonNames$TaxonConceptID %in% DEL,
-        "TaxonConceptID"
-      ] <- REPL[
-        match(
-          object@taxonNames[
-            object@taxonNames$TaxonConceptID %in%
-              DEL, "TaxonConceptID"
-          ],
-          DEL
-        )
-      ]
-      object@taxonRelations <- object@taxonRelations[
-        !object@taxonRelations$TaxonConceptID %in% DEL,
-      ]
+      if (i %in% level) next
+      object <- merge_to_parent(object, concept_id = sel_level)
     }
+    # Select only selected levels
+    object@taxonRelations <- object@taxonRelations[
+      object@taxonRelations$Level %in% level,
+    ]
     object <- clean(object)
   }
   # Return modified object
