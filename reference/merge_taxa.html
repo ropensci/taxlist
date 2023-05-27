@@ -66,7 +66,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for taxlist</span></span>
-<span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, print_output <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, level <span class="op">=</span> <span class="cn">NULL</span>, print_output <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -85,7 +85,10 @@ merged.</p></dd>
 
 
 <dt>level</dt>
-<dd><p>Character vector indicating the lowest level for merging.</p></dd>
+<dd><p>Character vector with queried taxonomic ranks. This setting
+works only if <code>concepts</code> are missing. ranks in between will be merged to
+their respective parents by <code><a href="merge_to_parent.html">merge_to_parent()</a></code>. Non queried ranks as
+well as rankless concepts will be deleted from the output.</p></dd>
 
 
 <dt>print_output</dt>
@@ -171,6 +174,95 @@ level or higher (if parent of merged taxa are at a higher rank).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52612 Cyperus papyrus ssp. antiquorum (Willd.) Chiov. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 52613 Cyperus papyrus ssp. nyassicus Chiov. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------------------</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Subset with Kyllinga species</span></span></span>
+<span class="r-in"><span><span class="va">ky</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span><span class="va">Easplist</span>, <span class="va">TaxonName</span> <span class="op">==</span> <span class="st">"Kyllinga"</span>, keep_children <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    keep_parents <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ky</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> object size: 14.3 Kb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon usage names: 45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon concepts: 14 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trait entries: 8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of trait variables: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> taxon views: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with parents: 13 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with children: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level form: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level variety: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level species: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level complex: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu"><a href="indented_list.html">indented_list</a></span><span class="op">(</span><span class="va">ky</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyperaceae Juss.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Kyllinga Rottb.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga alata Nees</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga brevifolia Rottb.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga nemoralis (J.R. Forst. &amp; G. Forst.) Dandy ex Hutch. &amp; Dalziel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga pumila Michx.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga erecta Schumach.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      Kyllinga erecta var. erecta Schumach.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      Kyllinga erecta var. africana (Kük.) S.S. Hooper</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga crassipes Boeckeler</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga elatior Kunth</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga odorata Vahl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga species </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Kyllinga bulbosa P. Beauv. </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Merge to species and family</span></span></span>
+<span class="r-in"><span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">ky</span>, level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"species"</span>, <span class="st">"family"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> object size: 14.2 Kb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon usage names: 45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon concepts: 11 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trait entries: 8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of trait variables: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> taxon views: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with parents: 10 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with children: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level form: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level variety: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level species: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level complex: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Merge to variety and genus</span></span></span>
+<span class="r-in"><span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">ky</span>, level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"variety"</span>, <span class="st">"genus"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> object size: 13.6 Kb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> validation of 'taxlist' object: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon usage names: 44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of taxon concepts: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trait entries: 0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of trait variables: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> taxon views: 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with parents: 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> concepts with children: 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level form: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level variety: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level subspecies: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level species: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level complex: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level genus: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of concepts in level family: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </div>
