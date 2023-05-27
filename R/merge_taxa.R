@@ -12,8 +12,12 @@
 #'     works only if `concepts` are missing. ranks in between will be merged to
 #'     their respective parents by [merge_to_parent()]. Non queried ranks as
 #'     well as rankless concepts will be deleted from the output.
+#' @param delete_nomatch A logical value indicating whether no matched ranks
+#'     (i.e. top rank and rankless concepts) should be deleted from the output
+#'     or not.
 #' @param print_output Logical value indicating whether the merged concept
-#'     should be displayed in the console.
+#'     should be displayed in the console. Thi works only if a vector is
+#'     provided at `concepts`.
 #' @param ... Further arguments to be passed to or from other methods.
 #'
 #' @details
@@ -48,8 +52,8 @@ merge_taxa <- function(object, ...) {
 #' @method merge_taxa taxlist
 #' @export
 merge_taxa.taxlist <- function(
-    object, concepts, level = NULL, print_output = FALSE,
-    ...) {
+    object, concepts, level = NULL, delete_nomatch = FALSE,
+    print_output = FALSE, ...) {
   if (!missing(concepts)) {
     # Tests previous running function
     if (!length(concepts) > 1) {
@@ -93,11 +97,13 @@ merge_taxa.taxlist <- function(
       if (i %in% level) next
       object <- merge_to_parent(object, concept_id = sel_level)
     }
-    # Select only selected levels
-    object@taxonRelations <- object@taxonRelations[
-      object@taxonRelations$Level %in% level,
-    ]
-    object <- clean(object)
+    # Delete no matched levels
+    if (delete_nomatch) {
+      object@taxonRelations <- object@taxonRelations[
+        object@taxonRelations$Level %in% level,
+      ]
+      object <- clean(object)
+    }
   }
   # Return modified object
   return(object)

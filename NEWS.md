@@ -11,7 +11,8 @@
 
 - Function `merge_taxa()` can now be used to query a list of taxonomic ranks.
   This is enabled through the argument **level**.
-
+- A new argument **delelte_nomatch** in function `merge_taxa()` to delete
+  top ranks and rankless taxa.
 
 taxlist 0.2.4
 =============

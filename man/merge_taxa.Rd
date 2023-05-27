@@ -8,7 +8,14 @@
 \usage{
 merge_taxa(object, ...)
 
-\method{merge_taxa}{taxlist}(object, concepts, level = NULL, print_output = FALSE, ...)
+\method{merge_taxa}{taxlist}(
+  object,
+  concepts,
+  level = NULL,
+  delete_nomatch = FALSE,
+  print_output = FALSE,
+  ...
+)
 }
 \arguments{
 \item{object, taxlist}{Object of class \linkS4class{taxlist}.}
@@ -23,8 +30,13 @@ works only if \code{concepts} are missing. ranks in between will be merged to
 their respective parents by \code{\link[=merge_to_parent]{merge_to_parent()}}. Non queried ranks as
 well as rankless concepts will be deleted from the output.}
 
+\item{delete_nomatch}{A logical value indicating whether no matched ranks
+(i.e. top rank and rankless concepts) should be deleted from the output
+or not.}
+
 \item{print_output}{Logical value indicating whether the merged concept
-should be displayed in the console.}
+should be displayed in the console. Thi works only if a vector is
+provided at \code{concepts}.}
 }
 \value{
 An object of class \linkS4class{taxlist}.

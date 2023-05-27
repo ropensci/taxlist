@@ -20,7 +20,7 @@ test_that("taxa are merged", {
 })
 
 test_that("Error messages are triggered", {
-      expect_error(merge_taxa(Easplist, concepts = 1))
-      expect_error(merge_taxa(Easplist, concepts = c("flora", "fauna")))
-      expect_error(merge_taxa(Easplist))
-    })
+  expect_error(merge_taxa(Easplist, concepts = 1))
+  expect_error(merge_taxa(Easplist, concepts = c("flora", "fauna")))
+  expect_error(merge_taxa(Easplist))
+})
