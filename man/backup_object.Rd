@@ -2,6 +2,7 @@
 % Please edit documentation in R/backup_object.R
 \name{backup_object}
 \alias{backup_object}
+\alias{sort_backups}
 \alias{load_last}
 \title{Make and load backups of R objects}
 \usage{
@@ -10,14 +11,26 @@ backup_object(
   objects = character(),
   file,
   stamp = TRUE,
+  sep = "_",
+  date_format = "\%Y-\%m-\%d",
+  time_format = "\%H:\%M:\%S",
   overwrite = FALSE
 )
 
-load_last(file, fext = ".rda")
+sort_backups(
+  name,
+  path = ".",
+  date_format = "\%Y-\%m-\%d",
+  fext = ".rda",
+  sep = "_"
+)
+
+load_last(file, path, ..., choice)
 }
 \arguments{
 \item{...}{Names of the objects to be saved (either symbols or character
-strings).}
+strings) in \code{backup_object()}. In \code{load_last()}, arguments passed to
+\code{sort_backups()}.}
 
 \item{objects}{A character vector indicating the names of objects to be
 included in the backup file.}
@@ -28,14 +41,38 @@ the extension.}
 \item{stamp}{A logical value indicating whether time should be stamped in the
 backup name or not.}
 
+\item{sep}{A character value used to separate backup's name from stamp and
+from the suffix.}
+
+\item{date_format}{A character value indicating the format used for the
+file stamp. See \code{\link[=strptime]{strptime()}}.}
+
+\item{time_format}{A character value indicating the format used for the
+the time (not including the date), which will be used for the invisible
+report in \code{backup_object()}. See \code{\link[=strptime]{strptime()}}.}
+
 \item{overwrite}{A logical value indicating whether existing files must be
 overwritten or not.}
 
+\item{name}{A character value indicating the root of the backup's name.}
+
+\item{path}{A character value indicating the path to the folder containing
+the backup files.}
+
 \item{fext}{A character value indicating the file extension (including the
 dot symbol).}
+
+\item{choice}{An integer value indicating the backup file to be used for
+recovery. This value refers to the row in the output of \code{sort_backups()}.
+If not provided, \code{load_last()} will select the newest backup.}
 }
 \value{
-An R image with extension \bold{*.rda}.
+The function \code{backup_object()} writes an R-image with extension \bold{*.rda}
+and an invisible vector with the name of the backup, its absolute path and
+a time stamp.
+
+The function \code{sort_backups()} returns a data frame including the sorted names
+of backup files from the oldest to the newest.
 }
 \description{
 When work with data becomes risky, the best practice is to produce backup
@@ -65,22 +102,27 @@ Pseudognaphalium <- subset(x = Easplist, subset = grepl("Pseudognaphalium",
         TaxonName), slot = "names", keep_parents = TRUE)
 
 ## Create a backup with date stamp in tempdir
-backup_object(Pseudognaphalium, file = file.path(tempdir(), "Pseudonaphalium"))
+backup_object(Pseudognaphalium, file = file.path(tempdir(), "Pseudognaphalium"))
 
-## The same again
-backup_object(Pseudognaphalium, file = file.path(tempdir(), "Pseudonaphalium"))
+## Retrieve paths of backup
+info_back <- backup_object(Pseudognaphalium, file = file.path(tempdir(),
+        "Pseudognaphalium"))
+info_back
+
+## Display all backups
+sort_backups("Pseudognaphalium", tempdir())
 
 ## Delete object
 rm(list = "Pseudognaphalium")
 
 ## To load the last backup into a session
-load_last(file = file.path(tempdir(), "Pseudonaphalium"))
+load_last("Pseudognaphalium", path = tempdir())
 
 ## Load pre-installed backup
 load_last(file.path(path.package("taxlist"), "extdata", "Podocarpus"))
 }
 \seealso{
-\code{\link{save}} \code{\link{load}}.
+\code{\link[=save]{save()}}, \code{\link[=load]{load()}}.
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

@@ -6,6 +6,8 @@
   objects.
 - New function `merge_to_parent()` merging multiple taxa to their respective
   parents.
+- New function `sort_backups()` retrieving a sorted list of backups written by
+  `backup_object()`.
   
 ### Improvements
 
@@ -13,6 +15,11 @@
   This is enabled through the argument **level**.
 - A new argument **delelte_nomatch** in function `merge_taxa()` to delete
   top ranks and rankless taxa.
+- Function `backup_object()` retrieves an invisible vector with information
+  about the written backup.
+- Function `load_last()` retrieves an invisible data frame with information
+  about the imported backup. It also include a new argument `choice` to select
+  a different backup from the list produced by `sort_backups()`.
 
 taxlist 0.2.4
 =============
