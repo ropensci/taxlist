@@ -63,11 +63,14 @@
 <h4 id="new-features-0-2-5">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-2-5"></a></h4>
 <ul><li>New function <code><a href="../reference/prune_levels.html">prune_levels()</a></code> pruning levels that are not used in <code>taxlist</code> objects.</li>
 <li>New function <code><a href="../reference/merge_to_parent.html">merge_to_parent()</a></code> merging multiple taxa to their respective parents.</li>
+<li>New function <code><a href="../reference/backup_object.html">sort_backups()</a></code> retrieving a sorted list of backups written by <code><a href="../reference/backup_object.html">backup_object()</a></code>.</li>
 </ul></div>
 <div class="section level4">
 <h4 id="improvements-0-2-5">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-2-5"></a></h4>
 <ul><li>Function <code><a href="../reference/merge_taxa.html">merge_taxa()</a></code> can now be used to query a list of taxonomic ranks. This is enabled through the argument <strong>level</strong>.</li>
 <li>A new argument <strong>delelte_nomatch</strong> in function <code><a href="../reference/merge_taxa.html">merge_taxa()</a></code> to delete top ranks and rankless taxa.</li>
+<li>Function <code><a href="../reference/backup_object.html">backup_object()</a></code> retrieves an invisible vector with information about the written backup.</li>
+<li>Function <code><a href="../reference/backup_object.html">load_last()</a></code> retrieves an invisible data frame with information about the imported backup. It also include a new argument <code>choice</code> to select a different backup from the list produced by <code><a href="../reference/backup_object.html">sort_backups()</a></code>.</li>
 </ul></div>
 </div>
     <div class="section level2">

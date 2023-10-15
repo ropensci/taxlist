@@ -80,17 +80,29 @@ version to the session.</p>
 <span>  objects <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">file</span>,</span>
 <span>  stamp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">"_"</span>,</span>
+<span>  date_format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span>,</span>
+<span>  time_format <span class="op">=</span> <span class="st">"%H:%M:%S"</span>,</span>
 <span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">load_last</span><span class="op">(</span><span class="va">file</span>, fext <span class="op">=</span> <span class="st">".rda"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">sort_backups</span><span class="op">(</span></span>
+<span>  <span class="va">name</span>,</span>
+<span>  path <span class="op">=</span> <span class="st">"."</span>,</span>
+<span>  date_format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span>,</span>
+<span>  fext <span class="op">=</span> <span class="st">".rda"</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">"_"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">load_last</span><span class="op">(</span><span class="va">file</span>, <span class="va">path</span>, <span class="va">...</span>, <span class="va">choice</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>...</dt>
 <dd><p>Names of the objects to be saved (either symbols or character
-strings).</p></dd>
+strings) in <code>backup_object()</code>. In <code>load_last()</code>, arguments passed to
+<code>sort_backups()</code>.</p></dd>
 
 
 <dt>objects</dt>
@@ -108,21 +120,60 @@ the extension.</p></dd>
 backup name or not.</p></dd>
 
 
+<dt>sep</dt>
+<dd><p>A character value used to separate backup's name from stamp and
+from the suffix.</p></dd>
+
+
+<dt>date_format</dt>
+<dd><p>A character value indicating the format used for the
+file stamp. See <code><a href="https://rdrr.io/r/base/strptime.html" class="external-link">strptime()</a></code>.</p></dd>
+
+
+<dt>time_format</dt>
+<dd><p>A character value indicating the format used for the
+the time (not including the date), which will be used for the invisible
+report in <code>backup_object()</code>. See <code><a href="https://rdrr.io/r/base/strptime.html" class="external-link">strptime()</a></code>.</p></dd>
+
+
 <dt>overwrite</dt>
 <dd><p>A logical value indicating whether existing files must be
 overwritten or not.</p></dd>
+
+
+<dt>name</dt>
+<dd><p>A character value indicating the root of the backup's name.</p></dd>
+
+
+<dt>path</dt>
+<dd><p>A character value indicating the path to the folder containing
+the backup files.</p></dd>
 
 
 <dt>fext</dt>
 <dd><p>A character value indicating the file extension (including the
 dot symbol).</p></dd>
 
+
+<dt>choice</dt>
+<dd><p>An integer value indicating the backup file to be used for
+recovery. This value refers to the row in the output of <code>sort_backups()</code>.
+If not provided, <code>load_last()</code> will select the newest backup.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     
 
-<p>An R image with extension <b>*.rda</b>.</p>
+<p>The function <code>backup_object()</code> writes an R-image with extension <b>*.rda</b></p>
+
+
+<p>and an invisible vector with the name of the backup, its absolute path and
+a time stamp.</p>
+
+
+<p>The function <code>sort_backups()</code> returns a data frame including the sorted names
+of backup files from the oldest to the newest.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -139,7 +190,7 @@ stamp.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/r/base/save.html" class="external-link">save</a></code> <code><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></code>.</p></div>
+    <div class="dont-index"><p><code><a href="https://rdrr.io/r/base/save.html" class="external-link">save()</a></code>, <code><a href="https://rdrr.io/r/base/load.html" class="external-link">load()</a></code>.</p></div>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -153,19 +204,26 @@ stamp.</p>
 <span class="r-in"><span>        <span class="va">TaxonName</span><span class="op">)</span>, slot <span class="op">=</span> <span class="st">"names"</span>, keep_parents <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Create a backup with date stamp in tempdir</span></span></span>
-<span class="r-in"><span><span class="fu">backup_object</span><span class="op">(</span><span class="va">Pseudognaphalium</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Pseudonaphalium"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">backup_object</span><span class="op">(</span><span class="va">Pseudognaphalium</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Pseudognaphalium"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in save(..., list = objects, file = file.path(path, paste0(file2,     ".rda"))):</span> object ‘Pseudognaphalium’ not found</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## The same again</span></span></span>
-<span class="r-in"><span><span class="fu">backup_object</span><span class="op">(</span><span class="va">Pseudognaphalium</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Pseudonaphalium"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## Retrieve paths of backup</span></span></span>
+<span class="r-in"><span><span class="va">info_back</span> <span class="op">&lt;-</span> <span class="fu">backup_object</span><span class="op">(</span><span class="va">Pseudognaphalium</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        <span class="st">"Pseudognaphalium"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in save(..., list = objects, file = file.path(path, paste0(file2,     ".rda"))):</span> object ‘Pseudognaphalium’ not found</span>
+<span class="r-in"><span><span class="va">info_back</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'info_back' not found</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Display all backups</span></span></span>
+<span class="r-in"><span><span class="fu">sort_backups</span><span class="op">(</span><span class="st">"Pseudognaphalium"</span>, <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in sort_backups("Pseudognaphalium", tempdir()):</span> The requested backup is missing.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Delete object</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="st">"Pseudognaphalium"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## To load the last backup into a session</span></span></span>
-<span class="r-in"><span><span class="fu">load_last</span><span class="op">(</span>file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Pseudonaphalium"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in sort_backups(file = file, fext = fext):</span> The requested backup is missing in the working directory.</span>
+<span class="r-in"><span><span class="fu">load_last</span><span class="op">(</span><span class="st">"Pseudognaphalium"</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in sort_backups(name = file, path = path, ...):</span> The requested backup is missing.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Load pre-installed backup</span></span></span>
 <span class="r-in"><span><span class="fu">load_last</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span>, <span class="st">"extdata"</span>, <span class="st">"Podocarpus"</span><span class="op">)</span><span class="op">)</span></span></span>
