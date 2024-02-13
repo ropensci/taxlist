@@ -3,29 +3,10 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-library(taxlist)
+library(vegtable)
 
-# Easplist ---------------------------------------------------------------------
+# veg_layers -------------------------------------------------------------------
+veg_layers <- read.csv("data-raw/veg_layers.csv")
+veg_layers$layer <- as.factor(veg_layers$layer)
 
-
-# Sub-folder in taxlist source
-Dir <- "data-raw/Easplist"
-
-Easplist <- new("taxlist")
-
-# Read tables
-for (i in c("taxonViews", "taxonRelations", "taxonNames", "taxonTraits")) {
-  slot(Easplist, i) <- read.csv2(file.path(Dir, paste0(i, ".csv")),
-    encoding = "UTF-8", stringsAsFactors = FALSE
-  )
-}
-levels(Easplist) <- c(
-  "form", "variety", "subspecies", "species", "complex", "genus",
-  "family"
-)
-
-# Cross-check
-summary(Easplist)
-
-# Write the object
-save(Easplist, file = "data/Easplist.rda")
+save(veg_layers, file = "data/veg_layers.rda")
