@@ -2,6 +2,7 @@
 % Please edit documentation in R/taxlist-package.R
 \docType{package}
 \name{taxlist-package}
+\alias{taxlist}
 \alias{taxlist-package}
 \title{taxlist: Handling taxonomic lists.}
 \description{
@@ -31,6 +32,16 @@ For a more detailed description of this package, see Alvarez & Luebert
 \bold{Alvarez M, Luebert F (2018).} The taxlist package: managing plant
 taxonomic lists in R. \emph{Biodiversity Data Journal} 6: e23635.
 \doi{10.3897/bdj.6.e23635}
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://cran.r-project.org/package=taxlist}
+  \item \url{https://github.com/ropensci/taxlist}
+  \item \url{https://docs.ropensci.org/taxlist/}
+  \item Report bugs at \url{https://github.com/ropensci/taxlist/issues}
+}
+
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
