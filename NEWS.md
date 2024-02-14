@@ -8,6 +8,8 @@
   parents.
 - New function `sort_backups()` retrieving a sorted list of backups written by
   `backup_object()`.
+- New function `taxlist2df()` for converting `taxlist` objects into data
+  frames.
   
 ### Improvements
 

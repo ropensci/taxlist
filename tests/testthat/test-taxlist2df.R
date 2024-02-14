@@ -9,4 +9,11 @@ test_that("coercion to data frame works", {
     as(tax, "data.frame"),
     "data.frame"
   )
+  expect_is(
+    taxlist2df(tax, standard = "dwc"),
+    "data.frame"
+  )
+  expect_error(
+    taxlist2df(tax, standard = "something")
+  )
 })
