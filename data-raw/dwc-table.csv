@@ -1,0 +1,9 @@
+dwc,taxlist
+taxonID,TaxonConceptID
+scientificNameID,TaxonUsageID
+acceptedNameUsageID,AcceptedName
+originalNameUsageID,Basionym
+nameAccordingToID,ViewID
+scientificName,TaxonName
+taxonRank,Level
+scientificNameAuthorship,AuthorName
