@@ -23,10 +23,3 @@ Easplist@taxonTraits$lifeform <- replace_idx(x = Easplist@taxonTraits$life_form,
   idx1 = grepl("annual", Easplist@taxonTraits$life_form), idx2 = TRUE,
   new = "annual")
 summary(as.factor(Easplist$lifeform))
-
-## Merge data frames including new columns
-data(iris)
-iris$Species <- paste(iris$Species)
-new_iris <- data.frame(Species = rep("humilis", 2), Height = c(15, 20),
-  stringsAsFactors = FALSE)
-insert_rows(iris, new_iris)

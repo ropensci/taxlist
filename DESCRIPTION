@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.4.9002
+Version: 0.2.5
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -50,6 +50,7 @@ Collate:
     'deprecated-functions.R'
     'id_generator.R'
     'replace_x.R'
+    'insert_rows.R'
     'dissect_name.R'
     'clean_strings.R'
     'taxlist-class.R'
