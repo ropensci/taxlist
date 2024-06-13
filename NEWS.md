@@ -1,4 +1,4 @@
-# taxlist 0.2.5
+# taxlist 0.3.0
 
 ### New Features
 
@@ -22,6 +22,7 @@
 - Function `load_last()` retrieves an invisible data frame with information
   about the imported backup. It also include a new argument `choice` to select
   a different backup from the list produced by `sort_backups()`.
+- Function `insert_rows()` was redefined as a generic function.
 
 taxlist 0.2.4
 =============

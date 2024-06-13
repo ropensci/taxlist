@@ -4,7 +4,6 @@
 \alias{replace_x}
 \alias{replace_idx}
 \alias{replace_na}
-\alias{insert_rows}
 \title{Data manipulation.}
 \usage{
 replace_x(x, old, new)
@@ -12,8 +11,6 @@ replace_x(x, old, new)
 replace_idx(x, idx1 = x, idx2 = idx1, new)
 
 replace_na(x, idx1, idx2 = idx1, new)
-
-insert_rows(x, y)
 }
 \arguments{
 \item{x}{A vector to be modified. In the case of \code{insert_rows()}, \code{x} is a
@@ -27,8 +24,6 @@ or using indices.}
 \item{idx1, idx2}{Indices applied for value replacements to match \code{x} with
 \code{new}, respectively. If \code{idx2} is not provided, it will be assumed as
 equivalent to \code{idx1}.}
-
-\item{y}{A data frame including rows (and columns) to be inserted in \code{x}.}
 }
 \value{
 A vector or data frame with the modified values.
@@ -36,7 +31,7 @@ A vector or data frame with the modified values.
 \description{
 This is a series of functions designed for a fast coding of replacements
 both, as internal functions and in workflows dealing with information stored
-in vectors and data frames.
+in vectors.
 Such functions are especially useful when handling with functional traits
 stored in \linkS4class{taxlist} objects.
 
@@ -44,10 +39,6 @@ stored in \linkS4class{taxlist} objects.
 \code{replace_idx()} changes values in vectors by matching indices or conditions.
 The function \code{replace_na()} works in the same way as \code{replace_idx()} but will
 only insert values in empty elements (NAs).
-
-The function \code{insert_rows()} will add rows and columns at the same time.
-This function will be used when a new table is appended to another but
-sharing only part of the columns.
 }
 \examples{
 ## Replace values in vector
@@ -75,13 +66,6 @@ Easplist@taxonTraits$lifeform <- replace_idx(x = Easplist@taxonTraits$life_form,
   idx1 = grepl("annual", Easplist@taxonTraits$life_form), idx2 = TRUE,
   new = "annual")
 summary(as.factor(Easplist$lifeform))
-
-## Merge data frames including new columns
-data(iris)
-iris$Species <- paste(iris$Species)
-new_iris <- data.frame(Species = rep("humilis", 2), Height = c(15, 20),
-  stringsAsFactors = FALSE)
-insert_rows(iris, new_iris)
 }
 \author{
 Miguel Alvarez.
