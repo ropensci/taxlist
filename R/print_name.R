@@ -32,6 +32,8 @@
 #'     italics.
 #' @param trim A character vectors with words appearing at the end of scientific
 #'     names that are not formatted in italics, either.
+#' @param italics A logical value indicating whether the names should be
+#'     italized or not.
 #' @param ... Further arguments passed among methods.
 #'
 #' @return A character value including format to italic font.
@@ -60,76 +62,79 @@ print_name.character <- function(object, second_mention = FALSE,
                                    "fma."
                                  ),
                                  trim = c("spp.", "sp.", "species"),
+                                 italics = TRUE,
                                  ...) {
-  # set style
-  style <- pmatch(tolower(style), c(
-    "markdown", "html", "knitr", "expression"
-  ))
-  if (!style %in% c(1:4)) {
-    stop("Non-valid value for 'style'")
-  }
-  if (style == 1) {
-    Start <- "*"
-    End <- "*"
-  }
-  if (style == 2) {
-    Start <- "<i>"
-    End <- "</i>"
-  }
-  if (style == 3) {
-    Start <- "\\textit{"
-    End <- "}"
-  }
-  if (style == 4) {
-    Start <- "italic(\""
-    End <- "\")"
-  }
-  # Abbreviate first name if required
-  if (second_mention) {
-    name_parts <- unlist(lapply(str_split(object, " "), length))
-    idx <- name_parts > 1
-    first_part <- dissect_name(object, repaste = 1)
-    name_abbr <- paste0(substr(first_part, 1, 1), ".")
-    object[idx] <- str_replace_all(
-      object[idx], first_part[idx],
-      name_abbr[idx]
-    )
-  }
-  # Add italics
-  object <- paste0(Start, object, End)
-  if (style != 4) {
-    for (i in isolate) {
-      object <- str_replace_all(
-        object, fixed(paste0(" ", i, " ")),
-        paste0(End, " ", i, " ", Start)
+  if (italics) {
+    # set style
+    style <- pmatch(tolower(style), c(
+            "markdown", "html", "knitr", "expression"
+        ))
+    if (!style %in% c(1:4)) {
+      stop("Non-valid value for 'style'")
+    }
+    if (style == 1) {
+      Start <- "*"
+      End <- "*"
+    }
+    if (style == 2) {
+      Start <- "<i>"
+      End <- "</i>"
+    }
+    if (style == 3) {
+      Start <- "\\textit{"
+      End <- "}"
+    }
+    if (style == 4) {
+      Start <- "italic(\""
+      End <- "\")"
+    }
+    # Abbreviate first name if required
+    if (second_mention) {
+      name_parts <- unlist(lapply(str_split(object, " "), length))
+      idx <- name_parts > 1
+      first_part <- dissect_name(object, repaste = 1)
+      name_abbr <- paste0(substr(first_part, 1, 1), ".")
+      object[idx] <- str_replace_all(
+          object[idx], first_part[idx],
+          name_abbr[idx]
       )
     }
-    for (i in trim) {
-      object <- str_replace_all(
-        object, fixed(paste0(" ", i, End)),
-        paste0(End, " ", i)
-      )
-    }
-    return(object)
-  } else {
-    for (i in isolate) {
-      object <- str_replace_all(
-        object, fixed(paste0(" ", i, " ")),
-        paste0(End, "~\"", i, "\"~", Start)
-      )
-    }
-    for (i in trim) {
-      object <- str_replace_all(
-        object, fixed(paste0(" ", i, End)),
-        paste0(End, "~\"", i, "\"")
-      )
-    }
-    if (length(object == 1)) {
-      return(parse(text = object))
+    # Add italics
+    object <- paste0(Start, object, End)
+    if (style != 4) {
+      for (i in isolate) {
+        object <- str_replace_all(
+            object, fixed(paste0(" ", i, " ")),
+            paste0(End, " ", i, " ", Start)
+        )
+      }
+      for (i in trim) {
+        object <- str_replace_all(
+            object, fixed(paste0(" ", i, End)),
+            paste0(End, " ", i)
+        )
+      }
     } else {
-      return(parse(text = paste0("expression(", object, ")")))
+      for (i in isolate) {
+        object <- str_replace_all(
+            object, fixed(paste0(" ", i, " ")),
+            paste0(End, "~\"", i, "\"~", Start)
+        )
+      }
+      for (i in trim) {
+        object <- str_replace_all(
+            object, fixed(paste0(" ", i, End)),
+            paste0(End, "~\"", i, "\"")
+        )
+      }
+      if (length(object == 1)) {
+        object <- parse(text = object)
+      } else {
+        object <- parse(text = paste0("expression(", object, ")"))
+      }
     }
   }
+  return(object)
 }
 
 #' @rdname print_name

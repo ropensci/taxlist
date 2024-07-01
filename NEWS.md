@@ -23,6 +23,12 @@
   about the imported backup. It also include a new argument `choice` to select
   a different backup from the list produced by `sort_backups()`.
 - Function `insert_rows()` was redefined as a generic function.
+- New arguments in function `print_name()`:
+  - **italics:** a logical value that allows to unset italic format of names.
+    This can be usefull for taxonomic ranks that are not written in italics
+    (e.g. Family names in plant and animals).
+  - **collapse:** a character value (or vector of lengh 2), used to collapse
+    strings of names, for instance to mention more than one taxa in the text.
 
 taxlist 0.2.4
 =============

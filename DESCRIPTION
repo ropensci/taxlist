@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.5
+Version: 0.2.6
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -11,7 +11,7 @@ Authors@R: c(
 	person("Margaret", "Siple", email="siplem@uw.edu", role="rev")
     )
 Depends:
-    R(>= 4.0)
+    R(>= 4.3)
 Imports:
     biblio (>= 0.0.8),
     foreign,
