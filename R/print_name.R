@@ -36,7 +36,8 @@
 #'     italized or not.
 #' @param collapse A character value or vector used to collapse the names and
 #'     passed to [paste0()]. If its lenght is 2, the second value will be used
-#'     to connect the two last names.
+#'     to connect the two last names. Note that collapse is not yet implemented
+#'     for `style = "expression"`.
 #' @param ... Further arguments passed among methods.
 #'
 #' @return A character value including format to italic font.
@@ -91,6 +92,7 @@ print_name.character <- function(object, second_mention = FALSE,
                                  italics = TRUE,
                                  collapse,
                                  ...) {
+  # Add italics
   if (italics) {
     # set style
     style <- pmatch(tolower(style), c(
@@ -175,12 +177,14 @@ print_name.character <- function(object, second_mention = FALSE,
 print_name.taxlist <- function(object, id, concept = TRUE,
                                include_author = TRUE, secundum,
                                style = "markdown",
+                               italics = TRUE,
+                               collapse,
                                ...) {
   if (!missing(secundum)) {
     if (!secundum %in% names(object@taxonViews)) {
       stop(paste0(
         "The value '", secundum,
-        "' is not included as column slot 'taxonViews'."
+        "' is not included as column in slot 'taxonViews'."
       ))
     }
   }
@@ -194,8 +198,12 @@ print_name.taxlist <- function(object, id, concept = TRUE,
   if (concept) {
     id <- with(object@taxonRelations, AcceptedName[match(id, TaxonConceptID)])
   }
+  # Switch style for expression
+  if (style == "expression" & !italics) {
+    style <- "markdown"
+  }
   sp_names <- with(object@taxonNames, TaxonName[match(id, TaxonUsageID)])
-  sp_names <- print_name(sp_names, style = style, ...)
+  sp_names <- print_name(sp_names, style = style, italics = italics, ...)
   if (style != "expression") {
     if (include_author) {
       sp_names <- with(
@@ -219,6 +227,9 @@ print_name.taxlist <- function(object, id, concept = TRUE,
           object@taxonViews$ViewID
         )]
       )
+    }
+    if (!missing(collapse)) {
+      sp_names <- collapse_names(sp_names, collapse)
     }
     return(sp_names)
   } else {
