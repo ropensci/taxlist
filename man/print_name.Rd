@@ -16,6 +16,8 @@ print_name(object, ...)
   style = "markdown",
   isolate = c("var.", "ssp.", "subsp.", "f.", "fma."),
   trim = c("spp.", "sp.", "species"),
+  italics = TRUE,
+  collapse,
   ...
 )
 
@@ -26,6 +28,8 @@ print_name(object, ...)
   include_author = TRUE,
   secundum,
   style = "markdown",
+  italics = TRUE,
+  collapse,
   ...
 )
 }
@@ -49,6 +53,14 @@ italics.}
 
 \item{trim}{A character vectors with words appearing at the end of scientific
 names that are not formatted in italics, either.}
+
+\item{italics}{A logical value indicating whether the names should be
+italized or not.}
+
+\item{collapse}{A character value or vector used to collapse the names and
+passed to \code{\link[=paste0]{paste0()}}. If its lenght is 2, the second value will be used
+to connect the two last names. Note that collapse is not yet implemented
+for \code{style = "expression"}.}
 
 \item{id}{Integer containing either a concept or a name ID.}
 
