@@ -34,6 +34,9 @@
 #'     names that are not formatted in italics, either.
 #' @param italics A logical value indicating whether the names should be
 #'     italized or not.
+#' @param collapse A character value or vector used to collapse the names and
+#'     passed to [paste0()]. If its lenght is 2, the second value will be used
+#'     to connect the two last names.
 #' @param ... Further arguments passed among methods.
 #'
 #' @return A character value including format to italic font.
@@ -51,6 +54,29 @@ print_name <- function(object, ...) {
   UseMethod("print_name", object)
 }
 
+#' @title Collapse names
+#' @description
+#' Collapse name strings for document contents.
+#' It will be used internally when formatting several names and including them
+#' in a text body.
+#'
+#' @param x A character vector containing a chain of names.
+#' @param collapse A character value or vector used to collapse the names and
+#'     passed to [paste0]. If its lenght is 2, the second value will be used to
+#'     connect the two last names.
+#'
+#' @keywords internal
+collapse_names <- function(x, collapse) {
+  if (length(collapse) > 1) {
+    x <- paste0(c(paste0(x[-length(x)], collapse = collapse[1]), x[length(x)]),
+      collapse = collapse[2]
+    )
+  } else {
+    x <- paste0(x, collapse = collapse[1])
+  }
+  return(x)
+}
+
 #' @rdname print_name
 #' @aliases print_name,character-method
 #' @method print_name character
@@ -63,12 +89,13 @@ print_name.character <- function(object, second_mention = FALSE,
                                  ),
                                  trim = c("spp.", "sp.", "species"),
                                  italics = TRUE,
+                                 collapse,
                                  ...) {
   if (italics) {
     # set style
     style <- pmatch(tolower(style), c(
-            "markdown", "html", "knitr", "expression"
-        ))
+      "markdown", "html", "knitr", "expression"
+    ))
     if (!style %in% c(1:4)) {
       stop("Non-valid value for 'style'")
     }
@@ -95,8 +122,8 @@ print_name.character <- function(object, second_mention = FALSE,
       first_part <- dissect_name(object, repaste = 1)
       name_abbr <- paste0(substr(first_part, 1, 1), ".")
       object[idx] <- str_replace_all(
-          object[idx], first_part[idx],
-          name_abbr[idx]
+        object[idx], first_part[idx],
+        name_abbr[idx]
       )
     }
     # Add italics
@@ -104,27 +131,27 @@ print_name.character <- function(object, second_mention = FALSE,
     if (style != 4) {
       for (i in isolate) {
         object <- str_replace_all(
-            object, fixed(paste0(" ", i, " ")),
-            paste0(End, " ", i, " ", Start)
+          object, fixed(paste0(" ", i, " ")),
+          paste0(End, " ", i, " ", Start)
         )
       }
       for (i in trim) {
         object <- str_replace_all(
-            object, fixed(paste0(" ", i, End)),
-            paste0(End, " ", i)
+          object, fixed(paste0(" ", i, End)),
+          paste0(End, " ", i)
         )
       }
     } else {
       for (i in isolate) {
         object <- str_replace_all(
-            object, fixed(paste0(" ", i, " ")),
-            paste0(End, "~\"", i, "\"~", Start)
+          object, fixed(paste0(" ", i, " ")),
+          paste0(End, "~\"", i, "\"~", Start)
         )
       }
       for (i in trim) {
         object <- str_replace_all(
-            object, fixed(paste0(" ", i, End)),
-            paste0(End, "~\"", i, "\"")
+          object, fixed(paste0(" ", i, End)),
+          paste0(End, "~\"", i, "\"")
         )
       }
       if (length(object == 1)) {
@@ -133,6 +160,10 @@ print_name.character <- function(object, second_mention = FALSE,
         object <- parse(text = paste0("expression(", object, ")"))
       }
     }
+  }
+  # Collapse string
+  if (!missing(collapse) & style != 4) {
+    object <- collapse_names(object, collapse)
   }
   return(object)
 }
