@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.6</span>
       </span>
     </div>
 
@@ -73,6 +73,12 @@
 <li>Function <code><a href="../reference/backup_object.html">backup_object()</a></code> retrieves an invisible vector with information about the written backup.</li>
 <li>Function <code><a href="../reference/backup_object.html">load_last()</a></code> retrieves an invisible data frame with information about the imported backup. It also include a new argument <code>choice</code> to select a different backup from the list produced by <code><a href="../reference/backup_object.html">sort_backups()</a></code>.</li>
 <li>Function <code><a href="../reference/insert_rows.html">insert_rows()</a></code> was redefined as a generic function.</li>
+<li>New arguments in function <code><a href="../reference/print_name.html">print_name()</a></code>:
+<ul><li>
+<strong>italics:</strong> a logical value that allows to unset italic format of names. This can be usefull for taxonomic ranks that are not written in italics (e.g. Family names in plant and animals).</li>
+<li>
+<strong>collapse:</strong> a character value (or vector of lengh 2), used to collapse strings of names, for instance to mention more than one taxa in the text.</li>
+</ul></li>
 </ul></div>
 </div>
     <div class="section level2">
