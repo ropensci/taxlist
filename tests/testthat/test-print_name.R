@@ -52,14 +52,16 @@ test_that("name strings get collapsed", {
     1
   )
   expect_equal(
-      length(print_name(Easplist, t_names, secundum = "secundum",
-              second_mention = TRUE, collapse = c(" / "))),
-      1
+    length(print_name(Easplist, t_names,
+      secundum = "secundum",
+      second_mention = TRUE, collapse = c(" / ")
+    )),
+    1
   )
 })
 
 test_that("error messages are triggered", {
-      expect_error(print_name("Poa annua", style = "latex"))
-      t_names <- c(339, 340, 50499)
-      expect_error(print_name(Easplist, t_names, secundum = "some_column"))
-    })
+  expect_error(print_name("Poa annua", style = "latex"))
+  t_names <- c(339, 340, 50499)
+  expect_error(print_name(Easplist, t_names, secundum = "some_column"))
+})

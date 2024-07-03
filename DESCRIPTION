@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.6
+Version: 0.2.7
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -80,5 +80,6 @@ Collate:
     'Easplist-data.R'
     'taxlist-package.R'
     'taxlist2df.R'
+    'parents.R'
 VignetteBuilder: knitr
 RoxygenNote: 7.3.1
