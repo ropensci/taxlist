@@ -68,12 +68,14 @@ print_name <- function(object, ...) {
 #'
 #' @keywords internal
 collapse_names <- function(x, collapse) {
-  if (length(collapse) > 1) {
-    x <- paste0(c(paste0(x[-length(x)], collapse = collapse[1]), x[length(x)]),
-      collapse = collapse[2]
-    )
-  } else {
-    x <- paste0(x, collapse = collapse[1])
+  if (length(x) > 1) {
+    if (length(collapse) > 1) {
+      x <- paste0(c(paste0(x[-length(x)], collapse = collapse[1]), x[length(x)]),
+        collapse = collapse[2]
+      )
+    } else {
+      x <- paste0(x, collapse = collapse[1])
+    }
   }
   return(x)
 }
