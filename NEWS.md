@@ -10,6 +10,8 @@
   `backup_object()`.
 - New function `taxlist2df()` for converting `taxlist` objects into data
   frames.
+- New function `parents()` retrieving parent taxa at a determined rank for
+  selected taxon concepts.
   
 ### Improvements
 

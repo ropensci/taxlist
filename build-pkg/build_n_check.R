@@ -23,9 +23,6 @@ unlink(file.path("build-pkg", list.files("build-pkg", ".tar.gz")))
 pkg_loc <- build(path = "build-pkg", args = "--resave-data")
 check_built(path = pkg_loc)
 
-# common check
-check_built(path = pkg_loc)
-
 # check coverage
 report()
 

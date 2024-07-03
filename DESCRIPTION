@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.2.7
+Version: 0.3.0
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
