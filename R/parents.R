@@ -11,7 +11,8 @@
 #' @param level A character value indicating the level at which the parents will
 #'     be extracted (upwards in the taxonomic ranks).
 #' @param concept A vector containing concept IDs. The taxa for which the
-#'     parents will be retrieved.
+#'     parents will be retrieved. If not provided, parents for every single
+#'     taxon concept in 'taxlist' will be retrieved.
 #' @param ... Further arguments passed among methods.
 #'
 #' @example examples/parents.R

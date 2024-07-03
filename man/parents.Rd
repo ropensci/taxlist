@@ -19,7 +19,8 @@ be extracted (upwards in the taxonomic ranks).}
 \item{...}{Further arguments passed among methods.}
 
 \item{concept}{A vector containing concept IDs. The taxa for which the
-parents will be retrieved.}
+parents will be retrieved. If not provided, parents for every single
+taxon concept in 'taxlist' will be retrieved.}
 }
 \description{
 Retrieve IDs of parents for selected taxa in a taxonomic list.
