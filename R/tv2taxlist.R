@@ -7,13 +7,12 @@
 #' [Turboveg 2](https://www.synbiosys.alterra.nl/turboveg/) databases into a
 #' [taxlist-class] object.
 #'
-#' Internally the funcions [read.dbf()] and [df2taxlist()] are called.
+#' Internally the funcions [foreign::read.dbf()] and [df2taxlist()] are called.
 #'
 #' @param taxlist Character value indicating the name of a species list in
 #'     Turboveg.
 #' @param tv_home Character value indicating the path to the main Turboveg
-#'     folder. By default the function [tv.home()] from [vegdata-package] is
-#'     called.
+#'     folder. By default the function [vegdata::tv.home()] is called.
 #' @param ... Further arguments passed to [df2taxlist()].
 #'
 #' @return A [taxlist-class] object.

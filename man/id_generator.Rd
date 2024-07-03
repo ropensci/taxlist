@@ -28,7 +28,7 @@ the retrieved identifiers. Used only for \code{'mode = "character"'}.}
 \item{mode}{Character value indicating the type of identifier created, which
 is either numeric (the default) or charcter.}
 
-\item{...}{Further parameters passed to \code{\link[=stri_rand_strings]{stri_rand_strings()}}, actually to
+\item{...}{Further parameters passed to \code{\link[stringi:stri_rand_strings]{stringi::stri_rand_strings()}}, actually to
 the argument \code{'pattern'}.}
 
 \item{insert}{A vector (either numeric or character) containing IDs of

@@ -16,7 +16,7 @@
 #'     the retrieved identifiers. Used only for `'mode = "character"'`.
 #' @param mode Character value indicating the type of identifier created, which
 #'     is either numeric (the default) or charcter.
-#' @param ... Further parameters passed to [stri_rand_strings()], actually to
+#' @param ... Further parameters passed to [stringi::stri_rand_strings()], actually to
 #'     the argument `'pattern'`.
 #' @param insert A vector (either numeric or character) containing IDs of
 #'     elements that will be inserted in a database.

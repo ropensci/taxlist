@@ -55,7 +55,7 @@ considered as one. Note that this argument will be overrode by
 be included in the output (\code{'nomatch = TRUE'}) or not
 (\code{'nomatch = FALSE'}).}
 
-\item{method}{Further arguments passed to \code{\link[=stringsim]{stringsim()}}.}
+\item{method}{Further arguments passed to \code{\link[stringdist:stringsim]{stringdist::stringsim()}}.}
 
 \item{cutlevel}{A numeric value indicating a cut level of similarity,
 considering as match names with similarities equal or bigger than the
@@ -74,7 +74,7 @@ list or not.}
 \description{
 Names provided in a character vector will be compared with names stored in
 slot \code{taxonNames} within an object of class \linkS4class{taxlist} by
-using the function \code{\link[=stringsim]{stringsim()}}.
+using the function \code{\link[stringdist:stringsim]{stringdist::stringsim()}}.
 }
 \examples{
 ## Names to be compared
@@ -93,7 +93,7 @@ match_names(x = species, object = Easplist, show_concepts = TRUE)
 match_names(x = species, object = Easplist, cutlevel = 0.8)
 }
 \seealso{
-\code{\link[=stringsim]{stringsim()}}
+\code{\link[stringdist:stringsim]{stringdist::stringsim()}}
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

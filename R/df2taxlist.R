@@ -23,7 +23,7 @@
 #'     considered as names' attributes and inserted in slot **taxonNames**.
 #' @param taxonTraits A data frame with attributes of taxonomic concepts
 #'     (optional). If provided, the column **TaxonConceptID** is mandatorial.
-#' @param taxonViews A data frame or [lib_df-class] with references of taxonomic
+#' @param taxonViews A data frame or [biblio::lib_df-class] with references of taxonomic
 #'     views (optional). If provided, the column **ViewID** is mandatorial and
 #'     have to match the homonymous column at 'x'.
 #' @param levels A character vector setting the levels or taxonomic ranks from

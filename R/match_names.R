@@ -5,7 +5,7 @@
 #' @description
 #' Names provided in a character vector will be compared with names stored in
 #' slot `taxonNames` within an object of class [taxlist-class] by
-#' using the function [stringsim()].
+#' using the function [stringdist::stringsim()].
 #'
 #' @param x A character vector with names to be compared.
 #' @param object Either a character vector or a [taxlist-class] object
@@ -33,12 +33,12 @@
 #'     concepts should be displayed in output or not.
 #' @param accepted_only Logical value indicating whether only accepted names
 #'     should be matched or all usage names (including synonyms).
-#' @param method Further arguments passed to [stringsim()].
+#' @param method Further arguments passed to [stringdist::stringsim()].
 #' @param ... Further arguments passed among methods.
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @seealso [stringsim()]
+#' @seealso [stringdist::stringsim()]
 #'
 #' @example examples/match_names.R
 #'

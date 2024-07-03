@@ -37,7 +37,7 @@ considered as names' attributes and inserted in slot \strong{taxonNames}.}
 \item{taxonTraits}{A data frame with attributes of taxonomic concepts
 (optional). If provided, the column \strong{TaxonConceptID} is mandatorial.}
 
-\item{taxonViews}{A data frame or \linkS4class{lib_df} with references of taxonomic
+\item{taxonViews}{A data frame or \link[biblio:lib_df-class]{biblio::lib_df} with references of taxonomic
 views (optional). If provided, the column \strong{ViewID} is mandatorial and
 have to match the homonymous column at 'x'.}
 

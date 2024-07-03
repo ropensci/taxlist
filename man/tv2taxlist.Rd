@@ -11,8 +11,7 @@ tv2taxlist(taxlist, tv_home = tv.home(), ...)
 Turboveg.}
 
 \item{tv_home}{Character value indicating the path to the main Turboveg
-folder. By default the function \code{\link[=tv.home]{tv.home()}} from \link{vegdata-package} is
-called.}
+folder. By default the function \code{\link[vegdata:tv.home]{vegdata::tv.home()}} is called.}
 
 \item{...}{Further arguments passed to \code{\link[=df2taxlist]{df2taxlist()}}.}
 }
@@ -24,7 +23,7 @@ Importing species lists from
 \href{https://www.synbiosys.alterra.nl/turboveg/}{Turboveg 2} databases into a
 \linkS4class{taxlist} object.
 
-Internally the funcions \code{\link[=read.dbf]{read.dbf()}} and \code{\link[=df2taxlist]{df2taxlist()}} are called.
+Internally the funcions \code{\link[foreign:read.dbf]{foreign::read.dbf()}} and \code{\link[=df2taxlist]{df2taxlist()}} are called.
 }
 \examples{
 ## Cyperus data set installed as Turboveg species list
