@@ -78,7 +78,24 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div class="section level1">
+
+<ul>
+<li>
+<a href="#taxlist-">taxlist <img src="reference/figures/logo.png" align="right" height="139"></a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installing-taxlist">Installing taxlist</a></li>
+<li><a href="#building-taxlist-objects">Building taxlist Objects</a></li>
+<li><a href="#indented-lists">Indented lists</a></li>
+<li><a href="#from-data-frame-to-taxlist">From data frame to taxlist</a></li>
+<li><a href="#similar-packages">Similar Packages</a></li>
+<li><a href="#rmarkdown-integration">Rmarkdown Integration</a></li>
+<li><a href="#descriptive-statistics">Descriptive Statistics</a></li>
+<li><a href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+</ul>
+<!-- README.md is generated from README.Rmd. Please edit that file --><!-- Use snippet 'render_markdown' for it --><div class="section level1">
 <div class="page-header"><h1 id="taxlist-">taxlist <img src="reference/figures/logo.png" align="right" height="139"><a class="anchor" aria-label="anchor" href="#taxlist-"></a>
 </h1></div>
 <!-- badges: start -->
@@ -113,6 +130,11 @@
 <p>Objects can be built step-by-step as in the following example. For it, we will use as reference the “Ferns of Chile” (original in Spanish: “Helechos de Chile”) by <strong>Gunkel (1984)</strong>. We will create an empty <code>taxlist</code> object using the function <code>new()</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cran.r-project.org/package=taxlist" class="external-link">taxlist</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'taxlist'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     levels, levels&lt;-, print</span></span>
 <span></span>
 <span><span class="va">Fern</span> <span class="op">&lt;-</span> <span class="fu">new</span><span class="op">(</span><span class="st">"taxlist"</span><span class="op">)</span></span>
 <span><span class="va">Fern</span></span>
@@ -365,7 +387,7 @@
 <span>  names.arg <span class="op">=</span> <span class="va">genus</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="st">"Number of Species"</span></span>
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/genera_bar-1.png"><!-- --></p>
+<p><img src="reference/figures/genera_bar-1.png"></p>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
@@ -374,6 +396,7 @@
 <p>Also thanks to <strong>Federico Luebert</strong> for the fruitful discussions regarding the terminology used in this project.</p>
 </div>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -420,14 +443,15 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/web/checks/check_results_taxlist.html" class="external-link"><img src="https://badges.cranchecks.info/worst/taxlist.svg" alt="cran checks"></a></li>
-<li><a href="https://cran.r-project.org/package=taxlist" class="external-link"><img src="http://www.r-pkg.org/badges/version/taxlist" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=taxlist" class="external-link"><img src="http://www.r-pkg.org/badges/version/taxlist.png" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://github.com/ropensci/software-review/issues/233" class="external-link"><img src="https://badges.ropensci.org/233_status.svg"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/54913161" class="external-link"><img src="https://zenodo.org/badge/54913161.svg" alt="DOI"></a></li>
 <li><a href="https://github.com/ropensci/taxlist/actions" class="external-link"><img src="https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/ropensci/taxlist" class="external-link"><img src="https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg" alt="codecov"></a></li>
-<li><a href="https://cran.r-project.org/package=taxlist" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/taxlist" alt="CRAN_downloads"></a></li>
-<li><a href="https://cran.r-project.org/package=taxlist" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/taxlist" alt="total downloads"></a></li>
-<li><a href="https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://cran.r-project.org/package=taxlist" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/taxlist.png" alt="CRAN_downloads"></a></li>
+<li><a href="https://cran.r-project.org/package=taxlist" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/taxlist.png" alt="total downloads"></a></li>
+<li><a href="https://doi.org/10.32614/CRAN.package.taxlist" class="external-link"><img src="https://img.shields.io/badge/doi-10.32614/CRAN.package.taxlist-blue.svg"></a></li>
+<li><a href="https://kamapu.r-universe.dev/taxlist" class="external-link"><img src="https://kamapu.r-universe.dev/badges/taxlist.png" alt="r-universe status badge"></a></li>
 </ul>
 </div>
 
