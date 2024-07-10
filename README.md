@@ -1,4 +1,17 @@
 
+
+- [taxlist
+  <img src='man/figures/logo.png' align="right" height="139"/>](#taxlist-)
+  - [Introduction](#introduction)
+  - [Installing taxlist](#installing-taxlist)
+  - [Building taxlist Objects](#building-taxlist-objects)
+  - [Indented lists](#indented-lists)
+  - [From data frame to taxlist](#from-data-frame-to-taxlist)
+  - [Similar Packages](#similar-packages)
+  - [Rmarkdown Integration](#rmarkdown-integration)
+  - [Descriptive Statistics](#descriptive-statistics)
+  - [Acknowledgements](#acknowledgements)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- Use snippet 'render_markdown' for it -->
 
@@ -8,17 +21,19 @@
 
 [![cran
 checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-project.org/web/checks/check_results_taxlist.html)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist.png)](https://cran.r-project.org/package=taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 <br>
 [![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
 [![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
-[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
+[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist.png)](https://cran.r-project.org/package=taxlist)
 [![total
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
-<!-- [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161) -->
-[![R-CMD-check](https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/taxlist/actions/workflows/R-CMD-check.yaml)
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist.png)](https://cran.r-project.org/package=taxlist)
+<br>
+[![](https://img.shields.io/badge/doi-10.32614/CRAN.package.taxlist-blue.svg)](https://doi.org/10.32614/CRAN.package.taxlist)
+[![r-universe status
+badge](https://kamapu.r-universe.dev/badges/taxlist.png)](https://kamapu.r-universe.dev/taxlist)
 <!-- badges: end -->
 
 ## Introduction
@@ -96,6 +111,11 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 
 ``` r
 library(taxlist)
+#> 
+#> Attaching package: 'taxlist'
+#> The following objects are masked from 'package:base':
+#> 
+#>     levels, levels<-, print
 
 Fern <- new("taxlist")
 Fern
@@ -446,7 +466,7 @@ with(Cype_stat, barplot(species_count,
 ))
 ```
 
-![](man/figures/genera_bar-1.png)<!-- -->
+![](man/figures/genera_bar-1.png)
 
 ## Acknowledgements
 
