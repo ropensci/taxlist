@@ -2,6 +2,7 @@
 format:
   gfm:
     toc: true
+default-image-extension: ""
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -17,19 +18,20 @@ knitr::opts_chunk$set(
 # taxlist <img src='man/figures/logo.png' align="right" height="139"/>
 
 <!-- badges: start -->
-[![cran_checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-project.org/web/checks/check_results_taxlist.html)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
-[![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
-[![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
+[![cran-status-badge](https://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
+[![ropensci-status](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
+[![runiverse-status-badge](https://ropensci.r-universe.dev/badges/taxlist.png)](https://ropensci.r-universe.dev/taxlist)
+[![cran-downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
+[![cran-downloads-month](http://cranlogs.r-pkg.org/badges/last-month/taxlist)](https://cran.r-project.org/package=taxlist)
 <br>
 [![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
+[![cran-checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-project.org/web/checks/check_results_taxlist.html)
 [![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
-[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist)](https://cran.r-project.org/package=taxlist)
-[![total_downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
 <br>
-[![](https://img.shields.io/badge/doi-10.32614/CRAN.package.taxlist-blue.svg)](https://doi.org/10.32614/CRAN.package.taxlist)
-[![taxlist_status_badge](https://ropensci.r-universe.dev/badges/taxlist)](https://ropensci.r-universe.dev/taxlist)
+[![cran-doi](https://img.shields.io/badge/doi-10.32614/CRAN.package.taxlist-blue.svg)](https://doi.org/10.32614/CRAN.package.taxlist)
+[![zenodo-doi](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
 <!-- badges: end -->
+
 
 ## Introduction
 
