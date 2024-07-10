@@ -32,8 +32,8 @@ checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-projec
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist.png)](https://cran.r-project.org/package=taxlist)
 <br>
 [![](https://img.shields.io/badge/doi-10.32614/CRAN.package.taxlist-blue.svg)](https://doi.org/10.32614/CRAN.package.taxlist)
-[![r-universe status
-badge](https://kamapu.r-universe.dev/badges/taxlist.png)](https://kamapu.r-universe.dev/taxlist)
+[![taxlist status
+badge](https://ropensci.r-universe.dev/badges/taxlist.png)](https://ropensci.r-universe.dev/taxlist)
 <!-- badges: end -->
 
 ## Introduction

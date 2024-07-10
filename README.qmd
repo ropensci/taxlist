@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
 <br>
 [![](https://img.shields.io/badge/doi-10.32614/CRAN.package.taxlist-blue.svg)](https://doi.org/10.32614/CRAN.package.taxlist)
-[![r-universe status badge](https://kamapu.r-universe.dev/badges/taxlist)](https://kamapu.r-universe.dev/taxlist)
+[![taxlist status badge](https://ropensci.r-universe.dev/badges/taxlist)](https://ropensci.r-universe.dev/taxlist)
 <!-- badges: end -->
 
 ## Introduction
