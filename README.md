@@ -19,8 +19,7 @@
 
 <!-- badges: start -->
 
-[![cran
-checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-project.org/web/checks/check_results_taxlist.html)
+[![cran_checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-project.org/web/checks/check_results_taxlist.html)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/taxlist.png)](https://cran.r-project.org/package=taxlist)
 [![](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 [![DOI](https://zenodo.org/badge/54913161.svg)](https://zenodo.org/badge/latestdoi/54913161)
@@ -28,12 +27,10 @@ checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-projec
 [![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
 [![codecov](https://codecov.io/gh/ropensci/taxlist/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/taxlist)
 [![CRAN_downloads](http://cranlogs.r-pkg.org/badges/taxlist.png)](https://cran.r-project.org/package=taxlist)
-[![total
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist.png)](https://cran.r-project.org/package=taxlist)
+[![total_downloads](http://cranlogs.r-pkg.org/badges/grand-total/taxlist.png)](https://cran.r-project.org/package=taxlist)
 <br>
 [![](https://img.shields.io/badge/doi-10.32614/CRAN.package.taxlist-blue.svg)](https://doi.org/10.32614/CRAN.package.taxlist)
-[![taxlist status
-badge](https://ropensci.r-universe.dev/badges/taxlist.png)](https://ropensci.r-universe.dev/taxlist)
+[![taxlist_status_badge](https://ropensci.r-universe.dev/badges/taxlist.png)](https://ropensci.r-universe.dev/taxlist)
 <!-- badges: end -->
 
 ## Introduction
