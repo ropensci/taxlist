@@ -7,3 +7,7 @@ Meta
 tests/testthat/*.rda
 docs
 /lab/
+
+/.quarto/
+
+README.html

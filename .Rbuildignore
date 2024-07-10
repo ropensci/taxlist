@@ -1,4 +1,5 @@
 ^\.github$
+^\.quarto$
 ^build-pkg$
 ^data-raw$
 ^db-scheme$
@@ -11,3 +12,4 @@
 ^CODE_OF_CONDUCT\.md$
 ^README\.md$
 ^README\.Rmd$
+^README\.qmd$
