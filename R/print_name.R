@@ -44,8 +44,6 @@
 #'
 #' @seealso [ape::mixedFontLabel()].
 #'
-#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
-#'
 #' @example examples/print_name.R
 #'
 #' @rdname print_name
