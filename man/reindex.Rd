@@ -4,11 +4,18 @@
 \alias{reindex}
 \alias{reindex.taxlist}
 \alias{reindex,taxlist-method}
+\alias{reindex<-}
+\alias{reindex<-.taxlist}
+\alias{reindex<-,taxlist-method}
 \title{Re-index elements of taxlist objects}
 \usage{
 reindex(object, ...)
 
 \method{reindex}{taxlist}(object, old, new, idx = "TaxonConceptID", ...)
+
+reindex(object, ...) <- value
+
+\method{reindex}{taxlist}(object, ...) <- value
 }
 \arguments{
 \item{object}{A \linkS4class{taxlist} object.}
@@ -21,8 +28,8 @@ indices will be preserved. If the changes insert duplicated identifiers,
 an error message will be retrieved. If missing, all identifiers in
 \code{'object'} will be considered.}
 
-\item{new}{A vector with the new identifiers. It has to be of the same length
-as \code{'old'}.}
+\item{new, value}{A vector with the new identifiers. It has to be of
+the same length as \code{'old'}.}
 
 \item{idx}{Name of the index to be changed, which means \code{"TaxonConceptID"},
 \code{"TaxonUsageID"}, or \code{"ViewID"} for taxon concepts, taxon usage names, or
