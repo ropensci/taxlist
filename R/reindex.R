@@ -23,6 +23,8 @@
 #'
 #' @return An object of class [taxlist-class] with modified identifiers.
 #'
+#' @example examples/reindex.R
+#'
 #' @rdname reindex
 #'
 #' @export
