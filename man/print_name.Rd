@@ -124,6 +124,3 @@ text(x = 0, y = 7, labels = print_name(Easplist, 363, style = "knitr"), pos = 4,
 \seealso{
 \code{\link[ape:mixedFontLabel]{ape::mixedFontLabel()}}.
 }
-\author{
-Miguel Alvarez \email{kamapu78@gmail.com}
-}

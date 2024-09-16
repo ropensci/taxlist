@@ -22,8 +22,8 @@
 [![cran-status-badge](https://www.r-pkg.org/badges/version/taxlist)](https://cran.r-project.org/package=taxlist)
 [![ropensci-status](https://badges.ropensci.org/233_status.svg)](https://github.com/ropensci/software-review/issues/233)
 [![runiverse-status-badge](https://ropensci.r-universe.dev/badges/taxlist)](https://ropensci.r-universe.dev/taxlist)
-[![cran-downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
-[![cran-downloads-month](http://cranlogs.r-pkg.org/badges/last-month/taxlist)](https://cran.r-project.org/package=taxlist)
+[![cran-downloads-total](https://cranlogs.r-pkg.org/badges/grand-total/taxlist)](https://cran.r-project.org/package=taxlist)
+[![cran-downloads-month](https://cranlogs.r-pkg.org/badges/last-month/taxlist)](https://cran.r-project.org/package=taxlist)
 <br>
 [![R-CMD-check](https://github.com/ropensci/taxlist/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/taxlist/actions)
 [![cran-checks](https://badges.cranchecks.info/worst/taxlist.svg)](https://cran.r-project.org/web/checks/check_results_taxlist.html)
