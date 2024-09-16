@@ -1,3 +1,11 @@
+# taxlist 0.4.0
+
+### New Features
+
+- New function `reindex()` to reassign identifiers to taxon concepts, taxon
+  names and taxon views.
+
+
 # taxlist 0.3.0
 
 ### New Features
