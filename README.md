@@ -1,18 +1,7 @@
 
 
-- [taxlist
-  <img src='man/figures/logo.png' align="right" height="139"/>](#taxlist-)
-  - [Introduction](#introduction)
-  - [Installing taxlist](#installing-taxlist)
-  - [Building taxlist Objects](#building-taxlist-objects)
-  - [Indented lists](#indented-lists)
-  - [From data frame to taxlist](#from-data-frame-to-taxlist)
-  - [Similar Packages](#similar-packages)
-  - [Rmarkdown Integration](#rmarkdown-integration)
-  - [Descriptive Statistics](#descriptive-statistics)
-  - [Acknowledgements](#acknowledgements)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Use snippet 'render_markdown' for it -->
 
 # taxlist <img src='man/figures/logo.png' align="right" height="139"/>
@@ -109,8 +98,8 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 ``` r
 library(taxlist)
 #> 
-#> Attaching package: 'taxlist'
-#> The following objects are masked from 'package:base':
+#> Attache Paket: 'taxlist'
+#> Die folgenden Objekte sind maskiert von 'package:base':
 #> 
 #>     levels, levels<-, print
 
@@ -213,10 +202,14 @@ Fern
 #> concepts with parents: 3 
 #> concepts with children: 2 
 #> 
-#> hierarchical levels: variety < species < genus 
-#> number of concepts in level variety: 2
-#> number of concepts in level species: 1
+#> hierarchical levels:
+#> genus
+#>   species
+#>     variety
+#> 
 #> number of concepts in level genus: 1
+#> number of concepts in level species: 1
+#> number of concepts in level variety: 2
 
 summary(Fern, "all")
 #> ------------------------------ 
@@ -331,10 +324,14 @@ Fern2
 #> concepts with parents: 3 
 #> concepts with children: 2 
 #> 
-#> hierarchical levels: variety < species < genus 
-#> number of concepts in level variety: 2
-#> number of concepts in level species: 1
+#> hierarchical levels:
+#> genus
+#>   species
+#>     variety
+#> 
 #> number of concepts in level genus: 1
+#> number of concepts in level species: 1
+#> number of concepts in level variety: 2
 ```
 
 ## Similar Packages

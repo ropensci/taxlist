@@ -53,7 +53,7 @@ overview_taxlist <- function(object, units, check_validity) {
     indent <- paste0(indent, rev(levels(object)), "\n")
     cat("hierarchical levels:\n", indent, "\n", sep = "")
     # Details on levels
-    for (i in base::levels(object@taxonRelations$Level)) {
+    for (i in rev(base::levels(object@taxonRelations$Level))) {
       cat("number of concepts in level ", i, ": ",
         sum(paste(object@taxonRelations$Level) == i),
         sep = "", "\n"
