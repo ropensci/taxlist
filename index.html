@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
       </span>
     </div>
 
@@ -78,24 +78,7 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-
-<ul>
-<li>
-<a href="#taxlist-">taxlist <img src="reference/figures/logo.png" align="right" height="139"></a>
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#installing-taxlist">Installing taxlist</a></li>
-<li><a href="#building-taxlist-objects">Building taxlist Objects</a></li>
-<li><a href="#indented-lists">Indented lists</a></li>
-<li><a href="#from-data-frame-to-taxlist">From data frame to taxlist</a></li>
-<li><a href="#similar-packages">Similar Packages</a></li>
-<li><a href="#rmarkdown-integration">Rmarkdown Integration</a></li>
-<li><a href="#descriptive-statistics">Descriptive Statistics</a></li>
-<li><a href="#acknowledgements">Acknowledgements</a></li>
-</ul>
-</li>
-</ul>
-<!-- README.md is generated from README.Rmd. Please edit that file --><!-- Use snippet 'render_markdown' for it --><div class="section level1">
+<div class="section level1">
 <div class="page-header"><h1 id="taxlist-">taxlist <img src="reference/figures/logo.png" align="right" height="139"><a class="anchor" aria-label="anchor" href="#taxlist-"></a>
 </h1></div>
 <!-- badges: start -->
@@ -131,8 +114,8 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cran.r-project.org/package=taxlist" class="external-link">taxlist</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'taxlist'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; Attache Paket: 'taxlist'</span></span>
+<span><span class="co">#&gt; Die folgenden Objekte sind maskiert von 'package:base':</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     levels, levels&lt;-, print</span></span>
 <span></span>
@@ -206,10 +189,14 @@
 <span><span class="co">#&gt; concepts with parents: 3 </span></span>
 <span><span class="co">#&gt; concepts with children: 2 </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; hierarchical levels: variety &lt; species &lt; genus </span></span>
-<span><span class="co">#&gt; number of concepts in level variety: 2</span></span>
-<span><span class="co">#&gt; number of concepts in level species: 1</span></span>
+<span><span class="co">#&gt; hierarchical levels:</span></span>
+<span><span class="co">#&gt; genus</span></span>
+<span><span class="co">#&gt;   species</span></span>
+<span><span class="co">#&gt;     variety</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; number of concepts in level genus: 1</span></span>
+<span><span class="co">#&gt; number of concepts in level species: 1</span></span>
+<span><span class="co">#&gt; number of concepts in level variety: 2</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/summary.html">summary</a></span><span class="op">(</span><span class="va">Fern</span>, <span class="st">"all"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ------------------------------ </span></span>
@@ -306,10 +293,14 @@
 <span><span class="co">#&gt; concepts with parents: 3 </span></span>
 <span><span class="co">#&gt; concepts with children: 2 </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; hierarchical levels: variety &lt; species &lt; genus </span></span>
-<span><span class="co">#&gt; number of concepts in level variety: 2</span></span>
+<span><span class="co">#&gt; hierarchical levels:</span></span>
+<span><span class="co">#&gt; genus</span></span>
+<span><span class="co">#&gt;   species</span></span>
+<span><span class="co">#&gt;     variety</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; number of concepts in level genus: 1</span></span>
 <span><span class="co">#&gt; number of concepts in level species: 1</span></span>
-<span><span class="co">#&gt; number of concepts in level genus: 1</span></span></code></pre></div>
+<span><span class="co">#&gt; number of concepts in level variety: 2</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="similar-packages">Similar Packages<a class="anchor" aria-label="anchor" href="#similar-packages"></a>
@@ -396,7 +387,6 @@
 <p>Also thanks to <strong>Federico Luebert</strong> for the fruitful discussions regarding the terminology used in this project.</p>
 </div>
 </div>
-
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -466,7 +456,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>

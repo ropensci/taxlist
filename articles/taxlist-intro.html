@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
       </span>
     </div>
 
@@ -82,7 +82,7 @@ records</h1>
                         <h4 data-toc-skip class="author">Miguel
 Alvarez</h4>
             
-            <h4 data-toc-skip class="date">2024-09-16</h4>
+            <h4 data-toc-skip class="date">2025-04-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/taxlist/blob/main/vignettes/taxlist-intro.Rmd" class="external-link"><code>vignettes/taxlist-intro.Rmd</code></a></small>
       <div class="hidden name"><code>taxlist-intro.Rmd</code></div>
@@ -216,14 +216,22 @@ AF-006</a>):</p>
 <span><span class="co">## concepts with parents: 3698 </span></span>
 <span><span class="co">## concepts with children: 1343 </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span></span>
-<span><span class="co">## number of concepts in level form: 2</span></span>
-<span><span class="co">## number of concepts in level variety: 95</span></span>
-<span><span class="co">## number of concepts in level subspecies: 71</span></span>
-<span><span class="co">## number of concepts in level species: 2521</span></span>
-<span><span class="co">## number of concepts in level complex: 1</span></span>
+<span><span class="co">## hierarchical levels:</span></span>
+<span><span class="co">## family</span></span>
+<span><span class="co">##   genus</span></span>
+<span><span class="co">##     complex</span></span>
+<span><span class="co">##       species</span></span>
+<span><span class="co">##         subspecies</span></span>
+<span><span class="co">##           variety</span></span>
+<span><span class="co">##             form</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## number of concepts in level family: 186</span></span>
 <span><span class="co">## number of concepts in level genus: 1011</span></span>
-<span><span class="co">## number of concepts in level family: 186</span></span></code></pre>
+<span><span class="co">## number of concepts in level complex: 1</span></span>
+<span><span class="co">## number of concepts in level species: 2521</span></span>
+<span><span class="co">## number of concepts in level subspecies: 71</span></span>
+<span><span class="co">## number of concepts in level variety: 95</span></span>
+<span><span class="co">## number of concepts in level form: 2</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="access-to-slots">3.2 Access to slots<a class="anchor" aria-label="anchor" href="#access-to-slots"></a>
@@ -292,14 +300,22 @@ in the summary output.</p>
 <span><span class="co">## concepts with parents: 3698 </span></span>
 <span><span class="co">## concepts with children: 1343 </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## hierarchical levels: form &lt; variety &lt; subspecies &lt; species &lt; complex &lt; genus &lt; family </span></span>
-<span><span class="co">## number of concepts in level form: 2</span></span>
-<span><span class="co">## number of concepts in level variety: 95</span></span>
-<span><span class="co">## number of concepts in level subspecies: 71</span></span>
-<span><span class="co">## number of concepts in level species: 2521</span></span>
-<span><span class="co">## number of concepts in level complex: 1</span></span>
+<span><span class="co">## hierarchical levels:</span></span>
+<span><span class="co">## family</span></span>
+<span><span class="co">##   genus</span></span>
+<span><span class="co">##     complex</span></span>
+<span><span class="co">##       species</span></span>
+<span><span class="co">##         subspecies</span></span>
+<span><span class="co">##           variety</span></span>
+<span><span class="co">##             form</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## number of concepts in level family: 186</span></span>
 <span><span class="co">## number of concepts in level genus: 1011</span></span>
-<span><span class="co">## number of concepts in level family: 186</span></span></code></pre>
+<span><span class="co">## number of concepts in level complex: 1</span></span>
+<span><span class="co">## number of concepts in level species: 2521</span></span>
+<span><span class="co">## number of concepts in level subspecies: 71</span></span>
+<span><span class="co">## number of concepts in level variety: 95</span></span>
+<span><span class="co">## number of concepts in level form: 2</span></span></code></pre>
 <p>Note that such information can get lost once <code><a href="../reference/subset.html">subset()</a></code>
 has been applied, since the respective parents or children from the
 original data set are not anymore in the subset. May you like to recover
@@ -433,11 +449,16 @@ object.</p>
 <span><span class="co">## concepts with parents: 22 </span></span>
 <span><span class="co">## concepts with children: 16 </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## hierarchical levels: association &lt; alliance &lt; order &lt; class </span></span>
-<span><span class="co">## number of concepts in level association: 10</span></span>
-<span><span class="co">## number of concepts in level alliance: 7</span></span>
+<span><span class="co">## hierarchical levels:</span></span>
+<span><span class="co">## class</span></span>
+<span><span class="co">##   order</span></span>
+<span><span class="co">##     alliance</span></span>
+<span><span class="co">##       association</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## number of concepts in level class: 4</span></span>
 <span><span class="co">## number of concepts in level order: 5</span></span>
-<span><span class="co">## number of concepts in level class: 4</span></span></code></pre>
+<span><span class="co">## number of concepts in level alliance: 7</span></span>
+<span><span class="co">## number of concepts in level association: 10</span></span></code></pre>
 <p>Note that the function <code>new</code> created an empty object
 (prototype), while <code>levels</code> insert the custom levels
 (syntaxonomical hierarchies). For the later function, the levels have to
@@ -496,11 +517,16 @@ traits properties) of them in the slot <code>taxonTraits</code>.</p>
 <span><span class="co">## concepts with parents: 22 </span></span>
 <span><span class="co">## concepts with children: 16 </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## hierarchical levels: association &lt; alliance &lt; order &lt; class </span></span>
-<span><span class="co">## number of concepts in level association: 10</span></span>
-<span><span class="co">## number of concepts in level alliance: 7</span></span>
+<span><span class="co">## hierarchical levels:</span></span>
+<span><span class="co">## class</span></span>
+<span><span class="co">##   order</span></span>
+<span><span class="co">##     alliance</span></span>
+<span><span class="co">##       association</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## number of concepts in level class: 4</span></span>
 <span><span class="co">## number of concepts in level order: 5</span></span>
-<span><span class="co">## number of concepts in level class: 4</span></span></code></pre>
+<span><span class="co">## number of concepts in level alliance: 7</span></span>
+<span><span class="co">## number of concepts in level association: 10</span></span></code></pre>
 <p>For instance, you may like to get the parental chain from an
 association (e.g. for <em>Nymphaeetum loti</em>).</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
@@ -594,7 +620,7 @@ from <code>Syntax</code>.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
