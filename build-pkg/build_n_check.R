@@ -8,6 +8,7 @@ library(rmarkdown)
 library(devtools)
 library(styler)
 library(covr)
+library(quarto)
 
 # Automatic styling
 style_pkg()
@@ -21,10 +22,14 @@ unlink(file.path("build-pkg", list.files("build-pkg", ".tar.gz")))
 
 # Build and check package
 pkg_loc <- build(path = "build-pkg", args = "--resave-data")
+#pkg_loc <- build(path = "build-pkg", args = "--resave-data", vignettes = FALSE)
 check_built(path = pkg_loc)
 
 # check coverage
 report()
+
+# render README
+quarto_render("README.qmd")
 
 # Special steps ----------------------------------------------------------------
 install()

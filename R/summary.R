@@ -39,11 +39,21 @@ overview_taxlist <- function(object, units, check_validity) {
     )
   }
   if (any(!is.na(object@taxonRelations$Level))) {
+    # Hierarchies as indented list
     cat("\n")
-    cat("hierarchical levels:", paste(levels(object), collapse = " < "),
-      sep = " ", "\n"
-    )
-    for (i in base::levels(object@taxonRelations$Level)) {
+    indent <- list()
+    for (i in 1:length(levels(object))) {
+      if (i == 1) {
+        indent[[i]] <- ""
+      } else {
+        indent[[i]] <- paste0(rep("  ", i - 1), collapse = "")
+      }
+    }
+    indent <- do.call(c, indent)
+    indent <- paste0(indent, rev(levels(object)), "\n")
+    cat("hierarchical levels:\n", indent, "\n", sep = "")
+    # Details on levels
+    for (i in rev(base::levels(object@taxonRelations$Level))) {
       cat("number of concepts in level ", i, ": ",
         sum(paste(object@taxonRelations$Level) == i),
         sep = "", "\n"

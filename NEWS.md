@@ -5,6 +5,12 @@
 - New function `reindex()` to reassign identifiers to taxon concepts, taxon
   names and taxon views.
 
+### Improvements
+
+- Summary provided by `summary()` (and `print()`) produces an indented list
+  for the hierarchical levels (taxonomic ranks). This list is now inverted
+  (top to bottom).
+
 
 # taxlist 0.3.0
 
