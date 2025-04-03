@@ -8,6 +8,7 @@ library(rmarkdown)
 library(devtools)
 library(styler)
 library(covr)
+library(quarto)
 
 # Automatic styling
 style_pkg()
@@ -26,6 +27,9 @@ check_built(path = pkg_loc)
 
 # check coverage
 report()
+
+# render README
+quarto_render("README.qmd")
 
 # Special steps ----------------------------------------------------------------
 install()
