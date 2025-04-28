@@ -1,13 +1,22 @@
-**/*.ods#
+# temporary files
+**/*#
+
+# eclipse folders
 /.settings/
 /tests/hidden_data/
 Meta
+
+# RStudio files
 .Rproj.user
 *.Rproj
-tests/testthat/*.rda
-docs
-/lab/
 
+# Tests
+tests/testthat/*.rda
+
+# Homepage
+docs
+
+# Quarto project
 /.quarto/
 
 README.html

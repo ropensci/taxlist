@@ -11,5 +11,5 @@
 ^\.project$
 ^CODE_OF_CONDUCT\.md$
 ^README\.md$
-^README\.Rmd$
 ^README\.qmd$
+^\.vscode$
