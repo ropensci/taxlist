@@ -180,6 +180,12 @@ setMethod(
       Names$formatted_name <- paste0(Names$formatted_name, Syn)
     }
     # Sort list
+    if (!alphabetical) {
+      new_idx <- seq_along(object@taxonRelations$TaxonConceptID)
+      for (i in levels(object)[levels(object) %in% colnames(Names)]) {
+        Names[[i]] <- new_idx[match(Names[[i]], object@taxonRelations$TaxonConceptID)]
+      }
+    }
     for (i in levels(object)) {
       if (i %in% colnames(Names)) {
         Names <- Names[order(Names[, i],
