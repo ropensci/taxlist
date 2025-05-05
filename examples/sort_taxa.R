@@ -1,5 +1,5 @@
 ## Subset with Boraginaceae
-tax <- subset(Easplist, TaxonName %in% c("Boraginaceae"),
+tax <- subset(Easplist, TaxonName == "Boraginaceae",
     keep_children = TRUE, keep_parents = TRUE
 )
 indented_list(tax)
