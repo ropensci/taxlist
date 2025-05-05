@@ -4,6 +4,8 @@
 
 - New function `reindex()` to reassign identifiers to taxon concepts, taxon
   names and taxon views.
+- New function `sort_taxa()` for sorting taxonomic lists before producing
+  prints.
 
 ### Improvements
 

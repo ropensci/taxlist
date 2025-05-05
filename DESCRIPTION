@@ -45,6 +45,7 @@ BugReports: https://github.com/ropensci/taxlist/issues
 Collate:
 	'imports.R'
     'internal.R'
+    'sort_taxa.R'
     'levels.R'
     'prune_levels.R'
     'deprecated-functions.R'

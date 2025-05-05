@@ -46,18 +46,33 @@ Fern <- df2taxlist(Fern, levels = c(
 Fern
 
 indented_list(Fern)
-indented_list(Fern, alphabetical = TRUE)
 
-# Test sorting names in advance
-Fern@taxonNames <- Fern@taxonNames[order(Fern@taxonNames$TaxonName,
-  decreasing = TRUE
-), ]
-Fern@taxonRelations <- Fern@taxonRelations[match(Fern@taxonNames$TaxonUsageID, Fern@taxonRelations$AcceptedName), ]
-
+Fern <- sort_taxa(Fern, decreasing = TRUE)
 indented_list(Fern)
 
+Fern <- sort_taxa(Fern, priority = c("Selaginellales", "Lycopodioideae"))
+indented_list(Fern)
+
+## Example for sort_taxa
+tax <- subset(Easplist,
+  TaxonName %in% c("Boraginaceae"),
+  keep_children = TRUE, keep_parents = TRUE
+)
+indented_list(tax)
+
+tax <- sort_taxa(tax)
+indented_list(tax)
+
+tax <- sort_taxa(tax, priority = c("Euploca", "Myosotis", "Cordia monoica"))
+indented_list(tax)
 
 
 
-levels(Fern)
-head(Fern@taxonRelations)
+tax <- subset(Easplist, TaxonName == "Cordia",
+  keep_children = TRUE,
+  keep_parents = TRUE
+)
+summary(tax, "all")
+
+tax <- sort_taxa(tax)
+summary(tax, "all")
