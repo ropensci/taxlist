@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
       </span>
     </div>
 
@@ -62,10 +62,13 @@
 <div class="section level4">
 <h4 id="new-features-0-4-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-4-0"></a></h4>
 <ul><li>New function <code><a href="../reference/reindex.html">reindex()</a></code> to reassign identifiers to taxon concepts, taxon names and taxon views.</li>
+<li>New function <code><a href="../reference/sort_taxa.html">sort_taxa()</a></code> for sorting taxonomic lists before producing prints.</li>
 </ul></div>
 <div class="section level4">
 <h4 id="improvements-0-4-0">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-4-0"></a></h4>
 <ul><li>Summary provided by <code><a href="../reference/summary.html">summary()</a></code> (and <code><a href="../reference/summary.html">print()</a></code>) produces an indented list for the hierarchical levels (taxonomic ranks). This list is now inverted (top to bottom).</li>
+<li>Arrangement of parental chains now is done by an internal fucntion, namely <code>taxlist:::arrange_taxa()</code>.</li>
+<li>Function <code><a href="../reference/indented_list.html">indented_list()</a></code> will follow the order of taxonomic concepts in slot <strong>taxonRelations</strong> when <code>alphabetical = FALSE</code>. This function was formely sorting according to <strong>taxonConceptID</strong> in the same situation.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -343,7 +346,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
       </footer></div>

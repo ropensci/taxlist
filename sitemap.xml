@@ -14,6 +14,7 @@
 <url><loc>/reference/add_concept.html</loc></url>
 <url><loc>/reference/add_nacolumn.html</loc></url>
 <url><loc>/reference/add_suffix.html</loc></url>
+<url><loc>/reference/arrange_taxa.html</loc></url>
 <url><loc>/reference/backup_object.html</loc></url>
 <url><loc>/reference/clean.html</loc></url>
 <url><loc>/reference/clean_once_taxlist.html</loc></url>
@@ -40,6 +41,7 @@
 <url><loc>/reference/prune_levels.html</loc></url>
 <url><loc>/reference/reindex.html</loc></url>
 <url><loc>/reference/replace_x.html</loc></url>
+<url><loc>/reference/sort_taxa.html</loc></url>
 <url><loc>/reference/subset.html</loc></url>
 <url><loc>/reference/summary.html</loc></url>
 <url><loc>/reference/tax2traits.html</loc></url>
