@@ -4,12 +4,19 @@
 
 - New function `reindex()` to reassign identifiers to taxon concepts, taxon
   names and taxon views.
+- New function `sort_taxa()` for sorting taxonomic lists before producing
+  prints.
 
 ### Improvements
 
 - Summary provided by `summary()` (and `print()`) produces an indented list
   for the hierarchical levels (taxonomic ranks). This list is now inverted
   (top to bottom).
+- Arrangement of parental chains now is done by an internal fucntion, namely
+  `taxlist:::arrange_taxa()`.
+- Function `indented_list()` will follow the order of taxonomic concepts in
+  slot **taxonRelations** when `alphabetical = FALSE`. This function was
+  formely sorting according to **taxonConceptID** in the same situation.
 
 
 # taxlist 0.3.0

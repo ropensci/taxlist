@@ -31,7 +31,7 @@ report()
 # render README
 quarto_render("README.qmd")
 
-# Special steps ----------------------------------------------------------------
+# Further steps ----------------------------------------------------------------
 install()
 
 # write manual

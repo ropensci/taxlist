@@ -1,0 +1,14 @@
+{
+    "r.lsp.promptToInstall": false,
+    // Columns at which to show vertical rulers
+    "editor.rulers": [80],
+    // Further settings recommended for R
+    "[r]": {
+      "editor.defaultFormatter": "REditorSupport.r",
+      "editor.formatOnSave": true
+    },
+    "[rmd]": {
+      "editor.defaultFormatter": "REditorSupport.r",
+      "editor.formatOnSave": true
+    }
+}

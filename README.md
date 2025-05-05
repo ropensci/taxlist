@@ -1,7 +1,6 @@
 
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- Use snippet 'render_markdown' for it -->
 
 # taxlist <img src='man/figures/logo.png' align="right" height="139"/>
@@ -98,8 +97,8 @@ we will use as reference the “Ferns of Chile” (original in Spanish:
 ``` r
 library(taxlist)
 #> 
-#> Attache Paket: 'taxlist'
-#> Die folgenden Objekte sind maskiert von 'package:base':
+#> Attaching package: 'taxlist'
+#> The following objects are masked from 'package:base':
 #> 
 #>     levels, levels<-, print
 
