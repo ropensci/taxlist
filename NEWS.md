@@ -12,6 +12,7 @@
 - Summary provided by `summary()` (and `print()`) produces an indented list
   for the hierarchical levels (taxonomic ranks). This list is now inverted
   (top to bottom).
+  The hierarchical display of concepts also lists number of concepts per rank.
 - Arrangement of parental chains now is done by an internal fucntion, namely
   `taxlist:::arrange_taxa()`.
 - Function `indented_list()` will follow the order of taxonomic concepts in

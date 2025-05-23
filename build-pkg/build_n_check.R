@@ -1,5 +1,5 @@
 # TODO:   Working script for testing the package 'taxlist'
-# 
+#
 # Author: Miguel Alvarez
 ################################################################################
 
@@ -22,13 +22,14 @@ unlink(file.path("build-pkg", list.files("build-pkg", ".tar.gz")))
 
 # Build and check package
 pkg_loc <- build(path = "build-pkg", args = "--resave-data")
-#pkg_loc <- build(path = "build-pkg", args = "--resave-data", vignettes = FALSE)
+# pkg_loc <- build(path = "build-pkg", args = "--resave-data", vignettes = FALSE)
 check_built(path = pkg_loc)
 
 # check coverage
 report()
 
-# render README
+# render README ----------------------------------------------------------------
+install()
 quarto_render("README.qmd")
 
 # Further steps ----------------------------------------------------------------

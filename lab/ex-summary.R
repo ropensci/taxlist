@@ -1,3 +1,5 @@
 library(taxlist)
 
-taxlist:::overview_taxlist(object, units, check_validity)
+source("R/summary.R")
+
+summary(Easplist)

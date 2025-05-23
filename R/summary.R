@@ -39,6 +39,15 @@ overview_taxlist <- function(object, units, check_validity) {
     )
   }
   if (any(!is.na(object@taxonRelations$Level))) {
+    cat("\n")
+    cat(
+      "concepts with rank information:",
+      sum(!is.na(object@taxonRelations$Level)), "\n"
+    )
+    cat(
+      "concepts without rank information:",
+      sum(is.na(object@taxonRelations$Level)), "\n"
+    )
     # Hierarchies as indented list
     cat("\n")
     indent <- list()
@@ -50,23 +59,22 @@ overview_taxlist <- function(object, units, check_validity) {
       }
     }
     indent <- do.call(c, indent)
-    indent <- paste0(indent, rev(levels(object)), "\n")
-    cat("hierarchical levels:\n", indent, "\n", sep = "")
-    # Details on levels
+    # indent <- paste0(indent, rev(levels(object)), "\n")
+    indent <- paste0(indent, rev(levels(object)))
+    n_rank <- character(0)
     for (i in rev(base::levels(object@taxonRelations$Level))) {
-      cat("number of concepts in level ", i, ": ",
-        sum(paste(object@taxonRelations$Level) == i),
-        sep = "", "\n"
-      )
+      n_rank <- c(n_rank, as.character(sum(paste(
+        object@taxonRelations$Level
+      ) == i)))
     }
+    indent <- paste0(indent, ": ", n_rank, "\n")
+    cat(indent, "\n", sep = "")
   }
   cat("\n")
 }
 
 #' Function producing the overview of single taxon concepts.
-#'
 #' @keywords internal
-#'
 overview_taxon <- function(object, ConceptID, display, maxsum,
                            secundum = NULL) {
   if (length(ConceptID > 0)) {

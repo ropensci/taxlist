@@ -1,6 +1,7 @@
 
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Use snippet 'render_markdown' for it -->
 
 # taxlist <img src='man/figures/logo.png' align="right" height="139"/>
@@ -201,14 +202,12 @@ Fern
 #> concepts with parents: 3 
 #> concepts with children: 2 
 #> 
-#> hierarchical levels:
-#> genus
-#>   species
-#>     variety
+#> concepts with rank information: 4 
+#> concepts without rank information: 0 
 #> 
-#> number of concepts in level genus: 1
-#> number of concepts in level species: 1
-#> number of concepts in level variety: 2
+#> genus: 1
+#>   species: 1
+#>     variety: 2
 
 summary(Fern, "all")
 #> ------------------------------ 
@@ -323,14 +322,12 @@ Fern2
 #> concepts with parents: 3 
 #> concepts with children: 2 
 #> 
-#> hierarchical levels:
-#> genus
-#>   species
-#>     variety
+#> concepts with rank information: 4 
+#> concepts without rank information: 0 
 #> 
-#> number of concepts in level genus: 1
-#> number of concepts in level species: 1
-#> number of concepts in level variety: 2
+#> genus: 1
+#>   species: 1
+#>     variety: 2
 ```
 
 ## Similar Packages
