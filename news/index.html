@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">taxlist</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.4</span>
       </span>
     </div>
 
@@ -66,7 +66,7 @@
 </ul></div>
 <div class="section level4">
 <h4 id="improvements-0-4-0">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-4-0"></a></h4>
-<ul><li>Summary provided by <code><a href="../reference/summary.html">summary()</a></code> (and <code><a href="../reference/summary.html">print()</a></code>) produces an indented list for the hierarchical levels (taxonomic ranks). This list is now inverted (top to bottom).</li>
+<ul><li>Summary provided by <code><a href="../reference/summary.html">summary()</a></code> (and <code><a href="../reference/summary.html">print()</a></code>) produces an indented list for the hierarchical levels (taxonomic ranks). This list is now inverted (top to bottom). The hierarchical display of concepts also lists number of concepts per rank.</li>
 <li>Arrangement of parental chains now is done by an internal fucntion, namely <code>taxlist:::arrange_taxa()</code>.</li>
 <li>Function <code><a href="../reference/indented_list.html">indented_list()</a></code> will follow the order of taxonomic concepts in slot <strong>taxonRelations</strong> when <code>alphabetical = FALSE</code>. This function was formely sorting according to <strong>taxonConceptID</strong> in the same situation.</li>
 </ul></div>
