@@ -15,6 +15,7 @@ tests/testthat/*.rda
 
 # Homepage
 docs
+pkgdown
 
 # Quarto project
 /.quarto/

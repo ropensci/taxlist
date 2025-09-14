@@ -5,6 +5,7 @@
 ^db-scheme$
 ^examples$
 ^lab$
+^pkgdown$
 ^tests$
 ^_pkgdown\.yml$
 ^\.gitignore$

@@ -1,0 +1,6 @@
+url: https://docs.ropensci.org/taxlist
+
+template:
+  package: rotemplate
+
+destination: docs
