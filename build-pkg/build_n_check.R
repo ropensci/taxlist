@@ -33,7 +33,6 @@ install()
 quarto_render("README.qmd")
 
 # Further steps ----------------------------------------------------------------
-install()
 
 # write manual
 unlink(file.path("build-pkg", list.files("build-pkg", ".pdf")))

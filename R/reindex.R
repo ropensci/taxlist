@@ -37,8 +37,9 @@ reindex <- function(object, ...) {
 #' @method reindex taxlist
 #' @export
 reindex.taxlist <- function(
-    object, old, new,
-    idx = "TaxonConceptID", ...) {
+  object, old, new,
+  idx = "TaxonConceptID", ...
+) {
   # Match indices
   idx <- sub("^taxon", "", tolower(idx))
   idx_alt <- c("TaxonConceptID", "TaxonUsageID", "ViewID")

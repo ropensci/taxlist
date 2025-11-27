@@ -7,6 +7,5 @@
 #' @importFrom stringr fixed str_replace_all str_split
 #' @importFrom tools file_path_as_absolute file_path_sans_ext
 #' @importFrom utils object.size
-#' @importFrom vegdata tv.home
 #' @importClassesFrom biblio lib_df
 NULL

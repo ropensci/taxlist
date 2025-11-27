@@ -1,5 +1,5 @@
 Package: taxlist
-Version: 0.3.4
+Version: 0.3.5
 Encoding: UTF-8
 Title: Handling Taxonomic Lists
 Authors@R: c(
@@ -21,8 +21,7 @@ Imports:
     stringi,
     stringr,
     tools,
-    utils,
-    vegdata
+    utils
 Suggests:
     ape,
     knitr,
@@ -84,4 +83,4 @@ Collate:
     'taxlist2df.R'
     'parents.R'
 VignetteBuilder: knitr
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

@@ -7,7 +7,8 @@
 arrange_taxa(object)
 }
 \arguments{
-\item{object}{(\code{taxlist}) A taxlist object including taxonomic ranks and parent-child relationships.}
+\item{object}{(\code{taxlist}) A taxlist object including taxonomic ranks and
+parent-child relationships.}
 }
 \description{
 A data frame including chains of parental taxa for each taxon concept.

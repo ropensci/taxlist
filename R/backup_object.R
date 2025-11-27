@@ -71,9 +71,10 @@
 #'
 #' @export
 backup_object <- function(
-    ..., objects = character(), file, stamp = TRUE,
-    sep = "_", date_format = "%Y-%m-%d", time_format = "%H:%M:%S",
-    overwrite = FALSE) {
+  ..., objects = character(), file, stamp = TRUE,
+  sep = "_", date_format = "%Y-%m-%d", time_format = "%H:%M:%S",
+  overwrite = FALSE
+) {
   file2 <- basename(file_path_sans_ext(file))
   path <- dirname(file)
   inFolder <- file_path_sans_ext(list.files(path = path, pattern = ".rda"))
@@ -102,8 +103,9 @@ backup_object <- function(
 #'
 #' @export
 sort_backups <- function(
-    name, path = ".", date_format = "%Y-%m-%d",
-    fext = ".rda", sep = "_") {
+  name, path = ".", date_format = "%Y-%m-%d",
+  fext = ".rda", sep = "_"
+) {
   inFolder <- list.files(path = path, pattern = fext)
   inFolder <- inFolder[grepl(name, inFolder, fixed = TRUE)]
   if (length(inFolder) == 0) {

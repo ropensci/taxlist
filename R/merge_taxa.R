@@ -52,8 +52,9 @@ merge_taxa <- function(object, ...) {
 #' @method merge_taxa taxlist
 #' @export
 merge_taxa.taxlist <- function(
-    object, concepts, level = NULL, delete_nomatch = FALSE,
-    print_output = FALSE, ...) {
+  object, concepts, level = NULL, delete_nomatch = FALSE,
+  print_output = FALSE, ...
+) {
   if (!missing(concepts)) {
     # Tests previous running function
     if (!length(concepts) > 1) {

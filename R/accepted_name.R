@@ -60,8 +60,9 @@ accepted_name <- function(taxlist, ...) UseMethod("accepted_name", taxlist)
 #' @method accepted_name taxlist
 #' @export
 accepted_name.taxlist <- function(
-    taxlist, ConceptID, show_traits = FALSE,
-    ...) {
+  taxlist, ConceptID, show_traits = FALSE,
+  ...
+) {
   if (missing(ConceptID)) {
     ConceptID <- taxlist@taxonRelations$TaxonConceptID
   }

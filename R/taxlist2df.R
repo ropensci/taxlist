@@ -25,9 +25,10 @@ taxlist2df <- function(x, ...) UseMethod("taxlist2df", x)
 #' @aliases taxlist2df,taxlist-method
 #' @export
 taxlist2df.taxlist <- function(
-    x, include_traits = FALSE,
-    include_views = FALSE,
-    standard = c("taxlist", "dwc"), ...) {
+  x, include_traits = FALSE,
+  include_views = FALSE,
+  standard = c("taxlist", "dwc"), ...
+) {
   standard <- pmatch(standard[1], c("taxlist", "dwc"))
   if (is.na(standard)) {
     stop("The provided value for argument 'standard' is not valid.")
