@@ -100,7 +100,7 @@ backup_object <- function(
 }
 
 #' @rdname backup_object
-#'
+#' @aliases sort_backups
 #' @export
 sort_backups <- function(
   name, path = ".", date_format = "%Y-%m-%d",
@@ -108,18 +108,24 @@ sort_backups <- function(
 ) {
   inFolder <- list.files(path = path, pattern = fext)
   inFolder <- inFolder[grepl(name, inFolder, fixed = TRUE)]
-  if (length(inFolder) == 0) {
+  if (!length(inFolder)) {
     stop("The requested backup is missing.")
   }
-  time_stamp <- gsub(paste0(name, sep), "", inFolder)
-  time_stamp <- as.Date(strptime(time_stamp, format = date_format))
-  suffix <- list()
-  for (i in 1:length(inFolder)) {
-    suffix[[i]] <- gsub(paste0(name, sep, time_stamp[i]), "", inFolder[i])
-  }
-  suffix <- do.call(c, suffix)
-  suffix <- gsub(sep, "", suffix)
-  suffix <- as.integer(gsub(fext, "", suffix))
+  # Extract information using patterns
+  pattern <- paste0(
+    "^", name, sep,
+    "([0-9\\-]+)", # date
+    "(?:", sep, "(\\d+))?", # optional suffix
+    "\\", fext, "$"
+  )
+  matches <- regexec(pattern, inFolder)
+  parts <- regmatches(inFolder, matches)
+  time_stamp <- as.Date(sapply(parts, function(x) x[2]), format = date_format)
+  suffix <- as.integer(sapply(parts, function(x) {
+    ifelse(length(x) >= 3, x[3],
+      NA
+    )
+  }))
   suffix[is.na(suffix)] <- 0
   # Output object
   OUT <- data.frame(
@@ -135,6 +141,7 @@ sort_backups <- function(
 }
 
 #' @rdname backup_object
+#' @aliases load_last
 #' @export
 load_last <- function(file, path, ..., choice) {
   if (!missing(path)) {

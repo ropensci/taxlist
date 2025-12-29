@@ -1,4 +1,10 @@
-# taxlist 0.4.0
+# taxlist 0.3.6
+
+### Bug Fixes
+
+- Error retrieving dates by `sort_backups()` resolved.
+
+# taxlist 0.3.5
 
 ### New Features
 
