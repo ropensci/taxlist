@@ -11,7 +11,7 @@ tv2taxlist(taxlist, tv_home = tv.home(), ...)
 Turboveg.}
 
 \item{tv_home}{Character value indicating the path to the main Turboveg
-folder. By default the function \code{\link[vegdata:tv.home]{vegdata::tv.home()}} is called.}
+folder.}
 
 \item{...}{Further arguments passed to \code{\link[=df2taxlist]{df2taxlist()}}.}
 }

@@ -19,6 +19,10 @@
   slot **taxonRelations** when `alphabetical = FALSE`. This function was
   formely sorting according to **taxonConceptID** in the same situation.
 
+### Bug Fixes
+
+- This package is now independent from `vegdata`.
+
 
 # taxlist 0.3.0
 

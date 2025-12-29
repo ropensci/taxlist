@@ -1,6 +1,7 @@
 ^\.github$
 ^\.quarto$
 ^build-pkg$
+^docs$
 ^data-raw$
 ^db-scheme$
 ^examples$

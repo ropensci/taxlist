@@ -43,8 +43,9 @@
 #'
 #' @export
 id_generator <- function(
-    len, minvalue = 1, nchar = 10,
-    mode = c("numeric", "character"), ...) {
+  len, minvalue = 1, nchar = 10,
+  mode = c("numeric", "character"), ...
+) {
   mode <- pmatch(mode[1], c("numeric", "character"))
   if (!mode %in% c(1:2)) {
     stop("Invalid value in 'mode'.")
@@ -62,8 +63,9 @@ id_generator <- function(
 #' @aliases id_solver
 #' @export
 id_solver <- function(
-    insert, to, suffix = c("numeric", "character"),
-    sep = "") {
+  insert, to, suffix = c("numeric", "character"),
+  sep = ""
+) {
   if (any(duplicated(to))) {
     stop("Duplicated values are not allowed in 'to'.")
   }
